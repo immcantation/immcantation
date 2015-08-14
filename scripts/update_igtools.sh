@@ -112,7 +112,7 @@ echo -e "=======================================================================
 mkdir -p $HOME/tmp/presto; cd $HOME/tmp/presto
 tar -zxf $HOME/tmp/presto.tar.gz --wildcards --exclude="tests" --strip-components=1 \
     -C $HOME/tmp/presto
-python $HOME/tmp/presto/setup.py install --user
+python3 $HOME/tmp/presto/setup.py install --user
 cd -
 
 echo -e "\n\nInstalling changeo..."
@@ -120,7 +120,7 @@ echo -e "=======================================================================
 mkdir -p $HOME/tmp/changeo; cd $HOME/tmp/changeo
 tar -zxf $HOME/tmp/changeo.tar.gz --wildcards --exclude="tests" --strip-components=1 \
     -C $HOME/tmp/changeo
-python $HOME/tmp/changeo/setup.py install --user
+python3 $HOME/tmp/changeo/setup.py install --user
 cd -
 
 
