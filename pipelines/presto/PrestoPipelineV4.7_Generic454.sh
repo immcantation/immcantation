@@ -29,7 +29,7 @@ FILTER_LOWQUAL=true
 MASK_LOWQUAL=false
 
 # FilterSeq run parameters
-FS_LENGTH=250
+FS_LENGTH=300
 FS_QUAL=20
 FS_MASK=30
 
@@ -39,14 +39,14 @@ MP_MID_MODE="cut"
 MP_FWD_MODE="mask"
 MP_REV_MODE="cut"
 MP_MID_MAXERR=0.2
-MP_FWD_MAXERR=0.2
-MP_REV_MAXERR=0.2
+MP_FWD_MAXERR=0.3
+MP_REV_MAXERR=0.3
 MP_FWD_MAXLEN=50
 MP_REV_MAXLEN=50
 
 # CollapseSeq run parameters
-CS_KEEP=true
-CS_MISS=0
+CS_KEEP=false
+CS_MISS=20
 
 # Define log files
 PIPELINE_LOG="Pipeline.log"
@@ -105,7 +105,7 @@ MaskPrimers.py score -s $MP_FILE -p $MID_PRIMERS --mode $MP_MID_MODE \
 # Remove forward (V-region) primers
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "MaskPrimers align"
 MaskPrimers.py align -s "${OUTNAME}_primers-pass.fastq" -p $FWD_PRIMERS \
-    --mode $MP_FWD_MODE --maxlen $MP_FWD_MAXLEN --maxerror $MP_MID_MAXERR \
+    --mode $MP_FWD_MODE --maxlen $MP_FWD_MAXLEN --maxerror $MP_FWD_MAXERR \
     --nproc $NPROC --log PrimerForwardLog.log \
     >> $PIPELINE_LOG 2> $ERROR_LOG
 
@@ -141,7 +141,7 @@ fi
 
 # Split file by MID
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "SplitSeq group"
-SplitSeq.py group -s $SS_FILE -f MID "${OUTNAME}-FIN" \
+SplitSeq.py group -s $SS_FILE -f MID --outname "${OUTNAME}-FIN" \
     >> $PIPELINE_LOG 2> $ERROR_LOG
 
 # Remove duplicate sequences
@@ -154,7 +154,7 @@ else
     >> $PIPELINE_LOG 2> $ERROR_LOG
 fi
 
-# Split file by MID
+# Filter to atleast 2 reads
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "SplitSeq group"
 SplitSeq.py group -s *_collapse-unique.fastq -f DUPCOUNT --num 2 \
     >> $PIPELINE_LOG 2> $ERROR_LOG
@@ -184,7 +184,7 @@ if $ZIP_FILES; then
     tar -zcf LogFiles.tar $LOG_FILES_ZIP
     rm $LOG_FILES_ZIP
 
-    TEMP_FILES_ZIP=$(ls *.fastq | grep -v "collapse-unique.fastq")
+    TEMP_FILES_ZIP=$(ls *.fastq | grep -vP "collapse-unique.fastq|collapse-unique_atleast-2.fastq")
     tar -zcf TempFiles.tar $TEMP_FILES_ZIP
     rm $TEMP_FILES_ZIP
 fi
