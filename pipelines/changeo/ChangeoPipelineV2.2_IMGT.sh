@@ -61,7 +61,7 @@ STEP=0
 # Parse IMGT output
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "MakeDb imgt"
 #echo MakeDb.py imgt -z $IMGT_FILE -s $SEQ_FILE --outdir . --clean ">>" $PIPELINE_LOG
-MakeDb.py imgt -z $IMGT_FILE -s $SEQ_FILE --outname "${OUTNAME}" \
+MakeDb.py imgt -i $IMGT_FILE -s $SEQ_FILE --outname "${OUTNAME}" \
     --outdir . >> $PIPELINE_LOG 2> $ERROR_LOG
 
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "ParseDb select"
