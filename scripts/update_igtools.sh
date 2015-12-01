@@ -125,10 +125,10 @@ cd -
 
 
 # Install R packages
-RSCRIPT="options(repos=c(CRAN=\"http://cran.rstudio.com\")); \
+RSCRIPT="options(repos=c(CRAN=\"http://watson.nci.nih.gov/cran_mirror\")); \
          library(roxygen2); library(devtools); \
-         document(\"${HOME}/tmp/package_directory\"); \
          install_deps(\"${HOME}/tmp/package_directory\"); \
+         document(\"${HOME}/tmp/package_directory\"); \
          build(\"${HOME}/tmp/package_directory\", vignettes=FALSE); \
          install(\"${HOME}/tmp/package_directory\")"
 
