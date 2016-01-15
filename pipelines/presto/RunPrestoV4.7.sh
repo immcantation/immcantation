@@ -2,16 +2,20 @@
 # Wrapper script to run the pRESTO pipeline script on multiple inputs
 # 
 # Author:  Jason Anthony Vander Heiden
-# Date:    2015.05.31
+# Date:    2016.01.15
 # Required arguments:
 #   $1 = run identifier (string to match in folder names within $DATA_DIR/raw)
 
 # Define run parameters
-DATA_DIR=/scratch2/kleinstein/abvitro_abseq_titrations
-SCRIPT=/scratch2/kleinstein/abvitro_abseq_titrations/scripts/PrestoPipelineV4.7_AbSeqV3.sh
-PRIMERS1=/scratch2/kleinstein/abvitro_abseq_titrations/primers/AbSeqV3_Human_R1CPrimers.fasta
-PRIMERS2=/scratch2/kleinstein/abvitro_abseq_titrations/primers/AbSeqV3_Human_R2TSPrimers.fasta
-NPROC=16
+DATA_DIR=/scratch2/kleinstein/oconnor_ms_trafficking
+SCRIPT=/scratch2/kleinstein/oconnor_ms_trafficking/scripts/PrestoPipelineV4.7_AbSeqV2.sh
+PRIMERS1=/scratch2/kleinstein/oconnor_ms_trafficking/primers/MS_JPrimers.fasta
+PRIMERS2=/scratch2/kleinstein/oconnor_ms_trafficking/primers/MS_VPrimers.fasta
+#DATA_DIR=/scratch2/kleinstein/abvitro_abseq_titrations
+#SCRIPT=/scratch2/kleinstein/abvitro_abseq_titrations/scripts/PrestoPipelineV4.7_AbSeqV3.sh
+#PRIMERS1=/scratch2/kleinstein/abvitro_abseq_titrations/primers/AbSeqV3_Human_R1CPrimers.fasta
+#PRIMERS2=/scratch2/kleinstein/abvitro_abseq_titrations/primers/AbSeqV3_Human_R2TSPrimers.fast
+NPROC=15
 
 # Determine folders
 RUN_ID=$(ls -d ${DATA_DIR}/raw/* | grep ${1} | xargs -n1 basename)

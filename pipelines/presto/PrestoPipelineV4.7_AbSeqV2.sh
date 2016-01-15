@@ -25,8 +25,8 @@ NPROC=$7
 # Define pipeline steps
 ZIP_FILES=true
 FILTER_LOWQUAL=true
-ALIGN_UIDSETS=true
-REFERENCE_ASSEMBLY=true
+ALIGN_UIDSETS=false
+REFERENCE_ASSEMBLY=false
 MASK_LOWQUAL=false
 
 # FilterSeq run parameters
