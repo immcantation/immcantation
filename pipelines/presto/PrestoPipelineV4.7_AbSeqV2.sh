@@ -45,6 +45,9 @@ MP_R2_MAXERR=0.2
 # AlignSets run parameters
 MUSCLE_EXEC=$HOME/bin/muscle
 
+# First step PairSeq run parameters
+PS_COORD="illumina"
+
 # BuildConsensus run parameters
 BC_PRCONS_FLAG=true
 BC_ERR_FLAG=true
@@ -68,8 +71,8 @@ REF_FILE="/scratch2/kleinstein/germlines/IMGT_Human_IGV_ungapped_2014-08-23.fast
 USEARCH_EXEC=$HOME/bin/usearch
 
 # CollapseSeq run parameters
-CS_KEEP=true
-CS_MISS=0
+CS_KEEP=false
+CS_MISS=20
 
 # Define log files
 PIPELINE_LOG="Pipeline.log"
@@ -127,7 +130,7 @@ MaskPrimers.py score -s $MPR2_FILE -p $R2_PRIMERS --mode $MP_R2_MODE \
 # Assign UIDs to read 2 sequences
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "PairSeq"
 PairSeq.py -1 "${OUTNAME}-R1_primers-pass.fastq" -2 "${OUTNAME}-R2_primers-pass.fastq" \
-    --1f BARCODE --coord illumina >> $PIPELINE_LOG 2> $ERROR_LOG
+    --1f BARCODE --coord $PS_COORD >> $PIPELINE_LOG 2> $ERROR_LOG
 
 # Multiple align UID read groups
 if $ALIGN_UIDSETS; then
