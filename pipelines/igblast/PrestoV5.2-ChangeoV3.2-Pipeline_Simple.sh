@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Super script to run a simplified pRESTO 0.5.1, IgBLAST and Change-O 0.3.1 pipeline
+# Super script to run a simplified pRESTO 0.5.2, IgBLAST and Change-O 0.3.2 pipeline
 #
 # Author:  Jason Anthony Vander Heiden
 # Date:    2016.02.03
