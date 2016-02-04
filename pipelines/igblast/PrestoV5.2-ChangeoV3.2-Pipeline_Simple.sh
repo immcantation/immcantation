@@ -105,7 +105,7 @@ MaskPrimers.py align -s $INPUT_FILE -p $V_PRIMERS --mode $MP_V_MODE \
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "MaskPrimers align"
 MaskPrimers.py align -s "${OUTNAME}-V_primers-pass.fasta" -p $J_PRIMERS --mode $MP_J_MODE \
     --maxlen $MP_J_MAXLEN --maxerror $MP_J_MAXERR --revpr --skiprc \
-    --nproc $NPROC --log PrimerJLog.log --outname "${OUTNAME}-J" \
+    --nproc $NPROC --log PrimerJLog.log --outname "${OUTNAME}-J" --outdir . \
     >> $PIPELINE_LOG 2> $ERROR_LOG
 
 # Expand primer field
@@ -176,9 +176,10 @@ if $PARSE_LOGS; then
 
     printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "ParseLog"
     ParseLog.py -l Primer[VJ]Log.log -f ID PRIMER ERROR \
-        > /dev/null  2> $ERROR_LOG &
+        > /dev/null 2> $ERROR_LOG &
     ParseLog.py -l CloneLog.log -f VALLELE DALLELE JALLELE JUNCLEN SEQUENCES CLONES \
-        > /dev/null  2> $ERROR_LOG &
+        > /dev/null 2> $ERROR_LOG &
+    wait
 fi
 
 # Zip intermediate and log files
