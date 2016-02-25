@@ -84,8 +84,8 @@ curl -# -f -u "${USERNAME}:${PASSWORD}" \
     https://bitbucket.org/kleinstein/alakazam/get/default.tar.gz -o $HOME/tmp/alakazam.tar.gz
 if [ $? -ne 0 ]; then { echo -e "Download of alakazam failed." ; exit 1; } fi
 curl -# -f -u "${USERNAME}:${PASSWORD}" \
-    https://bitbucket.org/kleinstein/shm/get/default.tar.gz -o $HOME/tmp/shm.tar.gz
-if [ $? -ne 0 ]; then { echo -e "Download of shm failed." ; exit 1; } fi
+    https://bitbucket.org/kleinstein/shazam/get/default.tar.gz -o $HOME/tmp/shazam.tar.gz
+if [ $? -ne 0 ]; then { echo -e "Download of shazam failed." ; exit 1; } fi
 curl -# -f -u "${USERNAME}:${PASSWORD}" \
     https://bitbucket.org/kleinstein/tigger/get/default.tar.gz -o $HOME/tmp/tigger.tar.gz
 if [ $? -ne 0 ]; then { echo -e "Download of tigger failed." ; exit 1; } fi
@@ -139,12 +139,12 @@ tar -zxf $HOME/tmp/alakazam.tar.gz --wildcards --exclude="tests" --strip-compone
     -C $HOME/tmp/alakazam
 Rscript -e "${RSCRIPT//package_directory/alakazam}"
 
-echo -e "\n\nInstalling shm..."
+echo -e "\n\nInstalling shazam..."
 echo -e "================================================================================\n"
-mkdir -p $HOME/tmp/shm
-tar -zxf $HOME/tmp/shm.tar.gz --wildcards --exclude="tests" --strip-components=1 \
-    -C $HOME/tmp/shm
-Rscript -e "${RSCRIPT//package_directory/shm}"
+mkdir -p $HOME/tmp/shazam
+tar -zxf $HOME/tmp/shazam.tar.gz --wildcards --exclude="tests" --strip-components=1 \
+    -C $HOME/tmp/shazam
+Rscript -e "${RSCRIPT//package_directory/shazam}"
 
 echo -e "\n\nInstalling tigger..."
 echo -e "================================================================================\n"
