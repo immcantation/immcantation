@@ -15,7 +15,7 @@ mkdir -p $2/functional
 while read FILE_MAP
 do
     FILE_ARRAY=($FILE_MAP)
-    BASENAME=$(basename "${FILE_ARRAY[0]}" ".zip")
+    BASENAME=$(basename "${FILE_ARRAY[0]}" ".txz")
     MakeDb.py imgt -i "${FILE_ARRAY[0]}" -s "${FILE_ARRAY[1]}" --outdir $2/db
     ParseDb.py select -d $2/db/"${BASENAME}_db-pass.tab" -f FUNCTIONAL -u T \
         --outname "${BASENAME}_functional" --outdir $2/db

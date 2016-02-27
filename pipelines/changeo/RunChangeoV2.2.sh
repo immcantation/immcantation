@@ -17,7 +17,7 @@ NPROC=2
 while read FILE_MAP
 do
     FILE_ARRAY=($FILE_MAP)
-    FOLDER=$(basename "${FILE_ARRAY[0]}" ".zip")
+    FOLDER=$(basename "${FILE_ARRAY[0]}" ".txz")
     LOG_FILE="${FOLDER}_ChangeoLog.out"
 
     echo "FOLDER: $FOLDER" | tee -a $LOG_FILE
