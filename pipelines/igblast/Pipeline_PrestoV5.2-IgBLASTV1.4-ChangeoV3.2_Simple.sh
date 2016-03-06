@@ -52,7 +52,7 @@ CG_SFIELD=SEQUENCE_IMGT
 CG_VFIELD=V_CALL
 
 # Define IgBLAST command
-IGDATA="${HOME}/apps/igblast-1.4.0"
+export IGDATA="${HOME}/apps/igblast-1.4.0"
 IGBLAST_DB="${IGDATA}/database"
 IGBLAST_CMD="${IGDATA}/igblastn \
     -germline_db_V ${IGBLAST_DB}/imgt_human_IG_V \

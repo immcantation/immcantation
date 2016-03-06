@@ -1,5 +1,5 @@
 #!/bin/bash
-# Script to update presto, changeo, alakazam, shm and tigger
+# Script to update presto, changeo, alakazam, shazam and tigger
 # 
 # Author:  Jason Anthony Vander Heiden, Mohamed Uduman
 # Date:    2015.06.17
