@@ -5,9 +5,14 @@ Currently, this repository contains the cluster update script:
 
 * scripts/update_igtools.sh
 
-A simple IgBLAST wrapper:  
+A simple IgBLAST wrapper and database creation script:  
 
+* scripts/imgt2igblast.sh
 * scripts/run_igblast.sh
+
+A script to download germlines from IMGT:  
+
+* scripts/get_imgt.sh
 
 Various presto and changeo pipeline scripts:
 
