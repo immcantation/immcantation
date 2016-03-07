@@ -8,9 +8,9 @@
 
 # Define run parameters
 DATA_DIR=/scratch2/kleinstein/oconnor_ms_trafficking
-SCRIPT=/scratch2/kleinstein/oconnor_ms_trafficking/scripts/PrestoPipelineV4.7_AbSeqV2.sh
-PRIMERS1=/scratch2/kleinstein/oconnor_ms_trafficking/primers/MS_JPrimers.fasta
-PRIMERS2=/scratch2/kleinstein/oconnor_ms_trafficking/primers/MS_VPrimers.fasta
+SCRIPT=$DATA_DIR/scripts/PrestoPipelineV4.7_AbSeqV2.sh
+PRIMERS1=$DATA_DIR/primers/MS_JPrimers.fasta
+PRIMERS2=$DATA_DIR/primers/MS_VPrimers.fasta
 #DATA_DIR=/scratch2/kleinstein/abvitro_abseq_titrations
 #SCRIPT=/scratch2/kleinstein/abvitro_abseq_titrations/scripts/PrestoPipelineV4.7_AbSeqV3.sh
 #PRIMERS1=/scratch2/kleinstein/abvitro_abseq_titrations/primers/AbSeqV3_Human_R1CPrimers.fasta

@@ -35,7 +35,7 @@ FS_MASK=30
 # MaskPrimers run parameters
 MP_R1_MODE="cut"
 MP_R2_MODE="mask"
-MP_R1_START=17
+MP_R1_START=0
 MP_R2_START=0
 MP_R1_MAXERR=0.2
 MP_R2_MAXERR=0.2
@@ -102,7 +102,7 @@ else
     MPR2_FILE=$R2_FILE
 fi
 
-# Identify primers and UID 
+# Identify primers and UID
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "MaskPrimers score"
 MaskPrimers.py score -s $MPR1_FILE -p $R1_PRIMERS --mode $MP_R1_MODE \
     --start $MP_R1_START --maxerror $MP_R1_MAXERR --nproc $NPROC --log PrimerLogR1.log \
