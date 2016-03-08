@@ -7,7 +7,7 @@
 # Arguments:
 #   -s = FASTA sequence file.
 #   -o = Output directory.
-#   -p = Number of IgBLAST threads.
+#   -n = Number of IgBLAST threads.
 #   -h = Display help.
 
 # Default argument values
@@ -30,12 +30,12 @@ usage () {
     echo "Usage: `basename $0` [OPTIONS]"
     echo "  -s  FASTA sequence file."
     echo "  -o  Output directory."
-    echo "  -p  Number of IgBLAST threads."
+    echo "  -n  Number of IgBLAST threads."
     echo "  -h  This message."
 }
 
 # Get commandline arguments
-while getopts "s:o:p:e:h" OPT; do
+while getopts "s:o:n:e:h" OPT; do
     case "$OPT" in
     s)  READFILE=$(readlink -f $OPTARG)
         READFILE_SET=true
@@ -43,7 +43,7 @@ while getopts "s:o:p:e:h" OPT; do
     o)  OUTDIR=$OPTARG
         OUTDIR_SET=true
         ;;
-    p)  NPROC=$OPTARG
+    n)  NPROC=$OPTARG
         ;;
     h)  usage
         exit
