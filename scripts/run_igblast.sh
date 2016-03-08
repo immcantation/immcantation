@@ -64,7 +64,7 @@ if ! $READFILE_SET; then
 fi
 
 # Make output directory if it does not exist
-if $OUTDIR_SET %% [ ! -d "${OUTDIR}" ]; then
+if $OUTDIR_SET && [ ! -d "${OUTDIR}" ]; then
     mkdir -p $OUTDIR
 fi
 
