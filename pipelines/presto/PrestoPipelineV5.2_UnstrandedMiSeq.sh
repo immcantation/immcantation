@@ -24,7 +24,7 @@ NPROC=$7
 
 # Define pipeline steps
 ZIP_FILES=true
-REFERENCE_ASSEMBLY=true
+REFERENCE_ASSEMBLY=false
 FILTER_LOWQUAL=true
 MASK_LOWQUAL=false
 
@@ -155,7 +155,7 @@ if $MASK_LOWQUAL; then
         --nproc $NPROC >> $PIPELINE_LOG 2> $ERROR_LOG
     CS_FILE="${OUTNAME}-FIN_maskqual-pass.fastq"
 else
-    CS_FILE=$FS_FILE
+    CS_FILE="${OUTNAME}-PR2_reheader.fastq"
 fi
 
 # Remove duplicate sequences
