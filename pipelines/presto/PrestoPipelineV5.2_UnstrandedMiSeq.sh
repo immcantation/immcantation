@@ -90,16 +90,17 @@ STEP=0
 
 # Remove short reads
 if $FILTER_LENGTH; then
-    printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "FilterSeq quality"
+    printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "FilterSeq length"
     FilterSeq.py length -s $R1_FILE -n $FS_LEN --outname "${OUTNAME}-R1" \
-        --log LengthLogR1.log --nproc $NPROC >> $PIPELINE_LOG  2> $ERROR_LOG
+        --log LengthLogR1.log --outdir . --nproc $NPROC >> $PIPELINE_LOG  2> $ERROR_LOG
     FilterSeq.py length -s $R2_FILE -n $FS_LEN --outname "${OUTNAME}-R2" \
-        --log LengthLogR2.log --nproc $NPROC >> $PIPELINE_LOG  2> $ERROR_LOG
+        --log LengthLogR2.log --outdir . --nproc $NPROC >> $PIPELINE_LOG  2> $ERROR_LOG
 
-    # Synhcronize read files
+    # Synchronize read files
     printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "PairSeq"
     PairSeq.py -1 "${OUTNAME}-R1_length-pass.fastq" -2 "${OUTNAME}-R2_length-pass.fastq" \
         --coord illumina >> $PIPELINE_LOG 2> $ERROR_LOG
+
     AP1_FILE="${OUTNAME}-R1_length-pass_pair-pass.fastq"
     AP2_FILE="${OUTNAME}-R2_length-pass_pair-pass.fastq"
 else
@@ -129,6 +130,7 @@ if $REFERENCE_ASSEMBLY; then
         --minident $AP_REF_MINIDENT --evalue $AP_REF_EVALUE --maxhits $AP_REF_MAXHITS \
         --outname "${OUTNAME}-REF" --log AssembleRefLog.log --exec $USEARCH_EXEC \
         --nproc $NPROC >> $PIPELINE_LOG 2> $ERROR_LOG
+
     cat "${OUTNAME}-ALN_assemble-pass.fastq" "${OUTNAME}-REF_assemble-pass.fastq" > \
         "${OUTNAME}-CAT_assemble-pass.fastq"
     FS_FILE="${OUTNAME}-CAT_assemble-pass.fastq"
