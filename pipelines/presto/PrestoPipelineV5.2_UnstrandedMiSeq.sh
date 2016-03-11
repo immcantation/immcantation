@@ -25,20 +25,23 @@ NPROC=$7
 # Define pipeline steps
 ZIP_FILES=true
 REFERENCE_ASSEMBLY=false
+FILTER_LENGTH=true
 FILTER_LOWQUAL=true
 MASK_LOWQUAL=false
 
 # FilterSeq run parameters
 FS_QUAL=20
 FS_MASK=30
+FS_LEN=200
 
 # MaskPrimers run parameters
+MP_R1_SKIPRC=true
 MP_R1_MODE="mask"
 MP_R2_MODE="cut"
 MP_R1_MAXLEN=100
 MP_R2_MAXLEN=100
-MP_R1_MAXERR=0.2
-MP_R2_MAXERR=0.2
+MP_R1_MAXERR=0.3
+MP_R2_MAXERR=0.3
 
 # AssemblePairs-align run parameters
 AP_ALN_SCANREV=true
@@ -85,16 +88,34 @@ echo "  $(SplitSeq.py --version 2>&1)"
 echo -e "\nSTART"
 STEP=0
 
+# Remove short reads
+if $FILTER_LENGTH; then
+    printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "FilterSeq quality"
+    FilterSeq.py length -s $R1_FILE -n $FS_LEN --outname "${OUTNAME}-R1" \
+        --log LengthLogR1.log --nproc $NPROC >> $PIPELINE_LOG  2> $ERROR_LOG
+    FilterSeq.py length -s $R2_FILE -n $FS_LEN --outname "${OUTNAME}-R2" \
+        --log LengthLogR2.log --nproc $NPROC >> $PIPELINE_LOG  2> $ERROR_LOG
+
+    # Synhcronize read files
+    printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "PairSeq"
+    PairSeq.py -1 "${OUTNAME}-R1_length-pass.fastq" -2 "${OUTNAME}-R2_length-pass.fastq" \
+        --coord illumina >> $PIPELINE_LOG 2> $ERROR_LOG
+    AP1_FILE="${OUTNAME}-R1_length-pass_pair-pass.fastq"
+    AP2_FILE="${OUTNAME}-R2_length-pass_pair-pass.fastq"
+else
+    AP1_FILE=$R1_FILE
+    AP2_FILE=$R2_FILE
+fi
+
 # Assemble paired ends via mate-pair alignment
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "AssemblePairs align"
-
 if $AP_ALN_SCANREV; then
-    AssemblePairs.py align -1 $R1_FILE -2 $R2_FILE --coord illumina --rc tail \
+    AssemblePairs.py align -1 $AP1_FILE -2 $AP2_FILE --coord illumina --rc tail \
         --minlen $AP_ALN_MINLEN --maxerror $AP_ALN_MAXERR --alpha $AP_ALN_ALPHA \
         --scanrev --failed --outname "${OUTNAME}-ALN" --outdir . \
         --log AssembleAlignLog.log --nproc $NPROC >> $PIPELINE_LOG 2> $ERROR_LOG
 else
-    AssemblePairs.py align -1 $R1_FILE -2 $R2_FILE --coord illumina --rc tail \
+    AssemblePairs.py align -1 $AP1_FILE -2 $AP2_FILE --coord illumina --rc tail \
         --minlen $AP_ALN_MINLEN --maxerror $AP_ALN_MAXERR --alpha $AP_ALN_ALPHA \
         --failed --outname "${OUTNAME}-ALN" --outdir . --log AssembleAlignLog.log \
         --nproc $NPROC >> $PIPELINE_LOG 2> $ERROR_LOG
@@ -127,9 +148,15 @@ fi
 
 # Identify and mask V-region primers
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "MaskPrimers align (R1)"
-MaskPrimers.py align -s $MP_FILE -p $R1_PRIMERS --mode $MP_R1_MODE \
-    --maxlen $MP_R1_MAXLEN --maxerror $MP_R1_MAXERR --outname "${OUTNAME}-PR1" \
-    --log PrimerLogR1.log --nproc $NPROC >> $PIPELINE_LOG 2> $ERROR_LOG
+if $MP_R1_SKIPRC; then
+    MaskPrimers.py align -s $MP_FILE -p $R1_PRIMERS --mode $MP_R1_MODE \
+        --maxlen $MP_R1_MAXLEN --maxerror $MP_R1_MAXERR --skiprc --outname "${OUTNAME}-PR1" \
+        --log PrimerLogR1.log --nproc $NPROC >> $PIPELINE_LOG 2> $ERROR_LOG
+else
+    MaskPrimers.py align -s $MP_FILE -p $R1_PRIMERS --mode $MP_R1_MODE \
+        --maxlen $MP_R1_MAXLEN --maxerror $MP_R1_MAXERR --outname "${OUTNAME}-PR1" \
+        --log PrimerLogR1.log --nproc $NPROC >> $PIPELINE_LOG 2> $ERROR_LOG
+fi
 
 # Rename V-region primer field
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "ParseHeaders rename (R1)"
@@ -185,7 +212,7 @@ ParseHeaders.py table -s "${OUTNAME}-FIN_collapse-unique_atleast-2.fastq" \
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "ParseLog"
 ParseLog.py -l AssembleAlignLog.log -f ID LENGTH OVERLAP ERROR PVALUE FIELDS1 FIELDS2 \
     > /dev/null  2> $ERROR_LOG &
-ParseLog.py -l PrimerLogR[1-2].log -f ID BARCODE PRIMER ERROR \
+ParseLog.py -l PrimerLogR[1-2].log -f ID SEQORIENT  PRSTART PRIMER ERROR \
     > /dev/null  2> $ERROR_LOG &
 if $REFERENCE_ASSEMBLY; then
     ParseLog.py -l AssembleRefLog.log -f ID REFID LENGTH OVERLAP GAP EVALUE1 EVALUE2 IDENTITY FIELDS1 FIELDS2 \
@@ -202,11 +229,11 @@ wait
 # Zip intermediate and log files
 if $ZIP_FILES; then
     LOG_FILES_ZIP=$(ls *LogR[1-2].log *Log.log)
-    tar -zcf LogFiles.tar $LOG_FILES_ZIP
+    tar -zcf LogFiles.tar.gz $LOG_FILES_ZIP
     rm $LOG_FILES_ZIP
 
     TEMP_FILES_ZIP=$(ls *.fastq | grep -vP "collapse-unique.fastq|atleast-2.fastq")
-    tar -zcf TempFiles.tar $TEMP_FILES_ZIP
+    tar -zcf TempFiles.tar.gz $TEMP_FILES_ZIP
     rm $TEMP_FILES_ZIP
 fi
 
