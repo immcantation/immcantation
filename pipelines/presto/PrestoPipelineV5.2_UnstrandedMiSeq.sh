@@ -207,7 +207,7 @@ printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "ParseHeaders table"
 ParseHeaders.py table -s "${OUTNAME}-FIN_collapse-unique.fastq" \
     -f ID CPRIMER VPRIMER DUPCOUNT --outname "Unique" >> $PIPELINE_LOG 2> $ERROR_LOG
 ParseHeaders.py table -s "${OUTNAME}-FIN_collapse-unique_atleast-2.fastq" \
-    -f ID CPRIMER VPRIMER DUPCOUNT --outname "Final-Unique-Atleast2" \
+    -f ID CPRIMER VPRIMER DUPCOUNT --outname "Unique-Atleast2" \
     >> $PIPELINE_LOG 2> $ERROR_LOG
 
 # Process log files
@@ -219,6 +219,9 @@ ParseLog.py -l PrimerLogR[1-2].log -f ID SEQORIENT  PRSTART PRIMER ERROR \
 if $REFERENCE_ASSEMBLY; then
     ParseLog.py -l AssembleRefLog.log -f ID REFID LENGTH OVERLAP GAP EVALUE1 EVALUE2 IDENTITY FIELDS1 FIELDS2 \
     > /dev/null  2> $ERROR_LOG &
+fi
+if $FILTER_LENGTH; then
+    ParseLog.py -l LengthLogR[1-2].log -f ID LENGTH > /dev/null &
 fi
 if $FILTER_LOWQUAL; then
     ParseLog.py -l QualityLog.log -f ID QUALITY > /dev/null &
