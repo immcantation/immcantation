@@ -2,94 +2,35 @@
 .. keywords:  rep-seq, immuno-seq, repertoire sequencing, BCR, TCR, Ig, IgOme, AIRR, adaptive immunity,
     somatic hypermutation, vdj-seq, AbSeq, AbPair, iRepertoire, VDJ, Immunoglobulin
 
-.. toctree::
-   :maxdepth: 2
-
-   `pRESTO <presto.readthedocs.org>`_
-   `Change-O <changeo.readthedocs.org>`_
-   `aLAkazam <bitbuckert.org/kleinstein/alakazam>`_
-   `SHazaM <bitbuckert.org/kleinstein/shazam>`_
-   `TIgGER <bitbuckert.org/kleinstein/tigger>`_
-
-
 Immcantation: An Integrated Framework for Adaptive Immune Receptor Repertoire Analysis
-================================================================================
+==========================================================================================
 
-Advances in high-throughput sequencing technologies now allow for large-scale characterization of
-B cell receptor (BCR) and T cell receptor (TCR) repertoires. The high germline and somatic diversity of the
-adaptive immune receptor repertoire (AIRR) presents challenges for biologically meaningful analysis -
-requiring the development of specialized computational methods.
+.. toctree::
+    :maxdepth: 1
+    :hidden:
+    :caption: About
 
-Immcantation is a start-to-finish analytical ecosystem for high-throughput AIRR-seq datasets.
-Beginning from raw reads, Python and R packages are provided for pre-processing, population structure determination,
-and repertoire analysis.
+    about
 
+.. include:: about.rst
 
-Flowchart
---------------------------------------------------------------------------------
+.. toctree::
+    :maxdepth: 1
+    :caption: Documentation
 
-.. graphviz::
+    pRESTO - Raw read processing and UMI analysis <http://presto.readthedocs.org>
+    Change-O - V(D)J alignment importing and clonal grouping <http://changeo.readthedocs.org>
+    Alakazam - Lineage, diversity, amino acid property analysis <http://kleinstein.bitbucket.org/alakazam>
+    SHazaM - Somatic hypermutation analysis <http://kleinstein.bitbucket.org/shazam>
+    TIgGER - Novel allele detection and genotyping <http://kleinstein.bitbucket.org/tigger>
 
-    graph {
-        graph[rankdir="LR"];
+.. toctree::
+    :maxdepth: 1
+    :caption: Download
 
-        a -- b;
-        b -- c;
-        c -- d;
-
-        d -- e;
-        d -- f;
-        d -- f;
-        d -- e;
-        d -- e;
-        d -- e;
-
-        b -- d;
-        b -- e;
-
-        a [label="Data"];
-        b [label="Preprocessing"];
-        c [label="V(D)J Alignment"];
-        d [label="Standardization"];
-        e [label="Clonal Assignment"];
-        f [label="Lineage Reconstruction"];
-        g [label="Diversity"];
-        h [label="Mutation Profiling"];
-        i [label="Selection"];
-        j [label="Genotyping"];
-
-        k [label="pRESTO", href="http://presto.readthedocs.org"];
-        l [label="Change-O", href="http://changeo.readthedocs.org"];
-        m [label="Alakazam", href="http://kleinstein.bitbucket.org/alakazam"];
-        n [label="Shazam", href="http://kleinstein.bitbucket.org/shazam"];
-        o [label="TIgGER", href="http://clip.med.yale.edu/tigger"];
-    }
-
-Links
---------------------------------------------------------------------------------
-
-pRESTO: Pre-processing and UID/UMI analysis
-Change-O: IMGT/HighV-QUEST and IgBLAST import, clonal grouping
-TIgGER: Novel allele detection and genotyping
-aLAkazam: Lineage analysis, diversity, amino acid properties
-SHazaM: Somatic hypermutation analysis
-
-How to cite
---------------------------------------------------------------------------------
-
-pRESTO
-Change-O
-
-Additional citations for specific methods within aLAkazam, SHazaM and TIgGER may be determined using the ``citation()`` function.
-
-
-.. Publications that use Immcantation:
-
-
-Contact Info
---------------------------------------------------------------------------------
-
-steve
-website
-
+    pRESTO <http://bitbucket.org/kleinstein/presto/downloads>
+    Change-O <http://bitbucket.org/kleinstein/changeo/downloads>
+    Alakazam <http://bitbucket.org/kleinstein/alakazam/downloads>
+    SHazaM <http://bitbucket.org/kleinstein/shazam/downloads>
+    TIgGER <http://bitbucket.org/kleinstein/tigger/downloads>
 
