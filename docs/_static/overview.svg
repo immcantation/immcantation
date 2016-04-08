@@ -148,7 +148,7 @@
 			<path d="M9 479 L9 290" class="st11"/>
 			<path d="M603 479 L603 290" class="st11"/>
 		</g>
-		<a xlink:href="http://presto.readthedocs.org" xlink:title="pRESTO" xlink:show="new">
+		<a xlink:href="http://presto.readthedocs.org" target="_top" xlink:title="pRESTO">
 			<g id="shape1-87" v:mID="1" v:groupContext="shape" v:layerMember="0" transform="translate(73,-433)">
 				<title>Process</title>
 				<desc>Read Assembly &#38; Quality Control</desc>
@@ -218,7 +218,7 @@
 			</g>
 			<rect x="0" y="434" width="216" height="45" class="st15"/>
 			<text x="64.32" y="460.1" class="st14" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>V(D)J Alignment</text>		</g>
-		<a xlink:href="http://changeo.readthedocs.org" xlink:title="Change-O" xlink:show="new">
+		<a xlink:href="http://changeo.readthedocs.org" target="_top" xlink:title="Change-O">
 			<g id="shape4-99" v:mID="4" v:groupContext="shape" v:layerMember="0" transform="translate(73,-217)">
 				<title>Process.4</title>
 				<desc>Clonal Clustering</desc>
@@ -254,7 +254,7 @@
 				<rect x="0" y="434" width="216" height="45" class="st16"/>
 				<text x="62.31" y="460.1" class="st14" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>Clonal Clustering</text>			</g>
 		</a>
-		<a xlink:href="http://alakazam.readthedocs.org" xlink:title="Alakazam" xlink:show="new">
+		<a xlink:href="http://alakazam.readthedocs.org" target="_top" xlink:title="Alakazam">
 			<g id="shape5-105" v:mID="5" v:groupContext="shape" v:layerMember="0" transform="translate(73,-131.5)">
 				<title>Process.5</title>
 				<desc>Lineage Reconstruction</desc>
@@ -290,7 +290,7 @@
 				<rect x="0" y="434" width="216" height="45" class="st17"/>
 				<text x="44.96" y="460.1" class="st14" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>Lineage Reconstruction</text>			</g>
 		</a>
-		<a xlink:href="http://alakazam.readthedocs.org" xlink:title="Alakazam" xlink:show="new">
+		<a xlink:href="http://alakazam.readthedocs.org" target="_top" xlink:title="Alakazam">
 			<g id="shape6-111" v:mID="6" v:groupContext="shape" v:layerMember="0" transform="translate(325,-131.5)">
 				<title>Process.6</title>
 				<desc>Diversity Analysis</desc>
@@ -326,7 +326,7 @@
 				<rect x="0" y="434" width="216" height="45" class="st17"/>
 				<text x="60.99" y="460.1" class="st14" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>Diversity Analysis</text>			</g>
 		</a>
-		<a xlink:href="http://shazam.readthedocs.org" xlink:title="SHazaM" xlink:show="new">
+		<a xlink:href="http://shazam.readthedocs.org" target="_top" xlink:title="SHazaM">
 			<g id="shape7-117" v:mID="7" v:groupContext="shape" v:layerMember="0" transform="translate(73,-14.5)">
 				<title>Process.7</title>
 				<desc>Mutation Profiling</desc>
@@ -362,7 +362,7 @@
 				<rect x="0" y="434" width="216" height="45" class="st18"/>
 				<text x="61.64" y="460.1" class="st14" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>Mutation Profiling</text>			</g>
 		</a>
-		<a xlink:href="http://shazam.readthedocs.org" xlink:title="SHazaM" xlink:show="new">
+		<a xlink:href="http://shazam.readthedocs.org" target="_top" xlink:title="SHazaM">
 			<g id="shape8-123" v:mID="8" v:groupContext="shape" v:layerMember="0" transform="translate(325,-14.5)">
 				<title>Process.8</title>
 				<desc>Selection Analysis</desc>
@@ -398,7 +398,7 @@
 				<rect x="0" y="434" width="216" height="45" class="st18"/>
 				<text x="59.31" y="460.1" class="st14" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>Selection Analysis</text>			</g>
 		</a>
-		<a xlink:href="http://alakazam.readthedocs.org" xlink:title="Alakazam" xlink:show="new">
+		<a xlink:href="http://alakazam.readthedocs.org" target="_top" xlink:title="Alakazam">
 			<g id="shape9-129" v:mID="9" v:groupContext="shape" v:layerMember="0" transform="translate(325,-73)">
 				<title>Process.9</title>
 				<desc>Physiochemical Properties</desc>
@@ -434,7 +434,7 @@
 				<rect x="0" y="434" width="216" height="45" class="st17"/>
 				<text x="37.3" y="460.1" class="st14" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>Physiochemical Properties</text>			</g>
 		</a>
-		<a xlink:href="http://alakazam.readthedocs.org" xlink:title="Alakazam" xlink:show="new">
+		<a xlink:href="http://alakazam.readthedocs.org" target="_top" xlink:title="Alakazam">
 			<g id="shape10-135" v:mID="10" v:groupContext="shape" v:layerMember="0" transform="translate(73,-73)">
 				<title>Process.10</title>
 				<desc>Lineage Topology Analysis</desc>
@@ -501,7 +501,7 @@
 			</g>
 			<rect x="0" y="434" width="45" height="45" class="st19"/>
 		</g>
-		<a xlink:href="http://tigger.readthedocs.org" xlink:title="TIgGER" xlink:show="new">
+		<a xlink:href="http://tigger.readthedocs.org" target="_top" xlink:title="TIgGER">
 			<g id="shape22-146" v:mID="22" v:groupContext="shape" v:layerMember="0" transform="translate(325,-248.5)">
 				<title>Process.22</title>
 				<desc>Genotyping</desc>
@@ -816,7 +816,7 @@
 			</g>
 			<rect x="0" y="434" width="45" height="45" class="st19"/>
 		</g>
-		<a xlink:href="http://changeo.readthedocs.org" xlink:title="Change-O" xlink:show="new">
+		<a xlink:href="http://changeo.readthedocs.org" target="_top" xlink:title="Change-O">
 			<g id="shape53-197" v:mID="53" v:groupContext="shape" v:layerMember="0" transform="translate(73,-289)">
 				<title>Process.53</title>
 				<desc>Alignment Standardization</desc>

@@ -18,45 +18,22 @@ and repertoire analysis.
     <object data="_static/overview.svg" type="image/svg+xml"></object>
 
 ..
-    .. image:: _static/overview.svg
-
-
-..
     .. graphviz::
 
         graph {
-            graph[rankdir="LR"];
-
             a -- b;
             b -- c;
+            b -- f;
+            f -- c;
             c -- d;
+            c -- e;
 
-            d -- e;
-            d -- f;
-            d -- f;
-            d -- e;
-            d -- e;
-            d -- e;
-
-            b -- d;
-            b -- e;
-
-            a [label="Data"];
-            b [label="Preprocessing"];
-            c [label="V(D)J Alignment"];
-            d [label="Standardization"];
-            e [label="Clonal Assignment"];
-            f [label="Lineage Reconstruction"];
-            g [label="Diversity"];
-            h [label="Mutation Profiling"];
-            i [label="Selection"];
-            j [label="Genotyping"];
-
-            k [label="pRESTO", href="http://presto.readthedocs.org"];
-            l [label="Change-O", href="http://changeo.readthedocs.org"];
-            m [label="Alakazam", href="http://kleinstein.bitbucket.org/alakazam"];
-            n [label="Shazam", href="http://kleinstein.bitbucket.org/shazam"];
-            o [label="TIgGER", href="http://clip.med.yale.edu/tigger"];
+            a [shape="rectangle", label="Read Assembly & Quality Control", href="http://presto.readthedocs.org", target="_top", image="_static/green_button.png"];
+            b [shape="rectangle", label="V(D)J Alignment"];
+            c [shape="rectangle", label="Clonal Clustering", href="http://changeo.readthedocs.org", target="_top"];
+            d [shape="rectangle", label="Alakazam", href="http://kleinstein.bitbucket.org/alakazam", target="_top"];
+            e [shape="rectangle", label="Shazam", href="http://kleinstein.bitbucket.org/shazam", target="_top"];
+            f [shape="rectangle", label="Genotyping", href="http://clip.med.yale.edu/tigger", target="_top"];
         }
 
 .. _Cite:
