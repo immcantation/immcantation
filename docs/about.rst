@@ -12,42 +12,52 @@ Immcantation is a start-to-finish analytical ecosystem for high-throughput AIRR-
 Beginning from raw reads, Python and R packages are provided for pre-processing, population structure determination,
 and repertoire analysis.
 
-.. graphviz::
 
-    graph {
-        graph[rankdir="LR"];
+.. raw:: html
 
-        a -- b;
-        b -- c;
-        c -- d;
+    <object data="_static/overview.svg" type="image/svg+xml"></object>
 
-        d -- e;
-        d -- f;
-        d -- f;
-        d -- e;
-        d -- e;
-        d -- e;
+..
+    .. image:: _static/overview.svg
 
-        b -- d;
-        b -- e;
 
-        a [label="Data"];
-        b [label="Preprocessing"];
-        c [label="V(D)J Alignment"];
-        d [label="Standardization"];
-        e [label="Clonal Assignment"];
-        f [label="Lineage Reconstruction"];
-        g [label="Diversity"];
-        h [label="Mutation Profiling"];
-        i [label="Selection"];
-        j [label="Genotyping"];
+..
+    .. graphviz::
 
-        k [label="pRESTO", href="http://presto.readthedocs.org"];
-        l [label="Change-O", href="http://changeo.readthedocs.org"];
-        m [label="Alakazam", href="http://kleinstein.bitbucket.org/alakazam"];
-        n [label="Shazam", href="http://kleinstein.bitbucket.org/shazam"];
-        o [label="TIgGER", href="http://clip.med.yale.edu/tigger"];
-    }
+        graph {
+            graph[rankdir="LR"];
+
+            a -- b;
+            b -- c;
+            c -- d;
+
+            d -- e;
+            d -- f;
+            d -- f;
+            d -- e;
+            d -- e;
+            d -- e;
+
+            b -- d;
+            b -- e;
+
+            a [label="Data"];
+            b [label="Preprocessing"];
+            c [label="V(D)J Alignment"];
+            d [label="Standardization"];
+            e [label="Clonal Assignment"];
+            f [label="Lineage Reconstruction"];
+            g [label="Diversity"];
+            h [label="Mutation Profiling"];
+            i [label="Selection"];
+            j [label="Genotyping"];
+
+            k [label="pRESTO", href="http://presto.readthedocs.org"];
+            l [label="Change-O", href="http://changeo.readthedocs.org"];
+            m [label="Alakazam", href="http://kleinstein.bitbucket.org/alakazam"];
+            n [label="Shazam", href="http://kleinstein.bitbucket.org/shazam"];
+            o [label="TIgGER", href="http://clip.med.yale.edu/tigger"];
+        }
 
 .. _Cite:
 
