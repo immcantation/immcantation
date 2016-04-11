@@ -331,7 +331,7 @@
 				<text x="32.29" y="458.45" class="st14" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>Repertoire Diversity <tspan
 							x="78.04" dy="1.2em" class="st15">Analysis</tspan></text>			</g>
 		</a>
-		<a xlink:href="http://shazam.readthedocs.org" xlink:title="SHazaM" target="_top">
+		<a xlink:href="http://kleinstein.bitbucket.org/shazam" xlink:title="SHazaM" target="_top">
 			<g id="shape7-123" v:mID="7" v:groupContext="shape" v:layerMember="0" transform="translate(21.2537,-19.9963)">
 				<title>SHazaM - Mutations</title>
 				<desc>Mutation Profiling</desc>
@@ -477,7 +477,7 @@
 				<rect x="0" y="440.75" width="216" height="45" class="st19"/>
 				<text x="41.9" y="468.05" class="st14" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>V(D)J Gene Usage</text>			</g>
 		</a>
-		<a xlink:href="http://tigger.readthedocs.org" xlink:title="TIgGER" target="_top">
+		<a xlink:href="http://kleinstein.bitbucket.org/tigger" xlink:title="TIgGER" target="_top">
 			<g id="shape22-149" v:mID="22" v:groupContext="shape" v:layerMember="0" transform="translate(273.254,-253.996)">
 				<title>TIgGER</title>
 				<desc>Polymorphism Detection &#38; Genotyping</desc>
