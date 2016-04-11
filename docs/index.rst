@@ -23,10 +23,18 @@ The Immcantation tool suites provide a start-to-finish analytical ecosystem for
 high-throughput AIRR-seq datasets. Beginning from raw reads, Python and R packages are
 provided for pre-processing, population structure determination, and repertoire analysis.
 
+**Click on the relevant section of the image below for more details.**
+
 .. raw:: html
 
     <object data="_static/overview.svg" type="image/svg+xml"></object>
     <br><br>
+
+For an overview of AIRR-seq analysis, check out:
+
+    **Yaari and Kleinstein.**
+    Practical guidelines for B-cell receptor repertoire sequencing analysis.
+    *Genome Med 2015; 7\:121. doi\: 10.1186/s13073-015-0243-2.*
 
 .. _Cite:
 
