@@ -367,7 +367,7 @@
 				<rect x="0" y="440.75" width="216" height="45" class="st20"/>
 				<text x="41.19" y="468.05" class="st14" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>Mutation Profiling</text>			</g>
 		</a>
-		<a xlink:href="http://shazam.readthedocs.org" xlink:title="SHazaM" target="_top">
+		<a xlink:href="http://kleinstein.bitbucket.org/shazam" xlink:title="SHazaM" target="_top">
 			<g id="shape8-129" v:mID="8" v:groupContext="shape" v:layerMember="0" transform="translate(273.254,-19.9963)">
 				<title>SHazaM - Selection</title>
 				<desc>Selection Strength Quantification</desc>
