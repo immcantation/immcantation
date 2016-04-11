@@ -187,7 +187,7 @@
 							x="14.54" dy="1.2em" class="st15">Control </tspan>&#38; UMI Processing</text>			</g>
 		</a>
 		<g id="shape2-94" v:mID="2" v:groupContext="shape" v:layerMember="0" transform="translate(21.2537,-366.496)">
-			<title>Process.2</title>
+			<title></title>
 			<desc>V(D)J Alignment IMGT, IgBLAST</desc>
 			<v:custProps>
 				<v:cp v:nameU="Cost" v:lbl="Cost" v:prompt="" v:type="7" v:format="@" v:sortKey="" v:invis="false" v:ask="false"
