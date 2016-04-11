@@ -32,6 +32,6 @@ SHazaM - Mutation profiling and selection strength quantification
 TIgGER - Polymorphism detection and genotyping
 ------------------------------------------------------------------------------------------
 
-* `Documentation <http://kleinstein.bitbucket.org/tigger>`__
+* `Documentation <http://clip.med.yale.edu/tigger>`__
 * `Download Releases <http://clip.med.yale.edu/tigger>`__
 * `Source Code <http://bitbucket.org/kleinstein/tigger>`__

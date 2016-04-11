@@ -95,7 +95,7 @@ For additional computational immunology software from the Kleinstein Lab see our
     :caption: SHazaM
     :hidden:
 
-    Documentation <http://kleinstein.bitbucket.org/shazam>
+    Documentation <http://shazam.readthedocs.org>
     Download Releases <http://cran.rstudio.com/web/packages/shazam>
     Source Code <http://bitbucket.org/kleinstein/shazam>
 
@@ -104,6 +104,6 @@ For additional computational immunology software from the Kleinstein Lab see our
     :caption: TIgGER
     :hidden:
 
-    Documentation <http://kleinstein.bitbucket.org/tigger>
+    Documentation <http://clip.med.yale.edu/tigger>
     Download Releases <http://clip.med.yale.edu/tigger>
     Source Code <http://bitbucket.org/kleinstein/tigger>
