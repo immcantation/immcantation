@@ -221,7 +221,7 @@
 			<rect x="0" y="440.75" width="216" height="45" class="st16"/>
 			<text x="47.42" y="458.45" class="st14" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>V(D)J Alignment<v:newlineChar/><tspan
 						x="56.66" dy="1.2em" class="st17">IMGT</tspan><tspan class="st17">, </tspan><tspan class="st17">IgBLAST</tspan></text>		</g>
-		<a xlink:href="http://changeo.readthedocs.org" xlink:title="Change-O" target="_top">
+		<a xlink:href="http://changeo.readthedocs.org/en/latest/methods/clustering.html" xlink:title="Change-O" target="_top">
 			<g id="shape4-103" v:mID="4" v:groupContext="shape" v:layerMember="0" transform="translate(21.2537,-222.496)">
 				<title>Change-O - Cloning</title>
 				<desc>Clonal Clustering</desc>
@@ -257,7 +257,7 @@
 				<rect x="0" y="440.75" width="216" height="45" class="st18"/>
 				<text x="44.73" y="468.05" class="st14" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>Clonal Clustering</text>			</g>
 		</a>
-		<a xlink:href="http://alakazam.readthedocs.org" xlink:title="Alakazam" target="_top">
+		<a xlink:href="http://alakazam.readthedocs.org/en/latest/vignettes/Lineage-Vignette/" xlink:title="Alakazam" target="_top">
 			<g id="shape5-109" v:mID="5" v:groupContext="shape" v:layerMember="0" transform="translate(21.2537,-136.996)">
 				<title>Alakazam - Lineage</title>
 				<desc>Clonal Lineage Reconstruction</desc>
@@ -294,7 +294,7 @@
 				<text x="53.46" y="458.45" class="st14" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>Clonal Lineage <tspan
 							x="51.51" dy="1.2em" class="st15">Reconstruction</tspan></text>			</g>
 		</a>
-		<a xlink:href="http://alakazam.readthedocs.org" xlink:title="Alakazam" target="_top">
+		<a xlink:href="http://alakazam.readthedocs.org/en/latest/vignettes/Diversity-Vignette/" xlink:title="Alakazam" target="_top">
 			<g id="shape6-116" v:mID="6" v:groupContext="shape" v:layerMember="0" transform="translate(21.2537,-78.4963)">
 				<title>Alakazam - Diversity</title>
 				<desc>Repertoire Diversity Analysis</desc>
@@ -331,7 +331,7 @@
 				<text x="32.29" y="458.45" class="st14" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>Repertoire Diversity <tspan
 							x="78.04" dy="1.2em" class="st15">Analysis</tspan></text>			</g>
 		</a>
-		<a xlink:href="http://shazam.readthedocs.org" xlink:title="SHazaM" target="_top">
+		<a xlink:href="http://shazam.readthedocs.org/en/latest/vignettes/Targeting-Vignette/" xlink:title="SHazaM" target="_top">
 			<g id="shape7-123" v:mID="7" v:groupContext="shape" v:layerMember="0" transform="translate(21.2537,-19.9963)">
 				<title>SHazaM - Mutations</title>
 				<desc>Mutation Profiling</desc>
@@ -367,7 +367,7 @@
 				<rect x="0" y="440.75" width="216" height="45" class="st20"/>
 				<text x="41.19" y="468.05" class="st14" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>Mutation Profiling</text>			</g>
 		</a>
-		<a xlink:href="http://shazam.readthedocs.org" xlink:title="SHazaM" target="_top">
+		<a xlink:href="http://shazam.readthedocs.org/en/latest/vignettes/Baseline-Vignette/" xlink:title="SHazaM" target="_top">
 			<g id="shape8-129" v:mID="8" v:groupContext="shape" v:layerMember="0" transform="translate(273.254,-19.9963)">
 				<title>SHazaM - Selection</title>
 				<desc>Selection Strength Quantification</desc>
@@ -404,7 +404,7 @@
 				<text x="39.11" y="458.45" class="st14" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>Selection Strength <tspan
 							x="54.55" dy="1.2em" class="st15">Quantification</tspan></text>			</g>
 		</a>
-		<a xlink:href="http://alakazam.readthedocs.org" xlink:title="Alakazam" target="_top">
+		<a xlink:href="http://alakazam.readthedocs.org/en/latest/vignettes/AminoAcids-Vignette/" xlink:title="Alakazam" target="_top">
 			<g id="shape9-136" v:mID="9" v:groupContext="shape" v:layerMember="0" transform="translate(273.254,-78.4963)">
 				<title>Alakazam - Physicochemical</title>
 				<desc>Physicochemical Property Analysis</desc>
@@ -441,7 +441,7 @@
 				<text x="11.26" y="458.45" class="st14" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>Physicochemical Property <tspan
 							x="78.04" dy="1.2em" class="st15">Analysis</tspan></text>			</g>
 		</a>
-		<a xlink:href="http://alakazam.readthedocs.org" xlink:title="Alakazam" target="_top">
+		<a xlink:href="http://alakazam.readthedocs.org/en/latest/topics/countGenes/" xlink:title="Alakazam" target="_top">
 			<g id="shape10-143" v:mID="10" v:groupContext="shape" v:layerMember="0" transform="translate(273.254,-136.996)">
 				<title>Alakazam - Genes</title>
 				<desc>V(D)J Gene Usage</desc>
@@ -514,7 +514,7 @@
 				<text x="8.34" y="458.45" class="st14" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>Polymorphism Detection &#38; <tspan
 							x="65.55" dy="1.2em" class="st15">Genotyping</tspan></text>			</g>
 		</a>
-		<a xlink:href="http://changeo.readthedocs.org" xlink:title="Change-O" target="_top">
+		<a xlink:href="http://changeo.readthedocs.org/en/latest/examples/imgt.html" xlink:title="Change-O" target="_top">
 			<g id="shape53-156" v:mID="53" v:groupContext="shape" v:layerMember="0" transform="translate(21.2537,-294.496)">
 				<title>Change-O - Standardization</title>
 				<desc>Alignment Standardization</desc>
