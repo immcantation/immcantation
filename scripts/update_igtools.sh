@@ -2,32 +2,29 @@
 # Script to update presto, changeo, alakazam, shazam and tigger
 # 
 # Author:  Jason Anthony Vander Heiden, Mohamed Uduman
-# Date:    2015.06.17
+# Date:    2016.04.13
 # 
 # Arguments:
 #   -u = Bitbucket username. If not specified, username will be prompted.
 #   -p = Bitbucket password. If not specified, password will be prompted.
-#   -t = Target folder for install of presto and changeo.
-#   -x = If specified, install the alakazam-topology and alakazam-repertoire
-#        prototype packages.
+#   -x = If specified, install the prototype topology, repertoire and presto
+#        R packages.
 #   -h = Display help.
 #
 # Creates Directories:
 #   ~/tmp
-#   ~/apps/changeo
 
 # Set default parameters
 PROTOTYPES=false
 PASSWORD_PROMPT=true
 USERNAME_PROMPT=true
-TARGET_DIR=$HOME/apps
+
 
 # Print usage
 usage () {
     echo "Usage: `basename $0` [OPTIONS]"
     echo "  -u  Bitbucket username."
     echo "  -p  Bitbucket password."
-    echo "  -t  Target location for install of presto and changeo. Default: ~/apps."
     echo "  -x  Install prototype packages."
     echo "  -h  This message."
 }
@@ -40,8 +37,6 @@ while getopts "u:p:t:xh" OPT; do
         ;;
     p)  PASSWORD=$OPTARG
         PASSWORD_PROMPT=false
-        ;;
-    t)  TARGET_DIR=$OPTARG
         ;;
     x)  PROTOTYPES=true
         ;;
@@ -69,7 +64,7 @@ fi
 
 
 # Create directories
-mkdir -p $HOME/tmp; mkdir -p $TARGET_DIR/changeo
+mkdir -p $HOME/tmp
 
 # Download bits
 echo -e "\n\nDownloading default branch from repos..."
