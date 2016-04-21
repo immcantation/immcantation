@@ -112,7 +112,6 @@ For additional computational immunology software from the Kleinstein Lab see our
     :caption: TIgGER
     :hidden:
 
-    Documentation <http://clip.med.yale.edu/tigger>
-    Download Releases <http://clip.med.yale.edu/tigger>
-
-.. Source Code - coming soon! <http://bitbucket.org/kleinstein/tigger>
+    Documentation <http://tigger.readthedocs.org>
+    Download Releases <http://bitbucket.org/kleinstein/tigger/downloads>
+    Source Code <http://bitbucket.org/kleinstein/tigger>
