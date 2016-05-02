@@ -477,7 +477,7 @@
 				<rect x="0" y="440.75" width="216" height="45" class="st19"/>
 				<text x="41.9" y="468.05" class="st14" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>V(D)J Gene Usage</text>			</g>
 		</a>
-		<a xlink:href="http://clip.med.yale.edu/tigger" xlink:title="TIgGER" target="_top">
+		<a xlink:href="http://tigger.readthedocs.org/en/latest/vignettes/Tigger-Vignette" xlink:title="TIgGER" target="_top">
 			<g id="shape22-149" v:mID="22" v:groupContext="shape" v:layerMember="0" transform="translate(273.254,-253.996)">
 				<title>TIgGER</title>
 				<desc>Polymorphism Detection &#38; Genotyping</desc>
