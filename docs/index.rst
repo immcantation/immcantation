@@ -76,7 +76,7 @@ For additional computational immunology software from the Kleinstein Lab see our
     :caption: pRESTO
     :hidden:
 
-    Documentation <http://presto.readthedocs.org>
+    Documentation <http://presto.readthedocs.io>
     Download Releases <http://pypi.python.org/pypi/presto>
     Source Code <http://bitbucket.org/kleinstein/presto>
 
@@ -85,7 +85,7 @@ For additional computational immunology software from the Kleinstein Lab see our
     :caption: Change-O
     :hidden:
 
-    Documentation <http://changeo.readthedocs.org>
+    Documentation <http://changeo.readthedocs.io>
     Download Releases <http://pypi.python.org/pypi/changeo>
     Source Code <http://bitbucket.org/kleinstein/changeo>
 
@@ -94,7 +94,7 @@ For additional computational immunology software from the Kleinstein Lab see our
     :caption: Alakazam
     :hidden:
 
-    Documentation <http://alakazam.readthedocs.org>
+    Documentation <http://alakazam.readthedocs.io>
     Download Releases <http://cran.rstudio.com/web/packages/alakazam>
     Source Code <http://bitbucket.org/kleinstein/alakazam>
 
@@ -103,7 +103,7 @@ For additional computational immunology software from the Kleinstein Lab see our
     :caption: SHazaM
     :hidden:
 
-    Documentation <http://shazam.readthedocs.org>
+    Documentation <http://shazam.readthedocs.io>
     Download Releases <http://cran.rstudio.com/web/packages/shazam>
     Source Code <http://bitbucket.org/kleinstein/shazam>
 
