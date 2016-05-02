@@ -32,7 +32,7 @@ do
         TMP_FILE="${FILE_NAME}.tmp"
         #echo $URL
         wget $URL -O $TMP_FILE -q
-        awk '/<pre>/{i++}/<\/pre>/{j++}{if(j==2){exit}}{if(i==2 && j==1 && $0!="<pre>"){print}}' $TMP_FILE > $FILE_NAME
+        awk '/<pre>/{i++}/<\/pre>/{j++}{if(j==2){exit}}{if(i==2 && j==1 && $0!~"^<pre>"){print}}' $TMP_FILE > $FILE_NAME
         sed -i "${SPECIES_REPLACE[${KEY}]}" $FILE_NAME
         rm $TMP_FILE
     done
@@ -46,7 +46,7 @@ do
         TMP_FILE="${FILE_NAME}.tmp"
         #echo $URL
         wget $URL -O $TMP_FILE -q
-        awk '/<pre>/{i++}/<\/pre>/{j++}{if(j==2){exit}}{if(i==2 && j==1 && $0!="<pre>"){print}}' $TMP_FILE > $FILE_NAME
+        awk '/<pre>/{i++}/<\/pre>/{j++}{if(j==2){exit}}{if(i==2 && j==1 && $0!~"^<pre>"){print}}' $TMP_FILE > $FILE_NAME
         sed -i "${SPECIES_REPLACE[${KEY}]}" $FILE_NAME
         rm $TMP_FILE
     done
@@ -66,7 +66,7 @@ do
         TMP_FILE="${FILE_NAME}.tmp"
         #echo $URL
         wget $URL -O $TMP_FILE -q
-        awk '/<pre>/{i++}/<\/pre>/{j++}{if(j==2){exit}}{if(i==2 && j==1 && $0!="<pre>"){print}}' $TMP_FILE > $FILE_NAME
+        awk '/<pre>/{i++}/<\/pre>/{j++}{if(j==2){exit}}{if(i==2 && j==1 && $0!~"^<pre>"){print}}' $TMP_FILE > $FILE_NAME
         sed -i "${SPECIES_REPLACE[${KEY}]}" $FILE_NAME
         rm $TMP_FILE
     done
@@ -80,7 +80,7 @@ do
         TMP_FILE="${FILE_NAME}.tmp"
         #echo $URL
         wget $URL -O $TMP_FILE -q
-        awk '/<pre>/{i++}/<\/pre>/{j++}{if(j==2){exit}}{if(i==2 && j==1 && $0!="<pre>"){print}}' $TMP_FILE > $FILE_NAME
+        awk '/<pre>/{i++}/<\/pre>/{j++}{if(j==2){exit}}{if(i==2 && j==1 && $0!~"^<pre>"){print}}' $TMP_FILE > $FILE_NAME
         sed -i "${SPECIES_REPLACE[${KEY}]}" $FILE_NAME
         rm $TMP_FILE
     done
@@ -100,7 +100,7 @@ do
         TMP_FILE="${FILE_NAME}.tmp"
         #echo $URL
         wget $URL -O $TMP_FILE -q
-        awk '/<pre>/{i++}/<\/pre>/{j++}{if(j==2){exit}}{if(i==2 && j==1 && $0!="<pre>"){print}}' $TMP_FILE > $FILE_NAME
+        awk '/<pre>/{i++}/<\/pre>/{j++}{if(j==2){exit}}{if(i==2 && j==1 && $0!~"^<pre>"){print}}' $TMP_FILE > $FILE_NAME
         sed -i "${SPECIES_REPLACE[${KEY}]}" $FILE_NAME
         rm $TMP_FILE
     done
@@ -114,7 +114,7 @@ do
         TMP_FILE="${FILE_NAME}.tmp"
         #echo $URL
         wget $URL -O $TMP_FILE -q
-        awk '/<pre>/{i++}/<\/pre>/{j++}{if(j==2){exit}}{if(i==2 && j==1 && $0!="<pre>"){print}}' $TMP_FILE > $FILE_NAME
+        awk '/<pre>/{i++}/<\/pre>/{j++}{if(j==2){exit}}{if(i==2 && j==1 && $0!~"^<pre>"){print}}' $TMP_FILE > $FILE_NAME
         sed -i "${SPECIES_REPLACE[${KEY}]}" $FILE_NAME
         rm $TMP_FILE
     done
