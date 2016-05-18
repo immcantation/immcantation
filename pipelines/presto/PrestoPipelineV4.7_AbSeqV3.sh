@@ -118,11 +118,13 @@ fi
 # Identify primers and UID 
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "MaskPrimers score"
 MaskPrimers.py score -s $MPR1_FILE -p $R1_PRIMERS --mode cut \
-    --start 0 --maxerror $MP_R1_MAXERR --nproc $NPROC --log PrimerLogR1.log \
-    --outname "${OUTNAME}-R1" --outdir . >> $PIPELINE_LOG 2> $ERROR_LOG
+    --start 0 --maxerror $MP_R1_MAXERR --nproc $NPROC \
+    --log PrimerLogR1.log --outname "${OUTNAME}-R1" --outdir . \
+    >> $PIPELINE_LOG 2> $ERROR_LOG
 MaskPrimers.py score -s $MPR2_FILE -p $R2_PRIMERS --mode cut \
-    --start $MP_UIDLEN --barcode --maxerror $MP_R2_MAXERR --nproc $NPROC --log PrimerLogR2.log \
-    --outname "${OUTNAME}-R2" --outdir . >> $PIPELINE_LOG 2> $ERROR_LOG
+    --start $MP_UIDLEN --barcode --maxerror $MP_R2_MAXERR --nproc $NPROC \
+    --log PrimerLogR2.log --outname "${OUTNAME}-R2" --outdir . \
+    >> $PIPELINE_LOG 2> $ERROR_LOG
 
 # Assign UIDs to read 1 sequences
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "PairSeq"
