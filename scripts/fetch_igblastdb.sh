@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
 # Download IgBLAST database files
 #
-# $1 = folder to download database to
+# Author:  Mohamed Uduman
+# Date:    2016.11.21
+#
+# Arguments:
+#   $1 = folder to download database to
 
 # Parameters
 DB_DIR=$1
