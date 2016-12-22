@@ -33,7 +33,7 @@ import sphinx_rtd_theme
 extensions = [
     'sphinx.ext.intersphinx',
     'sphinx.ext.todo',
-    'sphinx.ext.pngmath',
+    'sphinx.ext.imgmath',
     'sphinx.ext.graphviz']
 
 # Add any paths that contain templates here, relative to this directory.
