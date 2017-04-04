@@ -1,0 +1,210 @@
+#!/usr/bin/env bash
+# Super script to run Change-O 0.3.4 cloning and germline reconstruction
+#
+# Author:  Jason Anthony Vander Heiden, Gur Yaari, Namita Gupta
+# Date:    2017.03.30
+#
+# Arguments:
+#   -t  Change-O formatted TSV (TAB) file.
+#   -x  Distance threshold for clonal assignment.
+#   -n  Sample name or run identifier which will be used as the output file prefix.
+#       Defaults to a truncated version of the read 1 filename.
+#   -o  Output directory inside the data directory.
+#       Defaults to the sample name.
+#   -d  Data directory which serves as the parent of the output directory.
+#       Defaults to /data.
+#   -p  Number of subprocesses for multiprocessing tools.
+#       Defaults to the available processing units.
+#   -h  Display help.
+
+# Print usage
+print_usage() {
+    echo -e "Usage: `basename $0` [OPTIONS]"
+    echo -e "  -t  Change-O formatted TSV (TAB) file."
+    echo -e "  -x  Distance threshold for clonal assignment."
+    echo -e "  -n  Sample identifier which will be used as the output file prefix.\n" \
+            "     Defaults to a truncated version of the filename."
+    echo -e "  -o  Output directory inside the data directory.\n" \
+            "     Defaults to the sample name."
+    echo -e "  -d  Data directory which serves as the parent of the output directory.\n" \
+            "     Defaults to /data."
+    echo -e "  -p  Number of subprocesses for multiprocessing tools.\n" \
+            "     Defaults to the available cores."
+    echo -e "  -h  This message."
+}
+
+# Argument validation variables
+DB_SET=false
+DIST_SET=false
+OUTNAME_SET=false
+OUTDIR_SET=false
+DATADIR_SET=false
+NPROC_SET=false
+
+# Get commandline arguments
+while getopts "t:x:n:o:d:y:p:h" OPT; do
+    case "$OPT" in
+    t)  DB=${OPTARG}
+        DB_SET=true
+        ;;
+    x)  DIST=$OPTARG
+        DIST_SET=true
+        ;;
+    n)  OUTNAME=$OPTARG
+        OUTNAME_SET=true
+        ;;
+    o)  OUTDIR=$OPTARG
+        OUTDIR_SET=true
+        ;;
+    d)  DATADIR=$OPTARG
+        DATADIR_SET=true
+        ;;
+    p)  NPROC=$OPTARG
+        NPROC_SET=true
+        ;;
+    h)  print_usage
+        exit
+        ;;
+    \?) echo -e "Invalid option: -$OPTARG" >&2
+        exit 1
+        ;;
+    :)  echo -e "Option -$OPTARG requires an argument" >&2
+        exit 1
+        ;;
+    esac
+done
+
+# Exit if required arguments are not provided
+if ! ${DB_SET}; then
+    echo -e "You must specify the input database using the -t option." >&2
+    exit 1
+fi
+
+if ! ${DIST_SET}; then
+    echo -e "You must specify the clonal assignment distance threshold using the -x option." >&2
+    exit 1
+fi
+
+# Set unspecified arguments
+if ! ${OUTNAME_SET}; then
+    OUTNAME=$(basename ${DB} | sed 's/\.[^.]*$//; s/_L[0-9]*_R[0-9]_[0-9]*//')
+fi
+
+if ! ${OUTDIR_SET}; then
+    OUTDIR=${OUTNAME}
+fi
+
+if ! ${DATADIR_SET}; then
+    DATADIR="/data"
+fi
+
+if ! ${NPROC_SET}; then
+    NPROC=$(nproc)
+fi
+
+# Check that files exist and determined absolute paths
+if [ -e ${DATADIR}/${DB} ]; then
+    DB=$(readlink -f ${DATADIR}/${DB})
+else
+    echo -e "File ${DB} not found in ${DATADIR}." >&2
+    exit 1
+fi
+
+# Define pipeline steps
+ZIP_FILES=true
+DELETE_FILES=true
+GERMLINES=true
+FUNCTIONAL=true
+
+# DefineClones run parameters
+DC_MODEL="ham"
+DC_MODE="gene"
+DC_ACT="set"
+
+# Create germlines parameters
+CG_GERM="dmask"
+CG_SFIELD="SEQUENCE_IMGT"
+CG_VFIELD="V_CALL"
+REF_DIR="/usr/local/share/germlines/imgt/human/vdj"
+
+# Make output directory
+mkdir -p ${DATADIR}/${OUTDIR}; cd ${DATADIR}/${OUTDIR}
+
+# Define log files
+LOGDIR="logs"
+REPORTDIR="report"
+PIPELINE_LOG="${LOGDIR}/pipeline-clone.log"
+ERROR_LOG="${LOGDIR}/pipeline-clone.err"
+mkdir -p ${LOGDIR}
+mkdir -p ${REPORTDIR}
+echo '' > $PIPELINE_LOG
+echo '' > $ERROR_LOG
+
+# Check for errors
+check_error() {
+    if [ -s $ERROR_LOG ]; then
+        echo -e "ERROR:"
+        cat $ERROR_LOG | sed 's/^/    /'
+        exit 1
+    fi
+}
+
+# Start
+CHANGEO_VERSION=$(python3 -c "import changeo; print('%s-%s' % (changeo.__version__, changeo.__date__))")
+echo -e "IDENTIFIER: ${OUTNAME}"
+echo -e "DIRECTORY: ${OUTDIR}"
+echo -e "CHANGEO VERSION: ${CHANGEO_VERSION}"
+echo -e "\nSTART"
+STEP=0
+
+if $FUNCTIONAL; then
+    printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "ParseDb select"
+    ParseDb.py select -d ${DB} -f FUNCTIONAL -u T --outname "${OUTNAME}" \
+        >> $PIPELINE_LOG 2> $ERROR_LOG
+    check_error
+    LAST_FILE="${OUTNAME}_parse-select.tab"
+else
+    LAST_FILE=${DB}
+fi
+
+# Assign clones
+printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "DefineClones bygroup"
+DefineClones.py bygroup -d ${LAST_FILE} --model ${DC_MODEL} \
+    --dist ${DIST} --mode ${DC_MODE} --act ${DC_ACT} --nproc ${NPROC} \
+    --outname "${OUTNAME}" --log "${LOGDIR}/clone.log" \
+    >> $PIPELINE_LOG 2> $ERROR_LOG
+check_error
+LAST_FILE="${OUTNAME}_clone-pass.tab"
+
+# Create germlines
+if $GERMLINES; then
+    printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "CreateGermlines"
+    CreateGermlines.py -d ${LAST_FILE} -r ${REF_DIR} -g ${CG_GERM} \
+        --sf ${CG_SFIELD} --vf ${CG_VFIELD} --cloned --outname "${OUTNAME}" \
+        >> $PIPELINE_LOG 2> $ERROR_LOG
+	check_error
+	LAST_FILE="${OUTNAME}_germ-pass.tab"
+fi
+
+# Process log files
+printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "ParseLog"
+ParseLog.py -l "${LOGDIR}/clone.log" -f VALLELE DALLELE JALLELE JUNCLEN SEQUENCES CLONES \
+    > /dev/null 2> $ERROR_LOG &
+wait
+
+# Zip or delete intermediate and log files
+printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "Compressing files"
+LOG_FILES=$(ls ${LOGDIR}/*.log | grep -v "pipeline")
+TEMP_FILES=$(ls *.tab | grep -v "${LAST_FILE}")
+if $ZIP_FILES; then
+    tar -zcf log_files.tar.gz $LOG_FILES
+    tar -zcf temp_files.tar.gz $TEMP_FILES
+fi
+if $DELETE_FILES; then
+    rm $TEMP_FILES
+    rm $LOG_FILES
+fi
+
+# End
+printf "DONE\n\n"
+cd ../
