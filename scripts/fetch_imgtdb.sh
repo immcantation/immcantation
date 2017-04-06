@@ -1,26 +1,62 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# Download germlines from the IMGT website
+#
+# Author:  Mohamed Uduman, Jason Anthony Vander Heiden
+# Date:    2017.04.06
+#
+# Arguments:
+#   -o = Output directory for downloaded files. Defaults to current directory.
+#   -h = Display help.
+
+# Default argument values
+OUTDIR="."
+
+# Print usage
+usage () {
+    echo "Usage: `basename $0` [OPTIONS]"
+    echo "  -o  Output directory for downloaded files. Defaults to current directory."
+    echo "  -h  This message."
+}
+
+# Get commandline arguments
+while getopts "o:h" OPT; do
+    case "$OPT" in
+    o)  OUTDIR=$OPTARG
+        OUTDIR_SET=true
+        ;;
+    h)  usage
+        exit
+        ;;
+    \?) echo "Invalid option: -$OPTARG" >&2
+        exit 1
+        ;;
+    :)  echo "Option -$OPTARG requires an argument" >&2
+        exit 1
+        ;;
+    esac
+done
 
 # IMGT Gapped Germlines
-REPERTOIRE="IMGT"
+REPERTOIRE="imgt"
 
 # Associative array where keys are species folder names and values are query strings
 declare -A SPECIES_QUERY
-SPECIES_QUERY[Human]="Homo+sapiens"
-SPECIES_QUERY[Mouse]="Mus"
+SPECIES_QUERY[human]="Homo+sapiens"
+SPECIES_QUERY[mouse]="Mus"
 
 # Associative a
 declare -A SPECIES_REPLACE
-SPECIES_REPLACE[Human]='s/Homo sapiens/Homo_sapiens/g'
-SPECIES_REPLACE[Mouse]='s/Mus musculus/Mus_musculus/g'
+SPECIES_REPLACE[human]='s/Homo sapiens/Homo_sapiens/g'
+SPECIES_REPLACE[mouse]='s/Mus musculus/Mus_musculus/g'
 
 # For each species
 for KEY in ${!SPECIES_QUERY[@]}
 do
-	echo "Downloading ${KEY} repertoires..."
+	echo "Downloading ${KEY} repertoires into ${OUTDIR}/${REPERTOIRE}..."
 
 	# Download VDJ
 	echo "|- VDJ regions"
-    FILE_PATH="${REPERTOIRE}/${KEY}/VDJ"
+    FILE_PATH="${OUTDIR}/${REPERTOIRE}/${KEY}/vdj"
     mkdir -p $FILE_PATH
 
     # VDJ Ig
@@ -54,7 +90,7 @@ do
 
 	# Download leaders
     echo "|- Spliced leader regions"
-    FILE_PATH="${REPERTOIRE}/${KEY}/Leader"
+    FILE_PATH="${OUTDIR}/${REPERTOIRE}/${KEY}/leader"
     mkdir -p $FILE_PATH
 
     # Leader Ig
@@ -88,7 +124,7 @@ do
 
 	# Download constant regions
     echo "|- Spliced constant regions"
-    FILE_PATH="${REPERTOIRE}/${KEY}/Constant/"
+    FILE_PATH="${OUTDIR}/${REPERTOIRE}/${KEY}/constant/"
     mkdir -p $FILE_PATH
 
     # Constant Ig
