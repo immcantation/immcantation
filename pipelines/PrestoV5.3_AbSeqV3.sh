@@ -490,7 +490,9 @@ fi
 # Zip or delete intermediate and log files
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "Compressing files"
 LOG_FILES=$(ls ${LOGDIR}/*.log | grep -v "pipeline")
-TEMP_FILES=$(ls *.fastq | grep -v "final_total.fastq\|final_collapse-unique.fastq\|final_collapse-unique_atleast-2.fastq")
+FILTER_FILES="$(basename R1_READS)\|$(basename R2_READS)\|$(basename R1_PRIMERS)\|$(basename R2_PRIMERS)"
+FILTER_FILES+="\|final_total.fastq\|final_collapse-unique.fastq\|final_collapse-unique_atleast-2.fastq"
+TEMP_FILES=$(ls *.fastq | grep -v ${FILTER_FILES})
 if $ZIP_FILES; then
     tar -zcf log_files.tar.gz $LOG_FILES
     tar -zcf temp_files.tar.gz $TEMP_FILES

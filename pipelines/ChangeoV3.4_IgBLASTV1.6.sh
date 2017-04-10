@@ -121,7 +121,6 @@ LOGDIR="logs"
 PIPELINE_LOG="${LOGDIR}/pipeline-igblast.log"
 ERROR_LOG="${LOGDIR}/pipeline-igblast.err"
 mkdir -p ${LOGDIR}
-mkdir -p ${REPORTDIR}
 echo '' > $PIPELINE_LOG
 echo '' > $ERROR_LOG
 
@@ -190,7 +189,7 @@ fi
 
 # Zip or delete intermediate and log files
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "Compressing files"
-TEMP_FILES=$(ls *.tab | grep -v "${LAST_FILE}")
+TEMP_FILES=$(ls *.tab | grep -v "${LAST_FILE}\|$(basename ${READS})")
 if $ZIP_FILES; then
     tar -zcf temp_files.tar.gz $TEMP_FILES
 fi

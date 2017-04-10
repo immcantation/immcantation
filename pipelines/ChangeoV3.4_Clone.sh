@@ -132,11 +132,9 @@ mkdir -p ${DATADIR}/${OUTDIR}; cd ${DATADIR}/${OUTDIR}
 
 # Define log files
 LOGDIR="logs"
-REPORTDIR="report"
 PIPELINE_LOG="${LOGDIR}/pipeline-clone.log"
 ERROR_LOG="${LOGDIR}/pipeline-clone.err"
 mkdir -p ${LOGDIR}
-mkdir -p ${REPORTDIR}
 echo '' > $PIPELINE_LOG
 echo '' > $ERROR_LOG
 
@@ -195,7 +193,7 @@ wait
 # Zip or delete intermediate and log files
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "Compressing files"
 LOG_FILES=$(ls ${LOGDIR}/*.log | grep -v "pipeline")
-TEMP_FILES=$(ls *.tab | grep -v "${LAST_FILE}")
+TEMP_FILES=$(ls *.tab | grep -v "${LAST_FILE}\|$(basename ${DB})")
 if $ZIP_FILES; then
     tar -zcf log_files.tar.gz $LOG_FILES
     tar -zcf temp_files.tar.gz $TEMP_FILES
