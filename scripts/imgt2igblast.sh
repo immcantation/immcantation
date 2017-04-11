@@ -70,8 +70,8 @@ cd $TMPDIR
 for F in $(ls *.fasta)
 do
 	#cp ${F} ${OUTDIR}/fasta/${F}
-	#clean_imgtdb.py ${OUTDIR}/fasta/${F}
-	edit_imgt_file.pl ${F} > ${OUTDIR}/fasta/${F}
+	clean_imgtdb.py ${F} ${OUTDIR}/fasta/${F}
+	#edit_imgt_file.pl ${F} > ${OUTDIR}/fasta/${F}
 	makeblastdb -parse_seqids -dbtype nucl -in ${OUTDIR}/fasta/${F} \
 	    -out ${OUTDIR}/database/${F%%.*}
 done
