@@ -52,11 +52,11 @@ SPECIES_REPLACE[mouse]='s/Mus musculus/Mus_musculus/g'
 # For each species
 for KEY in ${!SPECIES_QUERY[@]}
 do
-	echo "Downloading ${KEY} repertoires into ${OUTDIR}/${REPERTOIRE}..."
+	echo "Downloading ${KEY} repertoires into ${OUTDIR}..."
 
 	# Download VDJ
 	echo "|- VDJ regions"
-    FILE_PATH="${OUTDIR}/${REPERTOIRE}/${KEY}/vdj"
+    FILE_PATH="${OUTDIR}/${KEY}/vdj"
     mkdir -p $FILE_PATH
 
     # VDJ Ig
@@ -90,7 +90,7 @@ do
 
 	# Download leaders
     echo "|- Spliced leader regions"
-    FILE_PATH="${OUTDIR}/${REPERTOIRE}/${KEY}/leader"
+    FILE_PATH="${OUTDIR}/${KEY}/leader"
     mkdir -p $FILE_PATH
 
     # Leader Ig
@@ -124,7 +124,7 @@ do
 
 	# Download constant regions
     echo "|- Spliced constant regions"
-    FILE_PATH="${OUTDIR}/${REPERTOIRE}/${KEY}/constant/"
+    FILE_PATH="${OUTDIR}/${KEY}/constant/"
     mkdir -p $FILE_PATH
 
     # Constant Ig
