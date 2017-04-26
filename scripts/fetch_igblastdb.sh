@@ -42,16 +42,16 @@ if $OUTDIR_SET && [ ! -d "${OUTDIR}" ]; then
 fi
 
 # Fetch internal_data
-wget -q --show-progress -r -nH --cut-dirs=5 --no-parent \
+wget -q -r -nH --cut-dirs=5 --no-parent \
     ftp://ftp.ncbi.nih.gov/blast/executables/igblast/release/internal_data \
     -P ${OUTDIR}/internal_data
 
 # Fetch database
-wget -q --show-progress -r -nH --cut-dirs=5 --no-parent \
+wget -q -r -nH --cut-dirs=5 --no-parent \
     ftp://ftp.ncbi.nih.gov/blast/executables/igblast/release/database \
     -P ${OUTDIR}/database
 
 # Fetch optional_file
-wget -q --show-progress -r -nH --cut-dirs=5 --no-parent \
+wget -q -r -nH --cut-dirs=5 --no-parent \
     ftp://ftp.ncbi.nih.gov/blast/executables/igblast/release/optional_file  \
     -P ${OUTDIR}/optional_file
