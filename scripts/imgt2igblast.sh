@@ -48,7 +48,8 @@ if ! $GERMDIR_SET; then
     exit 1
 fi
 
-# Create directories
+# Create and set directories
+OUTDIR=$(readlink -f ${OUTDIR})
 mkdir -p ${OUTDIR}/fasta
 TMPDIR=$(mktemp -d)
 
@@ -66,7 +67,7 @@ do
 done
 
 # Parse each created fasta file to create igblast database
-cd $TMPDIR
+cd ${TMPDIR}
 for F in $(ls *.fasta)
 do
 	#cp ${F} ${OUTDIR}/fasta/${F}
@@ -77,4 +78,4 @@ do
 done
 
 # Remove temporary fasta files
-rm -rf $TMPDIR
+cd -; rm -rf $TMPDIR
