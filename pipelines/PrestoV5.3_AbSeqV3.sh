@@ -2,7 +2,7 @@
 # Super script to run the pRESTO 0.5.3 pipeline on AbVitro AbSeq V3 data
 # 
 # Author:  Jason Anthony Vander Heiden, Gur Yaari, Namita Gupta
-# Date:    2017.03.26
+# Date:    2017.04.27
 # 
 # Arguments:
 #   -1  Read 1 FASTQ sequence file (sequence beginning with the C-region or J-segment).
@@ -10,6 +10,8 @@
 #   -j  Read 1 FASTA primer sequences (C-region or J-segment).
 #   -v  Read 2 FASTA primer sequences (template switch or V-segment).
 #   -c  C-region FASTA sequences for the C-region internal to the primer.
+#   -r  V-segment reference file.
+#       Defaults to /usr/local/share/germlines/igblast/fasta/imgt_human_ig_v.fasta
 #   -y  YAML file providing description fields for report generation.
 #   -n  Sample name or run identifier which will be used as the output file prefix.
 #       Defaults to a truncated version of the read 1 filename.
@@ -31,6 +33,8 @@ print_usage() {
     echo -e "  -j  Read 1 FASTA primer sequences."
     echo -e "  -v  Read 2 FASTA primer or template switch sequences."
     echo -e "  -c  C-region FASTA sequences for the C-region internal to the primer."
+    echo -e "  -r  V-segment reference file."
+    echo -e "     Defaults to /usr/local/share/germlines/igblast/fasta/imgt_human_ig_v.fasta."
     echo -e "  -y  YAML file providing description fields for report generation."
     echo -e "  -n  Sample identifier which will be used as the output file prefix.\n" \
             "     Defaults to a truncated version of the read 1 filename."
@@ -48,13 +52,16 @@ R1_READS_SET=false
 R2_READS_SET=false
 R1_PRIMERS_SET=false
 R2_PRIMERS_SET=false
+CREGION_SEQ_SET=false
+VREF_SEQ_SET=false
+YAML_SET=FALSE
 OUTNAME_SET=false
 OUTDIR_SET=false
 DATADIR_SET=false
 NPROC_SET=false
 
 # Get commandline arguments
-while getopts "1:2:j:v:c:n:o:d:y:p:h" OPT; do
+while getopts "1:2:j:v:c:r:y:n:o:d:p:h" OPT; do
     case "$OPT" in
     1)  R1_READS=${OPTARG}
         R1_READS_SET=true
@@ -70,6 +77,9 @@ while getopts "1:2:j:v:c:n:o:d:y:p:h" OPT; do
         ;;
     c)  CREGION_SEQ=${OPTARG}
         CREGION_SEQ_SET=true
+        ;;
+    r)  VREF_SEQ=${OPTARG}
+        VREF_SEQ_SET=true
         ;;
     y)  YAML=$OPTARG
         YAML_SET=true
@@ -120,6 +130,10 @@ if ! ${YAML_SET}; then
 fi
 
 # Set unspecified arguments
+if ! ${VREF_SEQ_SET}; then
+    VREF_SEQ="/usr/local/share/germlines/igblast/fasta/imgt_human_ig_v.fasta"
+fi
+
 if ! ${OUTNAME_SET}; then
     OUTNAME=$(basename ${R1_READS} | sed 's/\.[^.]*$//; s/_L[0-9]*_R[0-9]_[0-9]*//')
 fi
@@ -137,45 +151,45 @@ if ! ${NPROC_SET}; then
 fi
 
 # Check that files exist and determined absolute paths
-if [ -e ${DATADIR}/${R1_READS} ]; then
-    R1_READS=$(readlink -f ${DATADIR}/${R1_READS})
+if [ -e ${R1_READS} ]; then
+    R1_READS=$(readlink -f ${R1_READS})
 else
-    echo -e "File ${R1_READS} not found in ${DATADIR}." >&2
+    echo -e "File ${R1_READS} not found." >&2
     exit 1
 fi
 
-if [ -e ${DATADIR}/${R2_READS} ]; then
-    R2_READS=$(readlink -f ${DATADIR}/${R2_READS})
+if [ -e ${R2_READS} ]; then
+    R2_READS=$(readlink -f ${R2_READS})
 else
-    echo -e "File ${R2_READS} not found in ${DATADIR}." >&2
+    echo -e "File ${R2_READS} not found." >&2
     exit 1
 fi
 
-if [ -e ${DATADIR}/${R1_PRIMERS} ]; then
-    R1_PRIMERS=$(readlink -f ${DATADIR}/${R1_PRIMERS})
+if [ -e ${R1_PRIMERS} ]; then
+    R1_PRIMERS=$(readlink -f ${R1_PRIMERS})
 else
-    echo -e "File ${R1_PRIMERS} not found in ${DATADIR}." >&2
+    echo -e "File ${R1_PRIMERS} not found." >&2
     exit 1
 fi
 
-if [ -e ${DATADIR}/${R2_PRIMERS} ]; then
-    R2_PRIMERS=$(readlink -f ${DATADIR}/${R2_PRIMERS})
+if [ -e ${R2_PRIMERS} ]; then
+    R2_PRIMERS=$(readlink -f ${R2_PRIMERS})
 else
-    echo -e "File ${R2_PRIMERS} not found in ${DATADIR}." >&2
+    echo -e "File ${R2_PRIMERS} not found." >&2
     exit 1
 fi
 
-if [ -e ${DATADIR}/${CREGION_SEQ} ]; then
-    CREGION_SEQ=$(readlink -f ${DATADIR}/${CREGION_SEQ})
+if [ -e ${CREGION_SEQ} ]; then
+    CREGION_SEQ=$(readlink -f ${CREGION_SEQ})
 else
-    echo -e "File ${CREGION_SEQ} not found in ${DATADIR}." >&2
+    echo -e "File ${CREGION_SEQ} not found." >&2
     exit 1
 fi
 
-if [ -e ${DATADIR}/${YAML} ]; then
-    YAML=$(readlink -f ${DATADIR}/${YAML})
+if [ -e ${YAML} ]; then
+    YAML=$(readlink -f ${YAML})
 else
-    echo -e "File ${YAML} not found in ${DATADIR}." >&2
+    echo -e "File ${YAML} not found." >&2
     exit 1
 fi
 
@@ -218,7 +232,6 @@ AP_ALPHA=1e-5
 AP_MINIDENT=0.5
 AP_EVALUE=1e-5
 AP_MAXHITS=100
-REF_FILE="/usr/local/share/germlines/imgt/human/vdj/imgt_human_IGHV.fasta"
 
 # CollapseSeq run parameters
 CS_KEEP=true
@@ -368,7 +381,7 @@ fi
 
 
 AssemblePairs.py sequential -1 "${OUTNAME}-R2_consensus-pass_pair-pass.fastq" \
-    -2 "${OUTNAME}-R1_consensus-pass_pair-pass.fastq" -r $REF_FILE \
+    -2 "${OUTNAME}-R1_consensus-pass_pair-pass.fastq" -r $VREF_SEQ \
     --coord presto --rc tail --1f CONSCOUNT --2f $PRFIELD CONSCOUNT \
     --minlen $AP_MINLEN --maxerror $AP_MAXERR --alpha $AP_ALPHA --scanrev \
     --minident $AP_MINIDENT --evalue $AP_EVALUE --maxhits $AP_MAXHITS --aligner blastn \
@@ -483,7 +496,7 @@ check_error
 # Generate pRESTO report
 if $FILTER_LOWQUAL; then
     printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "Generating report"
-    REPORT_SCRIPT="report_abseq3(\"${LOGDIR}\", output_dir=\"${REPORTDIR}\", config=\"${YAML}\", quiet=FALSE)"
+    REPORT_SCRIPT="report_abseq3(\"${LOGDIR}\", sample=\"${OUTNAME}\", output_dir=\"${REPORTDIR}\", config=\"${YAML}\", quiet=FALSE)"
     Rscript -e "library(prestor); ${REPORT_SCRIPT}" > ${REPORTDIR}/report.out 2> ${REPORTDIR}/report.err
 fi
 
