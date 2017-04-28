@@ -2,7 +2,7 @@
 # Super script to run the pRESTO 0.5.3 pipeline on AbVitro AbSeq V3 data
 # 
 # Author:  Jason Anthony Vander Heiden, Gur Yaari, Namita Gupta
-# Date:    2017.04.27
+# Date:    2017.04.28
 # 
 # Arguments:
 #   -1  Read 1 FASTQ sequence file (sequence beginning with the C-region or J-segment).
@@ -15,10 +15,8 @@
 #   -y  YAML file providing description fields for report generation.
 #   -n  Sample name or run identifier which will be used as the output file prefix.
 #       Defaults to a truncated version of the read 1 filename.
-#   -o  Output directory inside the data directory.
+#   -o  Output directory.
 #       Defaults to the sample name.
-#   -d  Data directory which serves as the parent of the output directory.
-#       Defaults to /data.
 #   -p  Number of subprocesses for multiprocessing tools.
 #       Defaults to the available processing units.
 #   -h  Display help.
@@ -34,14 +32,12 @@ print_usage() {
     echo -e "  -v  Read 2 FASTA primer or template switch sequences."
     echo -e "  -c  C-region FASTA sequences for the C-region internal to the primer."
     echo -e "  -r  V-segment reference file."
-    echo -e "     Defaults to /usr/local/share/germlines/igblast/fasta/imgt_human_ig_v.fasta."
+    echo -e "     Defaults to /usr/local/share/igblast/fasta/imgt_human_ig_v.fasta."
     echo -e "  -y  YAML file providing description fields for report generation."
     echo -e "  -n  Sample identifier which will be used as the output file prefix.\n" \
             "     Defaults to a truncated version of the read 1 filename."
-    echo -e "  -o  Output directory inside the data directory.\n" \
+    echo -e "  -o  Output directory.\n" \
             "     Defaults to the sample name."
-    echo -e "  -d  Data directory which serves as the parent of the output directory.\n" \
-            "     Defaults to /data."
     echo -e "  -p  Number of subprocesses for multiprocessing tools.\n" \
             "     Defaults to the available cores."
     echo -e "  -h  This message."
@@ -57,7 +53,6 @@ VREF_SEQ_SET=false
 YAML_SET=FALSE
 OUTNAME_SET=false
 OUTDIR_SET=false
-DATADIR_SET=false
 NPROC_SET=false
 
 # Get commandline arguments
@@ -89,9 +84,6 @@ while getopts "1:2:j:v:c:r:y:n:o:d:p:h" OPT; do
         ;;
     o)  OUTDIR=$OPTARG
         OUTDIR_SET=true
-        ;;
-    d)  DATADIR=$OPTARG
-        DATADIR_SET=true
         ;;
     p)  NPROC=$OPTARG
         NPROC_SET=true
@@ -131,7 +123,7 @@ fi
 
 # Set unspecified arguments
 if ! ${VREF_SEQ_SET}; then
-    VREF_SEQ="/usr/local/share/germlines/igblast/fasta/imgt_human_ig_v.fasta"
+    VREF_SEQ="/usr/local/share/igblast/fasta/imgt_human_ig_v.fasta"
 fi
 
 if ! ${OUTNAME_SET}; then
@@ -140,10 +132,6 @@ fi
 
 if ! ${OUTDIR_SET}; then
     OUTDIR=${OUTNAME}
-fi
-
-if ! ${DATADIR_SET}; then
-    DATADIR="/data"
 fi
 
 if ! ${NPROC_SET}; then
@@ -238,7 +226,7 @@ CS_KEEP=true
 CS_MISS=0
 
 # Make output directory
-mkdir -p ${DATADIR}/${OUTDIR}; cd ${DATADIR}/${OUTDIR}
+mkdir -p ${OUTDIR}; cd ${OUTDIR}
 
 # Define log files
 LOGDIR="logs"
