@@ -6,12 +6,14 @@
 #
 # Arguments:
 #   -s  FASTA or FASTQ sequence file.
+#   -r  Directory containing IMGT-gapped reference germlines.
+#       Defaults to /usr/local/share/germlines/imgt/human/vdj.
+#   -d  IgBLAST IGDATA directory, which contains the IgBLAST database, optional_file
+#       and auxillary_data directories. Defaults to /usr/local/share/igblast.
 #   -n  Sample name or run identifier which will be used as the output file prefix.
 #       Defaults to a truncated version of the read 1 filename.
-#   -o  Output directory inside the data directory.
+#   -o  Output directory.
 #       Defaults to the sample name.
-#   -d  Data directory which serves as the parent of the output directory.
-#       Defaults to /data.
 #   -p  Number of subprocesses for multiprocessing tools.
 #       Defaults to the available processing units.
 #   -h  Display help.
@@ -19,13 +21,15 @@
 # Print usage
 print_usage() {
     echo -e "Usage: `basename $0` [OPTIONS]"
-    echo -e "  -s  FASTA or FASTQ sequence file.\n"
+    echo -e "  -s  FASTA or FASTQ sequence file."
+    echo -e "  -r  Directory containing IMGT-gapped reference germlines.\n" \
+            "     Defaults to /usr/local/share/germlines/imgt/human/vdj."
+    echo -e "  -d  IgBLAST IGDATA directory, which contains the IgBLAST database, optional_file\n" \
+            "     and auxillary_data directories. Defaults to /usr/local/share/igblast."
     echo -e "  -n  Sample identifier which will be used as the output file prefix.\n" \
             "     Defaults to a truncated version of the sequence filename."
-    echo -e "  -o  Output directory inside the data directory.\n" \
+    echo -e "  -o  Output directory.\n" \
             "     Defaults to the sample name."
-    echo -e "  -d  Data directory which serves as the parent of the output directory.\n" \
-            "     Defaults to /data."
     echo -e "  -p  Number of subprocesses for multiprocessing tools.\n" \
             "     Defaults to the available cores."
     echo -e "  -h  This message."
@@ -33,25 +37,29 @@ print_usage() {
 
 # Argument validation variables
 READS=false
+REFDIR_SET=false
+IGDATA_SET=false
 OUTNAME_SET=false
 OUTDIR_SET=false
-DATADIR_SET=false
 NPROC_SET=false
 
 # Get commandline arguments
-while getopts "s:n:o:d:y:p:h" OPT; do
+while getopts "s:r:d:n:o:p:h" OPT; do
     case "$OPT" in
     s)  READS=${OPTARG}
         READS_SET=true
+        ;;
+    r)  REFDIR=$OPTARG
+        REFDIR_SET=true
+        ;;
+    d)  IGDATA=$OPTARG
+        IGDATA_SET=true
         ;;
     n)  OUTNAME=$OPTARG
         OUTNAME_SET=true
         ;;
     o)  OUTDIR=$OPTARG
         OUTDIR_SET=true
-        ;;
-    d)  DATADIR=$OPTARG
-        DATADIR_SET=true
         ;;
     p)  NPROC=$OPTARG
         NPROC_SET=true
@@ -74,7 +82,27 @@ if ! ${READS_SET}; then
     exit 1
 fi
 
+# Check that files exist and determined absolute paths
+if [ -e ${READS} ]; then
+    READS=$(readlink -f ${READS})
+else
+    echo -e "File ${READS} not found." >&2
+    exit 1
+fi
+
 # Set unspecified arguments
+if ! ${REFDIR_SET}; then
+    REFDIR="/usr/local/share/germlines/imgt/human/vdj"
+else
+    REFDIR=$(readlink -f ${REFDIR})
+fi
+
+if ! ${IGDATA_SET}; then
+    IGDATA="/usr/local/share/igblast"
+else
+    IGDATA=$(readlink -f ${IGDATA})
+fi
+
 if ! ${OUTNAME_SET}; then
     OUTNAME=$(basename ${READS} | sed 's/\.[^.]*$//; s/_L[0-9]*_R[0-9]_[0-9]*//')
 fi
@@ -83,20 +111,8 @@ if ! ${OUTDIR_SET}; then
     OUTDIR=${OUTNAME}
 fi
 
-if ! ${DATADIR_SET}; then
-    DATADIR="/data"
-fi
-
 if ! ${NPROC_SET}; then
     NPROC=$(nproc)
-fi
-
-# Check that files exist and determined absolute paths
-if [ -e ${DATADIR}/${READS} ]; then
-    READS=$(readlink -f ${DATADIR}/${READS})
-else
-    echo -e "File ${READS} not found in ${DATADIR}." >&2
-    exit 1
 fi
 
 # Define pipeline steps
@@ -105,16 +121,13 @@ DELETE_FILES=true
 GERMLINES=false
 FUNCTIONAL=false
 
-# MakeDb parameters
-REF_DIR="/usr/local/share/germlines/imgt/human/vdj"
-
 # Create germlines parameters
 CG_GERM="dmask"
 CG_SFIELD="SEQUENCE_IMGT"
 CG_VFIELD="V_CALL"
 
 # Make output directory
-mkdir -p ${DATADIR}/${OUTDIR}; cd ${DATADIR}/${OUTDIR}
+mkdir -p ${OUTDIR}; cd ${OUTDIR}
 
 # Define log files
 LOGDIR="logs"
@@ -155,7 +168,7 @@ fi
 
 # Run IgBLAST
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "IgBLAST"
-run_igblast.sh -s ${IG_FILE} -n ${NPROC} \
+run_igblast.sh -s ${IG_FILE} -d ${IGDATA} -n ${NPROC} \
     >> $PIPELINE_LOG 2> $ERROR_LOG
 DB_FILE=$(basename ${IG_FILE})
 DB_FILE="${DB_FILE%.fasta}.fmt7"
@@ -163,7 +176,7 @@ check_error
 
 # Parse IgBLAST output
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "MakeDb igblast"
-MakeDb.py igblast -i ${DB_FILE} -s  ${IG_FILE} -r ${REF_DIR} \
+MakeDb.py igblast -i ${DB_FILE} -s  ${IG_FILE} -r ${REFDIR} \
     --scores --regions --failed --outname "${OUTNAME}" \
     >> $PIPELINE_LOG 2> $ERROR_LOG
     LAST_FILE="${OUTNAME}_db-pass.tab"
@@ -172,7 +185,7 @@ check_error
 # Create germlines
 if $GERMLINES; then
     printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "CreateGermlines"
-    CreateGermlines.py -d ${LAST_FILE} -r ${REF_DIR} -g ${CG_GERM} \
+    CreateGermlines.py -d ${LAST_FILE} -r ${REFDIR} -g ${CG_GERM} \
         --sf ${CG_SFIELD} --vf $CG_VFIELD --outname "${OUTNAME}" \
         >> $PIPELINE_LOG 2> $ERROR_LOG
 	check_error

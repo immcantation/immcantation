@@ -31,8 +31,8 @@ print_usage() {
     echo -e "  -j  Read 1 FASTA primer sequences."
     echo -e "  -v  Read 2 FASTA primer or template switch sequences."
     echo -e "  -c  C-region FASTA sequences for the C-region internal to the primer."
-    echo -e "  -r  V-segment reference file."
-    echo -e "     Defaults to /usr/local/share/igblast/fasta/imgt_human_ig_v.fasta."
+    echo -e "  -r  V-segment reference file.\n" \
+            "     Defaults to /usr/local/share/igblast/fasta/imgt_human_ig_v.fasta."
     echo -e "  -y  YAML file providing description fields for report generation."
     echo -e "  -n  Sample identifier which will be used as the output file prefix.\n" \
             "     Defaults to a truncated version of the read 1 filename."
@@ -56,7 +56,7 @@ OUTDIR_SET=false
 NPROC_SET=false
 
 # Get commandline arguments
-while getopts "1:2:j:v:c:r:y:n:o:d:p:h" OPT; do
+while getopts "1:2:j:v:c:r:y:n:o:p:h" OPT; do
     case "$OPT" in
     1)  R1_READS=${OPTARG}
         R1_READS_SET=true
