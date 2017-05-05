@@ -2,7 +2,7 @@
 # Simple IgBLAST wrapper
 #
 # Author:  Jason Anthony Vander Heiden
-# Date:    2016.11.21
+# Date:    2016.05.05
 #
 # Arguments:
 #   -s = FASTA sequence file.
@@ -19,14 +19,14 @@ NPROC=1
 
 # Print usage
 usage () {
-    echo "Usage: `basename $0` [OPTIONS]"
-    echo "  -s  FASTA sequence file."
-    echo "  -o  Output directory."
-    echo "  -d  IGDATA directory, which contains the IgBLAST database,\n" \
-         "     optional_file and auxillary_data directories.\n" \
-         "     Defaults to /usr/local/share/igblast."
-    echo "  -n  Number of IgBLAST threads. Defaults to 1."
-    echo "  -h  This message."
+    echo -e "Usage: `basename $0` [OPTIONS]"
+    echo -e "  -s  FASTA sequence file."
+    echo -e "  -o  Output directory."
+    echo -e "  -d  IGDATA directory, which contains the IgBLAST database,\n" \
+            "     optional_file and auxillary_data directories.\n" \
+            "     Defaults to /usr/local/share/igblast."
+    echo -e "  -n  Number of IgBLAST threads. Defaults to 1."
+    echo -e "  -h  This message."
 }
 
 # Validation variables

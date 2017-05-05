@@ -2,17 +2,17 @@
 # Super script to run Change-O 0.3.4 cloning and germline reconstruction
 #
 # Author:  Jason Anthony Vander Heiden, Gur Yaari, Namita Gupta
-# Date:    2017.03.30
+# Date:    2017.05.05
 #
 # Arguments:
 #   -t  Change-O formatted TSV (TAB) file.
 #   -x  Distance threshold for clonal assignment.
+#   -r  Directory containing IMGT-gapped reference germlines.
+#       Defaults to /usr/local/share/germlines/imgt/human/vdj.
 #   -n  Sample name or run identifier which will be used as the output file prefix.
 #       Defaults to a truncated version of the read 1 filename.
-#   -o  Output directory inside the data directory.
+#   -o  Output directory.
 #       Defaults to the sample name.
-#   -d  Data directory which serves as the parent of the output directory.
-#       Defaults to /data.
 #   -p  Number of subprocesses for multiprocessing tools.
 #       Defaults to the available processing units.
 #   -h  Display help.
@@ -22,12 +22,12 @@ print_usage() {
     echo -e "Usage: `basename $0` [OPTIONS]"
     echo -e "  -t  Change-O formatted TSV (TAB) file."
     echo -e "  -x  Distance threshold for clonal assignment."
+    echo -e "  -r  Directory containing IMGT-gapped reference germlines.\n" \
+            "     Defaults to /usr/local/share/germlines/imgt/human/vdj."
     echo -e "  -n  Sample identifier which will be used as the output file prefix.\n" \
             "     Defaults to a truncated version of the filename."
-    echo -e "  -o  Output directory inside the data directory.\n" \
+    echo -e "  -o  Output directory.\n" \
             "     Defaults to the sample name."
-    echo -e "  -d  Data directory which serves as the parent of the output directory.\n" \
-            "     Defaults to /data."
     echo -e "  -p  Number of subprocesses for multiprocessing tools.\n" \
             "     Defaults to the available cores."
     echo -e "  -h  This message."
@@ -38,11 +38,10 @@ DB_SET=false
 DIST_SET=false
 OUTNAME_SET=false
 OUTDIR_SET=false
-DATADIR_SET=false
 NPROC_SET=false
 
 # Get commandline arguments
-while getopts "t:x:n:o:d:y:p:h" OPT; do
+while getopts "t:x:r:n:o:p:h" OPT; do
     case "$OPT" in
     t)  DB=${OPTARG}
         DB_SET=true
@@ -55,9 +54,6 @@ while getopts "t:x:n:o:d:y:p:h" OPT; do
         ;;
     o)  OUTDIR=$OPTARG
         OUTDIR_SET=true
-        ;;
-    d)  DATADIR=$OPTARG
-        DATADIR_SET=true
         ;;
     p)  NPROC=$OPTARG
         NPROC_SET=true
@@ -86,16 +82,20 @@ if ! ${DIST_SET}; then
 fi
 
 # Set unspecified arguments
+if ! ${REFDIR_SET}; then
+    REFDIR="/usr/local/share/germlines/imgt/human/vdj"
+else
+    REFDIR=$(readlink -f ${REFDIR})
+fi
+
 if ! ${OUTNAME_SET}; then
     OUTNAME=$(basename ${DB} | sed 's/\.[^.]*$//; s/_L[0-9]*_R[0-9]_[0-9]*//')
 fi
 
 if ! ${OUTDIR_SET}; then
     OUTDIR=${OUTNAME}
-fi
-
-if ! ${DATADIR_SET}; then
-    DATADIR="/data"
+else
+    OUTDIR=$(readlink -f ${OUTDIR})
 fi
 
 if ! ${NPROC_SET}; then
@@ -103,10 +103,10 @@ if ! ${NPROC_SET}; then
 fi
 
 # Check that files exist and determined absolute paths
-if [ -e ${DATADIR}/${DB} ]; then
-    DB=$(readlink -f ${DATADIR}/${DB})
+if [ -e ${DB} ]; then
+    DB=$(readlink -f ${DB})
 else
-    echo -e "File ${DB} not found in ${DATADIR}." >&2
+    echo -e "File ${DB} not found." >&2
     exit 1
 fi
 
@@ -125,10 +125,9 @@ DC_ACT="set"
 CG_GERM="dmask"
 CG_SFIELD="SEQUENCE_IMGT"
 CG_VFIELD="V_CALL"
-REF_DIR="/usr/local/share/germlines/imgt/human/vdj"
 
 # Make output directory
-mkdir -p ${DATADIR}/${OUTDIR}; cd ${DATADIR}/${OUTDIR}
+mkdir -p ${OUTDIR}; cd ${OUTDIR}
 
 # Define log files
 LOGDIR="logs"
@@ -177,7 +176,7 @@ LAST_FILE="${OUTNAME}_clone-pass.tab"
 # Create germlines
 if $GERMLINES; then
     printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "CreateGermlines"
-    CreateGermlines.py -d ${LAST_FILE} -r ${REF_DIR} -g ${CG_GERM} \
+    CreateGermlines.py -d ${LAST_FILE} -r ${REFDIR} -g ${CG_GERM} \
         --sf ${CG_SFIELD} --vf ${CG_VFIELD} --cloned --outname "${OUTNAME}" \
         >> $PIPELINE_LOG 2> $ERROR_LOG
 	check_error
