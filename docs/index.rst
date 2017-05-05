@@ -34,7 +34,8 @@ For an overview of AIRR-seq analysis, check out:
 
     **Yaari and Kleinstein.**
     Practical guidelines for B-cell receptor repertoire sequencing analysis.
-    *Genome Med 2015; 7\:121. doi\: 10.1186/s13073-015-0243-2.*
+    *Genome Medicine. 7, 121 (2015).*
+    `doi\:10.1186/s13073-015-0243-2 <http://doi.org/10.1186/s13073-015-0243-2>`__
 
 .. _Cite:
 
@@ -45,13 +46,15 @@ To cite the pRESTO software package in publications please use:
 
     **Vander Heiden JA\*, Yaari G\*, Uduman M, Stern JNH, O'Connor KC, Hafler DA, Vigneault F, Kleinstein SH.**
     pRESTO\: a toolkit for processing high-throughput sequencing raw reads of lymphocyte receptor repertoires.
-    *Bioinformatics 2014; doi\: 10.1093/bioinformatics/btu138*
+    *Bioinformatics 30, 1930-2 (2014).*
+    `doi\:10.1093/bioinformatics/btu138 <http://doi.org/10.1093/bioinformatics/btu138>`__
 
 To cite the Change-O, Alakazam, SHazaM and TIgGER software package in publications please use:
 
     **Gupta NT\*, Vander Heiden JA\*, Uduman M, Gadala-Maria D, Yaari G, Kleinstein SH.**
     Change-O\: a toolkit for analyzing large-scale B cell immunoglobulin repertoire sequencing data.
-    *Bioinformatics 2015; doi\: 10.1093/bioinformatics/btv359*
+    *Bioinformatics 31, 3356-8 (2015).*
+    `doi\:10.1093/bioinformatics/btv359 <http://doi.org/10.1093/bioinformatics/btv359>`__
 
 Additional citations for specific methods within Alakazam, SHazaM and TIgGER may be determined
 using the ``citation()`` function witin R.
