@@ -109,8 +109,6 @@ fi
 
 if ! ${OUTDIR_SET}; then
     OUTDIR=${OUTNAME}
-else
-    OUTDIR=$(readlink -f ${OUTDIR})
 fi
 
 if ! ${NPROC_SET}; then

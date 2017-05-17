@@ -36,6 +36,7 @@ print_usage() {
 # Argument validation variables
 DB_SET=false
 DIST_SET=false
+REFDIR_SET=false
 OUTNAME_SET=false
 OUTDIR_SET=false
 NPROC_SET=false
@@ -48,6 +49,9 @@ while getopts "t:x:r:n:o:p:h" OPT; do
         ;;
     x)  DIST=$OPTARG
         DIST_SET=true
+        ;;
+    r)  REFDIR=$OPTARG
+        REFDIR_SET=true
         ;;
     n)  OUTNAME=$OPTARG
         OUTNAME_SET=true
@@ -94,8 +98,6 @@ fi
 
 if ! ${OUTDIR_SET}; then
     OUTDIR=${OUTNAME}
-else
-    OUTDIR=$(readlink -f ${OUTDIR})
 fi
 
 if ! ${NPROC_SET}; then
