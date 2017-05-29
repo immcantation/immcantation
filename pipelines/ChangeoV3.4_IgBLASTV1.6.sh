@@ -8,7 +8,7 @@
 #   -s  FASTA or FASTQ sequence file.
 #   -r  Directory containing IMGT-gapped reference germlines.
 #       Defaults to /usr/local/share/germlines/imgt/human/vdj.
-#   -d  IgBLAST IGDATA directory, which contains the IgBLAST database, optional_file
+#   -b  IgBLAST IGDATA directory, which contains the IgBLAST database, optional_file
 #       and auxillary_data directories. Defaults to /usr/local/share/igblast.
 #   -n  Sample name or run identifier which will be used as the output file prefix.
 #       Defaults to a truncated version of the read 1 filename.
@@ -24,7 +24,7 @@ print_usage() {
     echo -e "  -s  FASTA or FASTQ sequence file."
     echo -e "  -r  Directory containing IMGT-gapped reference germlines.\n" \
             "     Defaults to /usr/local/share/germlines/imgt/human/vdj."
-    echo -e "  -d  IgBLAST IGDATA directory, which contains the IgBLAST database, optional_file\n" \
+    echo -e "  -b  IgBLAST IGDATA directory, which contains the IgBLAST database, optional_file\n" \
             "     and auxillary_data directories. Defaults to /usr/local/share/igblast."
     echo -e "  -n  Sample identifier which will be used as the output file prefix.\n" \
             "     Defaults to a truncated version of the sequence filename."
@@ -52,7 +52,7 @@ while getopts "s:r:d:n:o:p:h" OPT; do
     r)  REFDIR=$OPTARG
         REFDIR_SET=true
         ;;
-    d)  IGDATA=$OPTARG
+    b)  IGDATA=$OPTARG
         IGDATA_SET=true
         ;;
     n)  OUTNAME=$OPTARG

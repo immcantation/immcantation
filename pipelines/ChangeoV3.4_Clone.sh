@@ -5,12 +5,12 @@
 # Date:    2017.05.05
 #
 # Arguments:
-#   -t  Change-O formatted TSV (TAB) file.
+#   -d  Change-O formatted TSV (TAB) file.
 #   -x  Distance threshold for clonal assignment.
 #   -r  Directory containing IMGT-gapped reference germlines.
 #       Defaults to /usr/local/share/germlines/imgt/human/vdj.
 #   -n  Sample name or run identifier which will be used as the output file prefix.
-#       Defaults to a truncated version of the read 1 filename.
+#       Defaults to a truncated version of the input filename.
 #   -o  Output directory.
 #       Defaults to the sample name.
 #   -p  Number of subprocesses for multiprocessing tools.
@@ -20,12 +20,12 @@
 # Print usage
 print_usage() {
     echo -e "Usage: `basename $0` [OPTIONS]"
-    echo -e "  -t  Change-O formatted TSV (TAB) file."
+    echo -e "  -d  Change-O formatted TSV (TAB) file."
     echo -e "  -x  Distance threshold for clonal assignment."
     echo -e "  -r  Directory containing IMGT-gapped reference germlines.\n" \
             "     Defaults to /usr/local/share/germlines/imgt/human/vdj."
     echo -e "  -n  Sample identifier which will be used as the output file prefix.\n" \
-            "     Defaults to a truncated version of the filename."
+            "     Defaults to a truncated version of the input filename."
     echo -e "  -o  Output directory.\n" \
             "     Defaults to the sample name."
     echo -e "  -p  Number of subprocesses for multiprocessing tools.\n" \
@@ -42,7 +42,7 @@ OUTDIR_SET=false
 NPROC_SET=false
 
 # Get commandline arguments
-while getopts "t:x:r:n:o:p:h" OPT; do
+while getopts "d:x:r:n:o:p:h" OPT; do
     case "$OPT" in
     t)  DB=${OPTARG}
         DB_SET=true
