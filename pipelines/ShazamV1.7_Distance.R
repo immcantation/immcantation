@@ -21,6 +21,7 @@ suppressPackageStartupMessages(library("optparse"))
 suppressPackageStartupMessages(library("methods"))
 suppressPackageStartupMessages(library("dplyr"))
 suppressPackageStartupMessages(library("readr"))
+suppressPackageStartupMessages(library("ggplot2"))
 suppressPackageStartupMessages(library("alakazam"))
 suppressPackageStartupMessages(library("shazam"))
 
@@ -55,6 +56,12 @@ if (!("NAME" %in% names(opt))) {
     opt$NAME <- tools::file_path_sans_ext(basename(opt$DB))
 }
 
+# Create output directory
+if (!(dir.exists(opt$OUTDIR))) {
+    dir.create(opt$OUTDIR)
+}
+
+
 #print(opt)
 # opt <- list(DB="pipelines/S43_IMGT_db-pass.tab",
 #             METHOD="gmm",
@@ -80,8 +87,6 @@ cat("THRESHOLD> ", threshold@threshold, "\n", sep="")
 write_tsv(thresh_df, file.path(opt$OUTDIR, paste0(opt$NAME, "_threshold-values.tsv")))
 
 # Plot
-pdf(file.path(opt$OUTDIR, paste0(opt$NAME, "_threshold-plot.pdf")),
-    width=6, height=4, useDingbats=FALSE)
-plot(threshold, binwidth=0.02)
-dev.off()
-
+p1 <- plot(threshold, binwidth=0.02, silent=TRUE)
+ggsave(file.path(opt$OUTDIR, paste0(opt$NAME, "_threshold-plot.pdf")), plot=p1, 
+       device="pdf", width=6, height=4, useDingbats=FALSE)
