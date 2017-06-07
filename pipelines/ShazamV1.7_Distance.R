@@ -78,7 +78,7 @@ threshold <- findThreshold(db$DIST_NEAREST, method=opt$METHOD)
 slots <- slotNames(threshold)
 slots <- slots[!(slots %in% c("x", "xdens", "ydens"))]
 .extract <- function(x) {
-    data_frame(PARAMETER=x, VALUE=slot(threshold, x))
+    data_frame(PARAMETER=x, VALUE=as.character(slot(threshold, x)))
 }
 thresh_df <- bind_rows(lapply(slots, .extract))
 
