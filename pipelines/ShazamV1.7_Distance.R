@@ -68,7 +68,7 @@ if (!(dir.exists(opt$OUTDIR))) {
 #             NPROC=1)
 
 # Load data
-db <- readChangeoDb(opt$DB)
+db <- as.data.frame(readChangeoDb(opt$DB))
 
 # Calculate distance to nearest and threshold
 db <- distToNearest(db, model="ham", first=FALSE, normalize="len", nproc=opt$NPROC)
