@@ -38,11 +38,11 @@ provided for pre-processing, population structure determination, and repertoire 
     `doi\:10.1186/s13073-015-0243-2 <http://doi.org/10.1186/s13073-015-0243-2>`__
 
    **AIRR-seq analysis tutorial**
-   Slides<http://clip.med.yale.edu/immcantation/AIRR-seq_workshop_2017-06-19/AIRR-seq_workshop_slides_2017-06-19.pptx> 
-    and data<http://clip.med.yale.edu/immcantation/AIRR-seq_workshop_2017-06-19/AIRR-seq_workshop_example.tar.gz>
+   
+   Slides <http://clip.med.yale.edu/immcantation/AIRR-seq_workshop_2017-06-19/AIRR-seq_workshop_slides_2017-06-19.pptx> 
+    and data <http://clip.med.yale.edu/immcantation/AIRR-seq_workshop_2017-06-19/AIRR-seq_workshop_example.tar.gz>
     from the tutorial presented by Jason Vander Heiden at the 
-   `Stochasticity and Control of Immune Repertoires Group Conference`
-   <http://ias.huji.ac.il/content/stochasticity-and-control-dynamics-and-diversity-immune-repertories> 
+   `Stochasticity and Control of Immune Repertoires Group Conference` <http://ias.huji.ac.il/content/stochasticity-and-control-dynamics-and-diversity-immune-repertories> 
    (Israel, June 18 - June 23, 2017).
 
 .. _Cite:
