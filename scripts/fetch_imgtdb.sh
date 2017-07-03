@@ -2,7 +2,7 @@
 # Download germlines from the IMGT website
 #
 # Author:  Mohamed Uduman, Jason Anthony Vander Heiden
-# Date:    2017.04.06
+# Date:    2017.07.03
 #
 # Arguments:
 #   -o = Output directory for downloaded files. Defaults to current directory.
@@ -36,15 +36,16 @@ while getopts "o:h" OPT; do
     esac
 done
 
-# IMGT Gapped Germlines
+# Info
 REPERTOIRE="imgt"
+DATE=$(date +"%Y.%m.%d")
 
 # Associative array where keys are species folder names and values are query strings
 declare -A SPECIES_QUERY
 SPECIES_QUERY[human]="Homo+sapiens"
 SPECIES_QUERY[mouse]="Mus"
 
-# Associative a
+# Associative array with species name replacements
 declare -A SPECIES_REPLACE
 SPECIES_REPLACE[human]='s/Homo sapiens/Homo_sapiens/g'
 SPECIES_REPLACE[mouse]='s/Mus musculus/Mus_musculus/g'
@@ -157,4 +158,14 @@ do
 
     echo ""
 
+done
+
+# Write download info
+INFO_FILE=${OUTDIR}/IMGT.yaml
+echo -e "source:  http://www.imgt.org/IMGT_GENE-DB" > $INFO_FILE
+echo -e "date:    ${DATE}" >> $INFO_FILE
+echo -e "species:" >> $INFO_FILE
+for Q in ${SPECIES_QUERY[@]}
+do
+    echo -e "    - ${Q}" >> $INFO_FILE
 done

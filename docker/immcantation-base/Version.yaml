@@ -1,0 +1,16 @@
+immcantation:
+    version:  1.0.0
+    date:     2017.07.01
+release:
+    presto:   0.5.4
+    changeo:  0.3.7
+    alakazam: 0.2.7
+    shazam:   0.1.8
+    tigger:   0.2.10
+    prestor:  0.0.2
+software:
+    muscle:   3.8.31
+    vsearch:  2.4.3
+    blast:    2.5.0
+    igblast:  1.7.0
+    phylip:   3.696
