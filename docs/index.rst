@@ -30,12 +30,18 @@ provided for pre-processing, population structure determination, and repertoire 
     <object data="_static/overview.svg" type="image/svg+xml"></object>
     <br><br>
 
-For an overview of AIRR-seq analysis, check out:
+**For an overview of AIRR-seq analysis, check out:**
 
     **Yaari and Kleinstein.**
     Practical guidelines for B-cell receptor repertoire sequencing analysis.
     *Genome Medicine. 7, 121 (2015).*
     `doi\:10.1186/s13073-015-0243-2 <http://doi.org/10.1186/s13073-015-0243-2>`__
+
+    **AIRR-seq analysis tutorial**
+   
+    `Slides <http://clip.med.yale.edu/immcantation/AIRR-seq_workshop_2017-06-19/AIRR-seq_workshop_slides_2017-06-19.pptx>`_ 
+    and `data <http://clip.med.yale.edu/immcantation/AIRR-seq_workshop_2017-06-19/AIRR-seq_workshop_example.tar.gz>`_ from the tutorial presented by Jason Vander Heiden at the 
+    `Stochasticity and Control of Immune Repertoires Group Conference <http://ias.huji.ac.il/content/stochasticity-and-control-dynamics-and-diversity-immune-repertories>`_ (Israel, June 18 - June 23, 2017).
 
 .. _Cite:
 
