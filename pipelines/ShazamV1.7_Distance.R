@@ -68,7 +68,7 @@ if (!(dir.exists(opt$OUTDIR))) {
 #             NPROC=1)
 
 # Load data
-db <- readChangeoDb(opt$DB)
+db <- as.data.frame(readChangeoDb(opt$DB))
 
 # Calculate distance to nearest and threshold
 db <- distToNearest(db, model="ham", first=FALSE, normalize="len", nproc=opt$NPROC)
@@ -78,7 +78,7 @@ threshold <- findThreshold(db$DIST_NEAREST, method=opt$METHOD)
 slots <- slotNames(threshold)
 slots <- slots[!(slots %in% c("x", "xdens", "ydens"))]
 .extract <- function(x) {
-    data_frame(PARAMETER=x, VALUE=slot(threshold, x))
+    data_frame(PARAMETER=x, VALUE=as.character(slot(threshold, x)))
 }
 thresh_df <- bind_rows(lapply(slots, .extract))
 

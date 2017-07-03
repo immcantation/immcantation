@@ -44,7 +44,7 @@ NPROC_SET=false
 # Get commandline arguments
 while getopts "d:x:r:n:o:p:h" OPT; do
     case "$OPT" in
-    t)  DB=${OPTARG}
+    d)  DB=${OPTARG}
         DB_SET=true
         ;;
     x)  DIST=$OPTARG
@@ -76,7 +76,7 @@ done
 
 # Exit if required arguments are not provided
 if ! ${DB_SET}; then
-    echo -e "You must specify the input database using the -t option." >&2
+    echo -e "You must specify the input database using the -d option." >&2
     exit 1
 fi
 
