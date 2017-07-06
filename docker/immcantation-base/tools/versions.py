@@ -243,14 +243,14 @@ def getArgParser():
 
     # Update mercurial changeset
     parser_update = subparsers.add_parser('update',
-                                        help='Update a mercurial repository to tagged version number from version file.',
-                                        description='Update a mercurial repository to tagged version number from version file.')
+                                          help='Update a mercurial repository to tagged version number from version file.',
+                                          description='Update a mercurial repository to tagged version number from version file.')
     parser_update.add_argument('-n', action='store', dest='package', type=str, required=True,
-                            help='Package name.')
+                               help='Package name.')
     parser_update.add_argument('-r', action='store', dest='repo', type=str, required=True,
-                             help='Path to the mercurial repository.')
+                               help='Path to the mercurial repository.')
     parser_update.add_argument('-f', action='store', dest='version_file', type=str,
-                            default=default_version_file, help='YAML version file.')
+                               default=default_version_file, help='YAML version file.')
     parser_update.set_defaults(main=updateChangeset)
 
     # Inspect installed applications
@@ -258,7 +258,7 @@ def getArgParser():
                                           help='Retrieve version information from installed packages.',
                                           description='Retrieve version information from installed packages.')
     parser_report.add_argument('-f', action='store', dest='version_file', type=str,
-                            default=default_version_file, help='YAML version file.')
+                               default=default_version_file, help='YAML version file.')
     parser_report.set_defaults(main=reportVersions)
 
     return(parser)

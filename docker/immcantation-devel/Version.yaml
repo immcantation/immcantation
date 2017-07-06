@@ -1,0 +1,16 @@
+immcantation:
+    version:  tip
+    date:     NA
+release:
+    presto:   tip
+    changeo:  tip
+    alakazam: tip
+    shazam:   tip
+    tigger:   tip
+    prestor:  tip
+software:
+    muscle:   3.8.31
+    vsearch:  2.4.3
+    blast:    2.5.0
+    igblast:  1.7.0
+    phylip:   3.696
