@@ -1,13 +1,13 @@
 #!/usr/bin/env Rscript
-# Super script to run SHazaM 0.1.7 distance to nearest tuning
+# Super script to run TIgGER 0.2.10 genotyping
 #
 # Author:  Jason Anthony Vander Heiden
-# Date:    2017.05.26
+# Date:    2017.07.07
 #
 # Arguments:
 #   -d  Change-O formatted TSV (TAB) file.
-#   -m  Method.
-#       Defaults to gmm.
+#   -r  FASTA file containing IMGT-gapped V segment reference germlines.
+#       Defaults to /usr/local/share/germlines/imgt/human/vdj/imgt_human_IGHV.fasta.
 #   -n  Sample name or run identifier which will be used as the output file prefix.
 #       Defaults to a truncated version of the input filename.
 #   -o  Output directory.
@@ -18,12 +18,11 @@
 
 # Imports
 suppressPackageStartupMessages(library("optparse"))
-suppressPackageStartupMessages(library("methods"))
 suppressPackageStartupMessages(library("dplyr"))
-suppressPackageStartupMessages(library("readr"))
 suppressPackageStartupMessages(library("ggplot2"))
 suppressPackageStartupMessages(library("alakazam"))
 suppressPackageStartupMessages(library("shazam"))
+suppressPackageStartupMessages(library("tigger"))
 
 # Set defaults
 NPROC <- shazam::getnproc()
@@ -31,9 +30,10 @@ NPROC <- shazam::getnproc()
 # Define commmandline arguments
 opt_list <- list(make_option(c("-d", "--db"), dest="DB",
                              help="Change-O formatted TSV (TAB) file."),
-                 make_option(c("-m", "--method"), dest="METHOD", default="gmm",
-                             help=paste("Threshold inferrence to use. One of gmm or dens.", 
-                                        "\n\t\tDefaults to gmm.")),
+                 make_option(c("-r", "--ref"), dest="REF",
+                             default="/usr/local/share/germlines/imgt/human/vdj/imgt_human_IGHV.fasta",
+                             help=paste("FASTA file containing IMGT-gapped V segment reference germlines.",
+                                        "\n\t\tDefaults to /usr/local/share/germlines/imgt/human/vdj/imgt_human_IGHV.fasta.")),
                  make_option(c("-n", "--name"), dest="NAME",
                              help=paste("Sample name or run identifier which will be used as the output file prefix.",
                                         "\n\t\tDefaults to a truncated version of the input filename.")),
@@ -63,24 +63,21 @@ if (!(dir.exists(opt$OUTDIR))) {
 
 # Load data
 db <- as.data.frame(readChangeoDb(opt$DB))
+igv <- readIgFasta(opt$REF)
 
-# Calculate distance to nearest and threshold
-db <- distToNearest(db, model="ham", first=FALSE, normalize="len", nproc=opt$NPROC)
-threshold <- findThreshold(db$DIST_NEAREST, method=opt$METHOD)
+# Identify polymorphisms and genotype
+nv <- findNovelAlleles(db, germline_db=igv, nproc=opt$NPROC)
+gt <- inferGenotype(db, germline_db=igv, novel_df=nv)
 
-# Extract relevant slots into data_frame
-slots <- slotNames(threshold)
-slots <- slots[!(slots %in% c("x", "xdens", "ydens"))]
-.extract <- function(x) {
-    data_frame(PARAMETER=x, VALUE=as.character(slot(threshold, x)))
-}
-thresh_df <- bind_rows(lapply(slots, .extract))
+# Write genotype FASTA file
+gt_seq <- genotypeFasta(gt, germline_db=igv, novel_df=nv)
+writeFasta(gt_seq, file.path(opt$OUTDIR, paste0(opt$NAME, "_genotype.fasta")))
 
-# Print and save threshold table
-cat("THRESHOLD> ", threshold@threshold, "\n", sep="")
-write_tsv(thresh_df, file.path(opt$OUTDIR, paste0(opt$NAME, "_threshold-values.tsv")))
+# Modify allele calls and write db
+db <- cbind(db, reassignAlleles(db, gt_seq))
+writeChangeoDb(db, file.path(opt$OUTDIR, paste0(opt$NAME, "_genotyped.tab")))
 
-# Plot
-p1 <- plot(threshold, binwidth=0.02, silent=TRUE)
-ggsave(file.path(opt$OUTDIR, paste0(opt$NAME, "_threshold-plot.pdf")), plot=p1, 
-       device="pdf", width=6, height=4, useDingbats=FALSE)
+# Plot genotype
+ggsave(file.path(opt$OUTDIR, paste0(opt$NAME, "_genotype.pdf")),
+       plotGenotype(gt, silent=TRUE))
+

@@ -10,6 +10,7 @@ COPY Version.yaml /Version.yaml
 ENV PRESTO_ABSEQ="PrestoV5.3_AbSeqV3.sh" \
     CHANGEO_IGBLAST="ChangeoV3.4_IgBLASTV1.6.sh" \
     CHANGEO_CLONE="ChangeoV3.4_Clone.sh" \
+    TIGGER_GENOTYPE="TiggerV2.10_Genotype.R" \
     SHAZAM_THRESHOLD="ShazamV1.7_Distance.R"
 
 # Setup R build environment
@@ -34,6 +35,7 @@ RUN PACKAGE="immcantation" \
 	&& mv /tmp/${PACKAGE}/pipelines/${PRESTO_ABSEQ} /usr/local/bin/presto-abseq \
 	&& mv /tmp/${PACKAGE}/pipelines/${CHANGEO_IGBLAST} /usr/local/bin/changeo-igblast \
 	&& mv /tmp/${PACKAGE}/pipelines/${CHANGEO_CLONE} /usr/local/bin/changeo-clone \
+	&& mv /tmp/${PACKAGE}/pipelines/${TIGGER_GENOTYPE} /usr/local/bin/shazam-genotype \
 	&& mv /tmp/${PACKAGE}/pipelines/${SHAZAM_THRESHOLD} /usr/local/bin/shazam-threshold \
 	&& rm -r /tmp/${PACKAGE}
 
@@ -146,4 +148,5 @@ CMD echo -e "Report version information:\n" \
             "  presto-abseq\n" \
             "  changeo-igblast\n" \
             "  changeo-clone\n" \
+            "  tigger-genotype\n" \
             "  shazam-threshold"
