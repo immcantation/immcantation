@@ -13,7 +13,7 @@ ENV PRESTO_ABSEQ="PrestoV5.3_AbSeqV3.sh" \
     SHAZAM_THRESHOLD="ShazamV1.7_Distance.R"
 
 # Setup R build environment
-ENV R_REPO="c(CRAN='http://lib.stat.cmu.edu/R/CRAN')" \
+ENV R_REPO="'http://lib.stat.cmu.edu/R/CRAN'" \
     R_DEPS="c('Rcpp', 'devtools', 'roxygen2', 'testthat', 'rmarkdown', 'knitr', 'optparse')" \
     R_BUILD="library(devtools); install_deps(upgrade=FALSE, clean=TRUE); document(); install(build_vignettes=TRUE, clean=TRUE)"
 

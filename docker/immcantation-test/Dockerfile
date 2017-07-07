@@ -4,7 +4,7 @@ LABEL maintainer="Jason Anthony Vander Heiden [jason.vanderheiden@yale.edu], \
       description="Test environment for the Immcantation framework."
 
 # Define R package installation parameters
-ENV R_REPO="c(CRAN='http://lib.stat.cmu.edu/R/CRAN')" \
+ENV R_REPO="'http://lib.stat.cmu.edu/R/CRAN'" \
     R_DEPS="c('ape', \
               'bibtex', \
               'captioner', \
