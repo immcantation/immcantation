@@ -13,12 +13,13 @@ ENV PRESTO_ABSEQ="PrestoV5.3_AbSeqV3.sh" \
     TIGGER_GENOTYPE="TiggerV2.10_Genotype.R" \
     SHAZAM_THRESHOLD="ShazamV1.7_Distance.R"
 
-# Setup R build environment
-ENV R_REPO="'http://lib.stat.cmu.edu/R/CRAN'" \
-    R_DEPS="c('Rcpp', 'devtools', 'roxygen2', 'testthat', 'rmarkdown', 'knitr', 'optparse')" \
-    R_BUILD="library(devtools); install_deps(upgrade=FALSE, clean=TRUE); document(); install(build_vignettes=TRUE, clean=TRUE)"
+# Define R build options
+ARG R_REPO="http://lib.stat.cmu.edu/R/CRAN"
+ARG R_DEPS="c('Rcpp', 'devtools', 'roxygen2', 'testthat', 'rmarkdown', 'knitr', 'optparse')"
+ARG R_BUILD="library(devtools); install_deps(upgrade=FALSE, clean=TRUE); document(); install(build_vignettes=TRUE, clean=TRUE)"
 
-RUN echo "options(repos=${R_REPO}, download.file.method='libcurl')" >> /usr/lib64/R/library/base/R/Rprofile \
+# Setup R environment
+RUN echo "options(repos='${R_REPO}', download.file.method='libcurl')" >> /usr/lib64/R/library/base/R/Rprofile \
     && Rscript -e "install.packages(${R_DEPS}, clean=TRUE)"
 
 # Install utility and pipeline scripts

@@ -4,8 +4,8 @@ LABEL maintainer="Jason Anthony Vander Heiden [jason.vanderheiden@yale.edu], \
       description="Test environment for the Immcantation framework."
 
 # Define R package installation parameters
-ENV R_REPO="'http://lib.stat.cmu.edu/R/CRAN'" \
-    R_DEPS="c('ape', \
+ARG R_REPO="http://lib.stat.cmu.edu/R/CRAN"
+ARG R_DEPS="c('ape', \
               'bibtex', \
               'captioner', \
               'data.table', \
@@ -42,5 +42,5 @@ ENV R_REPO="'http://lib.stat.cmu.edu/R/CRAN'" \
               'yaml')"
 
 # Install R package dependencies
-RUN echo "options(repos=${R_REPO}, download.file.method='libcurl')" >> /usr/lib64/R/library/base/R/Rprofile \
+RUN echo "options(repos='${R_REPO}', download.file.method='libcurl')" >> /usr/lib64/R/library/base/R/Rprofile \
     && Rscript -e "install.packages(${R_DEPS}, clean=TRUE)"
