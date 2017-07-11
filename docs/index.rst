@@ -81,6 +81,12 @@ For additional computational immunology software from the Kleinstein Lab see our
 .. Component TOC trees
 
 .. toctree::
+    :maxdepth: 2
+    :hidden:
+
+    docker
+
+.. toctree::
     :maxdepth: 1
     :caption: pRESTO
     :hidden:

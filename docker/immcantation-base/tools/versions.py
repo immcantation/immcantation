@@ -42,7 +42,7 @@ def readVersions(version_file=default_version_file):
     Returns:
       dict : Version strings.
     """
-    with open('Version.yaml', 'r') as handle:
+    with open(version_file, 'r') as handle:
         return Version(yaml.load(handle))
 
 

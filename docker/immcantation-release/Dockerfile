@@ -36,8 +36,8 @@ RUN PACKAGE="immcantation" \
 	&& mv /tmp/${PACKAGE}/pipelines/${PRESTO_ABSEQ} /usr/local/bin/presto-abseq \
 	&& mv /tmp/${PACKAGE}/pipelines/${CHANGEO_IGBLAST} /usr/local/bin/changeo-igblast \
 	&& mv /tmp/${PACKAGE}/pipelines/${CHANGEO_CLONE} /usr/local/bin/changeo-clone \
-	&& mv /tmp/${PACKAGE}/pipelines/${TIGGER_GENOTYPE} /usr/local/bin/shazam-genotype \
 	&& mv /tmp/${PACKAGE}/pipelines/${SHAZAM_THRESHOLD} /usr/local/bin/shazam-threshold \
+	&& mv /tmp/${PACKAGE}/pipelines/${TIGGER_GENOTYPE} /usr/local/bin/tigger-genotype \
 	&& rm -r /tmp/${PACKAGE}
 
 # Install muscle
