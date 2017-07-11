@@ -103,14 +103,14 @@ There are three mount points in the container::
 To invoke a shell session with ``$HOME/project`` mounted to ``/data``::
 
     docker run -it -v $HOME/project:data:z kleinstein/immcantation:devel bash
-    singularity shell -B $HOME/project:/scratch immcantation-devel.img
+    singularity shell -B $HOME/project:/data immcantation-devel.img
 
 Note, the ``:z`` in the ``-v`` argument of the ``docker`` command is essential.
 
 To execute a specific command::
 
     docker run -v $HOME/project:data:z kleinstein/immcantation:devel versions report
-    singularity exec -B $HOME/project:/scratch immcantation-devel.img versions report
+    singularity exec -B $HOME/project:/data immcantation-devel.img versions report
 
 In this case, we are executing the ``versions report`` command which will inspect
 the installed software versions and print them.
