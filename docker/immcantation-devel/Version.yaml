@@ -1,13 +1,13 @@
 immcantation:
-    version:  default
-    date:     today
+    version:  tip
+    date:     NA
 release:
-    presto:   default
-    changeo:  default
-    alakazam: default
-    shazam:   default
-    tigger:   default
-    prestor:  default
+    presto:   tip
+    changeo:  tip
+    alakazam: tip
+    shazam:   tip
+    tigger:   tip
+    prestor:  tip
 software:
     muscle:   3.8.31
     vsearch:  2.4.3
