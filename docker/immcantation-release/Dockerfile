@@ -10,8 +10,8 @@ COPY Version.yaml /Version.yaml
 ENV PRESTO_ABSEQ="PrestoV5.3_AbSeqV3.sh" \
     CHANGEO_IGBLAST="ChangeoV3.4_IgBLASTV1.6.sh" \
     CHANGEO_CLONE="ChangeoV3.4_Clone.sh" \
-    TIGGER_GENOTYPE="TiggerV2.10_Genotype.R" \
-    SHAZAM_THRESHOLD="ShazamV1.7_Distance.R"
+    SHAZAM_THRESHOLD="ShazamV1.7_Distance.R" \
+    TIGGER_GENOTYPE="TiggerV2.10_Genotype.R"
 
 # Define R build options
 ARG R_REPO="http://lib.stat.cmu.edu/R/CRAN"

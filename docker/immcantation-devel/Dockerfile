@@ -10,8 +10,8 @@ COPY Version.yaml /Version.yaml
 ENV PRESTO_ABSEQ="PrestoV5.3_AbSeqV3.sh" \
     CHANGEO_IGBLAST="ChangeoV3.4_IgBLASTV1.6.sh" \
     CHANGEO_CLONE="ChangeoV3.4_Clone.sh" \
-    TIGGER_GENOTYPE="TiggerV2.10_Genotype.R" \
-    SHAZAM_THRESHOLD="ShazamV1.7_Distance.R"
+    SHAZAM_THRESHOLD="ShazamV1.7_Distance.R" \
+    TIGGER_GENOTYPE="TiggerV2.10_Genotype.R"
 
 # Define R build options
 ARG R_REPO="http://lib.stat.cmu.edu/R/CRAN"
@@ -26,7 +26,6 @@ RUN echo "options(repos='${R_REPO}', download.file.method='libcurl')" >> /usr/li
 RUN PACKAGE="immcantation" \
     && rm -rf /tmp/${PACKAGE} \
     && hg clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
-    && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} \
 	&& mv /tmp/${PACKAGE}/scripts/fastq2fasta.py /usr/local/bin/fastq2fasta.py \
 	&& mv /tmp/${PACKAGE}/scripts/fetch_igblastdb.sh /usr/local/bin/fetch_igblastdb.sh \
 	&& mv /tmp/${PACKAGE}/scripts/fetch_imgtdb.sh /usr/local/bin/fetch_imgtdb.sh \
@@ -86,7 +85,6 @@ RUN PHYLIP=$(versions get -n phylip) \
 RUN PACKAGE="presto" \
     && rm -rf /tmp/${PACKAGE} \
     && hg clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
-    && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} \
 	&& pip3 install --no-cache-dir /tmp/${PACKAGE} \
 	&& rm -r /tmp/${PACKAGE}
 
@@ -94,7 +92,6 @@ RUN PACKAGE="presto" \
 RUN PACKAGE="changeo" \
     && rm -rf /tmp/${PACKAGE} \
     && hg clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
-    && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} \
 	&& pip3 install --no-cache-dir /tmp/${PACKAGE} \
 	&& rm -r /tmp/${PACKAGE}
 
@@ -102,14 +99,12 @@ RUN PACKAGE="changeo" \
 RUN PACKAGE="alakazam" \
     && rm -rf /tmp/${PACKAGE} \
     && hg clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
-    && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} \
     && Rscript -e "setwd('/tmp/${PACKAGE}'); ${R_BUILD}"
 
 # Install shazam
 RUN PACKAGE="shazam" \
     && rm -rf /tmp/${PACKAGE} \
     && hg clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
-    && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} \
     && Rscript -e "setwd('/tmp/${PACKAGE}'); ${R_BUILD}" \
     && rm -r /tmp/${PACKAGE}
 
@@ -117,7 +112,6 @@ RUN PACKAGE="shazam" \
 RUN PACKAGE="tigger" \
     && rm -rf /tmp/${PACKAGE} \
     && hg clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
-    && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} \
     && Rscript -e "setwd('/tmp/${PACKAGE}'); ${R_BUILD}" \
     && rm -r /tmp/${PACKAGE}
 
@@ -125,7 +119,6 @@ RUN PACKAGE="tigger" \
 RUN PACKAGE="prestor" \
     && rm -rf /tmp/${PACKAGE} \
     && hg clone https://bitbucket.org/javh/prototype-prestor /tmp/${PACKAGE} \
-    && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} \
     && Rscript -e "setwd('/tmp/${PACKAGE}'); ${R_BUILD}" \
     && rm -r /tmp/${PACKAGE}
 
