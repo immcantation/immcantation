@@ -5,11 +5,11 @@ LABEL maintainer="Jason Anthony Vander Heiden [jason.vanderheiden@yale.edu], \
 
 # Define R package installation parameters
 ARG R_REPO="http://lib.stat.cmu.edu/R/CRAN"
+ARG R_RCPP="0.12.11"
 ARG R_DEPS="c('ape', \
               'bibtex', \
               'captioner', \
               'data.table', \
-              'devtools', \
               'diagram', \
               'diptest', \
               'doParallel', \
@@ -27,7 +27,6 @@ ARG R_DEPS="c('ape', \
               'openxlsx', \
               'optparse', \
               'progress', \
-              'Rcpp', \
               'readr', \
               'rmarkdown', \
               'roxygen2', \
@@ -43,4 +42,6 @@ ARG R_DEPS="c('ape', \
 
 # Install R package dependencies
 RUN echo "options(repos='${R_REPO}', download.file.method='libcurl')" >> /usr/lib64/R/library/base/R/Rprofile \
+    && Rscript -e "install.packages('devtools', clean=TRUE)" \
+    && Rscript -e "devtools::install_version('Rcpp', '${R_RCPP}', quiet=FALSE, clean=TRUE)" \
     && Rscript -e "install.packages(${R_DEPS}, clean=TRUE)"
