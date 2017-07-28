@@ -65,6 +65,15 @@ To cite the Change-O, Alakazam, SHazaM and TIgGER software package in publicatio
 Additional citations for specific methods within Alakazam, SHazaM and TIgGER may be determined
 using the ``citation()`` function witin R.
 
+.. _Contributors:
+
+Contributors
+==========================================================================================
+
+Jason A. Vander Heiden, Namita T. Gupta, Mohamed Uduman, Daniel Gadala-Maria,
+Susanna Marquez, Julian Zhou, Rouyi Jiang, Ang Cui, Nima Nouri, Chris R. Bolen,
+Gur Yaari, Steven H. Kleinstein
+
 .. _Contact:
 
 Contact Information
