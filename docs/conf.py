@@ -290,8 +290,5 @@ texinfo_documents = [
 
 # Example configuration for intersphinx: refer to the Python standard library.
 intersphinx_mapping = {'python': ('https://docs.python.org/3', None),
-                       'presto': ('https://immcantation.readthedocs.io/projects/presto', None),
-                       'changeo': ('https://immcantation.readthedocs.io/projects/changeo', None),
-                       'alakazam': ('https://immcantation.readthedocs.io/projects/alakazam', None),
-                       'shazam': ('https://immcantation.readthedocs.io/projects/shazam', None),
-                       'tigger': ('https://immcantation.readthedocs.io/projects/tigger', None)}
+                       'presto': ('https://immcantation.readthedocs.io/projects/presto/en/latest', None),
+                       'changeo': ('https://immcantation.readthedocs.io/projects/changeo/en/latest', None)}
