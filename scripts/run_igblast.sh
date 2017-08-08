@@ -71,6 +71,7 @@ if $OUTDIR_SET && [ ! -d "${OUTDIR}" ]; then
 fi
 
 # Define IgBLAST directories and base command
+# human_ig, human_tr, mouse_ig, mouse_tr
 export IGDATA
 IGBLAST_DB="${IGDATA}/database"
 IGBLAST_CMD="igblastn \

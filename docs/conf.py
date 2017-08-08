@@ -49,7 +49,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'Immcantation'
-copyright = '2016, Kleinstein Lab'
+copyright = '2017, Kleinstein Lab'
 author = 'Kleinstein Lab'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -204,7 +204,7 @@ html_static_path = ['_static']
 #html_search_scorer = 'scorer.js'
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'immcant'
+htmlhelp_basename = 'immcantation'
 
 # -- Options for LaTeX output ---------------------------------------------
 
@@ -225,10 +225,11 @@ latex_elements = {
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
-latex_documents = [
-    (master_doc, 'Immcantation.tex', 'Immcantation Documentation',
-     'Kleinstein Lab', 'manual'),
-]
+latex_documents = [(master_doc,
+                    'Immcantation.tex',
+                    'Immcantation Documentation',
+                    'Kleinstein Lab',
+                    'manual')]
 
 # The name of an image file (relative to this directory) to place at the top of
 # the title page.
@@ -255,10 +256,11 @@ latex_documents = [
 
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
-man_pages = [
-    (master_doc, 'Immcantation', 'Immcantation Documentation',
-     [author], 1)
-]
+man_pages = [(master_doc,
+              'Immcantation',
+              'Immcantation Documentation',
+              [author],
+              1)]
 
 # If true, show URL addresses after external links.
 #man_show_urls = False
@@ -269,11 +271,13 @@ man_pages = [
 # Grouping the document tree into Texinfo files. List of tuples
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
-texinfo_documents = [
-    (master_doc, 'Immcantation', 'Immcantation Documentation',
-     author, 'Immcantation', 'One line description of project.',
-     'Miscellaneous'),
-]
+texinfo_documents = [(master_doc,
+                      'Immcantation',
+                      'Immcantation Documentation',
+                      author,
+                      'Immcantation',
+                      '',
+                      'Miscellaneous')]
 
 # Documents to append as an appendix to all manuals.
 #texinfo_appendices = []
@@ -287,8 +291,7 @@ texinfo_documents = [
 # If true, do not generate a @detailmenu in the "Top" node's menu.
 #texinfo_no_detailmenu = False
 
-
-# Example configuration for intersphinx: refer to the Python standard library.
+# Intersphinx
 intersphinx_mapping = {'python': ('https://docs.python.org/3', None),
                        'presto': ('https://immcantation.readthedocs.io/projects/presto/en/latest', None),
                        'changeo': ('https://immcantation.readthedocs.io/projects/changeo/en/latest', None)}

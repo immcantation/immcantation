@@ -19,7 +19,7 @@ germline and somatic diversity of the adaptive immune receptor repertoire (AIRR)
 challenges for biologically meaningful analysis - requiring the development of specialized
 computational methods.
 
-The Immcantation tool suites provide a start-to-finish analytical ecosystem for
+The Immcantation framework provide a start-to-finish analytical ecosystem for
 high-throughput AIRR-seq datasets. Beginning from raw reads, Python and R packages are
 provided for pre-processing, population structure determination, and repertoire analysis.
 

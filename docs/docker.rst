@@ -1,36 +1,44 @@
 Docker Container
 ================================================================================
 
-A `Docker <http://www.docker.com>`__ image containing a complete installation
-of the Immcantation framework, its dependencies, accessory scripts, and IgBLAST
-with embedded IMGT reference germlines is available from docker hub under:
+We have provided a complete installation of the Immcantation framework, its
+dependencies, accessory scripts, and IgBLAST in a
+`Docker <http://www.docker.com>`__. The image also includes both the IgBLAST and
+IMGT reference germline sets, as well as several template pipeline scripts.
+The image is available on docker hub at:
 
 `kleinstein/immcantation <https://hub.docker.com/r/kleinstein/immcantation/>`__
 
-Versioned images (tags ``x.y.z``) contained the release builds for the Immcantation
-framework. The ``devel`` tag contains the latest development (unstabled) builds.
-
+Images are versioned through tags with images containing official releases
+denoted by meta-version numbers (eg, ``1.0.0``). The ``devel`` tag denoted the
+latest development (unstabled) builds.
 
 Getting the Container
 --------------------------------------------------------------------------------
 
-Requires and installation of Docker 1.9+ or Singularity 2.3+.
+Requires an installation of Docker 1.9+ or Singularity 2.3+.
 
 Docker
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: shell
 
+    # Pull release version 1.0.0
+    docker pull kleinstein/immcantation:1.0.0
+
+    # Pull the latest development build
     docker pull kleinstein/immcantation:devel
+
 
 Singularity
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: shell
 
-    IMAGE="immcantation-devel.img"
+    # Pull release version 1.0.0
+    IMAGE="immcantation-1.0.0.img"
     singularity create --size 4000 $IMAGE
-    singularity import $IMAGE docker://kleinstein/immcantation:devel
+    singularity import $IMAGE docker://kleinstein/immcantation:1.0.0
 
 
 What's in the Container
@@ -58,12 +66,27 @@ Third Party Tools
 Accessory Scripts
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+The following accessory scripts are found in ``/usr/local/bin``:
+
 * ``fastq2fasta.py``:  Simple FASTQ to FASTA conversion.
 * ``fetch_igblastdb.sh``:  Downloads the IgBLAST reference database.
 * ``fetch_imgtdb.sh``:  Downloads the IMGT reference database.
 * ``imgt2igblast.sh``:  Imports the IMGT reference database into IgBLAST.
-* ``run_igblast.sh``:  Simple IgBLAST wrapping for running IgBLAST with
-  the required arguments and reference database.
+* ``run_igblast.sh``:  Simple IgBLAST wrapper for running IgBLAST with
+  the required arguments using the IMGT reference database.
+
+Template Pipeline Scripts
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The following pipeline templates are found in ``/usr/local/bin``:
+
+* ``presto-abseq``:  A start to finish pRESTO processing script for AbSeq data.
+* ``changeo-igblast``:  Performs V(D)J alignment using IgBLAST and
+  post-processes the output into the Change-O data standard.
+* ``changeo-clone``:  Assigns Ig sequences into clonally related lineages and
+  builds full germline sequences.
+* ``shazam-threshold``:  Performs automated detection of the clonal assignment threshold.
+* ``tigger-genotype``:  Infers V segment genotypes using TIgGER.
 
 Data
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -76,50 +99,47 @@ Data
 * ``/usr/local/share/igblast/fasta``:  Ungapped IMGT references sequences with
   IGH/IGL/IGL and TRA/TRB/TRG/TRD combined into single files, respectively.
 
-Pipelines
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-* ``presto-abseq``:  Start to finish pRESTO processing script for AbSeq data.
-* ``changeo-igblast``:  IgBLAST alignment and post processing to the Change-O
-  data standard.
-* ``changeo-clone``:  Assign Ig sequences into clonal related lineages and
-  build full germline sequences.
-* ``shazam-threshold``:  Automated detection of clonal assignment threshold.
-* ``tigger-genotype``:  V segment genotyping via TIgGER.
-
 
 Using the Container
 --------------------------------------------------------------------------------
 
-Sharing files between the host OS and the container requires you to bind one
-of the container's mount points to a folder on the host using the ``-v``
-argument to ``docker`` or the ``-B`` argument to ``singularity``.
-There are three mount points in the container::
+Sharing files between the host operating system and the container requires you
+to bind one of the container's mount points to a folder on the host using the
+``-v`` argument to ``docker`` or the ``-B`` argument to ``singularity``.
+There are three available mount points defined in the container::
 
     /data
     /scratch
     /software
 
-To invoke a shell session with ``$HOME/project`` mounted to ``/data``::
+To invoke a shell session inside the container with ``$HOME/project`` mounted to
+``/data``::
 
-    docker run -it -v $HOME/project:data:z kleinstein/immcantation:devel bash
-    singularity shell -B $HOME/project:/data immcantation-devel.img
+    # Docker command
+    docker run -it -v $HOME/project:data:z kleinstein/immcantation:1.0.0 bash
+
+    # Singularity command
+    singularity shell -B $HOME/project:/data immcantation-1.0.0.img
 
 Note, the ``:z`` in the ``-v`` argument of the ``docker`` command is essential.
 
 To execute a specific command::
 
-    docker run -v $HOME/project:data:z kleinstein/immcantation:devel versions report
-    singularity exec -B $HOME/project:/data immcantation-devel.img versions report
+    # Docker command
+    docker run -v $HOME/project:data:z kleinstein/immcantation:1.0.0 versions report
+
+    # Singularity command
+    singularity exec -B $HOME/project:/data immcantation-1.0.0.img versions report
 
 In this case, we are executing the ``versions report`` command which will inspect
-the installed software versions and print them.
+the installed software versions and print them to standard output.
 
-Embedded Pipelines
+
+Running the Template Pipeline Scripts
 --------------------------------------------------------------------------------
 
 You can always run your own pipeline scripts through the container, but the
-contained also includes a set of predefined pipeline scripts that can be run as
+container also includes a set of predefined pipeline scripts that can be run as
 is or extended to your needs. Each pipeline script has a ``-h`` argument which
 will explain its use. The available pipelines are:
 
@@ -129,8 +149,29 @@ will explain its use. The available pipelines are:
 * ``tigger-genotype``
 * ``shazam-threshold``
 
-Run the pRESTO pipeline for AbSeq data
+All template pipeline scripts can be found in ``/usr/local/bin``.
+
+pRESTO pipeline for AbSeq data
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+A start to finish pRESTO processing script for AbSeq data.
+
+Arguments:
+   -1  Read 1 FASTQ sequence file (sequence beginning with the C-region or J-segment).
+   -2  Read 2 FASTQ sequence file (sequence beginning with the leader or V-segment).
+   -j  Read 1 FASTA primer sequences (C-region or J-segment).
+   -v  Read 2 FASTA primer sequences (template switch or V-segment).
+   -c  C-region FASTA sequences for the C-region internal to the primer.
+   -r  V-segment reference file.
+       Defaults to /usr/local/share/germlines/igblast/fasta/imgt_human_ig_v.fasta
+   -y  YAML file providing description fields for report generation.
+   -n  Sample name or run identifier which will be used as the output file prefix.
+       Defaults to a truncated version of the read 1 filename.
+   -o  Output directory.
+       Defaults to the sample name.
+   -p  Number of subprocesses for multiprocessing tools.
+       Defaults to the available processing units.
+   -h  Display help.
 
 .. code-block:: shell
 
@@ -146,14 +187,37 @@ Run the pRESTO pipeline for AbSeq data
     OUT_DIR=/data/presto/sample
     NPROC=4
 
-    # Run pipeline in docker image.
-    docker run -v $DATA_DIR:/data:z kleinstein/immcantation:devel presto-abseq \
+    # Docker command
+    docker run -v $DATA_DIR:/data:z kleinstein/immcantation:1.0.0 presto-abseq \
         -1 $READS_R1 -2 $READS_R2 -j $PRIMERS_R1 -v $PRIMERS_R2 \
         -c $CREGION -y $YAML -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC \
         | tee run_presto.out
 
-Run the IgBLAST pipeline
+    # Singularity command
+    singularity exec -B $$DATA_DIR:/data immcantation-1.0.0.img presto-abseq \
+        -1 $READS_R1 -2 $READS_R2 -j $PRIMERS_R1 -v $PRIMERS_R2 \
+        -c $CREGION -y $YAML -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC \
+        | tee run_presto.out
+
+IgBLAST pipeline
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Performs V(D)J alignment using IgBLAST and post-processes the output into the
+Change-O data standard.
+
+Arguments:
+   -s  FASTA or FASTQ sequence file.
+   -r  Directory containing IMGT-gapped reference germlines.
+       Defaults to /usr/local/share/germlines/imgt/human/vdj.
+   -b  IgBLAST IGDATA directory, which contains the IgBLAST database, optional_file
+       and auxillary_data directories. Defaults to /usr/local/share/igblast.
+   -n  Sample name or run identifier which will be used as the output file prefix.
+       Defaults to a truncated version of the read 1 filename.
+   -o  Output directory.
+       Defaults to the sample name.
+   -p  Number of subprocesses for multiprocessing tools.
+       Defaults to the available processing units.
+   -h  Display help.
 
 .. code-block:: shell
 
@@ -164,13 +228,32 @@ Run the IgBLAST pipeline
     OUT_DIR=/data/changeo/sample
     NPROC=4
 
-    # Run pipeline in docker image.
-    docker run -v $DATA_DIR:/data:z kleinstein/immcantation:devel changeo-igblast \
+    # Run pipeline in docker image
+    docker run -v $DATA_DIR:/data:z kleinstein/immcantation:1.0.0 changeo-igblast \
         -s $READS -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC \
         | tee run_igblast.out
 
-Run the genotyping pipeline
+    # Singularity command
+    singularity exec -B $$DATA_DIR:/data immcantation-1.0.0.img changeo-igblast \
+        -s $READS -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC \
+        | tee run_igblast.out
+
+Genotyping pipeline
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Infers V segment genotypes using TIgGER.
+
+Arguments:
+   -d  Change-O formatted TSV (TAB) file.
+   -r  FASTA file containing IMGT-gapped V segment reference germlines.
+       Defaults to /usr/local/share/germlines/imgt/human/vdj/imgt_human_IGHV.fasta.
+   -n  Sample name or run identifier which will be used as the output file prefix.
+       Defaults to a truncated version of the input filename.
+   -o  Output directory.
+       Defaults to current directory.
+   -p  Number of subprocesses for multiprocessing tools.
+       Defaults to the available processing units.
+   -h  Display help.
 
 .. code-block:: shell
 
@@ -181,13 +264,32 @@ Run the genotyping pipeline
     OUT_DIR=/data/changeo/sample
     NPROC=4
 
-    # Run pipeline in docker image.
-    docker run -v $DATA_DIR:/data:z kleinstein/immcantation:devel tigger-genotype \
-        -d $DB -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC \
-        | tee run_genotype.out
+    # Run pipeline in docker image
+    docker run -v $DATA_DIR:/data:z kleinstein/immcantation:1.0.0 changeo-igblast \
+        -s $READS -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC \
+        | tee run_igblast.out
 
-Run the clonal threshold inferrence pipeline
+    # Singularity command
+    singularity exec -B $$DATA_DIR:/data immcantation-1.0.0.img changeo-igblast \
+        -s $READS -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC \
+        | tee run_igblast.out
+
+Clonal threshold inferrence pipeline
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Performs automated detection of the clonal assignment threshold.
+
+Arguments:
+   -d  Change-O formatted TSV (TAB) file.
+   -m  Method.
+       Defaults to gmm.
+   -n  Sample name or run identifier which will be used as the output file prefix.
+       Defaults to a truncated version of the input filename.
+   -o  Output directory.
+       Defaults to current directory.
+   -p  Number of subprocesses for multiprocessing tools.
+       Defaults to the available processing units.
+   -h  Display help.
 
 .. code-block:: shell
 
@@ -198,13 +300,34 @@ Run the clonal threshold inferrence pipeline
     OUT_DIR=/data/changeo/sample
     NPROC=4
 
-    # Run pipeline in docker image.
-    docker run -v $DATA_DIR:/data:z kleinstein/immcantation:devel shazam-threshold \
+    # Run pipeline in docker image
+    docker run -v $DATA_DIR:/data:z kleinstein/immcantation:1.0.0 shazam-threshold \
         -d $DB -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC \
         | tee run_threshold.out
 
-Run the clonal assignment pipeline
+    # Singularity command
+    singularity exec -B $$DATA_DIR:/data immcantation-1.0.0.img shazam-threshold \
+        -d $DB -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC \
+        | tee run_threshold.out
+
+Clonal assignment pipeline
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Assigns Ig sequences into clonally related lineages and builds full germline
+sequences.
+
+Arguments:
+   -d  Change-O formatted TSV (TAB) file.
+   -x  Distance threshold for clonal assignment.
+   -r  Directory containing IMGT-gapped reference germlines.
+       Defaults to /usr/local/share/germlines/imgt/human/vdj.
+   -n  Sample name or run identifier which will be used as the output file prefix.
+       Defaults to a truncated version of the input filename.
+   -o  Output directory.
+       Defaults to the sample name.
+   -p  Number of subprocesses for multiprocessing tools.
+       Defaults to the available processing units.
+   -h  Display help.
 
 .. code-block:: shell
 
@@ -216,7 +339,12 @@ Run the clonal assignment pipeline
     OUT_DIR=/data/changeo/sample
     NPROC=4
 
-    # Run pipeline in docker image.
-    docker run -v $DATA_DIR:/data:z kleinstein/immcantation:devel changeo-clone \
+    # Run pipeline in docker image
+    docker run -v $DATA_DIR:/data:z kleinstein/immcantation:1.0.0 changeo-clone \
+        -d $DB -x $DIST -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC \
+        | tee run_clone.out
+
+    # Singularity command
+    singularity exec -B $$DATA_DIR:/data immcantation-1.0.0.img changeo-clone \
         -d $DB -x $DIST -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC \
         | tee run_clone.out

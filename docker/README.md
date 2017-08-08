@@ -1,19 +1,19 @@
 ## Download
 
 ```
-docker pull javh/immcantation:release
+docker pull kleinstein/immcantation:devel
 ```
 
 ## List available pipelines
 
 ```
-docker run -it javh/immcantation:release
+docker run -it kleinstein/immcantation:devel
 ```
 
 ## Specific pipline help
 
 ```
-docker run -it javh/immcantation:release presto-abseq -h
+docker run -it kleinstein/immcantation:devel presto-abseq -h
 ```
 
 
@@ -21,7 +21,7 @@ docker run -it javh/immcantation:release presto-abseq -h
 
 ```
 DATA_DIR=~/workspace/igpipeline/docker/tmp
-docker run -it -v $DATA_DIR:/data:z javh/immcantation:release bash
+docker run -it -v $DATA_DIR:/data:z kleinstein/immcantation:devel bash
 ```
 
 ## Run pRESTO pipeline for AbSeq v3 data
@@ -41,7 +41,7 @@ NPROC=4
 
 # Run pipeline in docker image.
 # Note: mounting a host directory as a volume with the 'z' option is essential.
-docker run -it -v $DATA_DIR:/data:z javh/immcantation:release presto-abseq \
+docker run -it -v $DATA_DIR:/data:z kleinstein/immcantation:devel presto-abseq \
     -1 $READS_R1 -2 $READS_R2 -j $PRIMERS_R1 -v $PRIMERS_R2 \
     -c $CREGION -y $YAML -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC \
     | tee run_presto.out
@@ -59,7 +59,7 @@ NPROC=4
 
 # Run pipeline in docker image.
 # Note: mounting a host directory as a volume with the 'z' option is essential.
-docker run -it -v $DATA_DIR:/data:z javh/immcantation:release changeo-igblast \
+docker run -it -v $DATA_DIR:/data:z kleinstein/immcantation:devel changeo-igblast \
     -s $READS -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC \
     | tee run_igblast.out
 ```
@@ -76,7 +76,7 @@ NPROC=4
 
 # Run pipeline in docker image.
 # Note: mounting a host directory as a volume with the 'z' option is essential.
-docker run -it -v $DATA_DIR:/data:z javh/immcantation:release shazam-threshold \
+docker run -it -v $DATA_DIR:/data:z kleinstein/immcantation:devel shazam-threshold \
     -d $DB -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC \
     | tee run_threshold.out
 ```
@@ -94,7 +94,7 @@ NPROC=4
 
 # Run pipeline in docker image.
 # Note: mounting a host directory as a volume with the 'z' option is essential.
-docker run -it -v $DATA_DIR:/data:z javh/immcantation:release changeo-clone \
+docker run -it -v $DATA_DIR:/data:z kleinstein/immcantation:devel changeo-clone \
     -d $DB -x $DIST -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC \
     | tee run_clone.out
 ```
