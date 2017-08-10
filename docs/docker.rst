@@ -211,6 +211,8 @@ Arguments:
    -s  FASTA or FASTQ sequence file.
    -r  Directory containing IMGT-gapped reference germlines.
        Defaults to /usr/local/share/germlines/imgt/human/vdj.
+   -g  Species name. One of human or mouse. Defaults to human.
+   -t  Receptor type. One of ig or tr. Defaults to ig.
    -b  IgBLAST IGDATA directory, which contains the IgBLAST database, optional_file
        and auxillary_data directories. Defaults to /usr/local/share/igblast.
    -n  Sample name or run identifier which will be used as the output file prefix.

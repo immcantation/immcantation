@@ -2,12 +2,14 @@
 # Super script to run IgBLAST 1.6 and Change-O 0.3.4
 #
 # Author:  Jason Anthony Vander Heiden, Gur Yaari, Namita Gupta
-# Date:    2017.03.30
+# Date:    2017.08.10
 #
 # Arguments:
 #   -s  FASTA or FASTQ sequence file.
 #   -r  Directory containing IMGT-gapped reference germlines.
 #       Defaults to /usr/local/share/germlines/imgt/human/vdj.
+#   -g  Species name. One of human or mouse. Defaults to human.
+#   -t  Receptor type. One of ig or tr. Defaults to ig.
 #   -b  IgBLAST IGDATA directory, which contains the IgBLAST database, optional_file
 #       and auxillary_data directories. Defaults to /usr/local/share/igblast.
 #   -n  Sample name or run identifier which will be used as the output file prefix.
@@ -24,6 +26,8 @@ print_usage() {
     echo -e "  -s  FASTA or FASTQ sequence file."
     echo -e "  -r  Directory containing IMGT-gapped reference germlines.\n" \
             "     Defaults to /usr/local/share/germlines/imgt/human/vdj."
+    echo -e "  -g  Species name. One of human or mouse. Defaults to human."
+    echo -e "  -t  Receptor type. One of ig or tr. Defaults to ig."
     echo -e "  -b  IgBLAST IGDATA directory, which contains the IgBLAST database, optional_file\n" \
             "     and auxillary_data directories. Defaults to /usr/local/share/igblast."
     echo -e "  -n  Sample identifier which will be used as the output file prefix.\n" \
@@ -38,19 +42,27 @@ print_usage() {
 # Argument validation variables
 READS=false
 REFDIR_SET=false
+SPECIES_SET=false
+RECEPTOR_SET=false
 IGDATA_SET=false
 OUTNAME_SET=false
 OUTDIR_SET=false
 NPROC_SET=false
 
 # Get commandline arguments
-while getopts "s:r:d:n:o:p:h" OPT; do
+while getopts "s:r:g:t:d:n:o:p:h" OPT; do
     case "$OPT" in
     s)  READS=${OPTARG}
         READS_SET=true
         ;;
     r)  REFDIR=$OPTARG
         REFDIR_SET=true
+        ;;
+    g)  SPECIES=$OPTARG
+        SPECIES_SET=true
+        ;;
+    t)  RECEPTOR=$OPTARG
+        RECEPTOR_SET=true
         ;;
     b)  IGDATA=$OPTARG
         IGDATA_SET=true
@@ -97,6 +109,14 @@ else
     REFDIR=$(readlink -f ${REFDIR})
 fi
 
+if ! ${SPECIES_SET}; then
+    SPECIES="human"
+fi
+
+if ! ${RECEPTOR_SET}; then
+    RECEPTOR="ig"
+fi
+
 if ! ${IGDATA_SET}; then
     IGDATA="/usr/local/share/igblast"
 else
@@ -114,6 +134,18 @@ fi
 if ! ${NPROC_SET}; then
     NPROC=$(nproc)
 fi
+
+# Check arguments
+if [ ${SPECIES} != "human" ] || [ ${SPECIES} != "mouse" ]; then
+    echo "Species (-g) must be one of human or mouse" >&2
+    exit 1
+fi
+
+if [ ${RECEPTOR} != "ig" ] || [ ${RECEPTOR} != "tr" ]; then
+    echo "Receptor type (-t) must be one of ig or tr" >&2
+    exit 1
+fi
+
 
 # Define pipeline steps
 ZIP_FILES=true
@@ -168,7 +200,7 @@ fi
 
 # Run IgBLAST
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "IgBLAST"
-run_igblast.sh -s ${IG_FILE} -d ${IGDATA} -n ${NPROC} \
+run_igblast.sh -s ${IG_FILE} -g ${SPECIES} -t ${RECEPTOR} -b ${IGDATA} -n ${NPROC} \
     >> $PIPELINE_LOG 2> $ERROR_LOG
 DB_FILE=$(basename ${IG_FILE})
 DB_FILE="${DB_FILE%.fasta}.fmt7"

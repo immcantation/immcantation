@@ -2,12 +2,14 @@
 # Simple IgBLAST wrapper
 #
 # Author:  Jason Anthony Vander Heiden
-# Date:    2016.05.05
+# Date:    2017.08.10
 #
 # Arguments:
 #   -s = FASTA sequence file.
 #   -o = Output directory.
-#   -d = IGDATA directory, which contains the IgBLAST database, optional_file
+#   -g = Species name. One of human or mouse. Defaults to human.
+#   -t = Receptor type. One of ig or tr. Defaults to ig.
+#   -b = IGDATA directory, which contains the IgBLAST database, optional_file
 #        and auxillary_data directories. Defaults to /usr/local/share/igblast.
 #   -n = Number of IgBLAST threads. Defaults to 1.
 #   -h = Display help.
@@ -22,7 +24,9 @@ usage () {
     echo -e "Usage: `basename $0` [OPTIONS]"
     echo -e "  -s  FASTA sequence file."
     echo -e "  -o  Output directory."
-    echo -e "  -d  IGDATA directory, which contains the IgBLAST database,\n" \
+    echo -e "  -g  Species name. One of human or mouse. Defaults to human."
+    echo -e "  -t  Receptor type. One of ig or tr. Defaults to ig."
+    echo -e "  -b  IGDATA directory, which contains the IgBLAST database,\n" \
             "     optional_file and auxillary_data directories.\n" \
             "     Defaults to /usr/local/share/igblast."
     echo -e "  -n  Number of IgBLAST threads. Defaults to 1."
@@ -32,9 +36,11 @@ usage () {
 # Validation variables
 READFILE_SET=false
 OUTDIR_SET=false
+SPECIES_SET=false
+RECEPTOR_SET=false
 
 # Get commandline arguments
-while getopts "s:o:d:n:h" OPT; do
+while getopts "s:o:g:t:b:n:h" OPT; do
     case "$OPT" in
     s)  READFILE=$(readlink -f $OPTARG)
         READFILE_SET=true
@@ -42,7 +48,13 @@ while getopts "s:o:d:n:h" OPT; do
     o)  OUTDIR=$OPTARG
         OUTDIR_SET=true
         ;;
-    d)  IGDATA=$OPTARG
+    g)  SPECIES=$OPTARG
+        SPECIES_SET=true
+        ;;
+    t)  RECEPTOR=$OPTARG
+        RECEPTOR_SET=true
+        ;;
+    b)  IGDATA=$OPTARG
         IGDATA_SET=true
         ;;
     n)  NPROC=$OPTARG
@@ -65,22 +77,48 @@ if ! $READFILE_SET; then
     exit 1
 fi
 
+# Set unspecified arguments
+if ! ${SPECIES_SET}; then
+    SPECIES="human"
+fi
+
+if ! ${RECEPTOR_SET}; then
+    RECEPTOR="ig"
+fi
+
+# Check arguments
+if [ ${SPECIES} != "human" ] || [ ${SPECIES} != "mouse" ]; then
+    echo "Species (-g) must be one of human or mouse" >&2
+    exit 1
+fi
+
+if [ ${RECEPTOR} != "ig" ] || [ ${RECEPTOR} != "tr" ]; then
+    echo "Receptor type (-t) must be one of ig or tr" >&2
+    exit 1
+fi
+
 # Make output directory if it does not exist
 if $OUTDIR_SET && [ ! -d "${OUTDIR}" ]; then
     mkdir -p $OUTDIR
 fi
 
 # Define IgBLAST directories and base command
-# human_ig, human_tr, mouse_ig, mouse_tr
 export IGDATA
+declare -A SEQTYPE
+SEQTYPE[ig]="Ig"
+SEQTYPE[tr]="TCR"
+GERMLINE_V="imgt_${SPECIES}_${RECEPTOR}_v"
+GERMLINE_D="imgt_${SPECIES}_${RECEPTOR}_d"
+GERMLINE_J="imgt_${SPECIES}_${RECEPTOR}_j"
+AUXILIARY="${SPECIES}_gl.aux"
 IGBLAST_DB="${IGDATA}/database"
 IGBLAST_CMD="igblastn \
-    -germline_db_V ${IGBLAST_DB}/imgt_human_ig_v \
-    -germline_db_D ${IGBLAST_DB}/imgt_human_ig_d \
-    -germline_db_J ${IGBLAST_DB}/imgt_human_ig_j \
-    -auxiliary_data ${IGDATA}/optional_file/human_gl.aux \
-    -domain_system imgt -ig_seqtype Ig -organism human \
-    -outfmt '7 std qseq sseq btop'"
+    -germline_db_V ${IGBLAST_DB}/${GERMLINE_V} \
+    -germline_db_D ${IGBLAST_DB}/${GERMLINE_D} \
+    -germline_db_J ${IGBLAST_DB}/${GERMLINE_J} \
+    -auxiliary_data ${IGDATA}/optional_file/${AUXILIARY} \
+    -ig_seqtype ${SEQTYPE[${RECEPTOR}]} -organism ${SPECIES} \
+    -domain_system imgt -outfmt '7 std qseq sseq btop'"
 
 # Set run commmand
 OUTFILE=$(basename ${READFILE})
@@ -92,7 +130,7 @@ IGBLAST_RUN="${IGBLAST_CMD} -query ${READFILE} -out ${OUTFILE} -num_threads ${NP
 echo -e "   START> igblastn"
 echo -e " VERSION> ${IGBLAST_VER}"
 echo -e "  IGDATA> ${IGDATA}"
-echo -e "  GERMDB> imgt_human"
+echo -e "  GERMDB> ${SPECIES}_${RECEPTOR}"
 echo -e "    FILE> $(basename ${READFILE})\n"
 echo -e "PROGRESS> [Running]"
 eval $IGBLAST_RUN
