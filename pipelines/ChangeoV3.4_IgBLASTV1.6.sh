@@ -194,7 +194,7 @@ fi
 
 if $FUNCTIONAL; then
     printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "ParseDb select"
-    ParseDb.py select -d ${LAST_FILE} -f FUNCTIONAL -u T --outname "${OUTNAME}" \
+    ParseDb.py select -d ${LAST_FILE} -f FUNCTIONAL -u T TRUE --outname "${OUTNAME}" \
         >> $PIPELINE_LOG 2> $ERROR_LOG
     check_error
     LAST_FILE="${OUTNAME}_parse-select.tab"

@@ -64,6 +64,24 @@ docker run -it -v $DATA_DIR:/data:z kleinstein/immcantation:devel changeo-igblas
     | tee run_igblast.out
 ```
 
+## Run genotyping pipeline
+
+```
+# Arguments
+DATA_DIR=~/workspace/igpipeline/docker/tmp
+DB=/data/changeo/AAYHL_HD13M/AAYHL_HD13M_db-pass.tab
+DIST=0.15
+SAMPLE_NAME=AAYHL_HD13M
+OUT_DIR=/data/changeo/AAYHL_HD13M
+NPROC=4
+
+# Run pipeline in docker image.
+# Note: mounting a host directory as a volume with the 'z' option is essential.
+docker run -it -v $DATA_DIR:/data:z kleinstein/immcantation:devel tigger-genotype \
+    -d $DB -x $DIST -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC \
+    | tee run_clone.out
+```
+
 ## Run clonal threshold inferrence
 
 ```

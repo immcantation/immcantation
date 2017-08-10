@@ -225,7 +225,7 @@ Arguments:
 
     # Arguments
     DATA_DIR=~/project
-    READS=/data/presto/sample-final_collapse-unique_atleast-2.fastq
+    READS=/data/presto/sample/sample-final_collapse-unique_atleast-2.fastq
     SAMPLE_NAME=sample
     OUT_DIR=/data/changeo/sample
     NPROC=4
@@ -267,14 +267,14 @@ Arguments:
     NPROC=4
 
     # Run pipeline in docker image
-    docker run -v $DATA_DIR:/data:z kleinstein/immcantation:1.0.0 changeo-igblast \
-        -s $READS -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC \
-        | tee run_igblast.out
+    docker run -v $DATA_DIR:/data:z kleinstein/immcantation:1.0.0 tigger-genotype \
+        -d $DB -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC \
+        | tee run_genotype.out
 
     # Singularity command
-    singularity exec -B $DATA_DIR:/data immcantation-1.0.0.img changeo-igblast \
-        -s $READS -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC \
-        | tee run_igblast.out
+    singularity exec -B $DATA_DIR:/data immcantation-1.0.0.img tigger-genotype \
+        -d $DB -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC \
+        | tee run_genotype.out
 
 Clonal threshold inferrence pipeline
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -297,7 +297,7 @@ Arguments:
 
     # Arguments
     DATA_DIR=~/project
-    DB=/data/changeo/sample/sample_db-pass.tab
+    DB=/data/changeo/sample/sample_genotyped.tab
     SAMPLE_NAME=sample
     OUT_DIR=/data/changeo/sample
     NPROC=4
@@ -335,7 +335,7 @@ Arguments:
 
     # Arguments
     DATA_DIR=~/project
-    DB=/data/changeo/sample/sample_db-pass.tab
+    DB=/data/changeo/sample/sample_genotyped.tab
     DIST=0.15
     SAMPLE_NAME=sample
     OUT_DIR=/data/changeo/sample
