@@ -46,5 +46,5 @@ Documentation
 ------------------------------------------------------------------------
 
 Complete usage documentation, API documentation, and several tutorials
-for the Immcantation framework tools can be found on the 
+for the Immcantation framework tools can be found on the
 [Immcantation Portal](https://immcantation.readthedocs.io).

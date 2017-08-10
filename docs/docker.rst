@@ -154,7 +154,9 @@ All template pipeline scripts can be found in ``/usr/local/bin``.
 pRESTO pipeline for AbSeq data
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-A start to finish pRESTO processing script for AbSeq data.
+A start to finish pRESTO processing script for AbSeq data. Primer sequences are
+available from the Immcantation repository under
+`protocols/AbSeq <https://bitbucket.org/kleinstein/immcantation/src/tip/protocols/AbSeq>`__
 
 Arguments:
    -1  Read 1 FASTQ sequence file (sequence beginning with the C-region or J-segment).
@@ -178,9 +180,9 @@ Arguments:
     # Arguments
     DATA_DIR=~/project
     READS_R1=/data/raw/sample_R1.fastq
-    READS_R1=/data/raw/sample_R2.fastq
-    PRIMERS_R1=/data/primers/AbSeqV3_Human_R1CPrimers.fasta
-    PRIMERS_R2=/data/primers/AbSeqV3_Human_R2TSPrimers.fasta
+    READS_R2=/data/raw/sample_R2.fastq
+    PRIMERS_R1=/data/primers/AbSeqV3_R1_Human_IG_Primers.fasta
+    PRIMERS_R2=/data/primers/AbSeqV3_R2_TS.fasta
     CREGION=/data/primers/AbSeqV3_Human_InternalCRegion.fasta
     YAML=/data/sample.yaml
     SAMPLE_NAME=sample
@@ -194,7 +196,7 @@ Arguments:
         | tee run_presto.out
 
     # Singularity command
-    singularity exec -B $$DATA_DIR:/data immcantation-1.0.0.img presto-abseq \
+    singularity exec -B $DATA_DIR:/data immcantation-1.0.0.img presto-abseq \
         -1 $READS_R1 -2 $READS_R2 -j $PRIMERS_R1 -v $PRIMERS_R2 \
         -c $CREGION -y $YAML -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC \
         | tee run_presto.out
@@ -234,7 +236,7 @@ Arguments:
         | tee run_igblast.out
 
     # Singularity command
-    singularity exec -B $$DATA_DIR:/data immcantation-1.0.0.img changeo-igblast \
+    singularity exec -B $DATA_DIR:/data immcantation-1.0.0.img changeo-igblast \
         -s $READS -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC \
         | tee run_igblast.out
 
@@ -270,7 +272,7 @@ Arguments:
         | tee run_igblast.out
 
     # Singularity command
-    singularity exec -B $$DATA_DIR:/data immcantation-1.0.0.img changeo-igblast \
+    singularity exec -B $DATA_DIR:/data immcantation-1.0.0.img changeo-igblast \
         -s $READS -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC \
         | tee run_igblast.out
 
@@ -306,7 +308,7 @@ Arguments:
         | tee run_threshold.out
 
     # Singularity command
-    singularity exec -B $$DATA_DIR:/data immcantation-1.0.0.img shazam-threshold \
+    singularity exec -B $DATA_DIR:/data immcantation-1.0.0.img shazam-threshold \
         -d $DB -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC \
         | tee run_threshold.out
 
@@ -345,6 +347,6 @@ Arguments:
         | tee run_clone.out
 
     # Singularity command
-    singularity exec -B $$DATA_DIR:/data immcantation-1.0.0.img changeo-clone \
+    singularity exec -B $DATA_DIR:/data immcantation-1.0.0.img changeo-clone \
         -d $DB -x $DIST -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC \
         | tee run_clone.out
