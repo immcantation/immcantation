@@ -25,7 +25,7 @@ RUN echo "options(repos='${R_REPO}', download.file.method='libcurl')" >> /usr/li
     && Rscript -e "devtools::install_version('Rcpp', '${R_RCPP}', quiet=FALSE, clean=TRUE)" \
     && Rscript -e "install.packages(${R_DEPS}, clean=TRUE)"
 
-# Install utility and pipeline scripts
+# Install procotol data, utility scripts and pipelines
 RUN PACKAGE="immcantation" \
     && rm -rf /tmp/${PACKAGE} \
     && hg clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
@@ -41,6 +41,7 @@ RUN PACKAGE="immcantation" \
 	&& mv /tmp/${PACKAGE}/pipelines/${CHANGEO_CLONE} /usr/local/bin/changeo-clone \
 	&& mv /tmp/${PACKAGE}/pipelines/${SHAZAM_THRESHOLD} /usr/local/bin/shazam-threshold \
 	&& mv /tmp/${PACKAGE}/pipelines/${TIGGER_GENOTYPE} /usr/local/bin/tigger-genotype \
+	&& mv /tmp/${PACKAGE}/protocols /usr/local/share/protocols \
 	&& rm -r /tmp/${PACKAGE}
 
 # Install muscle

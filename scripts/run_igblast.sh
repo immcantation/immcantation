@@ -77,22 +77,18 @@ if ! $READFILE_SET; then
     exit 1
 fi
 
-# Set unspecified arguments
+# Set and check species
 if ! ${SPECIES_SET}; then
     SPECIES="human"
-fi
-
-if ! ${RECEPTOR_SET}; then
-    RECEPTOR="ig"
-fi
-
-# Check arguments
-if [ ${SPECIES} != "human" ] && [ ${SPECIES} != "mouse" ]; then
+elif [ ${SPECIES} != "human" ] && [ ${SPECIES} != "mouse" ]; then
     echo "Species (-g) must be one of human or mouse" >&2
     exit 1
 fi
 
-if [ ${RECEPTOR} != "ig" ] && [ ${RECEPTOR} != "tr" ]; then
+# Set and check receptor type
+if ! ${RECEPTOR_SET}; then
+    RECEPTOR="ig"
+elif [ ${RECEPTOR} != "ig" ] && [ ${RECEPTOR} != "tr" ]; then
     echo "Receptor type (-t) must be one of ig or tr" >&2
     exit 1
 fi

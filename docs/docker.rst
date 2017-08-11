@@ -104,12 +104,15 @@ Data
 ``/usr/local/share/germlines/imgt/IMGT.yaml``
     Information about the downloaded IMGT reference sequences.
 ``/usr/local/share/germlines/imgt/<species>/vdj/``
-    Directory containing IMGT-gapped V(D)J reference sequences.
+    Directory containing IMGT-gapped V(D)J reference sequences in FASTA format.
 ``/usr/local/share/igblast/``
     IgBLAST data directory.
 ``/usr/local/share/igblast/fasta/``
     Directory containing ungapped IMGT references sequences with IGH/IGL/IGL and
-    TRA/TRB/TRG/TRD combined into single files, respectively.
+    TRA/TRB/TRG/TRD combined into single FASTA files, respectively.
+``/usr/local/share/protocols/AbSeq/``
+    Directory containing primer, template switch and internal constant region
+    sequences for AbSeq data in FASTA format.
 
 
 Using the Container

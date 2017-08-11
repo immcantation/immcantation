@@ -102,49 +102,55 @@ else
     exit 1
 fi
 
-# Set unspecified arguments
+# Set and check species
+if ! ${SPECIES_SET}; then
+    SPECIES="human"
+elif [ ${SPECIES} != "human" ] && [ ${SPECIES} != "mouse" ]; then
+    echo "Species (-g) must be one of human or mouse" >&2
+    exit 1
+fi
+
+# Set and check receptor type
+if ! ${RECEPTOR_SET}; then
+    RECEPTOR="ig"
+elif [ ${RECEPTOR} != "ig" ] && [ ${RECEPTOR} != "tr" ]; then
+    echo "Receptor type (-t) must be one of ig or tr" >&2
+    exit 1
+fi
+
+# Set reference sequence
 if ! ${REFDIR_SET}; then
-    REFDIR="/usr/local/share/germlines/imgt/human/vdj"
+    if [ ${SPECIES} == "human" ]; then
+        REFDIR="/usr/local/share/germlines/imgt/human/vdj"
+    elif [ ${SPECIES} == "mouse" ]; then
+        REFDIR="/usr/local/share/germlines/imgt/mouse/vdj"
+    fi
 else
     REFDIR=$(readlink -f ${REFDIR})
 fi
 
-if ! ${SPECIES_SET}; then
-    SPECIES="human"
-fi
-
-if ! ${RECEPTOR_SET}; then
-    RECEPTOR="ig"
-fi
-
+# Set blast database
 if ! ${IGDATA_SET}; then
     IGDATA="/usr/local/share/igblast"
 else
     IGDATA=$(readlink -f ${IGDATA})
 fi
 
+# Set output name
 if ! ${OUTNAME_SET}; then
     OUTNAME=$(basename ${READS} | sed 's/\.[^.]*$//; s/_L[0-9]*_R[0-9]_[0-9]*//')
 fi
 
+# Set output directory
 if ! ${OUTDIR_SET}; then
     OUTDIR=${OUTNAME}
 fi
 
+# Set number of processes
 if ! ${NPROC_SET}; then
     NPROC=$(nproc)
 fi
 
-# Check arguments
-if [ ${SPECIES} != "human" ] && [ ${SPECIES} != "mouse" ]; then
-    echo "Species (-g) must be one of human or mouse" >&2
-    exit 1
-fi
-
-if [ ${RECEPTOR} != "ig" ] && [ ${RECEPTOR} != "tr" ]; then
-    echo "Receptor type (-t) must be one of ig or tr" >&2
-    exit 1
-fi
 
 
 # Define pipeline steps
