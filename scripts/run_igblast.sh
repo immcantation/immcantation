@@ -87,12 +87,12 @@ if ! ${RECEPTOR_SET}; then
 fi
 
 # Check arguments
-if [ ${SPECIES} != "human" ] || [ ${SPECIES} != "mouse" ]; then
+if [ ${SPECIES} != "human" ] && [ ${SPECIES} != "mouse" ]; then
     echo "Species (-g) must be one of human or mouse" >&2
     exit 1
 fi
 
-if [ ${RECEPTOR} != "ig" ] || [ ${RECEPTOR} != "tr" ]; then
+if [ ${RECEPTOR} != "ig" ] && [ ${RECEPTOR} != "tr" ]; then
     echo "Receptor type (-t) must be one of ig or tr" >&2
     exit 1
 fi
