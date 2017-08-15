@@ -118,14 +118,6 @@ if ! ${YAML_SET}; then
 fi
 
 # Set unspecified arguments
-if ! ${R1_PRIMERS_SET}; then
-    R1_PRIMERS="/usr/local/share/protocols/AbSeq/AbSeq_R1_Human_IG_Primers.fasta"
-fi
-
-if ! ${R2_PRIMERS_SET}; then
-    R2_PRIMERS="/usr/local/share/protocols/AbSeq/AbSeq_R2_TS.fasta"
-fi
-
 if ! ${VREF_SEQ_SET}; then
     VREF_SEQ="/usr/local/share/igblast/fasta/imgt_human_ig_v.fasta"
 fi
@@ -159,7 +151,9 @@ else
 fi
 
 # Check R1 primers
-if [ -e ${R1_PRIMERS} ]; then
+if ! ${R1_PRIMERS_SET}; then
+    R1_PRIMERS="/usr/local/share/protocols/AbSeq/AbSeq_R1_Human_IG_Primers.fasta"
+elif [ -e ${R1_PRIMERS} ]; then
     R1_PRIMERS=$(readlink -f ${R1_PRIMERS})
 else
     echo -e "File ${R1_PRIMERS} not found." >&2
@@ -167,13 +161,14 @@ else
 fi
 
 # Check R2 primers
-if [ -e ${R2_PRIMERS} ]; then
+if ! ${R2_PRIMERS_SET}; then
+    R2_PRIMERS="/usr/local/share/protocols/AbSeq/AbSeq_R2_TS.fasta"
+elif [ -e ${R2_PRIMERS} ]; then
     R2_PRIMERS=$(readlink -f ${R2_PRIMERS})
 else
     echo -e "File ${R2_PRIMERS} not found." >&2
     exit 1
 fi
-
 
 # Check for C-region file
 if ! ${CREGION_SEQ_SET}; then
