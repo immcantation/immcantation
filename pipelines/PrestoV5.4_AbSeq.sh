@@ -8,8 +8,11 @@
 #   -1  Read 1 FASTQ sequence file (sequence beginning with the C-region or J-segment).
 #   -2  Read 2 FASTQ sequence file (sequence beginning with the leader or V-segment).
 #   -j  Read 1 FASTA primer sequences (C-region or J-segment).
+#       Defaults to /usr/local/share/protocols/AbSeq/AbSeq_R1_Human_IG_Primers.fasta
 #   -v  Read 2 FASTA primer sequences (template switch or V-segment).
+#       Defaults to /usr/local/share/protocols/AbSeq/AbSeq_R2_TS.fasta.
 #   -c  C-region FASTA sequences for the C-region internal to the primer.
+#       If unspecified internal C-region alignment is not performed.
 #   -r  V-segment reference file.
 #       Defaults to /usr/local/share/germlines/igblast/fasta/imgt_human_ig_v.fasta
 #   -y  YAML file providing description fields for report generation.
@@ -28,9 +31,12 @@ print_usage() {
             "     Sequence beginning with the C-region or J-segment)."
     echo -e "  -2  Read 2 FASTQ sequence file.\n" \
             "     Sequence beginning with the leader or V-segment)."
-    echo -e "  -j  Read 1 FASTA primer sequences."
-    echo -e "  -v  Read 2 FASTA primer or template switch sequences."
-    echo -e "  -c  C-region FASTA sequences for the C-region internal to the primer."
+    echo -e "  -j  Read 1 FASTA primer sequences.\n"
+            "     Defaults to /usr/local/share/protocols/AbSeq/AbSeq_R1_Human_IG_Primers.fasta."
+    echo -e "  -v  Read 2 FASTA primer or template switch sequences.\n"
+            "     Defaults to /usr/local/share/protocols/AbSeq/AbSeq_R2_TS.fasta."
+    echo -e "  -c  C-region FASTA sequences for the C-region internal to the primer.\n" \
+            "     If unspecified internal C-region alignment is not performed."
     echo -e "  -r  V-segment reference file.\n" \
             "     Defaults to /usr/local/share/igblast/fasta/imgt_human_ig_v.fasta."
     echo -e "  -y  YAML file providing description fields for report generation."
@@ -111,17 +117,20 @@ if ! ${R1_PRIMERS_SET} || ! ${R2_PRIMERS_SET}; then
     exit 1
 fi
 
-if ! ${CREGION_SEQ_SET}; then
-    echo -e "You must specify the internal C-region sequence file using the -c option." >&2
-    exit 1
-fi
-
 if ! ${YAML_SET}; then
     echo -e "You must specify the description file in YAML format using the -y option." >&2
     exit 1
 fi
 
 # Set unspecified arguments
+if ! ${R1_PRIMERS_SET}; then
+    R1_PRIMERS="/usr/local/share/protocols/AbSeq/AbSeq_R1_Human_IG_Primers.fasta"
+fi
+
+if ! ${R2_PRIMERS_SET}; then
+    R2_PRIMERS="/usr/local/share/protocols/AbSeq/AbSeq_R2_TS.fasta"
+fi
+
 if ! ${VREF_SEQ_SET}; then
     VREF_SEQ="/usr/local/share/igblast/fasta/imgt_human_ig_v.fasta"
 fi
@@ -138,7 +147,7 @@ if ! ${NPROC_SET}; then
     NPROC=$(nproc)
 fi
 
-# Check that files exist and determined absolute paths
+# Check R1 reads
 if [ -e ${R1_READS} ]; then
     R1_READS=$(readlink -f ${R1_READS})
 else
@@ -146,6 +155,7 @@ else
     exit 1
 fi
 
+# Check R2 reads
 if [ -e ${R2_READS} ]; then
     R2_READS=$(readlink -f ${R2_READS})
 else
@@ -153,6 +163,7 @@ else
     exit 1
 fi
 
+# Check R1 primers
 if [ -e ${R1_PRIMERS} ]; then
     R1_PRIMERS=$(readlink -f ${R1_PRIMERS})
 else
@@ -160,6 +171,7 @@ else
     exit 1
 fi
 
+# Check R2 primers
 if [ -e ${R2_PRIMERS} ]; then
     R2_PRIMERS=$(readlink -f ${R2_PRIMERS})
 else
@@ -167,13 +179,19 @@ else
     exit 1
 fi
 
-if [ -e ${CREGION_SEQ} ]; then
+
+# Check for C-region file
+if ! ${CREGION_SEQ_SET}; then
+    ALIGN_CREGION=false
+elif [ -e ${CREGION_SEQ} ]; then
+    ALIGN_CREGION=true
     CREGION_SEQ=$(readlink -f ${CREGION_SEQ})
 else
     echo -e "File ${CREGION_SEQ} not found." >&2
     exit 1
 fi
 
+# Check report yaml file
 if [ -e ${YAML} ]; then
     YAML=$(readlink -f ${YAML})
 else
@@ -187,7 +205,6 @@ DELETE_FILES=true
 FILTER_LOWQUAL=true
 ALIGN_SETS=false
 MASK_LOWQUAL=false
-ALIGN_CREGION=true
 REPORT=true
 
 # FilterSeq run parameters

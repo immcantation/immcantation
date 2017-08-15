@@ -172,13 +172,17 @@ pRESTO pipeline for preprocessing AbSeq data
 A start to finish pRESTO processing script for AbSeq data. Primer sequences are
 available from the Immcantation repository under
 `protocols/AbSeq <https://bitbucket.org/kleinstein/immcantation/src/tip/protocols/AbSeq>`__
+or inside the container under ``/usr/local/share/protocols/AbSeq``.
 
 Arguments:
    -1  Read 1 FASTQ sequence file (sequence beginning with the C-region or J-segment).
    -2  Read 2 FASTQ sequence file (sequence beginning with the leader or V-segment).
    -j  Read 1 FASTA primer sequences (C-region or J-segment).
+       Defaults to /usr/local/share/protocols/AbSeq/AbSeq_R1_Human_IG_Primers.fasta
    -v  Read 2 FASTA primer sequences (template switch or V-segment).
+       Defaults to /usr/local/share/protocols/AbSeq/AbSeq_R2_TS.fasta.
    -c  C-region FASTA sequences for the C-region internal to the primer.
+       If unspecified internal C-region alignment is not performed.
    -r  V-segment reference file.
        Defaults to /usr/local/share/germlines/igblast/fasta/imgt_human_ig_v.fasta
    -y  YAML file providing description fields for report generation.
@@ -212,9 +216,6 @@ file containing information about the data and processing. Valid fields are show
     DATA_DIR=~/project
     READS_R1=/data/raw/sample_R1.fastq
     READS_R2=/data/raw/sample_R2.fastq
-    PRIMERS_R1=/data/primers/AbSeqV3_R1_Human_IG_Primers.fasta
-    PRIMERS_R2=/data/primers/AbSeqV3_R2_TS.fasta
-    CREGION=/data/primers/AbSeqV3_Human_InternalCRegion.fasta
     YAML=/data/sample.yaml
     SAMPLE_NAME=sample
     OUT_DIR=/data/presto/sample
@@ -222,14 +223,12 @@ file containing information about the data and processing. Valid fields are show
 
     # Docker command
     docker run -v $DATA_DIR:/data:z kleinstein/immcantation:1.0.0 presto-abseq \
-        -1 $READS_R1 -2 $READS_R2 -j $PRIMERS_R1 -v $PRIMERS_R2 \
-        -c $CREGION -y $YAML -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC \
+        -1 $READS_R1 -2 $READS_R2 -y $YAML -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC \
         | tee run_presto.out
 
     # Singularity command
     singularity exec -B $DATA_DIR:/data immcantation-1.0.0.img presto-abseq \
-        -1 $READS_R1 -2 $READS_R2 -j $PRIMERS_R1 -v $PRIMERS_R2 \
-        -c $CREGION -y $YAML -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC \
+        -1 $READS_R1 -2 $READS_R2 -y $YAML -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC \
         | tee run_presto.out
 
 IgBLAST pipeline
