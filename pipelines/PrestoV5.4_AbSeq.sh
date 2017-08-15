@@ -112,11 +112,6 @@ if ! ${R1_READS_SET} || ! ${R2_READS_SET}; then
     exit 1
 fi
 
-if ! ${R1_PRIMERS_SET} || ! ${R2_PRIMERS_SET}; then
-    echo -e "You must specify both C-region primer and template switch \nsequence files using the -j and -v options." >&2
-    exit 1
-fi
-
 if ! ${YAML_SET}; then
     echo -e "You must specify the description file in YAML format using the -y option." >&2
     exit 1
