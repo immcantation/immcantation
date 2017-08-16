@@ -10,7 +10,7 @@ The image is available on docker hub at:
 `kleinstein/immcantation <https://hub.docker.com/r/kleinstein/immcantation/>`__
 
 Images are versioned through tags with images containing official releases
-denoted by meta-version numbers (eg, ``1.0.0``). The ``devel`` tag denoted the
+denoted by meta-version numbers (eg, ``1.0.0``). The ``devel`` tag denotes the
 latest development (unstabled) builds.
 
 Getting the Container

@@ -1,5 +1,4 @@
-Immcantation
-========================================================================
+# Immcantation
 
 Advances in high-throughput sequencing technologies now allow for
 large-scale characterization of B cell receptor (BCR) and T cell
@@ -13,8 +12,7 @@ ecosystem for high-throughput AIRR-seq datasets. Beginning from raw
 reads, Python and R packages are provided for pre-processing,
 population structure determination, and repertoire analysis.
 
-Repository
-------------------------------------------------------------------------
+### Repository
 
 This repository contains common documentation, accessory scripts,
 template pipelines, and docker build files for tools in the Immcantation
@@ -28,8 +26,7 @@ pipelines   | Pipeline template scripts for the docker images.
 protocols   | Primer sequences and amplicon designs for published experimental protocols.
 scripts     | Accessory scripts for IMGT, IgBLAST and VDJTools.
 
-Docker Container
-------------------------------------------------------------------------
+### Docker Container
 
 We have provided a complete installation of the Immcantation framework,
 its dependencies, accessory scripts, and IgBLAST in a
@@ -42,8 +39,7 @@ Images are versioned through tags with images containing official
 releases denoted by meta-version numbers (eg, `1.0.0`). The `devel` tag
 denotes the latest development (unstabled) builds.
 
-Documentation
-------------------------------------------------------------------------
+### Documentation
 
 Complete usage documentation, API documentation, and several tutorials
 for the Immcantation framework tools can be found on the
