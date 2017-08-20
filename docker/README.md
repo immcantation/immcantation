@@ -4,6 +4,41 @@
 docker pull kleinstein/immcantation:devel
 ```
 
+## Singularity
+
+### Create a Singularity container
+
+Create a container from a specific version of Immcantation (do not use `latest`, this requires `singularity` > 2.3, you **do not need root**.
+
+```
+singularity pull --size 5000 docker://kleinstein/immcantation:1.0.0
+```
+
+### Configure bind points
+
+The container has `/data` and `/scratch` mountpoints that other used to make other filesystems (`/home` is automatically mounted) inside the container.
+
+Add this variable to your `.bashrc` to configure this permanently on your machine:
+
+```
+export SINGULARITY_BINDPATH="/full/path/to/data/folder:/data,/full/path/to/your/scratch:/scratch"
+```
+
+### Interactive shell inside the container
+
+```
+IMAGE=immcantation-1.0.0.img
+singularity shell $IMAGE
+```
+
+### Launch Immcantation commands
+
+For example:
+
+```
+singularity exec $IMAGE presto-abseq -h
+```
+
 ## List available pipelines
 
 ```
