@@ -35,3 +35,4 @@ RUN dnf -y update && dnf install -y \
 VOLUME /data
 VOLUME /scratch
 VOLUME /software
+VOLUME /oasis
