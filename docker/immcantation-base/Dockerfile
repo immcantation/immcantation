@@ -31,3 +31,7 @@ RUN dnf -y update && dnf install -y \
 	texlive-titling \
 	wget \
 	&& dnf clean all
+
+VOLUME /data
+VOLUME /scratch
+VOLUME /software

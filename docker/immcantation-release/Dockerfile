@@ -139,9 +139,6 @@ RUN fetch_igblastdb.sh -o /usr/local/share/igblast \
     && imgt2igblast.sh -i /usr/local/share/germlines/imgt -o /usr/local/share/igblast
 
 # Setup users and permissions
-VOLUME /data
-VOLUME /scratch
-VOLUME /software
 RUN useradd -u 1000 -g users magus \
     && echo "umask 000" >> /home/magus/.bashrc
 USER magus
