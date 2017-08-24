@@ -5,7 +5,7 @@ LABEL maintainer="Jason Anthony Vander Heiden [jason.vanderheiden@yale.edu], \
 
 # Define R package installation parameters
 ARG R_REPO="http://lib.stat.cmu.edu/R/CRAN"
-ARG R_RCPP="0.12.11"
+ARG R_RCPP="0.12.12"
 ARG R_DEPS="c('ape', \
               'bibtex', \
               'captioner', \
