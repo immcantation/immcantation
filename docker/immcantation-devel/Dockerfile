@@ -15,7 +15,7 @@ ENV PRESTO_ABSEQ="PrestoV5.4_AbSeq.sh" \
 
 # Define R build options
 ARG R_REPO="http://lib.stat.cmu.edu/R/CRAN"
-ARG R_RCPP="0.12.11"
+ARG R_RCPP="0.12.12"
 ARG R_DEPS="c('roxygen2', 'testthat', 'rmarkdown', 'knitr', 'optparse')"
 ARG R_BUILD="library(devtools); install_deps(upgrade=FALSE, clean=TRUE); document(); install(build_vignettes=TRUE, clean=TRUE)"
 

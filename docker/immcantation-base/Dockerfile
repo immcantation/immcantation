@@ -3,6 +3,12 @@ LABEL maintainer="Jason Anthony Vander Heiden [jason.vanderheiden@yale.edu], \
                   Susanna Marquez [susanna.marquez@yale.edu]" \
       description="Dependencies, applications and scripts for the Immcantation framework."
 
+# Bind points
+VOLUME /data
+VOLUME /scratch
+VOLUME /software
+VOLUME /oasis
+
 # Versioning
 COPY tools/versions.py /usr/local/bin/versions
 
@@ -31,8 +37,3 @@ RUN dnf -y update && dnf install -y \
 	texlive-titling \
 	wget \
 	&& dnf clean all
-
-VOLUME /data
-VOLUME /scratch
-VOLUME /software
-VOLUME /oasis

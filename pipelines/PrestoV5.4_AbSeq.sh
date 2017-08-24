@@ -296,8 +296,8 @@ check_error
 
 # Assign UIDs to read 1 sequences
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "PairSeq"
-PairSeq.py -1 "${OUTNAME}-R2_primers-pass.fastq" -2 "${OUTNAME}-R1_primers-pass.fastq" \
-    --1f BARCODE --coord illumina >> $PIPELINE_LOG 2> $ERROR_LOG
+PairSeq.py -1 "${OUTNAME}-R1_primers-pass.fastq" -2 "${OUTNAME}-R2_primers-pass.fastq" \
+    --2f BARCODE --coord illumina >> $PIPELINE_LOG 2> $ERROR_LOG
 check_error
 
 
@@ -361,7 +361,7 @@ check_error
 
 # Assign UIDs to read 1 sequences
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "PairSeq"
-PairSeq.py -1 "${OUTNAME}-R2_consensus-pass.fastq" -2 "${OUTNAME}-R1_consensus-pass.fastq" \
+PairSeq.py -1 "${OUTNAME}-R1_consensus-pass.fastq" -2 "${OUTNAME}-R2_consensus-pass.fastq" \
     --coord presto >> $PIPELINE_LOG 2> $ERROR_LOG
 check_error
 
@@ -373,7 +373,6 @@ if $BC_PRCONS_FLAG; then
 else
     PRFIELD="PRIMER"
 fi
-
 
 AssemblePairs.py sequential -1 "${OUTNAME}-R2_consensus-pass_pair-pass.fastq" \
     -2 "${OUTNAME}-R1_consensus-pass_pair-pass.fastq" -r $VREF_SEQ \
