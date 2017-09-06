@@ -129,7 +129,8 @@ RUN PACKAGE="prestor" \
 # Download and build references databases
 RUN fetch_igblastdb.sh -o /usr/local/share/igblast \
     && fetch_imgtdb.sh -o /usr/local/share/germlines/imgt \
-    && imgt2igblast.sh -i /usr/local/share/germlines/imgt -o /usr/local/share/igblast
+    && imgt2igblast.sh -i /usr/local/share/germlines/imgt -o /usr/local/share/igblast \
+    && fetch_phix.sh -o /usr/local/share/phix
 
 # Setup users and permissions
 RUN useradd -u 1000 -g users magus \
