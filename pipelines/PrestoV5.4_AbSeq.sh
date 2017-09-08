@@ -2,7 +2,7 @@
 # Super script to run the pRESTO 0.5.3 pipeline on AbVitro AbSeq V3 data
 # 
 # Author:  Jason Anthony Vander Heiden, Gur Yaari, Namita Gupta
-# Date:    2017.04.28
+# Date:    2017.09.08
 # 
 # Arguments:
 #   -1  Read 1 FASTQ sequence file (sequence beginning with the C-region or J-segment).
@@ -22,6 +22,8 @@
 #       Defaults to the sample name.
 #   -p  Number of subprocesses for multiprocessing tools.
 #       Defaults to the available processing units.
+#   -x  The format of the sequence identifier which defines shared coordinate 
+#       information across mate pairs. Will be passed to PairSeq.py. Defaults to illumina.
 #   -h  Display help.
 
 # Print usage
@@ -46,6 +48,9 @@ print_usage() {
             "     Defaults to the sample name."
     echo -e "  -p  Number of subprocesses for multiprocessing tools.\n" \
             "     Defaults to the available cores."
+    echo -e "  -x  The format of the sequence identifier which defines shared coordinate" \
+                   "information across mate pairs.  Will be passed to PairSeq.py."\
+                   "Defaults to illumina."            
     echo -e "  -h  This message."
 }
 
@@ -60,6 +65,7 @@ YAML_SET=FALSE
 OUTNAME_SET=false
 OUTDIR_SET=false
 NPROC_SET=false
+COORD_SET=false
 
 # Get commandline arguments
 while getopts "1:2:j:v:c:r:y:n:o:p:h" OPT; do
@@ -94,6 +100,8 @@ while getopts "1:2:j:v:c:r:y:n:o:p:h" OPT; do
     p)  NPROC=$OPTARG
         NPROC_SET=true
         ;;
+    x)  COORD=$OPTARG
+        COORD_SET=true
     h)  print_usage
         exit
         ;;
@@ -132,6 +140,10 @@ fi
 
 if ! ${NPROC_SET}; then
     NPROC=$(nproc)
+fi
+
+if ! ${COORD_SET}; then
+    COORD="illumina"
 fi
 
 # Check R1 reads
@@ -297,7 +309,7 @@ check_error
 # Assign UIDs to read 1 sequences
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "PairSeq"
 PairSeq.py -1 "${OUTNAME}-R1_primers-pass.fastq" -2 "${OUTNAME}-R2_primers-pass.fastq" \
-    --2f BARCODE --coord illumina >> $PIPELINE_LOG 2> $ERROR_LOG
+    --2f BARCODE --coord $COORD >> $PIPELINE_LOG 2> $ERROR_LOG
 check_error
 
 
