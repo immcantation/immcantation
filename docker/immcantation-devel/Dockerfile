@@ -11,7 +11,8 @@ ENV PRESTO_ABSEQ="PrestoV5.4_AbSeq.sh" \
     CHANGEO_IGBLAST="ChangeoV3.7_IgBLASTV1.7.sh" \
     CHANGEO_CLONE="ChangeoV3.7_Clone.sh" \
     SHAZAM_THRESHOLD="ShazamV1.8_Distance.R" \
-    TIGGER_GENOTYPE="TiggerV2.10_Genotype.R"
+    TIGGER_GENOTYPE="TiggerV2.10_Genotype.R" \
+    PREPROCESS_PHIX="Preprocess_PhixV1.0.sh"
 
 # Define R build options
 ARG R_REPO="http://lib.stat.cmu.edu/R/CRAN"
@@ -41,6 +42,7 @@ RUN PACKAGE="immcantation" \
 	&& mv /tmp/${PACKAGE}/pipelines/${CHANGEO_CLONE} /usr/local/bin/changeo-clone \
 	&& mv /tmp/${PACKAGE}/pipelines/${SHAZAM_THRESHOLD} /usr/local/bin/shazam-threshold \
 	&& mv /tmp/${PACKAGE}/pipelines/${TIGGER_GENOTYPE} /usr/local/bin/tigger-genotype \
+	&& mv /tmp/${PACKAGE}/pipelines/${PREPROCESS_PHIX} /usr/local/bin/preprocess-phix \
 	&& mv /tmp/${PACKAGE}/protocols /usr/local/share/protocols \
 	&& rm -r /tmp/${PACKAGE}
 
@@ -146,4 +148,5 @@ CMD echo -e "Report version information:\n" \
             "  changeo-igblast\n" \
             "  changeo-clone\n" \
             "  tigger-genotype\n" \
-            "  shazam-threshold"
+            "  shazam-threshold" \
+            "  preprocess-phix"
