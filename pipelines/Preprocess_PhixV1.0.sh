@@ -21,9 +21,10 @@
 print_usage() {
     echo -e "Usage: `basename $0` [OPTIONS]"
     echo -e "  -s   FASTQ sequence file."
-    echo -e "  -r   Directory containing phiX174 reference db."                
+    echo -e "  -r   Directory containing phiX174 reference db. "\
+                    "Defaults to /usr/local/share/phix"                
     echo -e "  -o   Output directory.\n" \
-            "       Defaults to the sample name."
+            "       Defaults to the FASTQ file directory."
     echo -e "  -n   Sample name or run identifier which will be used as\n" \
             "       the output file suffix. Defaults to '_nophix'.\n"            
     echo -e "  -p   Number of subprocesses for multiprocessing tools.\n" \
@@ -90,8 +91,7 @@ ID=$(basename ${READS} | sed 's/.fastq//')
 
 # Exit if required arguments are not provided
 if ! ${PHIXDIR_SET}; then
-    echo -e "You must specify the directory containing phiX174 reference db using the -r option." >&2
-    exit 1
+    PHIX_DIR="/usr/local/share/phix"
 fi
 
 # Check that dir exists and determined absolute paths
