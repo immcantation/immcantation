@@ -79,8 +79,8 @@ Gur Yaari, Steven H. Kleinstein
 Contact Information
 ==========================================================================================
 
-If you have questions you can email
-`Steven Kleinstein <mailto:steven.kleinstein@yale.edu>`__.
+If you have questions you can email the
+`Immcantation Group <mailto:immcantation@googlegroups.com>`__.
 
 For additional computational immunology software from the Kleinstein Lab see our
 `website <http://medicine.yale.edu/lab/kleinstein/software/>`__.
