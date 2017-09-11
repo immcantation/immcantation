@@ -4,7 +4,7 @@
 # a hit will be filtered out
 #
 # Author:  Susanna Marquez
-# Date:    2017.09.07
+# Date:    2017.09.11
 #
 # Required Arguments:
 #   -s  FASTQ sequence file
