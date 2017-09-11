@@ -91,7 +91,7 @@ ID=$(basename ${READS} | sed 's/.fastq//')
 
 # Exit if required arguments are not provided
 if ! ${PHIXDIR_SET}; then
-    PHIX_DIR="/usr/local/share/phix"
+    PHIXDIR="/usr/local/share/phix"
 fi
 
 # Check that dir exists and determined absolute paths
@@ -140,7 +140,8 @@ check_error() {
 
 # Start
 BLASTN_VERSION=$(blastn -version  | grep 'Package' |sed s/'Package: '//)
-PHIX_VERSION=$(grep date tmp_phix/phix174.yaml | sed s/'date: *'//)
+PHIX_VERSION=$(grep date ${PHIXDIR}/phix174.yaml | sed s/'date: *'//)
+
 echo -e "OUTNAME ${OUTNAME}"
 echo -e "OUTDIR ${OUTDIR}"
 echo -e "PHIXDB  ${PHIXDB}"
