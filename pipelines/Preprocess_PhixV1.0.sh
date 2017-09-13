@@ -151,6 +151,29 @@ echo -e "LOGDIR: ${LOGDIR}"
 echo -e "\nSTART"
 STEP=0
 
+## Remove all-N sequence
+## (blastn crashes with all N sequences)
+printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "Removing all N sequences"
+echo -e "   START> awk" >> $PIPELINE_LOG
+NO_N_READS=$OUTDIR/$ID"_noN.fastq"
+awk '{y= i++ % 4 ; L[y]=$0; if(y==3 && L[1] ~ /[^N]/) {printf("%s\n%s\n%s\n%s\n",L[0],L[1],L[2],L[3]);}}' ${READS} > ${NO_N_READS} 2> $ERROR_LOG
+
+INPUT_SIZE=$((`wc -l < ${READS}`/4))
+OUTPUT_SIZE=$((`wc -l < ${NO_N_READS}`/4))
+REMOVED_SEQS=$((${INPUT_SIZE}-${OUTPUT_SIZE}))
+
+if [ ${REMOVED_SEQS} -eq 0 ]; then
+ echo "deleting"
+ rm $NO_N_READS
+else
+ READS=$NO_N_READS
+fi
+   
+echo -e "   INPUT_SIZE> ${INPUT_SIZE}" >> $PIPELINE_LOG
+echo -e "   OUTPUT_SIZE> ${OUTPUT_SIZE}" >> $PIPELINE_LOG
+echo -e "   REMOVED_SEQS> ${REMOVED_SEQS}" >> $PIPELINE_LOG
+echo -e "   READS_FILE> ${READS}" >> $PIPELINE_LOG
+
 ## Fix headers. Convert to presto format
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "ConvertHeaders"
 ConvertHeaders.py illumina -s ${READS} --outdir ${OUTDIR}
