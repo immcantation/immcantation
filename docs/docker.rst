@@ -149,6 +149,10 @@ To execute a specific command::
 In this case, we are executing the ``versions report`` command which will inspect
 the installed software versions and print them to standard output.
 
+There is an analagous ``builds report`` command to display the build date and
+changesets used during the image build. This is particularly relevant if you
+are using the ``kleinstein/immcantation:devel`` development builds.
+
 
 Running the Template Pipeline Scripts
 --------------------------------------------------------------------------------

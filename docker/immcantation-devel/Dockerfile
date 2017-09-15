@@ -5,6 +5,7 @@ LABEL maintainer="Jason Anthony Vander Heiden [jason.vanderheiden@yale.edu], \
 
 # Version
 COPY Version.yaml /Version.yaml
+RUN builds write -n date -v "$(date +'%Y-%m-%d %T %Z')"
 
 # Define pipeline scripts
 ENV PRESTO_ABSEQ="PrestoV5.4_AbSeq.sh" \
@@ -44,6 +45,7 @@ RUN PACKAGE="immcantation" \
 	&& mv /tmp/${PACKAGE}/pipelines/${TIGGER_GENOTYPE} /usr/local/bin/tigger-genotype \
 	&& mv /tmp/${PACKAGE}/pipelines/${PREPROCESS_PHIX} /usr/local/bin/preprocess-phix \
 	&& mv /tmp/${PACKAGE}/protocols /usr/local/share/protocols \
+	&& builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
 	&& rm -r /tmp/${PACKAGE}
 
 # Install muscle
@@ -93,6 +95,7 @@ RUN PACKAGE="presto" \
     && rm -rf /tmp/${PACKAGE} \
     && hg clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
 	&& pip3 install --no-cache-dir /tmp/${PACKAGE} \
+	&& builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
 	&& rm -r /tmp/${PACKAGE}
 
 # Install changeo
@@ -100,19 +103,22 @@ RUN PACKAGE="changeo" \
     && rm -rf /tmp/${PACKAGE} \
     && hg clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
 	&& pip3 install --no-cache-dir /tmp/${PACKAGE} \
+	&& builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
 	&& rm -r /tmp/${PACKAGE}
 
 # Install alakazam
 RUN PACKAGE="alakazam" \
     && rm -rf /tmp/${PACKAGE} \
     && hg clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
-    && Rscript -e "setwd('/tmp/${PACKAGE}'); ${R_BUILD}"
+    && Rscript -e "setwd('/tmp/${PACKAGE}'); ${R_BUILD}" \
+    && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE})
 
 # Install shazam
 RUN PACKAGE="shazam" \
     && rm -rf /tmp/${PACKAGE} \
     && hg clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
     && Rscript -e "setwd('/tmp/${PACKAGE}'); ${R_BUILD}" \
+    && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
     && rm -r /tmp/${PACKAGE}
 
 # Install tigger
@@ -120,6 +126,7 @@ RUN PACKAGE="tigger" \
     && rm -rf /tmp/${PACKAGE} \
     && hg clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
     && Rscript -e "setwd('/tmp/${PACKAGE}'); ${R_BUILD}" \
+    && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
     && rm -r /tmp/${PACKAGE}
 
 # Install prestor
@@ -127,6 +134,7 @@ RUN PACKAGE="prestor" \
     && rm -rf /tmp/${PACKAGE} \
     && hg clone https://bitbucket.org/javh/prototype-prestor /tmp/${PACKAGE} \
     && Rscript -e "setwd('/tmp/${PACKAGE}'); ${R_BUILD}" \
+    && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
     && rm -r /tmp/${PACKAGE}
 
 # Download and build references databases
@@ -143,6 +151,8 @@ USER magus
 # Set commands
 CMD echo -e "Report version information:\n" \
             "  versions report\n" \
+            "Report build details:\n" \
+            "  builds report\n" \
             "Available pipeline commands:\n" \
             "  presto-abseq\n" \
             "  changeo-igblast\n" \

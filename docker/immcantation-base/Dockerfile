@@ -11,6 +11,7 @@ VOLUME /oasis
 
 # Versioning
 COPY tools/versions.py /usr/local/bin/versions
+COPY tools/builds.py /usr/local/bin/builds
 
 # Update and install required packages
 RUN dnf -y update && dnf install -y \

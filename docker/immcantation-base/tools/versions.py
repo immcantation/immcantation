@@ -40,7 +40,7 @@ def readVersions(version_file=default_version_file):
       version_file : YAML file containing version information.
 
     Returns:
-      dict : Version strings.
+      Version : Version object.
     """
     with open(version_file, 'r') as handle:
         return Version(yaml.load(handle))
