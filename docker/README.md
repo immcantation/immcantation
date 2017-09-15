@@ -45,7 +45,7 @@ singularity exec $IMAGE presto-abseq -h
 docker run -it kleinstein/immcantation:devel
 ```
 
-## Specific pipline help
+## Specific pipeline help
 
 ```
 docker run -it kleinstein/immcantation:devel presto-abseq -h

@@ -4,7 +4,7 @@
 # a hit will be filtered out
 #
 # Author:  Susanna Marquez
-# Date:    2017.09.07
+# Date:    2017.09.11
 #
 # Required Arguments:
 #   -s  FASTQ sequence file
@@ -91,7 +91,7 @@ ID=$(basename ${READS} | sed 's/.fastq//')
 
 # Exit if required arguments are not provided
 if ! ${PHIXDIR_SET}; then
-    PHIX_DIR="/usr/local/share/phix"
+    PHIXDIR="/usr/local/share/phix"
 fi
 
 # Check that dir exists and determined absolute paths
@@ -140,7 +140,8 @@ check_error() {
 
 # Start
 BLASTN_VERSION=$(blastn -version  | grep 'Package' |sed s/'Package: '//)
-PHIX_VERSION=$(grep date tmp_phix/phix174.yaml | sed s/'date: *'//)
+PHIX_VERSION=$(grep date ${PHIXDIR}/phix174.yaml | sed s/'date: *'//)
+
 echo -e "OUTNAME ${OUTNAME}"
 echo -e "OUTDIR ${OUTDIR}"
 echo -e "PHIXDB  ${PHIXDB}"
@@ -149,6 +150,29 @@ echo -e "PHIX VERSION (DOWNLOAD DATE): ${PHIX_VERSION}"
 echo -e "LOGDIR: ${LOGDIR}"
 echo -e "\nSTART"
 STEP=0
+
+## Remove all-N sequence
+## (blastn crashes with all N sequences)
+printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "Removing all N sequences"
+echo -e "   START> awk" >> $PIPELINE_LOG
+NO_N_READS=$OUTDIR/$ID"_noN.fastq"
+awk '{y= i++ % 4 ; L[y]=$0; if(y==3 && L[1] ~ /[^N]/) {printf("%s\n%s\n%s\n%s\n",L[0],L[1],L[2],L[3]);}}' ${READS} > ${NO_N_READS} 2> $ERROR_LOG
+
+INPUT_SIZE=$((`wc -l < ${READS}`/4))
+OUTPUT_SIZE=$((`wc -l < ${NO_N_READS}`/4))
+REMOVED_SEQS=$((${INPUT_SIZE}-${OUTPUT_SIZE}))
+
+if [ ${REMOVED_SEQS} -eq 0 ]; then
+ echo "deleting"
+ rm $NO_N_READS
+else
+ READS=$NO_N_READS
+fi
+   
+echo -e "   INPUT_SIZE> ${INPUT_SIZE}" >> $PIPELINE_LOG
+echo -e "   OUTPUT_SIZE> ${OUTPUT_SIZE}" >> $PIPELINE_LOG
+echo -e "   REMOVED_SEQS> ${REMOVED_SEQS}" >> $PIPELINE_LOG
+echo -e "   READS_FILE> ${READS}" >> $PIPELINE_LOG
 
 ## Fix headers. Convert to presto format
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "ConvertHeaders"
