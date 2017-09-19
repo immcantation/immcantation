@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-# Super script to run the pRESTO 0.5.3 pipeline on AbVitro AbSeq V3 data
+# Super script to run the pRESTO 0.5.4 pipeline on AbVitro AbSeq data
 # 
 # Author:  Jason Anthony Vander Heiden, Gur Yaari, Namita Gupta
-# Date:    2017.09.08
+# Date:    2017.09.19
 # 
 # Arguments:
 #   -1  Read 1 FASTQ sequence file (sequence beginning with the C-region or J-segment).
@@ -20,10 +20,10 @@
 #       Defaults to a truncated version of the read 1 filename.
 #   -o  Output directory.
 #       Defaults to the sample name.
+#   -x  The mate-pair coordinate format of the raw data.
+#       Defaults to illumina.
 #   -p  Number of subprocesses for multiprocessing tools.
 #       Defaults to the available processing units.
-#   -x  The format of the sequence identifier which defines shared coordinate 
-#       information across mate pairs. Will be passed to PairSeq.py. Defaults to illumina.
 #   -h  Display help.
 
 # Print usage
@@ -33,9 +33,9 @@ print_usage() {
             "     Sequence beginning with the C-region or J-segment)."
     echo -e "  -2  Read 2 FASTQ sequence file.\n" \
             "     Sequence beginning with the leader or V-segment)."
-    echo -e "  -j  Read 1 FASTA primer sequences.\n"
+    echo -e "  -j  Read 1 FASTA primer sequences.\n" \
             "     Defaults to /usr/local/share/protocols/AbSeq/AbSeq_R1_Human_IG_Primers.fasta."
-    echo -e "  -v  Read 2 FASTA primer or template switch sequences.\n"
+    echo -e "  -v  Read 2 FASTA primer or template switch sequences.\n" \
             "     Defaults to /usr/local/share/protocols/AbSeq/AbSeq_R2_TS.fasta."
     echo -e "  -c  C-region FASTA sequences for the C-region internal to the primer.\n" \
             "     If unspecified internal C-region alignment is not performed."
@@ -46,11 +46,10 @@ print_usage() {
             "     Defaults to a truncated version of the read 1 filename."
     echo -e "  -o  Output directory.\n" \
             "     Defaults to the sample name."
+    echo -e "  -x  The mate-pair coordinate format of the raw data.\n" \
+            "     Defaults to illumina."
     echo -e "  -p  Number of subprocesses for multiprocessing tools.\n" \
             "     Defaults to the available cores."
-    echo -e "  -x  The format of the sequence identifier which defines shared coordinate" \
-                   "information across mate pairs.  Will be passed to PairSeq.py."\
-                   "Defaults to illumina."            
     echo -e "  -h  This message."
 }
 
@@ -68,7 +67,7 @@ NPROC_SET=false
 COORD_SET=false
 
 # Get commandline arguments
-while getopts "1:2:j:v:c:r:y:n:o:p:h" OPT; do
+while getopts "1:2:j:v:c:r:y:n:o:x:p:h" OPT; do
     case "$OPT" in
     1)  R1_READS=${OPTARG}
         R1_READS_SET=true
@@ -97,11 +96,12 @@ while getopts "1:2:j:v:c:r:y:n:o:p:h" OPT; do
     o)  OUTDIR=$OPTARG
         OUTDIR_SET=true
         ;;
+    x)  COORD=$OPTARG
+        COORD_SET=true
+        ;;
     p)  NPROC=$OPTARG
         NPROC_SET=true
         ;;
-    x)  COORD=$OPTARG
-        COORD_SET=true
     h)  print_usage
         exit
         ;;
