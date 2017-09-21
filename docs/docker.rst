@@ -10,7 +10,7 @@ The image is available on docker hub at:
 `kleinstein/immcantation <https://hub.docker.com/r/kleinstein/immcantation/>`__
 
 Images are versioned through tags with images containing official releases
-denoted by meta-version numbers (eg, ``1.0.0``). The ``devel`` tag denotes the
+denoted by meta-version numbers (eg, ``1.1.0``). The ``devel`` tag denotes the
 latest development (unstabled) builds.
 
 Getting the Container
@@ -23,8 +23,8 @@ Docker
 
 .. code-block:: shell
 
-    # Pull release version 1.0.0
-    docker pull kleinstein/immcantation:1.0.0
+    # Pull release version 1.1.0
+    docker pull kleinstein/immcantation:1.1.0
 
     # Pull the latest development build
     docker pull kleinstein/immcantation:devel
@@ -35,10 +35,10 @@ Singularity
 
 .. code-block:: shell
 
-    # Pull release version 1.0.0
-    IMAGE="immcantation-1.0.0.img"
-    singularity create --size 4000 $IMAGE
-    singularity import $IMAGE docker://kleinstein/immcantation:1.0.0
+    # Pull release version 1.1.0
+    IMAGE="immcantation-1.1.0.img"
+    singularity create --size 5000 $IMAGE
+    singularity import $IMAGE docker://kleinstein/immcantation:1.1.0
 
 
 What's in the Container
@@ -70,6 +70,8 @@ The following accessory scripts are found in ``/usr/local/bin``:
 
 fastq2fasta.py
     Simple FASTQ to FASTA conversion.
+fetch_phix.sh
+    Downloads the PhiX174 reference genome.
 fetch_igblastdb.sh
     Downloads the IgBLAST reference database.
 fetch_imgtdb.sh
@@ -97,6 +99,8 @@ shazam-threshold
     Performs automated detection of the clonal assignment threshold.
 tigger-genotype
     Infers V segment genotypes using TIgGER.
+preprocess-phix
+    Removes PhiX reads from raw data files.
 
 Data
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -121,30 +125,31 @@ Using the Container
 Sharing files between the host operating system and the container requires you
 to bind one of the container's mount points to a folder on the host using the
 ``-v`` argument to ``docker`` or the ``-B`` argument to ``singularity``.
-There are three available mount points defined in the container::
+There are four available mount points defined in the container::
 
     /data
     /scratch
     /software
+    /oasis
 
 To invoke a shell session inside the container with ``$HOME/project`` mounted to
 ``/data``::
 
     # Docker command
-    docker run -it -v $HOME/project:data:z kleinstein/immcantation:1.0.0 bash
+    docker run -it -v $HOME/project:data:z kleinstein/immcantation:1.1.0 bash
 
     # Singularity command
-    singularity shell -B $HOME/project:/data immcantation-1.0.0.img
+    singularity shell -B $HOME/project:/data immcantation-1.1.0.img
 
 Note, the ``:z`` in the ``-v`` argument of the ``docker`` command is essential.
 
 To execute a specific command::
 
     # Docker command
-    docker run -v $HOME/project:data:z kleinstein/immcantation:1.0.0 versions report
+    docker run -v $HOME/project:data:z kleinstein/immcantation:1.1.0 versions report
 
     # Singularity command
-    singularity exec -B $HOME/project:/data immcantation-1.0.0.img versions report
+    singularity exec -B $HOME/project:/data immcantation-1.1.0.img versions report
 
 In this case, we are executing the ``versions report`` command which will inspect
 the installed software versions and print them to standard output.
@@ -167,6 +172,7 @@ will explain its use. The available pipelines are:
 * changeo-clone
 * tigger-genotype
 * shazam-threshold
+* preprocess-phix
 
 All template pipeline scripts can be found in ``/usr/local/bin``.
 
@@ -226,12 +232,12 @@ file containing information about the data and processing. Valid fields are show
     NPROC=4
 
     # Docker command
-    docker run -v $DATA_DIR:/data:z kleinstein/immcantation:1.0.0 presto-abseq \
+    docker run -v $DATA_DIR:/data:z kleinstein/immcantation:1.1.0 presto-abseq \
         -1 $READS_R1 -2 $READS_R2 -y $YAML -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC \
         | tee run_presto.out
 
     # Singularity command
-    singularity exec -B $DATA_DIR:/data immcantation-1.0.0.img presto-abseq \
+    singularity exec -B $DATA_DIR:/data immcantation-1.1.0.img presto-abseq \
         -1 $READS_R1 -2 $READS_R2 -y $YAML -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC \
         | tee run_presto.out
 
@@ -268,12 +274,12 @@ Arguments:
     NPROC=4
 
     # Run pipeline in docker image
-    docker run -v $DATA_DIR:/data:z kleinstein/immcantation:1.0.0 changeo-igblast \
+    docker run -v $DATA_DIR:/data:z kleinstein/immcantation:1.1.0 changeo-igblast \
         -s $READS -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC \
         | tee run_igblast.out
 
     # Singularity command
-    singularity exec -B $DATA_DIR:/data immcantation-1.0.0.img changeo-igblast \
+    singularity exec -B $DATA_DIR:/data immcantation-1.1.0.img changeo-igblast \
         -s $READS -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC \
         | tee run_igblast.out
 
@@ -305,12 +311,12 @@ Arguments:
     NPROC=4
 
     # Run pipeline in docker image
-    docker run -v $DATA_DIR:/data:z kleinstein/immcantation:1.0.0 tigger-genotype \
+    docker run -v $DATA_DIR:/data:z kleinstein/immcantation:1.1.0 tigger-genotype \
         -d $DB -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC \
         | tee run_genotype.out
 
     # Singularity command
-    singularity exec -B $DATA_DIR:/data immcantation-1.0.0.img tigger-genotype \
+    singularity exec -B $DATA_DIR:/data immcantation-1.1.0.img tigger-genotype \
         -d $DB -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC \
         | tee run_genotype.out
 
@@ -342,12 +348,12 @@ Arguments:
     NPROC=4
 
     # Run pipeline in docker image
-    docker run -v $DATA_DIR:/data:z kleinstein/immcantation:1.0.0 shazam-threshold \
+    docker run -v $DATA_DIR:/data:z kleinstein/immcantation:1.1.0 shazam-threshold \
         -d $DB -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC \
         | tee run_threshold.out
 
     # Singularity command
-    singularity exec -B $DATA_DIR:/data immcantation-1.0.0.img shazam-threshold \
+    singularity exec -B $DATA_DIR:/data immcantation-1.1.0.img shazam-threshold \
         -d $DB -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC \
         | tee run_threshold.out
 
@@ -382,11 +388,47 @@ Arguments:
     NPROC=4
 
     # Run pipeline in docker image
-    docker run -v $DATA_DIR:/data:z kleinstein/immcantation:1.0.0 changeo-clone \
+    docker run -v $DATA_DIR:/data:z kleinstein/immcantation:1.1.0 changeo-clone \
         -d $DB -x $DIST -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC \
         | tee run_clone.out
 
     # Singularity command
-    singularity exec -B $DATA_DIR:/data immcantation-1.0.0.img changeo-clone \
+    singularity exec -B $DATA_DIR:/data immcantation-1.1.0.img changeo-clone \
         -d $DB -x $DIST -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC \
         | tee run_clone.out
+
+PhiX cleaning pipeline
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Removes reads from a sequence file that align against the PhiX174 reference
+genome.
+
+Arguments:
+   -s  FASTQ sequence file.
+   -r  Directory containing phiX174 reference db.
+   -o  Output directory.
+       Defaults to the FASTQ file directory.
+   -n  Name to use as the output file suffix.
+       Defaults to '_nophix'.
+   -p  Number of subprocesses for multiprocessing tools.
+       Defaults to the available processing units.
+   -h  Display help
+
+.. code-block:: shell
+    :caption: **PhiX cleaning example**
+
+    # Arguments
+    DATA_DIR=~/project
+    READS=/data/raw/sample.fastq
+    OUT_DIR=/data/presto/sample
+    NPROC=4
+
+    # Run pipeline in docker image
+    docker run -v $DATA_DIR:/data:z kleinstein/immcantation:1.1.0 preprocess-phix \
+        -s $READS -o $OUT_DIR -p $NPROC \
+        | tee run_phix.out
+
+    # Singularity command
+    singularity exec -B $DATA_DIR:/data immcantation-1.1.0.img preprocess-phix \
+        -s $READS -o $OUT_DIR -p $NPROC \
+        | tee run_phix.out

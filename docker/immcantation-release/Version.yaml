@@ -1,13 +1,13 @@
 immcantation:
-    version:  1.0.0
-    date:     2017.08.08
+    version:  1.1.0
+    date:     2017.09.21
 release:
     presto:   0.5.4
     changeo:  0.3.7
-    alakazam: 0.2.7
+    alakazam: 0.2.8
     shazam:   0.1.8
-    tigger:   0.2.10
-    prestor:  0.0.2
+    tigger:   0.2.11
+    prestor:  0.0.3
 software:
     muscle:   3.8.31
     vsearch:  2.4.3

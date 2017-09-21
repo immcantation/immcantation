@@ -12,11 +12,12 @@ ENV PRESTO_ABSEQ="PrestoV5.4_AbSeq.sh" \
     CHANGEO_IGBLAST="ChangeoV3.7_IgBLASTV1.7.sh" \
     CHANGEO_CLONE="ChangeoV3.7_Clone.sh" \
     SHAZAM_THRESHOLD="ShazamV1.8_Distance.R" \
-    TIGGER_GENOTYPE="TiggerV2.10_Genotype.R"
+    TIGGER_GENOTYPE="TiggerV2.10_Genotype.R" \
+    PREPROCESS_PHIX="Preprocess_PhixV1.0.sh"
 
 # Define R build options
 ARG R_REPO="http://lib.stat.cmu.edu/R/CRAN"
-ARG R_RCPP="0.12.11"
+ARG R_RCPP="0.12.12"
 ARG R_DEPS="c('roxygen2', 'testthat', 'rmarkdown', 'knitr', 'optparse')"
 ARG R_BUILD="library(devtools); install_deps(upgrade=FALSE, clean=TRUE); document(); install(build_vignettes=TRUE, clean=TRUE)"
 
@@ -37,11 +38,13 @@ RUN PACKAGE="immcantation" \
 	&& mv /tmp/${PACKAGE}/scripts/clean_imgtdb.py /usr/local/bin/clean_imgtdb.py \
 	&& mv /tmp/${PACKAGE}/scripts/imgt2igblast.sh /usr/local/bin/imgt2igblast.sh \
 	&& mv /tmp/${PACKAGE}/scripts/run_igblast.sh /usr/local/bin/run_igblast.sh \
+	&& mv /tmp/${PACKAGE}/scripts/fetch_phix.sh /usr/local/bin/fetch_phix.sh \
 	&& mv /tmp/${PACKAGE}/pipelines/${PRESTO_ABSEQ} /usr/local/bin/presto-abseq \
 	&& mv /tmp/${PACKAGE}/pipelines/${CHANGEO_IGBLAST} /usr/local/bin/changeo-igblast \
 	&& mv /tmp/${PACKAGE}/pipelines/${CHANGEO_CLONE} /usr/local/bin/changeo-clone \
 	&& mv /tmp/${PACKAGE}/pipelines/${SHAZAM_THRESHOLD} /usr/local/bin/shazam-threshold \
 	&& mv /tmp/${PACKAGE}/pipelines/${TIGGER_GENOTYPE} /usr/local/bin/tigger-genotype \
+	&& mv /tmp/${PACKAGE}/pipelines/${PREPROCESS_PHIX} /usr/local/bin/preprocess-phix \
 	&& mv /tmp/${PACKAGE}/protocols /usr/local/share/protocols \
 	&& builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
 	&& rm -r /tmp/${PACKAGE}
@@ -144,7 +147,8 @@ RUN PACKAGE="prestor" \
 # Download and build references databases
 RUN fetch_igblastdb.sh -o /usr/local/share/igblast \
     && fetch_imgtdb.sh -o /usr/local/share/germlines/imgt \
-    && imgt2igblast.sh -i /usr/local/share/germlines/imgt -o /usr/local/share/igblast
+    && imgt2igblast.sh -i /usr/local/share/germlines/imgt -o /usr/local/share/igblast \
+    && fetch_phix.sh -o /usr/local/share/phix
 
 # Setup users and permissions
 RUN useradd -u 1000 -g users magus \
@@ -161,4 +165,5 @@ CMD echo -e "Report version information:\n" \
             "  changeo-igblast\n" \
             "  changeo-clone\n" \
             "  tigger-genotype\n" \
-            "  shazam-threshold"
+            "  shazam-threshold\n" \
+            "  preprocess-phix"

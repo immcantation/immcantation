@@ -4,29 +4,29 @@
 # a hit will be filtered out
 #
 # Author:  Susanna Marquez
-# Date:    2017.09.11
+# Date:    2017.09.21
 #
-# Required Arguments:
-#   -s  FASTQ sequence file
-#   -r  Directory containing phiX174 reference db
-#   -o  Output directory. Defaults to the sample directory
-#   -n  Sample name or run identifier which will be used as 
-#       the output file suffix. Defaults to '_nophix'
-#   -p  Number of subprocesses for multiprocessing tools
-#       Defaults to the available processing units
+# Arguments:
+#   -s  FASTQ sequence file.
+#   -r  Directory containing phiX174 reference db.
+#   -o  Output directory.
+#       Defaults to the FASTQ file directory.
+#   -n  Name to use as the output file suffix.
+#       Defaults to '_nophix'.
+#   -p  Number of subprocesses for multiprocessing tools.
+#       Defaults to the available processing units.
 #   -h  Display help
-
 
 # Print usage
 print_usage() {
     echo -e "Usage: `basename $0` [OPTIONS]"
     echo -e "  -s   FASTQ sequence file."
-    echo -e "  -r   Directory containing phiX174 reference db. "\
-                    "Defaults to /usr/local/share/phix"                
+    echo -e "  -r   Directory containing phiX174 reference db.\n" \
+            "      Defaults to /usr/local/share/phix."
     echo -e "  -o   Output directory.\n" \
-            "       Defaults to the FASTQ file directory."
-    echo -e "  -n   Sample name or run identifier which will be used as\n" \
-            "       the output file suffix. Defaults to '_nophix'.\n"            
+            "      Defaults to the FASTQ file directory."
+    echo -e "  -n   Name to use as the output file suffix\n." \
+            "      Defaults to '_nophix'."
     echo -e "  -p   Number of subprocesses for multiprocessing tools.\n" \
             "       Defaults to the available cores."
     echo -e "  -h   This message."
@@ -205,15 +205,15 @@ echo -e "    FILE> $(basename $FASTA_FILE) \n" >> $PIPELINE_LOG
 echo -e "PROGRESS> [Running]" >> $PIPELINE_LOG
 eval $BLAST_CMD >> $PIPELINE_LOG 2> $ERROR_LOG
 echo -e "PROGRESS> [Done   ]\n" >> $PIPELINE_LOG
-echo -e "  OUTPUT> $OUTNAME.fmt6" >> $PIPELINE_LOG
+echo -e "  OUTPUT> ${OUTNAME}.fmt6" >> $PIPELINE_LOG
 echo -e "     END> blastn\n" >> $PIPELINE_LOG
 check_error
 
 ## Add header, need ID column name for Splitseq
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "Add header"
-sed -i '1iID' "$OUTDIR/${ID}_phix.fmt6"
-IDFILE=$OUTDIR"/"$ID"_phixhits.txt"
-sed -r '2,$ s/(^[^\|]*).*/\1/' ${OUTDIR}"/"${ID}"_phix.fmt6" > ${IDFILE}
+sed -i '1iID' "${OUTDIR}/${ID}_phix.fmt6"
+IDFILE="${OUTDIR}/${ID}_phixhits.txt"
+sed -r '2,$ s/(^[^\|]*).*/\1/' "${OUTDIR}/${ID}_phix.fmt6" > ${IDFILE}
 
 ## Filter fastq
 #Keep sequences with names not in the .fmt6 file

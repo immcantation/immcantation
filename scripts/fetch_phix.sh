@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-# Download phix174 nucleotide sequence from NCBI and build blastn indexed db
+# Download PhiX174 nucleotide sequence from NCBI and build blastn indexed db
 #
 # Author:  Susanna Marquez
-# Date:    2017.09.06
+# Date:    2017.09.21
 #
 # Arguments:
 #   -o = Output directory. Defaults to current directory.
@@ -39,15 +39,16 @@ done
 # Info
 DATE=$(date +"%Y.%m.%d")
 
+# Download and unpack
 wget "ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/819/615/GCF_000819615.1_ViralProj14015/GCF_000819615.1_ViralProj14015_genomic.fna.gz" -P $OUTDIR
+gunzip "${OUTDIR}/GCF_000819615.1_ViralProj14015_genomic.fna.gz"
+BLAST_DB="${OUTDIR}/GCF_000819615.1_ViralProj14015_genomic.fna"
 
-gunzip $OUTDIR"/GCF_000819615.1_ViralProj14015_genomic.fna.gz"
-
-BLAST_DB=$OUTDIR"/GCF_000819615.1_ViralProj14015_genomic.fna"
-
-makeblastdb -in $BLAST_DB -parse_seqids -dbtype nucl
+# Build blast database
+makeblastdb -in ${BLAST_DB} -parse_seqids -dbtype nucl
+rm ${BLAST_DB}
 
 # Write download info
-INFO_FILE=${OUTDIR}/phix174.yaml
+INFO_FILE="${OUTDIR}/PhiX174.yaml"
 echo -e "source:  ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/819/615/GCF_000819615.1_ViralProj14015/GCF_000819615.1_ViralProj14015_genomic.fna.gz" > $INFO_FILE
 echo -e "date:    ${DATE}" >> $INFO_FILE

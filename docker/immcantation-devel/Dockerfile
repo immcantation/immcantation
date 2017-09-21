@@ -158,5 +158,5 @@ CMD echo -e "Report version information:\n" \
             "  changeo-igblast\n" \
             "  changeo-clone\n" \
             "  tigger-genotype\n" \
-            "  shazam-threshold" \
+            "  shazam-threshold\n" \
             "  preprocess-phix"
