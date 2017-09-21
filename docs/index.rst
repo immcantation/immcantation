@@ -100,7 +100,7 @@ For additional computational immunology software from the Kleinstein Lab see our
     :caption: pRESTO
     :hidden:
 
-    Documentation <http://immcantation.readthedocs.io/projects/presto>
+    Documentation <http://presto.readthedocs.io>
     Download Releases <http://pypi.python.org/pypi/presto>
     Source Code <http://bitbucket.org/kleinstein/presto>
 
@@ -109,7 +109,7 @@ For additional computational immunology software from the Kleinstein Lab see our
     :caption: Change-O
     :hidden:
 
-    Documentation <http://immcantation.readthedocs.io/projects/changeo>
+    Documentation <http://changeo.readthedocs.io>
     Download Releases <http://pypi.python.org/pypi/changeo>
     Source Code <http://bitbucket.org/kleinstein/changeo>
 
@@ -118,7 +118,7 @@ For additional computational immunology software from the Kleinstein Lab see our
     :caption: Alakazam
     :hidden:
 
-    Documentation <http://immcantation.readthedocs.io/projects/alakazam>
+    Documentation <http://alakazam.readthedocs.io>
     Download Releases <http://cran.rstudio.com/web/packages/alakazam>
     Source Code <http://bitbucket.org/kleinstein/alakazam>
 
@@ -127,7 +127,7 @@ For additional computational immunology software from the Kleinstein Lab see our
     :caption: SHazaM
     :hidden:
 
-    Documentation <http://immcantation.readthedocs.io/projects/shazam>
+    Documentation <http://shazam.readthedocs.io>
     Download Releases <http://cran.rstudio.com/web/packages/shazam>
     Source Code <http://bitbucket.org/kleinstein/shazam>
 
@@ -136,6 +136,6 @@ For additional computational immunology software from the Kleinstein Lab see our
     :caption: TIgGER
     :hidden:
 
-    Documentation <http://immcantation.readthedocs.io/projects/tigger>
+    Documentation <http://tigger.readthedocs.io>
     Download Releases <http://bitbucket.org/kleinstein/tigger/downloads>
     Source Code <http://bitbucket.org/kleinstein/tigger>
