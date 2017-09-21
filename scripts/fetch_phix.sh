@@ -46,7 +46,6 @@ BLAST_DB="${OUTDIR}/GCF_000819615.1_ViralProj14015_genomic.fna"
 
 # Build blast database
 makeblastdb -in ${BLAST_DB} -parse_seqids -dbtype nucl
-rm ${BLAST_DB}
 
 # Write download info
 INFO_FILE="${OUTDIR}/PhiX174.yaml"
