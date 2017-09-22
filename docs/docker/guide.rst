@@ -1,5 +1,16 @@
-Using the Container
+Using the Docker Container
 ================================================================================
+
+Invoking a shell inside the container
+--------------------------------------------------------------------------------
+
+To invoke a shell session inside the container::
+
+    # Docker command
+    docker run -it kleinstein/immcantation:1.1.0 bash
+
+    # Singularity command
+    singularity shell immcantation-1.1.0.img
 
 Sharing files with the container
 --------------------------------------------------------------------------------
@@ -29,7 +40,8 @@ Note, the ``:z`` in the ``-v`` argument of the ``docker`` command is essential.
 Executing a specific command
 --------------------------------------------------------------------------------
 
-To execute a specific command::
+To execute a specific command inside the container with ``$HOME/project`` mounted to
+``/data``::
 
     # Docker command
     docker run -v $HOME/project:data:z kleinstein/immcantation:1.1.0 versions report
