@@ -90,10 +90,13 @@ For additional computational immunology software from the Kleinstein Lab see our
 .. Component TOC trees
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 3
     :hidden:
+    :caption: Docker Container
 
-    docker
+    docker/intro
+    docker/guide
+    docker/news
 
 .. toctree::
     :maxdepth: 1
