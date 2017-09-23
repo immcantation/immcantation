@@ -121,7 +121,7 @@ if ! ${NPROC_SET}; then
 fi
 
 # Define log files
-LOGDIR=${OUTDIR}"/logs"
+LOGDIR="${OUTDIR}/logs"
 PIPELINE_LOG="${LOGDIR}/pipeline-phix.log"
 ERROR_LOG="${LOGDIR}/pipeline-phix.err"
 mkdir -p ${LOGDIR}
@@ -140,7 +140,7 @@ check_error() {
 
 # Start
 BLASTN_VERSION=$(blastn -version  | grep 'Package' |sed s/'Package: '//)
-PHIX_VERSION=$(grep date ${PHIXDIR}/phix174.yaml | sed s/'date: *'//)
+PHIX_VERSION=$(grep date ${PHIXDIR}/PhiX174.yaml | sed s/'date: *'//)
 
 echo -e "OUTNAME ${OUTNAME}"
 echo -e "OUTDIR ${OUTDIR}"
@@ -154,30 +154,30 @@ STEP=0
 ## Remove all-N sequence
 ## (blastn crashes with all N sequences)
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "Removing all N sequences"
-echo -e "   START> awk" >> $PIPELINE_LOG
-NO_N_READS=$OUTDIR/$ID"_noN.fastq"
-awk '{y= i++ % 4 ; L[y]=$0; if(y==3 && L[1] ~ /[^N]/) {printf("%s\n%s\n%s\n%s\n",L[0],L[1],L[2],L[3]);}}' ${READS} > ${NO_N_READS} 2> $ERROR_LOG
+echo -e "       START> awk" >> $PIPELINE_LOG
+NO_N_READS="${OUTDIR}/${ID}_noN.fastq"
+awk '{y= i++ % 4 ; L[y]=$0; if(y==3 && L[1] ~ /[^N]/) {printf("%s\n%s\n%s\n%s\n",L[0],L[1],L[2],L[3]);}}' ${READS} \
+    > ${NO_N_READS} 2> $ERROR_LOG
 
 INPUT_SIZE=$((`wc -l < ${READS}`/4))
 OUTPUT_SIZE=$((`wc -l < ${NO_N_READS}`/4))
 REMOVED_SEQS=$((${INPUT_SIZE}-${OUTPUT_SIZE}))
 
 if [ ${REMOVED_SEQS} -eq 0 ]; then
- echo "deleting"
  rm $NO_N_READS
 else
  READS=$NO_N_READS
 fi
    
-echo -e "   INPUT_SIZE> ${INPUT_SIZE}" >> $PIPELINE_LOG
-echo -e "   OUTPUT_SIZE> ${OUTPUT_SIZE}" >> $PIPELINE_LOG
-echo -e "   REMOVED_SEQS> ${REMOVED_SEQS}" >> $PIPELINE_LOG
-echo -e "   READS_FILE> ${READS}" >> $PIPELINE_LOG
+echo -e "  INPUT_SIZE> ${INPUT_SIZE}" >> $PIPELINE_LOG
+echo -e " OUTPUT_SIZE> ${OUTPUT_SIZE}" >> $PIPELINE_LOG
+echo -e "REMOVED_SEQS> ${REMOVED_SEQS}" >> $PIPELINE_LOG
+echo -e "  READS_FILE> ${READS}\n" >> $PIPELINE_LOG
 
 ## Fix headers. Convert to presto format
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "ConvertHeaders"
-ConvertHeaders.py illumina -s ${READS} --outdir ${OUTDIR}
-READS=$OUTDIR"/"$(basename ${READS} | sed 's/.fastq/_convert-pass.fastq/')  >> $PIPELINE_LOG 2> $ERROR_LOG 
+ConvertHeaders.py illumina -s ${READS} --outdir ${OUTDIR} >> $PIPELINE_LOG 2> $ERROR_LOG
+READS=$OUTDIR"/"$(basename ${READS} | sed 's/.fastq/_convert-pass.fastq/')
 check_error
 
 # Convert to FASTA if needed
@@ -218,8 +218,14 @@ sed -r '2,$ s/(^[^\|]*).*/\1/' "${OUTDIR}/${ID}_phix.fmt6" > ${IDFILE}
 ## Filter fastq
 #Keep sequences with names not in the .fmt6 file
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "SplitSeq.py"
-SplitSeq.py select -s ${READS} -f ID -t ${IDFILE} --not --outdir $OUTDIR --outname $OUTNAME  >> $PIPELINE_LOG 2> $ERROR_LOG
+SplitSeq.py select -s ${READS} -f ID -t ${IDFILE} --not --outdir $OUTDIR --outname $OUTNAME  \
+    >> $PIPELINE_LOG 2> $ERROR_LOG
 check_error
 
+# Remove temporary files
 rm $READS
 rm $FASTA_FILE
+
+# End
+printf "DONE\n\n"
+cd ../
