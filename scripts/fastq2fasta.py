@@ -6,12 +6,12 @@ from os import path
 from sys import argv
 from Bio import SeqIO
 
-infile = argv[1]
-outfile = '%s.fasta' % path.splitext(infile)[0]
+in_file = argv[1]
+out_file = '%s.fasta' % path.splitext(in_file)[0]
 
-with open(outfile, 'w') as out_handle:
-    seq = SeqIO.parse(infile, 'fastq')
+with open(out_file, 'w') as out_handle:
+    records = SeqIO.parse(in_file, 'fastq')
     writer = SeqIO.FastaIO.FastaWriter(out_handle, wrap=None)
-    writer.write_file(seq)
+    writer.write_file(records)
 
-print(outfile)
+print(out_file)
