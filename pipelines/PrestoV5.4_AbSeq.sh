@@ -126,10 +126,6 @@ if ! ${YAML_SET}; then
 fi
 
 # Set unspecified arguments
-if ! ${VREF_SEQ_SET}; then
-    VREF_SEQ="/usr/local/share/igblast/fasta/imgt_human_ig_v.fasta"
-fi
-
 if ! ${OUTNAME_SET}; then
     OUTNAME=$(basename ${R1_READS} | sed 's/\.[^.]*$//; s/_L[0-9]*_R[0-9]_[0-9]*//')
 fi
@@ -179,6 +175,16 @@ elif [ -e ${R2_PRIMERS} ]; then
     R2_PRIMERS=$(readlink -f ${R2_PRIMERS})
 else
     echo -e "File ${R2_PRIMERS} not found." >&2
+    exit 1
+fi
+
+# Check reference sequences
+if ! ${VREF_SEQ_SET}; then
+    VREF_SEQ="/usr/local/share/igblast/fasta/imgt_human_ig_v.fasta"
+elif [ -e ${VREF_SEQ} ]; then
+    VREF_SEQ=$(readlink -f ${VREF_SEQ})
+else
+    echo -e "File ${VREF_SEQ} not found." >&2
     exit 1
 fi
 

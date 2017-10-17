@@ -1,10 +1,23 @@
 Docker Container Release Notes
 ========================================================================
 
+Version 1.3.0:  October 17, 2017
+------------------------------------------------------------------------
+
+Version Updates:
+
++ changeo 0.3.9
+
+Pipeline Changes:
+
++ Fixed a bug in ``presto-abseq`` preventing relative file paths from
+  working with the ``-r`` argument.
+
+
 Version 1.2.0:  October 05, 2017
 ------------------------------------------------------------------------
 
-Version Updates
+Version Updates:
 
 + changeo 0.3.8
 
@@ -12,13 +25,13 @@ Version Updates
 Version 1.1.0:  September 22, 2017
 ------------------------------------------------------------------------
 
-Version Updates
+Version Updates:
 
 + alakazam 0.2.8
 + tigger 0.2.11
 + prestor 0.0.3
 
-Image Changes
+Image Changes:
 
 + Added ``preprocess-phix`` script that removes PhiX reads.
 + Added ``fetch_phix.sh`` script that downloads the PhiX174 genome.

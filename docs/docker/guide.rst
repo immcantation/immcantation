@@ -7,10 +7,10 @@ Invoking a shell inside the container
 To invoke a shell session inside the container::
 
     # Docker command
-    docker run -it kleinstein/immcantation:1.1.0 bash
+    docker run -it kleinstein/immcantation:1.3.0 bash
 
     # Singularity command
-    singularity shell immcantation-1.1.0.img
+    singularity shell immcantation-1.3.0.img
 
 Sharing files with the container
 --------------------------------------------------------------------------------
@@ -29,10 +29,10 @@ To invoke a shell session inside the container with ``$HOME/project`` mounted to
 ``/data``::
 
     # Docker command
-    docker run -it -v $HOME/project:data:z kleinstein/immcantation:1.1.0 bash
+    docker run -it -v $HOME/project:data:z kleinstein/immcantation:1.3.0 bash
 
     # Singularity command
-    singularity shell -B $HOME/project:/data immcantation-1.1.0.img
+    singularity shell -B $HOME/project:/data immcantation-1.3.0.img
 
 Note, the ``:z`` in the ``-v`` argument of the ``docker`` command is essential.
 
@@ -44,10 +44,10 @@ To execute a specific command inside the container with ``$HOME/project`` mounte
 ``/data``::
 
     # Docker command
-    docker run -v $HOME/project:data:z kleinstein/immcantation:1.1.0 versions report
+    docker run -v $HOME/project:data:z kleinstein/immcantation:1.3.0 versions report
 
     # Singularity command
-    singularity exec -B $HOME/project:/data immcantation-1.1.0.img versions report
+    singularity exec -B $HOME/project:/data immcantation-1.3.0.img versions report
 
 In this case, we are executing the ``versions report`` command which will inspect
 the installed software versions and print them to standard output.
@@ -130,12 +130,12 @@ file containing information about the data and processing. Valid fields are show
     NPROC=4
 
     # Docker command
-    docker run -v $DATA_DIR:/data:z kleinstein/immcantation:1.1.0 presto-abseq \
+    docker run -v $DATA_DIR:/data:z kleinstein/immcantation:1.3.0 presto-abseq \
         -1 $READS_R1 -2 $READS_R2 -y $YAML -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC \
         | tee run_presto.out
 
     # Singularity command
-    singularity exec -B $DATA_DIR:/data immcantation-1.1.0.img presto-abseq \
+    singularity exec -B $DATA_DIR:/data immcantation-1.3.0.img presto-abseq \
         -1 $READS_R1 -2 $READS_R2 -y $YAML -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC \
         | tee run_presto.out
 
@@ -172,12 +172,12 @@ Arguments:
     NPROC=4
 
     # Run pipeline in docker image
-    docker run -v $DATA_DIR:/data:z kleinstein/immcantation:1.1.0 changeo-igblast \
+    docker run -v $DATA_DIR:/data:z kleinstein/immcantation:1.3.0 changeo-igblast \
         -s $READS -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC \
         | tee run_igblast.out
 
     # Singularity command
-    singularity exec -B $DATA_DIR:/data immcantation-1.1.0.img changeo-igblast \
+    singularity exec -B $DATA_DIR:/data immcantation-1.3.0.img changeo-igblast \
         -s $READS -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC \
         | tee run_igblast.out
 
@@ -209,12 +209,12 @@ Arguments:
     NPROC=4
 
     # Run pipeline in docker image
-    docker run -v $DATA_DIR:/data:z kleinstein/immcantation:1.1.0 tigger-genotype \
+    docker run -v $DATA_DIR:/data:z kleinstein/immcantation:1.3.0 tigger-genotype \
         -d $DB -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC \
         | tee run_genotype.out
 
     # Singularity command
-    singularity exec -B $DATA_DIR:/data immcantation-1.1.0.img tigger-genotype \
+    singularity exec -B $DATA_DIR:/data immcantation-1.3.0.img tigger-genotype \
         -d $DB -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC \
         | tee run_genotype.out
 
@@ -246,12 +246,12 @@ Arguments:
     NPROC=4
 
     # Run pipeline in docker image
-    docker run -v $DATA_DIR:/data:z kleinstein/immcantation:1.1.0 shazam-threshold \
+    docker run -v $DATA_DIR:/data:z kleinstein/immcantation:1.3.0 shazam-threshold \
         -d $DB -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC \
         | tee run_threshold.out
 
     # Singularity command
-    singularity exec -B $DATA_DIR:/data immcantation-1.1.0.img shazam-threshold \
+    singularity exec -B $DATA_DIR:/data immcantation-1.3.0.img shazam-threshold \
         -d $DB -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC \
         | tee run_threshold.out
 
@@ -286,12 +286,12 @@ Arguments:
     NPROC=4
 
     # Run pipeline in docker image
-    docker run -v $DATA_DIR:/data:z kleinstein/immcantation:1.1.0 changeo-clone \
+    docker run -v $DATA_DIR:/data:z kleinstein/immcantation:1.3.0 changeo-clone \
         -d $DB -x $DIST -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC \
         | tee run_clone.out
 
     # Singularity command
-    singularity exec -B $DATA_DIR:/data immcantation-1.1.0.img changeo-clone \
+    singularity exec -B $DATA_DIR:/data immcantation-1.3.0.img changeo-clone \
         -d $DB -x $DIST -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC \
         | tee run_clone.out
 
@@ -322,11 +322,11 @@ Arguments:
     NPROC=4
 
     # Run pipeline in docker image
-    docker run -v $DATA_DIR:/data:z kleinstein/immcantation:1.1.0 preprocess-phix \
+    docker run -v $DATA_DIR:/data:z kleinstein/immcantation:1.3.0 preprocess-phix \
         -s $READS -o $OUT_DIR -p $NPROC \
         | tee run_phix.out
 
     # Singularity command
-    singularity exec -B $DATA_DIR:/data immcantation-1.1.0.img preprocess-phix \
+    singularity exec -B $DATA_DIR:/data immcantation-1.3.0.img preprocess-phix \
         -s $READS -o $OUT_DIR -p $NPROC \
         | tee run_phix.out
