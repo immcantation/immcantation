@@ -13,4 +13,4 @@ with open(out_file, 'w') as out_handle:
         records = SeqIO.parse(f, 'fastq')
         SeqIO.write(records, out_handle, 'fastq')
 
-print(out_file)
+#print(out_file)
