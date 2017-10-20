@@ -38,6 +38,7 @@ RUN PACKAGE="immcantation" \
 	&& mv /tmp/${PACKAGE}/scripts/imgt2igblast.sh /usr/local/bin/imgt2igblast.sh \
 	&& mv /tmp/${PACKAGE}/scripts/run_igblast.sh /usr/local/bin/run_igblast.sh \
 	&& mv /tmp/${PACKAGE}/scripts/fetch_phix.sh /usr/local/bin/fetch_phix.sh \
+	&& mv /tmp/${PACKAGE}/scripts/merge_fastq.py /usr/local/bin/merge_fastq.py \
 	&& mv /tmp/${PACKAGE}/pipelines/${PRESTO_ABSEQ} /usr/local/bin/presto-abseq \
 	&& mv /tmp/${PACKAGE}/pipelines/${CHANGEO_IGBLAST} /usr/local/bin/changeo-igblast \
 	&& mv /tmp/${PACKAGE}/pipelines/${CHANGEO_CLONE} /usr/local/bin/changeo-clone \
