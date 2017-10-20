@@ -15,6 +15,7 @@ COPY tools/builds.py /usr/local/bin/builds
 
 # Update and install required packages
 RUN dnf -y update && dnf install -y \
+    findutils \
 	libcurl-devel \
 	libxml2-devel \
 	mercurial \
