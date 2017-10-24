@@ -276,7 +276,7 @@ check_error
 # Zip or delete intermediate and log files
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "Compressing files"
 LOG_FILES=$(ls ${LOGDIR}/*.log | grep -v "pipeline")
-FILTER_FILES="$(basename R1_READS)\|$(basename R2_READS)\|$(basename R1_PRIMERS)\|$(basename R2_PRIMERS)"
+FILTER_FILES="$(basename ${R1_READS})\|$(basename ${R2_READS})\|$(basename ${R1_PRIMERS})\|$(basename ${R2_PRIMERS})"
 FILTER_FILES+="\|reheader.fastq"
 TEMP_FILES=$(ls *.fastq | grep -v ${FILTER_FILES})
 if $ZIP_FILES; then

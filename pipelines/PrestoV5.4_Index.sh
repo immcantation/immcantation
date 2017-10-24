@@ -192,7 +192,7 @@ wait
 # Zip or delete intermediate and log files
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "Compressing files"
 LOG_FILES=$(ls ${LOGDIR}/*.log | grep -v "pipeline")
-FILTER_FILES="$(basename READS)"
+FILTER_FILES="$(basename ${READS})"
 FILTER_FILES+="\|final_"
 TEMP_FILES=$(ls *.fastq | grep -v ${FILTER_FILES})
 if $ZIP_FILES; then
