@@ -169,7 +169,7 @@ STEP=0
 if $ALIGN_SETS; then
     printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "AlignSets muscle"
 	AlignSets.py muscle -s $READS --exec $MUSCLE_EXEC \
-	    --nproc $NPROC --log "${LOGDIR}/align.log" --outname "${OUTNAME}" \
+	    --nproc $NPROC --log "${LOGDIR}/align.log" --outname "${OUTNAME}" --outdir . \
 	    >> $PIPELINE_LOG 2> $ERROR_LOG
 	BC_FILE="${OUTNAME}_align-pass.fastq"
 	check_error
@@ -177,16 +177,20 @@ else
 	BC_FILE=$READS
 fi
 
+if $BC_PRCONS_FLAG; then
+	printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "ParseHeaders expand"
+    ParseHeaders.py expand -s $BC_FILE -f PRIMER \
+        --outname "${OUTNAME}" --outdir . >> $PIPELINE_LOG 2> $ERROR_LOG
+	printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "ParseHeaders rename"
+    ParseHeaders.py rename -s "${OUTNAME}_reheader.fastq" -f PRIMER1 PRIMER2 \
+        -k FPRIMER RPRIMER >> $PIPELINE_LOG 2> $ERROR_LOG
+    BC_FILE="${OUTNAME}_reheader_reheader.fastq"
+    check_error
+fi
 
 # Build UID consensus sequences
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "BuildConsensus"
 if $BC_PRCONS_FLAG; then
-    ParseHeaders.py expand -s $BC_FILE -f PRIMER \
-        --outname "${OUTNAME}"  > /dev/null 2> $ERROR_LOG &
-    ParseHeaders.py rename -s "${OUTNAME}_reheader.fastq" -f PRIMER1 PRIMER2 \
-        -k FPRIMER RPRIMER --outname "${OUTNAME}"  > /dev/null 2> $ERROR_LOG &
-    BC_FILE="${OUTNAME}_reheader_reheader.fastq"
-
     BuildConsensus.py -s $BC_FILE --bf BARCODE --pf RPRIMER --prcons $BC_PRCONS \
         -n $BC_MINCOUNT -q $BC_QUAL --maxgap $BC_MAXGAP $BC_ERROR \
         --nproc $NPROC --log "${LOGDIR}/consensus.log" \
@@ -195,7 +199,7 @@ else
     BuildConsensus.py -s $BC_FILE --bf BARCODE \
         -n $BC_MINCOUNT -q $BC_QUAL --maxgap $BC_MAXGAP $BC_ERROR \
         --nproc $NPROC --log "${LOGDIR}/consensus.log" \
-        --outname "${OUTNAME}" >> $PIPELINE_LOG 2> $ERROR_LOG
+        --outname "${OUTNAME}" --outdir . >> $PIPELINE_LOG 2> $ERROR_LOG
 fi
 check_error
 
@@ -311,4 +315,3 @@ fi
 # End
 printf "DONE\n\n"
 cd ../
-
