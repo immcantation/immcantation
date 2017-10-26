@@ -134,8 +134,13 @@ else
 fi
 
 # CollapseSeq run parameters
-CS_KEEP=true
-CS_MISS=0
+CS_KEEP=false
+CS_MISS=20
+if $CS_KEEP; then
+    CS_KEEPMISS="--keepmiss"
+else
+    CS_KEEPMISS=""
+fi
 
 # Make output directory
 mkdir -p ${OUTDIR}; cd ${OUTDIR}
@@ -171,6 +176,7 @@ if $ALIGN_SETS; then
 	AlignSets.py muscle -s $READS --exec $MUSCLE_EXEC \
 	    --nproc $NPROC --log "${LOGDIR}/align.log" --outname "${OUTNAME}" --outdir . \
 	    >> $PIPELINE_LOG 2> $ERROR_LOG
+	    
 	BC_FILE="${OUTNAME}_align-pass.fastq"
 	check_error
 else
@@ -181,9 +187,11 @@ if $BC_PRCONS_FLAG; then
 	printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "ParseHeaders expand"
     ParseHeaders.py expand -s $BC_FILE -f PRIMER \
         --outname "${OUTNAME}" --outdir . >> $PIPELINE_LOG 2> $ERROR_LOG
+
 	printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "ParseHeaders rename"
     ParseHeaders.py rename -s "${OUTNAME}_reheader.fastq" -f PRIMER1 PRIMER2 \
         -k FPRIMER RPRIMER >> $PIPELINE_LOG 2> $ERROR_LOG
+
     BC_FILE="${OUTNAME}_reheader_reheader.fastq"
     check_error
 fi
@@ -209,12 +217,12 @@ if $MASK_LOWQUAL; then
     FilterSeq.py maskqual -s "${OUTNAME}_consensus-pass.fastq" -q $FS_MASK --nproc $NPROC \
         --outname "${OUTNAME}" --log "${LOGDIR}/maskqual.log" \
         >> $PIPELINE_LOG 2> $ERROR_LOG
+
     PH_FILE="${OUTNAME}_maskqual-pass.fastq"
     check_error
 else
     PH_FILE="${OUTNAME}_consensus-pass.fastq"
 fi
-
 
 if $ALIGN_CREGION; then
     # Annotate with internal C-region
@@ -229,10 +237,9 @@ if $ALIGN_CREGION; then
     printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "ParseHeaders rename"
     ParseHeaders.py rename -s "${OUTNAME}_primers-pass.fastq" -f PRIMER -k CREGION \
         --outname "${OUTNAME}" > /dev/null 2> $ERROR_LOG
-
     PH_FILE="${OUTNAME}_reheader.fastq"
-    CREGION_FIELD="CREGION"
 
+    CREGION_FIELD="CREGION"
     check_error
 else
     CREGION_FIELD=""
@@ -247,15 +254,9 @@ check_error
 
 # Remove duplicate sequences
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "CollapseSeq"
-if $CS_KEEP; then
-    CollapseSeq.py -s "${OUTNAME}-final_total.fastq" -n $CS_MISS \
+CollapseSeq.py -s "${OUTNAME}-final_total.fastq" -n $CS_MISS \
     --uf PRCONS $CREGION_FIELD --cf CONSCOUNT --act sum --inner \
-    --keepmiss --outname "${OUTNAME}-final" >> $PIPELINE_LOG 2> $ERROR_LOG
-else
-    CollapseSeq.py -s "${OUTNAME}-final_total.fastq" -n $CS_MISS \
-    --uf PRCONS $CREGION_FIELD --cf CONSCOUNT --act sum --inner \
-    --outname "${OUTNAME}-final" >> $PIPELINE_LOG 2> $ERROR_LOG
-fi
+    ${CS_KEEPMISS} --outname "${OUTNAME}-final" >> $PIPELINE_LOG 2> $ERROR_LOG
 check_error
 
 # Filter to sequences with at least 2 supporting sources
