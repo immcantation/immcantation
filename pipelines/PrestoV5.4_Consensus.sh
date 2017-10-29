@@ -176,7 +176,7 @@ if $ALIGN_SETS; then
 	AlignSets.py muscle -s $READS --exec $MUSCLE_EXEC \
 	    --nproc $NPROC --log "${LOGDIR}/align.log" --outname "${OUTNAME}" --outdir . \
 	    >> $PIPELINE_LOG 2> $ERROR_LOG
-	    
+
 	BC_FILE="${OUTNAME}_align-pass.fastq"
 	check_error
 else
