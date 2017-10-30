@@ -13,6 +13,8 @@
 #       Defaults to /usr/local/share/protocols/AbSeq/AbSeq_R2_TS.fasta.
 #   -r  V-segment reference file.
 #       Defaults to /usr/local/share/germlines/igblast/fasta/imgt_human_ig_v.fasta
+#   -f  Annotation field to use for sample labels.
+#       Defaults to SAMPLE.
 #   -n  Sample name or run identifier which will be used as the output file prefix.
 #       Defaults to a truncated version of the read 1 filename.
 #   -o  Output directory.
@@ -36,6 +38,8 @@ print_usage() {
             "     Defaults to /usr/local/share/protocols/AbSeq/AbSeq_R2_TS.fasta."
     echo -e "  -r  V-segment reference file.\n" \
             "     Defaults to /usr/local/share/igblast/fasta/imgt_human_ig_v.fasta."
+    echo -e "  -f  Annotation field to use for sample labels.\n" \
+            "     Defaults to SAMPLE."
     echo -e "  -n  Sample identifier which will be used as the output file prefix.\n" \
             "     Defaults to a truncated version of the read 1 filename."
     echo -e "  -o  Output directory.\n" \
@@ -53,13 +57,14 @@ R2_READS_SET=false
 R1_PRIMERS_SET=false
 R2_PRIMERS_SET=false
 VREF_SEQ_SET=false
+SAMFIELD_SET=false
 OUTNAME_SET=false
 OUTDIR_SET=false
 NPROC_SET=false
 COORD_SET=false
 
 # Get commandline arguments
-while getopts "1:2:j:v:r:n:o:x:p:h" OPT; do
+while getopts "1:2:j:v:r:f:n:o:x:p:h" OPT; do
     case "$OPT" in
     1)  R1_READS=${OPTARG}
         R1_READS_SET=true
@@ -75,6 +80,9 @@ while getopts "1:2:j:v:r:n:o:x:p:h" OPT; do
         ;;
     r)  VREF_SEQ=${OPTARG}
         VREF_SEQ_SET=true
+        ;;
+    f)  SAMFIELD=$OPTARG
+        SAMFIELD_SET=true
         ;;
     n)  OUTNAME=$OPTARG
         OUTNAME_SET=true
@@ -107,6 +115,10 @@ if ! ${R1_READS_SET} || ! ${R2_READS_SET}; then
 fi
 
 # Set unspecified arguments
+if ! ${SAMFIELD_SET}; then
+    SAMFIELD="SAMPLE"
+fi
+
 if ! ${OUTNAME_SET}; then
     OUTNAME=$(basename ${R1_READS} | sed 's/\.[^.]*$//; s/_L[0-9]*_R[0-9]_[0-9]*//')
 fi
@@ -255,8 +267,8 @@ check_error
 
 # Add sample annotation
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "ParseHeaders"
-ParseHeaders.py add -s "${OUTNAME}_primers-pass_primers-pass.fastq" -f SAMPLE -u $OUTNAME \
-    --outname "${OUTNAME}"  > /dev/null 2> $ERROR_LOG &
+ParseHeaders.py add -s "${OUTNAME}_primers-pass_primers-pass.fastq" \
+    -f $SAMFIELD -u $OUTNAME --outname "${OUTNAME}"  > /dev/null 2> $ERROR_LOG &
 check_error
 
 # Process log files
