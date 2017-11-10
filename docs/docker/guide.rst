@@ -29,7 +29,7 @@ To invoke a shell session inside the container with ``$HOME/project`` mounted to
 ``/data``::
 
     # Docker command
-    docker run -it -v $HOME/project:data:z kleinstein/immcantation:1.3.0 bash
+    docker run -it -v $HOME/project:/data:z kleinstein/immcantation:1.3.0 bash
 
     # Singularity command
     singularity shell -B $HOME/project:/data immcantation-1.3.0.img
@@ -44,7 +44,7 @@ To execute a specific command inside the container with ``$HOME/project`` mounte
 ``/data``::
 
     # Docker command
-    docker run -v $HOME/project:data:z kleinstein/immcantation:1.3.0 versions report
+    docker run -v $HOME/project:/data:z kleinstein/immcantation:1.3.0 versions report
 
     # Singularity command
     singularity exec -B $HOME/project:/data immcantation-1.3.0.img versions report
