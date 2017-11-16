@@ -7,7 +7,8 @@ from sys import argv
 from Bio import SeqIO
 
 in_file = argv[1]
-out_file = '%s.fasta' % path.splitext(in_file)[0]
+out_file = path.split(in_file)[1]
+out_file = '%s.fasta' % path.splitext(out_file)[0]
 
 with open(out_file, 'w') as out_handle:
     records = SeqIO.parse(in_file, 'fastq')
