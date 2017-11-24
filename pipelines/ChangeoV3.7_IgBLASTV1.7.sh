@@ -211,7 +211,7 @@ run_igblast.sh -s ${IG_FILE} -g ${SPECIES} -t ${RECEPTOR} -b ${IGDATA} -n ${NPRO
     >> $PIPELINE_LOG 2> $ERROR_LOG
 DB_FILE=$(basename ${IG_FILE})
 DB_FILE="${DB_FILE%.fasta}.fmt7"
-check_error
+#check_error
 
 # Parse IgBLAST output
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "MakeDb igblast"
