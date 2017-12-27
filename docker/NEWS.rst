@@ -1,6 +1,28 @@
 Docker Container Release Notes
 ========================================================================
 
+Version 1.4.0:  December 26, 2017
+------------------------------------------------------------------------
+
+Version Updates:
+
++ presto 0.5.5
+
+Pipeline Changes:
+
++ Fixed a bug in ``presto-abseq`` preventing relative file paths from
+  working with the ``-r`` argument.
+
+Pipeline Changes:
+
++ ``changeo-igblast`` no longer terminates upon IgBLAST warnings.
+
+Image Changes:
+
++ Added Stern, Yaari and Vander Heiden, et al 2014 primer sets.
++ Fixed an output directory bug in ``fastq2fasta.py``.
+
+
 Version 1.3.0:  October 17, 2017
 ------------------------------------------------------------------------
 
