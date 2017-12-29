@@ -1,12 +1,13 @@
 Docker Container Release Notes
 ========================================================================
 
-Version 1.4.0:  December 26, 2017
+Version 1.4.0:  December 29, 2017
 ------------------------------------------------------------------------
 
 Version Updates:
 
 + presto 0.5.5
++ phylip 3.697
 
 Pipeline Changes:
 
