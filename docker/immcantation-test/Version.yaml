@@ -1,0 +1,16 @@
+immcantation:
+    version:  None
+    date:     None
+release:
+    presto:   None
+    changeo:  None
+    alakazam: None
+    shazam:   None
+    tigger:   None
+    prestor:  None
+software:
+    muscle:   3.8.31
+    vsearch:  2.4.3
+    blast:    2.5.0
+    igblast:  1.7.0
+    phylip:   3.697
