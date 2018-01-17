@@ -10,7 +10,7 @@ The image is available on docker hub at:
 `kleinstein/immcantation <https://hub.docker.com/r/kleinstein/immcantation/>`__
 
 Images are versioned through tags with images containing official releases
-denoted by meta-version numbers (eg, ``1.4.0``). The ``devel`` tag denotes the
+denoted by meta-version numbers (eg, ``1.5.0``). The ``devel`` tag denotes the
 latest development (unstabled) builds.
 
 Getting the Container
@@ -23,8 +23,8 @@ Docker
 
 .. code-block:: shell
 
-    # Pull release version 1.4.0
-    docker pull kleinstein/immcantation:1.4.0
+    # Pull release version 1.5.0
+    docker pull kleinstein/immcantation:1.5.0
 
     # Pull the latest development build
     docker pull kleinstein/immcantation:devel
@@ -35,10 +35,10 @@ Singularity
 
 .. code-block:: shell
 
-    # Pull release version 1.4.0
-    IMAGE="immcantation-1.4.0.img"
+    # Pull release version 1.5.0
+    IMAGE="immcantation-1.5.0.img"
     singularity create --size 5000 $IMAGE
-    singularity import $IMAGE docker://kleinstein/immcantation:1.4.0
+    singularity import $IMAGE docker://kleinstein/immcantation:1.5.0
 
 
 What's in the Container
