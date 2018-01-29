@@ -17,26 +17,26 @@ COPY tools/builds.py /usr/local/bin/builds
 RUN dnf -y update && dnf install -y \
     biber \
     findutils \
-	libcurl-devel \
-	libxml2-devel \
-	mercurial \
-	openssl-devel \
-	pandoc \
-	pandoc-citeproc \
-	perl \
-	python3 \
-	python3-biopython \
-	python3-hglib \
-	python3-numpy \
-	python3-pandas \
-	python3-PyYAML \
-	python3-setuptools \
-	python3-scipy \
-	R-core \
-	R-core-devel \
-	tar \
+    libcurl-devel \
+    libxml2-devel \
+    mercurial \
+    openssl-devel \
+    pandoc \
+    pandoc-citeproc \
+    perl \
+    python3 \
+    python3-biopython \
+    python3-hglib \
+    python3-numpy \
+    python3-pandas \
+    python3-PyYAML \
+    python3-setuptools \
+    python3-scipy \
+    R-core \
+    R-core-devel \
+    tar \
     texlive-scheme-basic \
-	texlive-biblatex \
-	texlive-titling \
-	wget \
-	&& dnf clean all
+    texlive-biblatex \
+    texlive-titling \
+    wget \
+    && dnf clean all
