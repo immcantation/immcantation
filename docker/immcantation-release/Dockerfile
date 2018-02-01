@@ -32,39 +32,39 @@ RUN PACKAGE="immcantation" \
     && rm -rf /tmp/${PACKAGE} \
     && hg clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
     && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} \
-	&& mv /tmp/${PACKAGE}/scripts/fastq2fasta.py /usr/local/bin/fastq2fasta.py \
-	&& mv /tmp/${PACKAGE}/scripts/fetch_igblastdb.sh /usr/local/bin/fetch_igblastdb.sh \
-	&& mv /tmp/${PACKAGE}/scripts/fetch_imgtdb.sh /usr/local/bin/fetch_imgtdb.sh \
-	&& mv /tmp/${PACKAGE}/scripts/clean_imgtdb.py /usr/local/bin/clean_imgtdb.py \
-	&& mv /tmp/${PACKAGE}/scripts/imgt2igblast.sh /usr/local/bin/imgt2igblast.sh \
-	&& mv /tmp/${PACKAGE}/scripts/run_igblast.sh /usr/local/bin/run_igblast.sh \
-	&& mv /tmp/${PACKAGE}/scripts/fetch_phix.sh /usr/local/bin/fetch_phix.sh \
-	&& mv /tmp/${PACKAGE}/pipelines/${PRESTO_ABSEQ} /usr/local/bin/presto-abseq \
-	&& mv /tmp/${PACKAGE}/pipelines/${CHANGEO_IGBLAST} /usr/local/bin/changeo-igblast \
-	&& mv /tmp/${PACKAGE}/pipelines/${CHANGEO_CLONE} /usr/local/bin/changeo-clone \
-	&& mv /tmp/${PACKAGE}/pipelines/${SHAZAM_THRESHOLD} /usr/local/bin/shazam-threshold \
-	&& mv /tmp/${PACKAGE}/pipelines/${TIGGER_GENOTYPE} /usr/local/bin/tigger-genotype \
-	&& mv /tmp/${PACKAGE}/pipelines/${PREPROCESS_PHIX} /usr/local/bin/preprocess-phix \
-	&& mv /tmp/${PACKAGE}/protocols /usr/local/share/protocols \
-	&& builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
-	&& rm -r /tmp/${PACKAGE}
+    && mv /tmp/${PACKAGE}/scripts/fastq2fasta.py /usr/local/bin/fastq2fasta.py \
+    && mv /tmp/${PACKAGE}/scripts/fetch_igblastdb.sh /usr/local/bin/fetch_igblastdb.sh \
+    && mv /tmp/${PACKAGE}/scripts/fetch_imgtdb.sh /usr/local/bin/fetch_imgtdb.sh \
+    && mv /tmp/${PACKAGE}/scripts/clean_imgtdb.py /usr/local/bin/clean_imgtdb.py \
+    && mv /tmp/${PACKAGE}/scripts/imgt2igblast.sh /usr/local/bin/imgt2igblast.sh \
+    && mv /tmp/${PACKAGE}/scripts/run_igblast.sh /usr/local/bin/run_igblast.sh \
+    && mv /tmp/${PACKAGE}/scripts/fetch_phix.sh /usr/local/bin/fetch_phix.sh \
+    && mv /tmp/${PACKAGE}/pipelines/${PRESTO_ABSEQ} /usr/local/bin/presto-abseq \
+    && mv /tmp/${PACKAGE}/pipelines/${CHANGEO_IGBLAST} /usr/local/bin/changeo-igblast \
+    && mv /tmp/${PACKAGE}/pipelines/${CHANGEO_CLONE} /usr/local/bin/changeo-clone \
+    && mv /tmp/${PACKAGE}/pipelines/${SHAZAM_THRESHOLD} /usr/local/bin/shazam-threshold \
+    && mv /tmp/${PACKAGE}/pipelines/${TIGGER_GENOTYPE} /usr/local/bin/tigger-genotype \
+    && mv /tmp/${PACKAGE}/pipelines/${PREPROCESS_PHIX} /usr/local/bin/preprocess-phix \
+    && mv /tmp/${PACKAGE}/protocols /usr/local/share/protocols \
+    && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
+    && rm -r /tmp/${PACKAGE}
 
 # Install muscle
 RUN MUSCLE=$(versions get -n muscle) \
     && wget -q --show-progress \
        http://www.drive5.com/muscle/downloads${MUSCLE}/muscle${MUSCLE}_i86linux64.tar.gz \
-	&& tar -zxf muscle${MUSCLE}_i86linux64.tar.gz \
-	&& mv muscle${MUSCLE}_i86linux64 /usr/local/bin/muscle \
-	&& rm muscle${MUSCLE}_i86linux64.tar.gz
+    && tar -zxf muscle${MUSCLE}_i86linux64.tar.gz \
+    && mv muscle${MUSCLE}_i86linux64 /usr/local/bin/muscle \
+    && rm muscle${MUSCLE}_i86linux64.tar.gz
 
 # Install vsearch
 RUN VSEARCH=$(versions get -n vsearch) \
     && wget -q --show-progress \
        http://github.com/torognes/vsearch/releases/download/v${VSEARCH}/vsearch-${VSEARCH}-linux-x86_64.tar.gz \
-	&& tar -zxf vsearch-${VSEARCH}-linux-x86_64.tar.gz \
-	&& mv vsearch-${VSEARCH}-linux-x86_64/bin/vsearch /usr/local/bin/vsearch \
-	&& ln -s /usr/local/bin/vsearch /usr/local/bin/usearch \
-	&& rm -r vsearch-${VSEARCH}-linux-x86_64.tar.gz vsearch-${VSEARCH}-linux-x86_64
+    && tar -zxf vsearch-${VSEARCH}-linux-x86_64.tar.gz \
+    && mv vsearch-${VSEARCH}-linux-x86_64/bin/vsearch /usr/local/bin/vsearch \
+    && ln -s /usr/local/bin/vsearch /usr/local/bin/usearch \
+    && rm -r vsearch-${VSEARCH}-linux-x86_64.tar.gz vsearch-${VSEARCH}-linux-x86_64
 
 # Install BLAST+ executables
 RUN BLAST=$(versions get -n blast) \
@@ -96,18 +96,18 @@ RUN PACKAGE="presto" \
     && rm -rf /tmp/${PACKAGE} \
     && hg clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
     && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} \
-	&& pip3 install --no-cache-dir /tmp/${PACKAGE} \
-	&& builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
-	&& rm -r /tmp/${PACKAGE}
+    && pip3 install --no-cache-dir /tmp/${PACKAGE} \
+    && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
+    && rm -r /tmp/${PACKAGE}
 
 # Install changeo
 RUN PACKAGE="changeo" \
     && rm -rf /tmp/${PACKAGE} \
     && hg clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
     && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} \
-	&& pip3 install --no-cache-dir /tmp/${PACKAGE} \
-	&& builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
-	&& rm -r /tmp/${PACKAGE}
+    && pip3 install --no-cache-dir /tmp/${PACKAGE} \
+    && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
+    && rm -r /tmp/${PACKAGE}
 
 # Install alakazam
 RUN PACKAGE="alakazam" \
@@ -123,7 +123,7 @@ RUN PACKAGE="shazam" \
     && hg clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
     && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} \
     && Rscript -e "setwd('/tmp/${PACKAGE}'); ${R_BUILD}" \
-	&& builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
+    && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
     && rm -r /tmp/${PACKAGE}
 
 # Install tigger
@@ -132,7 +132,7 @@ RUN PACKAGE="tigger" \
     && hg clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
     && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} \
     && Rscript -e "setwd('/tmp/${PACKAGE}'); ${R_BUILD}" \
-	&& builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
+    && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
     && rm -r /tmp/${PACKAGE}
 
 # Install prestor
@@ -141,7 +141,7 @@ RUN PACKAGE="prestor" \
     && hg clone https://bitbucket.org/javh/prototype-prestor /tmp/${PACKAGE} \
     && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} \
     && Rscript -e "setwd('/tmp/${PACKAGE}'); ${R_BUILD}" \
-	&& builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
+    && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
     && rm -r /tmp/${PACKAGE}
 
 # Download and build references databases
