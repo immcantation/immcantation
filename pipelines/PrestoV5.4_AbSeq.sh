@@ -283,7 +283,6 @@ STEP=0
 # Remove low quality reads
 if $FILTER_LOWQUAL; then
     printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "FilterSeq quality"
-    #OUTPREFIX="$(printf '%02d' $STEP)--${OUTNAME}"
     FilterSeq.py quality -s $R1_READS -q $FS_QUAL --nproc $NPROC \
         --outname "${OUTNAME}-R1" --outdir . --log "${LOGDIR}/quality-1.log" \
         >> $PIPELINE_LOG  2> $ERROR_LOG
@@ -294,8 +293,8 @@ if $FILTER_LOWQUAL; then
     MPR2_FILE="${OUTNAME}-R2_quality-pass.fastq"
     check_error
 else
-    MPR1_FILE=$R1_FILE
-    MPR2_FILE=$R2_FILE
+    MPR1_FILE=$R1_READS
+    MPR2_FILE=$R2_READS
 fi
 
 
@@ -377,7 +376,7 @@ fi
 check_error
 
 
-# Assign UIDs to read 1 sequences
+# Syncronize read files
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "PairSeq"
 PairSeq.py -1 "${OUTNAME}-R1_consensus-pass.fastq" -2 "${OUTNAME}-R2_consensus-pass.fastq" \
     --coord presto >> $PIPELINE_LOG 2> $ERROR_LOG
