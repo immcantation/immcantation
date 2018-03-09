@@ -34,6 +34,7 @@ RUN dnf -y update && dnf install -y \
     python3-scipy \
     R-core \
     R-core-devel \
+    sudo \
     tar \
     texlive-scheme-basic \
     texlive-biblatex \

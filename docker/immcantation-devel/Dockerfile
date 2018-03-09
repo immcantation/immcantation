@@ -145,7 +145,9 @@ RUN fetch_igblastdb.sh -o /usr/local/share/igblast \
     && fetch_phix.sh -o /usr/local/share/phix
 
 # Setup users and permissions
-RUN useradd -u 1000 -g users magus \
+RUN useradd magus -u 1000 -g users \
+    && echo "magus ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/magus \
+    && chmod 0440 /etc/sudoers.d/magus \
     && echo "umask 000" >> /home/magus/.bashrc
 USER magus
 
