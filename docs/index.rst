@@ -37,7 +37,7 @@ provided for pre-processing, population structure determination, and repertoire 
     *Genome Medicine. 7, 121 (2015).*
     `doi\:10.1186/s13073-015-0243-2 <http://doi.org/10.1186/s13073-015-0243-2>`__
 
-    **AIRR-seq analysis tutorial**
+**AIRR-seq analysis tutorial**
    
     The `slides and example data <https://goo.gl/FpW3Sc>`__ from our introductory webinar
     series.
