@@ -63,7 +63,7 @@ All packages are under the free and open-source license
 + Use the [unittest](https://docs.python.org/3/library/unittest.html) framework.
 + Create separate files for each module inside the `tests` folder.
 + If data is required for a unit test, place it in `tests/data` and access the
-  direction in tests via the recipe:
+  directory via the recipe:
   ```
   test_path = os.path.dirname(os.path.realpath(__file__))
   data_path = os.path.join(test_path, 'data')
