@@ -7,106 +7,7 @@
     :hidden:
 
     Welcome <self>
-
-.. _Welcome:
-
-Welcome to the Immcantation Portal!
-==========================================================================================
-
-Advances in high-throughput sequencing technologies now allow for large-scale
-characterization of B cell receptor (BCR) and T cell receptor (TCR) repertoires. The high
-germline and somatic diversity of the adaptive immune receptor repertoire (AIRR) presents
-challenges for biologically meaningful analysis - requiring the development of specialized
-computational methods.
-
-The Immcantation framework provide a start-to-finish analytical ecosystem for
-high-throughput AIRR-seq datasets. Beginning from raw reads, Python and R packages are
-provided for pre-processing, population structure determination, and repertoire analysis.
-
-**Click on the relevant section of the image below for more details.**
-
-.. raw:: html
-
-    <object data="_static/overview.svg" type="image/svg+xml"></object>
-    <br><br>
-
-**For an overview of AIRR-seq analysis, check out:**
-
-    **Yaari and Kleinstein.**
-    Practical guidelines for B-cell receptor repertoire sequencing analysis.
-    *Genome Medicine. 7, 121 (2015).*
-    `doi\:10.1186/s13073-015-0243-2 <http://doi.org/10.1186/s13073-015-0243-2>`__
-
-**AIRR-seq analysis tutorial**
-   
-    The `slides and example data <https://goo.gl/FpW3Sc>`__ from our introductory webinar
-    series.
-
-.. _Cite:
-
-How to Cite
-==========================================================================================
-
-To cite the pRESTO software package in publications please use:
-
-    **Vander Heiden JA\*, Yaari G\*, Uduman M, Stern JNH, O'Connor KC, Hafler DA, Vigneault F, Kleinstein SH.**
-    pRESTO\: a toolkit for processing high-throughput sequencing raw reads of lymphocyte receptor repertoires.
-    *Bioinformatics 30, 1930-2 (2014).*
-    `doi\:10.1093/bioinformatics/btu138 <http://doi.org/10.1093/bioinformatics/btu138>`__
-
-To cite the Change-O, Alakazam, SHazaM and TIgGER software package in publications please use:
-
-    **Gupta NT\*, Vander Heiden JA\*, Uduman M, Gadala-Maria D, Yaari G, Kleinstein SH.**
-    Change-O\: a toolkit for analyzing large-scale B cell immunoglobulin repertoire sequencing data.
-    *Bioinformatics 31, 3356-8 (2015).*
-    `doi\:10.1093/bioinformatics/btv359 <http://doi.org/10.1093/bioinformatics/btv359>`__
-
-Additional citations for specific methods within Alakazam, SHazaM and TIgGER may be determined
-using the ``citation()`` function witin R.
-
-.. _Authors:
-
-Authors
-==========================================================================================
-
-Jason A. Vander Heiden, Namita T. Gupta, Mohamed Uduman, Daniel Gadala-Maria,
-Susanna Marquez, Julian Zhou, Rouyi Jiang, Ang Cui, Nima Nouri, Chris R. Bolen,
-Gur Yaari, Steven H. Kleinstein
-
-.. _Contact:
-
-Contact Information
-==========================================================================================
-
-If you have questions you can email the
-`Immcantation Group <mailto:immcantation@googlegroups.com>`__.
-
-For additional computational immunology software from the Kleinstein Lab see our
-`website <http://medicine.yale.edu/lab/kleinstein/software/>`__.
-
-.. _Contributing:
-
-Contributing
-==========================================================================================
-
-We welcome contributions to all components of the Immcantation framework through
-pull request to the relevant Bitbucket repository:
-
-+ `Docker container, pipelines and portal documentation <https://bitbucket.org/kleinstein/immcantation>`__
-+ `pRESTO <https://bitbucket.org/kleinstein/presto>`__
-+ `Change-O <https://bitbucket.org/kleinstein/changeo>`__
-+ `Alakazam <https://bitbucket.org/kleinstein/alakazam>`__
-+ `SHazaM <https://bitbucket.org/kleinstein/shazam>`__
-+ `TIgGER <https://bitbucket.org/kleinstein/tigger>`__
-
-All packages are under the free and open-source license
-`CC BY-SA 4.0 <https://creativecommons.org/licenses/by-sa/4.0/>`__.
-
-For details on documentation, coding style, and other conventions see the
-`CONTRIBUTING.md <https://bitbucket.org/kleinstein/immcantation/src/tip/CONTRIBUTING.md>`__ file on
-Bitbucket.
-
-.. Component TOC trees
+    About <about>
 
 .. toctree::
     :maxdepth: 3
@@ -161,3 +62,39 @@ Bitbucket.
     Documentation <http://tigger.readthedocs.io>
     Download Releases <http://bitbucket.org/kleinstein/tigger/downloads>
     Source Code <http://bitbucket.org/kleinstein/tigger>
+
+.. _Welcome:
+
+Welcome to the Immcantation Portal!
+==========================================================================================
+
+Advances in high-throughput sequencing technologies now allow for large-scale
+characterization of B cell receptor (BCR) and T cell receptor (TCR) repertoires. The high
+germline and somatic diversity of the adaptive immune receptor repertoire (AIRR) presents
+challenges for biologically meaningful analysis - requiring the development of specialized
+computational methods.
+
+The Immcantation framework provide a start-to-finish analytical ecosystem for
+high-throughput AIRR-seq datasets. Beginning from raw reads, Python and R packages are
+provided for pre-processing, population structure determination, and repertoire analysis.
+
+**Click on the relevant section of the image below for more details.**
+
+.. raw:: html
+
+    <object data="_static/overview.svg" type="image/svg+xml"></object>
+    <br><br>
+
+Overview of AIRR-seq Analysis
+-------------------------------------------------------------------------------------------
+
+    **Yaari and Kleinstein.**
+    Practical guidelines for B-cell receptor repertoire sequencing analysis.
+    *Genome Medicine. 7, 121 (2015).*
+    `doi\:10.1186/s13073-015-0243-2 <http://doi.org/10.1186/s13073-015-0243-2>`__
+
+AIRR-seq Analysis Tutorial
+-------------------------------------------------------------------------------------------
+
+    The `slides and example data <https://goo.gl/FpW3Sc>`__ from our introductory webinar
+    series.
