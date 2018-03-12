@@ -39,9 +39,8 @@ provided for pre-processing, population structure determination, and repertoire 
 
     **AIRR-seq analysis tutorial**
    
-    `Slides <http://clip.med.yale.edu/immcantation/AIRR-seq_workshop_2017-06-19/AIRR-seq_workshop_slides_2017-06-19.pptx>`_ 
-    and `data <http://clip.med.yale.edu/immcantation/AIRR-seq_workshop_2017-06-19/AIRR-seq_workshop_example.tar.gz>`_ from the tutorial presented by Jason Vander Heiden at the 
-    `Stochasticity and Control of Immune Repertoires Group Conference <http://ias.huji.ac.il/content/stochasticity-and-control-dynamics-and-diversity-immune-repertories>`_ (Israel, June 18 - June 23, 2017).
+    The `slides and example data <https://goo.gl/FpW3Sc>`__ from our introductory webinar
+    series.
 
 .. _Cite:
 
@@ -65,9 +64,9 @@ To cite the Change-O, Alakazam, SHazaM and TIgGER software package in publicatio
 Additional citations for specific methods within Alakazam, SHazaM and TIgGER may be determined
 using the ``citation()`` function witin R.
 
-.. _Contributors:
+.. _Authors:
 
-Contributors
+Authors
 ==========================================================================================
 
 Jason A. Vander Heiden, Namita T. Gupta, Mohamed Uduman, Daniel Gadala-Maria,
@@ -85,7 +84,27 @@ If you have questions you can email the
 For additional computational immunology software from the Kleinstein Lab see our
 `website <http://medicine.yale.edu/lab/kleinstein/software/>`__.
 
-.. Publications that use Immcantation tools:
+.. _Contributing:
+
+Contributing
+==========================================================================================
+
+We welcome contributions to all components of the Immcantation framework through
+pull request to the relevant Bitbucket repository:
+
++ `Docker container, pipelines and portal documentation <https://bitbucket.org/kleinstein/immcantation>`__
++ `pRESTO <https://bitbucket.org/kleinstein/presto>`__
++ `Change-O <https://bitbucket.org/kleinstein/changeo>`__
++ `Alakazam <https://bitbucket.org/kleinstein/alakazam>`__
++ `SHazaM <https://bitbucket.org/kleinstein/shazam>`__
++ `TIgGER <https://bitbucket.org/kleinstein/tigger>`__
+
+All packages are under the free and open-source license
+`CC BY-SA 4.0 <https://creativecommons.org/licenses/by-sa/4.0/>`__.
+
+For details on documentation, coding style, and other conventions see the
+`CONTRIBUTING.md <https://bitbucket.org/kleinstein/immcantation/src/tip/CONTRIBUTING.md>`__ file on
+Bitbucket.
 
 .. Component TOC trees
 
