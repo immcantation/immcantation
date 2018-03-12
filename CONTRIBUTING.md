@@ -42,7 +42,7 @@ All packages are under the free and open-source license
 + Use [markr](https://bitbucket.org/javh/markr) to convert the R man pages, vignettes, DESCRIPTION, README and
   CITATION files to Markdown to build the [MkDocs](http://www.mkdocs.org) documentation that is hosted on ReadTheDocs.
 
-#### Best practices for rebuilding docs with markr for an existing package:
+### Best practices for rebuilding R docs with markr for an existing package:
 
 1. Make sure the date, version and changelog in DESCRIPTION and NEWS are current!
 2. Delete the contents of `docs/topics` and `docs/vignettes`
@@ -51,6 +51,34 @@ All packages are under the free and open-source license
 5. Verify the docs build correctly by running `mkdocs serve` from the package directory and going to the url specified.
 6. Commit and push. Making sure to add/remove files from the repo that are new/lost.
 7. Verify the ReadTheDocs site builds correctly.
+
+---
+
+# Unit Test Guidelines
+
+---
+
+### Python Unit Tests
+
++ Use the [unittest](https://docs.python.org/3/library/unittest.html) framework.
++ Create separate files for each module inside the `tests` folder.
++ If data is required for a unit test, place it in `tests/data` and access the
+  direction in tests via the recipe:
+  ```
+  test_path = os.path.dirname(os.path.realpath(__file__))
+  data_path = os.path.join(test_path, 'data')
+  ```
+
+### R Unit Tests
+
++ Use the [testthat](https://github.com/hadley/testthat) framework.
++ Place tests in `tests/testthat` within the R file corresponding
+  to the file in `/R` that contains the function being tested.
++ If data is required for a unit test, place it in `tests/data-tests`
+  and access it via the recipe:
+  ```
+  data <- file.path("..", "data-tests", "data.rda")
+  ```
 
 ---
 
