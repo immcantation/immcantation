@@ -16,9 +16,6 @@ OUT_DIR="/data/run/${DATE}/phix/${SAMPLE_NAME}"
 docker run -v $DATA_DIR:/data:z $IMAGE preprocess-phix \
 	-s $READS_R1 -o $OUT_DIR -p $NPROC \
 	| tee run/${DATE}/run_phix_1.out
-docker run -v $DATA_DIR:/data:z $IMAGE preprocess-phix \
-	-s $READS_R2 -o $OUT_DIR -p $NPROC \
-	| tee run/${DATE}/run_phix_2.out
 	
 # pRESTO
 READS_R1=/data/AAYHL_HD13M/MG2v3_HD13M_BC13_AGTCAA_L001_R1_001.fastq
