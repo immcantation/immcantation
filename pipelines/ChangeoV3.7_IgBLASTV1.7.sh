@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-# Super script to run IgBLAST 1.6 and Change-O 0.3.4
+# Super script to run IgBLAST 1.7 and Change-O 0.3.7
 #
 # Author:  Jason Anthony Vander Heiden, Gur Yaari, Namita Gupta
-# Date:    2017.08.10
+# Date:    2018.03.19
 #
 # Arguments:
 #   -s  FASTA or FASTQ sequence file.
@@ -153,7 +153,6 @@ if ! ${NPROC_SET}; then
 fi
 
 
-
 # Define pipeline steps
 ZIP_FILES=true
 DELETE_FILES=true
@@ -185,9 +184,16 @@ check_error() {
     fi
 }
 
-# Start
-CHANGEO_VERSION=$(python3 -c "import changeo; print('%s-%s' % (changeo.__version__, changeo.__date__))")
+# Set extension
 IGBLAST_VERSION=$(igblastn -version  | grep 'Package' |sed s/'Package: '//)
+CHANGEO_VERSION=$(python3 -c "import changeo; print('%s-%s' % (changeo.__version__, changeo.__date__))")
+if [[ $CHANGEO_VERSION == 0.4* ]]; then
+    EXT="tsv"
+else
+	EXT="tab"
+fi
+
+# Start
 echo -e "IDENTIFIER: ${OUTNAME}"
 echo -e "DIRECTORY: ${OUTDIR}"
 echo -e "CHANGEO VERSION: ${CHANGEO_VERSION}"
@@ -216,9 +222,9 @@ DB_FILE="${DB_FILE%.fasta}.fmt7"
 # Parse IgBLAST output
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "MakeDb igblast"
 MakeDb.py igblast -i ${DB_FILE} -s  ${IG_FILE} -r ${REFDIR} \
-    --scores --regions --failed --outname "${OUTNAME}" \
+    --scores --regions --failed --outname "${OUTNAME}" --outdir "${OUTDIR}" \
     >> $PIPELINE_LOG 2> $ERROR_LOG
-    LAST_FILE="${OUTNAME}_db-pass.tab"
+    LAST_FILE="${OUTNAME}_db-pass.${EXT}"
 check_error
 
 # Create germlines
@@ -228,7 +234,7 @@ if $GERMLINES; then
         --sf ${CG_SFIELD} --vf $CG_VFIELD --outname "${OUTNAME}" \
         >> $PIPELINE_LOG 2> $ERROR_LOG
 	check_error
-	LAST_FILE="${OUTNAME}_germ-pass.tab"
+	LAST_FILE="${OUTNAME}_germ-pass.${EXT}"
 fi
 
 if $FUNCTIONAL; then
@@ -236,12 +242,12 @@ if $FUNCTIONAL; then
     ParseDb.py select -d ${LAST_FILE} -f FUNCTIONAL -u T TRUE --outname "${OUTNAME}" \
         >> $PIPELINE_LOG 2> $ERROR_LOG
     check_error
-    LAST_FILE="${OUTNAME}_parse-select.tab"
+    LAST_FILE="${OUTNAME}_parse-select.${EXT}"
 fi
 
 # Zip or delete intermediate and log files
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "Compressing files"
-TEMP_FILES=$(ls *.tab | grep -v "${LAST_FILE}\|$(basename ${READS})")
+TEMP_FILES=$(ls *.${EXT} | grep -v "${LAST_FILE}\|$(basename ${READS})")
 if $ZIP_FILES; then
     tar -zcf temp_files.tar.gz $TEMP_FILES
 fi

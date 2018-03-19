@@ -4,7 +4,7 @@
 # a hit will be filtered out
 #
 # Author:  Susanna Marquez
-# Date:    2017.09.21
+# Date:    2018.03.19
 #
 # Arguments:
 #   -s  FASTQ sequence file.
@@ -110,15 +110,16 @@ fi
 
 # Set output directory
 if ! ${OUTDIR_SET}; then
-    OUTDIR=$(dirname ${READS})
+    OUTDIR=${OUTNAME}
 fi
-# Make output directory
-mkdir -p ${OUTDIR}; cd ${OUTDIR}
 
 # Set number of processes
 if ! ${NPROC_SET}; then
     NPROC=$(nproc)
 fi
+
+# Make output directory
+mkdir -p ${OUTDIR}; cd ${OUTDIR}
 
 # Define log files
 LOGDIR="${OUTDIR}/logs"
@@ -164,9 +165,9 @@ OUTPUT_SIZE=$((`wc -l < ${NO_N_READS}`/4))
 REMOVED_SEQS=$((${INPUT_SIZE}-${OUTPUT_SIZE}))
 
 if [ ${REMOVED_SEQS} -eq 0 ]; then
- rm $NO_N_READS
+   rm $NO_N_READS
 else
- READS=$NO_N_READS
+   READS=$NO_N_READS
 fi
    
 echo -e "  INPUT_SIZE> ${INPUT_SIZE}" >> $PIPELINE_LOG

@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-# Super script to run Change-O 0.3.4 cloning and germline reconstruction
+# Super script to run Change-O 0.3.7 cloning and germline reconstruction
 #
 # Author:  Jason Anthony Vander Heiden, Gur Yaari, Namita Gupta
-# Date:    2017.05.05
+# Date:    2018.03.19
 #
 # Arguments:
 #   -d  Change-O formatted TSV (TAB) file.
@@ -148,8 +148,17 @@ check_error() {
     fi
 }
 
-# Start
+# Set extension
 CHANGEO_VERSION=$(python3 -c "import changeo; print('%s-%s' % (changeo.__version__, changeo.__date__))")
+if [[ $CHANGEO_VERSION == 0.4* ]]; then
+    EXT="tsv"
+    DC_COMMAND=""
+else
+	EXT="tab"
+    DC_COMMAND="bygroup"
+fi
+
+# Start
 echo -e "IDENTIFIER: ${OUTNAME}"
 echo -e "DIRECTORY: ${OUTDIR}"
 echo -e "CHANGEO VERSION: ${CHANGEO_VERSION}"
@@ -158,22 +167,23 @@ STEP=0
 
 if $FUNCTIONAL; then
     printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "ParseDb select"
-    ParseDb.py select -d ${DB} -f FUNCTIONAL -u T TRUE --outname "${OUTNAME}" \
+    ParseDb.py select -d ${DB} -f FUNCTIONAL -u T TRUE \
+        --outname "${OUTNAME}" --outdir "${OUTDIR}" \
         >> $PIPELINE_LOG 2> $ERROR_LOG
     check_error
-    LAST_FILE="${OUTNAME}_parse-select.tab"
+    LAST_FILE="${OUTNAME}_parse-select.${EXT}"
 else
     LAST_FILE=${DB}
 fi
 
 # Assign clones
-printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "DefineClones bygroup"
-DefineClones.py bygroup -d ${LAST_FILE} --model ${DC_MODEL} \
+printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "DefineClones ${DC_COMMAND}"
+DefineClones.py ${DC_COMMAND} -d ${LAST_FILE} --model ${DC_MODEL} \
     --dist ${DIST} --mode ${DC_MODE} --act ${DC_ACT} --nproc ${NPROC} \
-    --outname "${OUTNAME}" --log "${LOGDIR}/clone.log" \
+    --outname "${OUTNAME}" --outdir "${OUTDIR}" --log "${LOGDIR}/clone.log" \
     >> $PIPELINE_LOG 2> $ERROR_LOG
 check_error
-LAST_FILE="${OUTNAME}_clone-pass.tab"
+LAST_FILE="${OUTNAME}_clone-pass.${EXT}"
 
 # Create germlines
 if $GERMLINES; then
@@ -182,7 +192,7 @@ if $GERMLINES; then
         --sf ${CG_SFIELD} --vf ${CG_VFIELD} --cloned --outname "${OUTNAME}" \
         >> $PIPELINE_LOG 2> $ERROR_LOG
 	check_error
-	LAST_FILE="${OUTNAME}_germ-pass.tab"
+	LAST_FILE="${OUTNAME}_germ-pass.${EXT}"
 fi
 
 # Process log files
@@ -194,7 +204,7 @@ wait
 # Zip or delete intermediate and log files
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "Compressing files"
 LOG_FILES=$(ls ${LOGDIR}/*.log | grep -v "pipeline")
-TEMP_FILES=$(ls *.tab | grep -v "${LAST_FILE}\|$(basename ${DB})")
+TEMP_FILES=$(ls *.${EXT} | grep -v "${LAST_FILE}\|$(basename ${DB})")
 if $ZIP_FILES; then
     tar -zcf log_files.tar.gz $LOG_FILES
     tar -zcf temp_files.tar.gz $TEMP_FILES

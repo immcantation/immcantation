@@ -1,6 +1,34 @@
 Docker Container Release Notes
 ========================================================================
 
+Version 1.8.0:  March 19, 2018
+------------------------------------------------------------------------
+
+Version Updates:
+
++ changeo 0.3.12
++ presto 0.5.7
+
+Pipeline Changes:
+
++ Removed an intermediate file and the ParseHeaders-rename step in
+  ``presto-abseq``.
++ Added support for either ``.tsv` or ``.tab`` extension to
+  ``changeo-igblast`` and ``changeo-clone``.
+
+Image Changes:
+
++ Added sudo access for the magus (default) user.
+
+
+Version 1.7.0:  February 6, 2018
+------------------------------------------------------------------------
+
+Version Updates:
+
++ changeo 0.3.11
+
+
 Version 1.7.0:  February 6, 2018
 ------------------------------------------------------------------------
 
@@ -37,9 +65,6 @@ Pipeline Changes:
 
 + Fixed a bug in ``presto-abseq`` preventing relative file paths from
   working with the ``-r`` argument.
-
-Pipeline Changes:
-
 + ``changeo-igblast`` no longer terminates upon IgBLAST warnings.
 
 Image Changes:

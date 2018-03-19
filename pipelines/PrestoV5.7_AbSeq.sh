@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-# Super script to run the pRESTO 0.5.4 pipeline on AbVitro AbSeq data
+# Super script to run the pRESTO 0.5.7 pipeline on AbVitro AbSeq data
 # 
 # Author:  Jason Anthony Vander Heiden, Gur Yaari, Namita Gupta
-# Date:    2017.09.19
+# Date:    2018.03.19
 # 
 # Arguments:
 #   -1  Read 1 FASTQ sequence file (sequence beginning with the C-region or J-segment).
@@ -416,20 +416,13 @@ fi
 if $ALIGN_CREGION; then
     # Annotate with internal C-region
     printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "MaskPrimers align"
+    CREGION_FIELD="CREGION"
     MaskPrimers.py align -s $PH_FILE -p $CREGION_SEQ \
         --maxlen $CREGION_MAXLEN --maxerror $CREGION_MAXERR \
-        --mode tag --revpr --skiprc \
+        --mode tag --revpr --skiprc --pf $CREGION_FIELD \
         --log "${LOGDIR}/cregion.log" --outname "${OUTNAME}-CR" --nproc $NPROC \
         >> $PIPELINE_LOG 2> $ERROR_LOG
-
-    # Renamer primer field
-    printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "ParseHeaders rename"
-    ParseHeaders.py rename -s "${OUTNAME}-CR_primers-pass.fastq" -f PRIMER -k CREGION \
-        --outname "${OUTNAME}-CR" > /dev/null 2> $ERROR_LOG
-
-    PH_FILE="${OUTNAME}-CR_reheader.fastq"
-    CREGION_FIELD="CREGION"
-
+    PH_FILE="${OUTNAME}-CR_primers-pass.fastq"
     check_error
 else
     CREGION_FIELD=""
