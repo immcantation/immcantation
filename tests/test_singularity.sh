@@ -11,6 +11,8 @@ mkdir -p run/${DATE}
 # PhiX
 READS_R1=/data/AAYHL_HD13M/MG2v3_HD13M_BC13_AGTCAA_L001_R1_001.fastq
 READS_R2=/data/AAYHL_HD13M/MG2v3_HD13M_BC13_AGTCAA_L001_R2_001.fastq
+OUT_DIR="/data/run/${DATE}/phix/${SAMPLE_NAME}"
+
 singularity exec -e -B $DATA_DIR:/data $IMAGE preprocess-phix \
 	-s $READS_R1 -o $OUT_DIR -p $NPROC \
 	| tee run/${DATE}/run_phix_1.out

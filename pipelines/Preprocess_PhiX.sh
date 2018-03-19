@@ -9,10 +9,10 @@
 # Arguments:
 #   -s  FASTQ sequence file.
 #   -r  Directory containing phiX174 reference db.
+#   -n  Sample name or run identifier which will be used as the output file prefix.
+#       Defaults to a truncated version of the input filename.
 #   -o  Output directory.
-#       Defaults to the FASTQ file directory.
-#   -n  Name to use as the output file suffix.
-#       Defaults to '_nophix'.
+#       Defaults to the sample name.
 #   -p  Number of subprocesses for multiprocessing tools.
 #       Defaults to the available processing units.
 #   -h  Display help
@@ -23,10 +23,10 @@ print_usage() {
     echo -e "  -s   FASTQ sequence file."
     echo -e "  -r   Directory containing phiX174 reference db.\n" \
             "      Defaults to /usr/local/share/phix."
-    echo -e "  -o   Output directory.\n" \
-            "      Defaults to the FASTQ file directory."
-    echo -e "  -n   Name to use as the output file suffix\n." \
-            "      Defaults to '_nophix'."
+    echo -e "  -n  Sample identifier which will be used as the output file prefix.\n" \
+            "     Defaults to a truncated version of the input filename."
+    echo -e "  -o  Output directory.\n" \
+            "     Defaults to the sample name."
     echo -e "  -p   Number of subprocesses for multiprocessing tools.\n" \
             "       Defaults to the available cores."
     echo -e "  -h   This message."
@@ -44,7 +44,7 @@ NPROC_SET=false
 BLAST="blastn"
 
 # Get commandline arguments
-while getopts "s:r:o:n:p:h" OPT; do
+while getopts "s:r:n:o:p:h" OPT; do
     case "$OPT" in
     s)  READS=${OPTARG}
         READS_SET=true
@@ -52,11 +52,11 @@ while getopts "s:r:o:n:p:h" OPT; do
     r)  PHIXDIR=$OPTARG
         PHIXDIR_SET=true
         ;;
-    o)  OUTDIR=$OPTARG
-        OUTDIR_SET=true
-        ;;
     n)  OUTNAME=$OPTARG
         OUTNAME_SET=true
+        ;;
+    o)  OUTDIR=$OPTARG
+        OUTDIR_SET=true
         ;;
     p)  NPROC=$OPTARG
         NPROC_SET=true
@@ -218,7 +218,7 @@ sed -r '2,$ s/(^[^\|]*).*/\1/' "${OUTDIR}/${ID}_phix.fmt6" > ${IDFILE}
 
 ## Filter fastq
 #Keep sequences with names not in the .fmt6 file
-printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "SplitSeq.py"
+printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "SplitSeq select"
 SplitSeq.py select -s ${READS} -f ID -t ${IDFILE} --not --outdir $OUTDIR --outname $OUTNAME  \
     >> $PIPELINE_LOG 2> $ERROR_LOG
 check_error
