@@ -4,7 +4,6 @@ IMAGE=kleinstein/immcantation:devel
 DATA_DIR=/home/jason/workspace/igpipeline/immcantation/tests/data
 SAMPLE_NAME=HD13M
 NPROC=2
-EXT="tsv"
 
 # Output parent
 mkdir -p run/${DATE}
@@ -37,7 +36,7 @@ docker run -v $DATA_DIR:/data:z $IMAGE changeo-igblast \
     | tee run/${DATE}/run_igblast.out
 
 # TIgGER
-DB="/data/run/${DATE}/changeo/${SAMPLE_NAME}/${SAMPLE_NAME}_db-pass.${EXT}"
+DB=$(ls /data/run/${DATE}/changeo/${SAMPLE_NAME}/${SAMPLE_NAME}_db-pass.t[as][bv])
 OUT_DIR="/data/run/${DATE}/changeo/${SAMPLE_NAME}"
 
 docker run -v $DATA_DIR:/data:z $IMAGE tigger-genotype \
@@ -45,7 +44,7 @@ docker run -v $DATA_DIR:/data:z $IMAGE tigger-genotype \
     | tee run/${DATE}/run_genotype.out
 
 # SHazaM threshold
-DB="/data/run/${DATE}/changeo/${SAMPLE_NAME}/${SAMPLE_NAME}_genotyped.${EXT}"
+DB=$(ls /data/run/${DATE}/changeo/${SAMPLE_NAME}/${SAMPLE_NAME}_genotyped.t[as][bv])
 OUT_DIR="/data/run/${DATE}/changeo/${SAMPLE_NAME}"
 
 docker run -v $DATA_DIR:/data:z $IMAGE shazam-threshold \
@@ -53,7 +52,7 @@ docker run -v $DATA_DIR:/data:z $IMAGE shazam-threshold \
 	| tee run/${DATE}/run_threshold.out
 
 # Change-O clones
-DB="/data/run/${DATE}/changeo/${SAMPLE_NAME}/${SAMPLE_NAME}_genotyped.${EXT}"
+DB=$(ls /data/run/${DATE}/changeo/${SAMPLE_NAME}/${SAMPLE_NAME}_genotyped.t[as][bv])
 OUT_DIR="/data/run/${DATE}/changeo/${SAMPLE_NAME}"
 DIST=0.15
 

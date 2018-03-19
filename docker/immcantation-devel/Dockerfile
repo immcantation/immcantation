@@ -12,7 +12,7 @@ ENV PRESTO_ABSEQ="PrestoV5.7_AbSeq.sh" \
     CHANGEO_IGBLAST="ChangeoV3.7_IgBLASTV1.7.sh" \
     CHANGEO_CLONE="ChangeoV3.7_Clone.sh" \
     SHAZAM_THRESHOLD="ShazamV1.8_Distance.R" \
-    TIGGER_GENOTYPE="TiggerV2.10_Genotype.R" \
+    TIGGER_GENOTYPE="TiggerV2.12_Genotype.R" \
     PREPROCESS_PHIX="Preprocess_PhiX.sh"
 
 # Define R build options

@@ -37,7 +37,7 @@ singularity exec -B $DATA_DIR:/data $IMAGE changeo-igblast \
     | tee run/${DATE}/run_igblast.out
 
 # TIgGER
-DB="/data/run/${DATE}/changeo/${SAMPLE_NAME}/${SAMPLE_NAME}_db-pass.${EXT}"
+DB=$(ls /data/run/${DATE}/changeo/${SAMPLE_NAME}/${SAMPLE_NAME}_db-pass.t[as][bv])
 OUT_DIR="/data/run/${DATE}/changeo/${SAMPLE_NAME}"
 
 singularity exec -B $DATA_DIR:/data $IMAGE tigger-genotype \
@@ -45,7 +45,7 @@ singularity exec -B $DATA_DIR:/data $IMAGE tigger-genotype \
     | tee run/${DATE}/run_genotype.out
 
 # SHazaM threshold
-DB="/data/run/${DATE}/changeo/${SAMPLE_NAME}/${SAMPLE_NAME}_genotyped.${EXT}"
+DB=$(ls /data/run/${DATE}/changeo/${SAMPLE_NAME}/${SAMPLE_NAME}_genotyped.t[as][bv])
 OUT_DIR="/data/run/${DATE}/changeo/${SAMPLE_NAME}"
 
 singularity exec -B $DATA_DIR:/data $IMAGE shazam-threshold \
@@ -53,7 +53,7 @@ singularity exec -B $DATA_DIR:/data $IMAGE shazam-threshold \
 	| tee run/${DATE}/run_threshold.out
 
 # Change-O clones
-DB="/data/run/${DATE}/changeo/${SAMPLE_NAME}/${SAMPLE_NAME}_genotyped.${EXT}"
+DB=$(ls /data/run/${DATE}/changeo/${SAMPLE_NAME}/${SAMPLE_NAME}_genotyped.t[as][bv])
 OUT_DIR="/data/run/${DATE}/changeo/${SAMPLE_NAME}"
 DIST=0.15
 

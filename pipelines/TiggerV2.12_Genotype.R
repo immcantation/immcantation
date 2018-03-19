@@ -1,8 +1,8 @@
 #!/usr/bin/env Rscript
-# Super script to run TIgGER 0.2.10 genotyping
+# Super script to run TIgGER 0.2.12 genotyping
 #
 # Author:  Jason Anthony Vander Heiden
-# Date:    2017.07.07
+# Date:    2018.03.19
 #
 # Arguments:
 #   -d  Change-O formatted TSV (TAB) file.
@@ -74,8 +74,8 @@ gt_seq <- genotypeFasta(gt, germline_db=igv, novel_df=nv)
 writeFasta(gt_seq, file.path(opt$OUTDIR, paste0(opt$NAME, "_genotype.fasta")))
 
 # Modify allele calls and write db
-db <- cbind(db, reassignAlleles(db, gt_seq))
-writeChangeoDb(db, file.path(opt$OUTDIR, paste0(opt$NAME, "_genotyped.tab")))
+db <- reassignAlleles(db, gt_seq)
+writeChangeoDb(db, file.path(opt$OUTDIR, paste0(opt$NAME, "_genotyped.tsv")))
 
 # Plot genotype
 ggsave(file.path(opt$OUTDIR, paste0(opt$NAME, "_genotype.pdf")),
