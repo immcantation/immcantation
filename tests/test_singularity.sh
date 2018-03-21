@@ -1,12 +1,13 @@
+#!/usr/bin/env bash
 # Run parameters
 DATE=$(date +"%Y.%m.%d")
-IMAGE=/ysm-gpfs/pi/kleinstein/share/singularity/immcantation-devel.img
 DATA_DIR=/ysm-gpfs/pi/kleinstein/share/singularity/test/data
 SAMPLE_NAME=HD13M
 NPROC=8
+IMAGE=/ysm-gpfs/pi/kleinstein/share/singularity/immcantation-devel.img
 EXT="tsv"
 
-# Output parent
+# Create output parent
 mkdir -p run/${DATE}
 
 # PhiX
@@ -37,7 +38,7 @@ singularity exec -B $DATA_DIR:/data $IMAGE changeo-igblast \
     | tee run/${DATE}/run_igblast.out
 
 # TIgGER
-DB=$(ls /data/run/${DATE}/changeo/${SAMPLE_NAME}/${SAMPLE_NAME}_db-pass.t[as][bv])
+DB="/data/run/${DATE}/changeo/${SAMPLE_NAME}/${SAMPLE_NAME}_db-pass.${EXT}"
 OUT_DIR="/data/run/${DATE}/changeo/${SAMPLE_NAME}"
 
 singularity exec -B $DATA_DIR:/data $IMAGE tigger-genotype \
@@ -45,7 +46,7 @@ singularity exec -B $DATA_DIR:/data $IMAGE tigger-genotype \
     | tee run/${DATE}/run_genotype.out
 
 # SHazaM threshold
-DB=$(ls /data/run/${DATE}/changeo/${SAMPLE_NAME}/${SAMPLE_NAME}_genotyped.t[as][bv])
+DB="/data/run/${DATE}/changeo/${SAMPLE_NAME}/${SAMPLE_NAME}_genotyped.${EXT}"
 OUT_DIR="/data/run/${DATE}/changeo/${SAMPLE_NAME}"
 
 singularity exec -B $DATA_DIR:/data $IMAGE shazam-threshold \
@@ -53,7 +54,7 @@ singularity exec -B $DATA_DIR:/data $IMAGE shazam-threshold \
 	| tee run/${DATE}/run_threshold.out
 
 # Change-O clones
-DB=$(ls /data/run/${DATE}/changeo/${SAMPLE_NAME}/${SAMPLE_NAME}_genotyped.t[as][bv])
+DB="/data/run/${DATE}/changeo/${SAMPLE_NAME}/${SAMPLE_NAME}_genotyped.${EXT}"
 OUT_DIR="/data/run/${DATE}/changeo/${SAMPLE_NAME}"
 DIST=0.15
 
