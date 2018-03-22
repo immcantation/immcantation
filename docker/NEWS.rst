@@ -1,11 +1,12 @@
 Docker Container Release Notes
 ========================================================================
 
-Version 1.8.0:  March 19, 2018
+Version 1.8.0:  March 22, 2018
 ------------------------------------------------------------------------
 
 Version Updates:
 
++ alakazam 0.2.9
 + changeo 0.3.12
 + presto 0.5.7
 
@@ -13,9 +14,8 @@ Pipeline Changes:
 
 + Removed an intermediate file and the ParseHeaders-rename step in
   ``presto-abseq``.
-+ Added support for either ``.tsv`` or ``.tab`` extension to
-  ``changeo-igblast`` and ``changeo-clone``.
-+ Modifed ``tigger-genotype`` to work with TIgGER v0.2.12.
++ Modifed ``tigger-genotype`` to work with upcoming release of
+  tigger v0.2.12.
 + Fixed parsing of output directory argument (``-o``) in
   ``preprocess-phix`` and ``changeo-clone``.
 
