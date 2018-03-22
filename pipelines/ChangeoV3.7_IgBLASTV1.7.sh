@@ -188,7 +188,7 @@ check_error() {
 IGBLAST_VERSION=$(igblastn -version  | grep 'Package' |sed s/'Package: '//)
 CHANGEO_VERSION=$(python3 -c "import changeo; print('%s-%s' % (changeo.__version__, changeo.__date__))")
 if [[ $CHANGEO_VERSION == 0.4* ]]; then
-    EXT="tsv"
+    EXT="tab"
 else
 	EXT="tab"
 fi

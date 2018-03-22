@@ -151,7 +151,7 @@ check_error() {
 # Set extension
 CHANGEO_VERSION=$(python3 -c "import changeo; print('%s-%s' % (changeo.__version__, changeo.__date__))")
 if [[ $CHANGEO_VERSION == 0.4* ]]; then
-    EXT="tsv"
+    EXT="tab"
     DC_COMMAND=""
 else
 	EXT="tab"

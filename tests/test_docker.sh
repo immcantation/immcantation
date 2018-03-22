@@ -5,7 +5,7 @@ DATA_DIR=/home/jason/workspace/igpipeline/immcantation/tests/data
 SAMPLE_NAME=HD13M
 NPROC=2
 IMAGE=kleinstein/immcantation:devel
-EXT="tsv"
+EXT="tab"
 
 # Create output parent
 mkdir -p run/${DATE}

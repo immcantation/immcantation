@@ -5,7 +5,7 @@ DATA_DIR=/ysm-gpfs/pi/kleinstein/share/singularity/test/data
 SAMPLE_NAME=HD13M
 NPROC=8
 IMAGE=/ysm-gpfs/pi/kleinstein/share/singularity/immcantation-devel.img
-EXT="tsv"
+EXT="tab"
 
 # Create output parent
 mkdir -p run/${DATE}

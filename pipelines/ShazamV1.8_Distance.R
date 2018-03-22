@@ -78,7 +78,7 @@ thresh_df <- bind_rows(lapply(slots, .extract))
 
 # Print and save threshold table
 cat("THRESHOLD> ", threshold@threshold, "\n", sep="")
-write_tsv(thresh_df, file.path(opt$OUTDIR, paste0(opt$NAME, "_threshold-values.tsv")))
+write_tsv(thresh_df, file.path(opt$OUTDIR, paste0(opt$NAME, "_threshold-values.tab")))
 
 # Plot
 p1 <- plot(threshold, binwidth=0.02, silent=TRUE)

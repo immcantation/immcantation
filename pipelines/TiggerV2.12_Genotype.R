@@ -74,8 +74,12 @@ gt_seq <- genotypeFasta(gt, germline_db=igv, novel_df=nv)
 writeFasta(gt_seq, file.path(opt$OUTDIR, paste0(opt$NAME, "_genotype.fasta")))
 
 # Modify allele calls and write db
-db <- reassignAlleles(db, gt_seq)
-writeChangeoDb(db, file.path(opt$OUTDIR, paste0(opt$NAME, "_genotyped.tsv")))
+if (utils::packageVersion("tigger") <= "0.2.11") {
+    db <- cbind(db, reassignAlleles(db, gt_seq))
+} else {
+    db <- reassignAlleles(db, gt_seq)
+}
+writeChangeoDb(db, file.path(opt$OUTDIR, paste0(opt$NAME, "_genotyped.tab")))
 
 # Plot genotype
 ggsave(file.path(opt$OUTDIR, paste0(opt$NAME, "_genotype.pdf")),
