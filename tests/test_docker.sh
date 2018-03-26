@@ -1,63 +1,83 @@
-#!/usr/bin/env bash
+#!/usr/bin/env bats
+
 # Run parameters
 DATE=$(date +"%Y.%m.%d")
-DATA_DIR=/home/jason/workspace/igpipeline/immcantation/tests/data
-SAMPLE_NAME=HD13M
-NPROC=2
 IMAGE=kleinstein/immcantation:devel
+DATA_DIR="/home/jason/workspace/igpipeline/immcantation/tests/data"
+RUN_DIR="/home/jason/workspace/igpipeline/immcantation/tests/run/${DATE}"
+SAMPLE=HD13M
+NPROC=2
 EXT="tab"
 
 # Create output parent
-mkdir -p run/${DATE}
+mkdir -p $RUN_DIR
 
 # PhiX
-READS_R1=/data/AAYHL_HD13M/MG2v3_HD13M_BC13_AGTCAA_L001_R1_001.fastq
-READS_R2=/data/AAYHL_HD13M/MG2v3_HD13M_BC13_AGTCAA_L001_R2_001.fastq
-OUT_DIR="/data/run/${DATE}/phix/${SAMPLE_NAME}"
+@test "preprocess-phix" {
+	READS_R1=/data/AAYHL_HD13M/MG2v3_HD13M_BC13_AGTCAA_L001_R1_001.fastq
+	READS_R2=/data/AAYHL_HD13M/MG2v3_HD13M_BC13_AGTCAA_L001_R2_001.fastq
+	OUT_DIR="/scratch/phix/${SAMPLE}"
+	LOG="/scratch/run_preprocess-phix.out"
 
-docker run -v $DATA_DIR:/data:z $IMAGE preprocess-phix \
-	-s $READS_R1 -o $OUT_DIR -p $NPROC \
-	| tee run/${DATE}/run_phix_1.out
+	docker run -v $DATA_DIR:/data:z -v $RUN_DIR:/scratch:z $IMAGE \
+		preprocess-phix -s $READS_R1 -o $OUT_DIR -p $NPROC \
+		2>&1 $LOG
+}
 	
 # pRESTO
-READS_R1=/data/AAYHL_HD13M/MG2v3_HD13M_BC13_AGTCAA_L001_R1_001.fastq
-READS_R2=/data/AAYHL_HD13M/MG2v3_HD13M_BC13_AGTCAA_L001_R2_001.fastq
-YAML=/data/report.yaml
-OUT_DIR="/data/run/${DATE}/presto/${SAMPLE_NAME}"
+@test "presto-abseq" {
+	READS_R1=/data/AAYHL_HD13M/MG2v3_HD13M_BC13_AGTCAA_L001_R1_001.fastq
+	READS_R2=/data/AAYHL_HD13M/MG2v3_HD13M_BC13_AGTCAA_L001_R2_001.fastq
+	YAML=/data/report.yaml
+	OUT_DIR="/scratch/presto/${SAMPLE}"
+	LOG="/scratch/run_presto-abseq.out"
 
-docker run -v $DATA_DIR:/data:z $IMAGE presto-abseq \
-    -1 $READS_R1 -2 $READS_R2 -y $YAML -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC \
-    | tee run/${DATE}/run_presto.out
+	docker run -v $DATA_DIR:/data:z -v $RUN_DIR:/scratch:z $IMAGE \
+		presto-abseq -1 $READS_R1 -2 $READS_R2 -y $YAML -n $SAMPLE -o $OUT_DIR -p $NPROC \
+		2>&1 $LOG
+}
 
 # IgBLAST
-READS="/data/run/${DATE}/presto/${SAMPLE_NAME}/${SAMPLE_NAME}-final_collapse-unique_atleast-2.fastq"
-OUT_DIR="/data/run/${DATE}/changeo/${SAMPLE_NAME}"
+@test "changeo-igblast" {
+	READS="/scratch/presto/${SAMPLE}/${SAMPLE}-final_collapse-unique_atleast-2.fastq"
+	OUT_DIR="/scratch/changeo/${SAMPLE}"
+	LOG="/scratch/run_changeo-igblast.out"
 
-docker run -v $DATA_DIR:/data:z $IMAGE changeo-igblast \
-    -s $READS -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC \
-    | tee run/${DATE}/run_igblast.out
+	docker run -v $DATA_DIR:/data:z -v $RUN_DIR:/scratch:z $IMAGE \
+		changeo-igblast -s $READS -n $SAMPLE -o $OUT_DIR -p $NPROC \
+		2>&1 $LOG
+}
 
 # TIgGER
-DB="/data/run/${DATE}/changeo/${SAMPLE_NAME}/${SAMPLE_NAME}_db-pass.${EXT}"
-OUT_DIR="/data/run/${DATE}/changeo/${SAMPLE_NAME}"
+@test "tigger-genotype" {
+	DB="/scratch/changeo/${SAMPLE}/${SAMPLE}_db-pass.${EXT}"
+	OUT_DIR="/scratch/changeo/${SAMPLE}"
+	LOG="/scratch/run_tigger-genotype.out"
 
-docker run -v $DATA_DIR:/data:z $IMAGE tigger-genotype \
-    -d $DB -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC \
-    | tee run/${DATE}/run_genotype.out
+	docker run -v $DATA_DIR:/data:z -v $RUN_DIR:/scratch:z $IMAGE \
+		tigger-genotype -d $DB -n $SAMPLE -o $OUT_DIR -p $NPROC \
+		2>&1 $LOG
+}
 
 # SHazaM threshold
-DB="/data/run/${DATE}/changeo/${SAMPLE_NAME}/${SAMPLE_NAME}_genotyped.${EXT}"
-OUT_DIR="/data/run/${DATE}/changeo/${SAMPLE_NAME}"
+@test "shazam-threshold" {
+	DB="/scratch/changeo/${SAMPLE}/${SAMPLE}_genotyped.${EXT}"
+	OUT_DIR="/scratch/changeo/${SAMPLE}"
+	LOG="/scratch/run_shazam-threshold.out"
 
-docker run -v $DATA_DIR:/data:z $IMAGE shazam-threshold \
-	-d $DB -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC \
-	| tee run/${DATE}/run_threshold.out
+	docker run -v $DATA_DIR:/data:z -v $RUN_DIR:/scratch:z $IMAGE \
+		shazam-threshold -d $DB -n $SAMPLE -o $OUT_DIR -p $NPROC \
+		2>&1 $LOG
+}
 
-# Change-O clones
-DB="/data/run/${DATE}/changeo/${SAMPLE_NAME}/${SAMPLE_NAME}_genotyped.${EXT}"
-OUT_DIR="/data/run/${DATE}/changeo/${SAMPLE_NAME}"
-DIST=0.15
+# Change-O cloning
+@test "changeo-clone" {
+	DB="/scratch/changeo/${SAMPLE}/${SAMPLE}_genotyped.${EXT}"
+	OUT_DIR="/scratch/changeo/${SAMPLE}"
+	DIST=0.15
+	LOG="/scratch/run_changeo-clone.out"
 
-docker run -v $DATA_DIR:/data:z $IMAGE changeo-clone \
-	-d $DB -x $DIST -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC \
-	| tee run/${DATE}/run_clone.out
+	docker run -v $DATA_DIR:/data:z -v $RUN_DIR:/scratch:z $IMAGE \
+		changeo-clone -d $DB -x $DIST -n $SAMPLE -o $OUT_DIR -p $NPROC \
+		2>&1 $LOG
+}
