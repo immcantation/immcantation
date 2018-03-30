@@ -8,6 +8,8 @@
 #   -d  Change-O formatted TSV (TAB) file.
 #   -m  Method.
 #       Defaults to gmm.
+#   -l  Model.
+#       Defaults to "gamma-gamma".
 #   -n  Sample name or run identifier which will be used as the output file prefix.
 #       Defaults to a truncated version of the input filename.
 #   -o  Output directory.
@@ -34,6 +36,9 @@ opt_list <- list(make_option(c("-d", "--db"), dest="DB",
                  make_option(c("-m", "--method"), dest="METHOD", default="gmm",
                              help=paste("Threshold inferrence to use. One of gmm or dens.", 
                                         "\n\t\tDefaults to gmm.")),
+                 make_option(c("-l", "--model"), dest="MODEL", default="gamma-gamma",
+                             help=paste("Model to use. One of gamma-gamma,gamma-norm,norm-norm or norm-gamma.",
+                                        "\n\t\tDefaults to gamma-gamma.")),
                  make_option(c("-n", "--name"), dest="NAME",
                              help=paste("Sample name or run identifier which will be used as the output file prefix.",
                                         "\n\t\tDefaults to a truncated version of the input filename.")),
@@ -66,7 +71,7 @@ db <- as.data.frame(readChangeoDb(opt$DB))
 
 # Calculate distance to nearest and threshold
 db <- distToNearest(db, model="ham", first=FALSE, normalize="len", nproc=opt$NPROC)
-threshold <- findThreshold(db$DIST_NEAREST, method=opt$METHOD)
+threshold <- findThreshold(db$DIST_NEAREST, method=opt$METHOD, model=opt$MODEL)
 
 # Extract relevant slots into data_frame
 slots <- slotNames(threshold)
