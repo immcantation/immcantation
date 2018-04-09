@@ -1,11 +1,11 @@
 immcantation:
     version:  1.8.0
-    date:     2018.03.19
+    date:     2018.04.09
 release:
     presto:   0.5.7
     changeo:  0.3.12
-    alakazam: 0.2.9
-    shazam:   0.1.8
+    alakazam: 0.2.10
+    shazam:   0.1.9
     tigger:   0.2.11
     prestor:  0.0.4
 software:

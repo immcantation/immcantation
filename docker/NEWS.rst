@@ -1,14 +1,15 @@
 Docker Container Release Notes
 ========================================================================
 
-Version 1.8.0:  March 22, 2018
+Version 1.8.0:  April 9, 2018
 ------------------------------------------------------------------------
 
 Version Updates:
 
-+ alakazam 0.2.9
++ alakazam 0.2.10
 + changeo 0.3.12
 + presto 0.5.7
++ shazam 0.1.9
 
 Pipeline Changes:
 
@@ -18,6 +19,9 @@ Pipeline Changes:
   tigger v0.2.12.
 + Fixed parsing of output directory argument (``-o``) in
   ``preprocess-phix`` and ``changeo-clone``.
++ Added ``-l <model>`` argument to ``shazam-threshold`` to allow
+  specification of the mixture model distributions to
+  `shazam::findThreshold``.
 
 Image Changes:
 
