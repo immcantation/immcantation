@@ -8,6 +8,7 @@
 
     Welcome <self>
     About <about>
+    Getting Started <intro>
 
 .. toctree::
     :maxdepth: 3
@@ -20,48 +21,14 @@
 
 .. toctree::
     :maxdepth: 1
-    :caption: pRESTO
+    :caption: Packages
     :hidden:
 
-    Documentation <http://presto.readthedocs.io>
-    Download Releases <http://pypi.python.org/pypi/presto>
-    Source Code <http://bitbucket.org/kleinstein/presto>
-
-.. toctree::
-    :maxdepth: 1
-    :caption: Change-O
-    :hidden:
-
-    Documentation <http://changeo.readthedocs.io>
-    Download Releases <http://pypi.python.org/pypi/changeo>
-    Source Code <http://bitbucket.org/kleinstein/changeo>
-
-.. toctree::
-    :maxdepth: 1
-    :caption: Alakazam
-    :hidden:
-
-    Documentation <http://alakazam.readthedocs.io>
-    Download Releases <http://cran.rstudio.com/web/packages/alakazam>
-    Source Code <http://bitbucket.org/kleinstein/alakazam>
-
-.. toctree::
-    :maxdepth: 1
-    :caption: SHazaM
-    :hidden:
-
-    Documentation <http://shazam.readthedocs.io>
-    Download Releases <http://cran.rstudio.com/web/packages/shazam>
-    Source Code <http://bitbucket.org/kleinstein/shazam>
-
-.. toctree::
-    :maxdepth: 1
-    :caption: TIgGER
-    :hidden:
-
-    Documentation <http://tigger.readthedocs.io>
-    Download Releases <http://bitbucket.org/kleinstein/tigger/downloads>
-    Source Code <http://bitbucket.org/kleinstein/tigger>
+    pRESTO <http://presto.readthedocs.io>
+    Change-O <http://changeo.readthedocs.io>
+    Alakazam <http://alakazam.readthedocs.io>
+    SHazaM <http://shazam.readthedocs.io>
+    TIgGER <http://tigger.readthedocs.io>
 
 .. _Welcome:
 
@@ -89,17 +56,3 @@ provided for pre-processing, population structure determination, and repertoire 
 
     <object data="_static/overview.svg" type="image/svg+xml"></object>
     <br><br>
-
-Overview of AIRR-seq Analysis
--------------------------------------------------------------------------------------------
-
-    **Yaari and Kleinstein.**
-    Practical guidelines for B-cell receptor repertoire sequencing analysis.
-    *Genome Medicine. 7, 121 (2015).*
-    `doi\:10.1186/s13073-015-0243-2 <http://doi.org/10.1186/s13073-015-0243-2>`__
-
-AIRR-seq Analysis Tutorial
--------------------------------------------------------------------------------------------
-
-    The `slides and example data <https://goo.gl/FpW3Sc>`__ from our introductory webinar
-    series.
