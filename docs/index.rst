@@ -7,8 +7,9 @@
     :hidden:
 
     Welcome <self>
-    About <about>
     Getting Started <intro>
+    Contact & Cite <about>
+    Contributing <contrib>
 
 .. toctree::
     :maxdepth: 3

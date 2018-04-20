@@ -6,11 +6,11 @@ Download & Installation
 
 Installation for both the python and R packages is performed in the usual manner.
 
-To install pRESTO and Change-O from PyPI:
+To install pRESTO and Change-O from PyPI::
 
     > pip3 install presto changeo --user
 
-To install Alakazam, SHazaM and TIgGER from CRAN:
+To install Alakazam, SHazaM and TIgGER from CRAN::
 
     > R
     > install.packages(c("alakazam", "shazam", "tigger"))
