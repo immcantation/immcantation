@@ -15,13 +15,13 @@ To install Alakazam, SHazaM and TIgGER from CRAN::
     > R
     > install.packages(c("alakazam", "shazam", "tigger"))
 
-Immcantation AIRR-seq Analysis Tutorial
+Immcantation Tutorial
 -------------------------------------------------------------------------------------------
 
 For a detailed use example for each Immcantation tool see the
 `slides and example data <https://goo.gl/FpW3Sc>`__ from our introductory webinar series.
 
-Overview of AIRR-seq Analysis
+Overview of B Cell Repertoire Analysis
 -------------------------------------------------------------------------------------------
 
     **Yaari and Kleinstein.**
