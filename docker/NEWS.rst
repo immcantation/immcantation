@@ -1,7 +1,7 @@
 Docker Container Release Notes
 ========================================================================
 
-Version 1.9.0:  April 20, 2018
+Version 1.9.0:  April 22, 2018
 ------------------------------------------------------------------------
 
 Version Updates:
@@ -14,6 +14,10 @@ Pipeline Changes:
 + Added ``-l <model>`` argument to ``shazam-threshold`` to allow
   specification of the mixture model distributions to
   `shazam::findThreshold``.
+
+Image Changes:
+
++ Set Rcpp version for R package builds to ``0.12.16`` (from ``0.12.12``).
 
 
 Version 1.8.0:  March 22, 2018

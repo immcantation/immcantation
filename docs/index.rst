@@ -31,6 +31,14 @@
     SHazaM <http://shazam.readthedocs.io>
     TIgGER <http://tigger.readthedocs.io>
 
+.. toctree::
+    :maxdepth: 1
+    :caption: In Development
+    :hidden:
+
+    scope <packages/scope>
+    prestor <packages/prestor>
+
 .. _Welcome:
 
 Welcome to the Immcantation Portal!

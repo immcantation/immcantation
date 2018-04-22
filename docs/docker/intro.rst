@@ -10,7 +10,7 @@ The image is available on docker hub at:
 `kleinstein/immcantation <https://hub.docker.com/r/kleinstein/immcantation/>`__
 
 Images are versioned through tags with images containing official releases
-denoted by meta-version numbers (eg, ``1.8.0``). The ``devel`` tag denotes the
+denoted by meta-version numbers (``x.y.z``). The ``devel`` tag denotes the
 latest development (unstabled) builds.
 
 Getting the Container
@@ -21,10 +21,10 @@ Requires an installation of Docker 1.9+ or Singularity 2.3+.
 Docker
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. code-block:: shell
+.. parsed-literal::
 
-    # Pull release version 1.8.0
-    docker pull kleinstein/immcantation:1.8.0
+    # Pull release version |docker-version|
+    docker pull kleinstein/immcantation:|docker-version|
 
     # Pull the latest development build
     docker pull kleinstein/immcantation:devel
@@ -33,12 +33,12 @@ Docker
 Singularity
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. code-block:: shell
+.. parsed-literal::
 
-    # Pull release version 1.8.0
-    IMAGE="immcantation-1.8.0.img"
+    # Pull release version |docker-version|
+    IMAGE="immcantation-|docker-version|.img"
     singularity create --size 6000 $IMAGE
-    singularity import $IMAGE docker://kleinstein/immcantation:1.8.0
+    singularity import $IMAGE docker://kleinstein/immcantation:|docker-version|
 
 
 What's in the Container
