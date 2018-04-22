@@ -138,14 +138,14 @@ file containing information about the data and processing. Valid fields are show
     NPROC=4
 
     # Docker command
-    docker run -v $DATA_DIR:/data:z kleinstein/immcantation:|docker-version| presto-abseq \\
-        -1 $READS_R1 -2 $READS_R2 -y $YAML -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC \\
-        | tee run_presto.out
+    docker run -v $DATA_DIR:/data:z kleinstein/immcantation:|docker-version| \\
+        presto-abseq -1 $READS_R1 -2 $READS_R2 -y $YAML \\
+        -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC
 
     # Singularity command
-    singularity exec -B $DATA_DIR:/data immcantation-|docker-version|.img presto-abseq \\
-        -1 $READS_R1 -2 $READS_R2 -y $YAML -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC \\
-        | tee run_presto.out
+    singularity exec -B $DATA_DIR:/data immcantation-|docker-version|.img \\
+        presto-abseq -1 $READS_R1 -2 $READS_R2 -y $YAML \\
+        -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC
 
 IgBLAST pipeline
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -181,14 +181,12 @@ Arguments:
     NPROC=4
 
     # Run pipeline in docker image
-    docker run -v $DATA_DIR:/data:z kleinstein/immcantation:|docker-version| changeo-igblast \\
-        -s $READS -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC \\
-        | tee run_igblast.out
+    docker run -v $DATA_DIR:/data:z kleinstein/immcantation:|docker-version| \\
+        changeo-igblast -s $READS -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC
 
     # Singularity command
-    singularity exec -B $DATA_DIR:/data immcantation-|docker-version|.img changeo-igblast \\
-        -s $READS -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC \\
-        | tee run_igblast.out
+    singularity exec -B $DATA_DIR:/data immcantation-|docker-version|.img \\
+        changeo-igblast -s $READS -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC
 
 Genotyping pipeline
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -219,14 +217,12 @@ Arguments:
     NPROC=4
 
     # Run pipeline in docker image
-    docker run -v $DATA_DIR:/data:z kleinstein/immcantation:|docker-version| tigger-genotype \\
-        -d $DB -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC \\
-        | tee run_genotype.out
+    docker run -v $DATA_DIR:/data:z kleinstein/immcantation:|docker-version| \\
+        tigger-genotype -d $DB -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC
 
     # Singularity command
-    singularity exec -B $DATA_DIR:/data immcantation-|docker-version|.img tigger-genotype \\
-        -d $DB -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC \\
-        | tee run_genotype.out
+    singularity exec -B $DATA_DIR:/data immcantation-|docker-version|.img \\
+        tigger-genotype -d $DB -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC
 
 Clonal threshold inferrence pipeline
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -257,14 +253,12 @@ Arguments:
     NPROC=4
 
     # Run pipeline in docker image
-    docker run -v $DATA_DIR:/data:z kleinstein/immcantation:|docker-version| shazam-threshold \\
-        -d $DB -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC \\
-        | tee run_threshold.out
+    docker run -v $DATA_DIR:/data:z kleinstein/immcantation:|docker-version| \\
+        shazam-threshold -d $DB -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC
 
     # Singularity command
-    singularity exec -B $DATA_DIR:/data immcantation-|docker-version|.img shazam-threshold \\
-        -d $DB -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC \\
-        | tee run_threshold.out
+    singularity exec -B $DATA_DIR:/data immcantation-|docker-version|.img \\
+        shazam-threshold -d $DB -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC
 
 Clonal assignment pipeline
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -298,14 +292,12 @@ Arguments:
     NPROC=4
 
     # Run pipeline in docker image
-    docker run -v $DATA_DIR:/data:z kleinstein/immcantation:|docker-version| changeo-clone \\
-        -d $DB -x $DIST -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC \\
-        | tee run_clone.out
+    docker run -v $DATA_DIR:/data:z kleinstein/immcantation:|docker-version| \\
+        changeo-clone -d $DB -x $DIST -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC
 
     # Singularity command
-    singularity exec -B $DATA_DIR:/data immcantation-|docker-version|.img changeo-clone \\
-        -d $DB -x $DIST -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC \\
-        | tee run_clone.out
+    singularity exec -B $DATA_DIR:/data immcantation-|docker-version|.img \\
+        changeo-clone -d $DB -x $DIST -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC
 
 PhiX cleaning pipeline
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -335,11 +327,9 @@ Arguments:
     NPROC=4
 
     # Run pipeline in docker image
-    docker run -v $DATA_DIR:/data:z kleinstein/immcantation:|docker-version| preprocess-phix \\
-        -s $READS -o $OUT_DIR -p $NPROC \\
-        | tee run_phix.out
+    docker run -v $DATA_DIR:/data:z kleinstein/immcantation:|docker-version| \\
+        preprocess-phix -s $READS -o $OUT_DIR -p $NPROC
 
     # Singularity command
-    singularity exec -B $DATA_DIR:/data immcantation-|docker-version|.img preprocess-phix \\
-        -s $READS -o $OUT_DIR -p $NPROC \\
-        | tee run_phix.out
+    singularity exec -B $DATA_DIR:/data immcantation-|docker-version|.img \\
+        preprocess-phix -s $READS -o $OUT_DIR -p $NPROC

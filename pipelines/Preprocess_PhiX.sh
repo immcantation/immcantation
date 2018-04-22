@@ -23,12 +23,12 @@ print_usage() {
     echo -e "  -s   FASTQ sequence file."
     echo -e "  -r   Directory containing phiX174 reference db.\n" \
             "      Defaults to /usr/local/share/phix."
-    echo -e "  -n  Sample identifier which will be used as the output file prefix.\n" \
-            "     Defaults to a truncated version of the input filename."
-    echo -e "  -o  Output directory.\n" \
-            "     Defaults to the sample name."
+    echo -e "  -n   Sample identifier which will be used as the output file prefix.\n" \
+            "      Defaults to a truncated version of the input filename."
+    echo -e "  -o   Output directory.\n" \
+            "      Defaults to the sample name."
     echo -e "  -p   Number of subprocesses for multiprocessing tools.\n" \
-            "       Defaults to the available cores."
+            "      Defaults to the available cores."
     echo -e "  -h   This message."
 }
 
