@@ -1,11 +1,16 @@
 SCOPe
 ================================================================================
 
-Provides a computational framework for unsupervised identification B cell
-clones from adaptive immune receptor repertoire sequencing (AIRR-Seq) datasets.
-This method is based on spectral clustering of the junction sequences of B cell
-receptors (BCRs, Immunoglobulins) that share the same V gene, J gene and
-junction length.
+SCOPe (Spectral Clustering for clOne Partitioning) provides a computational
+framework for unsupervised identification B cell clones from adaptive immune
+receptor repertoire sequencing (AIRR-Seq) datasets.
+
+This method performs spectral clustering of the B cell receptor (BCR) junction
+region within groups of BCR sequences sharing the same V gene, J gene, and
+junction length. Rather than a fixed threshold, SCOPe uses an adaptive threshold
+for clustering sequences to determine the local sequence neighborhood, which
+offers an improvement in both the sensitivity and specificity over a simple
+fixed threshold for all junction lengths.
 
 Download & Installation
 --------------------------------------------------------------------------------
@@ -39,3 +44,10 @@ For clustering sequences into clonal groups see::
 For summary statistics an visualization of the clonal clustering results see::
 
     help("clonesAnalysis", package="scope")
+
+How to Cite
+--------------------------------------------------------------------------------
+
+    **Nouri N and Kleinstein SH**. A spectral clustering-based method for
+    identifying clones from high-throughput B cell repertoire sequencing data.
+    *Bioinformatics, (in press).*

@@ -1,8 +1,8 @@
 prestoR
 ================================================================================
 
-The ``prestor`` package is an R package for generating quality control plots
-from `pRESTO <http://presto.readthedocs.io>`_ log tables.
+The presto report package (prestoR) is an R package for generating
+quality control plots from `pRESTO <http://presto.readthedocs.io>`_ log tables.
 
 Download & Installation
 --------------------------------------------------------------------------------
