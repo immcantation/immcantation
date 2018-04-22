@@ -36,8 +36,8 @@
     :caption: In Development
     :hidden:
 
-    scope <packages/scope>
-    prestor <packages/prestor>
+    SCOPe <packages/scope>
+    prestoR <packages/prestor>
 
 .. _Welcome:
 

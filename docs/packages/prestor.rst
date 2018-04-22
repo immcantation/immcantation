@@ -1,4 +1,4 @@
-prestor
+prestoR
 ================================================================================
 
 The ``prestor`` package is an R package for generating quality control plots
