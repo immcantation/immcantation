@@ -8,6 +8,8 @@ release:
     shazam:   None
     tigger:   None
     prestor:  None
+    rdi:      None
+    scope:    None
 software:
     muscle:   3.8.31
     vsearch:  2.4.3

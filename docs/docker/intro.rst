@@ -52,7 +52,9 @@ Immcantation Tools
 * `Alakazam <http://alakazam.readthedocs.io>`__
 * `SHazaM <http://shazam.readthedocs.io>`__
 * `TIgGER <http://tigger.readthedocs.io>`__
+* `RDI <http://rdi.readthedocs.io>`__
 * `prestoR <http://bitbucket.org/javh/prototype-prestor>`__
+* `SCOPe <http://bitbucket.org/kleinstein/scope>`__
 
 Third Party Tools
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

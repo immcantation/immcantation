@@ -138,6 +138,22 @@ RUN PACKAGE="prestor" \
     && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
     && rm -r /tmp/${PACKAGE}
 
+# Install RDI
+RUN PACKAGE="rdi" \
+    && rm -rf /tmp/${PACKAGE} \
+    && hg clone https://bitbucket.org/cbolen1/rdicore /tmp/${PACKAGE} \
+    && Rscript -e "setwd('/tmp/${PACKAGE}'); ${R_BUILD}" \
+    && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
+    && rm -r /tmp/${PACKAGE}
+
+# Install SCOPe
+RUN PACKAGE="scope" \
+    && rm -rf /tmp/${PACKAGE} \
+    && hg clone https://bitbucket.org/kleinstein/scope /tmp/${PACKAGE} \
+    && Rscript -e "setwd('/tmp/${PACKAGE}'); ${R_BUILD}" \
+    && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
+    && rm -r /tmp/${PACKAGE}
+
 # Download and build references databases
 RUN fetch_igblastdb.sh -o /usr/local/share/igblast \
     && fetch_imgtdb.sh -o /usr/local/share/germlines/imgt \
