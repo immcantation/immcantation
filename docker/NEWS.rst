@@ -1,13 +1,15 @@
 Docker Container Release Notes
 ========================================================================
 
-Version 1.9.0.999:  April 30, 2018
+Version 1.9.0.999:  May 1, 2018
 ------------------------------------------------------------------------
 
 Image Changes:
 
 + Added RDI package
 + Added SCOPe package
++ Added IgPhyML package
++ Added git, BLAS, and LAPACK to all images
 
 
 Version 1.9.0:  April 22, 2018

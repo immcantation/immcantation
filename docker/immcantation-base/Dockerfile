@@ -15,8 +15,12 @@ COPY tools/builds.py /usr/local/bin/builds
 
 # Update and install required packages
 RUN dnf -y update && dnf install -y \
+    automake \
+    atlas-devel \
     biber \
     findutils \
+    git \
+    lapack-devel \
     libcurl-devel \
     libxml2-devel \
     mercurial \

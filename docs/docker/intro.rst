@@ -63,6 +63,7 @@ Third Party Tools
 * `vsearch <http://github.com/torognes/vsearch>`__
 * `BLAST <https://blast.ncbi.nlm.nih.gov/Blast.cgi>`__
 * `IgBLAST <https://www.ncbi.nlm.nih.gov/igblast>`__
+* `IgPhyML <https://bitbucket.org/kbhoehn/igphyml>`__
 * `PHYLIP <http://evolution.gs.washington.edu/phylip>`__
 
 Accessory Scripts

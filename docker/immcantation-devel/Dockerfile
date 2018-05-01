@@ -91,6 +91,13 @@ RUN PHYLIP=$(versions get -n phylip) \
     && mv phylip-${PHYLIP}/exe/* /usr/local/bin \
     && rm -r phylip-${PHYLIP}.tar.gz phylip-${PHYLIP}
 
+# Install IgPhyML
+RUN PACKAGE="igphyml" \
+    && rm -rf /usr/local/share/${PACKAGE} \
+    && git clone https://bitbucket.org/kbhoehn/${PACKAGE} /usr/local/share/${PACKAGE} \
+	&& (cd /usr/local/share/${PACKAGE} && ./make_phyml_blas_omp_fedora) \
+	&& builds write -n ${PACKAGE} -v $(git -C /usr/local/share/${PACKAGE} show --pretty=%h | head -n 1)
+
 # Install presto
 RUN PACKAGE="presto" \
     && rm -rf /tmp/${PACKAGE} \
@@ -119,8 +126,7 @@ RUN PACKAGE="shazam" \
     && rm -rf /tmp/${PACKAGE} \
     && hg clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
     && Rscript -e "setwd('/tmp/${PACKAGE}'); ${R_BUILD}" \
-    && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
-    && rm -r /tmp/${PACKAGE}
+    && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE})
 
 # Install tigger
 RUN PACKAGE="tigger" \
@@ -164,7 +170,8 @@ RUN fetch_igblastdb.sh -o /usr/local/share/igblast \
 RUN useradd magus -u 1000 -g users \
     && echo "magus ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/magus \
     && chmod 0440 /etc/sudoers.d/magus \
-    && echo "umask 000" >> /home/magus/.bashrc
+    && echo "umask 000" >> /home/magus/.bashrc \
+    && echo "export PATH=$PATH:/usr/local/share/igphyml/src" >> /home/magus/.bashrc
 USER magus
 
 # Set commands
