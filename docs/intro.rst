@@ -10,10 +10,10 @@ To install pRESTO and Change-O from PyPI::
 
     > pip3 install presto changeo --user
 
-To install Alakazam, SHazaM and TIgGER from CRAN::
+To install Alakazam, SHazaM, TIgGER and RDI from CRAN::
 
     > R
-    > install.packages(c("alakazam", "shazam", "tigger"))
+    > install.packages(c("alakazam", "shazam", "tigger", "rdi"))
 
 Immcantation Tutorial
 -------------------------------------------------------------------------------------------
