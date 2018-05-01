@@ -8,12 +8,12 @@ COPY Version.yaml /Version.yaml
 RUN builds write -n date -v "$(date +'%Y-%m-%d %T %Z')"
 
 # Define pipeline scripts
-ENV PRESTO_ABSEQ="PrestoV5.7_AbSeq.sh" \
-    CHANGEO_IGBLAST="ChangeoV3.7_IgBLASTV1.7.sh" \
-    CHANGEO_CLONE="ChangeoV3.7_Clone.sh" \
-    SHAZAM_THRESHOLD="ShazamV1.8_Distance.R" \
-    TIGGER_GENOTYPE="TiggerV2.12_Genotype.R" \
-    PREPROCESS_PHIX="Preprocess_PhiX.sh"
+ARG PRESTO_ABSEQ="PrestoV5.7_AbSeq.sh"
+ARG CHANGEO_IGBLAST="ChangeoV3.7_IgBLASTV1.7.sh"
+ARG CHANGEO_CLONE="ChangeoV3.7_Clone.sh"
+ARG SHAZAM_THRESHOLD="ShazamV1.8_Distance.R"
+ARG TIGGER_GENOTYPE="TiggerV2.12_Genotype.R"
+ARG PREPROCESS_PHIX="Preprocess_PhiX.sh"
 
 # Define R build options
 ARG R_REPO="http://lib.stat.cmu.edu/R/CRAN"
