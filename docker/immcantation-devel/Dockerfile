@@ -77,7 +77,7 @@ RUN BLAST=$(versions get -n blast) \
 # Install IgBLAST executables
 RUN IGBLAST=$(versions get -n igblast) \
     && wget -q --show-progress \
-       ftp://ftp.ncbi.nih.gov/blast/executables/igblast/release/${IGBLAST}/ncbi-igblast-${IGBLAST}-x64-linux.tar.gz \
+       ftp://ftp.ncbi.nih.gov/blast/temp/igblast/${IGBLAST}/ncbi-igblast-${IGBLAST}-x64-linux.tar.gz \
     && tar -zxf ncbi-igblast-${IGBLAST}-x64-linux.tar.gz \
     && mv ncbi-igblast-${IGBLAST}/bin/* /usr/local/bin \
     && rm -r ncbi-igblast-${IGBLAST}-x64-linux.tar.gz ncbi-igblast-${IGBLAST}
@@ -166,15 +166,16 @@ RUN fetch_igblastdb.sh -o /usr/local/share/igblast \
     && imgt2igblast.sh -i /usr/local/share/germlines/imgt -o /usr/local/share/igblast \
     && fetch_phix.sh -o /usr/local/share/phix
 
+# Setup environment
+ENV PATH="${PATH}:/usr/local/share/igphyml/src"
+RUN ldconfig
+
 # Setup users and permissions
 RUN useradd magus -u 1000 -g users \
     && echo "magus ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/magus \
     && chmod 0440 /etc/sudoers.d/magus \
     && echo "umask 000" >> /home/magus/.bashrc
 USER magus
-
-# Setup local environment
-ENV PATH="${PATH}:/usr/local/share/igphyml/src"
 
 # Set commands
 CMD echo -e "Report version information:\n" \

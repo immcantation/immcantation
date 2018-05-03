@@ -150,6 +150,9 @@ RUN fetch_igblastdb.sh -o /usr/local/share/igblast \
     && imgt2igblast.sh -i /usr/local/share/germlines/imgt -o /usr/local/share/igblast \
     && fetch_phix.sh -o /usr/local/share/phix
 
+# Setup environment
+RUN ldconfig
+
 # Setup users and permissions
 RUN useradd magus -u 1000 -g users \
     && echo "magus ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/magus \
