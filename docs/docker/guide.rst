@@ -232,7 +232,9 @@ Performs automated detection of the clonal assignment threshold.
 Arguments:
    -d  Change-O formatted TSV (TAB) file.
    -m  Method.
-       Defaults to gmm.
+       Defaults to density.
+   -l  Model when "-m gmm" is specified.
+       Defaults to "gamma-gamma".
    -n  Sample name or run identifier which will be used as the output file prefix.
        Defaults to a truncated version of the input filename.
    -o  Output directory.

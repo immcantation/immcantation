@@ -47,4 +47,4 @@ RUN dnf -y update && dnf install -y \
     && dnf clean all
 
 # Setup environment
-RUN ldconfig
+ENV LD_LIBRARY_PATH="/usr/lib64/R/lib:/usr/lib64/atlas"

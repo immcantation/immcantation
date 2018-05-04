@@ -7,8 +7,8 @@
 # Arguments:
 #   -d  Change-O formatted TSV (TAB) file.
 #   -m  Method.
-#       Defaults to gmm.
-#   -l  Model.
+#       Defaults to density.
+#   -l  Model when "-m gmm" is specified.
 #       Defaults to "gamma-gamma".
 #   -n  Sample name or run identifier which will be used as the output file prefix.
 #       Defaults to a truncated version of the input filename.
@@ -33,11 +33,12 @@ NPROC <- shazam::getnproc()
 # Define commmandline arguments
 opt_list <- list(make_option(c("-d", "--db"), dest="DB",
                              help="Change-O formatted TSV (TAB) file."),
-                 make_option(c("-m", "--method"), dest="METHOD", default="gmm",
-                             help=paste("Threshold inferrence to use. One of gmm or dens.", 
-                                        "\n\t\tDefaults to gmm.")),
+                 make_option(c("-m", "--method"), dest="METHOD", default="density",
+                             help=paste("Threshold inferrence to use. One of gmm or density.",
+                                        "\n\t\tDefaults to density.")),
                  make_option(c("-l", "--model"), dest="MODEL", default="gamma-gamma",
-                             help=paste("Model to use. One of gamma-gamma, gamma-norm, norm-norm or norm-gamma.",
+                             help=paste("Model to use for the gmm model.",
+                                        "\n\t\tOne of gamma-gamma, gamma-norm, norm-norm or norm-gamma.",
                                         "\n\t\tDefaults to gamma-gamma.")),
                  make_option(c("-n", "--name"), dest="NAME",
                              help=paste("Sample name or run identifier which will be used as the output file prefix.",

@@ -1,15 +1,20 @@
 Docker Container Release Notes
 ========================================================================
 
-Version 1.9.0.999:  May 1, 2018
+Version 1.9.0.999:  May 5, 2018
 ------------------------------------------------------------------------
+
+Pipeline Changes:
+
++ Changed the default threshold detection method in ``shazam-threshold``
+  to the smoothed density estimate.
 
 Image Changes:
 
-+ Added RDI package
-+ Added SCOPe package
-+ Added IgPhyML package
-+ Added git, BLAS, and LAPACK to all images
++ Added RDI package.
++ Added SCOPe package.
++ Added IgPhyML package.
++ Added git, BLAS, and LAPACK to base image.
 
 
 Version 1.9.0:  April 22, 2018
@@ -24,7 +29,7 @@ Pipeline Changes:
 
 + Added ``-l <model>`` argument to ``shazam-threshold`` to allow
   specification of the mixture model distributions to
-  `shazam::findThreshold``.
+  ``shazam::findThreshold``.
 
 Image Changes:
 

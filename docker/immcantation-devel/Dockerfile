@@ -168,7 +168,6 @@ RUN fetch_igblastdb.sh -o /usr/local/share/igblast \
 
 # Setup environment
 ENV PATH="${PATH}:/usr/local/share/igphyml/src"
-RUN ldconfig
 
 # Setup users and permissions
 RUN useradd magus -u 1000 -g users \
