@@ -1,12 +1,13 @@
 immcantation:
     version:  1.9.0
-    date:     2018.04.22
+    date:     2018.05.10
 release:
     presto:   0.5.7
     changeo:  0.3.12
     alakazam: 0.2.10
     shazam:   0.1.9
     tigger:   0.2.11
+    rdi:      1.0.0
     prestor:  0.0.4
 software:
     muscle:   3.8.31

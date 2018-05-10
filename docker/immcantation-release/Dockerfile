@@ -135,6 +135,15 @@ RUN PACKAGE="tigger" \
     && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
     && rm -r /tmp/${PACKAGE}
 
+# Install rdi
+RUN PACKAGE="rdi" \
+    && rm -rf /tmp/${PACKAGE} \
+    && hg clone https://bitbucket.org/cbolen1/rdicore /tmp/${PACKAGE} \
+    && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} \
+    && Rscript -e "setwd('/tmp/${PACKAGE}'); ${R_BUILD}" \
+    && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
+    && rm -r /tmp/${PACKAGE}
+
 # Install prestor
 RUN PACKAGE="prestor" \
     && rm -rf /tmp/${PACKAGE} \

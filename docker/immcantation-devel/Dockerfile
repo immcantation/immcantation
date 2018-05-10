@@ -136,18 +136,18 @@ RUN PACKAGE="tigger" \
     && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
     && rm -r /tmp/${PACKAGE}
 
-# Install prestor
-RUN PACKAGE="prestor" \
-    && rm -rf /tmp/${PACKAGE} \
-    && hg clone https://bitbucket.org/javh/prototype-prestor /tmp/${PACKAGE} \
-    && Rscript -e "setwd('/tmp/${PACKAGE}'); ${R_BUILD}" \
-    && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
-    && rm -r /tmp/${PACKAGE}
-
 # Install RDI
 RUN PACKAGE="rdi" \
     && rm -rf /tmp/${PACKAGE} \
     && hg clone https://bitbucket.org/cbolen1/rdicore /tmp/${PACKAGE} \
+    && Rscript -e "setwd('/tmp/${PACKAGE}'); ${R_BUILD}" \
+    && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
+    && rm -r /tmp/${PACKAGE}
+
+# Install prestor
+RUN PACKAGE="prestor" \
+    && rm -rf /tmp/${PACKAGE} \
+    && hg clone https://bitbucket.org/javh/prototype-prestor /tmp/${PACKAGE} \
     && Rscript -e "setwd('/tmp/${PACKAGE}'); ${R_BUILD}" \
     && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
     && rm -r /tmp/${PACKAGE}
