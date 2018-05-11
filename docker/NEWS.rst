@@ -4,6 +4,10 @@ Docker Container Release Notes
 Version 1.9.0.999:  May 10, 2018
 ------------------------------------------------------------------------
 
+Version Updates:
+
++ IgBLAST 1.9.0
+
 Pipeline Changes:
 
 + Changed the default threshold detection method in ``shazam-threshold``
@@ -12,9 +16,10 @@ Pipeline Changes:
 Image Changes:
 
 + Added RDI package.
-+ Added git, BLAS, and LAPACK to base image.
 + Added SCOPe package.
 + Added IgPhyML package.
++ Added git, BLAS, and LAPACK to base image.
+
 
 Version 1.9.0:  April 22, 2018
 ------------------------------------------------------------------------

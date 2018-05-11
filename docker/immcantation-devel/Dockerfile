@@ -77,7 +77,7 @@ RUN BLAST=$(versions get -n blast) \
 # Install IgBLAST executables
 RUN IGBLAST=$(versions get -n igblast) \
     && wget -q --show-progress \
-       ftp://ftp.ncbi.nih.gov/blast/temp/igblast/${IGBLAST}/ncbi-igblast-${IGBLAST}-x64-linux.tar.gz \
+       ftp://ftp.ncbi.nih.gov/blast/executables/igblast/release/${IGBLAST}/ncbi-igblast-${IGBLAST}-x64-linux.tar.gz \
     && tar -zxf ncbi-igblast-${IGBLAST}-x64-linux.tar.gz \
     && mv ncbi-igblast-${IGBLAST}/bin/* /usr/local/bin \
     && rm -r ncbi-igblast-${IGBLAST}-x64-linux.tar.gz ncbi-igblast-${IGBLAST}
