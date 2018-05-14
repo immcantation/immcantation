@@ -1,7 +1,7 @@
 Docker Container Release Notes
 ========================================================================
 
-Version 1.9.0.999:  May 10, 2018
+Version 1.9.0.999:  May 14, 2018
 ------------------------------------------------------------------------
 
 Version Updates:
@@ -12,6 +12,8 @@ Pipeline Changes:
 
 + Changed the default threshold detection method in ``shazam-threshold``
   to the smoothed density estimate with subsampling to 15000 sequences.
++ Fixed a bug wherein ``changeo-igblast`` was not reading the ``-b``
+  argument.
 
 Image Changes:
 

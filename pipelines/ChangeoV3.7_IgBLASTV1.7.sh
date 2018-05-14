@@ -51,7 +51,7 @@ OUTDIR_SET=false
 NPROC_SET=false
 
 # Get commandline arguments
-while getopts "s:r:g:t:d:n:o:p:h" OPT; do
+while getopts "s:r:g:t:b:n:o:p:h" OPT; do
     case "$OPT" in
     s)  READS=${OPTARG}
         READS_SET=true
