@@ -82,6 +82,14 @@ RUN IGBLAST=$(versions get -n igblast) \
     && mv ncbi-igblast-${IGBLAST}/bin/* /usr/local/bin \
     && rm -r ncbi-igblast-${IGBLAST}-x64-linux.tar.gz ncbi-igblast-${IGBLAST}
 
+# Install CD-HIT
+RUN CDHIT=$(versions get -n cd-hit) \
+    && wget -q --show-progress \
+       https://github.com/weizhongli/cdhit/archive/V${CDHIT}.tar.gz \
+    && tar -zxf V${CDHIT}.tar.gz \
+    && (cd cdhit-${CDHIT} && make && make install) \
+    && rm -r V${CDHIT}.tar.gz cdhit-${CDHIT}
+
 # Install PHYLIP
 RUN PHYLIP=$(versions get -n phylip) \
     && wget -q --show-progress \

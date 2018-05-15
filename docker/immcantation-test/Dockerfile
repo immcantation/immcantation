@@ -9,7 +9,7 @@ RUN builds write -n date -v "$(date +'%Y-%m-%d %T %Z')"
 
 # Define R package installation parameters
 ARG R_REPO="http://lib.stat.cmu.edu/R/CRAN"
-ARG R_RCPP="0.12.12"
+ARG R_RCPP="0.12.16"
 ARG R_DEPS="c('ape', \
               'bibtex', \
               'captioner', \
@@ -83,6 +83,14 @@ RUN IGBLAST=$(versions get -n igblast) \
     && mv ncbi-igblast-${IGBLAST}/bin/* /usr/local/bin \
     && rm -r ncbi-igblast-${IGBLAST}-x64-linux.tar.gz ncbi-igblast-${IGBLAST}
 
+# Install CD-HIT
+RUN CDHIT=$(versions get -n cd-hit) \
+    && wget -q --show-progress \
+       https://github.com/weizhongli/cdhit/archive/V${CDHIT}.tar.gz \
+    && tar -zxf V${CDHIT}.tar.gz \
+    && (cd cdhit-${CDHIT} && make && make install) \
+    && rm -r V${CDHIT}.tar.gz cdhit-${CDHIT}
+
 # Install PHYLIP
 RUN PHYLIP=$(versions get -n phylip) \
     && wget -q --show-progress \
@@ -91,6 +99,13 @@ RUN PHYLIP=$(versions get -n phylip) \
     && (cd phylip-${PHYLIP}/src && make -f Makefile.unx install) \
     && mv phylip-${PHYLIP}/exe/* /usr/local/bin \
     && rm -r phylip-${PHYLIP}.tar.gz phylip-${PHYLIP}
+
+# Install IgPhyML
+RUN PACKAGE="igphyml" \
+    && rm -rf /usr/local/share/${PACKAGE} \
+    && git clone https://bitbucket.org/kbhoehn/${PACKAGE} /usr/local/share/${PACKAGE} \
+	&& (cd /usr/local/share/${PACKAGE} && ./make_phyml_blas_omp_fedora) \
+	&& builds write -n ${PACKAGE} -v $(git -C /usr/local/share/${PACKAGE} show --pretty=%h | head -n 1)
 
 # Set commands
 CMD echo -e "Report version information:\n" \
