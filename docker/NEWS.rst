@@ -21,6 +21,7 @@ Image Changes:
 + Added SCOPe R package.
 + Added IgPhyML.
 + Added CD-HIT.
++ Added AIRR python and R reference libaries.
 + Added git, BLAS, and LAPACK to base image.
 
 
