@@ -41,10 +41,10 @@ NPROC_SET=false
 # Get commandline arguments
 while getopts "s:c::n:o:p:h" OPT; do
     case "$OPT" in
-    s)  READS=${OPTARG}
+    s)  READS=$OPTARG
         READS_SET=true
         ;;
-    c)  CREGION_SEQ=${OPTARG}
+    c)  CREGION_SEQ=$OPTARG
         CREGION_SEQ_SET=true
         ;;
     n)  OUTNAME=$OPTARG
@@ -59,10 +59,10 @@ while getopts "s:c::n:o:p:h" OPT; do
     h)  print_usage
         exit
         ;;
-    \?) echo -e "Invalid option: -$OPTARG" >&2
+    \?) echo -e "Invalid option: -${OPTARG}" >&2
         exit 1
         ;;
-    :)  echo -e "Option -$OPTARG requires an argument" >&2
+    :)  echo -e "Option -${OPTARG} requires an argument" >&2
         exit 1
         ;;
     esac

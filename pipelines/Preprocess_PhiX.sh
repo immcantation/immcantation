@@ -46,7 +46,7 @@ BLAST="blastn"
 # Get commandline arguments
 while getopts "s:r:n:o:p:h" OPT; do
     case "$OPT" in
-    s)  READS=${OPTARG}
+    s)  READS=$OPTARG
         READS_SET=true
         ;;
     r)  PHIXDIR=$OPTARG
@@ -64,10 +64,10 @@ while getopts "s:r:n:o:p:h" OPT; do
     h)  print_usage
         exit
         ;;
-    \?) echo -e "Invalid option: -$OPTARG" >&2
+    \?) echo -e "Invalid option: -${OPTARG}" >&2
         exit 1
         ;;
-    :)  echo -e "Option -$OPTARG requires an argument" >&2
+    :)  echo -e "Option -${OPTARG} requires an argument" >&2
         exit 1
         ;;
     esac

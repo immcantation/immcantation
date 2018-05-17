@@ -61,10 +61,10 @@ while getopts ":x:z:f:o:p:h" OPT; do
     h)  print_usage
         exit
         ;;
-    \?) echo -e "Invalid option: -$OPTARG" >&2
+    \?) echo -e "Invalid option: -${OPTARG}" >&2
         exit 1
         ;;
-    :)  echo -e "Option -$OPTARG requires an argument" >&2
+    :)  echo -e "Option -${OPTARG} requires an argument" >&2
         exit 1
         ;;
     esac

@@ -41,7 +41,7 @@ print_usage() {
 }
 
 # Argument validation variables
-READS=false
+READS_SET=false
 REFDIR_SET=false
 SPECIES_SET=false
 RECEPTOR_SET=false
@@ -53,7 +53,7 @@ NPROC_SET=false
 # Get commandline arguments
 while getopts "s:r:g:t:b:n:o:p:h" OPT; do
     case "$OPT" in
-    s)  READS=${OPTARG}
+    s)  READS=$OPTARG
         READS_SET=true
         ;;
     r)  REFDIR=$OPTARG
@@ -80,10 +80,10 @@ while getopts "s:r:g:t:b:n:o:p:h" OPT; do
     h)  print_usage
         exit
         ;;
-    \?) echo -e "Invalid option: -$OPTARG" >&2
+    \?) echo -e "Invalid option: -${OPTARG}" >&2
         exit 1
         ;;
-    :)  echo -e "Option -$OPTARG requires an argument" >&2
+    :)  echo -e "Option -${OPTARG} requires an argument" >&2
         exit 1
         ;;
     esac

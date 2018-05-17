@@ -44,7 +44,7 @@ NPROC_SET=false
 # Get commandline arguments
 while getopts "d:x:r:n:o:p:h" OPT; do
     case "$OPT" in
-    d)  DB=${OPTARG}
+    d)  DB=$OPTARG
         DB_SET=true
         ;;
     x)  DIST=$OPTARG
@@ -65,10 +65,10 @@ while getopts "d:x:r:n:o:p:h" OPT; do
     h)  print_usage
         exit
         ;;
-    \?) echo -e "Invalid option: -$OPTARG" >&2
+    \?) echo -e "Invalid option: -${OPTARG}" >&2
         exit 1
         ;;
-    :)  echo -e "Option -$OPTARG requires an argument" >&2
+    :)  echo -e "Option -${OPTARG} requires an argument" >&2
         exit 1
         ;;
     esac

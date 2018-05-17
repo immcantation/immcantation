@@ -66,19 +66,19 @@ COORD_SET=false
 # Get commandline arguments
 while getopts "1:2:j:v:r:f:n:o:x:p:h" OPT; do
     case "$OPT" in
-    1)  R1_READS=${OPTARG}
+    1)  R1_READS=$OPTARG
         R1_READS_SET=true
         ;;
-    2)  R2_READS=${OPTARG}
+    2)  R2_READS=$OPTARG
         R2_READS_SET=true
         ;;
-    j)  R1_PRIMERS=${OPTARG}
+    j)  R1_PRIMERS=$OPTARG
         R1_PRIMERS_SET=true
         ;;
-    v)  R2_PRIMERS=${OPTARG}
+    v)  R2_PRIMERS=$OPTARG
         R2_PRIMERS_SET=true
         ;;
-    r)  VREF_SEQ=${OPTARG}
+    r)  VREF_SEQ=$OPTARG
         VREF_SEQ_SET=true
         ;;
     f)  SAMFIELD=$OPTARG
@@ -99,10 +99,10 @@ while getopts "1:2:j:v:r:f:n:o:x:p:h" OPT; do
     h)  print_usage
         exit
         ;;
-    \?) echo -e "Invalid option: -$OPTARG" >&2
+    \?) echo -e "Invalid option: -${OPTARG}" >&2
         exit 1
         ;;
-    :)  echo -e "Option -$OPTARG requires an argument" >&2
+    :)  echo -e "Option -${OPTARG} requires an argument" >&2
         exit 1
         ;;
     esac
