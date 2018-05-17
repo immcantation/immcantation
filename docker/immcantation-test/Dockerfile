@@ -20,7 +20,7 @@ ARG R_DEPS="c('ape', \
               'dplyr', \
               'foreach', \
               'ggplot2', \
-              'gridExtra' \
+              'gridExtra', \
               'hexbin', \
               'igraph', \
               'iterators', \
