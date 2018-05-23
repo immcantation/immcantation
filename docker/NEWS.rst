@@ -1,7 +1,7 @@
 Docker Container Release Notes
 ========================================================================
 
-Version 1.9.0.999:  May 15, 2018
+Version 1.10.0:  May 23, 2018
 ------------------------------------------------------------------------
 
 Version Updates:
@@ -18,8 +18,6 @@ Pipeline Changes:
 Image Changes:
 
 + Added RDI R package.
-+ Added SCOPe R package.
-+ Added IgPhyML.
 + Added CD-HIT.
 + Added AIRR python and R reference libaries.
 + Added git, BLAS, and LAPACK to base image.

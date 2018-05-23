@@ -20,7 +20,7 @@ root**.
 
 ::
 
-    singularity pull --size 5000 docker://kleinstein/immcantation:1.8.0
+    singularity pull docker://kleinstein/immcantation:1.8.0
 
 Configure bind points
 ~~~~~~~~~~~~~~~~~~~~~
