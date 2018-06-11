@@ -132,7 +132,13 @@ do
     echo "|---- Ig"
     for CHAIN in IGHC IGKC IGLC
     do
-        URL="http://www.imgt.org/IMGT_GENE-DB/GENElect?query=14.1+${CHAIN}&species=${SPECIES_QUERY[${KEY}]}"
+        QUERY=14.1
+        if [ "${KEY}" == "mouse" ] && ([ "$CHAIN" == "IGKC" ] || [ "$CHAIN" == "IGLC" ]); then
+            # IMGT does not have artificially spliced mouse IGKC / IGLC
+            QUERY=7.5
+        fi
+
+        URL="http://www.imgt.org/IMGT_GENE-DB/GENElect?query=${QUERY}+${CHAIN}&species=${SPECIES_QUERY[${KEY}]}"
         FILE_NAME="${FILE_PATH}/${REPERTOIRE}_${KEY}_${CHAIN}.fasta"
         TMP_FILE="${FILE_NAME}.tmp"
         #echo $URL
