@@ -108,8 +108,8 @@ RUN AIRR=$(versions get -n airr) \
 RUN PACKAGE="igphyml" \
     && rm -rf /usr/local/share/${PACKAGE} \
     && git clone https://bitbucket.org/kbhoehn/${PACKAGE} /usr/local/share/${PACKAGE} \
-	&& (cd /usr/local/share/${PACKAGE} && ./make_phyml_blas_omp_fedora) \
-	&& builds write -n ${PACKAGE} -v $(git -C /usr/local/share/${PACKAGE} show --pretty=%h | head -n 1)
+    && (cd /usr/local/share/${PACKAGE} && ./make_phyml_blas_omp) \
+    && builds write -n ${PACKAGE} -v $(git -C /usr/local/share/${PACKAGE} show --pretty=%h | head -n 1)
 
 # Install presto
 RUN PACKAGE="presto" \
