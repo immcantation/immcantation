@@ -7,9 +7,8 @@ Add IMGT gaps to the V-region of MiXCR exported clones
 import csv
 import sys
 import pandas as pd
-from changeo.Parsers import gapV
-from changeo.IO import readRepo
-from changeo.Receptor import allele_regex, gene_regex, parseAllele
+from changeo.IO import readGermlines
+from changeo.Gene import allele_regex, gene_regex, parseAllele, gapV
 
 # Parse arguments
 clone_file = sys.argv[1]
@@ -17,7 +16,7 @@ repo_file = sys.argv[2]
 out_file = sys.argv[3]
 
 # Load data
-repo_dict = readRepo(repo_file)
+repo_dict = readGermlines(repo_file)
 data = pd.read_table(clone_file, low_memory=False)
 
 # Extract MiXCR alignment reference points

@@ -16,7 +16,7 @@ ARG TIGGER_GENOTYPE="TiggerV2.12_Genotype.R"
 ARG PREPROCESS_PHIX="Preprocess_PhiX.sh"
 
 # Define R build options
-ARG R_REPO="http://lib.stat.cmu.edu/R/CRAN"
+ARG R_REPO="https://cran.cnr.berkeley.edu"
 ARG R_RCPP="0.12.16"
 ARG R_DEPS="c('roxygen2', 'testthat', 'rmarkdown', 'knitr', 'optparse')"
 ARG R_BUILD="library(devtools); install_deps(upgrade=FALSE, clean=TRUE); document(); install(build_vignettes=TRUE, clean=TRUE)"

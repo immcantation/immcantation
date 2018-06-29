@@ -8,7 +8,7 @@ COPY Version.yaml /Version.yaml
 RUN builds write -n date -v "$(date +'%Y-%m-%d %T %Z')"
 
 # Define R package installation parameters
-ARG R_REPO="http://lib.stat.cmu.edu/R/CRAN"
+ARG R_REPO="https://cran.cnr.berkeley.edu"
 ARG R_RCPP="0.12.16"
 ARG R_DEPS="c('ape', \
               'bibtex', \
