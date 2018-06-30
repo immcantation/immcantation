@@ -168,7 +168,7 @@ STEP=0
 if $FUNCTIONAL; then
     printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "ParseDb select"
     ParseDb.py select -d ${DB} -f FUNCTIONAL -u T TRUE \
-        --outname "${OUTNAME}" --outdir "${OUTDIR}" \
+        --outname "${OUTNAME}" --outdir . \
         >> $PIPELINE_LOG 2> $ERROR_LOG
     check_error
     LAST_FILE="${OUTNAME}_parse-select.${EXT}"
@@ -180,7 +180,7 @@ fi
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "DefineClones ${DC_COMMAND}"
 DefineClones.py ${DC_COMMAND} -d ${LAST_FILE} --model ${DC_MODEL} \
     --dist ${DIST} --mode ${DC_MODE} --act ${DC_ACT} --nproc ${NPROC} \
-    --outname "${OUTNAME}" --outdir "${OUTDIR}" --log "${LOGDIR}/clone.log" \
+    --outname "${OUTNAME}" --outdir . --log "${LOGDIR}/clone.log" \
     >> $PIPELINE_LOG 2> $ERROR_LOG
 check_error
 LAST_FILE="${OUTNAME}_clone-pass.${EXT}"

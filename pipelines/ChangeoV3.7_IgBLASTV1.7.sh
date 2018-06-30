@@ -222,7 +222,7 @@ DB_FILE="${DB_FILE%.fasta}.fmt7"
 # Parse IgBLAST output
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "MakeDb igblast"
 MakeDb.py igblast -i ${DB_FILE} -s  ${IG_FILE} -r ${REFDIR} \
-    --scores --regions --failed --outname "${OUTNAME}" --outdir "${OUTDIR}" \
+    --scores --regions --failed --outname "${OUTNAME}" --outdir . \
     >> $PIPELINE_LOG 2> $ERROR_LOG
     LAST_FILE="${OUTNAME}_db-pass.${EXT}"
 check_error
