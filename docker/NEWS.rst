@@ -1,6 +1,23 @@
 Docker Container Release Notes
 ========================================================================
 
+Version 1.10.1:  June 30, 2018
+------------------------------------------------------------------------
+
+Pipeline Changes:
+
++ Fixed a bug wherein ``changeo-igblast`` and ``changeo-clone`` were
+  not working with an unspecified output directory (``-o`` argument).
+
+Accessory Script Changes:
+
++ Fixed ``fetch_imgtdb.sh`` creating empty mouse IGKC and IGLC files.
+
+Image Changes:
+
++ Changed default CRAN mirror setting.
+
+
 Version 1.10.0:  May 23, 2018
 ------------------------------------------------------------------------
 
@@ -103,10 +120,13 @@ Pipeline Changes:
   working with the ``-r`` argument.
 + ``changeo-igblast`` no longer terminates upon IgBLAST warnings.
 
+Accessory Script Changes:
+
++ Fixed an output directory bug in ``fastq2fasta.py``.
+
 Image Changes:
 
 + Added Stern, Yaari and Vander Heiden, et al 2014 primer sets.
-+ Fixed an output directory bug in ``fastq2fasta.py``.
 
 
 Version 1.3.0:  October 17, 2017
