@@ -1,16 +1,17 @@
 #!/usr/bin/env bash
 
 # Run parameters
+IMAGE=$(readlink -f immcantation-devel.img)
 DATE=$(date +"%Y.%m.%d")
-DATA_DIR="/ysm-gpfs/pi/kleinstein/share/singularity/tests/data"
-RUN_DIR="/ysm-gpfs/pi/kleinstein/share/singularity/tests/run/${DATE}"
+DATA_DIR=$(readlink -f data)
+RUN_DIR="run/${DATE}"
 SAMPLE=HD13M
 NPROC=8
-IMAGE=/ysm-gpfs/pi/kleinstein/share/singularity/immcantation-devel-2018.05.07.img
 EXT="tab"
 
 # Create output parent
-mkdir -p $RUN_DIR
+mkdir -p ${RUN_DIR}
+RUN_DIR=$(readlink -f ${RUN_DIR})
 
 # PhiX
 READS_R1=/data/AAYHL_HD13M/MG2v3_HD13M_BC13_AGTCAA_L001_R1_001.fastq
