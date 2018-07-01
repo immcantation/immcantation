@@ -1,16 +1,17 @@
 #!/usr/bin/env bats
 
 # Run parameters
-DATE=$(date +"%Y.%m.%d")
 IMAGE=kleinstein/immcantation:devel
-DATA_DIR="/home/jason/workspace/igpipeline/immcantation/tests/data"
-RUN_DIR="/home/jason/workspace/igpipeline/immcantation/tests/run/${DATE}"
+DATE=$(date +"%Y.%m.%d")
+DATA_DIR=$(readlink -f data)
+RUN_DIR="run/${DATE}"
 SAMPLE=HD13M
 NPROC=2
 EXT="tab"
 
 # Create output parent
-mkdir -p $RUN_DIR
+mkdir -p ${RUN_DIR}
+RUN_DIR=$(readlink -f ${RUN_DIR})
 
 # PhiX
 @test "preprocess-phix" {
@@ -20,6 +21,8 @@ mkdir -p $RUN_DIR
 
 	run docker run -v $DATA_DIR:/data:z -v $RUN_DIR:/scratch:z $IMAGE \
 		preprocess-phix -s $READS_R1 -o $OUT_DIR -p $NPROC
+
+	[ "$status" -eq 0 ]
 }
 	
 # pRESTO
@@ -31,6 +34,8 @@ mkdir -p $RUN_DIR
 
 	run docker run -v $DATA_DIR:/data:z -v $RUN_DIR:/scratch:z $IMAGE \
 		presto-abseq -1 $READS_R1 -2 $READS_R2 -y $YAML -n $SAMPLE -o $OUT_DIR -p $NPROC
+
+	[ "$status" -eq 0 ]
 }
 
 # IgBLAST
@@ -40,6 +45,8 @@ mkdir -p $RUN_DIR
 
 	run docker run -v $DATA_DIR:/data:z -v $RUN_DIR:/scratch:z $IMAGE \
 		changeo-igblast -s $READS -n $SAMPLE -o $OUT_DIR -p $NPROC
+
+	[ "$status" -eq 0 ]
 }
 
 # TIgGER
@@ -49,6 +56,8 @@ mkdir -p $RUN_DIR
 
 	run docker run -v $DATA_DIR:/data:z -v $RUN_DIR:/scratch:z $IMAGE \
 		tigger-genotype -d $DB -n $SAMPLE -o $OUT_DIR -p $NPROC
+
+	[ "$status" -eq 0 ]
 }
 
 # SHazaM threshold
@@ -58,6 +67,8 @@ mkdir -p $RUN_DIR
 
 	run docker run -v $DATA_DIR:/data:z -v $RUN_DIR:/scratch:z $IMAGE \
 		shazam-threshold -d $DB -n $SAMPLE -o $OUT_DIR -p $NPROC
+
+	[ "$status" -eq 0 ]
 }
 
 # Change-O cloning
@@ -68,4 +79,6 @@ mkdir -p $RUN_DIR
 
 	run docker run -v $DATA_DIR:/data:z -v $RUN_DIR:/scratch:z $IMAGE \
 		changeo-clone -d $DB -x $DIST -n $SAMPLE -o $OUT_DIR -p $NPROC
+
+	[ "$status" -eq 0 ]
 }
