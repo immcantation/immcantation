@@ -1,13 +1,15 @@
 Docker Container Release Notes
 ========================================================================
 
-Version 1.10.1:  June 30, 2018
+Version 1.10.1:  July 1, 2018
 ------------------------------------------------------------------------
 
 Pipeline Changes:
 
 + Fixed a bug wherein ``changeo-igblast`` and ``changeo-clone`` were
   not working with an unspecified output directory (``-o`` argument).
++ Updated CPU core detection in ``tigger-genotype`` and
+``shazam-threshold`` for compatability with new R package versions.
 
 Accessory Script Changes:
 

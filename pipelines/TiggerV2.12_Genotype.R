@@ -2,7 +2,7 @@
 # Super script to run TIgGER 0.2.12 genotyping
 #
 # Author:  Jason Anthony Vander Heiden
-# Date:    2018.03.19
+# Date:    2018.07.01
 #
 # Arguments:
 #   -d  Change-O formatted TSV (TAB) file.
@@ -25,7 +25,7 @@ suppressPackageStartupMessages(library("shazam"))
 suppressPackageStartupMessages(library("tigger"))
 
 # Set defaults
-NPROC <- shazam::getnproc()
+NPROC <- parallel::detectCores()
 
 # Define commmandline arguments
 opt_list <- list(make_option(c("-d", "--db"), dest="DB",

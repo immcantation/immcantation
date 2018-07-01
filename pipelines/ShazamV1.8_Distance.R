@@ -2,7 +2,7 @@
 # Super script to run SHazaM 0.1.7 distance to nearest tuning
 #
 # Author:  Jason Anthony Vander Heiden
-# Date:    2017.05.26
+# Date:    2018.07.01
 #
 # Arguments:
 #   -d  Change-O formatted TSV (TAB) file.
@@ -28,7 +28,7 @@ suppressPackageStartupMessages(library("alakazam"))
 suppressPackageStartupMessages(library("shazam"))
 
 # Set defaults
-NPROC <- shazam::getnproc()
+NPROC <- parallel::detectCores()
 
 # Define commmandline arguments
 opt_list <- list(make_option(c("-d", "--db"), dest="DB",
