@@ -2,7 +2,7 @@
 # Super script to run SHazaM 0.1.7 distance to nearest tuning
 #
 # Author:  Jason Anthony Vander Heiden
-# Date:    2018.07.01
+# Date:    2018.07.02
 #
 # Arguments:
 #   -d  Change-O formatted TSV (TAB) file.
@@ -29,6 +29,7 @@ suppressPackageStartupMessages(library("shazam"))
 
 # Set defaults
 NPROC <- parallel::detectCores()
+SUBSAMPLE <- 15000
 
 # Define commmandline arguments
 opt_list <- list(make_option(c("-d", "--db"), dest="DB",
@@ -36,10 +37,13 @@ opt_list <- list(make_option(c("-d", "--db"), dest="DB",
                  make_option(c("-m", "--method"), dest="METHOD", default="density",
                              help=paste("Threshold inferrence to use. One of gmm or density.",
                                         "\n\t\tDefaults to density.")),
-                 make_option(c("-l", "--model"), dest="MODEL", default="gamma-gamma",
+                 make_option(c("--model"), dest="MODEL", default="gamma-gamma",
                              help=paste("Model to use for the gmm model.",
                                         "\n\t\tOne of gamma-gamma, gamma-norm, norm-norm or norm-gamma.",
                                         "\n\t\tDefaults to gamma-gamma.")),
+                 make_option(c("--subsample"), dest="SUBSAMPLE", default=SUBSAMPLE,
+                             help=paste("Number of distances to downsample to for the density method.",
+                                        "\n\t\tDefaults to 15000.")),
                  make_option(c("-n", "--name"), dest="NAME",
                              help=paste("Sample name or run identifier which will be used as the output file prefix.",
                                         "\n\t\tDefaults to a truncated version of the input filename.")),
@@ -72,7 +76,7 @@ db <- as.data.frame(readChangeoDb(opt$DB))
 
 # Calculate distance to nearest and threshold
 db <- distToNearest(db, model="ham", first=FALSE, normalize="len", nproc=opt$NPROC)
-threshold <- findThreshold(db$DIST_NEAREST, method=opt$METHOD, model=opt$MODEL)
+threshold <- findThreshold(db$DIST_NEAREST, method=opt$METHOD, model=opt$MODEL, subsample=opt$SUBSAMPLE)
 
 # Extract relevant slots into data_frame
 slots <- slotNames(threshold)
