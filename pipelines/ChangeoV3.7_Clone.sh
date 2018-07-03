@@ -2,7 +2,7 @@
 # Super script to run Change-O 0.3.7 cloning and germline reconstruction
 #
 # Author:  Jason Anthony Vander Heiden, Gur Yaari, Namita Gupta
-# Date:    2018.03.19
+# Date:    2018.07.03
 #
 # Arguments:
 #   -d  Change-O formatted TSV (TAB) file.
@@ -15,6 +15,8 @@
 #       Defaults to the sample name.
 #   -p  Number of subprocesses for multiprocessing tools.
 #       Defaults to the available processing units.
+#   -a  Specify to clone the full data set.
+#       By default the data will be filtering to only productive/functional sequences.
 #   -h  Display help.
 
 # Print usage
@@ -30,6 +32,8 @@ print_usage() {
             "     Defaults to the sample name."
     echo -e "  -p  Number of subprocesses for multiprocessing tools.\n" \
             "     Defaults to the available cores."
+    echo -e "  -a  Specify to clone the full data set.\n" \
+            "     By default the data will be filtering to only productive/functional sequences."
     echo -e "  -h  This message."
 }
 
@@ -40,9 +44,10 @@ REFDIR_SET=false
 OUTNAME_SET=false
 OUTDIR_SET=false
 NPROC_SET=false
+FUNCTIONAL=true
 
 # Get commandline arguments
-while getopts "d:x:r:n:o:p:h" OPT; do
+while getopts "d:x:r:n:o:p:ah" OPT; do
     case "$OPT" in
     d)  DB=$OPTARG
         DB_SET=true
@@ -61,6 +66,8 @@ while getopts "d:x:r:n:o:p:h" OPT; do
         ;;
     p)  NPROC=$OPTARG
         NPROC_SET=true
+        ;;
+    a)  FUNCTIONAL=false
         ;;
     h)  print_usage
         exit
@@ -116,7 +123,6 @@ fi
 ZIP_FILES=true
 DELETE_FILES=true
 GERMLINES=true
-FUNCTIONAL=true
 
 # DefineClones run parameters
 DC_MODEL="ham"
@@ -171,14 +177,14 @@ if $FUNCTIONAL; then
         --outname "${OUTNAME}" --outdir . \
         >> $PIPELINE_LOG 2> $ERROR_LOG
     check_error
-    LAST_FILE="${OUTNAME}_parse-select.${EXT}"
+    CLONE_FILE="${OUTNAME}_parse-select.${EXT}"
 else
-    LAST_FILE=${DB}
+    CLONE_FILE=${DB}
 fi
 
 # Assign clones
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "DefineClones ${DC_COMMAND}"
-DefineClones.py ${DC_COMMAND} -d ${LAST_FILE} --model ${DC_MODEL} \
+DefineClones.py ${DC_COMMAND} -d ${CLONE_FILE} --model ${DC_MODEL} \
     --dist ${DIST} --mode ${DC_MODE} --act ${DC_ACT} --nproc ${NPROC} \
     --outname "${OUTNAME}" --outdir . --log "${LOGDIR}/clone.log" \
     >> $PIPELINE_LOG 2> $ERROR_LOG

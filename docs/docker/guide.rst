@@ -167,6 +167,7 @@ Arguments:
        Defaults to the sample name.
    -p  Number of subprocesses for multiprocessing tools.
        Defaults to the available processing units.
+   -f  Specify to filter the output to only productive/functional sequences.
    -h  Display help.
 
 **IgBLAST example**
@@ -197,6 +198,8 @@ Arguments:
    -d  Change-O formatted TSV (TAB) file.
    -r  FASTA file containing IMGT-gapped V segment reference germlines.
        Defaults to /usr/local/share/germlines/imgt/human/vdj/imgt_human_IGHV.fasta.
+   -v  Name of the output field containing genotyped V assignments.
+       Defaults to V_CALL_GENOTYPED.
    -n  Sample name or run identifier which will be used as the output file prefix.
        Defaults to a truncated version of the input filename.
    -o  Output directory.
@@ -230,18 +233,19 @@ Clonal threshold inferrence pipeline
 Performs automated detection of the clonal assignment threshold.
 
 Arguments:
-   -d  Change-O formatted TSV (TAB) file.
-   -m  Method.
-       Defaults to density.
-   -l  Model when "-m gmm" is specified.
-       Defaults to "gamma-gamma".
-   -n  Sample name or run identifier which will be used as the output file prefix.
-       Defaults to a truncated version of the input filename.
-   -o  Output directory.
-       Defaults to current directory.
-   -p  Number of subprocesses for multiprocessing tools.
-       Defaults to the available processing units.
-   -h  Display help.
+   -d           Change-O formatted TSV (TAB) file.
+   -m           Method.
+                Defaults to density.
+   -n           Sample name or run identifier which will be used as the output file prefix.
+                Defaults to a truncated version of the input filename.
+   -o           Output directory.
+                Defaults to current directory.
+   -p           Number of subprocesses for multiprocessing tools.
+                Defaults to the available processing units.
+   --model      Model when "-m gmm" is specified.
+                Defaults to "gamma-gamma".
+   --subsample  Number of distances to downsample the data to before distance calculation.
+   -h           Display help.
 
 **Clonal threshold inferrence example**
 
@@ -279,6 +283,8 @@ Arguments:
        Defaults to the sample name.
    -p  Number of subprocesses for multiprocessing tools.
        Defaults to the available processing units.
+   -a  Specify to clone the full data set.
+       By default the data will be filtering to only productive/functional sequences.
    -h  Display help.
 
 **Clonal assignment example**

@@ -1,22 +1,23 @@
 #!/usr/bin/env Rscript
-# Super script to run SHazaM 0.1.7 distance to nearest tuning
+# Super script to run SHazaM 0.1.8 distance to nearest tuning
 #
 # Author:  Jason Anthony Vander Heiden
-# Date:    2018.07.02
+# Date:    2018.07.03
 #
 # Arguments:
-#   -d  Change-O formatted TSV (TAB) file.
-#   -m  Method.
-#       Defaults to density.
-#   -l  Model when "-m gmm" is specified.
-#       Defaults to "gamma-gamma".
-#   -n  Sample name or run identifier which will be used as the output file prefix.
-#       Defaults to a truncated version of the input filename.
-#   -o  Output directory.
-#       Defaults to current directory.
-#   -p  Number of subprocesses for multiprocessing tools.
-#       Defaults to the available processing units.
-#   -h  Display help.
+#   -d           Change-O formatted TSV (TAB) file.
+#   -m           Method.
+#                Defaults to density.
+#   -n           Sample name or run identifier which will be used as the output file prefix.
+#                Defaults to a truncated version of the input filename.
+#   -o           Output directory.
+#                Defaults to current directory.
+#   -p           Number of subprocesses for multiprocessing tools.
+#                Defaults to the available processing units.
+#   --model      Model when "-m gmm" is specified.
+#                Defaults to "gamma-gamma".
+#   --subsample  Number of distances to downsample the data to before distance calculation.
+#   -h           Display help.
 
 # Imports
 suppressPackageStartupMessages(library("optparse"))
@@ -37,13 +38,6 @@ opt_list <- list(make_option(c("-d", "--db"), dest="DB",
                  make_option(c("-m", "--method"), dest="METHOD", default="density",
                              help=paste("Threshold inferrence to use. One of gmm or density.",
                                         "\n\t\tDefaults to density.")),
-                 make_option(c("--model"), dest="MODEL", default="gamma-gamma",
-                             help=paste("Model to use for the gmm model.",
-                                        "\n\t\tOne of gamma-gamma, gamma-norm, norm-norm or norm-gamma.",
-                                        "\n\t\tDefaults to gamma-gamma.")),
-                 make_option(c("--subsample"), dest="SUBSAMPLE", default=SUBSAMPLE,
-                             help=paste("Number of distances to downsample to for the density method.",
-                                        "\n\t\tDefaults to 15000.")),
                  make_option(c("-n", "--name"), dest="NAME",
                              help=paste("Sample name or run identifier which will be used as the output file prefix.",
                                         "\n\t\tDefaults to a truncated version of the input filename.")),
@@ -51,7 +45,14 @@ opt_list <- list(make_option(c("-d", "--db"), dest="DB",
                              help=paste("Output directory.", "Defaults to the sample name.")),
                  make_option(c("-p", "--nproc"), dest="NPROC", default=NPROC,
                              help=paste("Number of subprocesses for multiprocessing tools.",
-                                        "\n\t\tDefaults to the available processing units.")))
+                                        "\n\t\tDefaults to the available processing units.")),
+                 make_option(c("--model"), dest="MODEL", default="gamma-gamma",
+                             help=paste("Model to use for the gmm model.",
+                                        "\n\t\tOne of gamma-gamma, gamma-norm, norm-norm or norm-gamma.",
+                                        "\n\t\tDefaults to gamma-gamma.")),
+                 make_option(c("--subsample"), dest="SUBSAMPLE", default=SUBSAMPLE,
+                             help=paste("Number of records to downsample the data to before distance calculation.",
+                                        "\n\t\tDefaults to 15000.")))
 # Parse arguments
 opt <- parse_args(OptionParser(option_list=opt_list))
 
@@ -73,6 +74,9 @@ if (!(dir.exists(opt$OUTDIR))) {
 
 # Load data
 db <- as.data.frame(readChangeoDb(opt$DB))
+if (opt$SUBSAMPLE < nrow(db)) {
+    db <- db[sample(nrow(db), opt$SUBSAMPLE), ]
+}
 
 # Calculate distance to nearest and threshold
 db <- distToNearest(db, model="ham", first=FALSE, normalize="len", nproc=opt$NPROC)

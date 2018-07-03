@@ -8,6 +8,8 @@
 #   -d  Change-O formatted TSV (TAB) file.
 #   -r  FASTA file containing IMGT-gapped V segment reference germlines.
 #       Defaults to /usr/local/share/germlines/imgt/human/vdj/imgt_human_IGHV.fasta.
+#   -v  Name of the output field containing genotyped V assignments.
+#       Defaults to V_CALL_GENOTYPED.
 #   -n  Sample name or run identifier which will be used as the output file prefix.
 #       Defaults to a truncated version of the input filename.
 #   -o  Output directory.
@@ -34,6 +36,10 @@ opt_list <- list(make_option(c("-d", "--db"), dest="DB",
                              default="/usr/local/share/germlines/imgt/human/vdj/imgt_human_IGHV.fasta",
                              help=paste("FASTA file containing IMGT-gapped V segment reference germlines.",
                                         "\n\t\tDefaults to /usr/local/share/germlines/imgt/human/vdj/imgt_human_IGHV.fasta.")),
+                 make_option(c("-v", "--vfield"), dest="VFIELD",
+                             default="V_CALL_GENOTYPED",
+                             help=paste("Name of the output field containing genotyped V assignments.",
+                                        "\n\t\tDefaults to V_CALL_GENOTYPED.")),
                  make_option(c("-n", "--name"), dest="NAME",
                              help=paste("Sample name or run identifier which will be used as the output file prefix.",
                                         "\n\t\tDefaults to a truncated version of the input filename.")),
@@ -79,6 +85,14 @@ if (utils::packageVersion("tigger") <= "0.2.11") {
 } else {
     db <- reassignAlleles(db, gt_seq)
 }
+
+# Rename V call column if necessary
+if (opt$NAME != "V_CALL_GENOTYPED") {
+    db[[opt$NAME]] <- db$V_CALL_GENOTYPED
+    db <- select(db, -V_CALL_GENOTYPED)
+}
+
+# Write genotyped data
 writeChangeoDb(db, file.path(opt$OUTDIR, paste0(opt$NAME, "_genotyped.tab")))
 
 # Plot genotype

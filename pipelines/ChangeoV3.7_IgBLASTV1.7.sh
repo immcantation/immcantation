@@ -2,7 +2,7 @@
 # Super script to run IgBLAST 1.7 and Change-O 0.3.7
 #
 # Author:  Jason Anthony Vander Heiden, Gur Yaari, Namita Gupta
-# Date:    2018.03.19
+# Date:    2018.07.03
 #
 # Arguments:
 #   -s  FASTA or FASTQ sequence file.
@@ -18,6 +18,7 @@
 #       Defaults to the sample name.
 #   -p  Number of subprocesses for multiprocessing tools.
 #       Defaults to the available processing units.
+#   -f  Specify to filter the output to only productive/functional sequences.
 #   -h  Display help.
 
 # Print usage
@@ -37,6 +38,7 @@ print_usage() {
             "     Defaults to the sample name."
     echo -e "  -p  Number of subprocesses for multiprocessing tools.\n" \
             "     Defaults to the available cores."
+    echo -e "  -f  Specify to filter the output to only productive/functional sequences."
     echo -e "  -h  This message."
 }
 
@@ -49,9 +51,10 @@ IGDATA_SET=false
 OUTNAME_SET=false
 OUTDIR_SET=false
 NPROC_SET=false
+FUNCTIONAL=false
 
 # Get commandline arguments
-while getopts "s:r:g:t:b:n:o:p:h" OPT; do
+while getopts "s:r:g:t:b:n:o:p:fh" OPT; do
     case "$OPT" in
     s)  READS=$OPTARG
         READS_SET=true
@@ -76,6 +79,8 @@ while getopts "s:r:g:t:b:n:o:p:h" OPT; do
         ;;
     p)  NPROC=$OPTARG
         NPROC_SET=true
+        ;;
+    f)  FUNCTIONAL=true
         ;;
     h)  print_usage
         exit
@@ -157,7 +162,6 @@ fi
 ZIP_FILES=true
 DELETE_FILES=true
 GERMLINES=false
-FUNCTIONAL=false
 
 # Create germlines parameters
 CG_GERM="dmask"

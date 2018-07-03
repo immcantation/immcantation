@@ -1,7 +1,7 @@
 #!/usr/bin/env bats
 
 # Run parameters
-VERSION="1.10.1"
+VERSION="devel"
 IMAGE="kleinstein/immcantation:${VERSION}"
 DATE=$(date +"%Y.%m.%d")
 DATA_DIR=$(readlink -f data)

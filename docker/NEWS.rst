@@ -1,6 +1,21 @@
 Docker Container Release Notes
 ========================================================================
 
+Version 1.10.2:  July 3, 2018
+------------------------------------------------------------------------
+
+Pipeline Changes:
+
++ Added data set subsampling to ``shazam-threshold`` with a default
+  value of 15000 records.
++ Added ``-f`` argument to ``changeo-igblast`` to allow optional
+  filtering of non-productive/non-functional sequences.
++ Added ``-a`` argument to ``changeo-clone`` to allow retention of
+  non-productive/non-functionals sequences during cloning.
++ Added ``-v`` argument to ``tigger-genotype`` to allow specification of
+  the V genotyped column name.
+
+
 Version 1.10.1:  July 1, 2018
 ------------------------------------------------------------------------
 
