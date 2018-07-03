@@ -1,6 +1,6 @@
 immcantation:
-    version:  1.10.1
-    date:     2018.06.30
+    version:  1.10.2
+    date:     2018.07.03
 release:
     presto:   0.5.7
     changeo:  0.3.12
