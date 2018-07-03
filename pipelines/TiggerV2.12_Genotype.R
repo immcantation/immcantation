@@ -44,7 +44,7 @@ opt_list <- list(make_option(c("-d", "--db"), dest="DB",
                              help=paste("Sample name or run identifier which will be used as the output file prefix.",
                                         "\n\t\tDefaults to a truncated version of the input filename.")),
                  make_option(c("-o", "--outdir"), dest="OUTDIR", default=".",
-                             help=paste("Output directory.", "Defaults to the sample name.")),
+                             help=paste("Output directory.", "Defaults to current directory.")),
                  make_option(c("-p", "--nproc"), dest="NPROC", default=NPROC,
                              help=paste("Number of subprocesses for multiprocessing tools.",
                                         "\n\t\tDefaults to the available processing units.")))
@@ -89,13 +89,14 @@ if (utils::packageVersion("tigger") <= "0.2.11") {
 # Rename V call column if necessary
 if (opt$VFIELD != "V_CALL_GENOTYPED") {
     db[[opt$VFIELD]] <- db$V_CALL_GENOTYPED
-    db <- select(db, -V_CALL_GENOTYPED)
+    db <- dplyr::select(db, -V_CALL_GENOTYPED)
 }
 
 # Write genotyped data
 writeChangeoDb(db, file.path(opt$OUTDIR, paste0(opt$NAME, "_genotyped.tab")))
 
 # Plot genotype
-ggsave(file.path(opt$OUTDIR, paste0(opt$NAME, "_genotype.pdf")),
-       plotGenotype(gt, silent=TRUE))
-
+plot_file <- file.path(opt$OUTDIR, paste0(opt$NAME, "_genotype.pdf"))
+pdf(plot_file, width=7, height=10)
+plotGenotype(gt, silent=FALSE)
+dev.off()
