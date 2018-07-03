@@ -87,8 +87,8 @@ if (utils::packageVersion("tigger") <= "0.2.11") {
 }
 
 # Rename V call column if necessary
-if (opt$NAME != "V_CALL_GENOTYPED") {
-    db[[opt$NAME]] <- db$V_CALL_GENOTYPED
+if (opt$VFIELD != "V_CALL_GENOTYPED") {
+    db[[opt$VFIELD]] <- db$V_CALL_GENOTYPED
     db <- select(db, -V_CALL_GENOTYPED)
 }
 

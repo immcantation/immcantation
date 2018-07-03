@@ -54,9 +54,10 @@ RUN_DIR=$(readlink -f ${RUN_DIR})
 @test "tigger-genotype" {
 	DB="/scratch/changeo/${SAMPLE}_db-pass.${EXT}"
 	OUT_DIR="/scratch/changeo"
+	V_FIELD="V_CALL"
 
 	run docker run -v $DATA_DIR:/data:z -v $RUN_DIR:/scratch:z $IMAGE \
-		tigger-genotype -d $DB -n $SAMPLE -o $OUT_DIR -p $NPROC
+		tigger-genotype -d $DB -v $V_FIELD -n $SAMPLE -o $OUT_DIR -p $NPROC
 
 	[ "$status" -eq 0 ]
 }
