@@ -25,7 +25,7 @@ RUN_DIR=$(readlink -f ${RUN_DIR})
 
 	[ "$status" -eq 0 ]
 }
-	
+
 # pRESTO
 @test "presto-abseq" {
 	READS_R1=/data/AAYHL_HD13M/MG2v3_HD13M_BC13_AGTCAA_L001_R1_001.fastq
@@ -68,7 +68,7 @@ RUN_DIR=$(readlink -f ${RUN_DIR})
 	OUT_DIR="/scratch/changeo"
 
 	run docker run -v $DATA_DIR:/data:z -v $RUN_DIR:/scratch:z $IMAGE \
-		shazam-threshold -d $DB -n $SAMPLE -o $OUT_DIR -p $NPROC
+		shazam-threshold -d $DB -n $SAMPLE -o $OUT_DIR -p $NPROC --subsample 5000
 
 	[ "$status" -eq 0 ]
 }

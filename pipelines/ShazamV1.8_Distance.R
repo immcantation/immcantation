@@ -95,6 +95,7 @@ cat("THRESHOLD> ", threshold@threshold, "\n", sep="")
 write_tsv(thresh_df, file.path(opt$OUTDIR, paste0(opt$NAME, "_threshold-values.tab")))
 
 # Plot
-p1 <- plot(threshold, binwidth=0.02, silent=TRUE)
-ggsave(file.path(opt$OUTDIR, paste0(opt$NAME, "_threshold-plot.pdf")), plot=p1, 
-       device="pdf", width=6, height=4, useDingbats=FALSE)
+plot_file <- file.path(opt$OUTDIR, paste0(opt$NAME, "_threshold-plot.pdf"))
+pdf(plot_file, width=6, height=4, useDingbats=FALSE)
+plot(threshold, binwidth=0.02, silent=FALSE)
+dev.off()
