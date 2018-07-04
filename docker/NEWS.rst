@@ -24,7 +24,7 @@ Pipeline Changes:
 + Fixed a bug wherein ``changeo-igblast`` and ``changeo-clone`` were
   not working with an unspecified output directory (``-o`` argument).
 + Updated CPU core detection in ``tigger-genotype`` and
-``shazam-threshold`` for compatability with new R package versions.
+  ``shazam-threshold`` for compatability with new R package versions.
 
 Accessory Script Changes:
 
