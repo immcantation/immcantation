@@ -98,5 +98,5 @@ writeChangeoDb(db, file.path(opt$OUTDIR, paste0(opt$NAME, "_genotyped.tab")))
 # Plot genotype
 plot_file <- file.path(opt$OUTDIR, paste0(opt$NAME, "_genotype.pdf"))
 pdf(plot_file, width=7, height=10, useDingbats=FALSE)
-plotGenotype(gt, silent=TRUE)
+plotGenotype(gt, silent=FALSE)
 dev.off()
