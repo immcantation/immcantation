@@ -1,9 +1,9 @@
 immcantation:
-    version:  1.10.2
-    date:     2018.07.03
+    version:  2.0.0
+    date:     2018.07.16
 release:
-    presto:   0.5.7
-    changeo:  0.3.12
+    presto:   0.5.8
+    changeo:  0.4.1
     alakazam: 0.2.10
     shazam:   0.1.9
     tigger:   0.2.11
@@ -13,7 +13,7 @@ release:
 software:
     muscle:   3.8.31
     vsearch:  2.4.3
-    blast:    2.5.0
     cd-hit:   4.6.8
+    blast:    2.5.0
     igblast:  1.9.0
     phylip:   3.697

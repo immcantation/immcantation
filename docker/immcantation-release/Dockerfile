@@ -66,6 +66,14 @@ RUN VSEARCH=$(versions get -n vsearch) \
     && ln -s /usr/local/bin/vsearch /usr/local/bin/usearch \
     && rm -r vsearch-${VSEARCH}-linux-x86_64.tar.gz vsearch-${VSEARCH}-linux-x86_64
 
+# Install CD-HIT
+RUN CDHIT=$(versions get -n cd-hit) \
+    && wget -q --show-progress \
+       https://github.com/weizhongli/cdhit/archive/V${CDHIT}.tar.gz \
+    && tar -zxf V${CDHIT}.tar.gz \
+    && (cd cdhit-${CDHIT} && make && make install) \
+    && rm -r V${CDHIT}.tar.gz cdhit-${CDHIT}
+
 # Install BLAST+ executables
 RUN BLAST=$(versions get -n blast) \
     && wget -q --show-progress \
@@ -90,6 +98,13 @@ RUN PHYLIP=$(versions get -n phylip) \
     && (cd phylip-${PHYLIP}/src && make -f Makefile.unx install) \
     && mv phylip-${PHYLIP}/exe/* /usr/local/bin \
     && rm -r phylip-${PHYLIP}.tar.gz phylip-${PHYLIP}
+
+# Install tbl2asn
+RUN wget -q --show-progress \
+    ftp://ftp.ncbi.nih.gov/toolbox/ncbi_tools/converters/by_program/tbl2asn/linux64.tbl2asn.gz \
+    && gunzip linux64.tbl2asn.gz \
+    && mv linux64.tbl2asn /usr/local/bin/tbl2asn \
+    && chmod +x /usr/local/bin/tbl2asn
 
 # Install AIRR reference libraries
 RUN AIRR=$(versions get -n airr) \

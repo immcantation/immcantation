@@ -66,6 +66,14 @@ RUN VSEARCH=$(versions get -n vsearch) \
 	&& ln -s /usr/local/bin/vsearch /usr/local/bin/usearch \
 	&& rm -r vsearch-${VSEARCH}-linux-x86_64.tar.gz vsearch-${VSEARCH}-linux-x86_64
 
+# Install CD-HIT
+RUN CDHIT=$(versions get -n cd-hit) \
+    && wget -q --show-progress \
+       https://github.com/weizhongli/cdhit/archive/V${CDHIT}.tar.gz \
+    && tar -zxf V${CDHIT}.tar.gz \
+    && (cd cdhit-${CDHIT} && make && make install) \
+    && rm -r V${CDHIT}.tar.gz cdhit-${CDHIT}
+
 # Install BLAST+ executables
 RUN BLAST=$(versions get -n blast) \
     && wget -q --show-progress \
@@ -81,14 +89,6 @@ RUN IGBLAST=$(versions get -n igblast) \
     && tar -zxf ncbi-igblast-${IGBLAST}-x64-linux.tar.gz \
     && mv ncbi-igblast-${IGBLAST}/bin/* /usr/local/bin \
     && rm -r ncbi-igblast-${IGBLAST}-x64-linux.tar.gz ncbi-igblast-${IGBLAST}
-
-# Install CD-HIT
-RUN CDHIT=$(versions get -n cd-hit) \
-    && wget -q --show-progress \
-       https://github.com/weizhongli/cdhit/archive/V${CDHIT}.tar.gz \
-    && tar -zxf V${CDHIT}.tar.gz \
-    && (cd cdhit-${CDHIT} && make && make install) \
-    && rm -r V${CDHIT}.tar.gz cdhit-${CDHIT}
 
 # Install PHYLIP
 RUN PHYLIP=$(versions get -n phylip) \
@@ -110,6 +110,13 @@ RUN PACKAGE="igphyml" \
     && git clone https://bitbucket.org/kbhoehn/${PACKAGE} /usr/local/share/${PACKAGE} \
     && (cd /usr/local/share/${PACKAGE} && ./make_phyml_blas_omp) \
     && builds write -n ${PACKAGE} -v $(git -C /usr/local/share/${PACKAGE} show --pretty=%h | head -n 1)
+
+# Install tbl2asn
+RUN wget -q --show-progress \
+    ftp://ftp.ncbi.nih.gov/toolbox/ncbi_tools/converters/by_program/tbl2asn/linux64.tbl2asn.gz \
+    && gunzip linux64.tbl2asn.gz \
+    && mv linux64.tbl2asn /usr/local/bin/tbl2asn \
+    && chmod +x /usr/local/bin/tbl2asn
 
 # Install presto
 RUN PACKAGE="presto" \
