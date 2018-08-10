@@ -99,12 +99,12 @@ TSUBSAMPLE <- opt$TSUBSAMPLE
 REPEATS <- opt$REPEATS
 
 
-
 # Load data
 db <- as.data.frame(readChangeoDb(DB))
 if (SUBSAMPLE < nrow(db)) {
     db <- db[sample(nrow(db), SUBSAMPLE), ]
 }
+
 
 # Calculate distance to nearest and threshold
 db <- distToNearest(db, model="ham", first=FALSE, normalize="len", nproc=NPROC)
