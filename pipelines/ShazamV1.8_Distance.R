@@ -38,7 +38,7 @@ MODEL <- "gamma-gamma"
 NPROC <- parallel::detectCores()
 SUBSAMPLE <- 15000
 TSUBSAMPLE <- 500
-REPEATS <- 5
+REPEATS <- 10
 
 # Define commmandline arguments
 opt_list <- list(make_option(c("-d", "--db"), dest="DB",
@@ -114,12 +114,19 @@ db <- distToNearest(db, model="ham", first=FALSE, normalize="len", nproc=NPROC)
 threshold_list <- list()
 
 
-# Also plot
+# Compute thresholds and plot
 plot_file <- file.path(OUTDIR, paste0(NAME, "_threshold-plot.pdf"))
 pdf(plot_file, width=6, height=4, useDingbats=FALSE)
 
 for(i in 1:REPEATS){
-    threshold <- findThreshold(sample(db$DIST_NEAREST, TSUBSAMPLE), method=METHOD, model=MODEL, subsample=SUBSAMPLE)
+    
+    if(length(db$DIST_NEAREST) < TSUBSAMPLE){
+        sampling <- db$DIST_NEAREST
+    } else {
+        sampling <- sample(db$DIST_NEAREST, TSUBSAMPLE)
+    }
+    
+    threshold <- findThreshold(sampling, method=METHOD, model=MODEL, subsample=SUBSAMPLE)
     
     slots <- slotNames(threshold)
     slots <- slots[!(slots %in% c("x", "xdens", "ydens"))]
@@ -140,5 +147,5 @@ dev.off()
 
 
 # Print and save threshold table
-cat("THRESHOLD_AVG > ", mean(as.numeric(thresh_df$threshold)), "\n", sep="")
+cat("THRESHOLD_AVG > ", mean(as.numeric(thresh_df$threshold), na.rm = TRUE), "\n", sep="")
 write_tsv(thresh_df, file.path(OUTDIR, paste0(NAME, "_threshold-values.tab")))
