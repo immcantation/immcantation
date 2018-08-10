@@ -1,7 +1,7 @@
 #!/usr/bin/env Rscript
 # Super script to run SHazaM 0.1.8 distance to nearest tuning
 #
-# Author:  Jason Anthony Vander Heiden
+# Author:  Jason Anthony Vander Heiden, Ruoyi Jiang
 # Date:    2018.07.03
 #
 # Arguments:
