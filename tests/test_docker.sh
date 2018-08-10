@@ -68,7 +68,8 @@ RUN_DIR=$(readlink -f ${RUN_DIR})
 	OUT_DIR="/scratch/changeo"
 
 	run docker run -v $DATA_DIR:/data:z -v $RUN_DIR:/scratch:z $IMAGE \
-		shazam-threshold -d $DB -n $SAMPLE -o $OUT_DIR -p $NPROC --subsample 5000
+		shazam-threshold -d $DB -n $SAMPLE -o $OUT_DIR -p $NPROC --subsample 5000 \
+            --tsubsample 400 --repeats 4
 
 	[ "$status" -eq 0 ]
 }
