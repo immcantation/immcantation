@@ -2,7 +2,7 @@
 # Super script to run IgBLAST 1.7 and Change-O 0.3.7
 #
 # Author:  Jason Anthony Vander Heiden, Gur Yaari, Namita Gupta
-# Date:    2018.07.03
+# Date:    2018.08.10
 #
 # Arguments:
 #   -s  FASTA or FASTQ sequence file.
@@ -251,7 +251,7 @@ fi
 
 # Zip or delete intermediate and log files
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "Compressing files"
-TEMP_FILES=$(ls *.${EXT} | grep -v "${LAST_FILE}\|$(basename ${READS})")
+TEMP_FILES=$(ls *.${EXT} | grep "${OUTNAME}_" | grep -v "${LAST_FILE}\|$(basename ${READS})")
 if $ZIP_FILES; then
     tar -zcf temp_files.tar.gz $TEMP_FILES
 fi
