@@ -25,6 +25,7 @@
 suppressPackageStartupMessages(library("optparse"))
 suppressPackageStartupMessages(library("methods"))
 suppressPackageStartupMessages(library("dplyr"))
+suppressPackageStartupMessages(library("tidyr"))
 suppressPackageStartupMessages(library("readr"))
 suppressPackageStartupMessages(library("ggplot2"))
 suppressPackageStartupMessages(library("alakazam"))
@@ -59,10 +60,10 @@ opt_list <- list(make_option(c("-d", "--db"), dest="DB",
                                         "\n\t\tDefaults to gamma-gamma.")),
                  make_option(c("--subsample"), dest="SUBSAMPLE", default=SUBSAMPLE,
                              help=paste("Number of records to downsample the data to before distance calculation.",
-                                        "\n\t\tDefaults to 15000.")))
+                                        "\n\t\tDefaults to 15000.")),
                  make_option(c("--tsubsample"), dest="TSUBSAMPLE", default=TSUBSAMPLE,
                              help=paste("Number of distances to downsample the data to before threshold calculation.",
-                                        "\n\t\tDefaults to 500.")))
+                                        "\n\t\tDefaults to 500.")),
                  make_option(c("--repeats"), dest="REPEATS", default=REPEATS,
                              help=paste("Number of times to recalculate.",
                                         "\n\t\tDefaults to 5.")))
