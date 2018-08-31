@@ -8,7 +8,7 @@ release:
     shazam:   0.1.9
     tigger:   0.2.11
     rdi:      1.0.0
-    prestor:  0.0.4
+    prestor:  0.0.5
     airr:     1.2.0
 software:
     muscle:   3.8.31
