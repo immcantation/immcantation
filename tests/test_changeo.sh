@@ -9,6 +9,7 @@ RUN_DIR="run/changeo-${DATE}"
 # Run parameters
 NPROC=2
 OUTDIR=false
+FAILED=true
 GERMLINES="${HOME}/share/imgt/human/vdj"
 V_GERMLINES="${HOME}/share/igblast/fasta/imgt_human_ig_v.fasta"
 #GERMLINES="/usr/local/share/imgt/human/vdj"
@@ -18,14 +19,24 @@ V_GERMLINES="${HOME}/share/igblast/fasta/imgt_human_ig_v.fasta"
 #CLUSTER="cd-hit-est"
 ALIGNER="blastn"
 #FAILED=""
-FAILED="--failed"
 
 # Create output parent
 mkdir -p ${RUN_DIR}/logs ${RUN_DIR}/console ${RUN_DIR}/output
 RUN_DIR=$(readlink -f ${RUN_DIR})
 
-# Create output parent
-mkdir -p ${RUN_DIR}
+get_output() {
+    # $1 : output name for --outname or -o argument
+    # $2 : whether to set --outdir/--outname (true) or -o (false)
+    # $3 : whether to set --failed
+    if $2 && $3; then
+        echo "--outdir ${RUN_DIR}/output --outname ${1} --failed"
+    elif $2; then
+        echo "--outdir ${RUN_DIR}/output --outname ${1}"
+    else
+        echo "-o ${RUN_DIR}/output/${1}.fastq"
+    fi
+}
+
 
 # Changeo
 AlignRecords across -d S43_IGBLAST_AIRR_db-pass.tsv --sf sequence junction_nt --calls v d j --format airr $OUTPUT $LOG $FAILED $NPROC

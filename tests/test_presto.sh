@@ -8,7 +8,7 @@ RUN_DIR="run/presto-${DATE}"
 
 # Run parameters
 NPROC=2
-OUTDIR=false
+OUTDIR=true
 FAILED=true
 GERMLINES="${HOME}/share/imgt/human/vdj"
 V_GERMLINES="${HOME}/share/igblast/fasta/imgt_human_ig_v.fasta"
@@ -24,14 +24,13 @@ mkdir -p ${RUN_DIR}/logs ${RUN_DIR}/console ${RUN_DIR}/output
 RUN_DIR=$(readlink -f ${RUN_DIR})
 
 # Get output argument block
-#${BATS_TEST_DESCRIPTION} is the description of the current test case.
 get_output() {
     # $1 : output name for --outname or -o argument
     # $2 : whether to set --outdir/--outname (true) or -o (false)
     # $3 : whether to set --failed
-    if [[ -e $2 && $3 ]]; then
+    if $2 && $3; then
         echo "--outdir ${RUN_DIR}/output --outname ${1} --failed"
-    elif [[ $2 ]]; then
+    elif $2; then
         echo "--outdir ${RUN_DIR}/output --outname ${1}"
     else
         echo "-o ${RUN_DIR}/output/${1}.fastq"
