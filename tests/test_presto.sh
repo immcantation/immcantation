@@ -9,16 +9,15 @@ RUN_DIR="run/presto-${DATE}"
 # Run parameters
 NPROC=2
 OUTDIR=false
+FAILED=true
 GERMLINES="${HOME}/share/imgt/human/vdj"
 V_GERMLINES="${HOME}/share/igblast/fasta/imgt_human_ig_v.fasta"
 #GERMLINES="/usr/local/share/imgt/human/vdj"
 #FORMAT=""
 #FORMAT="--format airr"
-#FASTA="--fasta"
+#FASTA=true
 CLUSTER="cd-hit-est"
 ALIGNER="blastn"
-#FAILED=""
-FAILED="--failed"
 
 # Create output parent
 mkdir -p ${RUN_DIR}/logs ${RUN_DIR}/console ${RUN_DIR}/output
@@ -27,265 +26,409 @@ RUN_DIR=$(readlink -f ${RUN_DIR})
 # Get output argument block
 #${BATS_TEST_DESCRIPTION} is the description of the current test case.
 get_output() {
-    if $1; then
-        echo "--outdir ${RUN_DIR}/output --outname ${2} ${FAILED}"
+    # $1 : output name for --outname or -o argument
+    # $2 : whether to set --outdir/--outname (true) or -o (false)
+    # $3 : whether to set --failed
+    if [[ -e $2 && $3 ]]; then
+        echo "--outdir ${RUN_DIR}/output --outname ${1} --failed"
+    elif [[ $2 ]]; then
+        echo "--outdir ${RUN_DIR}/output --outname ${1}"
     else
-        echo "-o ${RUN_DIR}/output/${2}.fastq"
+        echo "-o ${RUN_DIR}/output/${1}.fastq"
     fi
 }
 
 @test "AlignSets-muscle" {
-    TEST="${BATS_TEST_DESCRIPTION}-${BATS_TEST_NUMBER}"
+    TEST="${BATS_TEST_NUMBER}-${BATS_TEST_DESCRIPTION}"
 	READS="${DATA_DIR}/sequences/HD13M-R1_primers-pass_pair-pass.fastq"
 	LOG="${RUN_DIR}/logs/${TEST}.log"
 	CONSOLE="${RUN_DIR}/console/${TEST}.out"
-    OUTPUT=$(get_output ${OUTDIR} ${TEST})
+    OUTPUT=$(get_output ${TEST} ${OUTDIR} ${FAILED})
 
-    run AlignSets.py muscle -s $READS --bf BARCODE --log $LOG --nproc $NPROC $OUTPUT > $CONSOLE
+    run AlignSets.py muscle -s $READS --bf BARCODE --log $LOG --nproc $NPROC $OUTPUT
 
+    echo "$output" > $CONSOLE
 	[ "$status" -eq 0 ]
 }
 
 @test "AlignSets-table" {
-    TEST="${BATS_TEST_DESCRIPTION}-${BATS_TEST_NUMBER}"
+    TEST="${BATS_TEST_NUMBER}-${BATS_TEST_DESCRIPTION}"
 	PRIMERS="${DATA_DIR}/primers/AbSeq_R2_TS.fasta"
 	LOG="${RUN_DIR}/logs/${TEST}.log"
 	CONSOLE="${RUN_DIR}/console/${TEST}.out"
-    OUTPUT=$(get_output ${OUTDIR} ${TEST})
+    OUTPUT=$(get_output ${TEST} ${OUTDIR} ${FAILED})
 
-    run AlignSets.py table -p $PRIMERS $OUTPUT > $CONSOLE
+    run AlignSets.py table -p $PRIMERS $OUTPUT
 
+    echo "$output" > $CONSOLE
 	[ "$status" -eq 0 ]
 }
 
 @test "AssemblePairs-align" {
-    TEST="${BATS_TEST_DESCRIPTION}-${BATS_TEST_NUMBER}"
+    TEST="${BATS_TEST_NUMBER}-${BATS_TEST_DESCRIPTION}"
 	READS_1="${DATA_DIR}/sequences/HD13M-R2_consensus-pass_pair-pass.fastq"
 	READS_2="${DATA_DIR}/sequences/HD13M-R1_consensus-pass_pair-pass.fastq"
 	LOG="${RUN_DIR}/logs/${TEST}.log"
 	CONSOLE="${RUN_DIR}/console/${TEST}.out"
-    OUTPUT=$(get_output ${OUTDIR} ${TEST})
+    OUTPUT=$(get_output ${TEST} ${OUTDIR} ${FAILED})
 
     run AssemblePairs.py align -1 $READS_1 -2 $READS_2 --coord presto --rc tail --scanrev \
-        --log $LOG --nproc $NPROC $OUTPUT > $CONSOLE
+        --log $LOG --nproc $NPROC $OUTPUT
 
+    echo "$output" > $CONSOLE
 	[ "$status" -eq 0 ]
 }
 
 @test "AssemblePairs-join" {
-    TEST="${BATS_TEST_DESCRIPTION}-${BATS_TEST_NUMBER}"
+    TEST="${BATS_TEST_NUMBER}-${BATS_TEST_DESCRIPTION}"
 	READS_1="${DATA_DIR}/sequences/HD13M-R2_consensus-pass_pair-pass.fastq"
 	READS_2="${DATA_DIR}/sequences/HD13M-R1_consensus-pass_pair-pass.fastq"
 	LOG="${RUN_DIR}/logs/${TEST}.log"
 	CONSOLE="${RUN_DIR}/console/${TEST}.out"
-    OUTPUT=$(get_output ${OUTDIR} ${TEST})
+    OUTPUT=$(get_output ${TEST} ${OUTDIR} ${FAILED})
 
     run AssemblePairs.py join -1 $READS_1 -2 $READS_2 --coord presto --rc tail --gap 10 \
-        --log $LOG --nproc $NPROC $OUTPUT > $CONSOLE
+        --log $LOG --nproc $NPROC $OUTPUT
 
+    echo "$output" > $CONSOLE
 	[ "$status" -eq 0 ]
 }
 
 @test "AssemblePairs-reference" {
-    TEST="${BATS_TEST_DESCRIPTION}-${BATS_TEST_NUMBER}"
+    TEST="${BATS_TEST_NUMBER}-${BATS_TEST_DESCRIPTION}"
 	READS_1="${DATA_DIR}/sequences/HD13M-R2_consensus-pass_pair-pass.fastq"
 	READS_2="${DATA_DIR}/sequences/HD13M-R1_consensus-pass_pair-pass.fastq"
 	LOG="${RUN_DIR}/logs/${TEST}.log"
 	CONSOLE="${RUN_DIR}/console/${TEST}.out"
-    OUTPUT=$(get_output ${OUTDIR} ${TEST})
+    OUTPUT=$(get_output ${TEST} ${OUTDIR} ${FAILED})
 
     run AssemblePairs.py reference -1 $READS_1 -2 $READS_2 --coord presto --rc tail \
         -r $V_GERMLINES --minident 0.5 --evalue 1e-5 --maxhits 100 --aligner $ALIGNER \
-        --log $LOG --nproc $NPROC $OUTPUT > $CONSOLE
+        --log $LOG --nproc $NPROC $OUTPUT
 
+    echo "$output" > $CONSOLE
 	[ "$status" -eq 0 ]
 }
 
 @test "AssemblePairs-sequential" {
-    TEST="${BATS_TEST_DESCRIPTION}-${BATS_TEST_NUMBER}"
+    TEST="${BATS_TEST_NUMBER}-${BATS_TEST_DESCRIPTION}"
 	READS_1="${DATA_DIR}/sequences/HD13M-R2_consensus-pass_pair-pass.fastq"
 	READS_2="${DATA_DIR}/sequences/HD13M-R1_consensus-pass_pair-pass.fastq"
 	LOG="${RUN_DIR}/logs/${TEST}.log"
 	CONSOLE="${RUN_DIR}/console/${TEST}.out"
-    OUTPUT=$(get_output ${OUTDIR} ${TEST})
+    OUTPUT=$(get_output ${TEST} ${OUTDIR} ${FAILED})
 
     run AssemblePairs.py sequential -1 $READS_1 -2 $READS_2 --coord presto --rc tail --scanrev \
         -r $V_GERMLINES --minident 0.5 --evalue 1e-5 --maxhits 100 --aligner $ALIGNER \
-        --log $LOG --nproc $NPROC $OUTPUT > $CONSOLE
+        --log $LOG --nproc $NPROC $OUTPUT
 
+    echo "$output" > $CONSOLE
 	[ "$status" -eq 0 ]
 }
 
 @test "BuildConsensus" {
-    TEST="${BATS_TEST_DESCRIPTION}-${BATS_TEST_NUMBER}"
+    TEST="${BATS_TEST_NUMBER}-${BATS_TEST_DESCRIPTION}"
 	READS="${DATA_DIR}/sequences/HD13M-R1_primers-pass_pair-pass.fastq"
 	LOG="${RUN_DIR}/logs/${TEST}.log"
 	CONSOLE="${RUN_DIR}/console/${TEST}.out"
-    OUTPUT=$(get_output ${OUTDIR} ${TEST})
+    OUTPUT=$(get_output ${TEST} ${OUTDIR} ${FAILED})
 
     run BuildConsensus.py -s $READS -q 20 --cf PRIMER --act majority --maxerr 0.1 --maxgap 0.7 \
-        --log $LOG --nproc $NPROC $OUTPUT > $CONSOLE
+        --log $LOG --nproc $NPROC $OUTPUT
 
+    echo "$output" > $CONSOLE
 	[ "$status" -eq 0 ]
 }
 
 @test "ClusterSets-all" {
-    TEST="${BATS_TEST_DESCRIPTION}-${BATS_TEST_NUMBER}"
+    TEST="${BATS_TEST_NUMBER}-${BATS_TEST_DESCRIPTION}"
 	READS="${DATA_DIR}/sequences/HD13M-R1_primers-pass_pair-pass.fastq"
 	LOG="${RUN_DIR}/logs/${TEST}.log"
 	CONSOLE="${RUN_DIR}/console/${TEST}.out"
-    OUTPUT=$(get_output ${OUTDIR} ${TEST})
+    OUTPUT=$(get_output ${TEST} ${OUTDIR} ${FAILED})
 
     run ClusterSets.py all -s $READS --id 0.80 --prefix A --cluster $CLUSTER \
-        --log $LOG --nproc $NPROC $OUTPUT > $CONSOLE
+        --log $LOG --nproc $NPROC $OUTPUT
 
+    echo "$output" > $CONSOLE
 	[ "$status" -eq 0 ]
 }
 
 @test "ClusterSets-barcode" {
-    TEST="${BATS_TEST_DESCRIPTION}-${BATS_TEST_NUMBER}"
+    TEST="${BATS_TEST_NUMBER}-${BATS_TEST_DESCRIPTION}"
 	READS="${DATA_DIR}/sequences/HD13M-R1_primers-pass_pair-pass.fastq"
 	LOG="${RUN_DIR}/logs/${TEST}.log"
 	CONSOLE="${RUN_DIR}/console/${TEST}.out"
-    OUTPUT=$(get_output ${OUTDIR} ${TEST})
+    OUTPUT=$(get_output ${TEST} ${OUTDIR} ${FAILED})
 
     run ClusterSets.py barcode -s $READS -f BARCODE --id 0.80 --prefix B --cluster $CLUSTER \
-        --log $LOG --nproc $NPROC $OUTPUT > $CONSOLE
+        --log $LOG --nproc $NPROC $OUTPUT
 
+    echo "$output" > $CONSOLE
 	[ "$status" -eq 0 ]
 }
 
 @test "ClusterSets-set" {
-    TEST="${BATS_TEST_DESCRIPTION}-${BATS_TEST_NUMBER}"
+    TEST="${BATS_TEST_NUMBER}-${BATS_TEST_DESCRIPTION}"
 	READS="${DATA_DIR}/sequences/HD13M-R1_primers-pass_pair-pass.fastq"
 	LOG="${RUN_DIR}/logs/${TEST}.log"
 	CONSOLE="${RUN_DIR}/console/${TEST}.out"
-    OUTPUT=$(get_output ${OUTDIR} ${TEST})
+    OUTPUT=$(get_output ${TEST} ${OUTDIR} ${FAILED})
 
     run ClusterSets.py set -s $READS -f BARCODE --id 0.80 --prefix S \
         --start 25 --end 275 --cluster $CLUSTER \
-        --log $LOG --nproc $NPROC $OUTPUT > $CONSOLE
+        --log $LOG --nproc $NPROC $OUTPUT
 
+    echo "$output" > $CONSOLE
 	[ "$status" -eq 0 ]
 }
 
 @test "CollapseSeq" {
-    TEST="${BATS_TEST_DESCRIPTION}-${BATS_TEST_NUMBER}"
+    TEST="${BATS_TEST_NUMBER}-${BATS_TEST_DESCRIPTION}"
 	READS="${DATA_DIR}/sequences/HD13M-final_total.fastq"
 	LOG="${RUN_DIR}/logs/${TEST}.log"
 	CONSOLE="${RUN_DIR}/console/${TEST}.out"
-    OUTPUT=$(get_output ${OUTDIR} ${TEST})
+    OUTPUT=$(get_output ${TEST} ${OUTDIR} ${FAILED})
 
-    run CollapseSeq.py set -s $READS -n 20 --cf CONSCOUNT PRCONS --act sum set --inner \
-        --log $LOG $OUTPUT > $CONSOLE
+    run CollapseSeq.py -s $READS -n 20 --cf CONSCOUNT PRCONS --act sum set --inner $OUTPUT
 
+    echo "$output" > $CONSOLE
 	[ "$status" -eq 0 ]
 }
 
 @test "FilterSeq-maskqual" {
-    TEST="${BATS_TEST_DESCRIPTION}-${BATS_TEST_NUMBER}"
-	READS="${DATA_DIR}/sequences/MG2v3_HD13M_BC13_AGTCAA_L001_R1_001.fastq"
+    TEST="${BATS_TEST_NUMBER}-${BATS_TEST_DESCRIPTION}"
+	READS="${DATA_DIR}/sequences/HD13M_L001_R1_001.fastq"
 	LOG="${RUN_DIR}/logs/${TEST}.log"
 	CONSOLE="${RUN_DIR}/console/${TEST}.out"
-    OUTPUT=$(get_output ${OUTDIR} ${TEST})
+    OUTPUT=$(get_output ${TEST} ${OUTDIR} ${FAILED})
 
-    run FilterSeq.py maskqual -s $READS -q 20 \
-        --log $LOG --nproc $NPROC $OUTPUT > $CONSOLE
+    run FilterSeq.py maskqual -s $READS -q 20 --log $LOG --nproc $NPROC $OUTPUT
 
+    echo "$output" > $CONSOLE
 	[ "$status" -eq 0 ]
 }
 
 @test "FilterSeq-quality" {
-    TEST="${BATS_TEST_DESCRIPTION}-${BATS_TEST_NUMBER}"
-	READS="${DATA_DIR}/sequences/MG2v3_HD13M_BC13_AGTCAA_L001_R1_001.fastq"
+    TEST="${BATS_TEST_NUMBER}-${BATS_TEST_DESCRIPTION}"
+	READS="${DATA_DIR}/sequences/HD13M_L001_R1_001.fastq"
 	LOG="${RUN_DIR}/logs/${TEST}.log"
 	CONSOLE="${RUN_DIR}/console/${TEST}.out"
-    OUTPUT=$(get_output ${OUTDIR} ${TEST})
+    OUTPUT=$(get_output ${TEST} ${OUTDIR} ${FAILED})
 
     run FilterSeq.py quality -s $READS -q 20 \
-        --log $LOG --nproc $NPROC $OUTPUT > $CONSOLE
+        --log $LOG --nproc $NPROC $OUTPUT
 
+    echo "$output" > $CONSOLE
 	[ "$status" -eq 0 ]
 }
 
 @test "FilterSeq-trimqual" {
-    TEST="${BATS_TEST_DESCRIPTION}-${BATS_TEST_NUMBER}"
-	READS="${DATA_DIR}/sequences/MG2v3_HD13M_BC13_AGTCAA_L001_R1_001.fastq"
+    TEST="${BATS_TEST_NUMBER}-${BATS_TEST_DESCRIPTION}"
+	READS="${DATA_DIR}/sequences/HD13M_L001_R1_001.fastq"
 	LOG="${RUN_DIR}/logs/${TEST}.log"
 	CONSOLE="${RUN_DIR}/console/${TEST}.out"
-    OUTPUT=$(get_output ${OUTDIR} ${TEST})
+    OUTPUT=$(get_output ${TEST} ${OUTDIR} ${FAILED})
 
-    run FilterSeq.py trimqual -s $READS -q 20 \
-        --log $LOG --nproc $NPROC $OUTPUT > $CONSOLE
+    run FilterSeq.py trimqual -s $READS -q 20 --log $LOG --nproc $NPROC $OUTPUT
 
+    echo "$output" > $CONSOLE
 	[ "$status" -eq 0 ]
 }
 
 @test "MaskPrimers-align" {
-    TEST="${BATS_TEST_DESCRIPTION}-${BATS_TEST_NUMBER}"
-	READS="${DATA_DIR}/sequences/MG2v3_HD13M_BC13_AGTCAA_L001_R1_001.fastq"
+    TEST="${BATS_TEST_NUMBER}-${BATS_TEST_DESCRIPTION}"
+	READS="${DATA_DIR}/sequences/HD13M_L001_R1_001.fastq"
 	PRIMERS="${DATA_DIR}/primers/AbSeq_R1_Human_IG_Primers.fasta"
 	LOG="${RUN_DIR}/logs/${TEST}.log"
 	CONSOLE="${RUN_DIR}/console/${TEST}.out"
-    OUTPUT=$(get_output ${OUTDIR} ${TEST})
+    OUTPUT=$(get_output ${TEST} ${OUTDIR} ${FAILED})
 
     run MaskPrimers.py align -s $READS -p $PRIMERS --maxlen 50 --maxerror 0.20 --barcode --mode cut \
-        --log $LOG --nproc $NPROC $OUTPUT > $CONSOLE
+        --log $LOG --nproc $NPROC $OUTPUT
 
+    echo "$output" > $CONSOLE
 	[ "$status" -eq 0 ]
 }
 
 @test "MaskPrimers-extract" {
-    TEST="${BATS_TEST_DESCRIPTION}-${BATS_TEST_NUMBER}"
-	READS="${DATA_DIR}/sequences/MG2v3_HD13M_BC13_AGTCAA_L001_R1_001.fastq"
+    TEST="${BATS_TEST_NUMBER}-${BATS_TEST_DESCRIPTION}"
+	READS="${DATA_DIR}/sequences/HD13M_L001_R1_001.fastq"
 	PRIMERS="${DATA_DIR}/primers/AbSeq_R1_Human_IG_Primers.fasta"
 	LOG="${RUN_DIR}/logs/${TEST}.log"
 	CONSOLE="${RUN_DIR}/console/${TEST}.out"
-    OUTPUT=$(get_output ${OUTDIR} ${TEST})
+    OUTPUT=$(get_output ${TEST} ${OUTDIR} ${FAILED})
 
     run MaskPrimers.py extract -s $READS --start 17 --len 20 --barcode --mode cut \
-        --log $LOG --nproc $NPROC $OUTPUT > $CONSOLE
+        --log $LOG --nproc $NPROC $OUTPUT
 
+    echo "$output" > $CONSOLE
 	[ "$status" -eq 0 ]
 }
 
 @test "MaskPrimers-score" {
-    TEST="${BATS_TEST_DESCRIPTION}-${BATS_TEST_NUMBER}"
-	READS="${DATA_DIR}/sequences/MG2v3_HD13M_BC13_AGTCAA_L001_R1_001.fastq"
+    TEST="${BATS_TEST_NUMBER}-${BATS_TEST_DESCRIPTION}"
+	READS="${DATA_DIR}/sequences/HD13M_L001_R1_001.fastq"
 	PRIMERS="${DATA_DIR}/primers/AbSeq_R1_Human_IG_Primers.fasta"
 	LOG="${RUN_DIR}/logs/${TEST}.log"
 	CONSOLE="${RUN_DIR}/console/${TEST}.out"
-    OUTPUT=$(get_output ${OUTDIR} ${TEST})
+    OUTPUT=$(get_output ${TEST} ${OUTDIR} ${FAILED})
 
     run MaskPrimers.py score -s $READS -p $PRIMERS --start 17 --maxerror 0.20 --barcode --mode cut \
-        --log $LOG --nproc $NPROC $OUTPUT > $CONSOLE
+        --log $LOG --nproc $NPROC $OUTPUT
 
+    echo "$output" > $CONSOLE
 	[ "$status" -eq 0 ]
 }
 
 @test "PairSeq" {
-    TEST="${BATS_TEST_DESCRIPTION}-${BATS_TEST_NUMBER}"
+    TEST="${BATS_TEST_NUMBER}-${BATS_TEST_DESCRIPTION}"
 	READS_1="${DATA_DIR}/sequences/HD13M-R1_primers-pass.fastq"
 	READS_2="${DATA_DIR}/sequences/HD13M-R2_primers-pass.fastq"
 	LOG="${RUN_DIR}/logs/${TEST}.log"
 	CONSOLE="${RUN_DIR}/console/${TEST}.out"
-    OUTPUT=$(get_output ${OUTDIR} ${TEST})
+	OUTPUT=$(get_output ${TEST} true ${FAILED})
 
     run PairSeq.py -1 $READS_1 -2 $READS_2 --coord illumina --1f PRIMER BARCODE --2f PRIMER \
-        $OUTPUT > $CONSOLE
+        $OUTPUT
 
+    echo "$output" > $CONSOLE
+	[ "$status" -eq 0 ]
+}
+
+@test "ParseHeaders-collapse" {
+    TEST="${BATS_TEST_NUMBER}-${BATS_TEST_DESCRIPTION}"
+	READS="${DATA_DIR}/sequences/HD13M_assemble-pass.fastq"
+	CONSOLE="${RUN_DIR}/console/${TEST}.out"
+    OUTPUT=$(get_output ${TEST} ${OUTDIR} ${FAILED})
+
+    run ParseHeaders.py collapse -s $READS -f CONSCOUNT --act cat $OUTPUT
+
+    echo "$output" > $CONSOLE
+	[ "$status" -eq 0 ]
+}
+
+@test "ParseHeaders-collapse" {
+    TEST="${BATS_TEST_NUMBER}-${BATS_TEST_DESCRIPTION}"
+	READS="${DATA_DIR}/sequences/HD13M_assemble-pass.fastq"
+	CONSOLE="${RUN_DIR}/console/${TEST}.out"
+    OUTPUT=$(get_output ${TEST} ${OUTDIR} ${FAILED})
+
+    run ParseHeaders.py copy -s $READS -f ID PRCONS CONSCOUNT -k UMI C_CALL COUNT --act set set sum $OUTPUT
+
+    echo "$output" > $CONSOLE
+	[ "$status" -eq 0 ]
+}
+
+@test "ParseHeaders-merge" {
+    TEST="${BATS_TEST_NUMBER}-${BATS_TEST_DESCRIPTION}"
+	READS="${DATA_DIR}/sequences/HD13M-R1_primers-pass_pair-pass.fastq"
+	CONSOLE="${RUN_DIR}/console/${TEST}.out"
+    OUTPUT=$(get_output ${TEST} ${OUTDIR} ${FAILED})
+
+    run ParseHeaders.py merge -s $READS -f PRIMER BARCODE -k UMI --act cat --delete $OUTPUT
+
+    echo "$output" > $CONSOLE
+	[ "$status" -eq 0 ]
+}
+
+@test "ParseHeaders-rename" {
+    TEST="${BATS_TEST_NUMBER}-${BATS_TEST_DESCRIPTION}"
+	READS="${DATA_DIR}/sequences/HD13M_assemble-pass.fastq"
+	CONSOLE="${RUN_DIR}/console/${TEST}.out"
+    OUTPUT=$(get_output ${TEST} ${OUTDIR} ${FAILED})
+
+    run ParseHeaders.py rename -s $READS -f CONSCOUNT PRCONS -k COUNT C_CALL $OUTPUT
+
+    echo "$output" > $CONSOLE
+	[ "$status" -eq 0 ]
+}
+
+@test "ParseHeaders-table" {
+    TEST="${BATS_TEST_NUMBER}-${BATS_TEST_DESCRIPTION}"
+	READS="${DATA_DIR}/sequences/HD13M-R1_primers-pass_pair-pass.fastq"
+	CONSOLE="${RUN_DIR}/console/${TEST}.out"
+    OUTPUT=$(get_output ${TEST} ${OUTDIR} ${FAILED})
+
+    run ParseHeaders.py table -s $READS -f ID PRIMER BARCODE $OUTPUT
+
+    echo "$output" > $CONSOLE
 	[ "$status" -eq 0 ]
 }
 
 @test "ParseLog" {
-    TEST="${BATS_TEST_DESCRIPTION}-${BATS_TEST_NUMBER}"
+    TEST="${BATS_TEST_NUMBER}-${BATS_TEST_DESCRIPTION}"
 	LOGFILE="${DATA_DIR}/logs/primers-1.log"
 	CONSOLE="${RUN_DIR}/console/${TEST}.out"
-    OUTPUT=$(get_output ${OUTDIR} ${TEST})
+    OUTPUT=$(get_output ${TEST} ${OUTDIR} ${FAILED})
 
     run ParseLog.py -l $LOGFILE -f ID PRIMER PRSTART BARCODE ERROR \
-        $OUTPUT > $CONSOLE
+        $OUTPUT
 
+    echo "$output" > $CONSOLE
+	[ "$status" -eq 0 ]
+}
+
+@test "SplitSeq-count" {
+    TEST="${BATS_TEST_NUMBER}-${BATS_TEST_DESCRIPTION}"
+	READS="${DATA_DIR}/sequences/HD13M_assemble-pass.fastq"
+	CONSOLE="${RUN_DIR}/console/${TEST}.out"
+    OUTPUT=$(get_output ${TEST} true false)
+
+    run SplitSeq.py count -s $READS -n 300 $OUTPUT
+
+    echo "$output" > $CONSOLE
+	[ "$status" -eq 0 ]
+}
+
+@test "SplitSeq-group" {
+    TEST="${BATS_TEST_NUMBER}-${BATS_TEST_DESCRIPTION}"
+	READS="${DATA_DIR}/sequences/HD13M_assemble-pass.fastq"
+	CONSOLE="${RUN_DIR}/console/${TEST}.out"
+    OUTPUT=$(get_output ${TEST} true false)
+
+    run SplitSeq.py group -s $READS -f PRCONS $OUTPUT
+
+    echo "$output" > $CONSOLE
+	[ "$status" -eq 0 ]
+}
+
+@test "SplitSeq-sample" {
+    TEST="${BATS_TEST_NUMBER}-${BATS_TEST_DESCRIPTION}"
+	READS="${DATA_DIR}/sequences/HD13M_assemble-pass.fastq"
+	CONSOLE="${RUN_DIR}/console/${TEST}.out"
+    OUTPUT=$(get_output ${TEST} true false)
+
+    run SplitSeq.py sample -s $READS -n 10 100 -f PRCONS $OUTPUT
+
+    echo "$output" > $CONSOLE
+	[ "$status" -eq 0 ]
+}
+
+
+@test "SplitSeq-samplepair" {
+    TEST="${BATS_TEST_NUMBER}-${BATS_TEST_DESCRIPTION}"
+	READS_1="${DATA_DIR}/sequences/HD13M-R1_primers-pass.fastq"
+	READS_2="${DATA_DIR}/sequences/HD13M-R2_primers-pass.fastq"
+	LOG="${RUN_DIR}/logs/${TEST}.log"
+	CONSOLE="${RUN_DIR}/console/${TEST}.out"
+    OUTPUT=$(get_output ${TEST} true false)
+
+    run SplitSeq.py samplepair -1 $READS_1 -2 $READS_2 -n 10 100 $OUTPUT
+
+    echo "$output" > $CONSOLE
+	[ "$status" -eq 0 ]
+}
+
+@test "SplitSeq-select" {
+    TEST="${BATS_TEST_NUMBER}-${BATS_TEST_DESCRIPTION}"
+	READS="${DATA_DIR}/sequences/HD13M-R1_consensus-pass_pair-pass.fastq"
+	CONSOLE="${RUN_DIR}/console/${TEST}.out"
+    OUTPUT=$(get_output ${TEST} ${OUTDIR} false)
+
+    run SplitSeq.py select -s $READS -f PRCONS -u Human-IGHA Human-IGHG $OUTPUT
+
+    echo "$output" > $CONSOLE
 	[ "$status" -eq 0 ]
 }
 
@@ -298,15 +441,5 @@ get_output() {
 #ConvertHeaders migec -s migec_headers.fastq $OUTPUT
 #ConvertHeaders sra -s sra_headers.fasta $OUTPUT
 #EstimateError -s MS12_R1_primers-pass.fastq -n 100 $OUTPUT
-#ParseHeaders collapse -s Assembled.fastq -f CONSCOUNT --act cat $OUTPUT
-#ParseHeaders copy -s R2_100K_primers-mask_paired_align-pass_consensus-pass.fastq -f ID PRCOUNT PRIMER -k UID COUNT COUNT --act set cat set $OUTPUT
-#ParseHeaders merge -s R2_100K_primers-mask_paired_align-pass_consensus-pass.fastq -f PRIMER PRCOUNT -k COUNT --delete --act cat $OUTPUT
-#ParseHeaders rename -s R2_100K_primers-mask_paired_align-pass_consensus-pass.fastq -f PRCOUNT PRIMER -k COUNT NEWPRIMER $OUTPUT
-#ParseHeaders table -s R2_100K_primers-mask_paired_align-pass_consensus-pass.fastq -f ID PRCOUNT PRIMER $OUTPUT
-#SplitSeq count -s R1_100K_primers-mask_paired.fastq -n 20000 $OUTPUT
-#SplitSeq group -s R1_100K_primers-mask_paired.fastq -f PRIMER $OUTPUT
-#SplitSeq sample -s R1_100K_primers-mask_paired.fastq -n 3 10 -f BARCODE $OUTPUT
-#SplitSeq samplepair -1 R1_100K_primers-mask_paired.fastq -2 R2_100K_primers-mask_paired.fastq -n 10 2000 -f BARCODE $OUTPUT
-#SplitSeq select -s head.fasta -f PRIMER -u P3 P2 --not $OUTPUT
 #UnifyHeaders consensus -s join_test.fastq -f BARCODE -k SAMPLE --nproc 2 --log $LOG $OUTPUT
 #UnifyHeaders delete -s join_test.fastq -f BARCODE -k SAMPLE --nproc 2 --log $LOG $OUTPUT
