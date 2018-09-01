@@ -359,7 +359,7 @@ get_output() {
     TEST="${BATS_TEST_NUMBER}-${BATS_TEST_DESCRIPTION}"
 	LOGFILE="${DATA_DIR}/logs/primers-1.log"
 	CONSOLE="${RUN_DIR}/console/${TEST}.out"
-    OUTPUT=$(get_output ${TEST} ${OUTDIR} ${FAILED})
+    OUTPUT=$(get_output ${TEST} ${OUTDIR} false)
 
     run ParseLog.py -l $LOGFILE -f ID PRIMER PRSTART BARCODE ERROR \
         $OUTPUT
