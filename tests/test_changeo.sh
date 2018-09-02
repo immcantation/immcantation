@@ -8,7 +8,7 @@ RUN_DIR="run/changeo-${DATE}"
 
 # Run parameters
 NPROC=2
-OUTDIR=false
+OUTDIR=true
 FAILED=true
 GERMLINES="${HOME}/share/imgt/human/vdj"
 V_GERMLINES="${HOME}/share/igblast/fasta/imgt_human_ig_v.fasta"
@@ -29,7 +29,7 @@ get_output() {
     elif $2; then
         echo "--outdir ${RUN_DIR}/output --outname ${1}"
     else
-        echo "-o ${RUN_DIR}/output/${1}.fastq"
+        echo "-o ${RUN_DIR}/output/${1}.txt"
     fi
 }
 
@@ -76,12 +76,26 @@ get_output() {
 	[ "$status" -eq 0 ]
 }
 
-@test "AssignGenes-igblast" {
+@test "AssignGenes-igblast-airr" {
     TEST="${BATS_TEST_NUMBER}-${BATS_TEST_DESCRIPTION}"
-	READS="${DATA_DIR}/sequences/HD13M-final_total.fastq"
+	READS="${DATA_DIR}/db/HD13M-final_collapse-unique_atleast-2.fasta"
 	LOG="${RUN_DIR}/logs/${TEST}.log"
 	CONSOLE="${RUN_DIR}/console/${TEST}.out"
-    OUTPUT=$(get_output ${TEST} ${OUTDIR} ${FAILED})
+	OUTPUT=$(get_output ${TEST} ${OUTDIR} false)
+
+    run AssignGenes.py igblast -s $READS -b $IGBLAST_DATA --organism human --loci ig \
+        --format airr $OUTPUT
+
+    echo "$output" > $CONSOLE
+	[ "$status" -eq 0 ]
+}
+
+@test "AssignGenes-igblast-blast" {
+    TEST="${BATS_TEST_NUMBER}-${BATS_TEST_DESCRIPTION}"
+	READS="${DATA_DIR}/db/HD13M-final_collapse-unique_atleast-2.fasta"
+	LOG="${RUN_DIR}/logs/${TEST}.log"
+	CONSOLE="${RUN_DIR}/console/${TEST}.out"
+	OUTPUT=$(get_output ${TEST} ${OUTDIR} false)
 
     run AssignGenes.py igblast -s $READS -b $IGBLAST_DATA --organism human --loci ig \
         --format blast $OUTPUT
@@ -236,7 +250,7 @@ get_output() {
     OUTPUT=$(get_output ${TEST} ${OUTDIR} false)
 
     run ConvertDb.py genbank -d $DB --inf "IgBLAST:1.7.0" --organism "Homo sapiens" \
-        --sex Male --tissue "Peripheral blood" --cf PRCONS --nf DUPCOUNT \
+        --sex Male --tissue "Peripheral blood" --cf CPRIMER --nf DUPCOUNT --if MID \
         --asis-id --asn --sbt $SBT -y $YAML --format airr $OUTPUT
 
     echo "$output" > $CONSOLE
@@ -245,14 +259,14 @@ get_output() {
 
 @test "ConvertDb-genbank-changeo" {
     TEST="${BATS_TEST_NUMBER}-${BATS_TEST_DESCRIPTION}"
-	DB="${DATA_DIR}/db/HD13M_germ-pass.tab"
+	DB="${DATA_DIR}/db/S43_changeo.tab"
 	SBT="${DATA_DIR}/db/template.sbt"
 	YAML="${DATA_DIR}/db/genbank.yaml"
 	CONSOLE="${RUN_DIR}/console/${TEST}.out"
     OUTPUT=$(get_output ${TEST} ${OUTDIR} false)
 
     run ConvertDb.py genbank -d $DB --inf "IgBLAST:1.7.0" --organism "Homo sapiens" \
-        --sex Male --tissue "Peripheral blood" --cf PRCONS --nf DUPCOUNT \
+        --sex Male --tissue "Peripheral blood" --cf CPRIMER --nf DUPCOUNT --if MID \
         --asis-id --asn --sbt $SBT -y $YAML $OUTPUT
 
     echo "$output" > $CONSOLE
@@ -347,7 +361,7 @@ get_output() {
     TEST="${BATS_TEST_NUMBER}-${BATS_TEST_DESCRIPTION}"
 	DB="${DATA_DIR}/db/HD13M_germ-pass.tab"
 	CONSOLE="${RUN_DIR}/console/${TEST}.out"
-    OUTPUT=$(get_output ${TEST} ${OUTDIR} false)
+    OUTPUT=$(get_output ${TEST} true false)
 
     run ParseDb.py split -d $DB -f PRCONS $OUTPUT
 

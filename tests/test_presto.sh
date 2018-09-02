@@ -12,12 +12,9 @@ OUTDIR=true
 FAILED=true
 GERMLINES="${HOME}/share/imgt/human/vdj"
 V_GERMLINES="${HOME}/share/igblast/fasta/imgt_human_ig_v.fasta"
-#GERMLINES="/usr/local/share/imgt/human/vdj"
-#FORMAT=""
-#FORMAT="--format airr"
-#FASTA=true
 CLUSTER="cd-hit-est"
 ALIGNER="blastn"
+#FASTA=true
 
 # Create output parent
 mkdir -p ${RUN_DIR}/logs ${RUN_DIR}/console ${RUN_DIR}/output
@@ -71,7 +68,7 @@ get_output() {
 	CONSOLE="${RUN_DIR}/console/${TEST}.out"
     OUTPUT=$(get_output ${TEST} ${OUTDIR} ${FAILED})
 
-    run AssemblePairs.py align -1 $READS_1 -2 $READS_2 --coord presto --rc tail --scanrev \
+    run AssemblePairs.py align -1 $READS_1 -2 $READS_2 --coord presto --scanrev \
         --log $LOG --nproc $NPROC $OUTPUT
 
     echo "$output" > $CONSOLE
@@ -86,7 +83,7 @@ get_output() {
 	CONSOLE="${RUN_DIR}/console/${TEST}.out"
     OUTPUT=$(get_output ${TEST} ${OUTDIR} ${FAILED})
 
-    run AssemblePairs.py join -1 $READS_1 -2 $READS_2 --coord presto --rc tail --gap 10 \
+    run AssemblePairs.py join -1 $READS_1 -2 $READS_2 --coord presto --gap 10 \
         --log $LOG --nproc $NPROC $OUTPUT
 
     echo "$output" > $CONSOLE
@@ -101,7 +98,7 @@ get_output() {
 	CONSOLE="${RUN_DIR}/console/${TEST}.out"
     OUTPUT=$(get_output ${TEST} ${OUTDIR} ${FAILED})
 
-    run AssemblePairs.py reference -1 $READS_1 -2 $READS_2 --coord presto --rc tail \
+    run AssemblePairs.py reference -1 $READS_1 -2 $READS_2 --coord presto \
         -r $V_GERMLINES --minident 0.5 --evalue 1e-5 --maxhits 100 --aligner $ALIGNER \
         --log $LOG --nproc $NPROC $OUTPUT
 
@@ -117,7 +114,7 @@ get_output() {
 	CONSOLE="${RUN_DIR}/console/${TEST}.out"
     OUTPUT=$(get_output ${TEST} ${OUTDIR} ${FAILED})
 
-    run AssemblePairs.py sequential -1 $READS_1 -2 $READS_2 --coord presto --rc tail --scanrev \
+    run AssemblePairs.py sequential -1 $READS_1 -2 $READS_2 --coord presto --scanrev \
         -r $V_GERMLINES --minident 0.5 --evalue 1e-5 --maxhits 100 --aligner $ALIGNER \
         --log $LOG --nproc $NPROC $OUTPUT
 
@@ -273,7 +270,7 @@ get_output() {
 	CONSOLE="${RUN_DIR}/console/${TEST}.out"
     OUTPUT=$(get_output ${TEST} ${OUTDIR} ${FAILED})
 
-    run MaskPrimers.py score -s $READS -p $PRIMERS --start 17 --maxerror 0.20 --barcode --mode cut \
+    run MaskPrimers.py score -s $READS -p $PRIMERS --start 0 --maxerror 0.20 --barcode --mode cut \
         --log $LOG --nproc $NPROC $OUTPUT
 
     echo "$output" > $CONSOLE
