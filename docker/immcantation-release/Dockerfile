@@ -16,14 +16,12 @@ ARG TIGGER_GENOTYPE="TiggerV2.12_Genotype.R"
 ARG PREPROCESS_PHIX="Preprocess_PhiX.sh"
 
 # Define R build options
-ARG R_REPO="https://cran.cnr.berkeley.edu"
 ARG R_RCPP="0.12.16"
 ARG R_DEPS="c('roxygen2', 'testthat', 'rmarkdown', 'knitr', 'optparse')"
 ARG R_BUILD="library(devtools); install_deps(upgrade=FALSE, clean=TRUE); document(); install(build_vignettes=TRUE, clean=TRUE)"
 
 # Setup R environment
-RUN echo "options(repos='${R_REPO}', download.file.method='libcurl')" >> /usr/lib64/R/library/base/R/Rprofile \
-    && Rscript -e "install.packages('devtools', clean=TRUE)" \
+RUN Rscript -e "install.packages('devtools', clean=TRUE)" \
     && Rscript -e "devtools::install_version('Rcpp', '${R_RCPP}', quiet=FALSE, clean=TRUE)" \
     && Rscript -e "install.packages(${R_DEPS}, clean=TRUE)"
 
