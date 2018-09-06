@@ -244,7 +244,9 @@ Arguments:
                 Defaults to the available processing units.
    --model      Model when "-m gmm" is specified.
                 Defaults to "gamma-gamma".
-   --subsample  Number of distances to downsample the data to before distance calculation.
+   --subsample  Number of rows to downsample the data to before distance calculation.
+   --tsubsample Number of distances to downsample the data to before threshold calculation.
+   --repeats    Number of times to repeat the threshold calculation (with plotting).
    -h           Display help.
 
 **Clonal threshold inferrence example**
