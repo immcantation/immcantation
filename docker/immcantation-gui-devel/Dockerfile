@@ -17,7 +17,7 @@ ARG R_BUILD="library(devtools); install_deps(upgrade=FALSE, clean=TRUE); documen
 RUN Rscript -e "install.packages(${R_DEPS}, clean=TRUE)"
 
 # Install shiny server
-RUN mkdir -p /var/lib/shiny-server/bookmarks
+RUN mkdir -p /var/lib/shiny-server/bookmarks/shiny
 RUN wget -O ${DOWNLOADS_DIR}/shiny-server.rpm ${SHINY_URL} \
     && dnf clean all \
     && dnf install -y --nogpgcheck ${DOWNLOADS_DIR}/shiny-server.rpm \
@@ -35,6 +35,6 @@ COPY shiny-server.conf /etc/shiny-server/shiny-server.conf
 
 EXPOSE 3838
 
-USER magus
+USER shiny
 
 CMD ["/usr/local/bin/shiny-server.sh"]
