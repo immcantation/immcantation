@@ -119,14 +119,7 @@ plot_file <- file.path(OUTDIR, paste0(NAME, "_threshold-plot.pdf"))
 pdf(plot_file, width=6, height=4, useDingbats=FALSE)
 
 for(i in 1:REPEATS){
-    
-    if(length(db$DIST_NEAREST) < TSUBSAMPLE){
-        sampling <- db$DIST_NEAREST
-    } else {
-        sampling <- sample(db$DIST_NEAREST, TSUBSAMPLE)
-    }
-    
-    threshold <- findThreshold(sampling, method=METHOD, model=MODEL, subsample=SUBSAMPLE)
+    threshold <- findThreshold(sampling, method=METHOD, model=MODEL, subsample=TSUBSAMPLE)
     
     slots <- slotNames(threshold)
     slots <- slots[!(slots %in% c("x", "xdens", "ydens"))]
