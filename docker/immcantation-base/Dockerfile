@@ -1,7 +1,7 @@
 FROM fedora:25
 LABEL maintainer="Jason Anthony Vander Heiden [jason.vanderheiden@yale.edu], \
                   Susanna Marquez [susanna.marquez@yale.edu]" \
-      description="Dependencies, applications and scripts for the Immcantation framework."
+      description="Standard environment and dependencies for the Immcantation framework."
 
 # Bind points
 VOLUME /data
@@ -48,3 +48,5 @@ RUN dnf -y update && dnf install -y \
 
 # Setup environment
 ENV LD_LIBRARY_PATH="/usr/lib64/R/lib:/usr/lib64/atlas"
+ARG R_REPO="https://cran.cnr.berkeley.edu"
+RUN echo "options(repos='${R_REPO}')" >> /usr/lib64/R/library/base/R/Rprofile
