@@ -29,12 +29,12 @@ RUN PACKAGE="immcantation-gui" \
     && hg clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
     && Rscript -e "setwd('/tmp/${PACKAGE}'); ${R_BUILD}" 
         
-COPY shiny-server-app.R  /srv/shiny-server/immcantation/app.R
-COPY shiny-server.sh  /usr/local/bin/shiny-server.sh
-COPY shiny-server.conf /etc/shiny-server/shiny-server.conf
-
 EXPOSE 3838
+
+COPY shiny-server-app.R  /srv/shiny-server/immcantation/app.R
+COPY shiny-server.sh  /usr/bin/shiny-server.sh
+COPY shiny-server.conf /etc/shiny-server/shiny-server.conf
 
 USER shiny
 
-CMD ["/usr/local/bin/shiny-server.sh"]
+CMD ["/usr/bin/shiny-server.sh"]
