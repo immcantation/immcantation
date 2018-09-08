@@ -1,14 +1,13 @@
 Docker Container Release Notes
 ========================================================================
 
-Version 2.0.0:  September 6, 2018
+Version 2.0.0:  September 8, 2018
 ------------------------------------------------------------------------
 
 Version Updates:
 
 + pRESTO 0.5.9
 + Change-O 0.4.2
-+ prestor 0.0.5
 + airr 1.2.0
 
 Image Changes:
@@ -17,9 +16,9 @@ Image Changes:
 
 Pipeline Changes:
 
-+ Added additional subsampling argument to ``shazam-threshold``
-  to allow subsampling within groups for distance-to-nearest calculation
-  with a default value of 500 records per group.
++ Changed behavior of subsampling argument to ``shazam-threshold``
+  to subsample distances after nearest-neighbor distance calculation
+  rather than rows before distance calculation.
 
 
 Version 1.10.2:  July 3, 2018

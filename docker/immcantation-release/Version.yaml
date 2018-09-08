@@ -1,14 +1,14 @@
 immcantation:
     version:  2.0.0
-    date:     2018.09.06
+    date:     2018.09.08
 release:
     presto:   0.5.9
     changeo:  0.4.2
     alakazam: 0.2.10
-    shazam:   0.1.9
+    shazam:   0.1.8
     tigger:   0.2.11
     rdi:      1.0.0
-    prestor:  0.0.5
+    prestor:  0.0.4
     airr:     1.2.0
 software:
     muscle:   3.8.31

@@ -2,7 +2,6 @@
 """
 Versioning helper script
 """
-
 # Imports
 import hglib
 import re
@@ -10,7 +9,6 @@ import sys
 import yaml
 from argparse import ArgumentParser
 from subprocess import check_output, STDOUT
-
 
 # Defaults
 default_version_file='/Version.yaml'

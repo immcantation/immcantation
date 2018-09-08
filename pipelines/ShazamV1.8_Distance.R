@@ -2,7 +2,7 @@
 # Super script to run SHazaM 0.1.8 distance to nearest tuning
 #
 # Author:  Jason Anthony Vander Heiden, Ruoyi Jiang
-# Date:    2018.07.03
+# Date:    2018.08.08
 #
 # Arguments:
 #   -d           Change-O formatted TSV (TAB) file.
@@ -16,8 +16,7 @@
 #                Defaults to the available processing units.
 #   --model      Model when "-m gmm" is specified.
 #                Defaults to "gamma-gamma".
-#   --subsample  Number of rows to downsample the data to before distance calculation.
-#   --tsubsample Number of distances to downsample the data to before threshold calculation.
+#   --subsample  Number of distances to downsample to before threshold calculation.
 #   --repeats    Number of times to repeat the threshold calculation (with plotting).
 #   -h           Display help.
 
@@ -37,8 +36,7 @@ OUTDIR <- "."
 MODEL <- "gamma-gamma"
 NPROC <- parallel::detectCores()
 SUBSAMPLE <- 15000
-TSUBSAMPLE <- 500
-REPEATS <- 10
+REPEATS <- 1
 
 # Define commmandline arguments
 opt_list <- list(make_option(c("-d", "--db"), dest="DB",
@@ -59,14 +57,11 @@ opt_list <- list(make_option(c("-d", "--db"), dest="DB",
                                         "\n\t\tOne of gamma-gamma, gamma-norm, norm-norm or norm-gamma.",
                                         "\n\t\tDefaults to gamma-gamma.")),
                  make_option(c("--subsample"), dest="SUBSAMPLE", default=SUBSAMPLE,
-                             help=paste("Number of records to downsample the data to before distance calculation.",
-                                        "\n\t\tDefaults to 15000.")),
-                 make_option(c("--tsubsample"), dest="TSUBSAMPLE", default=TSUBSAMPLE,
                              help=paste("Number of distances to downsample the data to before threshold calculation.",
-                                        "\n\t\tDefaults to 500.")),
+                                        "\n\t\tDefaults to 15000.")),
                  make_option(c("--repeats"), dest="REPEATS", default=REPEATS,
                              help=paste("Number of times to recalculate.",
-                                        "\n\t\tDefaults to 5.")))
+                                        "\n\t\tDefaults to 1.")))
                 
 # Parse arguments
 opt <- parse_args(OptionParser(option_list=opt_list))
@@ -95,50 +90,49 @@ MODEL <- opt$MODEL
 NPROC <- opt$NPROC
 NAME <- opt$NAME
 SUBSAMPLE <- opt$SUBSAMPLE
-TSUBSAMPLE <- opt$TSUBSAMPLE
 REPEATS <- opt$REPEATS
-
 
 # Load data
 db <- as.data.frame(readChangeoDb(DB))
-if (SUBSAMPLE < nrow(db)) {
-    db <- db[sample(nrow(db), SUBSAMPLE), ]
-}
 
-
-# Calculate distance to nearest and threshold
+# Calculate distance-to-nearest
 db <- distToNearest(db, model="ham", first=FALSE, normalize="len", nproc=NPROC)
 
-
-# Generate thresh_df containing threshold parameters from repeats
-threshold_list <- list()
-
-
-# Compute thresholds and plot
+# Open plot device
 plot_file <- file.path(OUTDIR, paste0(NAME, "_threshold-plot.pdf"))
 pdf(plot_file, width=6, height=4, useDingbats=FALSE)
 
+# Repeat threshold calculations and plot
+threshold_list <- list()
 for(i in 1:REPEATS){
-    threshold <- findThreshold(sampling, method=METHOD, model=MODEL, subsample=TSUBSAMPLE)
-    
+    # Subsample distances
+    if(length(db$DIST_NEAREST) < SUBSAMPLE){
+        sampling <- db$DIST_NEAREST
+    } else {
+        sampling <- sample(db$DIST_NEAREST, SUBSAMPLE)
+    }
+
+    # Calculate threshold
+    threshold <- findThreshold(sampling, method=METHOD, model=MODEL)
+
+    # Build results data.frame
     slots <- slotNames(threshold)
     slots <- slots[!(slots %in% c("x", "xdens", "ydens"))]
     .extract <- function(x) {
         return(data_frame(PARAMETER=x, VALUE=as.character(slot(threshold, x))))
     }
-    
     threshold_list[[as.character(i)]] <- bind_rows(lapply(slots, .extract))
-    
+    # Plot histogram
     plot(threshold, binwidth=0.02, silent=FALSE)
 }
+# Close plot
+dev.off()
 
+# Build data.frame of replicates
 thresh_df <- bind_rows(threshold_list, .id = "REPEAT") %>%
     spread(PARAMETER, VALUE) %>%
     select(-REPEAT)
 
-dev.off()
-
-
 # Print and save threshold table
-cat("THRESHOLD_AVG > ", mean(as.numeric(thresh_df$threshold), na.rm = TRUE), "\n", sep="")
+cat("THRESHOLD_AVG> ", mean(as.numeric(thresh_df$threshold), na.rm = TRUE), "\n", sep="")
 write_tsv(thresh_df, file.path(OUTDIR, paste0(NAME, "_threshold-values.tab")))

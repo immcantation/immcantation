@@ -1,7 +1,7 @@
 #!/usr/bin/env bats
 
 # Run parameters
-VERSION="devel"
+VERSION="release"
 IMAGE="kleinstein/immcantation:${VERSION}"
 DATE=$(date +"%Y.%m.%d")
 DATA_DIR=$(readlink -f data)
@@ -69,7 +69,7 @@ RUN_DIR=$(readlink -f ${RUN_DIR})
 
 	run docker run -v $DATA_DIR:/data:z -v $RUN_DIR:/scratch:z $IMAGE \
 		shazam-threshold -d $DB -n $SAMPLE -o $OUT_DIR -p $NPROC --subsample 5000 \
-            --tsubsample 400 --repeats 4
+            --tsubsample 5000 --repeats 2
 
 	[ "$status" -eq 0 ]
 }
