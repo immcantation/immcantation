@@ -210,7 +210,7 @@ wait
 # Zip or delete intermediate and log files
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "Compressing files"
 LOG_FILES=$(ls ${LOGDIR}/*.log | grep -v "pipeline")
-TEMP_FILES=$(ls *.${EXT} | grep -v "${LAST_FILE}\|$(basename ${DB})")
+TEMP_FILES=$(ls _parse-select.${EXT} _clone-pass.${EXT} _germ-pass.${EXT} | grep "${OUTNAME}_" | grep -v "${LAST_FILE}\|$(basename ${DB})")
 if $ZIP_FILES; then
     tar -zcf log_files.tar.gz $LOG_FILES
     tar -zcf temp_files.tar.gz $TEMP_FILES
