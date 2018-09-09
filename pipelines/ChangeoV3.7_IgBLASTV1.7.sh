@@ -251,7 +251,7 @@ fi
 
 # Zip or delete intermediate and log files
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "Compressing files"
-TEMP_FILES=$(ls _db-pass.${EXT} _germ-pass.${EXT} _parse-select.${EXT} | grep "${OUTNAME}_" | grep -v "${LAST_FILE}\|$(basename ${READS})")
+TEMP_FILES=$(ls "${OUTNAME}_db-pass.${EXT}" "${OUTNAME}_germ-pass.${EXT}" "${OUTNAME}_parse-select.${EXT}" | grep -v "${LAST_FILE}\|$(basename ${READS})")
 if $ZIP_FILES; then
     tar -zcf temp_files.tar.gz $TEMP_FILES
 fi
