@@ -45,10 +45,6 @@
 Welcome to the Immcantation Portal!
 ==========================================================================================
 
-.. image:: _static/logo.svg
-    :align: right
-    :width: 250
-
 Advances in high-throughput sequencing technologies now allow for large-scale
 characterization of B cell receptor (BCR) and T cell receptor (TCR) repertoires. The high
 germline and somatic diversity of the adaptive immune receptor repertoire (AIRR) presents
