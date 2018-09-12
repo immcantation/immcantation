@@ -102,29 +102,45 @@ provided for pre-processing, population structure determination, and repertoire 
    :widths: 50 50
 
    * - |presto|
-     - + Quality control
+     - **pRESTO**
+
+       + Quality control
        + Read assembly
        + UMI processing
    * - |changeo|
-     - + V(D)J reference alignment standardization
+     - **Change-O**
+
+       + V(D)J reference alignment standardization
        + Clonal clustering
        + Conversion and annotation
    * - |alakazam|
-     - + Clonal lineage reconstruction
+     - **Alakazam**
+
+       + Clonal lineage reconstruction
        + Repertoire diversity
        + V(D)J gene usage analysis
        + Physicochemical property analysis
    * - |shazam|
-     - + Mutation profiling
+     - **SHazaM**
+
+       + Mutation profiling
        + Selection analysis
        + SHM modeling
        + Clonal clustering threshold tuning
    * - |tigger|
-     - + Novel polymorphism detection
+     - **TIgGER**
+
+       + Novel polymorphism detection
        + Genotyping
    * - |rdi|
-     - + Repertoire Dissimilarity Index
+     - **RDI**
+
+       + Repertoire Dissimilarity Index
    * - |scope|
-     - + Clonal clustering
+     - **SCOPe**
+
+       + Clonal clustering
    * - |prestoR|
-     - + pRESTO report generation
+     - **prestoR**
+
+       + pRESTO report generation
