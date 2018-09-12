@@ -56,9 +56,75 @@ high-throughput AIRR-seq datasets. Beginning from raw reads, Python and R packag
 provided for pre-processing, population structure determination, and repertoire analysis.
 
 
-**Click on the relevant section of the image below for more details.**
+**Click on the images below for more details.**
 
-.. raw:: html
+.. |presto| image:: _static/presto.png
+    :align: middle
+    :width: 200
+    :target: http://presto.readthedocs.io
 
-    <object data="_static/overview.svg" type="image/svg+xml"></object>
-    <br><br>
+.. |changeo| image:: _static/changeo.png
+    :align: middle
+    :width: 200
+    :target: http://changeo.readthedocs.io
+
+.. |alakazam| image:: _static/alakazam.png
+    :align: middle
+    :width: 200
+    :target: http://alakazam.readthedocs.io
+
+.. |shazam| image:: _static/shazam.png
+    :align: middle
+    :width: 200
+    :target: http://shazam.readthedocs.io
+
+.. |tigger| image:: _static/tigger.png
+    :align: middle
+    :width: 200
+    :target: http://tigger.readthedocs.io
+
+.. |rdi| image:: _static/rdi.png
+    :align: middle
+    :width: 200
+    :target: http://rdi.readthedocs.io
+
+.. |scope| image:: _static/scope.png
+    :align: middle
+    :width: 200
+    :target: packages/scope
+
+.. |prestoR| image:: _static/prestoR.png
+    :align: middle
+    :width: 200
+    :target: packages/prestor
+
+.. list-table::
+   :widths: 50 50
+
+   * - |presto|
+     - + Quality control
+       + Read assembly
+       + UMI processing
+   * - |changeo|
+     - + V(D)J reference alignment standardization
+       + Clonal clustering
+       + Conversion and annotation
+   * - |alakazam|
+     - + Clonal lineage reconstruction
+       + Repertoire diversity
+       + V(D)J gene usage analysis
+       + Physicochemical property analysis
+   * - |shazam|
+     - + Mutation profiling
+       + Selection analysis
+       + SHM modeling
+       + Clonal clustering threshold tuning
+   * - |tigger|
+     - + Novel polymorphism detection
+       + Genotyping
+   * - |rdi|
+     - + Repertoire Dissimilarity Index
+   * - |scope|
+     - + Clonal clustering
+   * - |prestoR|
+     - + pRESTO report generation
