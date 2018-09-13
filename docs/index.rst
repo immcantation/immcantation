@@ -56,91 +56,112 @@ high-throughput AIRR-seq datasets. Beginning from raw reads, Python and R packag
 provided for pre-processing, population structure determination, and repertoire analysis.
 
 
+Component Packages
+-----------------------------------------------------------------------------------------
+
 **Click on the images below for more details.**
-
-.. |presto| image:: _static/presto.png
-    :align: middle
-    :width: 200
-    :target: http://presto.readthedocs.io
-
-.. |changeo| image:: _static/changeo.png
-    :align: middle
-    :width: 200
-    :target: http://changeo.readthedocs.io
-
-.. |alakazam| image:: _static/alakazam.png
-    :align: middle
-    :width: 200
-    :target: http://alakazam.readthedocs.io
-
-.. |shazam| image:: _static/shazam.png
-    :align: middle
-    :width: 200
-    :target: http://shazam.readthedocs.io
-
-.. |tigger| image:: _static/tigger.png
-    :align: middle
-    :width: 200
-    :target: http://tigger.readthedocs.io
-
-.. |rdi| image:: _static/rdi.png
-    :align: middle
-    :width: 200
-    :target: http://rdi.readthedocs.io
-
-.. |scope| image:: _static/scope.png
-    :align: middle
-    :width: 200
-    :target: packages/scope
-
-.. |prestoR| image:: _static/prestoR.png
-    :align: middle
-    :width: 200
-    :target: packages/prestor
 
 .. list-table::
    :widths: 50 50
 
-   * - |presto|
+   * - |presto-img|
      - **pRESTO**
 
        + Quality control
        + Read assembly
        + UMI processing
-   * - |changeo|
+
+   * - |changeo-img|
      - **Change-O**
 
        + V(D)J reference alignment standardization
        + Clonal clustering
        + Conversion and annotation
-   * - |alakazam|
+
+   * - |alakazam-img|
      - **Alakazam**
 
        + Clonal lineage reconstruction
        + Repertoire diversity
        + V(D)J gene usage analysis
        + Physicochemical property analysis
-   * - |shazam|
+
+   * - |shazam-img|
      - **SHazaM**
 
        + Mutation profiling
        + Selection analysis
        + SHM modeling
        + Clonal clustering threshold tuning
-   * - |tigger|
+
+   * - |tigger-img|
      - **TIgGER**
 
        + Novel polymorphism detection
        + Genotyping
-   * - |rdi|
+
+   * - |rdi-img|
      - **RDI**
 
        + Repertoire Dissimilarity Index
-   * - |scope|
+   * - |scope-img|
      - **SCOPe**
 
        + Clonal clustering
-   * - |prestoR|
+   * - |prestoR-img|
      - **prestoR**
 
        + pRESTO report generation
+
+.. Image substitutions
+
+.. |presto-img| image:: _static/presto.png
+    :align: middle
+    :width: 200
+    :target: pRESTO_
+
+.. |changeo-img| image:: _static/changeo.png
+    :align: middle
+    :width: 200
+    :target: Change-O_
+
+.. |alakazam-img| image:: _static/alakazam.png
+    :align: middle
+    :width: 200
+    :target: Alakazam_
+
+.. |shazam-img| image:: _static/shazam.png
+    :align: middle
+    :width: 200
+    :target: SHazaM_
+
+.. |tigger-img| image:: _static/tigger.png
+    :align: middle
+    :width: 200
+    :target: TIgGER_
+
+.. |rdi-img| image:: _static/rdi.png
+    :align: middle
+    :width: 200
+    :target: RDI_
+
+.. |scope-img| image:: _static/scope.png
+    :align: middle
+    :width: 200
+    :target: SCOPe_
+
+.. |prestoR-img| image:: _static/prestoR.png
+    :align: middle
+    :width: 200
+    :target: prestoR_
+
+.. Doc links
+
+.. _pRESTO: http://presto.readthedocs.io
+.. _Change-O: http://changeo.readthedocs.io
+.. _Alakazam: http://alakazam.readthedocs.io
+.. _SHazaM: http://shazam.readthedocs.io
+.. _TIgGER: http://tigger.readthedocs.io
+.. _RDI: http://rdi.readthedocs.io
+.. _SCOPe: packages/scope.html
+.. _prestoR: packages/prestor.html
