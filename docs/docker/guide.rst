@@ -245,6 +245,7 @@ Arguments:
    --model      Model when "-m gmm" is specified.
                 Defaults to "gamma-gamma".
    --subsample  Number of distances to downsample the data to before threshold calculation.
+                By default, subsampling is not performed.
    --repeats    Number of times to repeat the threshold calculation (with plotting).
    -h           Display help.
 

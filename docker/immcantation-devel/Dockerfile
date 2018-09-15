@@ -8,12 +8,12 @@ COPY Version.yaml /Version.yaml
 RUN builds write -n date -v "$(date +'%Y-%m-%d %T %Z')"
 
 # Define pipeline scripts
-ARG PRESTO_ABSEQ="PrestoV5.7_AbSeq.sh"
-ARG CHANGEO_IGBLAST="ChangeoV3.7_IgBLASTV1.7.sh"
-ARG CHANGEO_CLONE="ChangeoV3.7_Clone.sh"
-ARG SHAZAM_THRESHOLD="ShazamV1.8_Distance.R"
-ARG TIGGER_GENOTYPE="TiggerV2.12_Genotype.R"
-ARG PREPROCESS_PHIX="Preprocess_PhiX.sh"
+ARG PRESTO_ABSEQ="pipelines/presto-abseq.sh"
+ARG CHANGEO_IGBLAST="pipelines/changeo-igblast.sh"
+ARG CHANGEO_CLONE="pipelines/changeo-clone.sh"
+ARG SHAZAM_THRESHOLD="pipelines/shazam-threshold.R"
+ARG TIGGER_GENOTYPE="pipelines/tigger-genotype.R"
+ARG PREPROCESS_PHIX="pipelines/preprocess-phix.sh"
 
 # Define R build options
 ARG R_RCPP="0.12.16"
@@ -29,20 +29,14 @@ RUN Rscript -e "install.packages('devtools', clean=TRUE)" \
 RUN PACKAGE="immcantation" \
     && rm -rf /tmp/${PACKAGE} \
     && hg clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
-	&& mv /tmp/${PACKAGE}/scripts/fastq2fasta.py /usr/local/bin/fastq2fasta.py \
-	&& mv /tmp/${PACKAGE}/scripts/fetch_igblastdb.sh /usr/local/bin/fetch_igblastdb.sh \
-	&& mv /tmp/${PACKAGE}/scripts/fetch_imgtdb.sh /usr/local/bin/fetch_imgtdb.sh \
-	&& mv /tmp/${PACKAGE}/scripts/clean_imgtdb.py /usr/local/bin/clean_imgtdb.py \
-	&& mv /tmp/${PACKAGE}/scripts/imgt2igblast.sh /usr/local/bin/imgt2igblast.sh \
-	&& mv /tmp/${PACKAGE}/scripts/run_igblast.sh /usr/local/bin/run_igblast.sh \
-	&& mv /tmp/${PACKAGE}/scripts/fetch_phix.sh /usr/local/bin/fetch_phix.sh \
-	&& mv /tmp/${PACKAGE}/scripts/merge_fastq.py /usr/local/bin/merge_fastq.py \
-	&& mv /tmp/${PACKAGE}/pipelines/${PRESTO_ABSEQ} /usr/local/bin/presto-abseq \
-	&& mv /tmp/${PACKAGE}/pipelines/${CHANGEO_IGBLAST} /usr/local/bin/changeo-igblast \
-	&& mv /tmp/${PACKAGE}/pipelines/${CHANGEO_CLONE} /usr/local/bin/changeo-clone \
-	&& mv /tmp/${PACKAGE}/pipelines/${SHAZAM_THRESHOLD} /usr/local/bin/shazam-threshold \
-	&& mv /tmp/${PACKAGE}/pipelines/${TIGGER_GENOTYPE} /usr/local/bin/tigger-genotype \
-	&& mv /tmp/${PACKAGE}/pipelines/${PREPROCESS_PHIX} /usr/local/bin/preprocess-phix \
+    && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} \
+	&& mv /tmp/${PACKAGE}/scripts/* /usr/local/bin/ \
+	&& mv /tmp/${PACKAGE}/${PRESTO_ABSEQ} /usr/local/bin/presto-abseq \
+	&& mv /tmp/${PACKAGE}/${CHANGEO_IGBLAST} /usr/local/bin/changeo-igblast \
+	&& mv /tmp/${PACKAGE}/${CHANGEO_CLONE} /usr/local/bin/changeo-clone \
+	&& mv /tmp/${PACKAGE}/${SHAZAM_THRESHOLD} /usr/local/bin/shazam-threshold \
+	&& mv /tmp/${PACKAGE}/${TIGGER_GENOTYPE} /usr/local/bin/tigger-genotype \
+	&& mv /tmp/${PACKAGE}/${PREPROCESS_PHIX} /usr/local/bin/preprocess-phix \
 	&& mv /tmp/${PACKAGE}/protocols /usr/local/share/protocols \
 	&& builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
 	&& rm -r /tmp/${PACKAGE}
@@ -120,6 +114,7 @@ RUN wget -q --show-progress \
 RUN PACKAGE="presto" \
     && rm -rf /tmp/${PACKAGE} \
     && hg clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
+    && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} \
 	&& pip3 install --no-cache-dir /tmp/${PACKAGE} \
 	&& builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
 	&& rm -r /tmp/${PACKAGE}
@@ -128,6 +123,7 @@ RUN PACKAGE="presto" \
 RUN PACKAGE="changeo" \
     && rm -rf /tmp/${PACKAGE} \
     && hg clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
+    && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} \
 	&& pip3 install --no-cache-dir /tmp/${PACKAGE} \
 	&& builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
 	&& rm -r /tmp/${PACKAGE}
@@ -136,6 +132,7 @@ RUN PACKAGE="changeo" \
 RUN PACKAGE="alakazam" \
     && rm -rf /tmp/${PACKAGE} \
     && hg clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
+    && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} \
     && Rscript -e "setwd('/tmp/${PACKAGE}'); ${R_BUILD}" \
     && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE})
 
@@ -143,6 +140,7 @@ RUN PACKAGE="alakazam" \
 RUN PACKAGE="shazam" \
     && rm -rf /tmp/${PACKAGE} \
     && hg clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
+    && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} \
     && Rscript -e "setwd('/tmp/${PACKAGE}'); ${R_BUILD}" \
     && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE})
 
@@ -150,6 +148,7 @@ RUN PACKAGE="shazam" \
 RUN PACKAGE="tigger" \
     && rm -rf /tmp/${PACKAGE} \
     && hg clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
+    && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} \
     && Rscript -e "setwd('/tmp/${PACKAGE}'); ${R_BUILD}" \
     && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
     && rm -r /tmp/${PACKAGE}
@@ -158,6 +157,7 @@ RUN PACKAGE="tigger" \
 RUN PACKAGE="rdi" \
     && rm -rf /tmp/${PACKAGE} \
     && hg clone https://bitbucket.org/cbolen1/rdicore /tmp/${PACKAGE} \
+    && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} \
     && Rscript -e "setwd('/tmp/${PACKAGE}'); ${R_BUILD}" \
     && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
     && rm -r /tmp/${PACKAGE}
@@ -166,6 +166,7 @@ RUN PACKAGE="rdi" \
 RUN PACKAGE="prestor" \
     && rm -rf /tmp/${PACKAGE} \
     && hg clone https://bitbucket.org/javh/prototype-prestor /tmp/${PACKAGE} \
+    && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} \
     && Rscript -e "setwd('/tmp/${PACKAGE}'); ${R_BUILD}" \
     && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
     && rm -r /tmp/${PACKAGE}
@@ -174,6 +175,7 @@ RUN PACKAGE="prestor" \
 RUN PACKAGE="scope" \
     && rm -rf /tmp/${PACKAGE} \
     && hg clone https://bitbucket.org/kleinstein/scope /tmp/${PACKAGE} \
+    && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} \
     && Rscript -e "setwd('/tmp/${PACKAGE}'); ${R_BUILD}" \
     && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
     && rm -r /tmp/${PACKAGE}

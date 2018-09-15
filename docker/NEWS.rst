@@ -12,6 +12,9 @@ Version Updates:
 + blast 2.7.1
 + vsearch 2.8.4
 
+Pipeline Changes:
+
++ Subsampling is no longer performed by default in ``shazam-threshold``.
 
 Version 2.0.0:  September 8, 2018
 ------------------------------------------------------------------------

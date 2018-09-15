@@ -1,8 +1,8 @@
 #!/usr/bin/env Rscript
-# Super script to run SHazaM 0.1.8 distance to nearest tuning
+# Super script to run SHazaM distance to nearest tuning
 #
 # Author:  Jason Anthony Vander Heiden, Ruoyi Jiang
-# Date:    2018.08.08
+# Date:    2018.09.15
 #
 # Arguments:
 #   -d           Change-O formatted TSV (TAB) file.
@@ -17,6 +17,7 @@
 #   --model      Model when "-m gmm" is specified.
 #                Defaults to "gamma-gamma".
 #   --subsample  Number of distances to downsample to before threshold calculation.
+#                By default, subsampling is not performed.
 #   --repeats    Number of times to repeat the threshold calculation (with plotting).
 #   -h           Display help.
 
@@ -35,7 +36,7 @@ METHOD <- "density"
 OUTDIR <- "."
 MODEL <- "gamma-gamma"
 NPROC <- parallel::detectCores()
-SUBSAMPLE <- 15000
+SUBSAMPLE <- NULL
 REPEATS <- 1
 
 # Define commmandline arguments
@@ -58,7 +59,7 @@ opt_list <- list(make_option(c("-d", "--db"), dest="DB",
                                         "\n\t\tDefaults to gamma-gamma.")),
                  make_option(c("--subsample"), dest="SUBSAMPLE", default=SUBSAMPLE,
                              help=paste("Number of distances to downsample the data to before threshold calculation.",
-                                        "\n\t\tDefaults to 15000.")),
+                                        "\n\t\tBy default, subsampling is not performed.")),
                  make_option(c("--repeats"), dest="REPEATS", default=REPEATS,
                              help=paste("Number of times to recalculate.",
                                         "\n\t\tDefaults to 1.")))
@@ -106,10 +107,10 @@ pdf(plot_file, width=6, height=4, useDingbats=FALSE)
 threshold_list <- list()
 for(i in 1:REPEATS){
     # Subsample distances
-    if(length(db$DIST_NEAREST) < SUBSAMPLE){
+    if (is.null(SUBSAMPLE) || length(db$DIST_NEAREST) < SUBSAMPLE){
         sampling <- db$DIST_NEAREST
     } else {
-        sampling <- sample(db$DIST_NEAREST, SUBSAMPLE)
+        sampling <- sample(db$DIST_NEAREST, SUBSAMPLE, replace=FALSE)
     }
 
     # Calculate threshold

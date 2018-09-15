@@ -1,8 +1,8 @@
 #!/usr/bin/env Rscript
-# Super script to run TIgGER 0.2.12 genotyping
+# Super script to run TIgGER polymorphism detection and genotyping
 #
 # Author:  Jason Anthony Vander Heiden
-# Date:    2018.07.01
+# Date:    2018.09.15
 #
 # Arguments:
 #   -d  Change-O formatted TSV (TAB) file.

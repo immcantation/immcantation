@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-# Super script to run IgBLAST 1.7 and Change-O 0.3.7
+# Super script to run IgBLAST and Change-O
 #
 # Author:  Jason Anthony Vander Heiden, Gur Yaari, Namita Gupta
-# Date:    2018.08.10
+# Date:    2018.09.15
 #
 # Arguments:
 #   -s  FASTA or FASTQ sequence file.

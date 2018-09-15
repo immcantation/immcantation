@@ -1,16 +1,8 @@
 immcantation:
-  version:  None
-  date:     None
+  version:  null
+  date:     null
 release:
-  presto:   None
-  changeo:  None
-  alakazam: None
-  shazam:   None
-  tigger:   None
-  rdi:      None
-  prestor:  None
-  scope:    None
-  igphyml:  None
+  igphyml:  null
   airr:     1.2.0
 software:
   muscle:   3.8.31

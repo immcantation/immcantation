@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-# Super script to run the pRESTO 0.5.7 pipeline on AbVitro AbSeq data
+# Super script to run the pRESTO pipeline on AbVitro/NEB AbSeq data
 # 
 # Author:  Jason Anthony Vander Heiden, Gur Yaari, Namita Gupta
-# Date:    2018.03.19
+# Date:    2018.09.15
 # 
 # Arguments:
 #   -1  Read 1 FASTQ sequence file (sequence beginning with the C-region or J-segment).
