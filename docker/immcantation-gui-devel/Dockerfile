@@ -22,13 +22,7 @@ RUN wget -O ${DOWNLOADS_DIR}/shiny-server.rpm ${SHINY_URL} \
     && dnf clean all \
     && dnf install -y --nogpgcheck ${DOWNLOADS_DIR}/shiny-server.rpm \
     && rm ${DOWNLOADS_DIR}/shiny-server.rpm
-
-# Install R package immcatation-gui
-RUN PACKAGE="immcantation-gui" \
-    && rm -rf /tmp/${PACKAGE} \
-    && hg clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
-    && Rscript -e "setwd('/tmp/${PACKAGE}'); ${R_BUILD}" 
-        
+      
 EXPOSE 3838
 
 COPY shiny-server-app.R  /srv/shiny-server/immcantation/app.R
