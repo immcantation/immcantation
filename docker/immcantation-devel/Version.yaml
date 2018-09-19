@@ -17,5 +17,5 @@ software:
   cd-hit:   4.6.8
   vsearch:  2.8.4
   blast:    2.7.1
-  igblast:  1.9.0
+  igblast:  1.10.0
   phylip:   3.697
