@@ -90,22 +90,39 @@ or inside the container under ``/usr/local/share/protocols/AbSeq``.
 
 Arguments:
    -1  Read 1 FASTQ sequence file (sequence beginning with the C-region or J-segment).
+
    -2  Read 2 FASTQ sequence file (sequence beginning with the leader or V-segment).
+
    -j  Read 1 FASTA primer sequences (C-region or J-segment).
+
        Defaults to /usr/local/share/protocols/AbSeq/AbSeq_R1_Human_IG_Primers.fasta
+
    -v  Read 2 FASTA primer sequences (template switch or V-segment).
+
        Defaults to /usr/local/share/protocols/AbSeq/AbSeq_R2_TS.fasta.
+
    -c  C-region FASTA sequences for the C-region internal to the primer.
+
        If unspecified internal C-region alignment is not performed.
+
    -r  V-segment reference file.
+
        Defaults to /usr/local/share/germlines/igblast/fasta/imgt_human_ig_v.fasta
+
    -y  YAML file providing description fields for report generation.
+
    -n  Sample name or run identifier which will be used as the output file prefix.
+
        Defaults to a truncated version of the read 1 filename.
+
    -o  Output directory.
+
        Defaults to the sample name.
+
    -p  Number of subprocesses for multiprocessing tools.
+
        Defaults to the available processing units.
+
    -h  Display help.
 
 One of the requirements for generating the report at the end of the pRESTO pipeline is a YAML
@@ -155,19 +172,35 @@ Change-O data standard.
 
 Arguments:
    -s  FASTA or FASTQ sequence file.
+
    -r  Directory containing IMGT-gapped reference germlines.
+
        Defaults to /usr/local/share/germlines/imgt/human/vdj.
+
    -g  Species name. One of human or mouse. Defaults to human.
+
    -t  Receptor type. One of ig or tr. Defaults to ig.
-   -b  IgBLAST IGDATA directory, which contains the IgBLAST database, optional_file
-       and auxillary_data directories. Defaults to /usr/local/share/igblast.
+
+   -b  IgBLAST IGDATA directory
+
+       Contains the IgBLAST database, optional_file and auxillary_data directories.
+
+       Defaults to /usr/local/share/igblast.
+
    -n  Sample name or run identifier which will be used as the output file prefix.
+
        Defaults to a truncated version of the read 1 filename.
+
    -o  Output directory.
+
        Defaults to the sample name.
+
    -p  Number of subprocesses for multiprocessing tools.
+
        Defaults to the available processing units.
+
    -f  Specify to filter the output to only productive/functional sequences.
+
    -h  Display help.
 
 **IgBLAST example**
@@ -196,16 +229,27 @@ Infers V segment genotypes using TIgGER.
 
 Arguments:
    -d  Change-O formatted TSV (TAB) file.
+
    -r  FASTA file containing IMGT-gapped V segment reference germlines.
+
        Defaults to /usr/local/share/germlines/imgt/human/vdj/imgt_human_IGHV.fasta.
+
    -v  Name of the output field containing genotyped V assignments.
+
        Defaults to V_CALL_GENOTYPED.
+
    -n  Sample name or run identifier which will be used as the output file prefix.
+
        Defaults to a truncated version of the input filename.
+
    -o  Output directory.
+
        Defaults to current directory.
+
    -p  Number of subprocesses for multiprocessing tools.
+
        Defaults to the available processing units.
+
    -h  Display help.
 
 **Genotyping example**
@@ -234,19 +278,33 @@ Performs automated detection of the clonal assignment threshold.
 
 Arguments:
    -d           Change-O formatted TSV (TAB) file.
+
    -m           Method.
+
                 Defaults to density.
+
    -n           Sample name or run identifier which will be used as the output file prefix.
+
                 Defaults to a truncated version of the input filename.
+
    -o           Output directory.
+
                 Defaults to current directory.
+
    -p           Number of subprocesses for multiprocessing tools.
+
                 Defaults to the available processing units.
+
    --model      Model when "-m gmm" is specified.
+
                 Defaults to "gamma-gamma".
+
    --subsample  Number of distances to downsample the data to before threshold calculation.
+
                 By default, subsampling is not performed.
+
    --repeats    Number of times to repeat the threshold calculation (with plotting).
+
    -h           Display help.
 
 **Clonal threshold inferrence example**
@@ -276,17 +334,29 @@ sequences.
 
 Arguments:
    -d  Change-O formatted TSV (TAB) file.
+
    -x  Distance threshold for clonal assignment.
+
    -r  Directory containing IMGT-gapped reference germlines.
+
        Defaults to /usr/local/share/germlines/imgt/human/vdj.
+
    -n  Sample name or run identifier which will be used as the output file prefix.
+
        Defaults to a truncated version of the input filename.
+
    -o  Output directory.
+
        Defaults to the sample name.
+
    -p  Number of subprocesses for multiprocessing tools.
+
        Defaults to the available processing units.
+
    -a  Specify to clone the full data set.
+
        By default the data will be filtering to only productive/functional sequences.
+
    -h  Display help.
 
 **Clonal assignment example**
@@ -317,13 +387,21 @@ genome.
 
 Arguments:
    -s  FASTQ sequence file.
+
    -r  Directory containing phiX174 reference db.
+
    -o  Output directory.
+
        Defaults to the FASTQ file directory.
+
    -n  Name to use as the output file suffix.
+
        Defaults to '_nophix'.
+
    -p  Number of subprocesses for multiprocessing tools.
+
        Defaults to the available processing units.
+
    -h  Display help
 
 **PhiX cleaning example**
