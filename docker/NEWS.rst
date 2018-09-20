@@ -1,7 +1,7 @@
 Docker Container Release Notes
 ========================================================================
 
-Version 2.1.0:  September 14, 2018
+Version 2.1.0:  September 20, 2018
 ------------------------------------------------------------------------
 
 Version Updates:
@@ -9,8 +9,9 @@ Version Updates:
 + alakazam 0.2.11
 + shazam 0.1.10
 + prestor 0.0.5
-+ blast 2.7.1
 + vsearch 2.8.4
++ BLAST 2.7.1
++ IgBLAST 1.10.0
 
 Pipeline Changes:
 
