@@ -1,6 +1,6 @@
 .. Immcantation: An Integrated Framework for Adaptive Immune Receptor Repertoire Analysis
-.. keywords:  rep-seq, immuno-seq, repertoire sequencing, BCR, TCR, Ig, IgOme, AIRR, adaptive immunity,
-    somatic hypermutation, vdj-seq, AbSeq, AbPair, iRepertoire, VDJ, Immunoglobulin
+.. keywords:  rep-seq, immuno-seq, vdj-seq, repertoire sequencing, BCR, TCR, Ig, AIRR,
+    adaptive immunity, somatic hypermutation, AbSeq, AbPair, VDJ, immunoglobulin
 
 .. toctree::
     :maxdepth: 1
@@ -70,28 +70,32 @@ Component Packages
        + Quality control
        + Read assembly
        + UMI processing
+       + Error profiling
 
    * - |changeo-img|
      - **Change-O**
 
        + V(D)J reference alignment standardization
        + Clonal clustering
+       + Germline reconstruction
        + Conversion and annotation
 
    * - |alakazam-img|
      - **Alakazam**
 
        + Clonal lineage reconstruction
+       + Lineage topology analysis
        + Repertoire diversity
-       + V(D)J gene usage analysis
+       + V(D)J gene usage
        + Physicochemical property analysis
 
    * - |shazam-img|
      - **SHazaM**
 
        + Mutation profiling
-       + Selection analysis
-       + SHM modeling
+       + Selection pressure quantification
+       + Empirical SHM models
+       + Chimera detection
        + Clonal clustering threshold tuning
 
    * - |tigger-img|
@@ -104,10 +108,12 @@ Component Packages
      - **RDI**
 
        + Repertoire Dissimilarity Index
+
    * - |scope-img|
      - **SCOPe**
 
-       + Clonal clustering
+       + Spectral clonal clustering methods
+
    * - |prestoR-img|
      - **prestoR**
 
