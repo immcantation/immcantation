@@ -1,12 +1,12 @@
 Docker Container Release Notes
 ========================================================================
 
-Version 2.2.0:  October 5, 2018
+Version 2.1.1:  October 2, 2018
 ------------------------------------------------------------------------
 
 Pipeline Changes:
 
-+ Fixed compress error messages in ``changeo-igblast`` and
++ Fixed compression error messages in ``changeo-igblast`` and
   ``changeo-clone``.
 
 

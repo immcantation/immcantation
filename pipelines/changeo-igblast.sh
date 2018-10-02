@@ -220,7 +220,7 @@ printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "IgBLAST"
 run_igblast.sh -s ${IG_FILE} -g ${SPECIES} -t ${RECEPTOR} -b ${IGDATA} -n ${NPROC} \
     >> $PIPELINE_LOG 2> $ERROR_LOG
 FMT7_FILE=$(basename ${IG_FILE})
-FMT7_FILE="${FMT_FILE%.fasta}.fmt7"
+FMT7_FILE="${FMT7_FILE%.fasta}.fmt7"
 #check_error
 
 # Parse IgBLAST output
