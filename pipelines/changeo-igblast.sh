@@ -219,26 +219,28 @@ fi
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "IgBLAST"
 run_igblast.sh -s ${IG_FILE} -g ${SPECIES} -t ${RECEPTOR} -b ${IGDATA} -n ${NPROC} \
     >> $PIPELINE_LOG 2> $ERROR_LOG
-DB_FILE=$(basename ${IG_FILE})
-DB_FILE="${DB_FILE%.fasta}.fmt7"
+FMT7_FILE=$(basename ${IG_FILE})
+FMT7_FILE="${FMT_FILE%.fasta}.fmt7"
 #check_error
 
 # Parse IgBLAST output
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "MakeDb igblast"
-MakeDb.py igblast -i ${DB_FILE} -s  ${IG_FILE} -r ${REFDIR} \
+MakeDb.py igblast -i ${FMT7_FILE} -s  ${IG_FILE} -r ${REFDIR} \
     --scores --regions --failed --outname "${OUTNAME}" --outdir . \
     >> $PIPELINE_LOG 2> $ERROR_LOG
-    LAST_FILE="${OUTNAME}_db-pass.${EXT}"
+    DB_FILE="${OUTNAME}_db-pass.${EXT}"
+    LAST_FILE=$DB_FILE
 check_error
 
 # Create germlines
 if $GERMLINES; then
     printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "CreateGermlines"
     CreateGermlines.py -d ${LAST_FILE} -r ${REFDIR} -g ${CG_GERM} \
-        --sf ${CG_SFIELD} --vf $CG_VFIELD --outname "${OUTNAME}" \
+        --sf ${CG_SFIELD} --vf ${CG_VFIELD} --outname "${OUTNAME}" \
         >> $PIPELINE_LOG 2> $ERROR_LOG
 	check_error
-	LAST_FILE="${OUTNAME}_germ-pass.${EXT}"
+	GERM_FILE="${OUTNAME}_germ-pass.${EXT}"
+	LAST_FILE=$GERM_FILE
 fi
 
 if $FUNCTIONAL; then
@@ -246,12 +248,13 @@ if $FUNCTIONAL; then
     ParseDb.py select -d ${LAST_FILE} -f FUNCTIONAL -u T TRUE --outname "${OUTNAME}" \
         >> $PIPELINE_LOG 2> $ERROR_LOG
     check_error
-    LAST_FILE="${OUTNAME}_parse-select.${EXT}"
+    SELECT_FILE="${OUTNAME}_parse-select.${EXT}"
+    LAST_FILE=$SELECT_FILE
 fi
 
 # Zip or delete intermediate and log files
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "Compressing files"
-TEMP_FILES=$(ls "${OUTNAME}_db-pass.${EXT}" "${OUTNAME}_germ-pass.${EXT}" "${OUTNAME}_parse-select.${EXT}" | grep -v "${LAST_FILE}\|$(basename ${READS})")
+TEMP_FILES=$(ls ${DB_FILE} ${GERM_FILE} ${SELECT_FILE} 2>/dev/null | grep -v "${LAST_FILE}\|$(basename ${READS})")
 if $ZIP_FILES; then
     tar -zcf temp_files.tar.gz $TEMP_FILES
 fi

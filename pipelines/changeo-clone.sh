@@ -177,19 +177,21 @@ if $FUNCTIONAL; then
         --outname "${OUTNAME}" --outdir . \
         >> $PIPELINE_LOG 2> $ERROR_LOG
     check_error
-    CLONE_FILE="${OUTNAME}_parse-select.${EXT}"
+    SELECT_FILE="${OUTNAME}_parse-select.${EXT}"
+    LAST_FILE=$SELECT_FILE
 else
-    CLONE_FILE=${DB}
+    LAST_FILE=${DB}
 fi
 
 # Assign clones
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "DefineClones ${DC_COMMAND}"
-DefineClones.py ${DC_COMMAND} -d ${CLONE_FILE} --model ${DC_MODEL} \
+DefineClones.py ${DC_COMMAND} -d ${LAST_FILE} --model ${DC_MODEL} \
     --dist ${DIST} --mode ${DC_MODE} --act ${DC_ACT} --nproc ${NPROC} \
     --outname "${OUTNAME}" --outdir . --log "${LOGDIR}/clone.log" \
     >> $PIPELINE_LOG 2> $ERROR_LOG
 check_error
-LAST_FILE="${OUTNAME}_clone-pass.${EXT}"
+CLONE_FILE="${OUTNAME}_clone-pass.${EXT}"
+LAST_FILE=$CLONE_FILE
 
 # Create germlines
 if $GERMLINES; then
@@ -198,7 +200,8 @@ if $GERMLINES; then
         --sf ${CG_SFIELD} --vf ${CG_VFIELD} --cloned --outname "${OUTNAME}" \
         >> $PIPELINE_LOG 2> $ERROR_LOG
 	check_error
-	LAST_FILE="${OUTNAME}_germ-pass.${EXT}"
+	GERM_FILE="${OUTNAME}_germ-pass.${EXT}"
+	LAST_FILE=$GERM_FILE
 fi
 
 # Process log files
@@ -210,7 +213,7 @@ wait
 # Zip or delete intermediate and log files
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "Compressing files"
 LOG_FILES=$(ls ${LOGDIR}/*.log | grep -v "pipeline")
-TEMP_FILES=$(ls "${OUTNAME}_parse-select.${EXT}" "${OUTNAME}_clone-pass.${EXT}" "${OUTNAME}_germ-pass.${EXT}" | grep -v "${LAST_FILE}\|$(basename ${DB})")
+TEMP_FILES=$(ls ${SELECT_FILE} ${CLONE_FILE} ${GERM_FILE}  2>/dev/null | grep -v "${LAST_FILE}\|$(basename ${DB})")
 if $ZIP_FILES; then
     tar -zcf log_files.tar.gz $LOG_FILES
     tar -zcf temp_files.tar.gz $TEMP_FILES

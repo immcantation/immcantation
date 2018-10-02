@@ -240,7 +240,7 @@ printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "Compressing files"
 LOG_FILES=$(ls ${LOGDIR}/*.log | grep -v "pipeline")
 FILTER_FILES="$(basename ${READS})"
 FILTER_FILES+="\|final_total.fastq\|final_collapse-unique.fastq\|final_collapse-unique_atleast-2.fastq"
-TEMP_FILES=$(ls *.fastq | grep -v ${FILTER_FILES})
+TEMP_FILES=$(ls *.fastq  2>/dev/null | grep -v ${FILTER_FILES})
 if $ZIP_FILES; then
     tar -zcf log_files.tar.gz $LOG_FILES
     tar -zcf temp_files.tar.gz $TEMP_FILES
