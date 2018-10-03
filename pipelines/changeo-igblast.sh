@@ -228,8 +228,9 @@ printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "MakeDb igblast"
 MakeDb.py igblast -i ${FMT7_FILE} -s  ${IG_FILE} -r ${REFDIR} \
     --scores --regions --failed --outname "${OUTNAME}" --outdir . \
     >> $PIPELINE_LOG 2> $ERROR_LOG
-    DB_FILE="${OUTNAME}_db-pass.${EXT}"
-    LAST_FILE=$DB_FILE
+    DB_PASS="${OUTNAME}_db-pass.${EXT}"
+    DB_FAIL="${OUTNAME}_db-fail.${EXT}"
+    LAST_FILE=$DB_PASS
 check_error
 
 # Create germlines
@@ -239,8 +240,8 @@ if $GERMLINES; then
         --sf ${CG_SFIELD} --vf ${CG_VFIELD} --outname "${OUTNAME}" \
         >> $PIPELINE_LOG 2> $ERROR_LOG
 	check_error
-	GERM_FILE="${OUTNAME}_germ-pass.${EXT}"
-	LAST_FILE=$GERM_FILE
+	GERM_PASS="${OUTNAME}_germ-pass.${EXT}"
+	LAST_FILE=$GERM_PASS
 fi
 
 if $FUNCTIONAL; then
@@ -248,18 +249,20 @@ if $FUNCTIONAL; then
     ParseDb.py select -d ${LAST_FILE} -f FUNCTIONAL -u T TRUE --outname "${OUTNAME}" \
         >> $PIPELINE_LOG 2> $ERROR_LOG
     check_error
-    SELECT_FILE="${OUTNAME}_parse-select.${EXT}"
-    LAST_FILE=$SELECT_FILE
+    SELECT_PASS="${OUTNAME}_parse-select.${EXT}"
+    LAST_FILE=$SELECT_PASS
 fi
 
-# Zip or delete intermediate and log files
+# Zip or delete intermediate files
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "Compressing files"
-TEMP_FILES=$(ls ${DB_FILE} ${GERM_FILE} ${SELECT_FILE} 2>/dev/null | grep -v "${LAST_FILE}\|$(basename ${READS})")
-if $ZIP_FILES; then
-    tar -zcf temp_files.tar.gz $TEMP_FILES
-fi
-if $DELETE_FILES; then
-    rm $TEMP_FILES
+TEMP_FILES=$(ls ${DB_PASS} ${DB_FAIL} ${GERM_PASS} ${SELECT_PASS} 2>/dev/null | grep -v "${LAST_FILE}\|$(basename ${READS})")
+if [[ ! -z $TEMP_FILES ]]; then
+    if $ZIP_FILES; then
+        tar -zcf temp_files.tar.gz $TEMP_FILES
+    fi
+    if $DELETE_FILES; then
+        rm $TEMP_FILES
+    fi
 fi
 
 # End
