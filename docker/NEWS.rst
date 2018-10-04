@@ -1,13 +1,19 @@
 Docker Container Release Notes
 ========================================================================
 
-Version 2.1.1:  October 2, 2018
+Version 2.2.0:  October 5, 2018
 ------------------------------------------------------------------------
+
+Version Updates:
+
++ tigger 0.3.0
 
 Pipeline Changes:
 
 + Fixed compression error messages in ``changeo-igblast`` and
   ``changeo-clone``.
++ Removed support for tigger versions below 0.3.0 from
+  ``tigger-genotype``.
 
 
 Version 2.1.0:  September 20, 2018

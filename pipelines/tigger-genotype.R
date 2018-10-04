@@ -2,7 +2,7 @@
 # Super script to run TIgGER polymorphism detection and genotyping
 #
 # Author:  Jason Anthony Vander Heiden
-# Date:    2018.09.15
+# Date:    2018.10.03
 #
 # Arguments:
 #   -d  Change-O formatted TSV (TAB) file.
@@ -73,24 +73,14 @@ igv <- readIgFasta(opt$REF)
 
 # Identify polymorphisms and genotype
 nv <- findNovelAlleles(db, germline_db=igv, nproc=opt$NPROC)
-gt <- inferGenotype(db, germline_db=igv, novel_df=nv)
+gt <- inferGenotype(db, germline_db=igv, novel=nv)
 
 # Write genotype FASTA file
-gt_seq <- genotypeFasta(gt, germline_db=igv, novel_df=nv)
+gt_seq <- genotypeFasta(gt, germline_db=igv, novel=nv)
 writeFasta(gt_seq, file.path(opt$OUTDIR, paste0(opt$NAME, "_genotype.fasta")))
 
-# Modify allele calls and write db
-if (utils::packageVersion("tigger") <= "0.2.11") {
-    db <- cbind(db, reassignAlleles(db, gt_seq))
-} else {
-    db <- reassignAlleles(db, gt_seq)
-}
-
-# Rename V call column if necessary
-if (opt$VFIELD != "V_CALL_GENOTYPED") {
-    db[[opt$VFIELD]] <- db$V_CALL_GENOTYPED
-    db <- dplyr::select(db, -V_CALL_GENOTYPED)
-}
+# Modify allele calls
+db <- reassignAlleles(db, gt_seq, v_call=opt$VFIELD)
 
 # Write genotyped data
 writeChangeoDb(db, file.path(opt$OUTDIR, paste0(opt$NAME, "_genotyped.tab")))

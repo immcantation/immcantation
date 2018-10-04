@@ -153,6 +153,15 @@ RUN PACKAGE="tigger" \
     && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
     && rm -r /tmp/${PACKAGE}
 
+# Install SCOPe
+RUN PACKAGE="scoper" \
+    && rm -rf /tmp/${PACKAGE} \
+    && hg clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
+    && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} \
+    && Rscript -e "setwd('/tmp/${PACKAGE}'); ${R_BUILD}" \
+    && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
+    && rm -r /tmp/${PACKAGE}
+
 # Install RDI
 RUN PACKAGE="rdi" \
     && rm -rf /tmp/${PACKAGE} \
@@ -166,15 +175,6 @@ RUN PACKAGE="rdi" \
 RUN PACKAGE="prestor" \
     && rm -rf /tmp/${PACKAGE} \
     && hg clone https://bitbucket.org/javh/prototype-prestor /tmp/${PACKAGE} \
-    && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} \
-    && Rscript -e "setwd('/tmp/${PACKAGE}'); ${R_BUILD}" \
-    && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
-    && rm -r /tmp/${PACKAGE}
-
-# Install SCOPe
-RUN PACKAGE="scope" \
-    && rm -rf /tmp/${PACKAGE} \
-    && hg clone https://bitbucket.org/kleinstein/scope /tmp/${PACKAGE} \
     && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} \
     && Rscript -e "setwd('/tmp/${PACKAGE}'); ${R_BUILD}" \
     && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \

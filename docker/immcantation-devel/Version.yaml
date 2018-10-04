@@ -9,7 +9,7 @@ release:
   tigger:   tip
   rdi:      tip
   prestor:  tip
-  scope:    tip
+  scoper:   tip
   igphyml:  null
   airr:     1.2.0
 software:
