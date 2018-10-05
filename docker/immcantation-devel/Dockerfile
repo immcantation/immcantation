@@ -92,9 +92,10 @@ RUN PHYLIP=$(versions get -n phylip) \
     && rm -r phylip-${PHYLIP}.tar.gz phylip-${PHYLIP}
 
 # Install AIRR reference libraries
-RUN AIRR=$(versions get -n airr) \
-    && pip3 install airr==${AIRR} \
-    && Rscript -e "devtools::install_version('airr', '${AIRR}', quiet=FALSE, clean=TRUE)"
+RUN AIRR_PY=$(versions get -n airr-py) \
+    AIRR_R=$(versions get -n airr-r)
+    && pip3 install airr==${AIRR_PY} \
+    && Rscript -e "devtools::install_version('airr', '${AIRR_R}', quiet=FALSE, clean=TRUE)"
 
 # Install IgPhyML
 RUN PACKAGE="igphyml" \

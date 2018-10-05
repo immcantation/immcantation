@@ -9,7 +9,8 @@ release:
   tigger:   0.3.0
   rdi:      1.0.0
   prestor:  0.0.5
-  airr:     1.2.0
+  airr-py:  1.2.1
+  airr-r:   1.2.0
 software:
   muscle:   3.8.31
   cd-hit:   4.6.8
