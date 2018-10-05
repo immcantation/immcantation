@@ -100,15 +100,20 @@ def inspectVersions(version_file=default_version_file):
     vsearch = check_output('vsearch --version', stderr=STDOUT, shell=True)
     blast = check_output('blastn -version', stderr=STDOUT, shell=True)
     igblast = check_output('igblastn -version', stderr=STDOUT, shell=True)
-    cdhit = check_output('cd-hit-est', stderr=STDOUT, shell=True)
-    phylip = check_output('echo "NULL" | drawtree', stderr=STDOUT, shell=True)
+    cdhit = check_output('cd-hit-est -h; exit 0', stderr=STDOUT, shell=True)
+    phylip = check_output('echo "NULL" | drawtree; exit 0', stderr=STDOUT, shell=True)
 
     versions['muscle'] = muscle.decode('utf-8').split()[1]
-    versions['vsearch'] = vsearch.decode('utf-8').split()[1]
-    versions['blast'] = blast.decode('utf-8').split('\n')[1].replace('Package: blast', '').strip()
-    versions['igblast'] = igblast.decode('utf-8').split('\n')[1].replace('Package: igblast', '').strip()
-    versions['phylip'] =  re.search(r'(?<=PHYLIP version )([0-9.]+)', phylip.decode('utf-8').split('\n')[0]).group(0)
-    versions['cd-hit'] = re.search(r'(?<=CD-HIT version )([0-9.]+)', cdhit.decode('utf-8').split('\n')[0]).group(0)
+    versions['vsearch'] = re.search(r'(v[0-9.]+)',
+                                    vsearch.decode('utf-8').split('\n')[0]).group(0)
+    versions['blast'] = re.search(r'(?<=blast )([0-9.]+)',
+                                  blast.decode('utf-8').split('\n')[1]).group(0)
+    versions['igblast'] = re.search(r'(?<=igblast )([0-9.]+)',
+                                    igblast.decode('utf-8').split('\n')[1]).group(0)
+    versions['phylip'] =  re.search(r'(?<=PHYLIP version )([0-9.]+)',
+                                    phylip.decode('utf-8').split('\n')[0]).group(0)
+    versions['cd-hit'] = re.search(r'(?<=CD-HIT version )([0-9.]+)',
+                                   cdhit.decode('utf-8').split('\n')[0]).group(0)
 
     return versions
 
@@ -205,7 +210,7 @@ def reportVersions(version_file=default_version_file):
                'prestor']
     software = ['muscle',
                 'vsearch',
-                'cd-hit'
+                'cd-hit',
                 'blast',
                 'igblast',
                 'phylip',
