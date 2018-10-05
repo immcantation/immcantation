@@ -7,6 +7,7 @@ Version 2.2.0:  October 5, 2018
 Version Updates:
 
 + tigger 0.3.0
++ airr python library 1.2.1
 
 Pipeline Changes:
 
@@ -14,6 +15,11 @@ Pipeline Changes:
   ``changeo-clone``.
 + Removed support for tigger versions below 0.3.0 from
   ``tigger-genotype``.
+
+Image Changes:
+
++ Adjusted version/changeset detection and output in the
+  ``versions report`` and ``builds report`` commands.
 
 
 Version 2.1.0:  September 20, 2018
