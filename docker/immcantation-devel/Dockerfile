@@ -93,7 +93,7 @@ RUN PHYLIP=$(versions get -n phylip) \
 
 # Install AIRR reference libraries
 RUN AIRR_PY=$(versions get -n airr-py) \
-    AIRR_R=$(versions get -n airr-r)
+    && AIRR_R=$(versions get -n airr-r) \
     && pip3 install airr==${AIRR_PY} \
     && Rscript -e "devtools::install_version('airr', '${AIRR_R}', quiet=FALSE, clean=TRUE)"
 
