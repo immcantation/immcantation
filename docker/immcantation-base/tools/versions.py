@@ -66,13 +66,13 @@ def inspectVersions(version_file=default_version_file):
 
     # Only available via the version file
     v = readVersions(version_file=version_file)
-    versions = {'immcantation': '%s-%s' % (v.version, v.date),
-                'phylip': v.package('phylip')}
+    versions = {'immcantation': '%s-%s' % (v.version, v.date)}
 
     # Python packges
-    import presto, changeo
+    import presto, changeo, airr
     versions['presto'] = '%s-%s' % (presto.__version__, presto.__date__)
     versions['changeo'] = '%s-%s' % (changeo.__version__, changeo.__date__)
+    versions['airr-py'] = '%s' % airr.__version__
 
     # R packages
     alakazam = check_output('Rscript -e \"cat(packageDescription(\'alakazam\', fields=\'Version\'))\"',
@@ -81,24 +81,34 @@ def inspectVersions(version_file=default_version_file):
                           stderr=STDOUT, shell=True)
     tigger = check_output('Rscript -e \"cat(packageDescription(\'tigger\', fields=\'Version\'))\"',
                           stderr=STDOUT, shell=True)
+    rdi = check_output('Rscript -e \"cat(packageDescription(\'rdi\', fields=\'Version\'))\"',
+                        stderr=STDOUT, shell=True)
     prestor = check_output('Rscript -e \"cat(packageDescription(\'prestor\', fields=\'Version\'))\"',
+                           stderr=STDOUT, shell=True)
+    airr_r = check_output('Rscript -e \"cat(packageDescription(\'airr\', fields=\'Version\'))\"',
                            stderr=STDOUT, shell=True)
 
     versions['alakazam'] = alakazam.decode('utf-8')
     versions['shazam'] = shazam.decode('utf-8')
     versions['tigger'] = tigger.decode('utf-8')
+    versions['rdi'] = rdi.decode('utf-8')
     versions['prestor'] = prestor.decode('utf-8')
+    versions['airr-r'] = airr_r.decode('utf-8')
 
     # External applications
     muscle = check_output('muscle -version', stderr=STDOUT, shell=True)
     vsearch = check_output('vsearch --version', stderr=STDOUT, shell=True)
     blast = check_output('blastn -version', stderr=STDOUT, shell=True)
     igblast = check_output('igblastn -version', stderr=STDOUT, shell=True)
+    cdhit = check_output('cd-hit-est', stderr=STDOUT, shell=True)
+    phylip = check_output('echo "NULL" | drawtree', stderr=STDOUT, shell=True)
 
     versions['muscle'] = muscle.decode('utf-8').split()[1]
     versions['vsearch'] = vsearch.decode('utf-8').split()[1]
     versions['blast'] = blast.decode('utf-8').split('\n')[1].replace('Package: blast', '').strip()
     versions['igblast'] = igblast.decode('utf-8').split('\n')[1].replace('Package: igblast', '').strip()
+    versions['phylip'] =  re.search(r'(?<=PHYLIP version )([0-9.]+)', phylip.decode('utf-8').split('\n')[0]).group(0)
+    versions['cd-hit'] = re.search(r'(?<=CD-HIT version )([0-9.]+)', cdhit.decode('utf-8').split('\n')[0]).group(0)
 
     return versions
 
@@ -191,12 +201,16 @@ def reportVersions(version_file=default_version_file):
                'alakazam',
                'shazam',
                'tigger',
+               'rdi',
                'prestor']
-    software = ['vsearch',
-                'muscle',
+    software = ['muscle',
+                'vsearch',
+                'cd-hit'
                 'blast',
                 'igblast',
-                'phylip']
+                'phylip',
+                'airr-py',
+                'airr-r']
 
     report = ['Immcantation: %s' % versions['immcantation']] + \
              [''] + \

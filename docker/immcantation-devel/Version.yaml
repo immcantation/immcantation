@@ -11,8 +11,6 @@ release:
   prestor:  tip
   scoper:   tip
   igphyml:  null
-  airr-py:  1.2.1
-  airr-r:   1.2.0
 software:
   muscle:   3.8.31
   cd-hit:   4.6.8
@@ -20,3 +18,5 @@ software:
   blast:    2.7.1
   igblast:  1.10.0
   phylip:   3.697
+  airr-py:  1.2.1
+  airr-r:   1.2.0

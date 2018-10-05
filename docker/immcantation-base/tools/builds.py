@@ -54,6 +54,7 @@ def writeBuild(field, value, build_file=default_build_file):
                  'alakazam',
                  'shazam',
                  'tigger',
+                 'rdi',
                  'prestor']
         order = [x for x in order if x in build]
     else:
@@ -89,6 +90,7 @@ def reportBuild(build_file=default_build_file):
              'alakazam',
              'shazam',
              'tigger',
+             'rdi',
              'prestor']
     order = [x for x in order if x in build]
 
