@@ -136,8 +136,7 @@ RUN PACKAGE="shazam" \
     && hg clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
     && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} \
     && Rscript -e "setwd('/tmp/${PACKAGE}'); ${R_BUILD}" \
-    && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
-    && rm -r /tmp/${PACKAGE}
+    && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE})
 
 # Install tigger
 RUN PACKAGE="tigger" \
