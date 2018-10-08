@@ -1,16 +1,16 @@
 immcantation:
-  version:  tip
-  date:     null
+  version:  None
+  date:     None
 release:
-  presto:   tip
-  changeo:  tip
-  alakazam: tip
-  shazam:   tip
-  tigger:   tip
-  rdi:      tip
-  prestor:  tip
-  scoper:   tip
-  igphyml:  null
+  presto:   None
+  changeo:  None
+  alakazam: None
+  shazam:   None
+  tigger:   None
+  rdi:      None
+  prestor:  None
+  scoper:   None
+  igphyml:  None
 software:
   muscle:   3.8.31
   cd-hit:   4.6.8

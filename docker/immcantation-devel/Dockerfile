@@ -8,12 +8,12 @@ COPY Version.yaml /Version.yaml
 RUN builds write -n date -v "$(date +'%Y-%m-%d %T %Z')"
 
 # Define pipeline scripts
-ARG PRESTO_ABSEQ="pipelines/presto-abseq.sh"
-ARG CHANGEO_IGBLAST="pipelines/changeo-igblast.sh"
-ARG CHANGEO_CLONE="pipelines/changeo-clone.sh"
-ARG SHAZAM_THRESHOLD="pipelines/shazam-threshold.R"
-ARG TIGGER_GENOTYPE="pipelines/tigger-genotype.R"
-ARG PREPROCESS_PHIX="pipelines/preprocess-phix.sh"
+ARG PRESTO_ABSEQ="presto-abseq.sh"
+ARG CHANGEO_IGBLAST="changeo-igblast.sh"
+ARG CHANGEO_CLONE="changeo-clone.sh"
+ARG SHAZAM_THRESHOLD="shazam-threshold.R"
+ARG TIGGER_GENOTYPE="tigger-genotype.R"
+ARG PREPROCESS_PHIX="preprocess-phix.sh"
 
 # Define R build options
 ARG R_RCPP="0.12.16"
@@ -31,12 +31,12 @@ RUN PACKAGE="immcantation" \
     && hg clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
     && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} \
 	&& mv /tmp/${PACKAGE}/scripts/* /usr/local/bin/ \
-	&& mv /tmp/${PACKAGE}/${PRESTO_ABSEQ} /usr/local/bin/presto-abseq \
-	&& mv /tmp/${PACKAGE}/${CHANGEO_IGBLAST} /usr/local/bin/changeo-igblast \
-	&& mv /tmp/${PACKAGE}/${CHANGEO_CLONE} /usr/local/bin/changeo-clone \
-	&& mv /tmp/${PACKAGE}/${SHAZAM_THRESHOLD} /usr/local/bin/shazam-threshold \
-	&& mv /tmp/${PACKAGE}/${TIGGER_GENOTYPE} /usr/local/bin/tigger-genotype \
-	&& mv /tmp/${PACKAGE}/${PREPROCESS_PHIX} /usr/local/bin/preprocess-phix \
+	&& mv /tmp/${PACKAGE}/pipelines/${PRESTO_ABSEQ} /usr/local/bin/presto-abseq \
+	&& mv /tmp/${PACKAGE}/pipelines/${CHANGEO_IGBLAST} /usr/local/bin/changeo-igblast \
+	&& mv /tmp/${PACKAGE}/pipelines/${CHANGEO_CLONE} /usr/local/bin/changeo-clone \
+	&& mv /tmp/${PACKAGE}/pipelines/${SHAZAM_THRESHOLD} /usr/local/bin/shazam-threshold \
+	&& mv /tmp/${PACKAGE}/pipelines/${TIGGER_GENOTYPE} /usr/local/bin/tigger-genotype \
+	&& mv /tmp/${PACKAGE}/pipelines/${PREPROCESS_PHIX} /usr/local/bin/preprocess-phix \
 	&& mv /tmp/${PACKAGE}/protocols /usr/local/share/protocols \
 	&& builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
 	&& rm -r /tmp/${PACKAGE}

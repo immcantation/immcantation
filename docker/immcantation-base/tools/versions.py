@@ -153,6 +153,10 @@ def getChangeset(version, repo):
     Returns:
       str : changeset.
     """
+    if version is None:
+        print(None)
+        return None
+
     # Build regex
     v = re.compile(r'(^|[\svV])' + version + r'([\s-]|$)')
 
@@ -166,9 +170,9 @@ def getChangeset(version, repo):
         if v.search(x[0].decode('utf-8')):
             changeset = '%i:%s' % (x[1], x[2].decode('utf-8'))
             break
-
     print(changeset)
-    return(changeset)
+
+    return changeset
 
 
 def getVersion(package=default_package, version_file=default_version_file):
