@@ -29,7 +29,6 @@ RUN Rscript -e "install.packages('devtools', clean=TRUE)" \
 RUN PACKAGE="immcantation" \
     && rm -rf /tmp/${PACKAGE} \
     && hg clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
-    && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} \
 	&& mv /tmp/${PACKAGE}/scripts/* /usr/local/bin/ \
 	&& mv /tmp/${PACKAGE}/pipelines/${PRESTO_ABSEQ} /usr/local/bin/presto-abseq \
 	&& mv /tmp/${PACKAGE}/pipelines/${CHANGEO_IGBLAST} /usr/local/bin/changeo-igblast \
@@ -115,7 +114,6 @@ RUN wget -q --show-progress \
 RUN PACKAGE="presto" \
     && rm -rf /tmp/${PACKAGE} \
     && hg clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
-    && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} \
 	&& pip3 install --no-cache-dir /tmp/${PACKAGE} \
 	&& builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
 	&& rm -r /tmp/${PACKAGE}
@@ -124,7 +122,6 @@ RUN PACKAGE="presto" \
 RUN PACKAGE="changeo" \
     && rm -rf /tmp/${PACKAGE} \
     && hg clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
-    && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} \
 	&& pip3 install --no-cache-dir /tmp/${PACKAGE} \
 	&& builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
 	&& rm -r /tmp/${PACKAGE}
@@ -133,7 +130,6 @@ RUN PACKAGE="changeo" \
 RUN PACKAGE="alakazam" \
     && rm -rf /tmp/${PACKAGE} \
     && hg clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
-    && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} \
     && Rscript -e "setwd('/tmp/${PACKAGE}'); ${R_BUILD}" \
     && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE})
 
@@ -141,7 +137,6 @@ RUN PACKAGE="alakazam" \
 RUN PACKAGE="shazam" \
     && rm -rf /tmp/${PACKAGE} \
     && hg clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
-    && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} \
     && Rscript -e "setwd('/tmp/${PACKAGE}'); ${R_BUILD}" \
     && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE})
 
@@ -149,7 +144,6 @@ RUN PACKAGE="shazam" \
 RUN PACKAGE="tigger" \
     && rm -rf /tmp/${PACKAGE} \
     && hg clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
-    && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} \
     && Rscript -e "setwd('/tmp/${PACKAGE}'); ${R_BUILD}" \
     && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
     && rm -r /tmp/${PACKAGE}
@@ -158,7 +152,6 @@ RUN PACKAGE="tigger" \
 RUN PACKAGE="scoper" \
     && rm -rf /tmp/${PACKAGE} \
     && hg clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
-    && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} \
     && Rscript -e "setwd('/tmp/${PACKAGE}'); ${R_BUILD}" \
     && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
     && rm -r /tmp/${PACKAGE}
@@ -167,7 +160,6 @@ RUN PACKAGE="scoper" \
 RUN PACKAGE="rdi" \
     && rm -rf /tmp/${PACKAGE} \
     && hg clone https://bitbucket.org/cbolen1/rdicore /tmp/${PACKAGE} \
-    && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} \
     && Rscript -e "setwd('/tmp/${PACKAGE}'); ${R_BUILD}" \
     && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
     && rm -r /tmp/${PACKAGE}
@@ -176,7 +168,6 @@ RUN PACKAGE="rdi" \
 RUN PACKAGE="prestor" \
     && rm -rf /tmp/${PACKAGE} \
     && hg clone https://bitbucket.org/javh/prototype-prestor /tmp/${PACKAGE} \
-    && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} \
     && Rscript -e "setwd('/tmp/${PACKAGE}'); ${R_BUILD}" \
     && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
     && rm -r /tmp/${PACKAGE}

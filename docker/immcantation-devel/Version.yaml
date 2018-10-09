@@ -1,16 +1,16 @@
 immcantation:
-  version:  None
-  date:     None
+  version:  null
+  date:     null
 release:
-  presto:   None
-  changeo:  None
-  alakazam: None
-  shazam:   None
-  tigger:   None
-  rdi:      None
-  prestor:  None
-  scoper:   None
-  igphyml:  None
+  presto:   null
+  changeo:  null
+  alakazam: null
+  shazam:   null
+  tigger:   null
+  rdi:      null
+  prestor:  null
+  scoper:   null
+  igphyml:  null
 software:
   muscle:   3.8.31
   cd-hit:   4.6.8
