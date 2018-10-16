@@ -31,13 +31,13 @@
     SHazaM <http://shazam.readthedocs.io>
     TIgGER <http://tigger.readthedocs.io>
     RDI <http://rdi.readthedocs.io>
+    SCOPer <http://scoper.readthedocs.io>
 
 .. toctree::
     :maxdepth: 1
     :caption: In Development
     :hidden:
 
-    SCOPe <packages/scope>
     prestoR <packages/prestor>
 
 .. _Welcome:
@@ -109,8 +109,8 @@ Component Packages
 
        + Repertoire Dissimilarity Index
 
-   * - |scope-img|
-     - **SCOPe**
+   * - |scoper-img|
+     - **SCOPer**
 
        + Spectral clonal clustering methods
 
@@ -151,10 +151,10 @@ Component Packages
     :width: 200
     :target: RDI_
 
-.. |scope-img| image:: _static/scope.png
+.. |scoper-img| image:: _static/scoper.png
     :align: middle
     :width: 200
-    :target: SCOPe_
+    :target: SCOPer_
 
 .. |prestoR-img| image:: _static/prestoR.png
     :align: middle
@@ -169,5 +169,5 @@ Component Packages
 .. _SHazaM: http://shazam.readthedocs.io
 .. _TIgGER: http://tigger.readthedocs.io
 .. _RDI: http://rdi.readthedocs.io
-.. _SCOPe: packages/scope.html
+.. _SCOPer: http://scoper.readthedocs.io
 .. _prestoR: packages/prestor.html
