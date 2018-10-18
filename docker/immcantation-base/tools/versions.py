@@ -52,7 +52,7 @@ def inspectVersions(version_file=default_version_file):
       version_file : YAML file containing version information.
 
     Returns:
-      dict : Version strings.
+      dict: version strings.
     """
     # Command line version inspection
     #
@@ -83,6 +83,8 @@ def inspectVersions(version_file=default_version_file):
                           stderr=STDOUT, shell=True)
     rdi = check_output('Rscript -e \"cat(packageDescription(\'rdi\', fields=\'Version\'))\"',
                         stderr=STDOUT, shell=True)
+    scoper = check_output('Rscript -e \"cat(packageDescription(\'scoper\', fields=\'Version\'))\"',
+                        stderr=STDOUT, shell=True)
     prestor = check_output('Rscript -e \"cat(packageDescription(\'prestor\', fields=\'Version\'))\"',
                            stderr=STDOUT, shell=True)
     airr_r = check_output('Rscript -e \"cat(packageDescription(\'airr\', fields=\'Version\'))\"',
@@ -92,6 +94,7 @@ def inspectVersions(version_file=default_version_file):
     versions['shazam'] = shazam.decode('utf-8')
     versions['tigger'] = tigger.decode('utf-8')
     versions['rdi'] = rdi.decode('utf-8')
+    versions['scoper'] = scoper.decode('utf-8')
     versions['prestor'] = prestor.decode('utf-8')
     versions['airr-r'] = airr_r.decode('utf-8')
 
@@ -102,6 +105,7 @@ def inspectVersions(version_file=default_version_file):
     igblast = check_output('igblastn -version', stderr=STDOUT, shell=True)
     cdhit = check_output('cd-hit-est -h; exit 0', stderr=STDOUT, shell=True)
     phylip = check_output('echo "NULL" | drawtree; exit 0', stderr=STDOUT, shell=True)
+    igphyml = check_output('igphyml -h; exit 0', stderr=STDOUT, shell=True)
 
     versions['muscle'] = muscle.decode('utf-8').split()[1]
     versions['vsearch'] = re.search(r'(v[0-9.]+)',
@@ -114,6 +118,8 @@ def inspectVersions(version_file=default_version_file):
                                     phylip.decode('utf-8').split('\n')[0]).group(0)
     versions['cd-hit'] = re.search(r'(?<=CD-HIT version )([0-9.]+)',
                                    cdhit.decode('utf-8').split('\n')[0]).group(0)
+    versions['igphyml'] = re.search(r'(?<=IgPhyML )([0-9.]+)',
+                                   igphyml.decode('utf-8').split('\n')[1]).group(0)
 
     return versions
 
@@ -124,11 +130,11 @@ def updateChangeset(package, repo, version_file):
 
     Arguments:
       package : name of the package to return version information for.
-      repo : Path to mercurial repository.
+      repo : path to mercurial repository.
       version_file : YAML file containing version information.
 
     Returns:
-      str : changeset updated to.
+      str: changeset updated to.
     """
     # Get version and changeset
     version = getVersion(package, version_file=version_file)
@@ -151,7 +157,7 @@ def getChangeset(version, repo):
       repo : Path to mercurial repository.
 
     Returns:
-      str : changeset.
+      str: changeset.
     """
     if version is None:
         print(None)
@@ -184,7 +190,7 @@ def getVersion(package=default_package, version_file=default_version_file):
       version_file : YAML file containing version information.
 
     Returns:
-      str : version.
+      str: version.
     """
     v = readVersions(version_file)
     p = v.package(package)
@@ -211,6 +217,7 @@ def reportVersions(version_file=default_version_file):
                'shazam',
                'tigger',
                'rdi',
+               'scoper',
                'prestor']
     software = ['muscle',
                 'vsearch',
@@ -218,6 +225,7 @@ def reportVersions(version_file=default_version_file):
                 'blast',
                 'igblast',
                 'phylip',
+                'igphyml',
                 'airr-py',
                 'airr-r']
 

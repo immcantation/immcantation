@@ -104,6 +104,15 @@ RUN AIRR_PY=$(versions get -n airr-py) \
     && pip3 install airr==${AIRR_PY} \
     && Rscript -e "devtools::install_version('airr', '${AIRR_R}', quiet=FALSE, clean=TRUE)"
 
+# Install IgPhyML
+RUN IGPHYML=$(versions get -n igphyml) \
+    && wget -q --show-progress \
+       https://bitbucket.org/kbhoehn/igphyml/get/${IGPHYML}.tar.gz -O igphyml-${IGPHYML}.tar.gz \
+    && mkdir -p /usr/local/share/igphyml \
+    && tar -zxf igphyml-${IGPHYML}.tar.gz -C /usr/local/share/igphyml --strip-components 1 \
+    && (cd /usr/local/share/igphyml && ./make_phyml_blas_omp) \
+    && rm -r igphyml-${IGPHYML}.tar.gz
+
 # Install presto
 RUN PACKAGE="presto" \
     && rm -rf /tmp/${PACKAGE} \
@@ -179,6 +188,9 @@ RUN fetch_igblastdb.sh -o /usr/local/share/igblast \
     && fetch_imgtdb.sh -o /usr/local/share/germlines/imgt \
     && imgt2igblast.sh -i /usr/local/share/germlines/imgt -o /usr/local/share/igblast \
     && fetch_phix.sh -o /usr/local/share/phix
+
+# Setup environment
+ENV PATH="${PATH}:/usr/local/share/igphyml/src"
 
 # Setup users and permissions
 RUN useradd magus -u 1000 -g users \

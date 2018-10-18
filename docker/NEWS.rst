@@ -1,12 +1,13 @@
 Docker Container Release Notes
 ========================================================================
 
-Version 2.3.0:  October 19, 2018
+Version 2.3.0:  October 20, 2018
 ------------------------------------------------------------------------
 
 Image Changes:
 
 + Added scoper R package.
++ Added IgPhyML.
 
 
 Version 2.2.0:  October 5, 2018

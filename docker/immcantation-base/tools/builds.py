@@ -20,7 +20,7 @@ def readBuild(build_file=default_build_file):
       build_file : YAML file containing build information.
 
     Returns:
-      dict : Build file field/value pairs.
+      dict: build file field/value pairs.
     """
     try:
         with open(build_file, 'r') as handle:
@@ -39,7 +39,7 @@ def writeBuild(field, value, build_file=default_build_file):
       build_file : YAML file containing build information.
 
     Returns:
-      True : adds the field/value pair to the file, updating if already present
+      True: adds the field/value pair to the file, updating if already present
     """
     # Read existing file
     build = readBuild(build_file)
@@ -55,6 +55,7 @@ def writeBuild(field, value, build_file=default_build_file):
                  'shazam',
                  'tigger',
                  'rdi',
+                 'scoper',
                  'prestor']
         order = [x for x in order if x in build]
     else:
@@ -77,7 +78,7 @@ def reportBuild(build_file=default_build_file):
       build_file : YAML file containing build information.
 
     Returns:
-      str : report.
+      str: report.
     """
     # Read build
     build = readBuild(build_file)
@@ -91,6 +92,7 @@ def reportBuild(build_file=default_build_file):
              'shazam',
              'tigger',
              'rdi',
+             'scoper',
              'prestor']
     order = [x for x in order if x in build]
 
