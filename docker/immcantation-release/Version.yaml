@@ -2,8 +2,8 @@ immcantation:
   version:  2.3.0
   date:     2018.10.20
 release:
-  presto:   0.5.9
-  changeo:  0.4.2
+  presto:   0.5.10
+  changeo:  0.4.3
   alakazam: 0.2.11
   shazam:   0.1.10
   tigger:   0.3.1

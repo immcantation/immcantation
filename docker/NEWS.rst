@@ -1,12 +1,13 @@
 Docker Container Release Notes
 ========================================================================
 
-
 Version 2.3.0:  October 20, 2018
 ------------------------------------------------------------------------
 
 Version Updates:
 
++ presto 0.5.10
++ presto 0.4.3
 + tigger 0.3.1
 
 Image Changes:
