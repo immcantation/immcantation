@@ -101,11 +101,13 @@ RUN PHYLIP=$(versions get -n phylip) \
     && rm -r phylip-${PHYLIP}.tar.gz phylip-${PHYLIP}
 
 # Install IgPhyML
-RUN PACKAGE="igphyml" \
-    && rm -rf /usr/local/share/${PACKAGE} \
-    && git clone https://bitbucket.org/kbhoehn/${PACKAGE} /usr/local/share/${PACKAGE} \
-    && (cd /usr/local/share/${PACKAGE} && ./make_phyml_blas_omp) \
-    && builds write -n ${PACKAGE} -v $(git -C /usr/local/share/${PACKAGE} show --pretty=%h | head -n 1)
+RUN IGPHYML=$(versions get -n igphyml) \
+    && wget -q --show-progress \
+       https://bitbucket.org/kbhoehn/igphyml/get/${IGPHYML}.tar.gz -O igphyml-${IGPHYML}.tar.gz \
+    && mkdir -p /usr/local/share/igphyml \
+    && tar -zxf igphyml-${IGPHYML}.tar.gz -C /usr/local/share/igphyml --strip-components 1 \
+    && (cd /usr/local/share/igphyml && ./make_phyml_blas_omp) \
+    && rm -r igphyml-${IGPHYML}.tar.gz
 
 # Set commands
 CMD echo -e "Report version information:\n" \

@@ -24,6 +24,8 @@ RUN dnf -y update && dnf install -y \
     libcurl-devel \
     libxml2-devel \
     mercurial \
+    mesa-libGL-devel \
+    mesa-libGLU-devel \
     openssl-devel \
     pandoc \
     pandoc-citeproc \

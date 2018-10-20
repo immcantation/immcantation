@@ -47,14 +47,14 @@ What's in the Container
 Immcantation Tools
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-* `pRESTO <http://presto.readthedocs.io>`__
-* `Change-O <http://changeo.readthedocs.io>`__
-* `Alakazam <http://alakazam.readthedocs.io>`__
-* `SHazaM <http://shazam.readthedocs.io>`__
-* `TIgGER <http://tigger.readthedocs.io>`__
-* `RDI <http://rdi.readthedocs.io>`__
-* `prestoR <http://bitbucket.org/javh/prototype-prestor>`__
-* `SCOPe <http://bitbucket.org/kleinstein/scope>`__
+* `pRESTO <https://presto.readthedocs.io>`__
+* `Change-O <https://changeo.readthedocs.io>`__
+* `Alakazam <https://alakazam.readthedocs.io>`__
+* `SHazaM <https://shazam.readthedocs.io>`__
+* `TIgGER <https://tigger.readthedocs.io>`__
+* `RDI <https://rdi.readthedocs.io>`__
+* `SCOPer <https://scoper.readthedocs.io>`__
+* `prestoR <https://bitbucket.org/javh/prototype-prestor>`__
 
 Third Party Tools
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

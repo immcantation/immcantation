@@ -14,6 +14,8 @@ Image Changes:
 
 + Added scoper R package.
 + Added IgPhyML.
++ Removed strict Rcpp version requirement (was fixed at ``0.12.16``).
++ Added libGL and libGLU to base image.
 
 
 Version 2.2.0:  October 5, 2018

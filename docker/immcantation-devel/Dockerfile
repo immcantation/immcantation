@@ -15,15 +15,10 @@ ARG SHAZAM_THRESHOLD="shazam-threshold.R"
 ARG TIGGER_GENOTYPE="tigger-genotype.R"
 ARG PREPROCESS_PHIX="preprocess-phix.sh"
 
-# Define R build options
-ARG R_RCPP="0.12.16"
-ARG R_DEPS="c('roxygen2', 'testthat', 'rmarkdown', 'knitr', 'optparse')"
-ARG R_BUILD="library(devtools); install_deps(upgrade=FALSE, clean=TRUE); document(); install(build_vignettes=TRUE, clean=TRUE)"
-
-# Setup R environment
-RUN Rscript -e "install.packages('devtools', clean=TRUE)" \
-    && Rscript -e "devtools::install_version('Rcpp', '${R_RCPP}', quiet=FALSE, clean=TRUE)" \
-    && Rscript -e "install.packages(${R_DEPS}, clean=TRUE)"
+# Define R build options and setup R build environment
+ARG R_DEPS="c('Rcpp', 'devtools', 'roxygen2', 'testthat', 'rmarkdown', 'knitr', 'optparse')"
+ARG R_BUILD="library(devtools); install_deps(dependencies=TRUE, upgrade=TRUE, clean=TRUE); document(); install(build_vignettes=TRUE, clean=TRUE)"
+RUN Rscript -e "install.packages(${R_DEPS}, clean=TRUE)"
 
 # Install procotol data, utility scripts and pipelines
 RUN PACKAGE="immcantation" \
