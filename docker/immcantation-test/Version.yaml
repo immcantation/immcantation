@@ -1,6 +1,15 @@
 immcantation:
   version:  null
   date:     null
+release:
+  presto:   null
+  changeo:  null
+  alakazam: null
+  shazam:   null
+  tigger:   null
+  rdi:      null
+  prestor:  null
+  scoper:   null
 software:
   muscle:   3.8.31
   cd-hit:   4.6.8
@@ -9,3 +18,4 @@ software:
   igblast:  1.10.0
   phylip:   3.697
   igphyml:  1.0.5
+
