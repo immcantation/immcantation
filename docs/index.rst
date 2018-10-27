@@ -18,6 +18,7 @@
 
     docker/intro
     docker/guide
+    docker/pipelines
     docker/news
 
 .. toctree::

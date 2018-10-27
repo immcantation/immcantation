@@ -1,5 +1,12 @@
-Docker Container Release Notes
+Release Notes
 ========================================================================
+
+Version 2.4.0:  October 27, 2018
+------------------------------------------------------------------------
+
+Version Updates:
+
++ changeo 0.4.4
 
 Version 2.3.0:  October 21, 2018
 ------------------------------------------------------------------------
@@ -7,7 +14,7 @@ Version 2.3.0:  October 21, 2018
 Version Updates:
 
 + presto 0.5.10
-+ presto 0.4.3
++ changeo 0.4.3
 + tigger 0.3.1
 
 Image Changes:
