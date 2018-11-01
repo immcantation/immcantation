@@ -11,11 +11,11 @@ release:
   scoper:   0.1.0
   prestor:  0.0.5
 software:
-  muscle:   3.8.31
+  muscle:   3.8.425
   cd-hit:   4.6.8
-  vsearch:  2.8.4
+  vsearch:  2.9.1
   blast:    2.7.1
-  igblast:  1.10.0
+  igblast:  1.11.0
   phylip:   3.697
   igphyml:  1.0.5
   airr-py:  1.2.1

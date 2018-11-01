@@ -39,10 +39,10 @@ RUN PACKAGE="immcantation" \
 # Install muscle
 RUN MUSCLE=$(versions get -n muscle) \
     && wget -q --show-progress \
-       http://www.drive5.com/muscle/downloads${MUSCLE}/muscle${MUSCLE}_i86linux64.tar.gz \
-    && tar -zxf muscle${MUSCLE}_i86linux64.tar.gz \
-    && mv muscle${MUSCLE}_i86linux64 /usr/local/bin/muscle \
-    && rm muscle${MUSCLE}_i86linux64.tar.gz
+       https://www.drive5.com/muscle/muscle${MUSCLE}_binaries.tar.gz \
+	&& tar -zxf muscle${MUSCLE}_binaries.tar.gz muscle${MUSCLE}_i86linux64 \
+	&& mv muscle${MUSCLE}_i86linux64 /usr/local/bin/muscle \
+	&& rm muscle${MUSCLE}_i86linux64.tar.gz
 
 # Install vsearch
 RUN VSEARCH=$(versions get -n vsearch) \
