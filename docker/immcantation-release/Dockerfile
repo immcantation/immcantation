@@ -42,7 +42,7 @@ RUN MUSCLE=$(versions get -n muscle) \
        https://www.drive5.com/muscle/muscle${MUSCLE}_binaries.tar.gz \
 	&& tar -zxf muscle${MUSCLE}_binaries.tar.gz muscle${MUSCLE}_i86linux64 \
 	&& mv muscle${MUSCLE}_i86linux64 /usr/local/bin/muscle \
-	&& rm muscle${MUSCLE}_i86linux64.tar.gz
+	&& rm muscle${MUSCLE}_binaries.tar.gz
 
 # Install vsearch
 RUN VSEARCH=$(versions get -n vsearch) \
