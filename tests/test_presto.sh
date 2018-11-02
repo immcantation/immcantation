@@ -139,12 +139,11 @@ get_output() {
 @test "ClusterSets-all" {
     TEST="${BATS_TEST_NUMBER}-${BATS_TEST_DESCRIPTION}"
 	READS="${DATA_DIR}/sequences/HD13M-R1_primers-pass_pair-pass.fastq"
-	LOG="${RUN_DIR}/logs/${TEST}.log"
 	CONSOLE="${RUN_DIR}/console/${TEST}.out"
-    OUTPUT=$(get_output ${TEST} ${OUTDIR} ${FAILED})
+    OUTPUT=$(get_output ${TEST} ${OUTDIR} false)
 
     run ClusterSets.py all -s $READS --id 0.80 --prefix A --cluster $CLUSTER \
-        --log $LOG --nproc $NPROC $OUTPUT
+        --nproc $NPROC $OUTPUT
 
     echo "$output" > $CONSOLE
 	[ "$status" -eq 0 ]
@@ -153,12 +152,11 @@ get_output() {
 @test "ClusterSets-barcode" {
     TEST="${BATS_TEST_NUMBER}-${BATS_TEST_DESCRIPTION}"
 	READS="${DATA_DIR}/sequences/HD13M-R1_primers-pass_pair-pass.fastq"
-	LOG="${RUN_DIR}/logs/${TEST}.log"
 	CONSOLE="${RUN_DIR}/console/${TEST}.out"
-    OUTPUT=$(get_output ${TEST} ${OUTDIR} ${FAILED})
+    OUTPUT=$(get_output ${TEST} ${OUTDIR} false)
 
     run ClusterSets.py barcode -s $READS -f BARCODE --id 0.80 --prefix B --cluster $CLUSTER \
-        --log $LOG --nproc $NPROC $OUTPUT
+        --nproc $NPROC $OUTPUT
 
     echo "$output" > $CONSOLE
 	[ "$status" -eq 0 ]
