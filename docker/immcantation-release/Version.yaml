@@ -1,6 +1,6 @@
 immcantation:
   version:  2.5.0
-  date:     2018.10.27
+  date:     2018.11.03
 release:
   presto:   0.5.10
   changeo:  0.4.4
@@ -12,8 +12,8 @@ release:
   prestor:  0.0.5
 software:
   muscle:   3.8.425
-  cd-hit:   4.6.8
   vsearch:  2.9.1
+  cd-hit:   4.6.8
   blast:    2.7.1
   igblast:  1.11.0
   phylip:   3.697

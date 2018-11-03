@@ -12,8 +12,8 @@ release:
   scoper:   null
 software:
   muscle:   3.8.425
-  cd-hit:   4.6.8
   vsearch:  2.9.1
+  cd-hit:   4.6.8
   blast:    2.7.1
   igblast:  1.11.0
   phylip:   3.697

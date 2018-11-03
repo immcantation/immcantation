@@ -7,9 +7,16 @@ Build versioning helper script
 import sys
 import yaml
 from argparse import ArgumentParser
+from collections import OrderedDict
 
 # Defaults
 default_build_file='/Build.yaml'
+
+# Set YAML loader to OrderedDict
+def dict_representer(dumper, data):  return dumper.represent_dict(data.iteritems())
+def dict_constructor(loader, node):  return OrderedDict(loader.construct_pairs(node))
+yaml.add_representer(OrderedDict, dict_representer)
+yaml.add_constructor(yaml.resolver.BaseResolver.DEFAULT_MAPPING_TAG, dict_constructor)
 
 
 def readBuild(build_file=default_build_file):

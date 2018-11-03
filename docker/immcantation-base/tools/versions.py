@@ -8,11 +8,18 @@ import re
 import sys
 import yaml
 from argparse import ArgumentParser
+from collections import OrderedDict
 from subprocess import check_output, STDOUT
 
 # Defaults
 default_version_file='/Version.yaml'
 default_package='immcantation'
+
+# Set YAML loader to OrderedDict
+def dict_representer(dumper, data):  return dumper.represent_dict(data.iteritems())
+def dict_constructor(loader, node):  return OrderedDict(loader.construct_pairs(node))
+yaml.add_representer(OrderedDict, dict_representer)
+yaml.add_constructor(yaml.resolver.BaseResolver.DEFAULT_MAPPING_TAG, dict_constructor)
 
 
 class Version():
@@ -25,6 +32,8 @@ class Version():
         self.packages = {'immcantation': versions['immcantation']['version']}
         self.packages.update(versions['release'])
         self.packages.update(versions['software'])
+        self.sections = OrderedDict([('release', versions['release'].keys()),
+                                     ('software', versions['software'].keys())])
 
     def package(self, x):
         return self.packages[x]
@@ -65,14 +74,13 @@ def inspectVersions(version_file=default_version_file):
     # BLAST=$(blastn -version  | grep 'Package' |sed s/'Package: '//)
 
     # Only available via the version file
-    v = readVersions(version_file=version_file)
-    versions = {'immcantation': '%s-%s' % (v.version, v.date)}
+    versions = readVersions(version_file=version_file)
 
     # Python packges
     import presto, changeo, airr
-    versions['presto'] = '%s-%s' % (presto.__version__, presto.__date__)
-    versions['changeo'] = '%s-%s' % (changeo.__version__, changeo.__date__)
-    versions['airr-py'] = '%s' % airr.__version__
+    versions.packages['presto'] = '%s' % presto.__version__
+    versions.packages['changeo'] = '%s' % changeo.__version__
+    versions.packages['airr-py'] = '%s' % airr.__version__
 
     # R packages
     alakazam = check_output('Rscript -e \"cat(packageDescription(\'alakazam\', fields=\'Version\'))\"',
@@ -90,15 +98,15 @@ def inspectVersions(version_file=default_version_file):
     airr_r = check_output('Rscript -e \"cat(packageDescription(\'airr\', fields=\'Version\'))\"',
                            stderr=STDOUT, shell=True)
 
-    versions['alakazam'] = alakazam.decode('utf-8')
-    versions['shazam'] = shazam.decode('utf-8')
-    versions['tigger'] = tigger.decode('utf-8')
-    versions['rdi'] = rdi.decode('utf-8')
-    versions['scoper'] = scoper.decode('utf-8')
-    versions['prestor'] = prestor.decode('utf-8')
-    versions['airr-r'] = airr_r.decode('utf-8')
+    versions.packages['alakazam'] = alakazam.decode('utf-8')
+    versions.packages['shazam'] = shazam.decode('utf-8')
+    versions.packages['tigger'] = tigger.decode('utf-8')
+    versions.packages['rdi'] = rdi.decode('utf-8')
+    versions.packages['scoper'] = scoper.decode('utf-8')
+    versions.packages['prestor'] = prestor.decode('utf-8')
+    versions.packages['airr-r'] = airr_r.decode('utf-8')
 
-    # External applications
+    # Run external application version reports
     muscle = check_output('muscle -version', stderr=STDOUT, shell=True)
     vsearch = check_output('vsearch --version', stderr=STDOUT, shell=True)
     blast = check_output('blastn -version', stderr=STDOUT, shell=True)
@@ -107,19 +115,42 @@ def inspectVersions(version_file=default_version_file):
     phylip = check_output('echo "NULL" | drawtree; exit 0', stderr=STDOUT, shell=True)
     igphyml = check_output('igphyml -h; exit 0', stderr=STDOUT, shell=True)
 
-    versions['muscle'] = muscle.decode('utf-8').split()[1]
-    versions['vsearch'] = re.search(r'(v[0-9.]+)',
-                                    vsearch.decode('utf-8').split('\n')[0]).group(0)
-    versions['blast'] = re.search(r'(?<=blast )([0-9.]+)',
-                                  blast.decode('utf-8').split('\n')[1]).group(0)
-    versions['igblast'] = re.search(r'(?<=igblast )([0-9.]+)',
-                                    igblast.decode('utf-8').split('\n')[1]).group(0)
-    versions['phylip'] =  re.search(r'(?<=PHYLIP version )([0-9.]+)',
-                                    phylip.decode('utf-8').split('\n')[0]).group(0)
-    versions['cd-hit'] = re.search(r'(?<=CD-HIT version )([0-9.]+)',
-                                   cdhit.decode('utf-8').split('\n')[0]).group(0)
-    versions['igphyml'] = re.search(r'(?<=IgPhyML )([0-9.]+)',
-                                   igphyml.decode('utf-8').split('\n')[1]).group(0)
+    # Parse version from commandline output
+    try:
+        versions.packages['muscle'] = re.search(r'(?<=v)([0-9.]+)', muscle.decode('utf-8').split()[1]).group(0)
+    except AttributeError:
+        versions.packages['muscle'] = None
+
+    try:
+        versions.packages['vsearch'] = re.search(r'(?<=v)([0-9.]+)', vsearch.decode('utf-8').split('\n')[0]).group(0)
+    except AttributeError:
+        versions.packages['vsearch'] = None
+
+    try:
+        versions.packages['cd-hit'] = re.search(r'(?<=CD-HIT version )([0-9.]+)', cdhit.decode('utf-8').split('\n')[0]).group(0)
+    except AttributeError:
+        versions.packages['cd-hit'] = None
+
+    try:
+        versions.packages['blast'] = re.search(r'(?<=blast )([0-9.]+)', blast.decode('utf-8').split('\n')[1]).group(0)
+    except AttributeError:
+        versions.packages['blast'] = None
+
+    try:
+        versions.packages['igblast'] = re.search(r'(?<=igblast )([0-9.]+)', igblast.decode('utf-8').split('\n')[1]).group(0)
+    except AttributeError:
+        versions.packages['igblast'] = None
+
+    try:
+        versions.packages['phylip'] =  re.search(r'(?<=PHYLIP version )([0-9.]+)', phylip.decode('utf-8').split('\n')[0]).group(0)
+    except AttributeError:
+        versions.packages['phylip'] = None
+
+
+    try:
+        versions.packages['igphyml'] = re.search(r'(?<=IgPhyML )([0-9.]+)', igphyml.decode('utf-8').split('\n')[1]).group(0)
+    except AttributeError:
+        versions.packages['igphyml'] = None
 
     return versions
 
@@ -211,29 +242,12 @@ def reportVersions(version_file=default_version_file):
     """
     versions = inspectVersions(version_file=version_file)
 
-    release = ['presto',
-               'changeo',
-               'alakazam',
-               'shazam',
-               'tigger',
-               'rdi',
-               'scoper',
-               'prestor']
-    software = ['muscle',
-                'vsearch',
-                'cd-hit',
-                'blast',
-                'igblast',
-                'phylip',
-                'igphyml',
-                'airr-py',
-                'airr-r']
+    report = ['immcantation: %s' % versions.version] + \
+             ['date: %s' % versions.date]
 
-    report = ['Immcantation: %s' % versions['immcantation']] + \
-             [''] + \
-             ['  %s: %s' % (x, versions[x]) for x in release] + \
-             [''] + \
-             ['  %s: %s' % (x, versions[x]) for x in software]
+    print(versions.sections.keys())
+    for __, packages in versions.sections.items():
+        report += [''] + ['  %s: %s' % (x, versions.package(x)) for x in packages]
 
     print('\n'.join(report))
     return(report)
