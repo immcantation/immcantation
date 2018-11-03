@@ -9,7 +9,7 @@ import sys
 import yaml
 from argparse import ArgumentParser
 from collections import OrderedDict
-from subprocess import check_output, STDOUT
+from subprocess import check_output, CalledProcessError, STDOUT
 
 # Defaults
 default_version_file='/Version.yaml'
@@ -76,81 +76,138 @@ def inspectVersions(version_file=default_version_file):
     # Only available via the version file
     versions = readVersions(version_file=version_file)
 
-    # Python packges
-    import presto, changeo, airr
-    versions.packages['presto'] = '%s' % presto.__version__
-    versions.packages['changeo'] = '%s' % changeo.__version__
-    versions.packages['airr-py'] = '%s' % airr.__version__
-
-    # R packages
-    alakazam = check_output('Rscript -e \"cat(packageDescription(\'alakazam\', fields=\'Version\'))\"',
-                            stderr=STDOUT, shell=True)
-    shazam = check_output('Rscript -e \"cat(packageDescription(\'shazam\', fields=\'Version\'))\"',
-                          stderr=STDOUT, shell=True)
-    tigger = check_output('Rscript -e \"cat(packageDescription(\'tigger\', fields=\'Version\'))\"',
-                          stderr=STDOUT, shell=True)
-    rdi = check_output('Rscript -e \"cat(packageDescription(\'rdi\', fields=\'Version\'))\"',
-                        stderr=STDOUT, shell=True)
-    scoper = check_output('Rscript -e \"cat(packageDescription(\'scoper\', fields=\'Version\'))\"',
-                        stderr=STDOUT, shell=True)
-    prestor = check_output('Rscript -e \"cat(packageDescription(\'prestor\', fields=\'Version\'))\"',
-                           stderr=STDOUT, shell=True)
-    airr_r = check_output('Rscript -e \"cat(packageDescription(\'airr\', fields=\'Version\'))\"',
-                           stderr=STDOUT, shell=True)
-
-    versions.packages['alakazam'] = alakazam.decode('utf-8')
-    versions.packages['shazam'] = shazam.decode('utf-8')
-    versions.packages['tigger'] = tigger.decode('utf-8')
-    versions.packages['rdi'] = rdi.decode('utf-8')
-    versions.packages['scoper'] = scoper.decode('utf-8')
-    versions.packages['prestor'] = prestor.decode('utf-8')
-    versions.packages['airr-r'] = airr_r.decode('utf-8')
-
-    # Run external application version reports
-    muscle = check_output('muscle -version', stderr=STDOUT, shell=True)
-    vsearch = check_output('vsearch --version', stderr=STDOUT, shell=True)
-    blast = check_output('blastn -version', stderr=STDOUT, shell=True)
-    igblast = check_output('igblastn -version', stderr=STDOUT, shell=True)
-    cdhit = check_output('cd-hit-est -h; exit 0', stderr=STDOUT, shell=True)
-    phylip = check_output('echo "NULL" | drawtree; exit 0', stderr=STDOUT, shell=True)
-    igphyml = check_output('igphyml -h; exit 0', stderr=STDOUT, shell=True)
-
-    # Parse version from commandline output
+    # pRESTO
     try:
-        versions.packages['muscle'] = re.search(r'(?<=v)([0-9.]+)', muscle.decode('utf-8').split()[1]).group(0)
-    except AttributeError:
+        import presto
+        versions.packages['presto'] = presto.__version__
+    except ImportError:
+        versions.packages['presto'] = None
+
+    # Change-O
+    try:
+        import changeo
+        versions.packages['changeo'] = changeo.__version__
+    except ImportError:
+        versions.packages['changeo'] = None
+
+    # Alakazam
+    try:
+        alakazam = check_output('Rscript -e \"cat(packageDescription(\'alakazam\', fields=\'Version\'))\"',
+                                stderr=STDOUT, shell=True)
+        versions.packages['alakazam'] = re.search(r'([0-9.]+)', alakazam.decode('utf-8')).group(0)
+    except (CalledProcessError, AttributeError):
+        versions.packages['alakazam'] = None
+
+    # SHazaM
+    try:
+        shazam = check_output('Rscript -e \"cat(packageDescription(\'shazam\', fields=\'Version\'))\"',
+                              stderr=STDOUT, shell=True)
+        versions.packages['shazam'] = re.search(r'([0-9.]+)', shazam.decode('utf-8')).group(0)
+    except (CalledProcessError, AttributeError):
+        versions.packages['shazam'] = None
+
+    # TIgGER
+    try:
+        tigger = check_output('Rscript -e \"cat(packageDescription(\'tigger\', fields=\'Version\'))\"',
+                              stderr=STDOUT, shell=True)
+        versions.packages['tigger'] = re.search(r'([0-9.]+)', tigger.decode('utf-8')).group(0)
+    except (CalledProcessError, AttributeError):
+        versions.packages['tigger'] = None
+
+    # RDI
+    try:
+        rdi = check_output('Rscript -e \"cat(packageDescription(\'rdi\', fields=\'Version\'))\"',
+                            stderr=STDOUT, shell=True)
+        versions.packages['rdi'] = re.search(r'([0-9.]+)', rdi.decode('utf-8')).group(0)
+    except (CalledProcessError, AttributeError):
+        versions.packages['rdi'] = None
+
+    # SCOPer
+    try:
+        scoper = check_output('Rscript -e \"cat(packageDescription(\'scoper\', fields=\'Version\'))\"',
+                            stderr=STDOUT, shell=True)
+        versions.packages['scoper'] = re.search(r'([0-9.]+)', scoper.decode('utf-8')).group(0)
+    except (CalledProcessError, AttributeError):
+        versions.packages['scoper'] = None
+
+    # prestoR
+    try:
+        prestor = check_output('Rscript -e \"cat(packageDescription(\'prestor\', fields=\'Version\'))\"',
+                               stderr=STDOUT, shell=True)
+        versions.packages['prestor'] = re.search(r'([0-9.]+)', prestor.decode('utf-8')).group(0)
+    except (CalledProcessError, AttributeError):
+        versions.packages['prestor'] = None
+
+    # MUSCLE
+    try:
+        muscle = check_output('muscle -version', stderr=STDOUT, shell=True)
+        muscle = muscle.decode('utf-8').split()[1]
+        versions.packages['muscle'] = re.search(r'(?<=v)([0-9.]+)', muscle).group(0)
+    except (CalledProcessError, AttributeError):
         versions.packages['muscle'] = None
 
+    # vsearch
     try:
-        versions.packages['vsearch'] = re.search(r'(?<=v)([0-9.]+)', vsearch.decode('utf-8').split('\n')[0]).group(0)
-    except AttributeError:
+        vsearch = check_output('vsearch --version', stderr=STDOUT, shell=True)
+        vsearch = vsearch.decode('utf-8').split('\n')[0]
+        versions.packages['vsearch'] = re.search(r'(?<=v)([0-9.]+)', vsearch).group(0)
+    except (CalledProcessError, AttributeError):
         versions.packages['vsearch'] = None
 
+    # CD-HIT
     try:
-        versions.packages['cd-hit'] = re.search(r'(?<=CD-HIT version )([0-9.]+)', cdhit.decode('utf-8').split('\n')[0]).group(0)
-    except AttributeError:
+        cdhit = check_output('cd-hit-est -h; exit 0', stderr=STDOUT, shell=True)
+        cdhit = cdhit.decode('utf-8').split('\n')[0]
+        versions.packages['cd-hit'] = re.search(r'(?<=CD-HIT version )([0-9.]+)', cdhit).group(0)
+    except (CalledProcessError, AttributeError):
         versions.packages['cd-hit'] = None
 
+    # BLAST
     try:
-        versions.packages['blast'] = re.search(r'(?<=blast )([0-9.]+)', blast.decode('utf-8').split('\n')[1]).group(0)
-    except AttributeError:
+        blast = check_output('blastn -version', stderr=STDOUT, shell=True)
+        blast = blast.decode('utf-8').split('\n')[1]
+        versions.packages['blast'] = re.search(r'(?<=blast )([0-9.]+)', blast).group(0)
+    except (CalledProcessError, AttributeError):
         versions.packages['blast'] = None
 
+    # IgBLAST
     try:
-        versions.packages['igblast'] = re.search(r'(?<=igblast )([0-9.]+)', igblast.decode('utf-8').split('\n')[1]).group(0)
-    except AttributeError:
+        igblast = check_output('igblastn -version', stderr=STDOUT, shell=True)
+        igblast = igblast.decode('utf-8').split('\n')[1]
+        versions.packages['igblast'] = re.search(r'(?<=igblast )([0-9.]+)', igblast).group(0)
+    except (CalledProcessError, AttributeError):
         versions.packages['igblast'] = None
 
+    # PHYLIP
     try:
-        versions.packages['phylip'] =  re.search(r'(?<=PHYLIP version )([0-9.]+)', phylip.decode('utf-8').split('\n')[0]).group(0)
-    except AttributeError:
+        phylip = check_output('echo "NULL" | drawtree; exit 0', stderr=STDOUT, shell=True)
+        phylip = phylip.decode('utf-8').split('\n')[0]
+        versions.packages['phylip'] =  re.search(r'(?<=PHYLIP version )([0-9.]+)', phylip).group(0)
+    except (CalledProcessError, AttributeError):
         versions.packages['phylip'] = None
 
-
+    # IgPhyML
     try:
-        versions.packages['igphyml'] = re.search(r'(?<=IgPhyML )([0-9.]+)', igphyml.decode('utf-8').split('\n')[1]).group(0)
-    except AttributeError:
+        igphyml = check_output('igphyml -h; exit 0', stderr=STDOUT, shell=True)
+        igphyml = igphyml.decode('utf-8').split('\n')[1]
+        versions.packages['igphyml'] = re.search(r'(?<=IgPhyML )([0-9.]+)', igphyml).group(0)
+    except (CalledProcessError, AttributeError):
         versions.packages['igphyml'] = None
+
+    # AIRR Python library
+    try:
+        import airr
+        versions.packages['airr-py'] = airr.__version__
+    except ImportError:
+        versions.packages['airr-py'] = None
+
+    # AIRR R Library
+    try:
+        airr_r = check_output('Rscript -e \"cat(packageDescription(\'airr\', fields=\'Version\'))\"',
+                               stderr=STDOUT, shell=True)
+        versions.packages['airr-r'] = re.search(r'([0-9.]+)', airr_r.decode('utf-8')).group(0)
+    except (CalledProcessError, AttributeError):
+        versions.packages['airr-r'] = None
 
     return versions
 
