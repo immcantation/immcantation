@@ -63,17 +63,7 @@ def inspectVersions(version_file=default_version_file):
     Returns:
       dict: version strings.
     """
-    # Command line version inspection
-    #
-    # PRESTO=$(python3 -c "import presto; print('%s-%s' % (presto.__version__, presto.__date__))")
-    # CHANGEO=$(python3 -c "import changeo; print('%s-%s' % (changeo.__version__, changeo.__date__))")
-    # ALAKAZAM=$(Rscript -e "cat(packageDescription('alakazam', fields='Version'))")
-    # IGBLAST=$(igblastn -version  | grep 'Package' |sed s/'Package: '//)
-    # MUSCLE=$(muscle -version)
-    # VSEARCH=$(vsearch --version 2> >(head -n1 | cut -d',' -f1))
-    # BLAST=$(blastn -version  | grep 'Package' |sed s/'Package: '//)
-
-    # Only available via the version file
+    # Load versions object from version file
     versions = readVersions(version_file=version_file)
 
     # pRESTO

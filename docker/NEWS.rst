@@ -10,6 +10,10 @@ Version Updates:
 + muscle 3.8.425
 + vsearch 2.9.1
 
+Image Changes:
+
++ Added error checking to ``versions report`` command.
+
 
 Version 2.4.0:  October 27, 2018
 ------------------------------------------------------------------------
