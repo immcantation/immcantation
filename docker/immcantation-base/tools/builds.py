@@ -89,23 +89,7 @@ def reportBuild(build_file=default_build_file):
     """
     # Read build
     build = readBuild(build_file)
-
-    # Set default ordering
-    order = ['date',
-             'immcantation',
-             'presto',
-             'changeo',
-             'alakazam',
-             'shazam',
-             'tigger',
-             'rdi',
-             'scoper',
-             'prestor']
-    order = [x for x in order if x in build]
-
-    report = ['%s: %s' % (k, build[k]) for k in order] + \
-             ['%s: %s' % (k, build[k]) for k in build if k not in order]
-
+    report = ['%s: %s' % (k, build[k]) for k in build]
     print('\n'.join(report))
 
     return(report)
