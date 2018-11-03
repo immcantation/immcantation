@@ -287,12 +287,14 @@ def reportVersions(version_file=default_version_file):
     Returns:
       str : version.
     """
+    # Fetch versions
     versions = inspectVersions(version_file=version_file)
 
+    # Report immcantation version
     report = ['immcantation: %s' % versions.version] + \
              ['date: %s' % versions.date]
 
-    print(versions.sections.keys())
+    # Report packages versions
     for __, packages in versions.sections.items():
         report += [''] + ['  %s: %s' % (x, versions.package(x)) for x in packages]
 
