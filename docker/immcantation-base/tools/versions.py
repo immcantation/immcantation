@@ -296,7 +296,7 @@ def reportVersions(version_file=default_version_file):
 
     # Report packages versions
     for __, packages in versions.sections.items():
-        report += [''] + ['  %s: %s' % (x, versions.package(x)) for x in packages]
+        report += [''] + ['%s: %s' % (x, versions.package(x)) for x in packages]
 
     print('\n'.join(report))
     return(report)
