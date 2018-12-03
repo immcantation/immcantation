@@ -19,6 +19,7 @@
 #   -p  Number of subprocesses for multiprocessing tools.
 #       Defaults to the available processing units.
 #   -f  Specify to filter the output to only productive/functional sequences.
+#   -a  Specify to allow partial alignments
 #   -h  Display help.
 
 # Print usage
@@ -39,6 +40,7 @@ print_usage() {
     echo -e "  -p  Number of subprocesses for multiprocessing tools.\n" \
             "     Defaults to the available cores."
     echo -e "  -f  Specify to filter the output to only productive/functional sequences."
+    echo -e "  -a  Specify to allow partial."
     echo -e "  -h  This message."
 }
 
@@ -52,9 +54,10 @@ OUTNAME_SET=false
 OUTDIR_SET=false
 NPROC_SET=false
 FUNCTIONAL=false
+PARTIAL=false
 
 # Get commandline arguments
-while getopts "s:r:g:t:b:n:o:p:fh" OPT; do
+while getopts "s:r:g:t:b:n:o:p:fah" OPT; do
     case "$OPT" in
     s)  READS=$OPTARG
         READS_SET=true
@@ -82,6 +85,8 @@ while getopts "s:r:g:t:b:n:o:p:fh" OPT; do
         ;;
     f)  FUNCTIONAL=true
         ;;
+    a)  PARTIAL=true
+        ;;        
     h)  print_usage
         exit
         ;;
@@ -225,12 +230,21 @@ FMT7_FILE="${FMT7_FILE%.fasta}.fmt7"
 
 # Parse IgBLAST output
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "MakeDb igblast"
-MakeDb.py igblast -i ${FMT7_FILE} -s  ${IG_FILE} -r ${REFDIR} \
+if $PARTIAL; then
+    MakeDb.py igblast -i ${FMT7_FILE} -s  ${IG_FILE} -r ${REFDIR} \
+    --scores --regions --failed --partial --outname "${OUTNAME}" --outdir . \
+    >> $PIPELINE_LOG 2> $ERROR_LOG
+    DB_PASS="${OUTNAME}_db-pass.${EXT}"
+    DB_FAIL="${OUTNAME}_db-fail.${EXT}"
+    LAST_FILE=$DB_PASS
+else
+    MakeDb.py igblast -i ${FMT7_FILE} -s  ${IG_FILE} -r ${REFDIR} \
     --scores --regions --failed --outname "${OUTNAME}" --outdir . \
     >> $PIPELINE_LOG 2> $ERROR_LOG
     DB_PASS="${OUTNAME}_db-pass.${EXT}"
     DB_FAIL="${OUTNAME}_db-fail.${EXT}"
     LAST_FILE=$DB_PASS
+fi
 check_error
 
 # Create germlines
