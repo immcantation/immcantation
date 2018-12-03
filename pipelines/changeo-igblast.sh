@@ -2,7 +2,7 @@
 # Super script to run IgBLAST and Change-O
 #
 # Author:  Jason Anthony Vander Heiden, Gur Yaari, Namita Gupta
-# Date:    2018.09.15
+# Date:    2018.12.03
 #
 # Arguments:
 #   -s  FASTA or FASTQ sequence file.
