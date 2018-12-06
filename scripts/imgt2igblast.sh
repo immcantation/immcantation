@@ -60,8 +60,12 @@ do
     do
         for SEGMENT in V D J
         do
-            cat ${GERMDIR}/${SPECIES}/vdj/imgt_${SPECIES}_${CHAIN}?${SEGMENT}.fasta \
+            SEGMENT_FASTA=${GERMDIR}/${SPECIES}/vdj/imgt_${SPECIES}_${CHAIN}?${SEGMENT}.fasta
+            if [ -f ${SEGMENT_FASTA} ]
+            then
+            cat ${SEGMENT_FASTA} \
                 > $TMPDIR/imgt_${SPECIES,,}_${CHAIN,,}_${SEGMENT,,}.fasta
+            fi
         done
     done
 done
@@ -74,7 +78,7 @@ do
 	clean_imgtdb.py ${F} ${OUTDIR}/fasta/${F}
 	#edit_imgt_file.pl ${F} > ${OUTDIR}/fasta/${F}
 	makeblastdb -parse_seqids -dbtype nucl -in ${OUTDIR}/fasta/${F} \
-	    -out ${OUTDIR}/database/${F%%.*}
+        -out ${OUTDIR}/database/${F%%.*}
 done
 
 # Remove temporary fasta files
