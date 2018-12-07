@@ -51,4 +51,6 @@ RUN dnf -y update && dnf install -y \
 # Setup environment
 ENV LD_LIBRARY_PATH="/usr/lib64/R/lib:/usr/lib64/atlas"
 ARG R_REPO="https://cran.cnr.berkeley.edu"
-RUN echo "options(repos='${R_REPO}')" >> /usr/lib64/R/library/base/R/Rprofile
+RUN echo "options(repos='${R_REPO}')" >> /usr/lib64/R/library/base/R/Rprofile \
+    && mkdir -p /usr/share/doc/R/html \
+	&& cp /usr/lib64/R/library/stats/html/R.css /usr/share/doc/R/html/R.css
