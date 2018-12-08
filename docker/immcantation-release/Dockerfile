@@ -16,8 +16,8 @@ ARG TIGGER_GENOTYPE="pipelines/tigger-genotype.R"
 ARG PREPROCESS_PHIX="pipelines/preprocess-phix.sh"
 
 # Define R build options and setup R build environment
-ARG R_DEPS="c('Rcpp', 'devtools', 'roxygen2', 'testthat', 'rmarkdown', 'knitr', 'optparse')"
-ARG R_BUILD="library(devtools); install_deps(dependencies=TRUE, upgrade=TRUE, clean=TRUE); document(); install(build_vignettes=TRUE, clean=TRUE)"
+ARG R_DEPS="c('Rcpp', 'devtools', 'roxygen2', 'testthat', 'pkgbuild', 'rmarkdown', 'knitr', 'optparse')"
+ARG R_BUILD="library(devtools); install_deps(dependencies=TRUE, upgrade=TRUE, clean=TRUE); pkgbuild::compile_dll(); document(); install(build_vignettes=TRUE, clean=TRUE)"
 RUN Rscript -e "install.packages(${R_DEPS}, clean=TRUE)"
 
 # Install procotol data, utility scripts and pipelines
