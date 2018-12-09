@@ -1,6 +1,6 @@
 immcantation:
   version:  2.6.0
-  date:     2018.12.10
+  date:     2018.12.09
 release:
   presto:   0.5.10
   changeo:  0.4.4
