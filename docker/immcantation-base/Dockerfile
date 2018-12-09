@@ -9,9 +9,10 @@ VOLUME /scratch
 VOLUME /software
 VOLUME /oasis
 
-# Versioning
+# Tools
 COPY tools/versions.py /usr/local/bin/versions
 COPY tools/builds.py /usr/local/bin/builds
+COPY tools/rinstall.R /usr/local/bin/rinstall
 
 # Update and install required packages
 RUN dnf -y update && dnf install -y \
@@ -22,6 +23,7 @@ RUN dnf -y update && dnf install -y \
     git \
     lapack-devel \
     libcurl-devel \
+    libnsl \
     libxml2-devel \
     mercurial \
     mesa-libGL-devel \
@@ -48,9 +50,20 @@ RUN dnf -y update && dnf install -y \
     wget \
     && dnf clean all
 
-# Setup environment
+# System environment variables
 ENV LD_LIBRARY_PATH="/usr/lib64/R/lib:/usr/lib64/atlas"
+
+# R build setup
 ARG R_REPO="https://cran.cnr.berkeley.edu"
+ARG R_DEPS="c('Rcpp', \
+              'devtools', \
+              'roxygen2', \
+              'testthat', \
+              'pkgbuild', \
+              'rmarkdown', \
+              'knitr', \
+              'optparse')"
 RUN echo "options(repos='${R_REPO}')" >> /usr/lib64/R/library/base/R/Rprofile \
     && mkdir -p /usr/share/doc/R/html \
-	&& cp /usr/lib64/R/library/stats/html/R.css /usr/share/doc/R/html/R.css
+	&& cp /usr/lib64/R/library/stats/html/R.css /usr/share/doc/R/html/R.css \
+	&& Rscript -e "install.packages(${R_DEPS}, clean=TRUE)"

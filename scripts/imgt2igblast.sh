@@ -60,12 +60,12 @@ do
     do
         for SEGMENT in V D J
         do
-            SEGMENT_FASTA=${GERMDIR}/${SPECIES}/vdj/imgt_${SPECIES}_${CHAIN}?${SEGMENT}.fasta
-            if [ -f ${SEGMENT_FASTA} ]
-            then
-            cat ${SEGMENT_FASTA} \
+            cat ${GERMDIR}/${SPECIES}/vdj/imgt_${SPECIES}_${CHAIN}?${SEGMENT}.fasta \
                 > $TMPDIR/imgt_${SPECIES,,}_${CHAIN,,}_${SEGMENT,,}.fasta
-            fi
+            #SEGMENT_FASTA="${GERMDIR}/${SPECIES}/vdj/imgt_${SPECIES}_${CHAIN}?${SEGMENT}.fasta"
+            #if [ -f "${SEGMENT_FASTA}" ]; then
+            #    cat ${SEGMENT_FASTA} > "${TMPDIR}/imgt_${SPECIES,,}_${CHAIN,,}_${SEGMENT,,}.fasta"
+            #fi
         done
     done
 done
@@ -74,9 +74,7 @@ done
 cd ${TMPDIR}
 for F in $(ls *.fasta)
 do
-	#cp ${F} ${OUTDIR}/fasta/${F}
 	clean_imgtdb.py ${F} ${OUTDIR}/fasta/${F}
-	#edit_imgt_file.pl ${F} > ${OUTDIR}/fasta/${F}
 	makeblastdb -parse_seqids -dbtype nucl -in ${OUTDIR}/fasta/${F} \
         -out ${OUTDIR}/database/${F%%.*}
 done

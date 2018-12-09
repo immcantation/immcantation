@@ -10,7 +10,8 @@ Version Updates:
 
 Image Changes:
 
-+ Base OS version changed to Fedora 29.
++ Base system changed to Fedora 29.
++ Moved setup of R package build environment to base image.
 
 
 Version 2.5.0:  November 1, 2018

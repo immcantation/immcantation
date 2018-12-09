@@ -8,7 +8,7 @@ COPY Version.yaml /Version.yaml
 RUN builds write -n date -v "$(date +'%Y-%m-%d %T %Z')"
 
 # Define R package installation parameters
-ARG R_RCPP="0.12.16"
+# ARG R_RCPP="0.12.16"
 ARG R_DEPS="c('ape', \
               'bibtex', \
               'captioner', \
@@ -30,25 +30,23 @@ ARG R_DEPS="c('ape', \
               'lazyeval', \
               'MASS', \
               'openxlsx', \
-              'optparse', \
               'progress', \
               'readr', \
-              'rmarkdown', \
-              'roxygen2', \
+              'rlang', \
               'rversions', \
               'scales', \
               'SDMTools', \
               'seqinr', \
               'stringi', \
-              'testthat', \
               'tidyr', \
               'versions', \
               'yaml')"
 
 # Setup R environment
-RUN Rscript -e "install.packages('devtools', clean=TRUE)" \
-    && Rscript -e "devtools::install_version('Rcpp', '${R_RCPP}', quiet=FALSE, clean=TRUE)" \
-    && Rscript -e "install.packages(${R_DEPS}, clean=TRUE)"
+#RUN Rscript -e "install.packages('devtools', clean=TRUE)" \
+#    && Rscript -e "devtools::install_version('Rcpp', '${R_RCPP}', quiet=FALSE, clean=TRUE)" \
+#    && Rscript -e "install.packages(${R_DEPS}, clean=TRUE)"
+RUN Rscript -e "install.packages(${R_DEPS}, clean=TRUE)"
 
 # Install muscle
 RUN MUSCLE=$(versions get -n muscle) \

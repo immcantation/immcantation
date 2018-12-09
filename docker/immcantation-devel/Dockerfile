@@ -15,11 +15,6 @@ ARG SHAZAM_THRESHOLD="shazam-threshold.R"
 ARG TIGGER_GENOTYPE="tigger-genotype.R"
 ARG PREPROCESS_PHIX="preprocess-phix.sh"
 
-# Define R build options and setup R build environment
-ARG R_DEPS="c('Rcpp', 'devtools', 'roxygen2', 'testthat', 'pkgbuild', 'rmarkdown', 'knitr', 'optparse')"
-ARG R_BUILD="library(devtools); install_deps(dependencies=TRUE, upgrade=TRUE, clean=TRUE); pkgbuild::compile_dll(); document(); install(build_vignettes=TRUE, clean=TRUE)"
-RUN Rscript -e "install.packages(${R_DEPS}, clean=TRUE)"
-
 # Install procotol data, utility scripts and pipelines
 RUN PACKAGE="immcantation" \
     && rm -rf /tmp/${PACKAGE} \
@@ -127,21 +122,21 @@ RUN PACKAGE="changeo" \
 RUN PACKAGE="alakazam" \
     && rm -rf /tmp/${PACKAGE} \
     && hg clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
-    && Rscript -e "setwd('/tmp/${PACKAGE}'); ${R_BUILD}" \
+    && rinstall -p /tmp/${PACKAGE} \
     && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE})
 
 # Install shazam
 RUN PACKAGE="shazam" \
     && rm -rf /tmp/${PACKAGE} \
     && hg clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
-    && Rscript -e "setwd('/tmp/${PACKAGE}'); ${R_BUILD}" \
+    && rinstall -p /tmp/${PACKAGE} \
     && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE})
 
 # Install tigger
 RUN PACKAGE="tigger" \
     && rm -rf /tmp/${PACKAGE} \
     && hg clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
-    && Rscript -e "setwd('/tmp/${PACKAGE}'); ${R_BUILD}" \
+    && rinstall -p /tmp/${PACKAGE} \
     && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
     && rm -r /tmp/${PACKAGE}
 
@@ -149,7 +144,7 @@ RUN PACKAGE="tigger" \
 RUN PACKAGE="scoper" \
     && rm -rf /tmp/${PACKAGE} \
     && hg clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
-    && Rscript -e "setwd('/tmp/${PACKAGE}'); ${R_BUILD}" \
+    && rinstall -p /tmp/${PACKAGE} \
     && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
     && rm -r /tmp/${PACKAGE}
 
@@ -157,7 +152,7 @@ RUN PACKAGE="scoper" \
 RUN PACKAGE="rdi" \
     && rm -rf /tmp/${PACKAGE} \
     && hg clone -u production https://bitbucket.org/cbolen1/rdicore /tmp/${PACKAGE} \
-    && Rscript -e "setwd('/tmp/${PACKAGE}'); ${R_BUILD}" \
+    && rinstall -p /tmp/${PACKAGE} \
     && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
     && rm -r /tmp/${PACKAGE}
 
@@ -165,7 +160,7 @@ RUN PACKAGE="rdi" \
 RUN PACKAGE="prestor" \
     && rm -rf /tmp/${PACKAGE} \
     && hg clone https://bitbucket.org/javh/prototype-prestor /tmp/${PACKAGE} \
-    && Rscript -e "setwd('/tmp/${PACKAGE}'); ${R_BUILD}" \
+    && rinstall -p /tmp/${PACKAGE} \
     && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
     && rm -r /tmp/${PACKAGE}
 
