@@ -19,7 +19,7 @@
 #   -p  Number of subprocesses for multiprocessing tools.
 #       Defaults to the available processing units.
 #   -f  Specify to filter the output to only productive/functional sequences.
-#   -i  Specify to allow partial alignments
+#   -i  Specify to allow partial alignments.
 #   -h  Display help.
 
 # Print usage

@@ -142,6 +142,8 @@ Arguments:
 
    -f  Specify to filter the output to only productive/functional sequences.
 
+   -i  Specify to allow partial alignments.
+ 
    -h  Display help.
 
 **IgBLAST example**

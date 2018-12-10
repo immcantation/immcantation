@@ -8,6 +8,11 @@ Version Updates:
 
 + igblast 1.12.0
 
+Pipeline Changes:
+
++ Added ``-i`` argument to ``changeo-igblast`` to allow retention of
+  partial alignments.
+  
 Image Changes:
 
 + Base system changed to Fedora 29.
