@@ -7,6 +7,7 @@ Version 2.7.0:  January 9, 2019
 Version Updates:
 
 + changeo 0.4.5
++ blast 2.8.1
 
 
 Version 2.6.0:  December 9, 2018
