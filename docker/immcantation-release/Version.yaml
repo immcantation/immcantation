@@ -1,11 +1,11 @@
 immcantation:
   version:  2.7.0
-  date:     2019.01.09
+  date:     2019.01.29
 release:
   presto:   0.5.10
   changeo:  0.4.5
   alakazam: 0.2.11
-  shazam:   0.1.10
+  shazam:   0.1.11
   tigger:   0.3.1
   rdi:      1.0.0
   scoper:   0.1.0
