@@ -1,8 +1,8 @@
 immcantation:
   version:  2.7.0
-  date:     2019.01.29
+  date:     2019.01.30
 release:
-  presto:   0.5.10
+  presto:   0.5.11
   changeo:  0.4.5
   alakazam: 0.2.11
   shazam:   0.1.11

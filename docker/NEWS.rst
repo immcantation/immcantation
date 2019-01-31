@@ -6,6 +6,7 @@ Version 2.7.0:  January 29, 2019
 
 Version Updates:
 
++ presto 0.5.11
 + changeo 0.4.5
 + shazam 0.1.11
 + blast 2.8.1
