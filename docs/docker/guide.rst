@@ -43,8 +43,12 @@ Note, the ``:z`` in the ``-v`` argument of the ``docker`` command is essential.
 Executing a specific command
 --------------------------------------------------------------------------------
 
-To execute a specific command inside the container with ``$HOME/project`` mounted to
-``/data``:
+After invoking an interactive session inside the container, commands can be
+executed in the container shell as they would be executed in the host shell.
+
+Alternatively, it is possible to execute a specific command directly inside the 
+container, without starting an interactive session. The next example demonstrates 
+how to execute ``versions report`` having mounted ``$HOME/project`` to ``/data``:
 
 .. parsed-literal::
 
