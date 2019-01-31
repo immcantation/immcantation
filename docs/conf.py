@@ -54,7 +54,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'Immcantation'
-copyright = 'Kleinstein Lab, Yale University, 2018'
+copyright = 'Kleinstein Lab, Yale University, 2019'
 author = 'Kleinstein Lab'
 
 # The version info for the project you're documenting, acts as replacement for
