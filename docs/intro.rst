@@ -15,9 +15,9 @@ To install Alakazam, SHazaM, TIgGER and RDI from CRAN::
     > R
     > install.packages(c("alakazam", "shazam", "tigger", "rdi"))
     
-Alternatively, it is possible to use a containerized complete installation of the 
-Immcantation framework and its dependencies. Installation and usage is described in
-:doc:`docker/intro`.
+Alternatively, a complete installation of the Immcantation framework and its dependencies
+is available as a docker container. Installation and usage of the container is described
+in :ref:`DockerIntro`.
 
 Immcantation Tutorial
 -------------------------------------------------------------------------------------------
