@@ -18,7 +18,7 @@ ARG PREPROCESS_PHIX="pipelines/preprocess-phix.sh"
 # Install procotol data, utility scripts and pipelines
 RUN PACKAGE="immcantation" \
     && rm -rf /tmp/${PACKAGE} \
-    && hg clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
+    && hg clone -b default https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
     && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} \
 	&& mv /tmp/${PACKAGE}/scripts/* /usr/local/bin/ \
     && mv /tmp/${PACKAGE}/${PRESTO_ABSEQ} /usr/local/bin/presto-abseq \
@@ -106,7 +106,7 @@ RUN IGPHYML=$(versions get -n igphyml) \
 # Install presto
 RUN PACKAGE="presto" \
     && rm -rf /tmp/${PACKAGE} \
-    && hg clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
+    && hg clone -b default https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
     && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} \
     && pip3 install --no-cache-dir /tmp/${PACKAGE} \
     && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
@@ -115,7 +115,7 @@ RUN PACKAGE="presto" \
 # Install changeo
 RUN PACKAGE="changeo" \
     && rm -rf /tmp/${PACKAGE} \
-    && hg clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
+    && hg clone -b default https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
     && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} \
     && pip3 install --no-cache-dir /tmp/${PACKAGE} \
     && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
@@ -124,7 +124,7 @@ RUN PACKAGE="changeo" \
 # Install alakazam
 RUN PACKAGE="alakazam" \
     && rm -rf /tmp/${PACKAGE} \
-    && hg clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
+    && hg clone -b default https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
     && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} \
     && rinstall -p /tmp/${PACKAGE} \
     && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE})
@@ -132,7 +132,7 @@ RUN PACKAGE="alakazam" \
 # Install shazam
 RUN PACKAGE="shazam" \
     && rm -rf /tmp/${PACKAGE} \
-    && hg clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
+    && hg clone -b default https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
     && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} \
     && rinstall -p /tmp/${PACKAGE} \
     && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE})
@@ -140,7 +140,7 @@ RUN PACKAGE="shazam" \
 # Install tigger
 RUN PACKAGE="tigger" \
     && rm -rf /tmp/${PACKAGE} \
-    && hg clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
+    && hg clone -b default https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
     && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} \
     && rinstall -p /tmp/${PACKAGE} \
     && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
@@ -158,7 +158,7 @@ RUN PACKAGE="rdi" \
 # Install SCOPe
 RUN PACKAGE="scoper" \
     && rm -rf /tmp/${PACKAGE} \
-    && hg clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
+    && hg clone -b default https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
     && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} \
     && rinstall -p /tmp/${PACKAGE} \
     && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
@@ -167,7 +167,7 @@ RUN PACKAGE="scoper" \
 # Install prestor
 RUN PACKAGE="prestor" \
     && rm -rf /tmp/${PACKAGE} \
-    && hg clone https://bitbucket.org/javh/prototype-prestor /tmp/${PACKAGE} \
+    && hg clone -b default https://bitbucket.org/javh/prototype-prestor /tmp/${PACKAGE} \
     && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} \
     && rinstall -p /tmp/${PACKAGE} \
     && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
