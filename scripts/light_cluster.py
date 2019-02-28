@@ -5,6 +5,7 @@ Corrects IGH only cloning with IGK/L annotations (VERSION 1)
 
 # Imports
 import pandas as pd
+import sys
 
 # Parse arguments
 heavy_file = sys.argv[1]
@@ -74,6 +75,6 @@ cluster_dict = clusterLinkage(light_df[cell_id], light_df.apply(lambda row: \
 # add assignments to heavy_df
 heavy_df = heavy_df.loc[heavy_df[cell_id].apply(lambda x: x in cluster_dict.keys()),:]
 
-heavy_df[clone_id] = heavy_df[clone_id] + '_' + heavy_df.apply(lambda row: cluster_dict[row[cell_id]], axis =1)
+heavy_df[clone_id] = heavy_df[clone_id] + '_' + heavy_df.apply(lambda row: str(cluster_dict[row[cell_id]]), axis =1)
 
 heavy_df.to_csv(out_file, sep = '\t')
