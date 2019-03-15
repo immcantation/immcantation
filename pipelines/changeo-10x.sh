@@ -6,12 +6,14 @@
 #
 # Arguments:
 #   -s  FASTA or FASTQ sequence file.
-#   -x  10X Cell Ranger V(D)J contig annotation file.
+#   -a  10X Cell Ranger V(D)J contig annotation file.
 #       Must corresponding with the FASTA/FASTQ input file (all, filtered or consensus).
 #   -r  Directory containing IMGT-gapped reference germlines.
 #       Defaults to /usr/local/share/germlines/imgt/human/vdj.
 #   -g  Species name. One of human or mouse. Defaults to human.
 #   -t  Receptor type. One of ig or tr. Defaults to ig.
+#   -x  Distance threshold for clonal assignment.
+#       If unspecified, clonal assignment is not performed.
 #   -b  IgBLAST IGDATA directory, which contains the IgBLAST database, optional_file
 #       and auxillary_data directories. Defaults to /usr/local/share/igblast.
 #   -n  Sample name or run identifier which will be used as the output file prefix.
@@ -27,13 +29,15 @@
 print_usage() {
     echo -e "Usage: `basename $0` [OPTIONS]"
     echo -e "  -s  FASTA or FASTQ sequence file."
-    echo -e "  -x  10X Cell Ranger V(D)J contig annotation CSV file.\n" \
+    echo -e "  -a  10X Cell Ranger V(D)J contig annotation CSV file.\n" \
             "     Must corresponding with the FASTA/FASTQ input file (all, filtered or consensus)."
     echo -e "  -r  Directory containing IMGT-gapped reference germlines.\n" \
             "     Defaults to /usr/local/share/germlines/imgt/human/vdj when species is human.\n" \
             "     Defaults to /usr/local/share/germlines/imgt/mouse/vdj when species is mouse."
     echo -e "  -g  Species name. One of human or mouse. Defaults to human."
     echo -e "  -t  Receptor type. One of ig or tr. Defaults to ig."
+    echo -e "  -x  Distance threshold for clonal assignment.\n" \
+            "     If unspecified, clonal assignment is not performed."
     echo -e "  -b  IgBLAST IGDATA directory, which contains the IgBLAST database, optional_file\n" \
             "     and auxillary_data directories. Defaults to /usr/local/share/igblast."
     echo -e "  -n  Sample identifier which will be used as the output file prefix.\n" \
@@ -48,10 +52,11 @@ print_usage() {
 
 # Argument validation variables
 READS_SET=false
-CSV10X_SET=false
+A10X_SET=false
 REFDIR_SET=false
 ORGANISM_SET=false
 LOCI_SET=false
+DIST_SET=false
 IGDATA_SET=false
 OUTNAME_SET=false
 OUTDIR_SET=false
@@ -59,13 +64,13 @@ NPROC_SET=false
 PARTIAL=""
 
 # Get commandline arguments
-while getopts "s:x:r:g:t:b:n:o:p:ih" OPT; do
+while getopts "s:a:r:g:t:x:b:n:o:p:ih" OPT; do
     case "$OPT" in
     s)  READS=$OPTARG
         READS_SET=true
         ;;
-    x)  CSV10=$OPTARG
-        CSV10X_SET=true
+    a)  A10X=$OPTARG
+        A10X_SET=true
         ;;
     r)  REFDIR=$OPTARG
         REFDIR_SET=true
@@ -75,6 +80,9 @@ while getopts "s:x:r:g:t:b:n:o:p:ih" OPT; do
         ;;
     t)  LOCI=$OPTARG
         LOCI_SET=true
+        ;;
+    x)  DIST=$OPTARG
+        DIST_SET=true
         ;;
     b)  IGDATA=$OPTARG
         IGDATA_SET=true
@@ -108,7 +116,7 @@ if ! ${READS_SET}; then
     exit 1
 fi
 
-if ! ${CSV10X_SET}; then
+if ! ${A10X_SET}; then
     echo -e "You must specify the Cell Ranger annotation file using the -x option." >&2
     exit 1
 fi
@@ -121,10 +129,10 @@ else
     exit 1
 fi
 
-if [ -e ${CSV10X} ]; then
-    CSV10X=$(readlink -f ${CSV10X})
+if [ -e ${A10X} ]; then
+    A10X=$(readlink -f ${A10X})
 else
-    echo -e "File ${CSV10X} not found." >&2
+    echo -e "File ${A10X} not found." >&2
     exit 1
 fi
 
@@ -177,11 +185,30 @@ if ! ${NPROC_SET}; then
     NPROC=$(nproc)
 fi
 
-
 # Define pipeline steps
 ZIP_FILES=true
 DELETE_FILES=true
 SPLIT=true
+GERMLINES=true
+AIRR=true
+
+
+if ! ${DIST_SET}; then
+    CLONE=false
+else
+    CLONE=true
+fi
+
+
+# DefineClones run parameters
+DC_MODEL="ham"
+DC_MODE="gene"
+DC_ACT="set"
+
+# Create germlines parameters
+CG_GERM="full dmask"
+CG_SFIELD="SEQUENCE_IMGT"
+CG_VFIELD="V_CALL"
 
 # Make output directory
 mkdir -p ${OUTDIR}; cd ${OUTDIR}
@@ -232,15 +259,16 @@ fi
 
 # Run IgBLAST
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "AssignGenes igblast"
-AssignGenes.py igblast -s ${IG_FILE} --organism ${ORGANISM} --loci ${LOCI} -b ${IGDATA}
-    --format blast -n ${NPROC} --outname ${OUTNAME} --outdir . \
+AssignGenes.py igblast -s ${IG_FILE} --organism ${ORGANISM} --loci ${LOCI} \
+    -b ${IGDATA} --format blast --nproc ${NPROC} \
+    --outname "${OUTNAME}" --outdir . \
      >> $PIPELINE_LOG 2> $ERROR_LOG
 FMT7_FILE="${OUTNAME}_igblast.fmt7"
 #check_error
 
 # Parse IgBLAST output
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "MakeDb igblast"
-MakeDb.py igblast -i ${FMT7_FILE} -s ${IG_FILE} --10x ${CSV10X} -r ${REFDIR} \
+MakeDb.py igblast -i ${FMT7_FILE} -s ${IG_FILE} --10x ${A10X} -r ${REFDIR} \
     --scores --regions --failed ${PARTIAL} --outname "${OUTNAME}" \
     >> $PIPELINE_LOG 2> $ERROR_LOG
 DB_PASS="${OUTNAME}_db-pass.${EXT}"
@@ -250,13 +278,59 @@ check_error
 
 # Split by chain and productivity
 if $SPLIT; then
+    printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "ParseDb select"
+    ParseDb.py select -d ${LAST_FILE} -f LOCUS -u IGH TRB TRD \
+        -o "${OUTNAME}_heavy.${EXT}" \
+        >> $PIPELINE_LOG 2> $ERROR_LOG
+    ParseDb.py select -d ${LAST_FILE} -f LOCUS -u IGK IGL TRA TRG \
+        -o "${OUTNAME}_light.${EXT}" \
+        >> $PIPELINE_LOG 2> $ERROR_LOG
     printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "ParseDb split"
-    ParseDb.py split -d ${LAST_FILE} -f FUNCTIONAL --outname "${OUTNAME}" \
+    ParseDb.py split -d "${OUTNAME}_heavy.${EXT}" "${OUTNAME}_light.${EXT}" \
+        -f FUNCTIONAL \
         >> $PIPELINE_LOG 2> $ERROR_LOG
-    ParseDb.py split -d "${OUTNAME}_FUNCTIONAL-T.${EXT}" "${OUTNAME}_FUNCTIONAL-F.${EXT}" -f LOCUS \
-        >> $PIPELINE_LOG 2> $ERROR_LOG
-    SPLIT_FILES=$(ls "FUNCTIONAL-[TF]_LOCUS-*.${EXT}")
+    HEAVY_FILE="${OUTNAME}_heavy_FUNCTIONAL-T.${EXT}"
+    LIGHT_FILE="${OUTNAME}_light_FUNCTIONAL-T.${EXT}"
     check_error
+fi
+
+# Assign clones
+if $CLONE; then
+    printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "DefineClones"
+    DefineClones.py -d ${HEAVY_FILE} --model ${DC_MODEL} \
+        --dist ${DIST} --mode ${DC_MODE} --act ${DC_ACT} --nproc ${NPROC} \
+        --outname "${OUTNAME}_heavy" --log "${LOGDIR}/clone.log" \
+        >> $PIPELINE_LOG 2> $ERROR_LOG
+    check_error
+
+    printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "Merge heavy and light"
+    light_cluster.py "${OUTNAME}_heavy_clone-pass.tab" ${LIGHT_FILE} \
+        CELL CLONE "${OUTNAME}_merged_clone-pass.${EXT}" \
+        > /dev/null 2> $ERROR_LOG
+    CLONE_PASS="${OUTNAME}_merged_clone-pass.${EXT}"
+    LAST_FILE=$CLONE_PASS
+fi
+
+## Create germlines
+#if $GERMLINES; then
+#    printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "CreateGermlines"
+#    CreateGermlines.py -d ${LAST_FILE} -r ${REFDIR} -g ${CG_GERM} \
+#        --sf ${CG_SFIELD} --vf ${CG_VFIELD} --cloned \
+#        --outname "${OUTNAME}" --log "${LOGDIR}/germline.log" \
+#        >> $PIPELINE_LOG 2> $ERROR_LOG
+#	check_error
+#	GERM_PASS="${OUTNAME}_germ-pass.${EXT}"
+#	LAST_FILE=$GERM_PASS
+#fi
+
+# Convert to AIRR
+if $AIRR; then
+    printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "ConvertDb airr"
+    ConvertDb.py airr -d ${LAST_FILE} --outname "${OUTNAME}" \
+        > /dev/null 2> $ERROR_LOG
+    check_error
+    AIRR_PASS="${OUTNAME}_airr.tsv"
+    LAST_FILE=$AIRR_PASS
 fi
 
 # Zip or delete intermediate files

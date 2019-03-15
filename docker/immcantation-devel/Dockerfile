@@ -11,6 +11,7 @@ RUN builds write -n date -v "$(date +'%Y-%m-%d %T %Z')"
 ARG PRESTO_ABSEQ="presto-abseq.sh"
 ARG CHANGEO_IGBLAST="changeo-igblast.sh"
 ARG CHANGEO_CLONE="changeo-clone.sh"
+ARG CHANGEO_10X="changeo-10x.sh"
 ARG SHAZAM_THRESHOLD="shazam-threshold.R"
 ARG TIGGER_GENOTYPE="tigger-genotype.R"
 ARG PREPROCESS_PHIX="preprocess-phix.sh"
@@ -23,6 +24,7 @@ RUN PACKAGE="immcantation" \
 	&& mv /tmp/${PACKAGE}/pipelines/${PRESTO_ABSEQ} /usr/local/bin/presto-abseq \
 	&& mv /tmp/${PACKAGE}/pipelines/${CHANGEO_IGBLAST} /usr/local/bin/changeo-igblast \
 	&& mv /tmp/${PACKAGE}/pipelines/${CHANGEO_CLONE} /usr/local/bin/changeo-clone \
+	&& mv /tmp/${PACKAGE}/pipelines/${CHANGEO_CLONE} /usr/local/bin/changeo-10x \
 	&& mv /tmp/${PACKAGE}/pipelines/${SHAZAM_THRESHOLD} /usr/local/bin/shazam-threshold \
 	&& mv /tmp/${PACKAGE}/pipelines/${TIGGER_GENOTYPE} /usr/local/bin/tigger-genotype \
 	&& mv /tmp/${PACKAGE}/pipelines/${PREPROCESS_PHIX} /usr/local/bin/preprocess-phix \
