@@ -14,6 +14,9 @@ COPY tools/versions.py /usr/local/bin/versions
 COPY tools/builds.py /usr/local/bin/builds
 COPY tools/rinstall.R /usr/local/bin/rinstall
 
+# Disable https on repos
+RUN (cd /etc/yum.repos.d; sed -i 's/https/http/g' *.repo)
+
 # Update and install required packages
 RUN dnf -y update && dnf install -y \
     automake \
@@ -55,7 +58,7 @@ RUN dnf -y update && dnf install -y \
 ENV LD_LIBRARY_PATH="/usr/lib64/R/lib:/usr/lib64/atlas"
 
 # R build setup
-ARG R_REPO="https://cran.cnr.berkeley.edu"
+ARG R_REPO="http://cran.cnr.berkeley.edu"
 ARG R_DEPS="c('Rcpp', \
               'devtools', \
               'roxygen2', \

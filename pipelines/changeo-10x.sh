@@ -20,7 +20,6 @@
 #       Defaults to the sample name.
 #   -p  Number of subprocesses for multiprocessing tools.
 #       Defaults to the available processing units.
-#   -f  Specify to filter the output to only productive/functional sequences.
 #   -i  Specify to allow partial alignments.
 #   -h  Display help.
 
@@ -43,7 +42,6 @@ print_usage() {
             "     Defaults to the sample name."
     echo -e "  -p  Number of subprocesses for multiprocessing tools.\n" \
             "     Defaults to the available cores."
-    echo -e "  -f  Specify to filter the output to only productive/functional sequences."
     echo -e "  -i  Specify to allow partial alignments."
     echo -e "  -h  This message."
 }
@@ -58,11 +56,10 @@ IGDATA_SET=false
 OUTNAME_SET=false
 OUTDIR_SET=false
 NPROC_SET=false
-FUNCTIONAL=false
 PARTIAL=""
 
 # Get commandline arguments
-while getopts "s:x:r:g:t:b:n:o:p:fih" OPT; do
+while getopts "s:x:r:g:t:b:n:o:p:ih" OPT; do
     case "$OPT" in
     s)  READS=$OPTARG
         READS_SET=true
@@ -90,8 +87,6 @@ while getopts "s:x:r:g:t:b:n:o:p:fih" OPT; do
         ;;
     p)  NPROC=$OPTARG
         NPROC_SET=true
-        ;;
-    f)  FUNCTIONAL=true
         ;;
     i)  PARTIAL="--partial"
         ;;        
