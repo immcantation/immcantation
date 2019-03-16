@@ -36,7 +36,7 @@ print_usage() {
             "     Defaults to /usr/local/share/germlines/imgt/mouse/vdj when species is mouse."
     echo -e "  -g  Species name. One of human or mouse. Defaults to human."
     echo -e "  -t  Receptor type. One of ig or tr. Defaults to ig."
-    echo -e "  -x  Distance threshold for clonal assignment.\n" \
+    echo -e "  -x  Distance threshold for clonal assignment. Specify \"auto\" for automatic detection.\n" \
             "     If unspecified, clonal assignment is not performed."
     echo -e "  -b  IgBLAST IGDATA directory, which contains the IgBLAST database, optional_file\n" \
             "     and auxillary_data directories. Defaults to /usr/local/share/igblast."
@@ -291,11 +291,20 @@ if $SPLIT; then
         >> $PIPELINE_LOG 2> $ERROR_LOG
     HEAVY_FILE="${OUTNAME}_heavy_FUNCTIONAL-T.${EXT}"
     LIGHT_FILE="${OUTNAME}_light_FUNCTIONAL-T.${EXT}"
+    HEAVY_NON_FILE="${OUTNAME}_heavy_FUNCTIONAL-F.${EXT}"
+    LIGHT_NON_FILE="${OUTNAME}_light_FUNCTIONAL-F.${EXT}"
     check_error
 fi
 
 # Assign clones
 if $CLONE; then
+    if [ "$DIST" == "auto" ]; then
+        printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "Detect cloning threshold"
+        shazam-threshold -d ${HEAVY_FILE} -m density -n "${OUTNAME}" -p ${NPROC} \
+            > /dev/null 2> $ERROR_LOG
+        DIST=$(tail -n1 "${OUTNAME}_threshold-values.tab" | cut -f2)
+    fi
+
     printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "DefineClones"
     DefineClones.py -d ${HEAVY_FILE} --model ${DC_MODEL} \
         --dist ${DIST} --mode ${DC_MODE} --act ${DC_ACT} --nproc ${NPROC} \
@@ -303,34 +312,37 @@ if $CLONE; then
         >> $PIPELINE_LOG 2> $ERROR_LOG
     check_error
 
-    printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "Merge heavy and light"
-    light_cluster.py "${OUTNAME}_heavy_clone-pass.tab" ${LIGHT_FILE} \
-        CELL CLONE "${OUTNAME}_merged_clone-pass.${EXT}" \
-        > /dev/null 2> $ERROR_LOG
-    CLONE_PASS="${OUTNAME}_merged_clone-pass.${EXT}"
-    LAST_FILE=$CLONE_PASS
-fi
+    printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "CreateGermlines"
+    CreateGermlines.py -d "${OUTNAME}_heavy_clone-pass.${EXT}" -r ${REFDIR} -g ${CG_GERM} \
+        --sf ${CG_SFIELD} --vf ${CG_VFIELD} --cloned \
+        --outname "${OUTNAME}_heavy" --log "${LOGDIR}/germline.log" \
+        >> $PIPELINE_LOG 2> $ERROR_LOG
+	check_error
+	GERM_PASS="${OUTNAME}_heavy_germ-pass.${EXT}"
 
-## Create germlines
-#if $GERMLINES; then
-#    printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "CreateGermlines"
-#    CreateGermlines.py -d ${LAST_FILE} -r ${REFDIR} -g ${CG_GERM} \
-#        --sf ${CG_SFIELD} --vf ${CG_VFIELD} --cloned \
-#        --outname "${OUTNAME}" --log "${LOGDIR}/germline.log" \
-#        >> $PIPELINE_LOG 2> $ERROR_LOG
-#	check_error
-#	GERM_PASS="${OUTNAME}_germ-pass.${EXT}"
-#	LAST_FILE=$GERM_PASS
-#fi
+    printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "Split clones by light chain"
+    light_cluster.py "${OUTNAME}_heavy_germ-pass.${EXT}" ${LIGHT_FILE} \
+        CELL CLONE "${OUTNAME}_heavy_productive.${EXT}" \
+        > /dev/null 2> $ERROR_LOG
+    HEAVY_FILE="${OUTNAME}_heavy_productive.${EXT}"
+    LIGHT_FILE="${OUTNAME}_light_FUNCTIONAL-T.${EXT}"
+fi
 
 # Convert to AIRR
 if $AIRR; then
     printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "ConvertDb airr"
-    ConvertDb.py airr -d ${LAST_FILE} --outname "${OUTNAME}" \
+    ConvertDb.py airr -d ${HEAVY_FILE} --outname "${OUTNAME}_heavy_productive" \
         > /dev/null 2> $ERROR_LOG
     check_error
-    AIRR_PASS="${OUTNAME}_airr.tsv"
-    LAST_FILE=$AIRR_PASS
+    ConvertDb.py airr -d ${LIGHT_FILE} --outname "${OUTNAME}_light_productive" \
+        > /dev/null 2> $ERROR_LOG
+    check_error
+    ConvertDb.py airr -d ${HEAVY_NON_FILE} --outname "${OUTNAME}_heavy_nonproductive" \
+        > /dev/null 2> $ERROR_LOG
+    check_error
+    ConvertDb.py airr -d ${LIGHT_NON_FILE} --outname "${OUTNAME}_light_nonproductive" \
+        > /dev/null 2> $ERROR_LOG
+    check_error
 fi
 
 # Zip or delete intermediate files

@@ -57,24 +57,22 @@ def clusterLinkage(cell_series, group_series):
 heavy_df = pd.read_csv(heavy_file, dtype = 'object', sep = '\t')
 light_df = pd.read_csv(light_file, dtype = 'object', sep = '\t')
 
-
 # generate a CELL:CLONE dictionary from heavy df and add to light df (basically an inner join)
-clone_dict = {v[cell_id]:v[clone_id] for k,v in heavy_df[[clone_id, cell_id]].T.to_dict().items()}
+clone_dict = {v[cell_id]:v[clone_id] for k, v in heavy_df[[clone_id, cell_id]].T.to_dict().items()}
 
-light_df = light_df.loc[light_df[cell_id].apply(lambda x: x in clone_dict.keys()),]
+light_df = light_df.loc[light_df[cell_id].apply(lambda x: x in clone_dict.keys()), ]
 
 light_df[clone_id] = light_df.apply(lambda row: clone_dict[row[cell_id]], axis = 1)
 
 # generate a "cluster_dict" of CELL:CLONE dictionary from light df 
-cluster_dict = clusterLinkage(light_df[cell_id], light_df.apply(lambda row: \
-								  row['V_CALL'].split(',')[0].split('*')[0] +\
-                                  ',' + row['J_CALL'].split(',')[0].split('*')[0] + ',' + \
-                                  str(len(row['JUNCTION'])) + ',' + row[clone_id], axis = 1))
-
+cluster_dict = clusterLinkage(light_df[cell_id],
+                              light_df.apply(lambda row: row['V_CALL'].split(',')[0].split('*')[0] + \
+                                             ',' + row['J_CALL'].split(',')[0].split('*')[0] + ',' + \
+                                             str(len(row['JUNCTION'])) + ',' + row[clone_id], axis = 1))
 
 # add assignments to heavy_df
-heavy_df = heavy_df.loc[heavy_df[cell_id].apply(lambda x: x in cluster_dict.keys()),:]
-
+heavy_df = heavy_df.loc[heavy_df[cell_id].apply(lambda x: x in cluster_dict.keys()), :]
 heavy_df[clone_id] = heavy_df[clone_id] + '_' + heavy_df.apply(lambda row: str(cluster_dict[row[cell_id]]), axis =1)
 
-heavy_df.to_csv(out_file, sep = '\t')
+# write heavy chains
+heavy_df.to_csv(out_file, sep='\t', index=False)
