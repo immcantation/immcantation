@@ -251,14 +251,14 @@ STEP=0
 BASE_NAME=$(basename ${READS})
 EXT_NAME=${BASE_NAME##*.}
 if [ "${EXT_NAME,,}" == "fastq" ] || [ "${EXT_NAME,,}" == "fq" ]; then
-    printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "Convert to FASTA"
+    printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "Convert to FASTA"
     IG_FILE=$(fastq2fasta.py ${READS})
 else
     IG_FILE=${READS}
 fi
 
 # Run IgBLAST
-printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "AssignGenes igblast"
+printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "AssignGenes igblast"
 AssignGenes.py igblast -s ${IG_FILE} --organism ${ORGANISM} --loci ${LOCI} \
     -b ${IGDATA} --format blast --nproc ${NPROC} \
     --outname "${OUTNAME}" --outdir . \
@@ -267,7 +267,7 @@ FMT7_FILE="${OUTNAME}_igblast.fmt7"
 #check_error
 
 # Parse IgBLAST output
-printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "MakeDb igblast"
+printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "MakeDb igblast"
 MakeDb.py igblast -i ${FMT7_FILE} -s ${IG_FILE} --10x ${A10X} -r ${REFDIR} \
     --scores --regions --failed ${PARTIAL} --outname "${OUTNAME}" \
     >> $PIPELINE_LOG 2> $ERROR_LOG
@@ -278,14 +278,14 @@ check_error
 
 # Split by chain and productivity
 if $SPLIT; then
-    printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "ParseDb select"
+    printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "ParseDb select"
     ParseDb.py select -d ${LAST_FILE} -f LOCUS -u IGH TRB TRD \
         -o "${OUTNAME}_heavy.${EXT}" \
         >> $PIPELINE_LOG 2> $ERROR_LOG
     ParseDb.py select -d ${LAST_FILE} -f LOCUS -u IGK IGL TRA TRG \
         -o "${OUTNAME}_light.${EXT}" \
         >> $PIPELINE_LOG 2> $ERROR_LOG
-    printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "ParseDb split"
+    printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "ParseDb split"
     ParseDb.py split -d "${OUTNAME}_heavy.${EXT}" "${OUTNAME}_light.${EXT}" \
         -f FUNCTIONAL \
         >> $PIPELINE_LOG 2> $ERROR_LOG
@@ -299,25 +299,25 @@ fi
 # Assign clones
 if $CLONE; then
     if [ "$DIST" == "auto" ]; then
-        printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "Detect cloning threshold"
+        printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "Detect cloning threshold"
         shazam-threshold -d ${HEAVY_FILE} -m density -n "${OUTNAME}" -p ${NPROC} \
             > /dev/null 2> $ERROR_LOG
         DIST=$(tail -n1 "${OUTNAME}_threshold-values.tab" | cut -f2)
     fi
 
-    printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "DefineClones"
+    printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "DefineClones"
     DefineClones.py -d ${HEAVY_FILE} --model ${DC_MODEL} \
         --dist ${DIST} --mode ${DC_MODE} --act ${DC_ACT} --nproc ${NPROC} \
         --outname "${OUTNAME}_heavy" --log "${LOGDIR}/clone.log" \
         >> $PIPELINE_LOG 2> $ERROR_LOG
     check_error
 
-    printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "Split clones by light chain"
+    printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "Clone by light chain"
     light_cluster.py "${OUTNAME}_heavy_clone-pass.${EXT}" ${LIGHT_FILE} \
         CELL CLONE "${OUTNAME}_heavy_clone-light.${EXT}" \
         > /dev/null 2> $ERROR_LOG
 
-    printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "CreateGermlines"
+    printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "CreateGermlines"
     CreateGermlines.py -d "${OUTNAME}_heavy_clone-light.${EXT}" --cloned \
         -r ${REFDIR} -g ${CG_GERM} --sf ${CG_SFIELD} --vf ${CG_VFIELD} \
         --outname "${OUTNAME}_heavy" --log "${LOGDIR}/germline.log" \
@@ -330,7 +330,7 @@ fi
 
 # Convert to AIRR
 if $AIRR; then
-    printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "ConvertDb airr"
+    printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "ConvertDb airr"
     ConvertDb.py airr -d ${HEAVY_FILE} --outname "${OUTNAME}_heavy_productive" \
         > /dev/null 2> $ERROR_LOG
     check_error
@@ -346,7 +346,7 @@ if $AIRR; then
 fi
 
 # Zip or delete intermediate files
-#printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "Compress files"
+#printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "Compress files"
 #TEMP_FILES=$(ls ${DB_PASS} ${DB_FAIL} 2>/dev/null | grep -v "${LAST_FILE}\|$(basename ${READS})")
 #if [[ ! -z $TEMP_FILES ]]; then
 #    if $ZIP_FILES; then
