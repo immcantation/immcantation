@@ -312,19 +312,19 @@ if $CLONE; then
         >> $PIPELINE_LOG 2> $ERROR_LOG
     check_error
 
+    printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "Split clones by light chain"
+    light_cluster.py "${OUTNAME}_heavy_clone-pass.${EXT}" ${LIGHT_FILE} \
+        CELL CLONE "${OUTNAME}_heavy_clone-light.${EXT}" \
+        > /dev/null 2> $ERROR_LOG
+
     printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "CreateGermlines"
-    CreateGermlines.py -d "${OUTNAME}_heavy_clone-pass.${EXT}" -r ${REFDIR} -g ${CG_GERM} \
-        --sf ${CG_SFIELD} --vf ${CG_VFIELD} --cloned \
+    CreateGermlines.py -d "${OUTNAME}_heavy_clone-light.${EXT}" --cloned \
+        -r ${REFDIR} -g ${CG_GERM} --sf ${CG_SFIELD} --vf ${CG_VFIELD} \
         --outname "${OUTNAME}_heavy" --log "${LOGDIR}/germline.log" \
         >> $PIPELINE_LOG 2> $ERROR_LOG
 	check_error
-	GERM_PASS="${OUTNAME}_heavy_germ-pass.${EXT}"
 
-    printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "Split clones by light chain"
-    light_cluster.py "${OUTNAME}_heavy_germ-pass.${EXT}" ${LIGHT_FILE} \
-        CELL CLONE "${OUTNAME}_heavy_productive.${EXT}" \
-        > /dev/null 2> $ERROR_LOG
-    HEAVY_FILE="${OUTNAME}_heavy_productive.${EXT}"
+	HEAVY_FILE="${OUTNAME}_heavy_germ-pass.${EXT}"
     LIGHT_FILE="${OUTNAME}_light_FUNCTIONAL-T.${EXT}"
 fi
 
