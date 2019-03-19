@@ -14,12 +14,15 @@
 #   -t  Receptor type. One of ig or tr. Defaults to ig.
 #   -x  Distance threshold for clonal assignment.
 #       If unspecified, clonal assignment is not performed.
+#   -m  Distance model for clonal assignment.
+#       Defaults to the nucleotide Hamming distance model ('ham').
 #   -b  IgBLAST IGDATA directory, which contains the IgBLAST database, optional_file
 #       and auxillary_data directories. Defaults to /usr/local/share/igblast.
 #   -n  Sample name or run identifier which will be used as the output file prefix.
 #       Defaults to a truncated version of the read 1 filename.
 #   -o  Output directory.
 #       Defaults to the sample name.
+#   -f  Output format. One of 'changeo' (default) or 'airr'.
 #   -p  Number of subprocesses for multiprocessing tools.
 #       Defaults to the available processing units.
 #   -i  Specify to allow partial alignments.
@@ -38,12 +41,15 @@ print_usage() {
     echo -e "  -t  Receptor type. One of ig or tr. Defaults to ig."
     echo -e "  -x  Distance threshold for clonal assignment. Specify \"auto\" for automatic detection.\n" \
             "     If unspecified, clonal assignment is not performed."
+    echo -e "  -m  Distance model for clonal assignment.\n" \
+            "     Defaults to the nucleotide Hamming distance model ('ham')."
     echo -e "  -b  IgBLAST IGDATA directory, which contains the IgBLAST database, optional_file\n" \
             "     and auxillary_data directories. Defaults to /usr/local/share/igblast."
     echo -e "  -n  Sample identifier which will be used as the output file prefix.\n" \
             "     Defaults to a truncated version of the sequence filename."
     echo -e "  -o  Output directory.\n" \
             "     Defaults to the sample name."
+    echo -e "  -f  Output format. One of 'changeo' (default) or 'airr'."
     echo -e "  -p  Number of subprocesses for multiprocessing tools.\n" \
             "     Defaults to the available cores."
     echo -e "  -i  Specify to allow partial alignments."
@@ -57,14 +63,16 @@ REFDIR_SET=false
 ORGANISM_SET=false
 LOCI_SET=false
 DIST_SET=false
+MODEL_SET=false
 IGDATA_SET=false
 OUTNAME_SET=false
 OUTDIR_SET=false
+FORMAT_SET=false
 NPROC_SET=false
 PARTIAL=""
 
 # Get commandline arguments
-while getopts "s:a:r:g:t:x:b:n:o:p:ih" OPT; do
+while getopts "s:a:r:g:t:x:m:b:n:o:f:p:ih" OPT; do
     case "$OPT" in
     s)  READS=$OPTARG
         READS_SET=true
@@ -84,6 +92,9 @@ while getopts "s:a:r:g:t:x:b:n:o:p:ih" OPT; do
     x)  DIST=$OPTARG
         DIST_SET=true
         ;;
+    m)  MODEL=$OPTARG
+        MODEL_SET=true
+        ;;
     b)  IGDATA=$OPTARG
         IGDATA_SET=true
         ;;
@@ -92,6 +103,9 @@ while getopts "s:a:r:g:t:x:b:n:o:p:ih" OPT; do
         ;;
     o)  OUTDIR=$OPTARG
         OUTDIR_SET=true
+        ;;
+    f)  FORMAT=$OPTARG
+        FORMAT_SET=true
         ;;
     p)  NPROC=$OPTARG
         NPROC_SET=true
@@ -164,6 +178,11 @@ else
 fi
 
 # Set blast database
+if ! ${MODEL_SET}; then
+    MODEL="ham"
+fi
+
+# Set blast database
 if ! ${IGDATA_SET}; then
     IGDATA="/usr/local/share/igblast"
 else
@@ -180,6 +199,23 @@ if ! ${OUTDIR_SET}; then
     OUTDIR=${OUTNAME}
 fi
 
+# Set format options
+if ! ${FORMAT_SET}; then
+    FORMAT="changeo"
+fi
+
+if [[ "${FORMAT}" == "airr" ]]; then
+    EXT="tsv"
+    LOCUS_FIELD="locus"
+    PROD_FIELD="productive"
+    LCLUST_FIELDS="cell_id,clone_id,v_call,j_call,junction"
+else
+	EXT="tab"
+	LOCUS_FIELD="LOCUS"
+	PROD_FIELD="FUNCTIONAL"
+	LCLUST_FIELDS=""
+fi
+
 # Set number of processes
 if ! ${NPROC_SET}; then
     NPROC=$(nproc)
@@ -190,18 +226,13 @@ ZIP_FILES=true
 DELETE_FILES=true
 SPLIT=true
 GERMLINES=true
-AIRR=true
-
-
 if ! ${DIST_SET}; then
     CLONE=false
 else
     CLONE=true
 fi
 
-
 # DefineClones run parameters
-DC_MODEL="ham"
 DC_MODE="gene"
 DC_ACT="set"
 
@@ -233,11 +264,6 @@ check_error() {
 # Set extension
 IGBLAST_VERSION=$(igblastn -version  | grep 'Package' |sed s/'Package: '//)
 CHANGEO_VERSION=$(python3 -c "import changeo; print('%s-%s' % (changeo.__version__, changeo.__date__))")
-if [[ $CHANGEO_VERSION == 0.4* ]]; then
-    EXT="tab"
-else
-	EXT="tab"
-fi
 
 # Start
 echo -e "IDENTIFIER: ${OUTNAME}"
@@ -269,7 +295,7 @@ FMT7_FILE="${OUTNAME}_igblast.fmt7"
 # Parse IgBLAST output
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "MakeDb igblast"
 MakeDb.py igblast -i ${FMT7_FILE} -s ${IG_FILE} --10x ${A10X} -r ${REFDIR} \
-    --scores --regions --failed ${PARTIAL} --outname "${OUTNAME}" \
+    --scores --regions --failed ${PARTIAL} --outname "${OUTNAME}" --format ${FORMAT} \
     >> $PIPELINE_LOG 2> $ERROR_LOG
 DB_PASS="${OUTNAME}_db-pass.${EXT}"
 DB_FAIL="${OUTNAME}_db-fail.${EXT}"
@@ -279,20 +305,20 @@ check_error
 # Split by chain and productivity
 if $SPLIT; then
     printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "ParseDb select"
-    ParseDb.py select -d ${LAST_FILE} -f LOCUS -u IGH TRB TRD \
+    ParseDb.py select -d ${LAST_FILE} -f ${LOCUS_FIELD} -u IGH TRB TRD \
         -o "${OUTNAME}_heavy.${EXT}" \
         >> $PIPELINE_LOG 2> $ERROR_LOG
-    ParseDb.py select -d ${LAST_FILE} -f LOCUS -u IGK IGL TRA TRG \
+    ParseDb.py select -d ${LAST_FILE} -f ${LOCUS_FIELD} -u IGK IGL TRA TRG \
         -o "${OUTNAME}_light.${EXT}" \
         >> $PIPELINE_LOG 2> $ERROR_LOG
     printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "ParseDb split"
     ParseDb.py split -d "${OUTNAME}_heavy.${EXT}" "${OUTNAME}_light.${EXT}" \
-        -f FUNCTIONAL \
+        -f ${PROD_FIELD} \
         >> $PIPELINE_LOG 2> $ERROR_LOG
-    HEAVY_FILE="${OUTNAME}_heavy_FUNCTIONAL-T.${EXT}"
-    LIGHT_FILE="${OUTNAME}_light_FUNCTIONAL-T.${EXT}"
-    HEAVY_NON_FILE="${OUTNAME}_heavy_FUNCTIONAL-F.${EXT}"
-    LIGHT_NON_FILE="${OUTNAME}_light_FUNCTIONAL-F.${EXT}"
+    HEAVY_FILE="${OUTNAME}_heavy_${PROD_FIELD}-T.${EXT}"
+    LIGHT_FILE="${OUTNAME}_light_${PROD_FIELD}-T.${EXT}"
+    HEAVY_NON_FILE="${OUTNAME}_heavy_${PROD_FIELD}-F.${EXT}"
+    LIGHT_NON_FILE="${OUTNAME}_light_${PROD_FIELD}-F.${EXT}"
     check_error
 fi
 
@@ -306,43 +332,26 @@ if $CLONE; then
     fi
 
     printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "DefineClones"
-    DefineClones.py -d ${HEAVY_FILE} --model ${DC_MODEL} \
+    DefineClones.py -d ${HEAVY_FILE} --model ${MODEL} \
         --dist ${DIST} --mode ${DC_MODE} --act ${DC_ACT} --nproc ${NPROC} \
-        --outname "${OUTNAME}_heavy" --log "${LOGDIR}/clone.log" \
+        --outname "${OUTNAME}_heavy" --log "${LOGDIR}/clone.log" --format ${FORMAT} \
         >> $PIPELINE_LOG 2> $ERROR_LOG
     check_error
 
     printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "Clone by light chain"
     light_cluster.py "${OUTNAME}_heavy_clone-pass.${EXT}" ${LIGHT_FILE} \
-        CELL CLONE "${OUTNAME}_heavy_clone-light.${EXT}" \
+        "${OUTNAME}_heavy_clone-light.${EXT}" ${LCLUST_FIELDS} \
         > /dev/null 2> $ERROR_LOG
 
     printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "CreateGermlines"
     CreateGermlines.py -d "${OUTNAME}_heavy_clone-light.${EXT}" --cloned \
         -r ${REFDIR} -g ${CG_GERM} --sf ${CG_SFIELD} --vf ${CG_VFIELD} \
-        --outname "${OUTNAME}_heavy" --log "${LOGDIR}/germline.log" \
+        --outname "${OUTNAME}_heavy" --log "${LOGDIR}/germline.log" --format ${FORMAT} \
         >> $PIPELINE_LOG 2> $ERROR_LOG
 	check_error
 
 	HEAVY_FILE="${OUTNAME}_heavy_germ-pass.${EXT}"
-    LIGHT_FILE="${OUTNAME}_light_FUNCTIONAL-T.${EXT}"
-fi
-
-# Convert to AIRR
-if $AIRR; then
-    printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "ConvertDb airr"
-    ConvertDb.py airr -d ${HEAVY_FILE} --outname "${OUTNAME}_heavy_productive" \
-        > /dev/null 2> $ERROR_LOG
-    check_error
-    ConvertDb.py airr -d ${LIGHT_FILE} --outname "${OUTNAME}_light_productive" \
-        > /dev/null 2> $ERROR_LOG
-    check_error
-    ConvertDb.py airr -d ${HEAVY_NON_FILE} --outname "${OUTNAME}_heavy_nonproductive" \
-        > /dev/null 2> $ERROR_LOG
-    check_error
-    ConvertDb.py airr -d ${LIGHT_NON_FILE} --outname "${OUTNAME}_light_nonproductive" \
-        > /dev/null 2> $ERROR_LOG
-    check_error
+    LIGHT_FILE="${OUTNAME}_light_${PROD_FIELD}-T.${EXT}"
 fi
 
 # Zip or delete intermediate files
