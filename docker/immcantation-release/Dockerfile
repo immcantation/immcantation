@@ -34,7 +34,7 @@ RUN PACKAGE="immcantation" \
 # Install muscle
 RUN MUSCLE=$(versions get -n muscle) \
     && wget -q --show-progress \
-       https://www.drive5.com/muscle/muscle${MUSCLE}_binaries.tar.gz \
+       http://www.drive5.com/muscle/muscle${MUSCLE}_binaries.tar.gz \
 	&& tar -zxf muscle${MUSCLE}_binaries.tar.gz muscle${MUSCLE}_i86linux64 \
 	&& mv muscle${MUSCLE}_i86linux64 /usr/local/bin/muscle \
 	&& rm muscle${MUSCLE}_binaries.tar.gz
