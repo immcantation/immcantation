@@ -238,16 +238,14 @@ DC_ACT="set"
 
 # Create germlines parameters
 CG_GERM="full dmask"
-CG_SFIELD="SEQUENCE_IMGT"
-CG_VFIELD="V_CALL"
 
 # Make output directory
 mkdir -p ${OUTDIR}; cd ${OUTDIR}
 
 # Define log files
 LOGDIR="logs"
-PIPELINE_LOG="${LOGDIR}/pipeline-igblast.log"
-ERROR_LOG="${LOGDIR}/pipeline-igblast.err"
+PIPELINE_LOG="${LOGDIR}/pipeline-10x.log"
+ERROR_LOG="${LOGDIR}/pipeline-10x.err"
 mkdir -p ${LOGDIR}
 echo '' > $PIPELINE_LOG
 echo '' > $ERROR_LOG
@@ -311,10 +309,12 @@ if $SPLIT; then
     ParseDb.py select -d ${LAST_FILE} -f ${LOCUS_FIELD} -u IGK IGL TRA TRG \
         -o "${OUTNAME}_light.${EXT}" \
         >> $PIPELINE_LOG 2> $ERROR_LOG
+
     printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "ParseDb split"
     ParseDb.py split -d "${OUTNAME}_heavy.${EXT}" "${OUTNAME}_light.${EXT}" \
         -f ${PROD_FIELD} \
         >> $PIPELINE_LOG 2> $ERROR_LOG
+
     HEAVY_FILE="${OUTNAME}_heavy_${PROD_FIELD}-T.${EXT}"
     LIGHT_FILE="${OUTNAME}_light_${PROD_FIELD}-T.${EXT}"
     HEAVY_NON_FILE="${OUTNAME}_heavy_${PROD_FIELD}-F.${EXT}"
@@ -326,7 +326,8 @@ fi
 if $CLONE; then
     if [ "$DIST" == "auto" ]; then
         printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "Detect cloning threshold"
-        shazam-threshold -d ${HEAVY_FILE} -m density -n "${OUTNAME}" -p ${NPROC} \
+        shazam-threshold -d ${HEAVY_FILE} -m density -n "${OUTNAME}" \
+            -f ${FORMAT} -p ${NPROC} \
             > /dev/null 2> $ERROR_LOG
         DIST=$(tail -n1 "${OUTNAME}_threshold-values.tab" | cut -f2)
     fi
@@ -345,13 +346,15 @@ if $CLONE; then
 
     printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "CreateGermlines"
     CreateGermlines.py -d "${OUTNAME}_heavy_clone-light.${EXT}" --cloned \
-        -r ${REFDIR} -g ${CG_GERM} --sf ${CG_SFIELD} --vf ${CG_VFIELD} \
-        --outname "${OUTNAME}_heavy" --log "${LOGDIR}/germline.log" --format ${FORMAT} \
+        -r ${REFDIR} -g ${CG_GERM} --outname "${OUTNAME}_heavy" \
+        --log "${LOGDIR}/germline.log" --format ${FORMAT} \
         >> $PIPELINE_LOG 2> $ERROR_LOG
 	check_error
 
 	HEAVY_FILE="${OUTNAME}_heavy_germ-pass.${EXT}"
     LIGHT_FILE="${OUTNAME}_light_${PROD_FIELD}-T.${EXT}"
+    HEAVY_NON_FILE="${OUTNAME}_heavy_${PROD_FIELD}-F.${EXT}"
+    LIGHT_NON_FILE="${OUTNAME}_light_${PROD_FIELD}-F.${EXT}"
 fi
 
 # Zip or delete intermediate files

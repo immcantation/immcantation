@@ -2,7 +2,7 @@
 # Super script to run SHazaM distance to nearest tuning
 #
 # Author:  Jason Anthony Vander Heiden, Ruoyi Jiang
-# Date:    2018.09.15
+# Date:    2019.03.19
 #
 # Arguments:
 #   -d           Change-O formatted TSV (TAB) file.
@@ -12,6 +12,7 @@
 #                Defaults to a truncated version of the input filename.
 #   -o           Output directory.
 #                Defaults to current directory.
+#   -f           File format. One of 'changeo' (default) or 'airr'.
 #   -p           Number of subprocesses for multiprocessing tools.
 #                Defaults to the available processing units.
 #   --model      Model when "-m gmm" is specified.
@@ -30,10 +31,12 @@ suppressPackageStartupMessages(library("readr"))
 suppressPackageStartupMessages(library("ggplot2"))
 suppressPackageStartupMessages(library("alakazam"))
 suppressPackageStartupMessages(library("shazam"))
+suppressPackageStartupMessages(library("airr"))
 
 # Set defaults
 METHOD <- "density"
 OUTDIR <- "."
+FORMAT <- "changeo"
 MODEL <- "gamma-gamma"
 NPROC <- parallel::detectCores()
 SUBSAMPLE <- NULL
@@ -50,6 +53,8 @@ opt_list <- list(make_option(c("-d", "--db"), dest="DB",
                                         "\n\t\tDefaults to a truncated version of the input filename.")),
                  make_option(c("-o", "--outdir"), dest="OUTDIR", default=OUTDIR,
                              help=paste("Output directory.", "Defaults to the sample name.")),
+                 make_option(c("-f", "--format"), dest="FORMAT", default=FORMAT,
+                             help=paste("File format. One of 'changeo' (default) or 'airr'.")),
                  make_option(c("-p", "--nproc"), dest="NPROC", default=NPROC,
                              help=paste("Number of subprocesses for multiprocessing tools.",
                                         "\n\t\tDefaults to the available processing units.")),
@@ -69,7 +74,7 @@ opt <- parse_args(OptionParser(option_list=opt_list))
 
 # Check input file
 if (!("DB" %in% names(opt))) {
-    stop("You must provide a Change-O database file with the -d option.")
+    stop("You must provide a database file with the -d option.")
 }
 
 # Check and fill sample name
@@ -87,6 +92,7 @@ if (!(dir.exists(opt$OUTDIR))) {
 DB <- opt$DB
 METHOD <- opt$METHOD
 OUTDIR <- opt$OUTDIR
+FORMAT <- opt$FORMAT
 MODEL <- opt$MODEL
 NPROC <- opt$NPROC
 NAME <- opt$NAME
@@ -94,10 +100,21 @@ SUBSAMPLE <- opt$SUBSAMPLE
 REPEATS <- opt$REPEATS
 
 # Load data
-db <- as.data.frame(readChangeoDb(DB))
+if (FORMAT == "changeo") {
+    db <- as.data.frame(alakazam::readChangeoDb(DB))
+    v_call <- "V_CALL"
+    j_call <- "J_CALL"
+    junction <- "JUNCTION"
+} else if (FORMAT == "airr") {
+    db <- airr::read_rearrangement(DB)
+    v_call <- "v_call"
+    j_call <- "j_call"
+    junction <- "junction"
+}
 
 # Calculate distance-to-nearest
-db <- distToNearest(db, model="ham", first=FALSE, normalize="len", nproc=NPROC)
+db <- distToNearest(db, sequenceColumn=junction, vCallColumn=v_call, jCallColumn=j_call,
+                    model="ham", first=FALSE, normalize="len", nproc=NPROC)
 
 # Open plot device
 plot_file <- file.path(OUTDIR, paste0(NAME, "_threshold-plot.pdf"))
