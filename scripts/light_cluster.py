@@ -65,6 +65,9 @@ def clusterLinkage(cell_series, group_series):
 heavy_df = pd.read_csv(heavy_file, dtype = 'object', sep = '\t')
 light_df = pd.read_csv(light_file, dtype = 'object', sep = '\t')
 
+#filter multiple heavy chains
+heavy_df = heavy_df.loc[heavy_df.groupby(cell_id)[cell_id].transform("count") == 1]
+
 # generate a CELL:CLONE dictionary from heavy df and add to light df (basically an inner join)
 clone_dict = {v[cell_id]:v[clone_id] for k, v in heavy_df[[clone_id, cell_id]].T.to_dict().items()}
 
