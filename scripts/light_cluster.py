@@ -8,19 +8,33 @@ import pandas as pd
 import sys
 
 # Parse arguments
+#   1: heavy data
+#   2: light data
+#   3: output
+#   4: TSV format. one of changeo (default if unspecified) or airr.
 heavy_file = sys.argv[1]
 light_file = sys.argv[2]
 out_file = sys.argv[3]
-
-# Set default fields or use 4th argument
 try:
-    cell_id, clone_id, v_call, j_call, junction = sys.argv[4].split(',')
+    format = sys.argv[4]
 except IndexError:
+    format = 'changeo'
+
+# Set column names
+if format == 'changeo':
     cell_id = 'CELL'
     clone_id = 'CLONE'
     v_call = 'V_CALL'
     j_call = 'J_CALL'
     junction = 'JUNCTION'
+elif format == 'airr':
+    cell_id = 'cell_id'
+    clone_id = 'clone_id'
+    v_call = 'v_call'
+    j_call = 'j_call'
+    junction = 'junction'
+else:
+    sys.exit("Invalid format %s" % format)
 
 
 def clusterLinkage(cell_series, group_series):
@@ -79,11 +93,11 @@ light_df[clone_id] = light_df.apply(lambda row: clone_dict[row[cell_id]], axis =
 cluster_dict = clusterLinkage(light_df[cell_id],
                               light_df.apply(lambda row: row[v_call].split(',')[0].split('*')[0] + \
                                              ',' + row[j_call].split(',')[0].split('*')[0] + ',' + \
-                                             str(len(row[junction])) + ',' + row[clone_id], axis = 1))
+                                             str(len(row[junction])) + ',' + row[clone_id], axis=1))
 
 # add assignments to heavy_df
 heavy_df = heavy_df.loc[heavy_df[cell_id].apply(lambda x: x in cluster_dict.keys()), :]
-heavy_df[clone_id] = heavy_df[clone_id] + '_' + heavy_df.apply(lambda row: str(cluster_dict[row[cell_id]]), axis =1)
+heavy_df[clone_id] = heavy_df[clone_id] + '_' + heavy_df.apply(lambda row: str(cluster_dict[row[cell_id]]), axis=1)
 
 # write heavy chains
 heavy_df.to_csv(out_file, sep='\t', index=False)

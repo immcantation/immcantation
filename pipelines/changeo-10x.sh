@@ -208,12 +208,10 @@ if [[ "${FORMAT}" == "airr" ]]; then
     EXT="tsv"
     LOCUS_FIELD="locus"
     PROD_FIELD="productive"
-    LCLUST_FIELDS="cell_id,clone_id,v_call,j_call,junction"
 else
 	EXT="tab"
 	LOCUS_FIELD="LOCUS"
 	PROD_FIELD="FUNCTIONAL"
-	LCLUST_FIELDS=""
 fi
 
 # Set number of processes
@@ -341,7 +339,7 @@ if $CLONE; then
 
     printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "Clone by light chain"
     light_cluster.py "${OUTNAME}_heavy_clone-pass.${EXT}" ${LIGHT_FILE} \
-        "${OUTNAME}_heavy_clone-light.${EXT}" ${LCLUST_FIELDS} \
+        "${OUTNAME}_heavy_clone-light.${EXT}" ${FORMAT} \
         > /dev/null 2> $ERROR_LOG
 
     printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "CreateGermlines"
