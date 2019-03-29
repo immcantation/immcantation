@@ -25,8 +25,8 @@ except IndexError:
 
 def clusterLinkage(cell_series, group_series):
     """
-    Returns a dictionary of {cell_id : clone_id} that identifies clusters of cells by analyzing their 
-    features (group_series).
+    Returns a dictionary of {cell_id : clone_id} that identifies clusters of cells by analyzing their shared
+    features (group_series) using single linkage. 
 
     Arguments:
       cell_series : iter of cell_id's.
@@ -76,13 +76,11 @@ clone_dict = {v[cell_id]:v[clone_id] for k, v in heavy_df[[clone_id, cell_id]].T
 light_df = light_df.loc[light_df[cell_id].apply(lambda x: x in clone_dict.keys()), ]
 light_df[clone_id] = light_df.apply(lambda row: clone_dict[row[cell_id]], axis = 1)
 
-
 # generate a "cluster_dict" of CELL:CLONE dictionary from light df  (TODO: use receptor object V/J gene names)
 cluster_dict = clusterLinkage(light_df[cell_id],
                               light_df.apply(lambda row: row[v_call].split(',')[0].split('*')[0] + \
                                              ',' + row[j_call].split(',')[0].split('*')[0] + ',' + \
                                              str(len(row[junction])) + ',' + row[clone_id], axis = 1))
-
 
 # add assignments to heavy_df
 heavy_df = heavy_df.loc[heavy_df[cell_id].apply(lambda x: x in cluster_dict.keys()), :]
