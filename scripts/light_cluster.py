@@ -51,12 +51,11 @@ def clusterLinkage(cell_series, group_series):
     for i, group in enumerate(initial_dict.keys()):
         cluster_dict[i] = initial_dict[group]
         for cluster in cluster_dict:
-            if cluster != i:
-                # if initial_dict[group] and cluster_dict[cluster] share common cells, add initial_dict[group] to cluster
-                if any(cell in initial_dict[group] for cell in cluster_dict[cluster]):
-                    cluster_dict[cluster] = cluster_dict[cluster] + initial_dict[group]
-                    del cluster_dict[i]
-                    break
+            # if initial_dict[group] and cluster_dict[cluster] share common cells, add initial_dict[group] to cluster
+            if cluster != i and any(cell in initial_dict[group] for cell in cluster_dict[cluster]):
+                cluster_dict[cluster] = cluster_dict[cluster] + initial_dict[group]
+                del cluster_dict[i]
+                break
     
     # invert cluster_dict for return
     assign_dict = {cell:k for k,v in cluster_dict.items() for cell in set(v)}
