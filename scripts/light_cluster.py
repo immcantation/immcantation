@@ -37,25 +37,28 @@ def clusterLinkage(cell_series, group_series):
     """
 
     # assign initial clusters
-    lc_dict = {}
+    # initial_dict = {group1: [cell1, cell2]}
+    initial_dict = {}
     for cell, group in zip(cell_series, group_series):
         try:    
-            lc_dict[group].append(cell)
+            initial_dict[group].append(cell)
         except KeyError:
-            lc_dict[group] = [cell]
-
-    # link clusters (ON^2) ...ie for cells with multiple light chains does complete linkage
+            initial_dict[group] = [cell]
+               
+    # single linkage clusters (ON^2) ...ie for cells with multiple light chains
+    # cluster_dict = {1: [cell1, cell2]}, 2 cells belong in same group if they share 1 light chain 
     cluster_dict = {}
-    for i, gene in enumerate(lc_dict.keys()):
-        notfound = True
+    for i, group in enumerate(initial_dict.keys()):
+        cluster_dict[i] = initial_dict[group]
         for cluster in cluster_dict:
-            if any(i in lc_dict[gene] for i in cluster_dict[cluster]):
-                cluster_dict[cluster] = cluster_dict[cluster] + lc_dict[gene]
-                notfound = False
-                break
-        if notfound:
-            cluster_dict[i] = lc_dict[gene]
+            if cluster != i:
+                # if initial_dict[group] and cluster_dict[cluster] share common cells, add initial_dict[group] to cluster
+                if any(cell in initial_dict[group] for cell in cluster_dict[cluster]):
+                    cluster_dict[cluster] = cluster_dict[cluster] + initial_dict[group]
+                    del cluster_dict[i]
+                    break
     
+    # invert cluster_dict for return
     assign_dict = {cell:k for k,v in cluster_dict.items() for cell in set(v)}
     
     return assign_dict
@@ -65,21 +68,21 @@ def clusterLinkage(cell_series, group_series):
 heavy_df = pd.read_csv(heavy_file, dtype = 'object', sep = '\t')
 light_df = pd.read_csv(light_file, dtype = 'object', sep = '\t')
 
-#filter multiple heavy chains
+# filter multiple heavy chains
 heavy_df = heavy_df.loc[heavy_df.groupby(cell_id)[cell_id].transform("count") == 1]
 
-# generate a CELL:CLONE dictionary from heavy df and add to light df (basically an inner join)
+# transfer clone IDs from heavy chain df to light chain df
 clone_dict = {v[cell_id]:v[clone_id] for k, v in heavy_df[[clone_id, cell_id]].T.to_dict().items()}
-
 light_df = light_df.loc[light_df[cell_id].apply(lambda x: x in clone_dict.keys()), ]
-
 light_df[clone_id] = light_df.apply(lambda row: clone_dict[row[cell_id]], axis = 1)
 
-# generate a "cluster_dict" of CELL:CLONE dictionary from light df 
+
+# generate a "cluster_dict" of CELL:CLONE dictionary from light df  (TODO: use receptor object V/J gene names)
 cluster_dict = clusterLinkage(light_df[cell_id],
                               light_df.apply(lambda row: row[v_call].split(',')[0].split('*')[0] + \
                                              ',' + row[j_call].split(',')[0].split('*')[0] + ',' + \
                                              str(len(row[junction])) + ',' + row[clone_id], axis = 1))
+
 
 # add assignments to heavy_df
 heavy_df = heavy_df.loc[heavy_df[cell_id].apply(lambda x: x in cluster_dict.keys()), :]
