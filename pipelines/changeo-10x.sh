@@ -2,7 +2,7 @@
 # Super script to run IgBLAST and Change-O on 10X data
 #
 # Author:  Jason Anthony Vander Heiden, Ruoyi Jiang
-# Date:    2019.03.14
+# Date:    2019.03.31
 #
 # Arguments:
 #   -s  FASTA or FASTQ sequence file.
@@ -338,8 +338,8 @@ if $CLONE; then
     check_error
 
     printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "Clone by light chain"
-    light_cluster.py "${OUTNAME}_heavy_clone-pass.${EXT}" ${LIGHT_FILE} \
-        "${OUTNAME}_heavy_clone-light.${EXT}" ${FORMAT} \
+    light_cluster.py -d "${OUTNAME}_heavy_clone-pass.${EXT}" -e ${LIGHT_FILE} \
+        -o "${OUTNAME}_heavy_clone-light.${EXT}" --format ${FORMAT} --doublets count \
         > /dev/null 2> $ERROR_LOG
 
     printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "CreateGermlines"
