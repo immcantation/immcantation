@@ -12,7 +12,7 @@ release:
   scoper:   null
 software:
   muscle:   3.8.425
-  vsearch:  2.9.1
+  vsearch:  2.13.0
   cd-hit:   4.6.8
   blast:    2.8.1
   igblast:  1.13.0
