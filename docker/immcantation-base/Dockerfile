@@ -27,6 +27,7 @@ RUN dnf -y update && dnf install -y \
     lapack-devel \
     libcurl-devel \
     libidn \
+    libidn1.34 \
     libnsl \
     libxml2-devel \
     mercurial \

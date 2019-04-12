@@ -1,13 +1,17 @@
 Release Notes
 ========================================================================
 
-Version 2.8.0:  April 11, 2019
+Version 2.8.0:  April 12, 2019
 ------------------------------------------------------------------------
 
 Version Updates:
 
 + igblast 1.13.0
 + vsearch 2.13.0
+
+Image Changes:
+
++ Fixed a dependency version issue that prevented tbl2asn from running.
 
 
 Version 2.7.0:  February 1, 2019
