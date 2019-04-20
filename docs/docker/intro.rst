@@ -38,11 +38,12 @@ Singularity
 .. parsed-literal::
 
     # Pull release version |docker-version|
-    IMAGE="immcantation-|docker-version|.img"
-    singularity create --size 6000 $IMAGE
-    singularity import $IMAGE docker://kleinstein/immcantation:|docker-version|
+    IMAGE="immcantation-|docker-version|.sif"
+    singularity build $IMAGE docker://kleinstein/immcantation:|docker-version|
 
+The instructions to use Docker containers with Singularity can be slightly different for different versions of Singularity. If the command shown above doesn't work for you, please visit `Singularity Documentation <https://www.sylabs.io/docs/>` and look for the specific command for you Singulatiry version.
 
+    
 What's in the Container
 --------------------------------------------------------------------------------
 

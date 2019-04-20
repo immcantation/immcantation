@@ -101,7 +101,7 @@ file containing information about the data and processing. Valid fields are show
         -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC
 
     # Singularity command
-    singularity exec -B $DATA_DIR:/data immcantation-|docker-version|.img \\
+    singularity exec -B $DATA_DIR:/data immcantation-|docker-version|.sif \\
         presto-abseq -1 $READS_R1 -2 $READS_R2 -y $YAML \\
         -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC
 
@@ -162,7 +162,7 @@ Arguments:
         changeo-igblast -s $READS -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC
 
     # Singularity command
-    singularity exec -B $DATA_DIR:/data immcantation-|docker-version|.img \\
+    singularity exec -B $DATA_DIR:/data immcantation-|docker-version|.sif \\
         changeo-igblast -s $READS -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC
 
 
@@ -217,7 +217,7 @@ Arguments:
         changeo-clone -d $DB -x $DIST -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC
 
     # Singularity command
-    singularity exec -B $DATA_DIR:/data immcantation-|docker-version|.img \\
+    singularity exec -B $DATA_DIR:/data immcantation-|docker-version|.sif \\
         changeo-clone -d $DB -x $DIST -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC
 
 
@@ -267,7 +267,7 @@ Arguments:
         tigger-genotype -d $DB -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC
 
     # Singularity command
-    singularity exec -B $DATA_DIR:/data immcantation-|docker-version|.img \\
+    singularity exec -B $DATA_DIR:/data immcantation-|docker-version|.sif \\
         tigger-genotype -d $DB -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC
 
 Clonal threshold inferrence pipeline
@@ -324,7 +324,7 @@ Arguments:
         shazam-threshold -d $DB -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC
 
     # Singularity command
-    singularity exec -B $DATA_DIR:/data immcantation-|docker-version|.img \\
+    singularity exec -B $DATA_DIR:/data immcantation-|docker-version|.sif \\
         shazam-threshold -d $DB -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC
 
 
@@ -370,7 +370,7 @@ Arguments:
         preprocess-phix -s $READS -o $OUT_DIR -p $NPROC
 
     # Singularity command
-    singularity exec -B $DATA_DIR:/data immcantation-|docker-version|.img \\
+    singularity exec -B $DATA_DIR:/data immcantation-|docker-version|.sif \\
         preprocess-phix -s $READS -o $OUT_DIR -p $NPROC
 
 .. note::

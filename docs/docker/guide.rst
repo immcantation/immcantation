@@ -14,7 +14,7 @@ To invoke a shell session inside the container:
     docker run -it kleinstein/immcantation:|docker-version| bash
 
     # Singularity command
-    singularity shell immcantation-|docker-version|.img
+    singularity shell immcantation-|docker-version|.sif
 
 Sharing files with the container
 --------------------------------------------------------------------------------
@@ -38,7 +38,7 @@ To invoke a shell session inside the container with ``$HOME/project`` mounted to
     docker run -it -v $HOME/project:/data:z kleinstein/immcantation:|docker-version| bash
 
     # Singularity command
-    singularity shell -B $HOME/project:/data immcantation-|docker-version|.img
+    singularity shell -B $HOME/project:/data immcantation-|docker-version|.sif
 
 Note, the ``:z`` in the ``-v`` argument of the ``docker`` command is essential.
 
@@ -58,7 +58,7 @@ how to execute ``versions report`` having mounted ``$HOME/project`` to ``/data``
     docker run -v $HOME/project:/data:z kleinstein/immcantation:|docker-version| versions report
 
     # Singularity command
-    singularity exec -B $HOME/project:/data immcantation-|docker-version|.img versions report
+    singularity exec -B $HOME/project:/data immcantation-|docker-version|.sif versions report
 
 In this case, we are executing the ``versions report`` command which will inspect
 the installed software versions and print them to standard output.
