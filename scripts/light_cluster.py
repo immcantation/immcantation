@@ -11,7 +11,7 @@ from argparse import ArgumentParser
 
 def clusterLinkage(cell_series, group_series):
     """
-    Returns a dictionary of {cell_id : clone_id} that identifies clusters of cells by analyzing their shared
+    Returns a dictionary of {cell_id : cluster_id} that identifies clusters of cells by analyzing their shared
     features (group_series) using single linkage. 
 
     Arguments:
@@ -19,11 +19,11 @@ def clusterLinkage(cell_series, group_series):
       group_series (iter): iter of group_id's.
 
     Returns:
-      dict:  dictionary of {cell_id : clone_id}.
+      dict:  dictionary of {cell_id : cluster_id}.
     """
 
     # assign initial clusters
-    # initial_dict = {group1: [cell1, cell2]}
+    # initial_dict = {cluster1: [cell1], cluster2: [cell1]}
     initial_dict = {}
     for cell, group in zip(cell_series, group_series):
         try:    
@@ -31,17 +31,23 @@ def clusterLinkage(cell_series, group_series):
         except KeyError:
             initial_dict[group] = [cell]
                
-    # single linkage clusters (ON^2) ...ie for cells with multiple light chains
-    # cluster_dict = {1: [cell1, cell2]}, 2 cells belong in same group if they share 1 light chain 
-    cluster_dict = {}
-    for i, group in enumerate(initial_dict.keys()):
-        cluster_dict[i] = initial_dict[group]
-        for cluster in cluster_dict:
-            # if initial_dict[group] and cluster_dict[cluster] share common cells, add initial_dict[group] to cluster
-            if cluster != i and any(cell in initial_dict[group] for cell in cluster_dict[cluster]):
-                cluster_dict[cluster] = cluster_dict[cluster] + initial_dict[group]
-                del cluster_dict[i]
-                break
+    # naive single linkage clustering (ON^2 best case, ON^3 worst case) ...ie for cells with multiple light chains
+    # cluster_dict = {cluster1: [cell1, cell2]}, 2 cells belong in same group if they share 1 light chain 
+    while True:
+        cluster_dict = {}
+        for i, group in enumerate(initial_dict.keys()):
+            cluster_dict[i] = initial_dict[group]
+            for cluster in cluster_dict:
+                # if initial_dict[group] and cluster_dict[cluster] share common cells, add initial_dict[group] to cluster
+                if cluster != i and any(cell in initial_dict[group] for cell in cluster_dict[cluster]):
+                    cluster_dict[cluster] = cluster_dict[cluster] + initial_dict[group]
+                    del cluster_dict[i]
+                    break
+        # break if clusters stop changing, otherwise restart 
+        if len(cluster_dict.keys()) == len(initial_dict.keys()):
+            break
+        else:
+            initial_dict = cluster_dict.copy()
     
     # invert cluster_dict for return
     assign_dict = {cell:k for k,v in cluster_dict.items() for cell in set(v)}
