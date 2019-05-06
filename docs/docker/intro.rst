@@ -41,7 +41,7 @@ Singularity
     IMAGE="immcantation-|docker-version|.sif"
     singularity build $IMAGE docker://kleinstein/immcantation:|docker-version|
 
-The instructions to use Docker containers with Singularity can be slightly different for different versions of Singularity. If the command shown above doesn't work for you, please visit `Singularity Documentation <https://www.sylabs.io/docs/>`_ and look for the specific command for you Singulatiry version.
+The instructions to use containers from `Docker Hub <https://hub.docker.com/>`_ with Singularity can be slightly different for different versions of Singularity. If the command shown above doesn't work for you, please visit `Singularity Documentation <https://www.sylabs.io/docs/>`_ and look for the specific command for you Singulatiry version under *Build a container*.
 
     
 What's in the Container
