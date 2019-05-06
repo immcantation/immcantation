@@ -8,6 +8,7 @@ import pandas as pd
 import sys
 from argparse import ArgumentParser
 
+from changeo.Gene import parseAllele, gene_regex
 
 def clusterLinkage(cell_series, group_series):
     """
@@ -103,8 +104,9 @@ def lightCluster(heavy_file, light_file, out_file, doublets='drop', format='airr
 
     # generate a "cluster_dict" of CELL:CLONE dictionary from light df  (TODO: use receptor object V/J gene names)
     cluster_dict = clusterLinkage(light_df[cell_id],
-                                  light_df.apply(lambda row: row[v_call].split(',')[0].split('*')[0] + \
-                                                 ',' + row[j_call].split(',')[0].split('*')[0] + ',' + \
+                                  light_df.apply(lambda row: 
+                                                 parseAllele(row[v_call], regex = gene_regex) + ',' + \
+                                                 parseAllele(row[j_call], regex = gene_regex) + ',' + \
                                                  str(len(row[junction])) + ',' + row[clone_id], axis=1))
 
     # add assignments to heavy_df
