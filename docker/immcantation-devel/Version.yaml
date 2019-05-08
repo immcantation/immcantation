@@ -17,6 +17,6 @@ software:
   blast:    2.8.1
   igblast:  1.13.0
   phylip:   3.697
-  igphyml:  1.0.5
+  igphyml:  null
   airr-py:  1.2.1
   airr-r:   1.2.0

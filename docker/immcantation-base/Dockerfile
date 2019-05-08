@@ -53,6 +53,7 @@ RUN dnf -y update && dnf install -y \
     texlive-biblatex \
     texlive-titling \
     wget \
+    libidn \
     && dnf clean all
 
 # System environment variables

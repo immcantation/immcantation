@@ -89,13 +89,10 @@ RUN AIRR_PY=$(versions get -n airr-py) \
     && Rscript -e "devtools::install_version('airr', '${AIRR_R}', quiet=FALSE, clean=TRUE)"
 
 # Install IgPhyML
-RUN IGPHYML=$(versions get -n igphyml) \
-    && wget -q --show-progress --no-check-certificate \
-       https://bitbucket.org/kbhoehn/igphyml/get/${IGPHYML}.tar.gz -O igphyml-${IGPHYML}.tar.gz \
+RUN IGPHYML="igphyml" \
     && mkdir -p /usr/local/share/igphyml \
-    && tar -zxf igphyml-${IGPHYML}.tar.gz -C /usr/local/share/igphyml --strip-components 1 \
-    && (cd /usr/local/share/igphyml && ./make_phyml_blas_omp) \
-    && rm -r igphyml-${IGPHYML}.tar.gz
+	&& git clone https://bitbucket.org/kbhoehn/igphyml /usr/local/share/igphyml \
+    && (cd /usr/local/share/igphyml && ./make_phyml_blas_omp)
 
 # Install tbl2asn
 RUN wget -q --show-progress --no-check-certificate \
