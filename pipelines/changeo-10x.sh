@@ -335,17 +335,20 @@ if $CLONE; then
         --dist ${DIST} --mode ${DC_MODE} --act ${DC_ACT} --nproc ${NPROC} \
         --outname "${OUTNAME}_heavy" --log "${LOGDIR}/clone.log" --format ${FORMAT} \
         >> $PIPELINE_LOG 2> $ERROR_LOG
+    CLONE_FILE="${OUTNAME}_heavy_clone-pass.${EXT}"
     check_error
 
-    printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "Clone by light chain"
-    light_cluster.py -d "${OUTNAME}_heavy_clone-pass.${EXT}" -e ${LIGHT_FILE} \
-        -o "${OUTNAME}_heavy_clone-light.${EXT}" --format ${FORMAT} --doublets count \
-        > /dev/null 2> $ERROR_LOG
+    if [ -f "${LIGHT_FILE}" ]; then
+        printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "Clone by light chain"
+        light_cluster.py -d ${CLONE_FILE} -e ${LIGHT_FILE} \
+            -o "${OUTNAME}_heavy_clone-light.${EXT}" --format ${FORMAT} --doublets count \
+            > /dev/null 2> $ERROR_LOG
+        CLONE_FILE="${OUTNAME}_heavy_clone-light.${EXT}"
+    fi
 
     printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "CreateGermlines"
-    CreateGermlines.py -d "${OUTNAME}_heavy_clone-light.${EXT}" --cloned \
-        -r ${REFDIR} -g ${CG_GERM} --outname "${OUTNAME}_heavy" \
-        --log "${LOGDIR}/germline.log" --format ${FORMAT} \
+    CreateGermlines.py -d ${CLONE_FILE} --cloned -r ${REFDIR} -g ${CG_GERM} \
+        --outname "${OUTNAME}_heavy" --log "${LOGDIR}/germline.log" --format ${FORMAT} \
         >> $PIPELINE_LOG 2> $ERROR_LOG
 	check_error
 
