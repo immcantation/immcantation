@@ -4,10 +4,12 @@ Corrects IGH only cloning with IGK/L annotations (VERSION 1)
 """
 
 # Imports
+import os
 import pandas as pd
 import sys
 from argparse import ArgumentParser
 
+# Presto and changeo imports
 from changeo.Gene import parseAllele, gene_regex
 
 def clusterLinkage(cell_series, group_series):
@@ -136,4 +138,9 @@ if __name__ == "__main__":
 
     # Parse arguments and call main
     args = parser.parse_args()
+
+    # Check that files exist
+    for f in [args.heavy_file, args.light_file]:
+        if not os.path.isfile(f):  sys.exit('File %s does not exist.' % f)
+
     lightCluster(**args.__dict__)
