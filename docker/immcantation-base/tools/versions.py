@@ -50,7 +50,7 @@ def readVersions(version_file=default_version_file):
       Version : Version object.
     """
     with open(version_file, 'r') as handle:
-        return Version(yaml.load(handle))
+        return Version(yaml.load(handle, Loader=yaml.FullLoader))
 
 
 def inspectVersions(version_file=default_version_file):

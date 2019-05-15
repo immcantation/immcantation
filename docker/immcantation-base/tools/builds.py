@@ -31,7 +31,7 @@ def readBuild(build_file=default_build_file):
     """
     try:
         with open(build_file, 'r') as handle:
-            return yaml.load(handle)
+            return yaml.load(handle, Loader=yaml.FullLoader)
     except:
         return None
 
