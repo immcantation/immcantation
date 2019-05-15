@@ -2,7 +2,7 @@
 # Super script to run IgBLAST and Change-O on 10X data
 #
 # Author:  Jason Anthony Vander Heiden, Ruoyi Jiang
-# Date:    2019.03.31
+# Date:    2019.05.15
 #
 # Arguments:
 #   -s  FASTA or FASTQ sequence file.
@@ -295,52 +295,51 @@ MakeDb.py igblast -i ${FMT7_FILE} -s ${IG_FILE} --10x ${A10X} -r ${REFDIR} \
     >> $PIPELINE_LOG 2> $ERROR_LOG
 DB_PASS="${OUTNAME}_db-pass.${EXT}"
 DB_FAIL="${OUTNAME}_db-fail.${EXT}"
-LAST_FILE=$DB_PASS
 check_error
 
 # Split by chain and productivity
-if $SPLIT; then
-    printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "ParseDb select"
-    ParseDb.py select -d ${LAST_FILE} -f ${LOCUS_FIELD} -u IGH TRB TRD \
-        -o "${OUTNAME}_heavy.${EXT}" \
-        >> $PIPELINE_LOG 2> $ERROR_LOG
-    ParseDb.py select -d ${LAST_FILE} -f ${LOCUS_FIELD} -u IGK IGL TRA TRG \
-        -o "${OUTNAME}_light.${EXT}" \
-        >> $PIPELINE_LOG 2> $ERROR_LOG
+printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "ParseDb select"
+ParseDb.py select -d ${DB_PASS} -f ${LOCUS_FIELD} -u IGH TRB TRD \
+    -o "${OUTNAME}_heavy.${EXT}" \
+    >> $PIPELINE_LOG 2> $ERROR_LOG
+ParseDb.py select -d ${DB_PASS} -f ${LOCUS_FIELD} -u IGK IGL TRA TRG \
+    -o "${OUTNAME}_light.${EXT}" \
+    >> $PIPELINE_LOG 2> $ERROR_LOG
+HEAVY_ALL="${OUTNAME}_heavy.${EXT}"
+LIGHT_ALL="${OUTNAME}_light.${EXT}"
+check_error
 
-    printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "ParseDb split"
-    ParseDb.py split -d "${OUTNAME}_heavy.${EXT}" "${OUTNAME}_light.${EXT}" \
-        -f ${PROD_FIELD} \
-        >> $PIPELINE_LOG 2> $ERROR_LOG
-
-    HEAVY_FILE="${OUTNAME}_heavy_${PROD_FIELD}-T.${EXT}"
-    LIGHT_FILE="${OUTNAME}_light_${PROD_FIELD}-T.${EXT}"
-    HEAVY_NON_FILE="${OUTNAME}_heavy_${PROD_FIELD}-F.${EXT}"
-    LIGHT_NON_FILE="${OUTNAME}_light_${PROD_FIELD}-F.${EXT}"
-    check_error
-fi
+printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "ParseDb split"
+ParseDb.py split -d "${OUTNAME}_heavy.${EXT}" "${OUTNAME}_light.${EXT}" \
+    -f ${PROD_FIELD} \
+    >> $PIPELINE_LOG 2> $ERROR_LOG
+HEAVY_PROD="${OUTNAME}_heavy_${PROD_FIELD}-T.${EXT}"
+LIGHT_PROD="${OUTNAME}_light_${PROD_FIELD}-T.${EXT}"
+HEAVY_NON="${OUTNAME}_heavy_${PROD_FIELD}-F.${EXT}"
+LIGHT_NON="${OUTNAME}_light_${PROD_FIELD}-F.${EXT}"
+check_error
 
 # Assign clones
 if $CLONE; then
     if [ "$DIST" == "auto" ]; then
         printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "Detect cloning threshold"
-        shazam-threshold -d ${HEAVY_FILE} -m density -n "${OUTNAME}" \
+        shazam-threshold -d ${HEAVY_PROD} -m density -n "${OUTNAME}" \
             -f ${FORMAT} -p ${NPROC} \
             > /dev/null 2> $ERROR_LOG
         DIST=$(tail -n1 "${OUTNAME}_threshold-values.tab" | cut -f2)
     fi
 
     printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "DefineClones"
-    DefineClones.py -d ${HEAVY_FILE} --model ${MODEL} \
+    DefineClones.py -d ${HEAVY_PROD} --model ${MODEL} \
         --dist ${DIST} --mode ${DC_MODE} --act ${DC_ACT} --nproc ${NPROC} \
         --outname "${OUTNAME}_heavy" --log "${LOGDIR}/clone.log" --format ${FORMAT} \
         >> $PIPELINE_LOG 2> $ERROR_LOG
     CLONE_FILE="${OUTNAME}_heavy_clone-pass.${EXT}"
     check_error
 
-    if [ -f "${LIGHT_FILE}" ]; then
+    if [ -f "${LIGHT_PROD}" ]; then
         printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "Clone by light chain"
-        light_cluster.py -d ${CLONE_FILE} -e ${LIGHT_FILE} \
+        light_cluster.py -d ${CLONE_FILE} -e ${LIGHT_PROD} \
             -o "${OUTNAME}_heavy_clone-light.${EXT}" --format ${FORMAT} --doublets count \
             > /dev/null 2> $ERROR_LOG
         CLONE_FILE="${OUTNAME}_heavy_clone-light.${EXT}"
@@ -350,25 +349,21 @@ if $CLONE; then
     CreateGermlines.py -d ${CLONE_FILE} --cloned -r ${REFDIR} -g ${CG_GERM} \
         --outname "${OUTNAME}_heavy" --log "${LOGDIR}/germline.log" --format ${FORMAT} \
         >> $PIPELINE_LOG 2> $ERROR_LOG
+    HEAVY_PROD="${OUTNAME}_heavy_germ-pass.${EXT}"
 	check_error
-
-	HEAVY_FILE="${OUTNAME}_heavy_germ-pass.${EXT}"
-    LIGHT_FILE="${OUTNAME}_light_${PROD_FIELD}-T.${EXT}"
-    HEAVY_NON_FILE="${OUTNAME}_heavy_${PROD_FIELD}-F.${EXT}"
-    LIGHT_NON_FILE="${OUTNAME}_light_${PROD_FIELD}-F.${EXT}"
 fi
 
 # Zip or delete intermediate files
-#printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "Compress files"
-#TEMP_FILES=$(ls ${DB_PASS} ${DB_FAIL} 2>/dev/null | grep -v "${LAST_FILE}\|$(basename ${READS})")
-#if [[ ! -z $TEMP_FILES ]]; then
-#    if $ZIP_FILES; then
-#        tar -zcf temp_files.tar.gz $TEMP_FILES
-#    fi
-#    if $DELETE_FILES; then
-#        rm $TEMP_FILES
-#    fi
-#fi
+printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "Compressing files"
+TEMP_FILES=$(ls *.tsv *.tab 2>/dev/null | grep -v "${HEAVY_PROD}\|${LIGHT_PROD}\|${HEAVY_NON}\|${LIGHT_NON}")
+if [[ ! -z $TEMP_FILES ]]; then
+    if $ZIP_FILES; then
+        tar -zcf temp_files.tar.gz $TEMP_FILES
+    fi
+    if $DELETE_FILES; then
+        rm $TEMP_FILES
+    fi
+fi
 
 # End
 printf "DONE\n\n"
