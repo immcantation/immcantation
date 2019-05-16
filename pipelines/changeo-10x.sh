@@ -343,6 +343,8 @@ if $CLONE; then
             -o "${OUTNAME}_heavy_clone-light.${EXT}" --format ${FORMAT} --doublets count \
             > /dev/null 2> $ERROR_LOG
         CLONE_FILE="${OUTNAME}_heavy_clone-light.${EXT}"
+    else
+        printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "Skipped light chain cloning"
     fi
 
     printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "CreateGermlines"
@@ -354,7 +356,7 @@ if $CLONE; then
 fi
 
 # Zip or delete intermediate files
-printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "Compressing files"
+printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "Compressing files"
 TEMP_FILES=$(ls *.tsv *.tab 2>/dev/null | grep -v "${HEAVY_PROD}\|${LIGHT_PROD}\|${HEAVY_NON}\|${LIGHT_NON}")
 if [[ ! -z $TEMP_FILES ]]; then
     if $ZIP_FILES; then
