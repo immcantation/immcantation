@@ -307,17 +307,16 @@ ParseDb.py select -d ${DB_PASS} -f ${LOCUS_FIELD} -u IGK IGL TRA TRG \
     >> $PIPELINE_LOG 2> $ERROR_LOG
 HEAVY_ALL="${OUTNAME}_heavy.${EXT}"
 LIGHT_ALL="${OUTNAME}_light.${EXT}"
-check_error
 
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "ParseDb split"
-ParseDb.py split -d "${OUTNAME}_heavy.${EXT}" "${OUTNAME}_light.${EXT}" \
-    -f ${PROD_FIELD} \
+ParseDb.py split -d "${OUTNAME}_heavy.${EXT}" -f ${PROD_FIELD} \
+    >> $PIPELINE_LOG 2> $ERROR_LOG
+ParseDb.py split -d "${OUTNAME}_light.${EXT}" -f ${PROD_FIELD} \
     >> $PIPELINE_LOG 2> $ERROR_LOG
 HEAVY_PROD="${OUTNAME}_heavy_${PROD_FIELD}-T.${EXT}"
 LIGHT_PROD="${OUTNAME}_light_${PROD_FIELD}-T.${EXT}"
 HEAVY_NON="${OUTNAME}_heavy_${PROD_FIELD}-F.${EXT}"
 LIGHT_NON="${OUTNAME}_light_${PROD_FIELD}-F.${EXT}"
-check_error
 
 # Assign clones
 if $CLONE; then
