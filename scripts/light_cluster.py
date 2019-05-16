@@ -12,14 +12,15 @@ from argparse import ArgumentParser
 # Presto and changeo imports
 from changeo.Gene import parseAllele, gene_regex
 
+
 def clusterLinkage(cell_series, group_series):
     """
     Returns a dictionary of {cell_id : cluster_id} that identifies clusters of cells by analyzing their shared
     features (group_series) using single linkage. 
 
     Arguments:
-      cell_series (iter): iter of cell_id's.
-      group_series (iter): iter of group_id's.
+      cell_series (iter): iter of cell ids.
+      group_series (iter): iter of group ids.
 
     Returns:
       dict:  dictionary of {cell_id : cluster_id}.
@@ -75,21 +76,25 @@ def lightCluster(heavy_file, light_file, out_file, doublets='drop', format='airr
         clone_id = 'CLONE'
         v_call = 'V_CALL'
         j_call = 'J_CALL'
-        junction = 'JUNCTION'
+        junction_length = 'JUNCTION_LENGTH'
         umi_count = 'CONSCOUNT'
     elif format == 'airr':
         cell_id = 'cell_id'
         clone_id = 'clone_id'
         v_call = 'v_call'
         j_call = 'j_call'
-        junction = 'junction'
+        junction_length = 'junction_length'
         umi_count = 'consensus_count'
     else:
         sys.exit("Invalid format %s" % format)
 
     # read in heavy and light DFs
-    heavy_df = pd.read_csv(heavy_file, dtype='object', sep='\t')
-    light_df = pd.read_csv(light_file, dtype='object', sep='\t')
+    heavy_df = pd.read_csv(heavy_file, dtype='object', na_values=['', 'None', 'NA'], sep='\t')
+    light_df = pd.read_csv(light_file, dtype='object', na_values=['', 'None', 'NA'], sep='\t')
+
+    # Fix types
+    heavy_df[junction_length] = heavy_df[junction_length].astype('int')
+    light_df[junction_length] = light_df[junction_length].astype('int')
 
     # filter multiple heavy chains
     if doublets == 'drop':
@@ -97,7 +102,6 @@ def lightCluster(heavy_file, light_file, out_file, doublets='drop', format='airr
     elif doublets == 'count':
         heavy_df[umi_count] = heavy_df[umi_count].astype('int')
         heavy_df = heavy_df.groupby(cell_id, sort=False).apply(lambda x: x.nlargest(1, umi_count))
-
 
     # transfer clone IDs from heavy chain df to light chain df
     clone_dict = {v[cell_id]:v[clone_id] for k, v in heavy_df[[clone_id, cell_id]].T.to_dict().items()}
@@ -109,7 +113,7 @@ def lightCluster(heavy_file, light_file, out_file, doublets='drop', format='airr
                                   light_df.apply(lambda row: 
                                                  parseAllele(row[v_call], regex = gene_regex) + ',' + \
                                                  parseAllele(row[j_call], regex = gene_regex) + ',' + \
-                                                 str(len(row[junction])) + ',' + row[clone_id], axis=1))
+                                                 str(row[junction_length]) + ',' + row[clone_id], axis=1))
 
     # add assignments to heavy_df
     heavy_df = heavy_df.loc[heavy_df[cell_id].apply(lambda x: x in cluster_dict.keys()), :]

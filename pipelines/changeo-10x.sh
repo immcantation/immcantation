@@ -337,13 +337,13 @@ if $CLONE; then
     check_error
 
     if [ -f "${LIGHT_PROD}" ]; then
-        printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "Clone by light chain"
+        printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "light_cluster"
         light_cluster.py -d ${CLONE_FILE} -e ${LIGHT_PROD} \
             -o "${OUTNAME}_heavy_clone-light.${EXT}" --format ${FORMAT} --doublets count \
             > /dev/null 2> $ERROR_LOG
         CLONE_FILE="${OUTNAME}_heavy_clone-light.${EXT}"
     else
-        printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "Skipped light chain cloning"
+        printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "Skipping light_cluster"
     fi
 
     printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "CreateGermlines"
