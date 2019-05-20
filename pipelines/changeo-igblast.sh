@@ -231,7 +231,7 @@ FMT7_FILE="${FMT7_FILE%.fasta}.fmt7"
 # Parse IgBLAST output
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "MakeDb igblast"
     MakeDb.py igblast -i ${FMT7_FILE} -s  ${IG_FILE} -r ${REFDIR} \
-    --scores --regions --failed ${PARTIAL} --outname "${OUTNAME}" --outdir . \
+    --extended --failed ${PARTIAL} --outname "${OUTNAME}" --outdir . \
     >> $PIPELINE_LOG 2> $ERROR_LOG
     DB_PASS="${OUTNAME}_db-pass.${EXT}"
     DB_FAIL="${OUTNAME}_db-fail.${EXT}"
