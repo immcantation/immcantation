@@ -9,6 +9,7 @@ RUN builds write -n date -v "$(date +'%Y-%m-%d %T %Z')"
 
 # Define pipeline scripts
 ARG PRESTO_ABSEQ="presto-abseq.sh"
+ARG PRESTO_CLONTECH="presto-clontech.sh"
 ARG CHANGEO_IGBLAST="changeo-igblast.sh"
 ARG CHANGEO_CLONE="changeo-clone.sh"
 ARG CHANGEO_10X="changeo-10x.sh"
@@ -22,6 +23,7 @@ RUN PACKAGE="immcantation" \
     && hg clone -b default https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
 	&& mv /tmp/${PACKAGE}/scripts/* /usr/local/bin/ \
 	&& mv /tmp/${PACKAGE}/pipelines/${PRESTO_ABSEQ} /usr/local/bin/presto-abseq \
+	&& mv /tmp/${PACKAGE}/pipelines/${PRESTO_CLONTECH} /usr/local/bin/presto-clontech \
 	&& mv /tmp/${PACKAGE}/pipelines/${CHANGEO_IGBLAST} /usr/local/bin/changeo-igblast \
 	&& mv /tmp/${PACKAGE}/pipelines/${CHANGEO_CLONE} /usr/local/bin/changeo-clone \
 	&& mv /tmp/${PACKAGE}/pipelines/${CHANGEO_10X} /usr/local/bin/changeo-10x \
@@ -186,6 +188,8 @@ CMD echo -e "Report version information:\n" \
             "  builds report\n" \
             "Available pipeline commands:\n" \
             "  presto-abseq\n" \
+            "  presto-clontech\n" \
+            "  changeo-10x\n" \
             "  changeo-igblast\n" \
             "  changeo-clone\n" \
             "  tigger-genotype\n" \
