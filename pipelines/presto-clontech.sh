@@ -10,7 +10,7 @@
 #   -j  C-region reference sequences (reverse complemented).
 #       Defaults to /usr/local/share/protocols/Universal/Mouse_TR_CRegion_RC.fasta
 #   -r  V-segment reference file.
-#       Defaults to /usr/local/share/germlines/igblast/fasta/imgt_mouse_tv_v.fasta
+#       Defaults to /usr/local/share/igblast/fasta/imgt_mouse_tr_v.fasta
 #   -n  Sample name or run identifier which will be used as the output file prefix.
 #       Defaults to a truncated version of the read 1 filename.
 #   -o  Output directory.
@@ -31,7 +31,7 @@ print_usage() {
     echo -e "  -j  C-region reference sequences (reverse complemented).\n" \
             "     Defaults to /usr/local/share/protocols/Universal/Mouse_TR_CRegion_RC.fasta."
     echo -e "  -r  V-segment reference file.\n" \
-            "     Defaults to /usr/local/share/germlines/igblast/fasta/imgt_mouse_tv_v.fasta."
+            "     Defaults to /usr/local/share/igblast/fasta/imgt_mouse_tr_v.fasta."
     echo -e "  -n  Sample identifier which will be used as the output file prefix.\n" \
             "     Defaults to a truncated version of the read 1 filename."
     echo -e "  -o  Output directory.\n" \
