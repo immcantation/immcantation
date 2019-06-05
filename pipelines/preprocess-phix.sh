@@ -119,7 +119,7 @@ if ! ${NPROC_SET}; then
 fi
 
 # Make output directory
-mkdir -p ${OUTDIR}; cd ${OUTDIR}
+mkdir -p ${OUTDIR}
 
 # Define log files
 LOGDIR="${OUTDIR}/logs"
@@ -229,4 +229,3 @@ rm $FASTA_FILE
 
 # End
 printf "DONE\n\n"
-cd ../
