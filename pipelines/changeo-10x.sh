@@ -15,14 +15,14 @@
 #   -x  Distance threshold for clonal assignment.
 #       If unspecified, clonal assignment is not performed.
 #   -m  Distance model for clonal assignment.
-#       Defaults to the nucleotide Hamming distance model ('ham').
+#       Defaults to the nucleotide Hamming distance model (ham).
 #   -b  IgBLAST IGDATA directory, which contains the IgBLAST database, optional_file
 #       and auxillary_data directories. Defaults to /usr/local/share/igblast.
 #   -n  Sample name or run identifier which will be used as the output file prefix.
 #       Defaults to a truncated version of the read 1 filename.
 #   -o  Output directory.
 #       Defaults to the sample name.
-#   -f  Output format. One of 'changeo' (default) or 'airr'.
+#   -f  Output format. One of changeo or airr. Defaults to changeo.
 #   -p  Number of subprocesses for multiprocessing tools.
 #       Defaults to the available processing units.
 #   -i  Specify to allow partial alignments.
@@ -42,14 +42,14 @@ print_usage() {
     echo -e "  -x  Distance threshold for clonal assignment. Specify \"auto\" for automatic detection.\n" \
             "     If unspecified, clonal assignment is not performed."
     echo -e "  -m  Distance model for clonal assignment.\n" \
-            "     Defaults to the nucleotide Hamming distance model ('ham')."
+            "     Defaults to the nucleotide Hamming distance model (ham)."
     echo -e "  -b  IgBLAST IGDATA directory, which contains the IgBLAST database, optional_file\n" \
             "     and auxillary_data directories. Defaults to /usr/local/share/igblast."
     echo -e "  -n  Sample identifier which will be used as the output file prefix.\n" \
             "     Defaults to a truncated version of the sequence filename."
     echo -e "  -o  Output directory.\n" \
             "     Defaults to the sample name."
-    echo -e "  -f  Output format. One of 'changeo' (default) or 'airr'."
+    echo -e "  -f  Output format. One of changeo or airr. Defaults to changeo."
     echo -e "  -p  Number of subprocesses for multiprocessing tools.\n" \
             "     Defaults to the available cores."
     echo -e "  -i  Specify to allow partial alignments."
@@ -177,7 +177,7 @@ else
     REFDIR=$(readlink -f ${REFDIR})
 fi
 
-# Set blast database
+# Set distance model
 if ! ${MODEL_SET}; then
     MODEL="ham"
 fi

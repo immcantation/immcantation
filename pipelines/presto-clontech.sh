@@ -172,7 +172,7 @@ FS_QUAL=20
 # MaskPrimers run parameters
 MP_MAXERR=0.2
 MP_MAXLEN=50
-MP_FIELD="C_CALL"
+C_FIELD="C_CALL"
 
 # CollapseSeq run parameters
 CS_KEEP=true
@@ -226,7 +226,7 @@ check_error
 # Annotate C-region
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "MaskPrimers align"
 MaskPrimers.py align -s $MP_FILE -p $C_PRIMERS --mode cut --skiprc --revpr\
-    --maxlen $MP_MAXLEN --maxerror $MP_MAXERR --pf ${MP_FIELD}  \
+    --maxlen $MP_MAXLEN --maxerror $MP_MAXERR --pf ${C_FIELD}  \
     --nproc $NPROC --log "${LOGDIR}/cregion.log" --outname "${OUTNAME}" \
     >> $PIPELINE_LOG 2> $ERROR_LOG
 CS_FILE="${OUTNAME}_primers-pass.fastq"
@@ -235,10 +235,10 @@ check_error
 # Remove duplicate sequences
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "CollapseSeq"
 if $CS_KEEP; then
-    CollapseSeq.py -s $CS_FILE -n $CS_MISS --inner --keepmiss --uf ${MP_FIELD} \
+    CollapseSeq.py -s $CS_FILE -n $CS_MISS --inner --keepmiss --uf ${C_FIELD} \
     --outname "${OUTNAME}-final" >> $PIPELINE_LOG 2> $ERROR_LOG
 else
-    CollapseSeq.py -s $CS_FILE -n $CS_MISS --inner --uf ${MP_FIELD} \
+    CollapseSeq.py -s $CS_FILE -n $CS_MISS --inner --uf ${C_FIELD} \
     --outname "${OUTNAME}-final" >> $PIPELINE_LOG 2> $ERROR_LOG
 fi
 check_error
@@ -249,10 +249,20 @@ SplitSeq.py group -s "${OUTNAME}-final_collapse-unique.fastq" -f DUPCOUNT --num 
     >> $PIPELINE_LOG 2> $ERROR_LOG
 check_error
 
+# Create table of final repertoire
+printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "ParseHeaders table"
+ParseHeaders.py table -s ${CS_FILE} -f ID ${C_FIELD} \
+    --outname "final-total" --outdir ${LOGDIR} >> $PIPELINE_LOG 2> $ERROR_LOG
+ParseHeaders.py table -s "${OUTNAME}-final_collapse-unique.fastq" -f ID ${C_FIELD} DUPCOUNT \
+    --outname "final-unique" --outdir ${LOGDIR} >> $PIPELINE_LOG 2> $ERROR_LOG
+ParseHeaders.py table -s "${OUTNAME}-final_collapse-unique_atleast-2.fastq" -f ID ${C_FIELD} DUPCOUNT \
+    --outname "final-unique-atleast2" --outdir ${LOGDIR} >> $PIPELINE_LOG 2> $ERROR_LOG
+check_error
+
 # Process log files
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "ParseLog"
 ParseLog.py -l "${LOGDIR}/assemble.log" \
-    -f ID REFID LENGTH OVERLAP GAP ERROR PVALUE EVALUE1 EVALUE2 IDENTITY FIELDS1 FIELDS2 \
+    -f ID REFID LENGTH OVERLAP GAP ERROR PVALUE EVALUE1 EVALUE2 IDENTITY \
     --outdir ${LOGDIR} > /dev/null 2> $ERROR_LOG &
 if $FILTER_LOWQUAL; then
     ParseLog.py -l "${LOGDIR}/quality.log" -f ID QUALITY --outdir ${LOGDIR} \

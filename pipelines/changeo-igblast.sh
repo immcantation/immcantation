@@ -17,9 +17,10 @@
 #       Defaults to a truncated version of the read 1 filename.
 #   -o  Output directory.
 #       Defaults to the sample name.
+#   -f  Output format. One of changeo or airr. Defaults to changeo.
 #   -p  Number of subprocesses for multiprocessing tools.
 #       Defaults to the available processing units.
-#   -f  Specify to filter the output to only productive/functional sequences.
+#   -k  Specify to filter the output to only productive/functional sequences.
 #   -i  Specify to allow partial alignments.
 #   -h  Display help.
 
@@ -38,9 +39,10 @@ print_usage() {
             "     Defaults to a truncated version of the sequence filename."
     echo -e "  -o  Output directory.\n" \
             "     Defaults to the sample name."
+    echo -e "  -f  Output format. One of changeo (default) or airr."
     echo -e "  -p  Number of subprocesses for multiprocessing tools.\n" \
             "     Defaults to the available cores."
-    echo -e "  -f  Specify to filter the output to only productive/functional sequences."
+    echo -e "  -k  Specify to filter the output to only productive/functional sequences."
     echo -e "  -i  Specify to allow partial alignments."
     echo -e "  -h  This message."
 }
@@ -53,12 +55,13 @@ RECEPTOR_SET=false
 IGDATA_SET=false
 OUTNAME_SET=false
 OUTDIR_SET=false
+FORMAT_SET=false
 NPROC_SET=false
 FUNCTIONAL=false
 PARTIAL=""
 
 # Get commandline arguments
-while getopts "s:r:g:t:b:n:o:p:fih" OPT; do
+while getopts "s:r:g:t:b:n:o:f:p:kih" OPT; do
     case "$OPT" in
     s)  READS=$OPTARG
         READS_SET=true
@@ -81,10 +84,13 @@ while getopts "s:r:g:t:b:n:o:p:fih" OPT; do
     o)  OUTDIR=$OPTARG
         OUTDIR_SET=true
         ;;
+    f)  FORMAT=$OPTARG
+        FORMAT_SET=true
+        ;;
     p)  NPROC=$OPTARG
         NPROC_SET=true
         ;;
-    f)  FUNCTIONAL=true
+    k)  FUNCTIONAL=true
         ;;
     i)  PARTIAL="--partial"
         ;;        
@@ -158,6 +164,21 @@ if ! ${OUTDIR_SET}; then
     OUTDIR=${OUTNAME}
 fi
 
+# Set format options
+if ! ${FORMAT_SET}; then
+    FORMAT="changeo"
+fi
+
+if [[ "${FORMAT}" == "airr" ]]; then
+    EXT="tsv"
+    LOCUS_FIELD="locus"
+    PROD_FIELD="productive"
+else
+	EXT="tab"
+	LOCUS_FIELD="LOCUS"
+	PROD_FIELD="FUNCTIONAL"
+fi
+
 # Set number of processes
 if ! ${NPROC_SET}; then
     NPROC=$(nproc)
@@ -171,8 +192,6 @@ GERMLINES=false
 
 # Create germlines parameters
 CG_GERM="dmask"
-CG_SFIELD="SEQUENCE_IMGT"
-CG_VFIELD="V_CALL"
 
 # Make output directory
 mkdir -p ${OUTDIR}; cd ${OUTDIR}
@@ -197,11 +216,6 @@ check_error() {
 # Set extension
 IGBLAST_VERSION=$(igblastn -version  | grep 'Package' |sed s/'Package: '//)
 CHANGEO_VERSION=$(python3 -c "import changeo; print('%s-%s' % (changeo.__version__, changeo.__date__))")
-if [[ $CHANGEO_VERSION == 0.4* ]]; then
-    EXT="tab"
-else
-	EXT="tab"
-fi
 
 # Start
 echo -e "IDENTIFIER: ${OUTNAME}"
@@ -232,7 +246,8 @@ FMT7_FILE="${FMT7_FILE%.fasta}.fmt7"
 # Parse IgBLAST output
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "MakeDb igblast"
     MakeDb.py igblast -i ${FMT7_FILE} -s  ${IG_FILE} -r ${REFDIR} \
-    --extended --failed ${PARTIAL} --outname "${OUTNAME}" --outdir . \
+    --extended --failed ${PARTIAL} \
+    --outname "${OUTNAME}" --outdir . --format ${FORMAT} \
     >> $PIPELINE_LOG 2> $ERROR_LOG
     DB_PASS="${OUTNAME}_db-pass.${EXT}"
     DB_FAIL="${OUTNAME}_db-fail.${EXT}"
@@ -243,7 +258,7 @@ check_error
 if $GERMLINES; then
     printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "CreateGermlines"
     CreateGermlines.py -d ${LAST_FILE} -r ${REFDIR} -g ${CG_GERM} \
-        --sf ${CG_SFIELD} --vf ${CG_VFIELD} --outname "${OUTNAME}" \
+        --outname "${OUTNAME}" --format ${FORMAT} \
         >> $PIPELINE_LOG 2> $ERROR_LOG
 	check_error
 	GERM_PASS="${OUTNAME}_germ-pass.${EXT}"
@@ -252,7 +267,8 @@ fi
 
 if $FUNCTIONAL; then
     printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "ParseDb select"
-    ParseDb.py select -d ${LAST_FILE} -f FUNCTIONAL -u T TRUE --outname "${OUTNAME}" \
+    ParseDb.py select -d ${LAST_FILE} -f ${PROD_FIELD} -u T TRUE \
+        --outname "${OUTNAME}" \
         >> $PIPELINE_LOG 2> $ERROR_LOG
     check_error
     SELECT_PASS="${OUTNAME}_parse-select.${EXT}"

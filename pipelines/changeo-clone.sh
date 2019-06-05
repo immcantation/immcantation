@@ -7,12 +7,15 @@
 # Arguments:
 #   -d  Change-O formatted TSV (TAB) file.
 #   -x  Distance threshold for clonal assignment.
+#   -m  Distance model for clonal assignment.
+#       Defaults to the nucleotide Hamming distance model (ham).
 #   -r  Directory containing IMGT-gapped reference germlines.
 #       Defaults to /usr/local/share/germlines/imgt/human/vdj.
 #   -n  Sample name or run identifier which will be used as the output file prefix.
 #       Defaults to a truncated version of the input filename.
 #   -o  Output directory.
 #       Defaults to the sample name.
+#   -f  Output format. One of changeo or airr. Defaults to changeo.
 #   -p  Number of subprocesses for multiprocessing tools.
 #       Defaults to the available processing units.
 #   -a  Specify to clone the full data set.
@@ -24,12 +27,15 @@ print_usage() {
     echo -e "Usage: `basename $0` [OPTIONS]"
     echo -e "  -d  Change-O formatted TSV (TAB) file."
     echo -e "  -x  Distance threshold for clonal assignment."
+    echo -e "  -m  Distance model for clonal assignment.\n" \
+            "     Defaults to the nucleotide Hamming distance model (ham)."
     echo -e "  -r  Directory containing IMGT-gapped reference germlines.\n" \
             "     Defaults to /usr/local/share/germlines/imgt/human/vdj."
     echo -e "  -n  Sample identifier which will be used as the output file prefix.\n" \
             "     Defaults to a truncated version of the input filename."
     echo -e "  -o  Output directory.\n" \
             "     Defaults to the sample name."
+    echo -e "  -f  Output format. One of changeo (default) or airr."
     echo -e "  -p  Number of subprocesses for multiprocessing tools.\n" \
             "     Defaults to the available cores."
     echo -e "  -a  Specify to clone the full data set.\n" \
@@ -40,14 +46,16 @@ print_usage() {
 # Argument validation variables
 DB_SET=false
 DIST_SET=false
+MODEL_SET=false
 REFDIR_SET=false
 OUTNAME_SET=false
 OUTDIR_SET=false
+FORMAT_SET=false
 NPROC_SET=false
 FUNCTIONAL=true
 
 # Get commandline arguments
-while getopts "d:x:r:n:o:p:ah" OPT; do
+while getopts "d:x:m:r:n:o:f:p:ah" OPT; do
     case "$OPT" in
     d)  DB=$OPTARG
         DB_SET=true
@@ -63,6 +71,9 @@ while getopts "d:x:r:n:o:p:ah" OPT; do
         ;;
     o)  OUTDIR=$OPTARG
         OUTDIR_SET=true
+        ;;
+    f)  FORMAT=$OPTARG
+        FORMAT_SET=true
         ;;
     p)  NPROC=$OPTARG
         NPROC_SET=true
@@ -93,6 +104,10 @@ if ! ${DIST_SET}; then
 fi
 
 # Set unspecified arguments
+if ! ${MODEL_SET}; then
+    MODEL="ham"
+fi
+
 if ! ${REFDIR_SET}; then
     REFDIR="/usr/local/share/germlines/imgt/human/vdj"
 else
@@ -107,6 +122,22 @@ if ! ${OUTDIR_SET}; then
     OUTDIR=${OUTNAME}
 fi
 
+# Set format options
+if ! ${FORMAT_SET}; then
+    FORMAT="changeo"
+fi
+
+if [[ "${FORMAT}" == "airr" ]]; then
+    EXT="tsv"
+    LOCUS_FIELD="locus"
+    PROD_FIELD="productive"
+else
+	EXT="tab"
+	LOCUS_FIELD="LOCUS"
+	PROD_FIELD="FUNCTIONAL"
+fi
+
+# Process settings
 if ! ${NPROC_SET}; then
     NPROC=$(nproc)
 fi
@@ -125,14 +156,11 @@ DELETE_FILES=true
 GERMLINES=true
 
 # DefineClones run parameters
-DC_MODEL="ham"
 DC_MODE="gene"
 DC_ACT="set"
 
 # Create germlines parameters
 CG_GERM="dmask"
-CG_SFIELD="SEQUENCE_IMGT"
-CG_VFIELD="V_CALL"
 
 # Make output directory
 mkdir -p ${OUTDIR}; cd ${OUTDIR}
@@ -157,10 +185,8 @@ check_error() {
 # Set extension
 CHANGEO_VERSION=$(python3 -c "import changeo; print('%s-%s' % (changeo.__version__, changeo.__date__))")
 if [[ $CHANGEO_VERSION == 0.4* ]]; then
-    EXT="tab"
     DC_COMMAND=""
 else
-	EXT="tab"
     DC_COMMAND="bygroup"
 fi
 
@@ -173,7 +199,7 @@ STEP=0
 
 if $FUNCTIONAL; then
     printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "ParseDb select"
-    ParseDb.py select -d ${DB} -f FUNCTIONAL -u T TRUE \
+    ParseDb.py select -d ${DB} -f ${PROD_FIELD} -u T TRUE \
         --outname "${OUTNAME}" --outdir . \
         >> $PIPELINE_LOG 2> $ERROR_LOG
     check_error
@@ -185,9 +211,9 @@ fi
 
 # Assign clones
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "DefineClones ${DC_COMMAND}"
-DefineClones.py ${DC_COMMAND} -d ${LAST_FILE} --model ${DC_MODEL} \
+DefineClones.py ${DC_COMMAND} -d ${LAST_FILE} --model ${MODEL} \
     --dist ${DIST} --mode ${DC_MODE} --act ${DC_ACT} --nproc ${NPROC} \
-    --outname "${OUTNAME}" --outdir . --log "${LOGDIR}/clone.log" \
+    --outname "${OUTNAME}" --outdir . --format ${FORMAT} --log "${LOGDIR}/clone.log" \
     >> $PIPELINE_LOG 2> $ERROR_LOG
 check_error
 CLONE_PASS="${OUTNAME}_clone-pass.${EXT}"
@@ -197,7 +223,7 @@ LAST_FILE=$CLONE_PASS
 if $GERMLINES; then
     printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "CreateGermlines"
     CreateGermlines.py -d ${LAST_FILE} -r ${REFDIR} -g ${CG_GERM} \
-        --sf ${CG_SFIELD} --vf ${CG_VFIELD} --cloned --outname "${OUTNAME}" \
+        --cloned --outname "${OUTNAME}" --format ${FORMAT} \
         >> $PIPELINE_LOG 2> $ERROR_LOG
 	check_error
 	GERM_PASS="${OUTNAME}_germ-pass.${EXT}"
