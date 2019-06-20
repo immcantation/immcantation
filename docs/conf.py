@@ -19,7 +19,7 @@ import yaml
 import sphinx_rtd_theme
 
 # Prolog
-docker_versions = yaml.load(open('../docker/immcantation-release/Version.yaml', 'r'))
+docker_versions = yaml.load(open('../docker/immcantation-release/Version.yaml', 'r'), Loader=yaml.FullLoader)
 rst_prolog = '.. |docker-version| replace:: %s' % docker_versions['immcantation']['version']
 
 # If extensions (or modules to document with autodoc) are in another directory,
