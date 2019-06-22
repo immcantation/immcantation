@@ -1,4 +1,4 @@
-## Immcantation training materials
+# Immcantation training materials
 
 ### Introduction to B cell repertoire analysis 
 
@@ -8,16 +8,16 @@ To use with [Docker](https://www.docker.com/) locally:
 
 1. Pull the Immcantation Lab container image:
 
-    ````
+    ```
     # Example: pull release version 2.7.0-lab
     docker pull kleinstein/immcantation:2.7.0-lab
-    ````
+    ```
     
 1. Run the container:
 
     ```
     docker run --network=host -it --rm -p 8888:8888 kleinstein/immcantation:2.7.0-lab
-    ````
+    ```
 
     Or, if you want to save the results in your computer:
     
