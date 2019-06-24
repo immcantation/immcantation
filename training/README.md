@@ -2,7 +2,9 @@
 
 ### Introduction to B cell repertoire analysis 
 
-Get a global overview of how the different tools in the Immcantation framework work together with a jupyter notebook based on the materials presented in the [webinar](https://immcantation.eventbrite.com)
+Get a global overview of how the different tools in the Immcantation framework work together with a jupyter notebook based on the materials presented in the [webinar](https://immcantation.eventbrite.com). Use it online with 
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/immcantation/immcantation-lab/master) or locally, following the instructions below.
+
 
 To use with [Docker](https://www.docker.com/) locally:
 
