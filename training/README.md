@@ -1,38 +1,75 @@
 # Immcantation training materials
 
-### Introduction to B cell repertoire analysis 
+## Introduction to B cell repertoire analysis 
 
-Get a global overview of how the different tools in the Immcantation framework work together with a jupyter notebook based on the materials presented in the [webinar](https://immcantation.eventbrite.com). Use it online with 
+Get a global overview of how the different tools in the Immcantation framework work together with a [Jupyter notebook](https://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/) based on the materials presented in the [webinar](https://immcantation.eventbrite.com). Use it online with 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/immcantation/immcantation-lab/master) or locally, following the instructions below.
 
+### Learning Outcomes
 
-To use with [Docker](https://www.docker.com/) locally:
+* V(D)J gene annotation and novel polymorphism detection
+* Clonotype assignment
+* Diversity analysis
+* Mutational load profiling
+* Modeling of somatic hypermutation targeting
+* Quantification of selection pressure
 
-* Pull the Immcantation Lab container image:
+### Using the module locally with Docker
+
+* 1.1 Pull the Immcantation Lab container image:
 
 ```
-    # Example: pull release version 2.7.0-lab
-    docker pull kleinstein/immcantation:2.7.0-lab
+# Example: pull release version 2.7.0-lab
+docker pull kleinstein/immcantation:2.7.0-lab
 ```
     
-* Run the container:
+* 1.2 Run the container:
 
 ```
-    docker run --network=host -it --rm -p 8888:8888 kleinstein/immcantation:2.7.0-lab
+docker run --network=host -it --rm -p 8888:8888 kleinstein/immcantation:2.7.0-lab
 ```
 
-    Or, if you want to save the results in your computer:
+Or, if you want to save the results in your computer:
     
 ```
-     Note: change my-out-dir for the full path to the local directory where 
-    # you want to have the results saved to
-    docker run --network=host -it --rm -v my-out-dir:/home/magus/notebooks/results:z -p 8888:8888 kleinstein/immcantation:2.7.0-lab
+# Note: change my-out-dir for the full path to the local directory where 
+# you want to have the results saved to
+docker run --network=host -it --rm -v my-out-dir:/home/magus/notebooks/results:z -p 8888:8888 kleinstein/immcantation:2.7.0-lab
 ```
-    
-    Once the container is running, You will see a message asking you to visit a url like `http://<hostname>:8888/?token=<token>`
 
-* Open your internet browser and visit that url
+Once the container is running, You will see in the terminal a message asking you to visit a url like `http://<hostname>:8888/?token=<token>`
+
+* 1.3 Open your computer's internet browser and visit the url
+
+When you visit the url from the previous step, you will start a Jupyter session in your browser.
+
 ```
-    # Example: http://localhost:8888/?token=18303237b2521e72f00685e4fdf754f955f82a958a8e57ec
+# Example: http://localhost:8888/?token=18303237b2521e72f00685e4fdf754f955f82a958a8e57ec
 ```
-* Use CTRL+Enter to execute the commands inside the code cells
+
+* 1.4 Open the notebook
+
+Open the notebook you want to work with. Use CTRL+Enter to execute the commands inside the cells.
+
+For an introduction to Jupyter, visit the [official documentation site](https://jupyter-notebook.readthedocs.io/en/latest/).
+
+
+### Target audience
+
+Bioinformaticians, immunologists, biologist, scientists and students learning about immune repertoires.
+
+### Prerequisite Skills and Knowledge Required
+
+Familiarity with R, python and Linux.
+
+### Domain Problem
+
+The field of high-throughput adaptive immune receptor repertoire sequencing (AIRR-seq) has experienced significant growth in recent years, but this growth has come with considerable complexity and variety in experimental design. These complexities, combined with the high germline and somatic diversity of immunoglobulin repertoires, present analytical challenges requiring specialized methodologies. This tutorial will cover common investigative approaches and pitfalls in AIRR-seq data analysis.
+
+### Dataset for the case study
+
+Processed reads (input.fasta) from one healthy donor (PGP1) 3 weeks after flu vaccination (Laserson et al. (2014))
+
+### License
+
+This work is licensed under a [Creative Commons Attribution-NonCommercial 4.0 International License](https://creativecommons.org/licenses/by-nc/4.0/).
