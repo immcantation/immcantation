@@ -45,13 +45,12 @@ EXPOSE 8888
 COPY start-notebook.sh /usr/local/bin/
 RUN chown -R ${NB_UID} ${HOME}
 USER ${NB_USER}
-RUN wget -v -O /home/${NB_USER}/immcantation-webinar.zip -L https://yale.box.com/shared/static/4bo611b70x8u92qvss1pypmcr9wmqil4.zip && \
+RUN wget -v -O /home/${NB_USER}/immcantation-lab-intro.zip -L https://yale.box.com/shared/static/4bo611b70x8u92qvss1pypmcr9wmqil4 && \
     cd /home/${NB_USER}/ && \
-    unzip -o immcantation-webinar.zip && \
-    rm -rf immcantation-webinar.zip && \
-    mv immcantation-webinar/example-input/* /home/${NB_USER}/data/. && \
-    rm -rf immcantation-webinar
+    unzip -o immcantation-lab-intro.zip && \
+    rm -rf immcantation-lab-intro.zip && \
+    mv immcantation-lab-intro/example-input/* /home/${NB_USER}/data/. && \
+    rm -rf immcantation-lab-intro
 #RUN cd ${HOME}/notebooks && \
-#    jupyter nbconvert --ExecutePreprocessor.timeout=-1 --to notebook --execute intro-lab.ipynb && \
-#    rm -rf results/*
+#    jupyter nbconvert --ExecutePreprocessor.timeout=-1 --to notebook --execute intro-lab.ipynb && rm -rf results/*
 CMD ["start-notebook.sh"]
