@@ -45,7 +45,7 @@ EXPOSE 8888
 COPY start-notebook.sh /usr/local/bin/
 RUN chown -R ${NB_UID} ${HOME}
 USER ${NB_USER}
-RUN wget -v -O /home/${NB_USER}/immcantation-webinar.zip -L https://yale.box.com/shared/static/pi2w2j7sckxbmthn1570dricrnl9zlkd.zip && \
+RUN wget -v -O /home/${NB_USER}/immcantation-webinar.zip -L https://yale.box.com/shared/static/4bo611b70x8u92qvss1pypmcr9wmqil4.zip && \
     cd /home/${NB_USER}/ && \
     unzip -o immcantation-webinar.zip && \
     rm -rf immcantation-webinar.zip && \
