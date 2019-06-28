@@ -70,6 +70,10 @@ The field of high-throughput adaptive immune receptor repertoire sequencing (AIR
 
 Processed reads (input.fasta) from one healthy donor (PGP1) 3 weeks after flu vaccination (Laserson et al. (2014))
 
+### Funding
+
+Developed with the support of the National Library of Medicine (NIH NLM T15 LM007056) and the National Institute of Allergy and Infectious Diseases (NIH NIAID R01 AI104739).
+
 ### License
 
 This work is licensed under a [Creative Commons Attribution-NonCommercial 4.0 International License](https://creativecommons.org/licenses/by-nc/4.0/).
