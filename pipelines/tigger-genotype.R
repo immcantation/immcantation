@@ -13,7 +13,7 @@
 #   -n  Sample name or run identifier which will be used as the output file prefix.
 #       Defaults to a truncated version of the input filename.
 #   -o  Output directory. Will be created if it does not exist.
-#       Defaults to a directory matching the sample identifier in the current working directory.
+#       Defaults to the current working directory.
 #   -p  Number of subprocesses for multiprocessing tools.
 #       Defaults to the available processing units.
 #   -h  Display help.
@@ -45,7 +45,7 @@ opt_list <- list(make_option(c("-d", "--db"), dest="DB",
                                         "\n\t\tDefaults to a truncated version of the input filename.")),
                  make_option(c("-o", "--outdir"), dest="OUTDIR", default=".",
                              help=paste("Output directory. Will be created if it does not exist.",
-                                        "\n\t\tDefaults to a directory matching the sample identifier in the current working directory.")),
+                                        "\n\t\tDefaults to the current working directory.")),
                  make_option(c("-p", "--nproc"), dest="NPROC", default=NPROC,
                              help=paste("Number of subprocesses for multiprocessing tools.",
                                         "\n\t\tDefaults to the available processing units.")))
@@ -66,6 +66,11 @@ if (!("NAME" %in% names(opt))) {
 # Create output directory
 if (!(dir.exists(opt$OUTDIR))) {
     dir.create(opt$OUTDIR)
+}
+
+# Check write access
+if (!(file.access(opt$OUTDIR, mode=2) == 0)) {
+    stop("Output directory '", opt$OUTDIR, "' cannot be written to.")
 }
 
 # Load data

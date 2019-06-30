@@ -53,7 +53,7 @@ opt_list <- list(make_option(c("-d", "--db"), dest="DB",
                                         "\n\t\tDefaults to a truncated version of the input filename.")),
                  make_option(c("-o", "--outdir"), dest="OUTDIR", default=OUTDIR,
                              help=paste("Output directory. Will be created if it does not exist.",
-                                        "\n\t\tDefaults to a directory matching the sample identifier in the current working directory.")),
+                                        "\n\t\tDefaults to the current working directory.")),
                  make_option(c("-f", "--format"), dest="FORMAT", default=FORMAT,
                              help=paste("File format. One of 'changeo' (default) or 'airr'.")),
                  make_option(c("-p", "--nproc"), dest="NPROC", default=NPROC,
@@ -87,6 +87,11 @@ if (!("NAME" %in% names(opt))) {
 # Create output directory
 if (!(dir.exists(opt$OUTDIR))) {
     dir.create(opt$OUTDIR)
+}
+
+# Check write access
+if (!(file.access(opt$OUTDIR, mode=2) == 0)) {
+    stop("Output directory '", opt$OUTDIR, "' cannot be written to.")
 }
 
 # Reset parameters from opt (better for debugging)
