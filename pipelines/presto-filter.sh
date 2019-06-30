@@ -9,8 +9,8 @@
 #   -y  YAML file providing description fields for report generation.
 #   -n  Sample name or run identifier which will be used as the output file prefix.
 #       Defaults to a truncated version of the read 1 filename.
-#   -o  Output directory.
-#       Defaults to the sample name.
+#   -o  Output directory. Will be created if it does not exist.
+#       Defaults to a directory matching the sample identifier in the current working directory.
 #   -x  The header format of the raw data.
 #       Defaults to illumina.
 #   -p  Number of subprocesses for multiprocessing tools.
@@ -24,8 +24,8 @@ print_usage() {
     echo -e "  -y  YAML file providing description fields for report generation."
     echo -e "  -n  Sample identifier which will be used as the output file prefix.\n" \
             "     Defaults to a truncated version of the read 1 filename."
-    echo -e "  -o  Output directory.\n" \
-            "     Defaults to the sample name."
+    echo -e "  -o  Output directory. Will be created if it does not exist.\n" \
+            "     Defaults to a directory matching the sample identifier in the current working directory."
     echo -e "  -x  The header format of the raw data.\n" \
             "     Defaults to illumina."
     echo -e "  -p  Number of subprocesses for multiprocessing tools.\n" \

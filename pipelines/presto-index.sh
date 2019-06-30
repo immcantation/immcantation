@@ -11,8 +11,8 @@
 #       Defaults to 0.85.
 #	-f  Annotation field defining sample name.
 #       Defaults to 'SAMPLE'.
-#   -o  Output directory.
-#       Defaults to 'output'.
+#   -o  Output directory. Will be created if it does not exist.
+#       Defaults to 'output' in the current working directory.
 #   -p  Number of subprocesses for multiprocessing tools.
 #       Defaults to the available processing units.
 #   -h  Display help.
@@ -26,8 +26,8 @@ print_usage() {
             "     Defaults to 0.85."
     echo -e "  -f  Annotation field defining sample name.\n" \
             "     Defaults to 'SAMPLE'."
-    echo -e "  -o  Output directory.\n" \
-            "     Defaults to 'output'."
+    echo -e "  -o  Output directory. Will be created if it does not exist.\n" \
+            "     Defaults to 'output' in the current working directory."
     echo -e "  -p  Number of subprocesses for multiprocessing tools.\n" \
             "     Defaults to the available cores."
     echo -e "  -h  This message."

@@ -11,8 +11,8 @@
 #   -r  Directory containing phiX174 reference db.
 #   -n  Sample name or run identifier which will be used as the output file prefix.
 #       Defaults to a truncated version of the input filename.
-#   -o  Output directory.
-#       Defaults to the sample name.
+#   -o  Output directory. Will be created if it does not exist.
+#       Defaults to a directory matching the sample identifier in the current working directory.
 #   -p  Number of subprocesses for multiprocessing tools.
 #       Defaults to the available processing units.
 #   -h  Display help
@@ -25,8 +25,8 @@ print_usage() {
             "      Defaults to /usr/local/share/phix."
     echo -e "  -n   Sample identifier which will be used as the output file prefix.\n" \
             "      Defaults to a truncated version of the input filename."
-    echo -e "  -o   Output directory.\n" \
-            "      Defaults to the sample name."
+    echo -e "  -o  Output directory. Will be created if it does not exist.\n" \
+            "     Defaults to a directory matching the sample identifier in the current working directory."
     echo -e "  -p   Number of subprocesses for multiprocessing tools.\n" \
             "      Defaults to the available cores."
     echo -e "  -h   This message."

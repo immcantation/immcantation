@@ -10,8 +10,8 @@
 #       If unspecified internal C-region alignment is not performed.
 #   -n  Sample name or run identifier which will be used as the output file prefix.
 #       Defaults to a truncated version of the read 1 filename.
-#   -o  Output directory.
-#       Defaults to the sample name.
+#   -o  Output directory. Will be created if it does not exist.
+#       Defaults to a directory matching the sample identifier in the current working directory.
 #   -p  Number of subprocesses for multiprocessing tools.
 #       Defaults to the available processing units.
 #   -h  Display help.
@@ -24,8 +24,8 @@ print_usage() {
             "     If unspecified internal C-region alignment is not performed."
     echo -e "  -n  Sample identifier which will be used as the output file prefix.\n" \
             "     Defaults to a truncated version of the read 1 filename."
-    echo -e "  -o  Output directory.\n" \
-            "     Defaults to the sample name."
+    echo -e "  -o  Output directory. Will be created if it does not exist.\n" \
+            "     Defaults to a directory matching the sample identifier in the current working directory."
     echo -e "  -p  Number of subprocesses for multiprocessing tools.\n" \
             "     Defaults to the available cores."
     echo -e "  -h  This message."

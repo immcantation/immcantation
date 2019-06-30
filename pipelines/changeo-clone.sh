@@ -13,8 +13,8 @@
 #       Defaults to /usr/local/share/germlines/imgt/human/vdj.
 #   -n  Sample name or run identifier which will be used as the output file prefix.
 #       Defaults to a truncated version of the input filename.
-#   -o  Output directory.
-#       Defaults to the sample name.
+#   -o  Output directory. Will be created if it does not exist.
+#       Defaults to a directory matching the sample identifier in the current working directory.
 #   -f  Output format. One of changeo or airr. Defaults to changeo.
 #   -p  Number of subprocesses for multiprocessing tools.
 #       Defaults to the available processing units.
@@ -33,8 +33,8 @@ print_usage() {
             "     Defaults to /usr/local/share/germlines/imgt/human/vdj."
     echo -e "  -n  Sample identifier which will be used as the output file prefix.\n" \
             "     Defaults to a truncated version of the input filename."
-    echo -e "  -o  Output directory.\n" \
-            "     Defaults to the sample name."
+    echo -e "  -o  Output directory. Will be created if it does not exist.\n" \
+            "     Defaults to a directory matching the sample identifier in the current working directory."
     echo -e "  -f  Output format. One of changeo (default) or airr."
     echo -e "  -p  Number of subprocesses for multiprocessing tools.\n" \
             "     Defaults to the available cores."
