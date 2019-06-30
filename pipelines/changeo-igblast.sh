@@ -116,7 +116,7 @@ fi
 if [ -e ${READS} ]; then
     READS=$(readlink -f ${READS})
 else
-    echo -e "File ${READS} not found." >&2
+    echo -e "File '${READS}' not found." >&2
     exit 1
 fi
 
@@ -124,7 +124,7 @@ fi
 if ! ${SPECIES_SET}; then
     SPECIES="human"
 elif [ ${SPECIES} != "human" ] && [ ${SPECIES} != "mouse" ]; then
-    echo "Species (-g) must be one of human or mouse" >&2
+    echo "Species (-g) must be one of 'human' or 'mouse'." >&2
     exit 1
 fi
 
@@ -132,7 +132,7 @@ fi
 if ! ${RECEPTOR_SET}; then
     RECEPTOR="ig"
 elif [ ${RECEPTOR} != "ig" ] && [ ${RECEPTOR} != "tr" ]; then
-    echo "Receptor type (-t) must be one of ig or tr" >&2
+    echo "Receptor type (-t) must be one of 'ig' or 'tr'." >&2
     exit 1
 fi
 
@@ -162,6 +162,20 @@ fi
 # Set output directory
 if ! ${OUTDIR_SET}; then
     OUTDIR=${OUTNAME}
+fi
+
+# Check output directory permissions
+if [ -e ${OUTDIR} ]; then
+    if ! [ -w ${OUTDIR} ]; then
+        echo -e "Output directory '${OUTDIR}' is not writable." >&2
+        exit 1
+    fi
+else
+    PARENTDIR=$(dirname $(readlink -f ${OUTDIR}))
+    if ! [ -w ${PARENTDIR} ]; then
+        echo -e "Parent directory '${PARENTDIR}' of new output directory '${OUTDIR}' is not writable." >&2
+        exit 1
+    fi
 fi
 
 # Set format options

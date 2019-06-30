@@ -10,8 +10,8 @@
 #                Defaults to density.
 #   -n           Sample name or run identifier which will be used as the output file prefix.
 #                Defaults to a truncated version of the input filename.
-#   -o           Output directory.
-#                Defaults to current directory.
+#   -o           Output directory. Will be created if it does not exist.
+#                Defaults to a directory matching the sample identifier in the current working directory.
 #   -f           File format. One of 'changeo' (default) or 'airr'.
 #   -p           Number of subprocesses for multiprocessing tools.
 #                Defaults to the available processing units.
@@ -52,7 +52,8 @@ opt_list <- list(make_option(c("-d", "--db"), dest="DB",
                              help=paste("Sample name or run identifier which will be used as the output file prefix.",
                                         "\n\t\tDefaults to a truncated version of the input filename.")),
                  make_option(c("-o", "--outdir"), dest="OUTDIR", default=OUTDIR,
-                             help=paste("Output directory.", "Defaults to the sample name.")),
+                             help=paste("Output directory. Will be created if it does not exist.",
+                                        "\n\t\tDefaults to a directory matching the sample identifier in the current working directory.")),
                  make_option(c("-f", "--format"), dest="FORMAT", default=FORMAT,
                              help=paste("File format. One of 'changeo' (default) or 'airr'.")),
                  make_option(c("-p", "--nproc"), dest="NPROC", default=NPROC,

@@ -139,14 +139,14 @@ fi
 if [ -e ${READS} ]; then
     READS=$(readlink -f ${READS})
 else
-    echo -e "File ${READS} not found." >&2
+    echo -e "File '${READS}' not found." >&2
     exit 1
 fi
 
 if [ -e ${A10X} ]; then
     A10X=$(readlink -f ${A10X})
 else
-    echo -e "File ${A10X} not found." >&2
+    echo -e "File '${A10X}' not found." >&2
     exit 1
 fi
 
@@ -154,7 +154,7 @@ fi
 if ! ${ORGANISM_SET}; then
     ORGANISM="human"
 elif [ ${ORGANISM} != "human" ] && [ ${ORGANISM} != "mouse" ]; then
-    echo "Species (-g) must be one of human or mouse" >&2
+    echo "Species (-g) must be one of 'human' or 'mouse'." >&2
     exit 1
 fi
 
@@ -162,7 +162,7 @@ fi
 if ! ${LOCI_SET}; then
     LOCI="ig"
 elif [ ${LOCI} != "ig" ] && [ ${LOCI} != "tr" ]; then
-    echo "Receptor type (-t) must be one of ig or tr" >&2
+    echo "Receptor type (-t) must be one of 'ig' or 'tr'." >&2
     exit 1
 fi
 
@@ -202,13 +202,13 @@ fi
 # Check output directory permissions
 if [ -e ${OUTDIR} ]; then
     if ! [ -w ${OUTDIR} ]; then
-        echo -e "Output directory ${OUTDIR} is not writable." >&2
+        echo -e "Output directory '${OUTDIR}' is not writable." >&2
         exit 1
     fi
 else
     PARENTDIR=$(dirname $(readlink -f ${OUTDIR}))
     if ! [ -w ${PARENTDIR} ]; then
-        echo -e "Parent directory ${PARENTDIR} of new output directory ${OUTDIR} is not writable." >&2
+        echo -e "Parent directory '${PARENTDIR}' of new output directory '${OUTDIR}' is not writable." >&2
         exit 1
     fi
 fi

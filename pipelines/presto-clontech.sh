@@ -118,11 +118,25 @@ if ! ${COORD_SET}; then
     COORD="illumina"
 fi
 
+# Check output directory permissions
+if [ -e ${OUTDIR} ]; then
+    if ! [ -w ${OUTDIR} ]; then
+        echo -e "Output directory '${OUTDIR}' is not writable." >&2
+        exit 1
+    fi
+else
+    PARENTDIR=$(dirname $(readlink -f ${OUTDIR}))
+    if ! [ -w ${PARENTDIR} ]; then
+        echo -e "Parent directory '${PARENTDIR}' of new output directory '${OUTDIR}' is not writable." >&2
+        exit 1
+    fi
+fi
+
 # Check R1 reads
 if [ -e ${R1_READS} ]; then
     R1_READS=$(readlink -f ${R1_READS})
 else
-    echo -e "File ${R1_READS} not found." >&2
+    echo -e "File '${R1_READS}' not found." >&2
     exit 1
 fi
 
@@ -130,7 +144,7 @@ fi
 if [ -e ${R2_READS} ]; then
     R2_READS=$(readlink -f ${R2_READS})
 else
-    echo -e "File ${R2_READS} not found." >&2
+    echo -e "File '${R2_READS}' not found." >&2
     exit 1
 fi
 
@@ -140,7 +154,7 @@ if ! ${C_PRIMERS_SET}; then
 elif [ -e ${C_PRIMERS} ]; then
     C_PRIMERS=$(readlink -f ${C_PRIMERS})
 else
-    echo -e "File ${C_PRIMERS} not found." >&2
+    echo -e "File '${C_PRIMERS}' not found." >&2
     exit 1
 fi
 
@@ -150,7 +164,7 @@ if ! ${VREF_SEQ_SET}; then
 elif [ -e ${VREF_SEQ} ]; then
     VREF_SEQ=$(readlink -f ${VREF_SEQ})
 else
-    echo -e "File ${VREF_SEQ} not found." >&2
+    echo -e "File '${VREF_SEQ}' not found." >&2
     exit 1
 fi
 

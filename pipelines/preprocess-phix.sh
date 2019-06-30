@@ -83,7 +83,7 @@ fi
 if [ -e ${READS} ]; then
     READS=$(readlink -f ${READS})
 else
-    echo -e "File ${READS} not found." >&2
+    echo -e "File '${READS}' not found." >&2
     exit 1
 fi
 
@@ -99,7 +99,7 @@ if [ -e ${PHIXDIR} ]; then
     PHIXDIR=$(readlink -f ${PHIXDIR})
     PHIXDB=$(ls ${PHIXDIR}/*fna)
 else
-    echo -e "Directory ${PHIXDIR} not found." >&2
+    echo -e "Directory '${PHIXDIR}' not found." >&2
     exit 1
 fi
 
@@ -111,6 +111,20 @@ fi
 # Set output directory
 if ! ${OUTDIR_SET}; then
     OUTDIR=${OUTNAME}
+fi
+
+# Check output directory permissions
+if [ -e ${OUTDIR} ]; then
+    if ! [ -w ${OUTDIR} ]; then
+        echo -e "Output directory '${OUTDIR}' is not writable." >&2
+        exit 1
+    fi
+else
+    PARENTDIR=$(dirname $(readlink -f ${OUTDIR}))
+    if ! [ -w ${PARENTDIR} ]; then
+        echo -e "Parent directory '${PARENTDIR}' of new output directory '${OUTDIR}' is not writable." >&2
+        exit 1
+    fi
 fi
 
 # Set number of processes

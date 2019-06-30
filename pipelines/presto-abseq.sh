@@ -142,11 +142,25 @@ if ! ${COORD_SET}; then
     COORD="illumina"
 fi
 
+# Check output directory permissions
+if [ -e ${OUTDIR} ]; then
+    if ! [ -w ${OUTDIR} ]; then
+        echo -e "Output directory '${OUTDIR}' is not writable." >&2
+        exit 1
+    fi
+else
+    PARENTDIR=$(dirname $(readlink -f ${OUTDIR}))
+    if ! [ -w ${PARENTDIR} ]; then
+        echo -e "Parent directory '${PARENTDIR}' of new output directory '${OUTDIR}' is not writable." >&2
+        exit 1
+    fi
+fi
+
 # Check R1 reads
 if [ -e ${R1_READS} ]; then
     R1_READS=$(readlink -f ${R1_READS})
 else
-    echo -e "File ${R1_READS} not found." >&2
+    echo -e "File '${R1_READS}' not found." >&2
     exit 1
 fi
 
@@ -154,7 +168,7 @@ fi
 if [ -e ${R2_READS} ]; then
     R2_READS=$(readlink -f ${R2_READS})
 else
-    echo -e "File ${R2_READS} not found." >&2
+    echo -e "File '${R2_READS}' not found." >&2
     exit 1
 fi
 
@@ -164,7 +178,7 @@ if ! ${R1_PRIMERS_SET}; then
 elif [ -e ${R1_PRIMERS} ]; then
     R1_PRIMERS=$(readlink -f ${R1_PRIMERS})
 else
-    echo -e "File ${R1_PRIMERS} not found." >&2
+    echo -e "File '${R1_PRIMERS}' not found." >&2
     exit 1
 fi
 
@@ -174,7 +188,7 @@ if ! ${R2_PRIMERS_SET}; then
 elif [ -e ${R2_PRIMERS} ]; then
     R2_PRIMERS=$(readlink -f ${R2_PRIMERS})
 else
-    echo -e "File ${R2_PRIMERS} not found." >&2
+    echo -e "File '${R2_PRIMERS}' not found." >&2
     exit 1
 fi
 
@@ -184,7 +198,7 @@ if ! ${VREF_SEQ_SET}; then
 elif [ -e ${VREF_SEQ} ]; then
     VREF_SEQ=$(readlink -f ${VREF_SEQ})
 else
-    echo -e "File ${VREF_SEQ} not found." >&2
+    echo -e "File '${VREF_SEQ}' not found." >&2
     exit 1
 fi
 
@@ -195,7 +209,7 @@ elif [ -e ${CREGION_SEQ} ]; then
     ALIGN_CREGION=true
     CREGION_SEQ=$(readlink -f ${CREGION_SEQ})
 else
-    echo -e "File ${CREGION_SEQ} not found." >&2
+    echo -e "File '${CREGION_SEQ}' not found." >&2
     exit 1
 fi
 
@@ -203,7 +217,7 @@ fi
 if [ -e ${YAML} ]; then
     YAML=$(readlink -f ${YAML})
 else
-    echo -e "File ${YAML} not found." >&2
+    echo -e "File '${YAML}' not found." >&2
     exit 1
 fi
 
