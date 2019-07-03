@@ -335,11 +335,12 @@ LIGHT_NON="${OUTNAME}_light_${PROD_FIELD}-F.${EXT}"
 
 # Assign clones
 if $CLONE; then
+
+    printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "Detect cloning threshold"
+    shazam-threshold -d ${HEAVY_PROD} -m density -n "${OUTNAME}" \
+        -f ${FORMAT} -p ${NPROC} \
+        > /dev/null 2> $ERROR_LOG
     if [ "$DIST" == "auto" ]; then
-        printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "Detect cloning threshold"
-        shazam-threshold -d ${HEAVY_PROD} -m density -n "${OUTNAME}" \
-            -f ${FORMAT} -p ${NPROC} \
-            > /dev/null 2> $ERROR_LOG
         DIST=$(tail -n1 "${OUTNAME}_threshold-values.tab" | cut -f2)
     fi
 
