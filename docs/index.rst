@@ -31,10 +31,16 @@
     Alakazam <http://alakazam.readthedocs.io>
     SHazaM <http://shazam.readthedocs.io>
     TIgGER <http://tigger.readthedocs.io>
-    RDI <http://rdi.readthedocs.io>
     SCOPer <http://scoper.readthedocs.io>
-    RAbHIT <https://yaarilab.bitbucket.io/RAbHIT/>
+    
+.. toctree::
+    :maxdepth: 1
+    :caption: Contributed
+    :hidden:    
 
+    RDI <http://rdi.readthedocs.io>
+    RAbHIT <https://yaarilab.bitbucket.io/RAbHIT/>
+    
 .. toctree::
     :maxdepth: 1
     :caption: In Development
