@@ -155,6 +155,17 @@ RUN PACKAGE="rdi" \
     && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
     && rm -r /tmp/${PACKAGE}
 
+# Install RAbHIT
+RUN PACKAGE="rabhit" \
+    && rm -rf /tmp/${PACKAGE} \
+    && git clone --single-branch --branch master https://bitbucket.org/yaarilab/rabhit /tmp/${PACKAGE} \
+    && rinstall -p /tmp/${PACKAGE} \
+    && HERE=$(pwd) \
+    && cd /tmp/${PACKAGE} \
+    && builds write -n ${PACKAGE} -v $(git describe --abbrev=12 --always --dirty=+) \
+    && cd ${HERE} \
+    && rm -r /tmp/${PACKAGE} 
+    
 # Install SCOPe
 RUN PACKAGE="scoper" \
     && rm -rf /tmp/${PACKAGE} \
