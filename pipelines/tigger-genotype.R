@@ -5,7 +5,7 @@
 # Date:    2018.10.05
 #
 # Arguments:
-#   -d  Change-O formatted TSV (TAB) file.
+#   -d  Tabulated data, in Change-O (TAB) or AIRR (TSV) format.
 #   -r  FASTA file containing IMGT-gapped V segment reference germlines.
 #       Defaults to /usr/local/share/germlines/imgt/human/vdj/imgt_human_IGHV.fasta.
 #   -v  Name of the output field containing genotyped V assignments.
@@ -14,6 +14,7 @@
 #       Defaults to a truncated version of the input filename.
 #   -o  Output directory. Will be created if it does not exist.
 #       Defaults to the current working directory.
+#   -f  File format. One of 'changeo' (default) or 'airr'.
 #   -p  Number of subprocesses for multiprocessing tools.
 #       Defaults to the available processing units.
 #   -h  Display help.
@@ -28,6 +29,7 @@ suppressPackageStartupMessages(library("tigger"))
 
 # Set defaults
 NPROC <- parallel::detectCores()
+FORMAT <- "changeo"
 
 # Define commmandline arguments
 opt_list <- list(make_option(c("-d", "--db"), dest="DB",
@@ -46,11 +48,15 @@ opt_list <- list(make_option(c("-d", "--db"), dest="DB",
                  make_option(c("-o", "--outdir"), dest="OUTDIR", default=".",
                              help=paste("Output directory. Will be created if it does not exist.",
                                         "\n\t\tDefaults to the current working directory.")),
+                 make_option(c("-f", "--format"), dest="FORMAT", default=FORMAT,
+                             help=paste("File format. One of 'changeo' (default) or 'airr'.")),                 
                  make_option(c("-p", "--nproc"), dest="NPROC", default=NPROC,
                              help=paste("Number of subprocesses for multiprocessing tools.",
                                         "\n\t\tDefaults to the available processing units.")))
 # Parse arguments
 opt <- parse_args(OptionParser(option_list=opt_list))
+
+FORMAT <- opt$FORMAT
 
 # Check input file
 if (!("DB" %in% names(opt))) {
@@ -74,19 +80,39 @@ if (!(file.access(opt$OUTDIR, mode=2) == 0)) {
 }
 
 # Load data
-db <- as.data.frame(readChangeoDb(opt$DB))
+
+if (FORMAT == "changeo") {
+    db <- as.data.frame(alakazam::readChangeoDb(DB))
+    v_call <- "V_CALL"
+    j_call <- "J_CALL"
+    junction <- "JUNCTION"
+    junction_length <- "JUNCTION_LENGTH"
+    sequence_alignment <- "SEQUENCE_IMGT"
+} else if (FORMAT == "airr") {
+    db <- airr::read_rearrangement(DB)
+    v_call <- "v_call"
+    j_call <- "j_call"
+    junction <- "junction"
+    junction_length <- "junction_length"
+    sequence_alignment <- "sequence_alignment"
+}
+
 igv <- readIgFasta(opt$REF)
 
 # Identify polymorphisms and genotype
-nv <- findNovelAlleles(db, germline_db=igv, nproc=opt$NPROC)
-gt <- inferGenotype(db, germline_db=igv, novel=nv)
+nv <- findNovelAlleles(db, germline_db=igv, v_call=v_call, jcall=j_call,
+                       sequence_alignment=sequence_alignment,
+                       junction=junction, junction_length=junction_length,
+                       nproc=opt$NPROC)
+gt <- inferGenotype(db, germline_db=igv, novel=nv,
+                    v_call=v_call, sequence_alignment=sequence_alignment)
 
 # Write genotype FASTA file
 gt_seq <- genotypeFasta(gt, germline_db=igv, novel=nv)
 writeFasta(gt_seq, file.path(opt$OUTDIR, paste0(opt$NAME, "_genotype.fasta")))
 
 # Modify allele calls
-db <- reassignAlleles(db, gt_seq)
+db <- reassignAlleles(db, gt_seq, v_call=v_call, sequence_alignment=sequence_alignment)
 
 # Rename genotyped V call column if necessary
 if (opt$VFIELD != "V_CALL_GENOTYPED") {
