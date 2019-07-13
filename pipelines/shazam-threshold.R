@@ -44,7 +44,7 @@ REPEATS <- 1
 
 # Define commmandline arguments
 opt_list <- list(make_option(c("-d", "--db"), dest="DB",
-                             help="Change-O formatted TSV (TAB) file."),
+                             help="Tabulated data file, in Change-O (TAB) or AIRR format (TSV)."),
                  make_option(c("-m", "--method"), dest="METHOD", default=METHOD,
                              help=paste("Threshold inferrence to use. One of gmm or density.",
                                         "\n\t\tDefaults to density.")),
