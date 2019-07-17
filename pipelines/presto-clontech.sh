@@ -250,10 +250,10 @@ check_error
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "CollapseSeq"
 if $CS_KEEP; then
     CollapseSeq.py -s $CS_FILE -n $CS_MISS --inner --keepmiss --uf ${C_FIELD} \
-    --outname "${OUTNAME}-final" >> $PIPELINE_LOG 2> $ERROR_LOG
+        --outname "${OUTNAME}-final" >> $PIPELINE_LOG 2> $ERROR_LOG
 else
     CollapseSeq.py -s $CS_FILE -n $CS_MISS --inner --uf ${C_FIELD} \
-    --outname "${OUTNAME}-final" >> $PIPELINE_LOG 2> $ERROR_LOG
+        --outname "${OUTNAME}-final" >> $PIPELINE_LOG 2> $ERROR_LOG
 fi
 check_error
 
