@@ -77,14 +77,14 @@ def lightCluster(heavy_file, light_file, out_file, doublets='drop', format='airr
         v_call = 'V_CALL'
         j_call = 'J_CALL'
         junction_length = 'JUNCTION_LENGTH'
-        umi_count = 'CONSCOUNT'
+        umi_count = 'UMICOUNT'
     elif format == 'airr':
         cell_id = 'cell_id'
         clone_id = 'clone_id'
         v_call = 'v_call'
         j_call = 'j_call'
         junction_length = 'junction_length'
-        umi_count = 'consensus_count'
+        umi_count = 'umi_count'
     else:
         sys.exit("Invalid format %s" % format)
 
