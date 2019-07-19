@@ -8,12 +8,14 @@ COPY Version.yaml /Version.yaml
 RUN builds write -n date -v "$(date +'%Y-%m-%d %T %Z')"
 
 # Define pipeline scripts
-ARG PRESTO_ABSEQ="pipelines/presto-abseq.sh"
-ARG CHANGEO_IGBLAST="pipelines/changeo-igblast.sh"
-ARG CHANGEO_CLONE="pipelines/changeo-clone.sh"
-ARG SHAZAM_THRESHOLD="pipelines/shazam-threshold.R"
-ARG TIGGER_GENOTYPE="pipelines/tigger-genotype.R"
-ARG PREPROCESS_PHIX="pipelines/preprocess-phix.sh"
+ARG PRESTO_ABSEQ="presto-abseq.sh"
+ARG PRESTO_CLONTECH="presto-clontech.sh"
+ARG CHANGEO_IGBLAST="changeo-igblast.sh"
+ARG CHANGEO_CLONE="changeo-clone.sh"
+ARG CHANGEO_10X="changeo-10x.sh"
+ARG SHAZAM_THRESHOLD="shazam-threshold.R"
+ARG TIGGER_GENOTYPE="tigger-genotype.R"
+ARG PREPROCESS_PHIX="preprocess-phix.sh"
 
 # Install procotol data, utility scripts and pipelines
 RUN PACKAGE="immcantation" \
@@ -21,12 +23,14 @@ RUN PACKAGE="immcantation" \
     && hg clone -b default https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
     && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} \
 	&& mv /tmp/${PACKAGE}/scripts/* /usr/local/bin/ \
-    && mv /tmp/${PACKAGE}/${PRESTO_ABSEQ} /usr/local/bin/presto-abseq \
-    && mv /tmp/${PACKAGE}/${CHANGEO_IGBLAST} /usr/local/bin/changeo-igblast \
-    && mv /tmp/${PACKAGE}/${CHANGEO_CLONE} /usr/local/bin/changeo-clone \
-    && mv /tmp/${PACKAGE}/${SHAZAM_THRESHOLD} /usr/local/bin/shazam-threshold \
-    && mv /tmp/${PACKAGE}/${TIGGER_GENOTYPE} /usr/local/bin/tigger-genotype \
-    && mv /tmp/${PACKAGE}/${PREPROCESS_PHIX} /usr/local/bin/preprocess-phix \
+	&& mv /tmp/${PACKAGE}/pipelines/${PRESTO_ABSEQ} /usr/local/bin/presto-abseq \
+	&& mv /tmp/${PACKAGE}/pipelines/${PRESTO_CLONTECH} /usr/local/bin/presto-clontech \
+	&& mv /tmp/${PACKAGE}/pipelines/${CHANGEO_IGBLAST} /usr/local/bin/changeo-igblast \
+	&& mv /tmp/${PACKAGE}/pipelines/${CHANGEO_CLONE} /usr/local/bin/changeo-clone \
+	&& mv /tmp/${PACKAGE}/pipelines/${CHANGEO_10X} /usr/local/bin/changeo-10x \
+	&& mv /tmp/${PACKAGE}/pipelines/${SHAZAM_THRESHOLD} /usr/local/bin/shazam-threshold \
+	&& mv /tmp/${PACKAGE}/pipelines/${TIGGER_GENOTYPE} /usr/local/bin/tigger-genotype \
+	&& mv /tmp/${PACKAGE}/pipelines/${PREPROCESS_PHIX} /usr/local/bin/preprocess-phix \
     && mv /tmp/${PACKAGE}/protocols /usr/local/share/protocols \
     && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
     && rm -r /tmp/${PACKAGE}
@@ -88,12 +92,6 @@ RUN wget -q --show-progress --no-check-certificate \
     && mv linux64.tbl2asn /usr/local/bin/tbl2asn \
     && chmod +x /usr/local/bin/tbl2asn
 
-# Install AIRR reference libraries
-RUN AIRR_PY=$(versions get -n airr-py) \
-    && AIRR_R=$(versions get -n airr-r) \
-    && pip3 install airr==${AIRR_PY} \
-    && Rscript -e "devtools::install_version('airr', '${AIRR_R}', quiet=FALSE, clean=TRUE)"
-
 # Install IgPhyML
 RUN IGPHYML=$(versions get -n igphyml) \
     && wget -q --show-progress --no-check-certificate \
@@ -102,6 +100,12 @@ RUN IGPHYML=$(versions get -n igphyml) \
     && tar -zxf igphyml-${IGPHYML}.tar.gz -C /usr/local/share/igphyml --strip-components 1 \
     && (cd /usr/local/share/igphyml && ./make_phyml_blas_omp) \
     && rm -r igphyml-${IGPHYML}.tar.gz
+
+# Install AIRR reference libraries
+RUN AIRR_PY=$(versions get -n airr-py) \
+    && AIRR_R=$(versions get -n airr-r) \
+    && pip3 install airr==${AIRR_PY} \
+    && Rscript -e "devtools::install_version('airr', '${AIRR_R}', quiet=FALSE, clean=TRUE)"
 
 # Install presto
 RUN PACKAGE="presto" \
@@ -145,28 +149,8 @@ RUN PACKAGE="tigger" \
     && rinstall -p /tmp/${PACKAGE} \
     && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
     && rm -r /tmp/${PACKAGE}
-
-# Install rdi
-RUN PACKAGE="rdi" \
-    && rm -rf /tmp/${PACKAGE} \
-    && hg clone https://bitbucket.org/cbolen1/rdicore /tmp/${PACKAGE} \
-    && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} \
-    && rinstall -p /tmp/${PACKAGE} \
-    && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
-    && rm -r /tmp/${PACKAGE}
-
-# Install RAbHIT
-RUN PACKAGE="rabhit" \
-    && rm -rf /tmp/${PACKAGE} \
-    && git clone --single-branch --branch master https://bitbucket.org/yaarilab/rabhit /tmp/${PACKAGE} \
-    && rinstall -p /tmp/${PACKAGE} \
-    && HERE=$(pwd) \
-    && cd /tmp/${PACKAGE} \
-    && builds write -n ${PACKAGE} -v $(git describe --abbrev=12 --always --dirty=+) \
-    && cd ${HERE} \
-    && rm -r /tmp/${PACKAGE} 
     
-# Install SCOPe
+# Install SCOPer
 RUN PACKAGE="scoper" \
     && rm -rf /tmp/${PACKAGE} \
     && hg clone -b default https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
@@ -183,6 +167,19 @@ RUN PACKAGE="prestor" \
     && rinstall -p /tmp/${PACKAGE} \
     && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
     && rm -r /tmp/${PACKAGE}
+
+# Install rdi
+RUN PACKAGE="rdi" \
+    && rm -rf /tmp/${PACKAGE} \
+    && hg clone https://bitbucket.org/cbolen1/rdicore /tmp/${PACKAGE} \
+    && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} \
+    && rinstall -p /tmp/${PACKAGE} \
+    && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
+    && rm -r /tmp/${PACKAGE}
+
+# Install RAbHIT
+RUN RABHIT=$(versions get -n rabhit) \
+    && Rscript -e "devtools::install_version('rabhit', '${RABHIT}', quiet=FALSE, clean=TRUE)"
 
 # Download and build references databases
 RUN fetch_igblastdb.sh -o /usr/local/share/igblast \
@@ -207,6 +204,8 @@ CMD echo -e "Report version information:\n" \
             "  builds report\n" \
             "Available pipeline commands:\n" \
             "  presto-abseq\n" \
+            "  presto-clontech\n" \
+            "  changeo-10x\n" \
             "  changeo-igblast\n" \
             "  changeo-clone\n" \
             "  tigger-genotype\n" \

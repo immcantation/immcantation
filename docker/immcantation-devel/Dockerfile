@@ -149,6 +149,14 @@ RUN PACKAGE="scoper" \
     && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
     && rm -r /tmp/${PACKAGE}
 
+# Install prestor
+RUN PACKAGE="prestor" \
+    && rm -rf /tmp/${PACKAGE} \
+    && hg clone -b default https://bitbucket.org/javh/prototype-prestor /tmp/${PACKAGE} \
+    && rinstall -p /tmp/${PACKAGE} \
+    && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
+    && rm -r /tmp/${PACKAGE}
+
 # Install RDI
 RUN PACKAGE="rdi" \
     && rm -rf /tmp/${PACKAGE} \
@@ -156,7 +164,7 @@ RUN PACKAGE="rdi" \
     && rinstall -p /tmp/${PACKAGE} \
     && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
     && rm -r /tmp/${PACKAGE}
-    
+
 # Install RAbHIT
 RUN PACKAGE="rabhit" \
     && rm -rf /tmp/${PACKAGE} \
@@ -166,14 +174,6 @@ RUN PACKAGE="rabhit" \
     && cd /tmp/${PACKAGE} \
     && builds write -n ${PACKAGE} -v $(git describe --abbrev=12 --always --dirty=+) \
     && cd ${HERE} \
-    && rm -r /tmp/${PACKAGE}    
-
-# Install prestor
-RUN PACKAGE="prestor" \
-    && rm -rf /tmp/${PACKAGE} \
-    && hg clone -b default https://bitbucket.org/javh/prototype-prestor /tmp/${PACKAGE} \
-    && rinstall -p /tmp/${PACKAGE} \
-    && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
     && rm -r /tmp/${PACKAGE}
 
 # Download and build references databases

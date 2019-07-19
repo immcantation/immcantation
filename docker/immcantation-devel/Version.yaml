@@ -10,9 +10,10 @@ release:
   rdi:      null
   prestor:  null
   scoper:   null
+  rabhit:   null
 software:
   muscle:   3.8.425
-  vsearch:  2.13.0
+  vsearch:  2.13.6
   cd-hit:   4.6.8
   blast:    2.8.1
   igblast:  1.14.0

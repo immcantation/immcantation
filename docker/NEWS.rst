@@ -1,17 +1,37 @@
 Release Notes
 ========================================================================
 
-Version 2.8.0:  May 14, 2019
+Version 3.0.0:  July 19, 2019
 ------------------------------------------------------------------------
 
 Version Updates:
 
++ alakazam 0.3.0
++ shazam 0.2.1
++ tigger 0.4.0
 + igblast 1.14.0
-+ vsearch 2.13.0
++ vsearch 2.13.6
+
+Pipeline Changes:
+
++ Added the ``-f`` argument to multiple pipelines to toggle output
+  between the Change-O standard (``changeo``) and the AIRR
+  Rearrangement standard (``airr``).
++ Added the ``-m`` argument to ``changeo-clone`` to specify the
+  distance model used for cloning.
++ Renamed the productive filter argument from ``-f`` to ``-k`` in
+  ``changeo-igblast``.
 
 Image Changes:
 
++ Added the ``RAbHIT`` R package.
++ Added the ``changeo-10x`` pipeline to process 10X Genomics V(D)J data.
++ Added the ``presto-clontech`` pipeline to preprocess data from the
+  TakaraBio SMARTer kit.
++ Added some universal C-region reference sequences to
+  ``/usr/local/share/protocols``.
 + Fixed a dependency version issue that prevented tbl2asn from running.
+
 
 
 Version 2.7.0:  February 1, 2019

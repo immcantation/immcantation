@@ -1,18 +1,19 @@
 immcantation:
-  version:  2.7.0
-  date:     2019.02.01
+  version:  3.0.0
+  date:     2019.07.19
 release:
   presto:   0.5.11
   changeo:  0.4.5
-  alakazam: 0.2.11
-  shazam:   0.1.11
-  tigger:   0.3.1
+  alakazam: 0.3.0
+  shazam:   0.2.1
+  tigger:   0.4.0
   rdi:      1.0.0
   scoper:   0.1.0
   prestor:  0.0.5
+  rabhit:   0.1.1
 software:
   muscle:   3.8.425
-  vsearch:  2.13.0
+  vsearch:  2.13.6
   cd-hit:   4.6.8
   blast:    2.8.1
   igblast:  1.14.0

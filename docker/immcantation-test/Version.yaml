@@ -12,10 +12,11 @@ release:
   scoper:   null
 software:
   muscle:   3.8.425
-  vsearch:  2.13.0
+  vsearch:  2.13.6
   cd-hit:   4.6.8
   blast:    2.8.1
   igblast:  1.14.0
   phylip:   3.697
   igphyml:  1.0.5
-
+  airr-py:  1.2.1
+  airr-r:   1.2.0

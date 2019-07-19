@@ -10,7 +10,6 @@ RUN builds write -n date -v "$(date +'%Y-%m-%d %T %Z')"
 # Define R package installation parameters
 # ARG R_RCPP="0.12.16"
 ARG R_DEPS="c('ape', \
-              'airr', \
               'bibtex', \
               'captioner', \
               'data.table', \
@@ -107,6 +106,12 @@ RUN IGPHYML=$(versions get -n igphyml) \
     && tar -zxf igphyml-${IGPHYML}.tar.gz -C /usr/local/share/igphyml --strip-components 1 \
     && (cd /usr/local/share/igphyml && ./make_phyml_blas_omp) \
     && rm -r igphyml-${IGPHYML}.tar.gz
+
+# Install AIRR reference libraries
+RUN AIRR_PY=$(versions get -n airr-py) \
+    && AIRR_R=$(versions get -n airr-r) \
+    && pip3 install airr==${AIRR_PY} \
+    && Rscript -e "devtools::install_version('airr', '${AIRR_R}', quiet=FALSE, clean=TRUE)"
 
 # Set commands
 CMD echo -e "Report version information:\n" \
