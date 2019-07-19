@@ -10,6 +10,7 @@ RUN builds write -n date -v "$(date +'%Y-%m-%d %T %Z')"
 # Define R package installation parameters
 # ARG R_RCPP="0.12.16"
 ARG R_DEPS="c('ape', \
+              'airr', \
               'bibtex', \
               'captioner', \
               'data.table', \
