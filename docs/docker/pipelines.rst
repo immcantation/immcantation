@@ -8,14 +8,70 @@ container also includes a set of predefined pipeline scripts that can be run as
 is or extended to your needs. Each pipeline script has a ``-h`` argument which
 will explain its use. The available pipelines are:
 
+* preprocess-phix
 * presto-abseq
 * changeo-igblast
-* changeo-clone
 * tigger-genotype
 * shazam-threshold
-* preprocess-phix
+* changeo-clone
+
 
 All template pipeline scripts can be found in ``/usr/local/bin``.
+
+PhiX cleaning pipeline
+--------------------------------------------------------------------------------
+
+Removes reads from a sequence file that align against the PhiX174 reference
+genome.
+
+Arguments:
+   -s  FASTQ sequence file.
+
+   -r  Directory containing phiX174 reference db.
+
+       Defaults to /usr/local/share/phix.
+
+   -n  Name to use as the output file suffix.
+
+       Defaults to a truncated version of the input filename.
+
+   -o  Output directory.
+
+       Defaults to the sample name.
+
+   -p  Number of subprocesses for multiprocessing tools.
+
+       Defaults to the available cores.
+
+   -h  Display help
+
+**PhiX cleaning example**
+
+.. parsed-literal::
+
+    # Arguments
+    DATA_DIR=~/project
+    READS=/data/raw/sample.fastq
+    OUT_DIR=/data/presto/sample
+    NPROC=4
+
+    # Run pipeline in docker image
+    docker run -v $DATA_DIR:/data:z kleinstein/immcantation:|docker-version| \\
+        preprocess-phix -s $READS -o $OUT_DIR -p $NPROC
+
+    # Singularity command
+    singularity exec -B $DATA_DIR:/data immcantation-|docker-version|.sif \\
+        preprocess-phix -s $READS -o $OUT_DIR -p $NPROC
+
+.. note::
+
+    The PhiX cleaning pipeline will convert the sequence headers to
+    the pRESTO format. Thus, if the ``nophix`` output file is provided as
+    input to the ``presto-abseq`` pipeline script you must pass the argument
+    ``-x presto`` to ``presto-abseq``, which will tell the
+    script that the input headers are in pRESTO format (rather than the
+    Illumina format).
+
 
 pRESTO pipeline for preprocessing AbSeq data
 --------------------------------------------------------------------------------
@@ -166,61 +222,6 @@ Arguments:
         changeo-igblast -s $READS -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC
 
 
-
-Clonal assignment pipeline
---------------------------------------------------------------------------------
-
-Assigns Ig sequences into clonally related lineages and builds full germline
-sequences.
-
-Arguments:
-   -d  Change-O formatted TSV (TAB) file.
-
-   -x  Distance threshold for clonal assignment.
-
-   -r  Directory containing IMGT-gapped reference germlines.
-
-       Defaults to /usr/local/share/germlines/imgt/human/vdj.
-
-   -n  Sample name or run identifier which will be used as the output file prefix.
-
-       Defaults to a truncated version of the input filename.
-
-   -o  Output directory.
-
-       Defaults to the sample name.
-
-   -p  Number of subprocesses for multiprocessing tools.
-
-       Defaults to the available processing units.
-
-   -a  Specify to clone the full data set.
-
-       By default the data will be filtering to only productive/functional sequences.
-
-   -h  Display help.
-
-**Clonal assignment example**
-
-.. parsed-literal::
-
-    # Arguments
-    DATA_DIR=~/project
-    DB=/data/changeo/sample/sample_genotyped.tab
-    DIST=0.15
-    SAMPLE_NAME=sample
-    OUT_DIR=/data/changeo/sample
-    NPROC=4
-
-    # Run pipeline in docker image
-    docker run -v $DATA_DIR:/data:z kleinstein/immcantation:|docker-version| \\
-        changeo-clone -d $DB -x $DIST -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC
-
-    # Singularity command
-    singularity exec -B $DATA_DIR:/data immcantation-|docker-version|.sif \\
-        changeo-clone -d $DB -x $DIST -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC
-
-
 Genotyping pipeline
 --------------------------------------------------------------------------------
 
@@ -328,20 +329,22 @@ Arguments:
         shazam-threshold -d $DB -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC
 
 
-PhiX cleaning pipeline
+Clonal assignment pipeline
 --------------------------------------------------------------------------------
 
-Removes reads from a sequence file that align against the PhiX174 reference
-genome.
+Assigns Ig sequences into clonally related lineages and builds full germline
+sequences.
 
 Arguments:
-   -s  FASTQ sequence file.
+   -d  Change-O formatted TSV (TAB) file.
 
-   -r  Directory containing phiX174 reference db.
+   -x  Distance threshold for clonal assignment.
 
-       Defaults to /usr/local/share/phix.
+   -r  Directory containing IMGT-gapped reference germlines.
 
-   -n  Name to use as the output file suffix.
+       Defaults to /usr/local/share/germlines/imgt/human/vdj.
+
+   -n  Sample name or run identifier which will be used as the output file prefix.
 
        Defaults to a truncated version of the input filename.
 
@@ -351,33 +354,30 @@ Arguments:
 
    -p  Number of subprocesses for multiprocessing tools.
 
-       Defaults to the available cores.
+       Defaults to the available processing units.
 
-   -h  Display help
+   -a  Specify to clone the full data set.
 
-**PhiX cleaning example**
+       By default the data will be filtering to only productive/functional sequences.
+
+   -h  Display help.
+
+**Clonal assignment example**
 
 .. parsed-literal::
 
     # Arguments
     DATA_DIR=~/project
-    READS=/data/raw/sample.fastq
-    OUT_DIR=/data/presto/sample
+    DB=/data/changeo/sample/sample_genotyped.tab
+    DIST=0.15
+    SAMPLE_NAME=sample
+    OUT_DIR=/data/changeo/sample
     NPROC=4
 
     # Run pipeline in docker image
     docker run -v $DATA_DIR:/data:z kleinstein/immcantation:|docker-version| \\
-        preprocess-phix -s $READS -o $OUT_DIR -p $NPROC
+        changeo-clone -d $DB -x $DIST -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC
 
     # Singularity command
     singularity exec -B $DATA_DIR:/data immcantation-|docker-version|.sif \\
-        preprocess-phix -s $READS -o $OUT_DIR -p $NPROC
-
-.. note::
-
-    The PhiX cleaning pipeline will convert the sequence headers to
-    the pRESTO format. Thus, if the ``nophix`` output file is provided as
-    input to the ``presto-abseq`` pipeline script you must pass the argument
-    ``-x presto`` to ``presto-abseq``, which will tell the
-    script that the input headers are in pRESTO format (rather than the
-    Illumina format).
+        changeo-clone -d $DB -x $DIST -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC
