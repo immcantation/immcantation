@@ -298,5 +298,5 @@ texinfo_documents = [(master_doc,
 
 # Intersphinx
 intersphinx_mapping = {'python': ('https://docs.python.org/3', None),
-                       'presto': ('https://presto.readthedocs.io/en/latest', None),
-                       'changeo': ('https://changeo.readthedocs.io/en/latest', None)}
+                       'presto': ('https://presto.readthedocs.io/en/stable', None),
+                       'changeo': ('https://changeo.readthedocs.io/en/stable', None)}
