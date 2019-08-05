@@ -7,9 +7,10 @@ Version 3.0.0:  August 6, 2019
 Version Updates:
 
 + alakazam 0.3.0
++ scoper 0.2.0
++ presto 0.5.12
 + shazam 0.2.1
 + tigger 0.4.0
-+ scoper 0.2.0
 + igblast 1.14.0
 + vsearch 2.13.6
 
