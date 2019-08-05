@@ -1,6 +1,6 @@
 immcantation:
   version:  3.0.0
-  date:     2019.07.19
+  date:     2019.08.06
 release:
   presto:   0.5.11
   changeo:  0.4.6
@@ -8,7 +8,7 @@ release:
   shazam:   0.2.1
   tigger:   0.4.0
   rdi:      1.0.0
-  scoper:   0.1.0
+  scoper:   0.2.0
   prestor:  0.0.5
   rabhit:   0.1.1
 software:

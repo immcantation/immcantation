@@ -1,7 +1,7 @@
 Release Notes
 ========================================================================
 
-Version 3.0.0:  July 19, 2019
+Version 3.0.0:  August 6, 2019
 ------------------------------------------------------------------------
 
 Version Updates:
@@ -9,6 +9,7 @@ Version Updates:
 + alakazam 0.3.0
 + shazam 0.2.1
 + tigger 0.4.0
++ scoper 0.2.0
 + igblast 1.14.0
 + vsearch 2.13.6
 
@@ -31,7 +32,7 @@ Image Changes:
 + Added some universal C-region reference sequences to
   ``/usr/local/share/protocols``.
 + Fixed a dependency version issue that prevented tbl2asn from running.
-
++ Fixed Mac OS compatibility in fetch_imgtdb.
 
 
 Version 2.7.0:  February 1, 2019
