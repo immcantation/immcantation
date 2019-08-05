@@ -40,6 +40,7 @@
 
     RDI <http://rdi.readthedocs.io>
     RAbHIT <https://yaarilab.bitbucket.io/RAbHIT/>
+    IgPhyML <https://igphyml.readthedocs.io>
     
 .. toctree::
     :maxdepth: 1
@@ -127,6 +128,12 @@ Component Packages
 
        + pRESTO report generation
 
+   * - |igphyml-img|
+     - **IgPhyML**
+
+       + Clonal lineage tree contruction
+       + Mutation/selection hypothesis testing       
+
 .. Image substitutions
 
 .. |presto-img| image:: _static/presto.png
@@ -169,6 +176,11 @@ Component Packages
     :width: 200
     :target: prestoR_
 
+.. |igphyml-img| image:: _static/igphyml.png
+    :align: middle
+    :width: 180
+    :target: igphyml_
+
 .. Doc links
 
 .. _pRESTO: http://presto.readthedocs.io
@@ -179,3 +191,4 @@ Component Packages
 .. _RDI: http://rdi.readthedocs.io
 .. _SCOPer: http://scoper.readthedocs.io
 .. _prestoR: packages/prestor.html
+.. _igphyml: http://igphyml.readthedocs.io
