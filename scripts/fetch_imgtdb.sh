@@ -40,19 +40,21 @@ done
 REPERTOIRE="imgt"
 DATE=$(date +"%Y.%m.%d")
 
-# Associative array where keys are species folder names and values are query strings
-declare -A SPECIES_QUERY
-SPECIES_QUERY[human]="Homo+sapiens"
-SPECIES_QUERY[mouse]="Mus"
+# Associative array (for BASH v3) where keys are species folder names and values are query strings
+SPECIES_QUERY=("human:Homo+sapiens"
+               "mouse:Mus")
+# Associative array (for BASH v3) with species name replacements
+SPECIES_REPLACE=('human:s/Homo sapiens/Homo_sapiens/g'
+                 'mouse:s/Mus musculus/Mus_musculus/g')   
 
-# Associative array with species name replacements
-declare -A SPECIES_REPLACE
-SPECIES_REPLACE[human]='s/Homo sapiens/Homo_sapiens/g'
-SPECIES_REPLACE[mouse]='s/Mus musculus/Mus_musculus/g'
-
+# Counter for loop iteration, used for getting the right values of SPECIES_REPLACE
+COUNT=0
 # For each species
-for KEY in ${!SPECIES_QUERY[@]}
+for SPECIES in ${SPECIES_QUERY[@]}
 do
+    KEY=${SPECIES%%:*}
+    VALUE=${SPECIES#*:}
+    REPLACE_VALUE=${SPECIES_REPLACE[$COUNT]#*:}
 	echo "Downloading ${KEY} repertoires into ${OUTDIR}..."
 
 	# Download VDJ
@@ -64,13 +66,14 @@ do
     echo "|---- Ig"
     for CHAIN in IGHV IGHD IGHJ IGKV IGKJ IGLV IGLJ
     do
-        URL="http://www.imgt.org/IMGT_GENE-DB/GENElect?query=7.14+${CHAIN}&species=${SPECIES_QUERY[${KEY}]}"
+        URL="http://www.imgt.org/IMGT_GENE-DB/GENElect?query=7.14+${CHAIN}&species=${VALUE}"
         FILE_NAME="${FILE_PATH}/${REPERTOIRE}_${KEY}_${CHAIN}.fasta"
         TMP_FILE="${FILE_NAME}.tmp"
         #echo $URL
         wget $URL -O $TMP_FILE -q
         awk '/<pre>/{i++}/<\/pre>/{j++}{if(j==2){exit}}{if(i==2 && j==1 && $0!~"^<pre>"){print}}' $TMP_FILE > $FILE_NAME
-        sed -i "${SPECIES_REPLACE[${KEY}]}" $FILE_NAME
+        # Make sed command work also for mac, see: https://stackoverflow.com/a/44864004
+        sed -i.bak "$REPLACE_VALUE" $FILE_NAME && rm $FILE_NAME.bak
         rm $TMP_FILE
     done
 
@@ -78,13 +81,13 @@ do
     echo "|---- TCR"
     for CHAIN in TRAV TRAJ TRBV TRBD TRBJ TRDV TRDD TRDJ TRGV TRGJ
     do
-        URL="http://www.imgt.org/IMGT_GENE-DB/GENElect?query=7.14+${CHAIN}&species=${SPECIES_QUERY[${KEY}]}"
+        URL="http://www.imgt.org/IMGT_GENE-DB/GENElect?query=7.14+${CHAIN}&species=${VALUE}"
         FILE_NAME="${FILE_PATH}/${REPERTOIRE}_${KEY}_${CHAIN}.fasta"
         TMP_FILE="${FILE_NAME}.tmp"
         #echo $URL
         wget $URL -O $TMP_FILE -q
         awk '/<pre>/{i++}/<\/pre>/{j++}{if(j==2){exit}}{if(i==2 && j==1 && $0!~"^<pre>"){print}}' $TMP_FILE > $FILE_NAME
-        sed -i "${SPECIES_REPLACE[${KEY}]}" $FILE_NAME
+        sed -i.bak "$REPLACE_VALUE" $FILE_NAME && rm $FILE_NAME.bak
         rm $TMP_FILE
     done
 
@@ -98,13 +101,13 @@ do
     echo "|---- Ig"
     for CHAIN in IGH IGK IGL
     do
-        URL="http://www.imgt.org/IMGT_GENE-DB/GENElect?query=8.1+${CHAIN}V&species=${SPECIES_QUERY[${KEY}]}&IMGTlabel=L-PART1+L-PART2"
+        URL="http://www.imgt.org/IMGT_GENE-DB/GENElect?query=8.1+${CHAIN}V&species=${VALUE}&IMGTlabel=L-PART1+L-PART2"
         FILE_NAME="${FILE_PATH}/${REPERTOIRE}_${KEY}_${CHAIN}L.fasta"
         TMP_FILE="${FILE_NAME}.tmp"
         #echo $URL
         wget $URL -O $TMP_FILE -q
         awk '/<pre>/{i++}/<\/pre>/{j++}{if(j==2){exit}}{if(i==2 && j==1 && $0!~"^<pre>"){print}}' $TMP_FILE > $FILE_NAME
-        sed -i "${SPECIES_REPLACE[${KEY}]}" $FILE_NAME
+        sed -i.bak "$REPLACE_VALUE" $FILE_NAME && rm $FILE_NAME.bak
         rm $TMP_FILE
     done
 
@@ -112,13 +115,13 @@ do
     echo "|---- TCR"
     for CHAIN in TRA TRB TRG TRD
     do
-        URL="http://www.imgt.org/IMGT_GENE-DB/GENElect?query=8.1+${CHAIN}V&species=${SPECIES_QUERY[${KEY}]}&IMGTlabel=L-PART1+L-PART2"
+        URL="http://www.imgt.org/IMGT_GENE-DB/GENElect?query=8.1+${CHAIN}V&species=${VALUE}&IMGTlabel=L-PART1+L-PART2"
         FILE_NAME="${FILE_PATH}/${REPERTOIRE}_${KEY}_${CHAIN}L.fasta"
         TMP_FILE="${FILE_NAME}.tmp"
         #echo $URL
         wget $URL -O $TMP_FILE -q
         awk '/<pre>/{i++}/<\/pre>/{j++}{if(j==2){exit}}{if(i==2 && j==1 && $0!~"^<pre>"){print}}' $TMP_FILE > $FILE_NAME
-        sed -i "${SPECIES_REPLACE[${KEY}]}" $FILE_NAME
+        sed -i.bak "$REPLACE_VALUE" $FILE_NAME && rm $FILE_NAME.bak
         rm $TMP_FILE
     done
 
@@ -138,13 +141,13 @@ do
             QUERY=7.5
         fi
 
-        URL="http://www.imgt.org/IMGT_GENE-DB/GENElect?query=${QUERY}+${CHAIN}&species=${SPECIES_QUERY[${KEY}]}"
+        URL="http://www.imgt.org/IMGT_GENE-DB/GENElect?query=${QUERY}+${CHAIN}&species=${VALUE}"
         FILE_NAME="${FILE_PATH}/${REPERTOIRE}_${KEY}_${CHAIN}.fasta"
         TMP_FILE="${FILE_NAME}.tmp"
         #echo $URL
         wget $URL -O $TMP_FILE -q
         awk '/<pre>/{i++}/<\/pre>/{j++}{if(j==2){exit}}{if(i==2 && j==1 && $0!~"^<pre>"){print}}' $TMP_FILE > $FILE_NAME
-        sed -i "${SPECIES_REPLACE[${KEY}]}" $FILE_NAME
+        sed -i.bak "$REPLACE_VALUE" $FILE_NAME && rm $FILE_NAME.bak
         rm $TMP_FILE
     done
 
@@ -152,18 +155,18 @@ do
     echo "|---- TCR"
     for CHAIN in TRAC TRBC TRGC TRDC
     do
-        URL="http://www.imgt.org/IMGT_GENE-DB/GENElect?query=14.1+${CHAIN}&species=${SPECIES_QUERY[${KEY}]}"
+        URL="http://www.imgt.org/IMGT_GENE-DB/GENElect?query=14.1+${CHAIN}&species=${VALUE}"
         FILE_NAME="${FILE_PATH}/${REPERTOIRE}_${KEY}_${CHAIN}.fasta"
         TMP_FILE="${FILE_NAME}.tmp"
         #echo $URL
         wget $URL -O $TMP_FILE -q
         awk '/<pre>/{i++}/<\/pre>/{j++}{if(j==2){exit}}{if(i==2 && j==1 && $0!~"^<pre>"){print}}' $TMP_FILE > $FILE_NAME
-        sed -i "${SPECIES_REPLACE[${KEY}]}" $FILE_NAME
+        sed -i.bak "$REPLACE_VALUE" $FILE_NAME && rm $FILE_NAME.bak
         rm $TMP_FILE
     done
 
     echo ""
-
+    ((COUNT++))
 done
 
 # Write download info
