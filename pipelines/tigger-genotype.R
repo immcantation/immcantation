@@ -101,18 +101,18 @@ igv <- readIgFasta(opt$REF)
 
 # Identify polymorphisms and genotype
 nv <- findNovelAlleles(db, germline_db=igv, v_call=v_call, jcall=j_call,
-                       sequence_alignment=sequence_alignment,
+                       seq=sequence_alignment,
                        junction=junction, junction_length=junction_length,
                        nproc=opt$NPROC)
 gt <- inferGenotype(db, germline_db=igv, novel=nv,
-                    v_call=v_call, sequence_alignment=sequence_alignment)
+                    v_call=v_call, seq=sequence_alignment)
 
 # Write genotype FASTA file
 gt_seq <- genotypeFasta(gt, germline_db=igv, novel=nv)
 writeFasta(gt_seq, file.path(opt$OUTDIR, paste0(opt$NAME, "_genotype.fasta")))
 
 # Modify allele calls
-db <- reassignAlleles(db, gt_seq, v_call=v_call, sequence_alignment=sequence_alignment)
+db <- reassignAlleles(db, gt_seq, v_call=v_call, seq=sequence_alignment)
 
 # Rename genotyped V call column if necessary
 if (opt$VFIELD != "V_CALL_GENOTYPED") {
