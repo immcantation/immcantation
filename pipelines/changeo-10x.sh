@@ -335,13 +335,18 @@ LIGHT_NON="${OUTNAME}_light_${PROD_FIELD}-F.${EXT}"
 
 # Assign clones
 if $CLONE; then
-
-    printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "Detect cloning threshold"
-    shazam-threshold -d ${HEAVY_PROD} -m density -n "${OUTNAME}" \
+    if [ "$DIST" == "auto" ]; then
+        printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "Detect cloning threshold"
+        shazam-threshold -d ${HEAVY_PROD} -m density -n "${OUTNAME}" \
         -f ${FORMAT} -p ${NPROC} \
         > /dev/null 2> $ERROR_LOG
-    if [ "$DIST" == "auto" ]; then
         DIST=$(tail -n1 "${OUTNAME}_threshold-values.tab" | cut -f2)
+        check_error
+    else
+        printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "Calculating distance-to-nearest"
+        shazam-threshold -d ${HEAVY_PROD} -m none -n "${OUTNAME}" \
+        -f ${FORMAT} -p ${NPROC} \
+        &> /dev/null
     fi
 
     printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "DefineClones"
@@ -372,7 +377,7 @@ fi
 
 # Zip or delete intermediate files
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "Compressing files"
-TEMP_FILES=$(ls *.tsv *.tab 2>/dev/null | grep -v "${HEAVY_PROD}\|${LIGHT_PROD}\|${HEAVY_NON}\|${LIGHT_NON}")
+TEMP_FILES=$(ls *.tsv *.tab 2> /dev/null | grep -v "${HEAVY_PROD}\|${LIGHT_PROD}\|${HEAVY_NON}\|${LIGHT_NON}")
 if [[ ! -z $TEMP_FILES ]]; then
     if $ZIP_FILES; then
         tar -zcf temp_files.tar.gz $TEMP_FILES

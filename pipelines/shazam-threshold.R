@@ -46,7 +46,8 @@ REPEATS <- 1
 opt_list <- list(make_option(c("-d", "--db"), dest="DB",
                              help="Tabulated data file, in Change-O (TAB) or AIRR format (TSV)."),
                  make_option(c("-m", "--method"), dest="METHOD", default=METHOD,
-                             help=paste("Threshold inferrence to use. One of gmm or density.",
+                             help=paste("Threshold inferrence to use. One of gmm, density, or none.",
+                                        "\n\t\tIf none, the distance-to-nearest distribution is plotted without threshold detection.",
                                         "\n\t\tDefaults to density.")),
                  make_option(c("-n", "--name"), dest="NAME",
                              help=paste("Sample name or run identifier which will be used as the output file prefix.",
@@ -121,6 +122,19 @@ if (FORMAT == "changeo") {
 # Calculate distance-to-nearest
 db <- distToNearest(db, sequenceColumn=junction, vCallColumn=v_call, jCallColumn=j_call,
                     model="ham", first=FALSE, normalize="len", nproc=NPROC)
+
+# Simply plot and exit for method="none"
+if (METHOD == "none") {
+    # Plot distToNearest distribution
+    p1 <- ggplot(db, aes_string(x="DIST_NEAREST")) +
+        baseTheme() +
+        xlab("Distance") +
+        ylab("Density") +
+        geom_histogram(aes_string(y="..density.."), fill="gray40", color="white")
+    ggsave(file.path(OUTDIR, paste0(NAME, "_threshold-plot.pdf")), plot=p1, width=6, height=4)
+
+    quit()
+}
 
 # Open plot device
 plot_file <- file.path(OUTDIR, paste0(NAME, "_threshold-plot.pdf"))

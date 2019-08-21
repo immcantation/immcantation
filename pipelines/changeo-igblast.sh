@@ -291,7 +291,7 @@ fi
 
 # Zip or delete intermediate files
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "Compressing files"
-TEMP_FILES=$(ls ${DB_PASS} ${DB_FAIL} ${GERM_PASS} ${SELECT_PASS} 2>/dev/null | grep -v "${LAST_FILE}\|$(basename ${READS})")
+TEMP_FILES=$(ls ${DB_PASS} ${DB_FAIL} ${GERM_PASS} ${SELECT_PASS} 2> /dev/null | grep -v "${LAST_FILE}\|$(basename ${READS})")
 if [[ ! -z $TEMP_FILES ]]; then
     if $ZIP_FILES; then
         tar -zcf temp_files.tar.gz $TEMP_FILES

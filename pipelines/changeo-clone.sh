@@ -262,7 +262,7 @@ if [[ ! -z $LOG_FILES ]]; then
     fi
 fi
 # Zip or delete intermediate files
-TEMP_FILES=$(ls ${SELECT_PASS} ${CLONE_PASS} ${GERM_PASS}  2>/dev/null | grep -v "${LAST_FILE}\|$(basename ${DB})")
+TEMP_FILES=$(ls ${SELECT_PASS} ${CLONE_PASS} ${GERM_PASS}  2> /dev/null | grep -v "${LAST_FILE}\|$(basename ${DB})")
 if [[ ! -z $TEMP_FILES ]]; then
     if $ZIP_FILES; then
         tar -zcf temp_files.tar.gz $TEMP_FILES
