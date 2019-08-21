@@ -1,14 +1,14 @@
 Release Notes
 ========================================================================
 
-Version 3.0.0:  August 6, 2019
+Version 3.0.0:  August 25, 2019
 ------------------------------------------------------------------------
 
 Version Updates:
 
 + alakazam 0.3.0
-+ scoper 0.2.0
 + presto 0.5.12
++ scoper 0.2.0
 + shazam 0.2.1
 + tigger 0.4.0
 + igblast 1.14.0
@@ -23,6 +23,9 @@ Pipeline Changes:
   distance model used for cloning.
 + Renamed the productive filter argument from ``-f`` to ``-k`` in
   ``changeo-igblast``.
++ Added a method option of ``none`` to ``shazam-threshold`` to provide
+  a dummy mode that simply plots the distance-to-nearest distribution
+  without threshold detection.
 
 Image Changes:
 

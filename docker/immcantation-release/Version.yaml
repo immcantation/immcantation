@@ -1,6 +1,6 @@
 immcantation:
-  version:  3.0.0
-  date:     2019.08.06
+  version:  tip
+  date:     2019.08.25
 release:
   presto:   0.5.12
   changeo:  0.4.6
