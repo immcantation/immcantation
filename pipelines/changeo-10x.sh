@@ -346,7 +346,7 @@ if $CLONE; then
         printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "Calculating distance-to-nearest"
         shazam-threshold -d ${HEAVY_PROD} -m none -n "${OUTNAME}" \
         -f ${FORMAT} -p ${NPROC} \
-        > /dev/null 2> $ERROR_LOG
+         &> /dev/null
     fi
 
     printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "DefineClones"
