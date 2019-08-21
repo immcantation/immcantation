@@ -340,13 +340,13 @@ if $CLONE; then
         shazam-threshold -d ${HEAVY_PROD} -m density -n "${OUTNAME}" \
         -f ${FORMAT} -p ${NPROC} \
         > /dev/null 2> $ERROR_LOG
-        DIST=$(tail -n1 "${OUTNAME}_threshold-values.tab" | cut -f2)
         check_error
+        DIST=$(tail -n1 "${OUTNAME}_threshold-values.tab" | cut -f2)
     else
         printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "Calculating distance-to-nearest"
         shazam-threshold -d ${HEAVY_PROD} -m none -n "${OUTNAME}" \
         -f ${FORMAT} -p ${NPROC} \
-        &> /dev/null
+        > /dev/null 2> $ERROR_LOG
     fi
 
     printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "DefineClones"
