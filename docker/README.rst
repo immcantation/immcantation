@@ -20,7 +20,7 @@ root**.
 
 ::
 
-    singularity pull docker://kleinstein/immcantation:1.10.1
+    singularity pull docker://kleinstein/immcantation:3.0.0
 
 Configure bind points
 ~~~~~~~~~~~~~~~~~~~~~
@@ -41,7 +41,7 @@ Interactive shell inside the container
 
 ::
 
-    IMAGE=immcantation-1.10.1.img
+    IMAGE=immcantation-3.0.0.simg
     singularity shell $IMAGE
 
 Launch Immcantation commands
