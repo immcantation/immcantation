@@ -10,11 +10,12 @@ will explain its use. The available pipelines are:
 
 * preprocess-phix
 * presto-abseq
+* presto-clontech
+* changeo-10x
 * changeo-igblast
 * tigger-genotype
 * shazam-threshold
 * changeo-clone
-
 
 All template pipeline scripts can be found in ``/usr/local/bin``.
 
