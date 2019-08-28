@@ -28,7 +28,7 @@ genome.
     :start-after: Start preprocess-phix
     :end-before: End preprocess-phix
 
-**PhiX cleaning example**
+**Example: preprocess-phix**
 
 .. parsed-literal::
 
@@ -84,7 +84,7 @@ file containing information about the data and processing. Valid fields are show
     run: "ABC123"
     date: "Today"
 
-**AbSeq preprocessing example**
+**Example: presto-abseq**
 
 .. parsed-literal::
 
@@ -121,7 +121,7 @@ or inside the container under ``/usr/local/share/protocols/Universal``.
     :start-after: Start presto-clontech
     :end-before: End presto-clontech
 
-**Clontech preprocessing example**
+**Example: presto-clontech**
 
 .. parsed-literal::
 
@@ -156,7 +156,7 @@ single-cell V(D)J data output by Cell Ranger.
     :start-after: Start changeo-10x
     :end-before: End changeo-10x
 
-**Clonal assignment example**
+**Example: changeo-10x**
 
 .. parsed-literal::
 
@@ -190,7 +190,7 @@ Change-O data standard.
     :start-after: Start changeo-igblast
     :end-before: End changeo-igblast
 
-**IgBLAST example**
+**Example: changeo-igblast**
 
 .. parsed-literal::
 
@@ -219,7 +219,7 @@ Infers V segment genotypes using TIgGER.
     :start-after: Start tigger-genotype
     :end-before: End tigger-genotype
 
-**Genotyping example**
+**Example: tigger-genotype**
 
 .. parsed-literal::
 
@@ -247,7 +247,7 @@ Performs automated detection of the clonal assignment threshold.
     :start-after: Start shazam-threshold
     :end-before: End shazam-threshold
 
-**Clonal threshold inferrence example**
+**Example: shazam-threshold**
 
 .. parsed-literal::
 
@@ -277,7 +277,7 @@ sequences.
     :start-after: Start changeo-clone
     :end-before: End changeo-clone
 
-**Clonal assignment example**
+**Example: changeo-clone**
 
 .. parsed-literal::
 
