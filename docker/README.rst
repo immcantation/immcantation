@@ -41,7 +41,7 @@ Interactive shell inside the container
 
 ::
 
-    IMAGE=immcantation-3.0.0.simg
+    IMAGE=immcantation-3.0.0.sif
     singularity shell $IMAGE
 
 Launch Immcantation commands

@@ -1,0 +1,24 @@
+preprocess-phix:
+  - "preprocess-phix.sh"
+  - "PhiX cleaning"
+presto-abseq:
+  - "presto-abseq.sh"
+  - "NEB AbSeq preprocessing"
+presto-clontech:
+  - "presto-clontech.sh"
+  - "Takara Bio / Clontech preprocessing"
+changeo-10x:
+  - "changeo-10x.sh"
+  - "10X Genomics V(D)J annotation and clonal assignment"
+changeo-igblast:
+  - "changeo-igblast.sh"
+  - "IgBLAST annotation"
+changeo-clone:
+  - "changeo-clone.sh"
+  - "Clonal assignment"
+shazam-threshold:
+  - "shazam-threshold.R"
+  - "Clonal threshold detection"
+tigger-genotype:
+  - "tigger-genotype.R"
+  - "Polymorphism detection and genotyping"

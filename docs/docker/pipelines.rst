@@ -24,26 +24,9 @@ PhiX cleaning pipeline
 Removes reads from a sequence file that align against the PhiX174 reference
 genome.
 
-Arguments:
-   -s  FASTQ sequence file.
-
-   -r  Directory containing phiX174 reference db.
-
-       Defaults to /usr/local/share/phix.
-
-   -n  Name to use as the output file suffix.
-
-       Defaults to a truncated version of the input filename.
-
-   -o  Output directory.
-
-       Defaults to the sample name.
-
-   -p  Number of subprocesses for multiprocessing tools.
-
-       Defaults to the available cores.
-
-   -h  Display help
+.. include:: ../_include/usage.rst
+    :start-after: Start preprocess-phix
+    :end-before: End preprocess-phix
 
 **PhiX cleaning example**
 
@@ -73,7 +56,7 @@ Arguments:
     Illumina format).
 
 
-pRESTO pipeline for preprocessing AbSeq data
+NEB AbSeq protocol pRESTO pipeline
 --------------------------------------------------------------------------------
 
 A start to finish pRESTO processing script for AbSeq data. Primer sequences are
@@ -81,46 +64,9 @@ available from the Immcantation repository under
 `protocols/AbSeq <https://bitbucket.org/kleinstein/immcantation/src/tip/protocols/AbSeq>`__
 or inside the container under ``/usr/local/share/protocols/AbSeq``.
 
-Arguments:
-   -1  Read 1 FASTQ sequence file (sequence beginning with the C-region or J-segment).
-
-   -2  Read 2 FASTQ sequence file (sequence beginning with the leader or V-segment).
-
-   -j  Read 1 FASTA primer sequences (C-region or J-segment).
-
-       Defaults to /usr/local/share/protocols/AbSeq/AbSeq_R1_Human_IG_Primers.fasta
-
-   -v  Read 2 FASTA primer sequences (template switch or V-segment).
-
-       Defaults to /usr/local/share/protocols/AbSeq/AbSeq_R2_TS.fasta.
-
-   -c  C-region FASTA sequences for the C-region internal to the primer.
-
-       If unspecified internal C-region alignment is not performed.
-
-   -r  V-segment reference file.
-
-       Defaults to /usr/local/share/germlines/igblast/fasta/imgt_human_ig_v.fasta
-
-   -y  YAML file providing description fields for report generation.
-
-   -n  Sample name or run identifier which will be used as the output file prefix.
-
-       Defaults to a truncated version of the read 1 filename.
-
-   -o  Output directory.
-
-       Defaults to the sample name.
-
-   -x  The mate-pair coordinate format of the raw data.
-
-       Defaults to illumina.
-
-   -p  Number of subprocesses for multiprocessing tools.
-
-       Defaults to the available processing units.
-
-   -h  Display help.
+.. include:: ../_include/usage.rst
+    :start-after: Start presto-abseq
+    :end-before: End presto-abseq
 
 One of the requirements for generating the report at the end of the pRESTO pipeline is a YAML
 file containing information about the data and processing. Valid fields are shown in the example
@@ -161,46 +107,88 @@ file containing information about the data and processing. Valid fields are show
         presto-abseq -1 $READS_R1 -2 $READS_R2 -y $YAML \\
         -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC
 
+
+Takara Bio / Clontech SMARTer protocol pRESTO pipeline
+--------------------------------------------------------------------------------
+
+A start to finish pRESTO processing script for Takara Bio / Clontech SMARTer kit
+data. C-regions are assigned using the universal C-region primer sequences are
+available from the Immcantation repository under
+`protocols/Universal <https://bitbucket.org/kleinstein/immcantation/src/tip/protocols/Universal>`__
+or inside the container under ``/usr/local/share/protocols/Universal`.
+
+.. include:: ../_include/usage.rst
+    :start-after: Start presto-clontech
+    :end-before: End presto-clontech
+
+**Clontech preprocessing example**
+
+.. parsed-literal::
+
+    # Arguments
+    DATA_DIR=~/project
+    READS_R1=/data/raw/sample_R1.fastq
+    READS_R2=/data/raw/sample_R2.fastq
+    CREGION=/usr/local/share/protocols/Universal/Human_IG_CRegion_RC.fasta
+    VREF=/usr/local/share/igblast/fasta/imgt_human_ig_v.fasta
+    SAMPLE_NAME=sample
+    OUT_DIR=/data/presto/sample
+    NPROC=4
+
+    # Docker command
+    docker run -v $DATA_DIR:/data:z kleinstein/immcantation:|docker-version| \\
+        presto-clontech -1 $READS_R1 -2 $READS_R2 -j $CREGION -r $VREF \\
+        -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC
+
+    # Singularity command
+    singularity exec -B $DATA_DIR:/data immcantation-|docker-version|.sif \\
+        presto-abseq -1 $READS_R1 -2 $READS_R2 -j $CREGION -r $VREF \\
+        -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC
+
+
+10X Genomics V(D)J annotation pipeline
+--------------------------------------------------------------------------------
+
+Assigns new annotations and infers clonal relationships to 10X Genomics
+single-cell V(D)J data output by Cell Ranger.
+
+.. include:: ../_include/usage.rst
+    :start-after: Start changeo-10x
+    :end-before: Start changeo-10x
+
+**Clonal assignment example**
+
+.. parsed-literal::
+
+    # Arguments
+    DATA_DIR=~/project
+    READS=/data/raw/sample_filtered_contig.fasta
+    ANNOTATIONS=/data/raw/sample_filtered_contig_annotations.csv
+    SAMPLE_NAME=sample
+    OUT_DIR=/data/changeo/sample
+    DIST=auto
+    NPROC=4
+
+    # Run pipeline in docker image
+    docker run -v $DATA_DIR:/data:z kleinstein/immcantation:|docker-version| \\
+        changeo-10x -s $READS -a $ANNOTATIONS -x $DIST -n $SAMPLE_NAME \\
+        -o $OUT_DIR -p $NPROC
+
+    # Singularity command
+    singularity exec -B $DATA_DIR:/data immcantation-|docker-version|.sif \\
+        changeo-10x -s $READS -a $ANNOTATIONS -x $DIST -n $SAMPLE_NAME \\
+        -o $OUT_DIR -p $NPROC
+
+
 IgBLAST pipeline
 --------------------------------------------------------------------------------
 
 Performs V(D)J alignment using IgBLAST and post-processes the output into the
 Change-O data standard.
 
-Arguments:
-   -s  FASTA or FASTQ sequence file.
-
-   -r  Directory containing IMGT-gapped reference germlines.
-
-       Defaults to /usr/local/share/germlines/imgt/human/vdj.
-
-   -g  Species name. One of human or mouse. Defaults to human.
-
-   -t  Receptor type. One of ig or tr. Defaults to ig.
-
-   -b  IgBLAST IGDATA directory
-
-       Contains the IgBLAST database, optional_file and auxillary_data directories.
-
-       Defaults to /usr/local/share/igblast.
-
-   -n  Sample name or run identifier which will be used as the output file prefix.
-
-       Defaults to a truncated version of the read 1 filename.
-
-   -o  Output directory.
-
-       Defaults to the sample name.
-
-   -p  Number of subprocesses for multiprocessing tools.
-
-       Defaults to the available processing units.
-
-   -f  Specify to filter the output to only productive/functional sequences.
-
-   -i  Specify to allow partial alignments.
- 
-   -h  Display help.
+.. include:: ../_include/usage.rst
+    :start-after: Start changeo-igblast
+    :end-before: End changeo-igblast
 
 **IgBLAST example**
 
@@ -227,30 +215,9 @@ Genotyping pipeline
 
 Infers V segment genotypes using TIgGER.
 
-Arguments:
-   -d  Change-O formatted TSV (TAB) file.
-
-   -r  FASTA file containing IMGT-gapped V segment reference germlines.
-
-       Defaults to /usr/local/share/germlines/imgt/human/vdj/imgt_human_IGHV.fasta.
-
-   -v  Name of the output field containing genotyped V assignments.
-
-       Defaults to V_CALL_GENOTYPED.
-
-   -n  Sample name or run identifier which will be used as the output file prefix.
-
-       Defaults to a truncated version of the input filename.
-
-   -o  Output directory.
-
-       Defaults to current directory.
-
-   -p  Number of subprocesses for multiprocessing tools.
-
-       Defaults to the available processing units.
-
-   -h  Display help.
+.. include:: ../_include/usage.rst
+    :start-after: Start tigger-genotype
+    :end-before: End tigger-genotype
 
 **Genotyping example**
 
@@ -271,43 +238,14 @@ Arguments:
     singularity exec -B $DATA_DIR:/data immcantation-|docker-version|.sif \\
         tigger-genotype -d $DB -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC
 
-Clonal threshold inferrence pipeline
+Clonal threshold inference pipeline
 --------------------------------------------------------------------------------
 
 Performs automated detection of the clonal assignment threshold.
 
-Arguments:
-   -d           Change-O formatted TSV (TAB) file.
-
-   -m           Method.
-
-                Defaults to density.
-
-   -n           Sample name or run identifier which will be used as the output file prefix.
-
-                Defaults to a truncated version of the input filename.
-
-   -o           Output directory.
-
-                Defaults to current directory.
-
-   -p           Number of subprocesses for multiprocessing tools.
-
-                Defaults to the available processing units.
-
-   --model      Model when "-m gmm" is specified.
-
-                Defaults to "gamma-gamma".
-
-   --subsample  Number of distances to downsample to before threshold calculation.
-
-                By default, subsampling is not performed.
-
-   --repeats    Number of times to repeat the threshold calculation (with plotting).
-
-                Defaults to 1.
-
-   -h           Display help.
+.. include:: ../_include/usage.rst
+    :start-after: Start shazam-threshold
+    :end-before: End shazam-threshold
 
 **Clonal threshold inferrence example**
 
@@ -335,32 +273,9 @@ Clonal assignment pipeline
 Assigns Ig sequences into clonally related lineages and builds full germline
 sequences.
 
-Arguments:
-   -d  Change-O formatted TSV (TAB) file.
-
-   -x  Distance threshold for clonal assignment.
-
-   -r  Directory containing IMGT-gapped reference germlines.
-
-       Defaults to /usr/local/share/germlines/imgt/human/vdj.
-
-   -n  Sample name or run identifier which will be used as the output file prefix.
-
-       Defaults to a truncated version of the input filename.
-
-   -o  Output directory.
-
-       Defaults to the sample name.
-
-   -p  Number of subprocesses for multiprocessing tools.
-
-       Defaults to the available processing units.
-
-   -a  Specify to clone the full data set.
-
-       By default the data will be filtering to only productive/functional sequences.
-
-   -h  Display help.
+.. include:: ../_include/usage.rst
+    :start-after: Start changeo-clone
+    :end-before: Start changeo-clone
 
 **Clonal assignment example**
 

@@ -12,6 +12,7 @@ VOLUME /oasis
 # Tools
 COPY tools/versions.py /usr/local/bin/versions
 COPY tools/builds.py /usr/local/bin/builds
+COPY tools/pipelines.py /usr/local/bin/pipelines
 COPY tools/rinstall.R /usr/local/bin/rinstall
 
 # Disable https on repos

@@ -5,32 +5,16 @@ LABEL maintainer="Jason Anthony Vander Heiden [jason.vanderheiden@yale.edu], \
 
 # Version
 COPY Version.yaml /Version.yaml
+COPY Pipeline.yaml /Pipeline.yaml
 RUN builds write -n date -v "$(date +'%Y-%m-%d %T %Z')"
-
-# Define pipeline scripts
-ARG PRESTO_ABSEQ="presto-abseq.sh"
-ARG PRESTO_CLONTECH="presto-clontech.sh"
-ARG CHANGEO_IGBLAST="changeo-igblast.sh"
-ARG CHANGEO_CLONE="changeo-clone.sh"
-ARG CHANGEO_10X="changeo-10x.sh"
-ARG SHAZAM_THRESHOLD="shazam-threshold.R"
-ARG TIGGER_GENOTYPE="tigger-genotype.R"
-ARG PREPROCESS_PHIX="preprocess-phix.sh"
 
 # Install procotol data, utility scripts and pipelines
 RUN PACKAGE="immcantation" \
     && rm -rf /tmp/${PACKAGE} \
     && hg clone -b default https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
     && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} \
+	&& pipelines copy -s /tmp/${PACKAGE}/pipelines/ -t /usr/local/bin/
 	&& mv /tmp/${PACKAGE}/scripts/* /usr/local/bin/ \
-	&& mv /tmp/${PACKAGE}/pipelines/${PRESTO_ABSEQ} /usr/local/bin/presto-abseq \
-	&& mv /tmp/${PACKAGE}/pipelines/${PRESTO_CLONTECH} /usr/local/bin/presto-clontech \
-	&& mv /tmp/${PACKAGE}/pipelines/${CHANGEO_IGBLAST} /usr/local/bin/changeo-igblast \
-	&& mv /tmp/${PACKAGE}/pipelines/${CHANGEO_CLONE} /usr/local/bin/changeo-clone \
-	&& mv /tmp/${PACKAGE}/pipelines/${CHANGEO_10X} /usr/local/bin/changeo-10x \
-	&& mv /tmp/${PACKAGE}/pipelines/${SHAZAM_THRESHOLD} /usr/local/bin/shazam-threshold \
-	&& mv /tmp/${PACKAGE}/pipelines/${TIGGER_GENOTYPE} /usr/local/bin/tigger-genotype \
-	&& mv /tmp/${PACKAGE}/pipelines/${PREPROCESS_PHIX} /usr/local/bin/preprocess-phix \
     && mv /tmp/${PACKAGE}/protocols /usr/local/share/protocols \
     && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
     && rm -r /tmp/${PACKAGE}
@@ -198,16 +182,9 @@ RUN useradd magus -u 1000 -g users \
 USER magus
 
 # Set commands
-CMD echo -e "Report version information:\n" \
-            "  versions report\n" \
-            "Report build details:\n" \
-            "  builds report\n" \
-            "Available pipeline commands:\n" \
-            "  presto-abseq\n" \
-            "  presto-clontech\n" \
-            "  changeo-10x\n" \
-            "  changeo-igblast\n" \
-            "  changeo-clone\n" \
-            "  tigger-genotype\n" \
-            "  shazam-threshold\n" \
-            "  preprocess-phix"
+CMD echo -e " Version information:\n"\
+            "  versions report\n"\
+            "Build stamps:\n"\
+            "  builds report\n"\
+            "Description of available pipelines:\n"\
+            "  pipelines report"
