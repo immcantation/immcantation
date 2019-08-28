@@ -13,7 +13,7 @@ RUN PACKAGE="immcantation" \
     && rm -rf /tmp/${PACKAGE} \
     && hg clone -b default https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
     && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} \
-	&& pipelines copy -s /tmp/${PACKAGE}/pipelines/ -t /usr/local/bin/
+	&& pipelines copy -s /tmp/${PACKAGE}/pipelines/ -t /usr/local/bin/ \
 	&& mv /tmp/${PACKAGE}/scripts/* /usr/local/bin/ \
     && mv /tmp/${PACKAGE}/protocols /usr/local/share/protocols \
     && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \

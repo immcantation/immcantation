@@ -32,9 +32,11 @@ Image Changes:
 + Added the ``RAbHIT`` R package.
 + Added the ``changeo-10x`` pipeline to process 10X Genomics V(D)J data.
 + Added the ``presto-clontech`` pipeline to preprocess data from the
-  TakaraBio SMARTer kit.
+  Takara Bio / Clontech SMARTer kit.
 + Added some universal C-region reference sequences to
   ``/usr/local/share/protocols``.
++ Added the ``pipelines report`` command to show a description of
+  available pipeline commands.
 + Fixed a dependency version issue that prevented tbl2asn from running.
 + Fixed Mac OS compatibility in fetch_imgtdb.
 
