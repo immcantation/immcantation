@@ -115,7 +115,7 @@ A start to finish pRESTO processing script for Takara Bio / Clontech SMARTer kit
 data. C-regions are assigned using the universal C-region primer sequences are
 available from the Immcantation repository under
 `protocols/Universal <https://bitbucket.org/kleinstein/immcantation/src/tip/protocols/Universal>`__
-or inside the container under ``/usr/local/share/protocols/Universal`.
+or inside the container under ``/usr/local/share/protocols/Universal``.
 
 .. include:: ../_include/usage.rst
     :start-after: Start presto-clontech
@@ -154,7 +154,7 @@ single-cell V(D)J data output by Cell Ranger.
 
 .. include:: ../_include/usage.rst
     :start-after: Start changeo-10x
-    :end-before: Start changeo-10x
+    :end-before: End changeo-10x
 
 **Clonal assignment example**
 
@@ -275,7 +275,7 @@ sequences.
 
 .. include:: ../_include/usage.rst
     :start-after: Start changeo-clone
-    :end-before: Start changeo-clone
+    :end-before: End changeo-clone
 
 **Clonal assignment example**
 
