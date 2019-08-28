@@ -97,7 +97,7 @@ if (opt$FORMAT == "changeo") {
 igv <- readIgFasta(opt$REF)
 
 # Identify polymorphisms and genotype
-nv <- findNovelAlleles(db, germline_db=igv, v_call=v_call, jcall=j_call,
+nv <- findNovelAlleles(db, germline_db=igv, v_call=v_call, j_call=j_call,
                        seq=sequence_alignment,
                        junction=junction, junction_length=junction_length,
                        nproc=opt$NPROC)
