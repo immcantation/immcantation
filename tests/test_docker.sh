@@ -34,7 +34,8 @@ RUN_DIR=$(realpath ${RUN_DIR})
 	OUT_DIR="/scratch/abseq"
 
 	run docker run -v $DATA_DIR:/data:z -v $RUN_DIR:/scratch:z $IMAGE \
-		presto-abseq -1 $READS_R1 -2 $READS_R2 -y $YAML -n $SAMPLE -o $OUT_DIR -p $NPROC
+		presto-abseq -1 $READS_R1 -2 $READS_R2 -y $YAML \
+		-n $SAMPLE -o $OUT_DIR -p $NPROC
 
 	[ "$status" -eq 0 ]
 }
@@ -48,8 +49,8 @@ RUN_DIR=$(realpath ${RUN_DIR})
     VREF=/usr/local/share/igblast/fasta/imgt_human_ig_v.fasta
 	OUT_DIR="/scratch/clontech"
 
-    run docker run -v $DATA_DIR:/data:z -v $RUN_DIR:/scratch:z $IMAGE \\
-        presto-clontech -1 $READS_R1 -2 $READS_R2 -j $CREGION -r $VREF \\
+    run docker run -v $DATA_DIR:/data:z -v $RUN_DIR:/scratch:z $IMAGE \
+        presto-clontech -1 $READS_R1 -2 $READS_R2 -j $CREGION -r $VREF \
         -n $SAMPLE -o $OUT_DIR -p $NPROC
 
 	[ "$status" -eq 0 ]
@@ -64,8 +65,8 @@ RUN_DIR=$(realpath ${RUN_DIR})
 	OUT_DIR="/scratch/10x"
 
 	run docker run -v $DATA_DIR:/data:z -v $RUN_DIR:/scratch:z $IMAGE \
-        changeo-10x -s $READS -a $ANNOTATIONS -x $DIST -n $SAMPLE \\
-        -o $OUT_DIR -p $NPROC
+        changeo-10x -s $READS -a $ANNOTATIONS -x $DIST \
+        -n $SAMPLE -o $OUT_DIR -p $NPROC
 
 	[ "$status" -eq 0 ]
 }
@@ -86,11 +87,11 @@ RUN_DIR=$(realpath ${RUN_DIR})
 @test "tigger-genotype" {
 	SAMPLE=HD13M
 	DB="/scratch/changeo/${SAMPLE}_db-pass.${EXT}"
-	OUT_DIR="/scratch/changeo"
 	V_FIELD="V_CALL_GENOTYPED"
+	OUT_DIR="/scratch/changeo"
 
 	run docker run -v $DATA_DIR:/data:z -v $RUN_DIR:/scratch:z $IMAGE \
-		tigger-genotype -d $DB -n $SAMPLE -o $OUT_DIR -p $NPROC
+		tigger-genotype -d $DB -v $V_FIELD -n $SAMPLE -o $OUT_DIR -p $NPROC
 
 	[ "$status" -eq 0 ]
 }
@@ -102,8 +103,8 @@ RUN_DIR=$(realpath ${RUN_DIR})
 	OUT_DIR="/scratch/changeo"
 
 	run docker run -v $DATA_DIR:/data:z -v $RUN_DIR:/scratch:z $IMAGE \
-		shazam-threshold -d $DB -n $SAMPLE -o $OUT_DIR -p $NPROC --subsample 5000 \
-            --repeats 2
+		shazam-threshold -d $DB --subsample 5000 --repeats 2 \
+        -n $SAMPLE -o $OUT_DIR -p $NPROC
 
 	[ "$status" -eq 0 ]
 }

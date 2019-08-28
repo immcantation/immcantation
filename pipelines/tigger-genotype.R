@@ -56,8 +56,6 @@ opt_list <- list(make_option(c("-d", "--db"), dest="DB",
 # Parse arguments
 opt <- parse_args(OptionParser(option_list=opt_list))
 
-FORMAT <- opt$FORMAT
-
 # Check input file
 if (!("DB" %in% names(opt))) {
     stop("You must provide a Change-O database file with the -d option.")
@@ -80,16 +78,15 @@ if (!(file.access(opt$OUTDIR, mode=2) == 0)) {
 }
 
 # Load data
-
-if (FORMAT == "changeo") {
-    db <- as.data.frame(alakazam::readChangeoDb(DB))
+if (opt$FORMAT == "changeo") {
+    db <- as.data.frame(alakazam::readChangeoDb(opt$DB))
     v_call <- "V_CALL"
     j_call <- "J_CALL"
     junction <- "JUNCTION"
     junction_length <- "JUNCTION_LENGTH"
     sequence_alignment <- "SEQUENCE_IMGT"
-} else if (FORMAT == "airr") {
-    db <- airr::read_rearrangement(DB)
+} else if (opt$FORMAT == "airr") {
+    db <- airr::read_rearrangement(opt$DB)
     v_call <- "v_call"
     j_call <- "j_call"
     junction <- "junction"

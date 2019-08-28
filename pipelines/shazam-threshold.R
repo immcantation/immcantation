@@ -25,6 +25,7 @@
 # Imports
 suppressPackageStartupMessages(library("optparse"))
 suppressPackageStartupMessages(library("methods"))
+suppressPackageStartupMessages(library("tibble"))
 suppressPackageStartupMessages(library("dplyr"))
 suppressPackageStartupMessages(library("tidyr"))
 suppressPackageStartupMessages(library("readr"))
@@ -157,7 +158,7 @@ for(i in 1:REPEATS){
     slots <- slotNames(threshold)
     slots <- slots[!(slots %in% c("x", "xdens", "ydens"))]
     .extract <- function(x) {
-        return(data_frame(PARAMETER=x, VALUE=as.character(slot(threshold, x))))
+        return(tibble(PARAMETER=x, VALUE=as.character(slot(threshold, x))))
     }
     threshold_list[[as.character(i)]] <- bind_rows(lapply(slots, .extract))
     # Plot histogram
