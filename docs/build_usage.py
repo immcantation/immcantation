@@ -23,14 +23,14 @@ with open(os.path.abspath('../docker/immcantation-release/Pipeline.yaml'), 'r') 
 # Capture usage statements
 usage = OrderedDict()
 for k, v in pipelines.items():
-    x = subprocess.check_output([os.path.abspath('../pipelines/%s' % v), '-h'], text=True)
-    usage[k] = re.sub(r'Usage: .*%s' % v, r'Usage: %s' % k, x)
-
-
-# start-after : text to find in the external data file
-# end-before : text to find in the external data file
+    x = subprocess.check_output([os.path.abspath('../pipelines/%s' % v[0]), '-h'], text=True)
+    usage[k] = re.sub(r'Usage: .*%s' % v[0], r'Usage: %s' % k, x)
+    if v[0].endswith('.R'):
+        usage[k] = re.sub(r'\n\n', r'\n', usage[k])
+        usage[k] = re.sub(r'\nOptions:\n', r'', usage[k])
 
 # Write usage rst file
+# Mark for start-after and end-before rst directives
 out_path = '_include'
 if not os.path.exists(out_path):  os.mkdir(out_path)
 with open(os.path.abspath('_include/usage.rst'), 'w') as f:

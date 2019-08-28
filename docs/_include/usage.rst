@@ -1,3 +1,19 @@
+.. Start preprocess-phix
+
+Usage: preprocess-phix [OPTIONS]
+  -s   FASTQ sequence file.
+  -r   Directory containing phiX174 reference db.
+       Defaults to /usr/local/share/phix.
+  -n   Sample identifier which will be used as the output file prefix.
+       Defaults to a truncated version of the input filename.
+  -o  Output directory. Will be created if it does not exist.
+      Defaults to a directory matching the sample identifier in the current working directory.
+  -p   Number of subprocesses for multiprocessing tools.
+       Defaults to the available cores.
+  -h   This message.
+
+.. End preprocess-phix
+
 .. Start presto-abseq
 
 Usage: presto-abseq [OPTIONS]
@@ -49,6 +65,35 @@ Usage: presto-clontech [OPTIONS]
 
 .. End presto-clontech
 
+.. Start changeo-10x
+
+Usage: changeo-10x [OPTIONS]
+  -s  FASTA or FASTQ sequence file.
+  -a  10X Cell Ranger V(D)J contig annotation CSV file.
+      Must corresponding with the FASTA/FASTQ input file (all, filtered or consensus).
+  -r  Directory containing IMGT-gapped reference germlines.
+      Defaults to /usr/local/share/germlines/imgt/human/vdj when species is human.
+      Defaults to /usr/local/share/germlines/imgt/mouse/vdj when species is mouse.
+  -g  Species name. One of human or mouse. Defaults to human.
+  -t  Receptor type. One of ig or tr. Defaults to ig.
+  -x  Distance threshold for clonal assignment. Specify "auto" for automatic detection.
+      If unspecified, clonal assignment is not performed.
+  -m  Distance model for clonal assignment.
+      Defaults to the nucleotide Hamming distance model (ham).
+  -b  IgBLAST IGDATA directory, which contains the IgBLAST database, optional_file
+      and auxillary_data directories. Defaults to /usr/local/share/igblast.
+  -n  Sample identifier which will be used as the output file prefix.
+      Defaults to a truncated version of the sequence filename.
+  -o  Output directory. Will be created if it does not exist.
+      Defaults to a directory matching the sample identifier in the current working directory.
+  -f  Output format. One of changeo or airr. Defaults to changeo.
+  -p  Number of subprocesses for multiprocessing tools.
+      Defaults to the available cores.
+  -i  Specify to allow partial alignments.
+  -h  This message.
+
+.. End changeo-10x
+
 .. Start changeo-igblast
 
 Usage: changeo-igblast [OPTIONS]
@@ -95,80 +140,38 @@ Usage: changeo-clone [OPTIONS]
 
 .. End changeo-clone
 
-.. Start changeo-10x
-
-Usage: changeo-10x [OPTIONS]
-  -s  FASTA or FASTQ sequence file.
-  -a  10X Cell Ranger V(D)J contig annotation CSV file.
-      Must corresponding with the FASTA/FASTQ input file (all, filtered or consensus).
-  -r  Directory containing IMGT-gapped reference germlines.
-      Defaults to /usr/local/share/germlines/imgt/human/vdj when species is human.
-      Defaults to /usr/local/share/germlines/imgt/mouse/vdj when species is mouse.
-  -g  Species name. One of human or mouse. Defaults to human.
-  -t  Receptor type. One of ig or tr. Defaults to ig.
-  -x  Distance threshold for clonal assignment. Specify "auto" for automatic detection.
-      If unspecified, clonal assignment is not performed.
-  -m  Distance model for clonal assignment.
-      Defaults to the nucleotide Hamming distance model (ham).
-  -b  IgBLAST IGDATA directory, which contains the IgBLAST database, optional_file
-      and auxillary_data directories. Defaults to /usr/local/share/igblast.
-  -n  Sample identifier which will be used as the output file prefix.
-      Defaults to a truncated version of the sequence filename.
-  -o  Output directory. Will be created if it does not exist.
-      Defaults to a directory matching the sample identifier in the current working directory.
-  -f  Output format. One of changeo or airr. Defaults to changeo.
-  -p  Number of subprocesses for multiprocessing tools.
-      Defaults to the available cores.
-  -i  Specify to allow partial alignments.
-  -h  This message.
-
-.. End changeo-10x
-
 .. Start shazam-threshold
 
 Usage: shazam-threshold [options]
-
-
-Options:
 	-d DB, --db=DB
 		Tabulated data file, in Change-O (TAB) or AIRR format (TSV).
-
 	-m METHOD, --method=METHOD
 		Threshold inferrence to use. One of gmm, density, or none. 
 		If none, the distance-to-nearest distribution is plotted without threshold detection. 
 		Defaults to density.
-
 	-n NAME, --name=NAME
 		Sample name or run identifier which will be used as the output file prefix. 
 		Defaults to a truncated version of the input filename.
-
 	-o OUTDIR, --outdir=OUTDIR
 		Output directory. Will be created if it does not exist. 
 		Defaults to the current working directory.
-
 	-f FORMAT, --format=FORMAT
 		File format. One of 'changeo' (default) or 'airr'.
-
 	-p NPROC, --nproc=NPROC
 		Number of subprocesses for multiprocessing tools. 
 		Defaults to the available processing units.
-
 	--model=MODEL
 		Model to use for the gmm model. 
 		One of gamma-gamma, gamma-norm, norm-norm or norm-gamma. 
 		Defaults to gamma-gamma.
-
 	--subsample=SUBSAMPLE
 		Number of distances to downsample the data to before threshold calculation. 
 		By default, subsampling is not performed.
-
 	--repeats=REPEATS
 		Number of times to recalculate. 
 		Defaults to 1.
-
 	-h, --help
 		Show this help message and exit
-
 
 
 .. End shazam-threshold
@@ -176,55 +179,28 @@ Options:
 .. Start tigger-genotype
 
 Usage: tigger-genotype [options]
-
-
-Options:
 	-d DB, --db=DB
 		Change-O formatted TSV (TAB) file.
-
 	-r REF, --ref=REF
 		FASTA file containing IMGT-gapped V segment reference germlines. 
 		Defaults to /usr/local/share/germlines/imgt/human/vdj/imgt_human_IGHV.fasta.
-
 	-v VFIELD, --vfield=VFIELD
 		Name of the output field containing genotyped V assignments. 
 		Defaults to V_CALL_GENOTYPED.
-
 	-n NAME, --name=NAME
 		Sample name or run identifier which will be used as the output file prefix. 
 		Defaults to a truncated version of the input filename.
-
 	-o OUTDIR, --outdir=OUTDIR
 		Output directory. Will be created if it does not exist. 
 		Defaults to the current working directory.
-
 	-f FORMAT, --format=FORMAT
 		File format. One of 'changeo' (default) or 'airr'.
-
 	-p NPROC, --nproc=NPROC
 		Number of subprocesses for multiprocessing tools. 
 		Defaults to the available processing units.
-
 	-h, --help
 		Show this help message and exit
 
 
-
 .. End tigger-genotype
-
-.. Start preprocess-phix
-
-Usage: preprocess-phix [OPTIONS]
-  -s   FASTQ sequence file.
-  -r   Directory containing phiX174 reference db.
-       Defaults to /usr/local/share/phix.
-  -n   Sample identifier which will be used as the output file prefix.
-       Defaults to a truncated version of the input filename.
-  -o  Output directory. Will be created if it does not exist.
-      Defaults to a directory matching the sample identifier in the current working directory.
-  -p   Number of subprocesses for multiprocessing tools.
-       Defaults to the available cores.
-  -h   This message.
-
-.. End preprocess-phix
 

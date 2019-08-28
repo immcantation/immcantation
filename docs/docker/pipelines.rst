@@ -1,6 +1,6 @@
 .. _PipelineScripts:
 
-Template Pipeline Scripts
+Pipeline Templates
 ================================================================================
 
 You can always run your own pipeline scripts through the container, but the
