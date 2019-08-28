@@ -114,7 +114,7 @@ fi
 
 # Check that files exist and determined absolute paths
 if [ -e ${READS} ]; then
-    READS=$(readlink -f ${READS})
+    READS=$(realpath ${READS})
 else
     echo -e "File '${READS}' not found." >&2
     exit 1
@@ -144,14 +144,14 @@ if ! ${REFDIR_SET}; then
         REFDIR="/usr/local/share/germlines/imgt/mouse/vdj"
     fi
 else
-    REFDIR=$(readlink -f ${REFDIR})
+    REFDIR=$(realpath ${REFDIR})
 fi
 
 # Set blast database
 if ! ${IGDATA_SET}; then
     IGDATA="/usr/local/share/igblast"
 else
-    IGDATA=$(readlink -f ${IGDATA})
+    IGDATA=$(realpath ${IGDATA})
 fi
 
 # Set output name
@@ -171,7 +171,7 @@ if [ -e ${OUTDIR} ]; then
         exit 1
     fi
 else
-    PARENTDIR=$(dirname $(readlink -f ${OUTDIR}))
+    PARENTDIR=$(dirname $(realpath ${OUTDIR}))
     if ! [ -w ${PARENTDIR} ]; then
         echo -e "Parent directory '${PARENTDIR}' of new output directory '${OUTDIR}' is not writable." >&2
         exit 1

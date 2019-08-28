@@ -149,7 +149,7 @@ if [ -e ${OUTDIR} ]; then
         exit 1
     fi
 else
-    PARENTDIR=$(dirname $(readlink -f ${OUTDIR}))
+    PARENTDIR=$(dirname $(realpath ${OUTDIR}))
     if ! [ -w ${PARENTDIR} ]; then
         echo -e "Parent directory '${PARENTDIR}' of new output directory '${OUTDIR}' is not writable." >&2
         exit 1
@@ -158,7 +158,7 @@ fi
 
 # Check R1 reads
 if [ -e ${R1_READS} ]; then
-    R1_READS=$(readlink -f ${R1_READS})
+    R1_READS=$(realpath ${R1_READS})
 else
     echo -e "File '${R1_READS}' not found." >&2
     exit 1
@@ -166,7 +166,7 @@ fi
 
 # Check R2 reads
 if [ -e ${R2_READS} ]; then
-    R2_READS=$(readlink -f ${R2_READS})
+    R2_READS=$(realpath ${R2_READS})
 else
     echo -e "File '${R2_READS}' not found." >&2
     exit 1
@@ -176,7 +176,7 @@ fi
 if ! ${R1_PRIMERS_SET}; then
     R1_PRIMERS="/usr/local/share/protocols/AbSeq/AbSeq_R1_Human_IG_Primers.fasta"
 elif [ -e ${R1_PRIMERS} ]; then
-    R1_PRIMERS=$(readlink -f ${R1_PRIMERS})
+    R1_PRIMERS=$(realpath ${R1_PRIMERS})
 else
     echo -e "File '${R1_PRIMERS}' not found." >&2
     exit 1
@@ -186,7 +186,7 @@ fi
 if ! ${R2_PRIMERS_SET}; then
     R2_PRIMERS="/usr/local/share/protocols/AbSeq/AbSeq_R2_TS.fasta"
 elif [ -e ${R2_PRIMERS} ]; then
-    R2_PRIMERS=$(readlink -f ${R2_PRIMERS})
+    R2_PRIMERS=$(realpath ${R2_PRIMERS})
 else
     echo -e "File '${R2_PRIMERS}' not found." >&2
     exit 1
@@ -196,7 +196,7 @@ fi
 if ! ${VREF_SEQ_SET}; then
     VREF_SEQ="/usr/local/share/igblast/fasta/imgt_human_ig_v.fasta"
 elif [ -e ${VREF_SEQ} ]; then
-    VREF_SEQ=$(readlink -f ${VREF_SEQ})
+    VREF_SEQ=$(realpath ${VREF_SEQ})
 else
     echo -e "File '${VREF_SEQ}' not found." >&2
     exit 1
@@ -207,7 +207,7 @@ if ! ${CREGION_SEQ_SET}; then
     ALIGN_CREGION=false
 elif [ -e ${CREGION_SEQ} ]; then
     ALIGN_CREGION=true
-    CREGION_SEQ=$(readlink -f ${CREGION_SEQ})
+    CREGION_SEQ=$(realpath ${CREGION_SEQ})
 else
     echo -e "File '${CREGION_SEQ}' not found." >&2
     exit 1
@@ -215,7 +215,7 @@ fi
 
 # Check report yaml file
 if [ -e ${YAML} ]; then
-    YAML=$(readlink -f ${YAML})
+    YAML=$(realpath ${YAML})
 else
     echo -e "File '${YAML}' not found." >&2
     exit 1

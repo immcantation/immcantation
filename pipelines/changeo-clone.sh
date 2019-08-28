@@ -111,7 +111,7 @@ fi
 if ! ${REFDIR_SET}; then
     REFDIR="/usr/local/share/germlines/imgt/human/vdj"
 else
-    REFDIR=$(readlink -f ${REFDIR})
+    REFDIR=$(realpath ${REFDIR})
 fi
 
 if ! ${OUTNAME_SET}; then
@@ -129,7 +129,7 @@ if [ -e ${OUTDIR} ]; then
         exit 1
     fi
 else
-    PARENTDIR=$(dirname $(readlink -f ${OUTDIR}))
+    PARENTDIR=$(dirname $(realpath ${OUTDIR}))
     if ! [ -w ${PARENTDIR} ]; then
         echo -e "Parent directory '${PARENTDIR}' of new output directory '${OUTDIR}' is not writable." >&2
         exit 1
@@ -158,7 +158,7 @@ fi
 
 # Check that files exist and determined absolute paths
 if [ -e ${DB} ]; then
-    DB=$(readlink -f ${DB})
+    DB=$(realpath ${DB})
 else
     echo -e "File ${DB} not found." >&2
     exit 1

@@ -11,8 +11,11 @@ Version Updates:
 + scoper 0.2.0
 + shazam 0.2.1
 + tigger 0.4.0
++ igphyml 1.0.6
 + igblast 1.14.0
++ blast 2.9.0
 + vsearch 2.13.6
++ cd-hit 4.8.1
 
 Pipeline Changes:
 

@@ -3,22 +3,22 @@
 # Run parametes
 DATE=$(date +"%Y.%m.%d")
 DATA_DIR="data"
-DATA_DIR=$(readlink -f ${DATA_DIR})
+DATA_DIR=$(realpath ${DATA_DIR})
 RUN_DIR="run/presto-${DATE}"
 
 # Run parameters
 NPROC=2
 OUTDIR=true
 FAILED=true
-GERMLINES="${HOME}/share/imgt/human/vdj"
-V_GERMLINES="${HOME}/share/igblast/fasta/imgt_human_ig_v.fasta"
+GERMLINES="${HOME}/local/share/imgt/human/vdj"
+V_GERMLINES="${HOME}/local/share/igblast/fasta/imgt_human_ig_v.fasta"
 CLUSTER="cd-hit-est"
 ALIGNER="blastn"
 #FASTA=true
 
 # Create output parent
 mkdir -p ${RUN_DIR}/logs ${RUN_DIR}/console ${RUN_DIR}/output
-RUN_DIR=$(readlink -f ${RUN_DIR})
+RUN_DIR=$(realpath ${RUN_DIR})
 
 # Get output argument block
 get_output() {

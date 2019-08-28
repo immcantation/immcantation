@@ -81,13 +81,11 @@ fi
 
 # Check that files exist and determined absolute paths
 if [ -e ${READS} ]; then
-    READS=$(readlink -f ${READS})
+    READS=$(realpath ${READS})
 else
     echo -e "File '${READS}' not found." >&2
     exit 1
 fi
-
-ID=$(basename ${READS} | sed 's/.fastq//')
 
 # Exit if required arguments are not provided
 if ! ${PHIXDIR_SET}; then
@@ -96,7 +94,7 @@ fi
 
 # Check that dir exists and determined absolute paths
 if [ -e ${PHIXDIR} ]; then
-    PHIXDIR=$(readlink -f ${PHIXDIR})
+    PHIXDIR=$(realpath ${PHIXDIR})
     PHIXDB=$(ls ${PHIXDIR}/*fna)
 else
     echo -e "Directory '${PHIXDIR}' not found." >&2
@@ -105,7 +103,8 @@ fi
 
 # Set output name
 if ! ${OUTNAME_SET}; then
-     OUTNAME=$(basename ${READS} | sed 's/.fastq/_nophix/')
+     #OUTNAME=$(basename ${READS} | sed 's/.fastq/_nophix/')
+     OUTNAME=$(basename ${READS} | sed 's/.fastq//')
 fi
 
 # Set output directory
@@ -120,7 +119,7 @@ if [ -e ${OUTDIR} ]; then
         exit 1
     fi
 else
-    PARENTDIR=$(dirname $(readlink -f ${OUTDIR}))
+    PARENTDIR=$(dirname $(realpath ${OUTDIR}))
     if ! [ -w ${PARENTDIR} ]; then
         echo -e "Parent directory '${PARENTDIR}' of new output directory '${OUTDIR}' is not writable." >&2
         exit 1
@@ -133,10 +132,10 @@ if ! ${NPROC_SET}; then
 fi
 
 # Make output directory
-mkdir -p ${OUTDIR}
+mkdir -p ${OUTDIR}; cd ${OUTDIR}
 
 # Define log files
-LOGDIR="${OUTDIR}/logs"
+LOGDIR="logs"
 PIPELINE_LOG="${LOGDIR}/pipeline-phix.log"
 ERROR_LOG="${LOGDIR}/pipeline-phix.err"
 mkdir -p ${LOGDIR}
@@ -152,36 +151,36 @@ check_error() {
     fi
 }
 
-
 # Start
 BLASTN_VERSION=$(blastn -version  | grep 'Package' |sed s/'Package: '//)
 PHIX_VERSION=$(grep date ${PHIXDIR}/PhiX174.yaml | sed s/'date: *'//)
 
-echo -e "OUTNAME ${OUTNAME}"
-echo -e "OUTDIR ${OUTDIR}"
-echo -e "PHIXDB  ${PHIXDB}"
+echo -e "OUTNAME: ${OUTNAME}"
+echo -e "OUTDIR: ${OUTDIR}"
+echo -e "PHIXDB:  ${PHIXDB}"
 echo -e "BLASTN VERSION: ${BLASTN_VERSION}"
 echo -e "PHIX VERSION (DOWNLOAD DATE): ${PHIX_VERSION}"
 echo -e "LOGDIR: ${LOGDIR}"
 echo -e "\nSTART"
 STEP=0
 
-## Remove all-N sequence
-## (blastn crashes with all N sequences)
+# Remove all-N sequence becase blastn crashes with all N sequences)
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "Removing all N sequences"
 echo -e "       START> awk" >> $PIPELINE_LOG
-NO_N_READS="${OUTDIR}/${ID}_noN.fastq"
+NO_N_READS="${OUTNAME}_clean-missing.fastq"
 awk '{y= i++ % 4 ; L[y]=$0; if(y==3 && L[1] ~ /[^N]/) {printf("%s\n%s\n%s\n%s\n",L[0],L[1],L[2],L[3]);}}' ${READS} \
     > ${NO_N_READS} 2> $ERROR_LOG
 
+# Set input file for alignment
 INPUT_SIZE=$((`wc -l < ${READS}`/4))
 OUTPUT_SIZE=$((`wc -l < ${NO_N_READS}`/4))
 REMOVED_SEQS=$((${INPUT_SIZE}-${OUTPUT_SIZE}))
 
-if [ ${REMOVED_SEQS} -eq 0 ]; then
-   rm $NO_N_READS
+if [ ${REMOVED_SEQS} -gt 0 ]; then
+   CONVERT_FILE=${NO_N_READS}
 else
-   READS=$NO_N_READS
+   CONVERT_FILE=${READS}
+   rm $NO_N_READS
 fi
    
 echo -e "  INPUT_SIZE> ${INPUT_SIZE}" >> $PIPELINE_LOG
@@ -189,57 +188,48 @@ echo -e " OUTPUT_SIZE> ${OUTPUT_SIZE}" >> $PIPELINE_LOG
 echo -e "REMOVED_SEQS> ${REMOVED_SEQS}" >> $PIPELINE_LOG
 echo -e "  READS_FILE> ${READS}\n" >> $PIPELINE_LOG
 
-## Fix headers. Convert to presto format
+# Convert headers to presto format
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "ConvertHeaders"
-ConvertHeaders.py illumina -s ${READS} --outdir ${OUTDIR} >> $PIPELINE_LOG 2> $ERROR_LOG
-READS=$OUTDIR"/"$(basename ${READS} | sed 's/.fastq/_convert-pass.fastq/')
+ConvertHeaders.py illumina -s ${CONVERT_FILE} --outdir ${OUTDIR} --outname ${OUTNAME} --fasta \
+    >> $PIPELINE_LOG 2> $ERROR_LOG
+FASTA_FILE="${OUTNAME}_convert-pass.fasta"
 check_error
 
-# Convert to FASTA if needed
-BASE_NAME=$(basename ${READS})
-EXT_NAME=${BASE_NAME##*.}
-if [ "${EXT_NAME,,}" == "fastq" ] || [ "${EXT_NAME,,}" == "fq" ]; then
-    printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "Converting to FASTA"
-    FASTA_FILE=$(fastq2fasta.py ${READS})
-else
-    FASTA_FILE=${READS}
-fi
-
-
-# Run BLASTN
-printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "BLASTN"
-## Run blastn
-BLAST_CMD="$BLAST \
-     -query $FASTA_FILE \
-     -db $PHIXDB \
+# Run blastn
+BLAST_CMD="${BLAST} \
+     -query ${FASTA_FILE} \
+     -db ${PHIXDB} \
      -outfmt '6 std qseq sseq btop' \
-     -num_threads $NPROC -out $OUTDIR/${ID}_phix.fmt6"
-     
+     -out ${OUTNAME}_phix.fmt6 \
+     -num_threads ${NPROC}"
+
+printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "BLASTN"
 echo -e "   START> blastn" >> $PIPELINE_LOG
-echo -e "    FILE> $(basename $FASTA_FILE) \n" >> $PIPELINE_LOG
+echo -e "    FILE> $(basename ${FASTA_FILE}) \n" >> $PIPELINE_LOG
 echo -e "PROGRESS> [Running]" >> $PIPELINE_LOG
-eval $BLAST_CMD >> $PIPELINE_LOG 2> $ERROR_LOG
+eval ${BLAST_CMD} >> $PIPELINE_LOG 2> $ERROR_LOG
 echo -e "PROGRESS> [Done   ]\n" >> $PIPELINE_LOG
-echo -e "  OUTPUT> ${OUTNAME}.fmt6" >> $PIPELINE_LOG
+echo -e "  OUTPUT> ${OUTNAME}_phix.fmt6" >> $PIPELINE_LOG
 echo -e "     END> blastn\n" >> $PIPELINE_LOG
 check_error
 
-## Add header, need ID column name for Splitseq
+# Add header, need ID column name for Splitseq
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "Add header"
-sed -i '1iID' "${OUTDIR}/${ID}_phix.fmt6"
-IDFILE="${OUTDIR}/${ID}_phixhits.txt"
-sed -r '2,$ s/(^[^\|]*).*/\1/' "${OUTDIR}/${ID}_phix.fmt6" > ${IDFILE}
+sed -i '1iID' "${OUTNAME}_phix.fmt6"
+ID_FILE="${OUTNAME}_phixhits.txt"
+sed -r '2,$ s/(^[^\|]*).*/\1/' "${OUTNAME}_phix.fmt6" > ${ID_FILE}
 
-## Filter fastq
-#Keep sequences with names not in the .fmt6 file
+# Filter input fasta/q to names not in the .fmt6 file
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "SplitSeq select"
-SplitSeq.py select -s ${READS} -f ID -t ${IDFILE} --not --outdir $OUTDIR --outname $OUTNAME  \
+SplitSeq.py select -s ${READS} -f ID -t ${ID_FILE} --not --outdir ${OUTDIR} --outname ${OUTNAME} \
     >> $PIPELINE_LOG 2> $ERROR_LOG
 check_error
 
 # Remove temporary files
-rm $READS
 rm $FASTA_FILE
+if [ ${REMOVED_SEQS} -gt 0 ]; then
+   rm $NO_N_READS
+fi
 
 # End
 printf "DONE\n\n"

@@ -125,7 +125,7 @@ if [ -e ${OUTDIR} ]; then
         exit 1
     fi
 else
-    PARENTDIR=$(dirname $(readlink -f ${OUTDIR}))
+    PARENTDIR=$(dirname $(realpath ${OUTDIR}))
     if ! [ -w ${PARENTDIR} ]; then
         echo -e "Parent directory '${PARENTDIR}' of new output directory '${OUTDIR}' is not writable." >&2
         exit 1
@@ -134,7 +134,7 @@ fi
 
 # Check R1 reads
 if [ -e ${R1_READS} ]; then
-    R1_READS=$(readlink -f ${R1_READS})
+    R1_READS=$(realpath ${R1_READS})
 else
     echo -e "File '${R1_READS}' not found." >&2
     exit 1
@@ -142,7 +142,7 @@ fi
 
 # Check R2 reads
 if [ -e ${R2_READS} ]; then
-    R2_READS=$(readlink -f ${R2_READS})
+    R2_READS=$(realpath ${R2_READS})
 else
     echo -e "File '${R2_READS}' not found." >&2
     exit 1
@@ -152,7 +152,7 @@ fi
 if ! ${C_PRIMERS_SET}; then
     C_PRIMERS="/usr/local/share/protocols/Universal/Mouse_TR_CRegion_RC.fasta"
 elif [ -e ${C_PRIMERS} ]; then
-    C_PRIMERS=$(readlink -f ${C_PRIMERS})
+    C_PRIMERS=$(realpath ${C_PRIMERS})
 else
     echo -e "File '${C_PRIMERS}' not found." >&2
     exit 1
@@ -162,7 +162,7 @@ fi
 if ! ${VREF_SEQ_SET}; then
     VREF_SEQ="/usr/local/share/igblast/fasta/imgt_mouse_tr_v.fasta"
 elif [ -e ${VREF_SEQ} ]; then
-    VREF_SEQ=$(readlink -f ${VREF_SEQ})
+    VREF_SEQ=$(realpath ${VREF_SEQ})
 else
     echo -e "File '${VREF_SEQ}' not found." >&2
     exit 1

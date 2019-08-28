@@ -24,7 +24,7 @@ usage () {
 # Get commandline arguments
 while getopts "i:o:h" OPT; do
     case "$OPT" in
-    i)  GERMDIR=$(readlink -f $OPTARG)
+    i)  GERMDIR=$(realpath $OPTARG)
         GERMDIR_SET=true
         ;;
     o)  OUTDIR=$OPTARG
@@ -49,7 +49,7 @@ if ! $GERMDIR_SET; then
 fi
 
 # Create and set directories
-OUTDIR=$(readlink -f ${OUTDIR})
+OUTDIR=$(realpath ${OUTDIR})
 mkdir -p ${OUTDIR}/fasta
 TMPDIR=$(mktemp -d)
 

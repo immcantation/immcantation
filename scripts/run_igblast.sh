@@ -42,7 +42,7 @@ RECEPTOR_SET=false
 # Get commandline arguments
 while getopts "s:o:g:t:b:n:h" OPT; do
     case "$OPT" in
-    s)  READFILE=$(readlink -f $OPTARG)
+    s)  READFILE=$(realpath $OPTARG)
         READFILE_SET=true
         ;;
     o)  OUTDIR=$OPTARG

@@ -76,7 +76,7 @@ if [ $# -lt 2 ]; then
     echo -e "You must specify a list of sequence files as positional arguments." >&2
     exit 1
 else
-    READS=$(echo $@ | xargs readlink -f)
+    READS=$(echo $@ | xargs realpath)
 fi
 
 # Check reads

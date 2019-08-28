@@ -2,7 +2,7 @@ immcantation:
   version:  tip
   date:     2019.08.28
 release:
-  presto:   0.5.12
+  presto:   tip
   changeo:  0.4.6
   alakazam: 0.3.0
   shazam:   0.2.1
@@ -14,10 +14,10 @@ release:
 software:
   muscle:   3.8.425
   vsearch:  2.13.6
-  cd-hit:   4.6.8
-  blast:    2.8.1
+  cd-hit:   4.8.1
+  blast:    2.9.0
   igblast:  1.14.0
   phylip:   3.697
-  igphyml:  1.0.5
+  igphyml:  1.0.6
   airr-py:  1.2.1
   airr-r:   1.2.0

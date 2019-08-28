@@ -73,7 +73,7 @@ if ! ${READS_SET}; then
     echo -e "You must specify a read file using the -s option." >&2
     exit 1
 elif [ -e ${READS} ]; then
-    READS=$(readlink -f ${READS})
+    READS=$(realpath ${READS})
 else
     echo -e "File ${READS} not found." >&2
     exit 1
@@ -97,7 +97,7 @@ if ! ${CREGION_SEQ_SET}; then
     ALIGN_CREGION=false
 elif [ -e ${CREGION_SEQ} ]; then
     ALIGN_CREGION=true
-    CREGION_SEQ=$(readlink -f ${CREGION_SEQ})
+    CREGION_SEQ=$(realpath ${CREGION_SEQ})
 else
     echo -e "File ${CREGION_SEQ} not found." >&2
     exit 1

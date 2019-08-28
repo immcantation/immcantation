@@ -4,36 +4,34 @@
 VERSION="release"
 IMAGE="kleinstein/immcantation:${VERSION}"
 DATE=$(date +"%Y.%m.%d")
-DATA_DIR=$(readlink -f data)
+DATA_DIR=$(realpath data)
 RUN_DIR="run/docker-${DATE}-${VERSION}"
-SAMPLE=HD13M
 NPROC=2
 EXT="tab"
 
 # Create output parent
 mkdir -p ${RUN_DIR}
-RUN_DIR=$(readlink -f ${RUN_DIR})
+RUN_DIR=$(realpath ${RUN_DIR})
 
 # PhiX
 @test "preprocess-phix" {
-    #skip
-	READS_R1=/data/AAYHL_HD13M/MG2v3_HD13M_BC13_AGTCAA_L001_R1_001.fastq
-	READS_R2=/data/AAYHL_HD13M/MG2v3_HD13M_BC13_AGTCAA_L001_R2_001.fastq
+	SAMPLE=HD13M
+	READS=/data/sequences/HD13M_10K_R1.fastq
 	OUT_DIR="/scratch/phix"
 
 	run docker run -v $DATA_DIR:/data:z -v $RUN_DIR:/scratch:z $IMAGE \
-		preprocess-phix -s $READS_R1 -o $OUT_DIR -p $NPROC
+		preprocess-phix -s $READS -o $OUT_DIR -p $NPROC
 
 	[ "$status" -eq 0 ]
 }
 
-# pRESTO
+# AbSeq
 @test "presto-abseq" {
-    #skip
-	READS_R1=/data/AAYHL_HD13M/MG2v3_HD13M_BC13_AGTCAA_L001_R1_001.fastq
-	READS_R2=/data/AAYHL_HD13M/MG2v3_HD13M_BC13_AGTCAA_L001_R2_001.fastq
+	SAMPLE=HD13M
+	READS_R1=/data/sequences/HD13M_10K_R1.fastq
+	READS_R2=/data/sequences/HD13M_10K_R2.fastq
 	YAML=/data/report.yaml
-	OUT_DIR="/scratch/presto"
+	OUT_DIR="/scratch/abseq"
 
 	run docker run -v $DATA_DIR:/data:z -v $RUN_DIR:/scratch:z $IMAGE \
 		presto-abseq -1 $READS_R1 -2 $READS_R2 -y $YAML -n $SAMPLE -o $OUT_DIR -p $NPROC
@@ -41,9 +39,41 @@ RUN_DIR=$(readlink -f ${RUN_DIR})
 	[ "$status" -eq 0 ]
 }
 
+# Clontech
+@test "presto-clontech" {
+	SAMPLE=HD13M
+	READS_R1=/data/sequences/HD13M_10K_R1.fastq
+	READS_R2=/data/sequences/HD13M_10K_R2.fastq
+	CREGION=/usr/local/share/protocols/Universal/Human_IG_CRegion_RC.fasta
+    VREF=/usr/local/share/igblast/fasta/imgt_human_ig_v.fasta
+	OUT_DIR="/scratch/clontech"
+
+    run docker run -v $DATA_DIR:/data:z -v $RUN_DIR:/scratch:z $IMAGE \\
+        presto-clontech -1 $READS_R1 -2 $READS_R2 -j $CREGION -r $VREF \\
+        -n $SAMPLE -o $OUT_DIR -p $NPROC
+
+	[ "$status" -eq 0 ]
+}
+
+# 10X
+@test "changeo-10x" {
+	SAMPLE=PBMC2B
+	READS=/data/sequences/PBMC2B.fasta
+	ANNOTATIONS=/data/sequences/PBMC2B_annotations.csv
+	DIST=auto
+	OUT_DIR="/scratch/10x"
+
+	run docker run -v $DATA_DIR:/data:z -v $RUN_DIR:/scratch:z $IMAGE \
+        changeo-10x -s $READS -a $ANNOTATIONS -x $DIST -n $SAMPLE \\
+        -o $OUT_DIR -p $NPROC
+
+	[ "$status" -eq 0 ]
+}
+
 # IgBLAST
 @test "changeo-igblast" {
-	READS="/scratch/presto/${SAMPLE}-final_collapse-unique_atleast-2.fastq"
+	SAMPLE=HD13M
+	READS="/scratch/abseq/${SAMPLE}-final_collapse-unique_atleast-2.fastq"
 	OUT_DIR="/scratch/changeo"
 
 	run docker run -v $DATA_DIR:/data:z -v $RUN_DIR:/scratch:z $IMAGE \
@@ -54,6 +84,7 @@ RUN_DIR=$(readlink -f ${RUN_DIR})
 
 # TIgGER
 @test "tigger-genotype" {
+	SAMPLE=HD13M
 	DB="/scratch/changeo/${SAMPLE}_db-pass.${EXT}"
 	OUT_DIR="/scratch/changeo"
 	V_FIELD="V_CALL_GENOTYPED"
@@ -66,6 +97,7 @@ RUN_DIR=$(readlink -f ${RUN_DIR})
 
 # SHazaM threshold
 @test "shazam-threshold" {
+	SAMPLE=HD13M
 	DB="/scratch/changeo/${SAMPLE}_genotyped.${EXT}"
 	OUT_DIR="/scratch/changeo"
 
@@ -78,6 +110,7 @@ RUN_DIR=$(readlink -f ${RUN_DIR})
 
 # Change-O cloning
 @test "changeo-clone" {
+	SAMPLE=HD13M
 	DB="/scratch/changeo/${SAMPLE}_genotyped.${EXT}"
 	OUT_DIR="/scratch/changeo"
 	DIST=0.15

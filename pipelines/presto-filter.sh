@@ -104,7 +104,7 @@ fi
 
 # Check R1 reads
 if [ -e ${READS} ]; then
-    READS=$(readlink -f ${READS})
+    READS=$(realpath ${READS})
 else
     echo -e "File ${READS} not found." >&2
     exit 1
@@ -112,7 +112,7 @@ fi
 
 # Check report yaml file
 if [ -e ${YAML} ]; then
-    YAML=$(readlink -f ${YAML})
+    YAML=$(realpath ${YAML})
 else
     echo -e "File ${YAML} not found." >&2
     exit 1
