@@ -1,5 +1,5 @@
 immcantation:
-  version:  tip
+  version:  3.0.0
   date:     2019.08.29
 release:
   presto:   0.5.13

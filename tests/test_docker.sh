@@ -61,7 +61,7 @@ RUN_DIR=$(realpath ${RUN_DIR})
 	SAMPLE=PBMC2B
 	READS=/data/sequences/PBMC2B.fasta
 	ANNOTATIONS=/data/sequences/PBMC2B_annotations.csv
-	DIST=auto
+	DIST=0.15
 	OUT_DIR="/scratch/10x"
 
 	run docker run -v $DATA_DIR:/data:z -v $RUN_DIR:/scratch:z $IMAGE \
@@ -106,12 +106,20 @@ RUN_DIR=$(realpath ${RUN_DIR})
 	OUT_DIR="/scratch/changeo"
 
 	run docker run -v $DATA_DIR:/data:z -v $RUN_DIR:/scratch:z $IMAGE \
-		shazam-threshold -d $DB --subsample 100 --repeats 2 \
+		shazam-threshold -d $DB -m density \
         -n "${SAMPLE}-1" -o $OUT_DIR -p $NPROC
+
+	run docker run -v $DATA_DIR:/data:z -v $RUN_DIR:/scratch:z $IMAGE \
+		shazam-threshold -d $DB -m gmm \
+        -n "${SAMPLE}-2" -o $OUT_DIR -p $NPROC
+
+	run docker run -v $DATA_DIR:/data:z -v $RUN_DIR:/scratch:z $IMAGE \
+		shazam-threshold -d $DB --subsample 100 --repeats 2 \
+        -n "${SAMPLE}-3" -o $OUT_DIR -p $NPROC
 
     run docker run -v $DATA_DIR:/data:z -v $RUN_DIR:/scratch:z $IMAGE \
 		shazam-threshold -d $DB -m none \
-        -n "${SAMPLE}-2" -o $OUT_DIR -p $NPROC
+        -n "${SAMPLE}-4" -o $OUT_DIR -p $NPROC
 
 	[ "$status" -eq 0 ]
 }

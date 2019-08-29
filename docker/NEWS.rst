@@ -29,8 +29,9 @@ Pipeline Changes:
 + Added a method option of ``none`` to ``shazam-threshold`` to provide
   a dummy mode that simply plots the distance-to-nearest distribution
   without threshold detection.
-+ Added ``--minseq`` and ``--mingerm` arguments to ``tigger-genotype``
-  to allow specification of novel allele detection cutoffs.
++ Added ``--minseq`` and ``--mingerm`` arguments to
+  ``tigger-genotype`` to allow specification of novel allele detection
+  cutoffs.
 
 Image Changes:
 

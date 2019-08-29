@@ -139,42 +139,42 @@ Component Packages
 .. |presto-img| image:: _static/presto.png
     :align: middle
     :width: 200
-    :target: pRESTO_
+    :target: presto_
 
 .. |changeo-img| image:: _static/changeo.png
     :align: middle
     :width: 200
-    :target: Change-O_
+    :target: changeo_
 
 .. |alakazam-img| image:: _static/alakazam.png
     :align: middle
     :width: 200
-    :target: Alakazam_
+    :target: alakazam_
 
 .. |shazam-img| image:: _static/shazam.png
     :align: middle
     :width: 200
-    :target: SHazaM_
+    :target: shazam_
 
 .. |tigger-img| image:: _static/tigger.png
     :align: middle
     :width: 200
-    :target: TIgGER_
+    :target: tigger_
 
 .. |rdi-img| image:: _static/rdi.png
     :align: middle
     :width: 200
-    :target: RDI_
+    :target: rdi_
 
 .. |scoper-img| image:: _static/scoper.png
     :align: middle
     :width: 200
-    :target: SCOPer_
+    :target: scoper_
 
 .. |prestoR-img| image:: _static/prestoR.png
     :align: middle
     :width: 200
-    :target: prestoR_
+    :target: prestor_
 
 .. |igphyml-img| image:: _static/igphyml.png
     :align: middle
@@ -183,12 +183,12 @@ Component Packages
 
 .. Doc links
 
-.. _pRESTO: http://presto.readthedocs.io
-.. _Change-O: http://changeo.readthedocs.io
-.. _Alakazam: http://alakazam.readthedocs.io
-.. _SHazaM: http://shazam.readthedocs.io
-.. _TIgGER: http://tigger.readthedocs.io
-.. _RDI: http://rdi.readthedocs.io
-.. _SCOPer: http://scoper.readthedocs.io
-.. _prestoR: packages/prestor.html
+.. _presto: http://presto.readthedocs.io
+.. _changeo: http://changeo.readthedocs.io
+.. _alakazam: http://alakazam.readthedocs.io
+.. _shazam: http://shazam.readthedocs.io
+.. _tigger: http://tigger.readthedocs.io
+.. _rdi: http://rdi.readthedocs.io
+.. _scoper: http://scoper.readthedocs.io
 .. _igphyml: http://igphyml.readthedocs.io
+.. _prestor: packages/prestor.html
