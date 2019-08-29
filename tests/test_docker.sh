@@ -88,10 +88,12 @@ RUN_DIR=$(realpath ${RUN_DIR})
 	SAMPLE=HD13M
 	DB="/scratch/changeo/${SAMPLE}_db-pass.${EXT}"
 	V_FIELD="V_CALL_GENOTYPED"
+	GERMLINE_MIN=20
 	OUT_DIR="/scratch/changeo"
 
 	run docker run -v $DATA_DIR:/data:z -v $RUN_DIR:/scratch:z $IMAGE \
-		tigger-genotype -d $DB -v $V_FIELD -n $SAMPLE -o $OUT_DIR -p $NPROC
+		tigger-genotype -d $DB -v $V_FIELD -m $GERMLINE_MIN \
+		-n $SAMPLE -o $OUT_DIR -p $NPROC
 
 	[ "$status" -eq 0 ]
 }
@@ -99,7 +101,7 @@ RUN_DIR=$(realpath ${RUN_DIR})
 # SHazaM threshold
 @test "shazam-threshold" {
 	SAMPLE=HD13M
-	DB="/scratch/changeo/${SAMPLE}_genotyped.${EXT}"
+	DB="/scratch/changeo/${SAMPLE}_db-pass.${EXT}"
 	OUT_DIR="/scratch/changeo"
 
 	run docker run -v $DATA_DIR:/data:z -v $RUN_DIR:/scratch:z $IMAGE \
@@ -112,7 +114,7 @@ RUN_DIR=$(realpath ${RUN_DIR})
 # Change-O cloning
 @test "changeo-clone" {
 	SAMPLE=HD13M
-	DB="/scratch/changeo/${SAMPLE}_genotyped.${EXT}"
+	DB="/scratch/changeo/${SAMPLE}_db-pass.${EXT}"
 	OUT_DIR="/scratch/changeo"
 	DIST=0.15
 

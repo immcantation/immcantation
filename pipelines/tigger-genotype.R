@@ -30,6 +30,8 @@ suppressPackageStartupMessages(library("tigger"))
 # Set defaults
 NPROC <- parallel::detectCores()
 FORMAT <- "changeo"
+MIN_SEQS <- 50
+GERMLINE_MIN <- 200
 
 # Define commmandline arguments
 opt_list <- list(make_option(c("-d", "--db"), dest="DB",
@@ -42,6 +44,15 @@ opt_list <- list(make_option(c("-d", "--db"), dest="DB",
                              default="V_CALL_GENOTYPED",
                              help=paste("Name of the output field containing genotyped V assignments.",
                                         "\n\t\tDefaults to V_CALL_GENOTYPED.")),
+                 make_option(c("-x", "--minseq"), dest="MIN_SEQS",
+                             default=MIN_SEQS,
+                             help=paste("Minimum number of sequences in the mutation/coordinate range.",
+                                        "\n\t\tSamples with insufficient sequences will be excluded.",
+                                        "\n\t\tDefaults to 50.")),
+                 make_option(c("-y", "--mingerm"), dest="GERMLINE_MIN",
+                             default=GERMLINE_MIN,
+                             help=paste("Minimum number of sequences required to analyze a germline allele.",
+                                        "\n\t\tDefaults to 200.")),
                  make_option(c("-n", "--name"), dest="NAME",
                              help=paste("Sample name or run identifier which will be used as the output file prefix.",
                                         "\n\t\tDefaults to a truncated version of the input filename.")),
@@ -98,8 +109,9 @@ igv <- readIgFasta(opt$REF)
 
 # Identify polymorphisms and genotype
 nv <- findNovelAlleles(db, germline_db=igv, v_call=v_call, j_call=j_call,
-                       seq=sequence_alignment,
-                       junction=junction, junction_length=junction_length,
+                       seq=sequence_alignment, junction=junction,
+                       junction_length=junction_length,
+                       min_seqs=opt$MIN_SEQS, germline_min=opt$GERMLINE_MIN,
                        nproc=opt$NPROC)
 gt <- inferGenotype(db, germline_db=igv, novel=nv,
                     v_call=v_call, seq=sequence_alignment)
