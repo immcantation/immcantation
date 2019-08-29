@@ -127,23 +127,24 @@ db <- distToNearest(db, sequenceColumn=junction, vCallColumn=v_call, jCallColumn
 # Simply plot and exit for method="none"
 if (METHOD == "none") {
     # Plot distToNearest distribution
-    p1 <- ggplot(db, aes_string(x="DIST_NEAREST")) +
+    p1 <- ggplot(filter(db, !is.na(DIST_NEAREST), DIST_NEAREST > 0), aes(x=DIST_NEAREST)) +
         baseTheme() +
         xlab("Distance") +
         ylab("Density") +
-        geom_histogram(aes_string(y="..density.."), fill="gray40", color="white")
-    ggsave(file.path(OUTDIR, paste0(NAME, "_threshold-plot.pdf")), plot=p1, width=6, height=4)
+        geom_histogram(aes(y=..density..), binwidth=0.02, fill="gray40", color="white")
+    f <- file.path(OUTDIR, paste0(NAME, "_threshold-plot.pdf"))
+    suppressWarnings(ggsave(f, plot=p1, width=6, height=4))
 
     quit()
 }
 
 # Open plot device
-plot_file <- file.path(OUTDIR, paste0(NAME, "_threshold-plot.pdf"))
-pdf(plot_file, width=6, height=4, useDingbats=FALSE)
+f <- file.path(OUTDIR, paste0(NAME, "_threshold-plot.pdf"))
+pdf(f, width=6, height=4, useDingbats=FALSE)
 
 # Repeat threshold calculations and plot
 threshold_list <- list()
-for(i in 1:REPEATS){
+for(i in 1:REPEATS) {
     # Subsample distances
     if (is.null(SUBSAMPLE) || length(db$DIST_NEAREST) < SUBSAMPLE){
         sampling <- db$DIST_NEAREST
@@ -162,7 +163,7 @@ for(i in 1:REPEATS){
     }
     threshold_list[[as.character(i)]] <- bind_rows(lapply(slots, .extract))
     # Plot histogram
-    plot(threshold, binwidth=0.02, silent=FALSE)
+    suppressWarnings(plot(threshold, binwidth=0.02, silent=FALSE))
 }
 # Close plot
 dev.off()

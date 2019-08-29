@@ -1,8 +1,8 @@
 immcantation:
   version:  tip
-  date:     2019.08.28
+  date:     2019.08.29
 release:
-  presto:   tip
+  presto:   0.5.13
   changeo:  0.4.6
   alakazam: 0.3.0
   shazam:   0.2.1

@@ -106,8 +106,12 @@ RUN_DIR=$(realpath ${RUN_DIR})
 	OUT_DIR="/scratch/changeo"
 
 	run docker run -v $DATA_DIR:/data:z -v $RUN_DIR:/scratch:z $IMAGE \
-		shazam-threshold -d $DB --subsample 5000 --repeats 2 \
-        -n $SAMPLE -o $OUT_DIR -p $NPROC
+		shazam-threshold -d $DB --subsample 100 --repeats 2 \
+        -n "${SAMPLE}-1" -o $OUT_DIR -p $NPROC
+
+    run docker run -v $DATA_DIR:/data:z -v $RUN_DIR:/scratch:z $IMAGE \
+		shazam-threshold -d $DB -m none \
+        -n "${SAMPLE}-2" -o $OUT_DIR -p $NPROC
 
 	[ "$status" -eq 0 ]
 }

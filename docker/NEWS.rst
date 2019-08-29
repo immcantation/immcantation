@@ -1,13 +1,13 @@
 Release Notes
 ========================================================================
 
-Version 3.0.0:  August 28, 2019
+Version 3.0.0:  August 29, 2019
 ------------------------------------------------------------------------
 
 Version Updates:
 
 + alakazam 0.3.0
-+ presto 0.5.12
++ presto 0.5.13
 + scoper 0.2.0
 + shazam 0.2.1
 + tigger 0.4.0
@@ -29,6 +29,8 @@ Pipeline Changes:
 + Added a method option of ``none`` to ``shazam-threshold`` to provide
   a dummy mode that simply plots the distance-to-nearest distribution
   without threshold detection.
++ Added ``--minseq`` and ``--mingerm` arguments to ``tigger-genotype``
+  to allow specification of novel allele detection cutoffs.
 
 Image Changes:
 
