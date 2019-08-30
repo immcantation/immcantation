@@ -12,6 +12,7 @@ pull request to the relevant Bitbucket repository:
 + `Alakazam <https://bitbucket.org/kleinstein/alakazam>`__
 + `SHazaM <https://bitbucket.org/kleinstein/shazam>`__
 + `TIgGER <https://bitbucket.org/kleinstein/tigger>`__
++ `SCOPer <https://bitbucket.org/kleinstein/scoper>`__
 
 All packages are under the free and open-source license
 `CC BY-SA 4.0 <https://creativecommons.org/licenses/by-sa/4.0/>`__.
