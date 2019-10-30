@@ -25,6 +25,20 @@ Immcantation Tutorial
 For a detailed use example for each Immcantation tool see the
 `slides and example data <https://goo.gl/FpW3Sc>`__ from our introductory webinar series.
 
+This tutorial covers:
+
+* V(D)J gene annotation and novel polymorphism detection
+
+* Inference of B cell clonal relationships
+
+* Diversity analysis
+
+* Mutational load profiling
+
+* Modeling of somatic hypermutation (SHM) targeting
+
+* Quantification of selection pressure
+
 Overview of B Cell Repertoire Analysis
 -------------------------------------------------------------------------------------------
 
