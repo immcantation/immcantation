@@ -35,7 +35,7 @@ print_usage() {
             "     Defaults to a truncated version of the input filename."
     echo -e "  -o  Output directory. Will be created if it does not exist.\n" \
             "     Defaults to a directory matching the sample identifier in the current working directory."
-    echo -e "  -f  Output format. One of changeo (default) or airr."
+    echo -e "  -f  Output format. One of airr (default) or changeo."
     echo -e "  -p  Number of subprocesses for multiprocessing tools.\n" \
             "     Defaults to the available cores."
     echo -e "  -a  Specify to clone the full data set.\n" \
@@ -138,7 +138,7 @@ fi
 
 # Set format options
 if ! ${FORMAT_SET}; then
-    FORMAT="changeo"
+    FORMAT="airr"
 fi
 
 if [[ "${FORMAT}" == "airr" ]]; then
