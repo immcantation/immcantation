@@ -25,6 +25,8 @@ opt <- parse_args(OptionParser(option_list=opt_list))
 
 # Build
 setwd(opt$PKG_DIR)
+# Added devtools.ellipsis_action: https://github.com/r-lib/devtools/issues/2109
+options(devtools.ellipsis_action = rlang::signal)
 install_deps(dependencies=TRUE, upgrade=TRUE, clean=TRUE)
 compile_dll()
 document()

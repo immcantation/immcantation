@@ -1,4 +1,4 @@
-FROM fedora:29
+FROM fedora:31
 LABEL maintainer="Jason Anthony Vander Heiden [jason.vanderheiden@yale.edu], \
                   Susanna Marquez [susanna.marquez@yale.edu]" \
       description="Standard environment and dependencies for the Immcantation framework."
@@ -39,6 +39,7 @@ RUN dnf -y update && dnf install -y \
     pandoc-citeproc \
     perl \
     python3 \
+    python3-pip \
     python3-biopython \
     python3-hglib \
     python3-numpy \
@@ -73,4 +74,4 @@ ARG R_DEPS="c('Rcpp', \
 RUN echo "options(repos='${R_REPO}')" >> /usr/lib64/R/library/base/R/Rprofile \
     && mkdir -p /usr/share/doc/R/html \
 	&& cp /usr/lib64/R/library/stats/html/R.css /usr/share/doc/R/html/R.css \
-	&& Rscript -e "install.packages(${R_DEPS}, clean=TRUE)"
+	&& Rscript -e "install.packages(${R_DEPS}, clean=TRUE);devtools::install_github('hadley/devtools')"
