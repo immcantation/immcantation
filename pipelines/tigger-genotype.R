@@ -7,7 +7,7 @@
 # Arguments:
 #   -d  Tabulated data, in Change-O (TAB) or AIRR (TSV) format.
 #   -r  FASTA file containing IMGT-gapped V segment reference germlines.
-#       Defaults to /usr/local/share/germlines/imgt/human/vdj/imgt_human_IGHV.fasta.
+#       Defaults to /usr/local/share/germline   s/imgt/human/vdj/imgt_human_IGHV.fasta.
 #   -v  Name of the output field containing genotyped V assignments.
 #       Defaults to V_CALL_GENOTYPED.
 #   -n  Sample name or run identifier which will be used as the output file prefix.
@@ -96,6 +96,7 @@ if (opt$FORMAT == "changeo") {
     junction <- "JUNCTION"
     junction_length <- "JUNCTION_LENGTH"
     sequence_alignment <- "SEQUENCE_IMGT"
+    ext <- "tab"
 } else if (opt$FORMAT == "airr") {
     db <- airr::read_rearrangement(opt$DB)
     v_call <- "v_call"
@@ -103,6 +104,7 @@ if (opt$FORMAT == "changeo") {
     junction <- "junction"
     junction_length <- "junction_length"
     sequence_alignment <- "sequence_alignment"
+    ext <- "tsv"
 }
 
 igv <- readIgFasta(opt$REF)
@@ -130,7 +132,7 @@ if (opt$VFIELD != "V_CALL_GENOTYPED") {
 }
 
 # Write genotyped data
-writeChangeoDb(db, file.path(opt$OUTDIR, paste0(opt$NAME, "_genotyped.tab")))
+writeChangeoDb(db, file.path(opt$OUTDIR, paste0(opt$NAME, "_genotyped.",ext)))
 
 # Plot genotype
 plot_file <- file.path(opt$OUTDIR, paste0(opt$NAME, "_genotype.pdf"))
