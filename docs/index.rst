@@ -29,7 +29,7 @@
 
 .. toctree::
     :maxdepth: 1
-    :caption: Packages
+    :caption: Core Packages
     :hidden:
 
     pRESTO <http://presto.readthedocs.io>
@@ -41,7 +41,7 @@
     
 .. toctree::
     :maxdepth: 1
-    :caption: Contributed
+    :caption: Contributed Packages
     :hidden:    
 
     RDI <http://rdi.readthedocs.io>
