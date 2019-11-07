@@ -1,13 +1,13 @@
 #!/usr/bin/env bats
 
 # Run parameters
-VERSION="release"
+VERSION="devel"
 IMAGE="kleinstein/immcantation:${VERSION}"
 DATE=$(date +"%Y.%m.%d")
 DATA_DIR=$(realpath data)
 RUN_DIR="run/docker-${DATE}-${VERSION}"
 NPROC=2
-EXT="tab"
+EXT="tsv"
 
 # Create output parent
 mkdir -p ${RUN_DIR}
@@ -94,7 +94,7 @@ RUN_DIR=$(realpath ${RUN_DIR})
 
 	run docker run -v $DATA_DIR:/data:z -v $RUN_DIR:/scratch:z $IMAGE \
 		tigger-genotype -d $DB -v $V_FIELD -x $MINSEQ -y $MINGERM \
-		-n $SAMPLE -o $OUT_DIR -p $NPROC
+		-n $SAMPLE -o $OUT_DIR -p $NPROC 
 
 	[ "$status" -eq 0 ]
 }
@@ -133,6 +133,5 @@ RUN_DIR=$(realpath ${RUN_DIR})
 
 	run docker run -v $DATA_DIR:/data:z -v $RUN_DIR:/scratch:z $IMAGE \
 		changeo-clone -d $DB -x $DIST -n $SAMPLE -o $OUT_DIR -p $NPROC
-
 	[ "$status" -eq 0 ]
 }
