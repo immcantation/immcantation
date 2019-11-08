@@ -23,7 +23,8 @@ Immcantation Tutorial
 -------------------------------------------------------------------------------------------
 
 For a detailed use example for each Immcantation tool see the
-`slides and example data <https://goo.gl/FpW3Sc>`__ from our introductory webinar series.
+`slides and example data <https://goo.gl/FpW3Sc>`__ from our introductory webinar series. 
+You can find a jupyter notebook version of the webinar `here<https://bitbucket.org/kleinstein/immcantation/src/default/training/>`__.
 
 This tutorial covers:
 
