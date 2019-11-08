@@ -24,8 +24,8 @@ Immcantation Tutorial
 
 For a detailed use example for each Immcantation tool see the
 `slides and example data <https://goo.gl/FpW3Sc>`__ from our introductory webinar series. 
-You can find a jupyter notebook version of the webinar `here<https://bitbucket.org/kleinstein/immcantation/src/default/training/>`__.
-
+You can find a jupyter notebook version of the webinar `here <https://bitbucket.org/kleinstein/immcantation/src/default/training/>`_.
+_
 This tutorial covers:
 
 * V(D)J gene annotation and novel polymorphism detection
