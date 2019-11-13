@@ -71,6 +71,18 @@ Third Party Tools
 * `PHYLIP <http://evolution.gs.washington.edu/phylip>`__
 * `tbl2asn <https://www.ncbi.nlm.nih.gov/genbank/tbl2asn2>`__
 
+Template Pipeline Scripts
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* :ref:`PhiXPipeline`
+* :ref:`AbSeqPipeline`
+* :ref:`ClontechPipeline`
+* :ref:`10XPipeline`
+* :ref:`IgBLASTPipeline`
+* :ref:`ClonePipeline`
+* :ref:`ThresholdPipeline`
+* :ref:`GenotypePipeline`
+
 Accessory Scripts
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -89,26 +101,6 @@ imgt2igblast.sh
 run_igblast.sh
     Simple IgBLAST wrapper for running IgBLAST with the required arguments
     using the IMGT reference database.
-
-Template Pipeline Scripts
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-The following pipeline templates are found in ``/usr/local/bin``:
-
-presto-abseq
-    A start to finish pRESTO processing script for AbSeq data.
-changeo-igblast
-    Performs V(D)J alignment using IgBLAST and post-processes the output into
-    the Change-O data standard.
-changeo-clone
-    Assigns Ig sequences into clonally related lineages and builds full
-    germline sequences.
-shazam-threshold
-    Performs automated detection of the clonal assignment threshold.
-tigger-genotype
-    Infers V segment genotypes using TIgGER.
-preprocess-phix
-    Removes PhiX reads from raw data files.
 
 Data
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

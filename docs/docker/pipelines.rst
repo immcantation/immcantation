@@ -19,6 +19,9 @@ will explain its use. The available pipelines are:
 
 All template pipeline scripts can be found in ``/usr/local/bin``.
 
+
+.. _PhiXPipeline:
+
 PhiX cleaning pipeline
 --------------------------------------------------------------------------------
 
@@ -57,7 +60,9 @@ genome.
     Illumina format).
 
 
-NEB AbSeq protocol pRESTO pipeline
+.. _AbSeqPipeline:
+
+NEB AbSeq protocol preprocessing pipeline
 --------------------------------------------------------------------------------
 
 A start to finish pRESTO processing script for AbSeq data. Primer sequences are
@@ -109,7 +114,9 @@ file containing information about the data and processing. Valid fields are show
         -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC
 
 
-Takara Bio / Clontech SMARTer protocol pRESTO pipeline
+.. _ClontechPipeline:
+
+Takara Bio (Clontech) SMARTer protocol preprocessing pipeline
 --------------------------------------------------------------------------------
 
 A start to finish pRESTO processing script for Takara Bio / Clontech SMARTer kit
@@ -147,6 +154,8 @@ or inside the container under ``/usr/local/share/protocols/Universal``.
         -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC
 
 
+.. _10XPipeline:
+
 10X Genomics V(D)J annotation pipeline
 --------------------------------------------------------------------------------
 
@@ -181,7 +190,9 @@ single-cell V(D)J data output by Cell Ranger.
         -o $OUT_DIR -p $NPROC
 
 
-IgBLAST pipeline
+.. _IgBLASTPipeline:
+
+IgBLAST annotation pipeline
 --------------------------------------------------------------------------------
 
 Performs V(D)J alignment using IgBLAST and post-processes the output into the
@@ -211,6 +222,8 @@ Change-O data standard.
         changeo-igblast -s $READS -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC
 
 
+.. _GenotypePipeline:
+
 Genotyping pipeline
 --------------------------------------------------------------------------------
 
@@ -238,6 +251,9 @@ Infers V segment genotypes using TIgGER.
     # Singularity command
     singularity exec -B $DATA_DIR:/data immcantation-|docker-version|.sif \\
         tigger-genotype -d $DB -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC
+
+
+.. _ThresholdPipeline:
 
 Clonal threshold inference pipeline
 --------------------------------------------------------------------------------
@@ -267,6 +283,8 @@ Performs automated detection of the clonal assignment threshold.
     singularity exec -B $DATA_DIR:/data immcantation-|docker-version|.sif \\
         shazam-threshold -d $DB -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC
 
+
+.. _ClonePipeline:
 
 Clonal assignment pipeline
 --------------------------------------------------------------------------------
