@@ -7,14 +7,14 @@
 # Arguments:
 #   -d  Tabulated data, in Change-O (TAB) or AIRR (TSV) format.
 #   -r  FASTA file containing IMGT-gapped V segment reference germlines.
-#       Defaults to /usr/local/share/germlines/imgt/human/vdj/imgt_human_IGHV.fasta.
+#       Defaults to /usr/local/share/germline   s/imgt/human/vdj/imgt_human_IGHV.fasta.
 #   -v  Name of the output field containing genotyped V assignments.
 #       Defaults to V_CALL_GENOTYPED.
 #   -n  Sample name or run identifier which will be used as the output file prefix.
 #       Defaults to a truncated version of the input filename.
 #   -o  Output directory. Will be created if it does not exist.
 #       Defaults to the current working directory.
-#   -f  File format. One of 'changeo' (default) or 'airr'.
+#   -f  File format. One of 'airr' (default) or 'changeo'.
 #   -p  Number of subprocesses for multiprocessing tools.
 #       Defaults to the available processing units.
 #   -h  Display help.
@@ -29,7 +29,7 @@ suppressPackageStartupMessages(library("tigger"))
 
 # Set defaults
 NPROC <- parallel::detectCores()
-FORMAT <- "changeo"
+FORMAT <- "airr"
 MIN_SEQS <- 50
 GERMLINE_MIN <- 200
 
@@ -60,7 +60,7 @@ opt_list <- list(make_option(c("-d", "--db"), dest="DB",
                              help=paste("Output directory. Will be created if it does not exist.",
                                         "\n\t\tDefaults to the current working directory.")),
                  make_option(c("-f", "--format"), dest="FORMAT", default=FORMAT,
-                             help=paste("File format. One of 'changeo' (default) or 'airr'.")),                 
+                             help=paste("File format. One of 'airr' (default) or 'changeo'.")),                 
                  make_option(c("-p", "--nproc"), dest="NPROC", default=NPROC,
                              help=paste("Number of subprocesses for multiprocessing tools.",
                                         "\n\t\tDefaults to the available processing units.")))
@@ -96,6 +96,7 @@ if (opt$FORMAT == "changeo") {
     junction <- "JUNCTION"
     junction_length <- "JUNCTION_LENGTH"
     sequence_alignment <- "SEQUENCE_IMGT"
+    ext <- "tab"
 } else if (opt$FORMAT == "airr") {
     db <- airr::read_rearrangement(opt$DB)
     v_call <- "v_call"
@@ -103,6 +104,7 @@ if (opt$FORMAT == "changeo") {
     junction <- "junction"
     junction_length <- "junction_length"
     sequence_alignment <- "sequence_alignment"
+    ext <- "tsv"
 }
 
 igv <- readIgFasta(opt$REF)
@@ -130,7 +132,7 @@ if (opt$VFIELD != "V_CALL_GENOTYPED") {
 }
 
 # Write genotyped data
-writeChangeoDb(db, file.path(opt$OUTDIR, paste0(opt$NAME, "_genotyped.tab")))
+writeChangeoDb(db, file.path(opt$OUTDIR, paste0(opt$NAME, "_genotyped.",ext)))
 
 # Plot genotype
 plot_file <- file.path(opt$OUTDIR, paste0(opt$NAME, "_genotype.pdf"))

@@ -216,7 +216,7 @@ fi
 
 # Set format options
 if ! ${FORMAT_SET}; then
-    FORMAT="changeo"
+    FORMAT="airr"
 fi
 
 if [[ "${FORMAT}" == "airr" ]]; then

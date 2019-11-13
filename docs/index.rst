@@ -1,7 +1,13 @@
-.. Immcantation: An Integrated Framework for Adaptive Immune Receptor Repertoire Analysis
-.. keywords:  rep-seq, immuno-seq, vdj-seq, repertoire sequencing, BCR, TCR, Ig, AIRR,
+.. meta::
+   :description: Immcantation: An Integrated Framework for Adaptive Immune Receptor Repertoire Analysis
+   :keywords: rep-seq, immuno-seq, vdj-seq, repertoire sequencing, BCR, TCR, Ig, AIRR,
     adaptive immunity, somatic hypermutation, AbSeq, AbPair, VDJ, immunoglobulin
-
+        
+.. meta::
+    :twitter\:card:  summary_large_image
+    :og\:title: Immcantation: An Integrated Framework for Adaptive Immune Receptor Repertoire Analysis
+    :og\:image: _static/immcantation-card.png'
+   
 .. toctree::
     :maxdepth: 1
     :hidden:
@@ -23,7 +29,7 @@
 
 .. toctree::
     :maxdepth: 1
-    :caption: Packages
+    :caption: Core Packages
     :hidden:
 
     pRESTO <http://presto.readthedocs.io>
@@ -35,7 +41,7 @@
     
 .. toctree::
     :maxdepth: 1
-    :caption: Contributed
+    :caption: Contributed Packages
     :hidden:    
 
     RDI <http://rdi.readthedocs.io>
