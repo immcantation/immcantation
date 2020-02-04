@@ -11,13 +11,16 @@
 #   -t = Receptor type. One of ig or tr. Defaults to ig.
 #   -b = IGDATA directory, which contains the IgBLAST database, optional_file
 #        and auxillary_data directories. Defaults to /usr/local/share/igblast.
+#   -i = Input type. One of nt (DNA) or aa (protein). Defaults to nt."
 #   -n = Number of IgBLAST threads. Defaults to 1.
 #   -h = Display help.
 
 # Default argument values
 IGDATA="/usr/local/share/igblast"
 OUTDIR="."
+INPUT_TYPE="nt"
 NPROC=1
+
 
 # Print usage
 usage () {
@@ -29,6 +32,7 @@ usage () {
     echo -e "  -b  IGDATA directory, which contains the IgBLAST database,\n" \
             "     optional_file and auxillary_data directories.\n" \
             "     Defaults to /usr/local/share/igblast."
+    echo -e "  -i  Input type. One of nt (DNA) or aa (protein). Defaults to nt."
     echo -e "  -n  Number of IgBLAST threads. Defaults to 1."
     echo -e "  -h  This message."
 }
@@ -40,7 +44,7 @@ SPECIES_SET=false
 RECEPTOR_SET=false
 
 # Get commandline arguments
-while getopts "s:o:g:t:b:n:h" OPT; do
+while getopts "s:o:g:t:b:i:n:h" OPT; do
     case "$OPT" in
     s)  READFILE=$(realpath $OPTARG)
         READFILE_SET=true
@@ -56,6 +60,8 @@ while getopts "s:o:g:t:b:n:h" OPT; do
         ;;
     b)  IGDATA=$OPTARG
         IGDATA_SET=true
+        ;;
+    i)  INPUT_TYPE=$OPTARG
         ;;
     n)  NPROC=$OPTARG
         ;;
@@ -103,18 +109,23 @@ export IGDATA
 declare -A SEQTYPE
 SEQTYPE[ig]="Ig"
 SEQTYPE[tr]="TCR"
-GERMLINE_V="imgt_${SPECIES}_${RECEPTOR}_v"
-GERMLINE_D="imgt_${SPECIES}_${RECEPTOR}_d"
-GERMLINE_J="imgt_${SPECIES}_${RECEPTOR}_j"
 AUXILIARY="${SPECIES}_gl.aux"
 IGBLAST_DB="${IGDATA}/database"
-IGBLAST_CMD="igblastn \
-    -germline_db_V ${IGBLAST_DB}/${GERMLINE_V} \
-    -germline_db_D ${IGBLAST_DB}/${GERMLINE_D} \
-    -germline_db_J ${IGBLAST_DB}/${GERMLINE_J} \
-    -auxiliary_data ${IGDATA}/optional_file/${AUXILIARY} \
-    -ig_seqtype ${SEQTYPE[${RECEPTOR}]} -organism ${SPECIES} \
-    -domain_system imgt -outfmt '7 std qseq sseq btop'"
+
+if [ ${INPUT_TYPE} == "nt" ]; then
+    IGBLAST_CMD="igblastn \
+        -germline_db_V ${IGBLAST_DB}/imgt_${SPECIES}_${RECEPTOR}_v \
+        -germline_db_D ${IGBLAST_DB}/imgt_${SPECIES}_${RECEPTOR}_d \
+        -germline_db_J ${IGBLAST_DB}/imgt_${SPECIES}_${RECEPTOR}_j \
+        -auxiliary_data ${IGDATA}/optional_file/${AUXILIARY} \
+        -ig_seqtype ${SEQTYPE[${RECEPTOR}]} -organism ${SPECIES} \
+        -domain_system imgt -outfmt '7 std qseq sseq btop'"
+elif [ ${INPUT_TYPE} == "aa" ]; then
+    IGBLAST_CMD="igblastp \
+        -germline_db_V ${IGBLAST_DB}/imgt_aa_${SPECIES}_${RECEPTOR}_v \
+        -ig_seqtype ${SEQTYPE[${RECEPTOR}]} -organism ${SPECIES} \
+        -domain_system imgt -outfmt '7 std qseq sseq btop'"
+fi
 
 # Set run commmand
 OUTFILE=$(basename ${READFILE})
@@ -123,7 +134,7 @@ IGBLAST_VER=$(${IGBLAST_CMD} -version | grep 'Package' |sed s/'Package: '//)
 IGBLAST_RUN="${IGBLAST_CMD} -query ${READFILE} -out ${OUTFILE} -num_threads ${NPROC}"
 
 # Align V(D)J segments using IgBLAST
-echo -e "   START> igblastn"
+echo -e "   START> igblast"
 echo -e " VERSION> ${IGBLAST_VER}"
 echo -e "  IGDATA> ${IGDATA}"
 echo -e "  GERMDB> ${SPECIES}_${RECEPTOR}"
@@ -132,4 +143,4 @@ echo -e "PROGRESS> [Running]"
 eval $IGBLAST_RUN
 echo -e "PROGRESS> [Done   ]\n"
 echo -e "  OUTPUT> $(basename ${OUTFILE})"
-echo -e "     END> igblastn\n"
+echo -e "     END> igblast\n"

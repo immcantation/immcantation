@@ -55,7 +55,7 @@ do
     KEY=${SPECIES%%:*}
     VALUE=${SPECIES#*:}
     REPLACE_VALUE=${SPECIES_REPLACE[$COUNT]#*:}
-	echo "Downloading ${KEY} repertoires into ${OUTDIR}..."
+	echo "Downloading ${KEY} repertoires into ${OUTDIR}"
 
 	# Download VDJ
 	echo "|- VDJ regions"
@@ -68,6 +68,20 @@ do
     do
         URL="http://www.imgt.org/IMGT_GENE-DB/GENElect?query=7.14+${CHAIN}&species=${VALUE}"
         FILE_NAME="${FILE_PATH}/${REPERTOIRE}_${KEY}_${CHAIN}.fasta"
+        TMP_FILE="${FILE_NAME}.tmp"
+        #echo $URL
+        wget $URL -O $TMP_FILE -q
+        awk '/<pre>/{i++}/<\/pre>/{j++}{if(j==2){exit}}{if(i==2 && j==1 && $0!~"^<pre>"){print}}' $TMP_FILE > $FILE_NAME
+        # Make sed command work also for mac, see: https://stackoverflow.com/a/44864004
+        sed -i.bak "$REPLACE_VALUE" $FILE_NAME && rm $FILE_NAME.bak
+        rm $TMP_FILE
+    done
+
+    # V amino acid for Ig
+    for CHAIN in IGHV IGKV IGLV
+    do
+        URL="http://www.imgt.org/IMGT_GENE-DB/GENElect?query=7.6+${CHAIN}&species=${VALUE}"
+        FILE_NAME="${FILE_PATH}/${REPERTOIRE}_aa_${KEY}_${CHAIN}.fasta"
         TMP_FILE="${FILE_NAME}.tmp"
         #echo $URL
         wget $URL -O $TMP_FILE -q
@@ -91,6 +105,18 @@ do
         rm $TMP_FILE
     done
 
+    # V amino acid for TCR
+    for CHAIN in TRAV TRBV TRDV TRGV
+    do
+        URL="http://www.imgt.org/IMGT_GENE-DB/GENElect?query=7.6+${CHAIN}&species=${VALUE}"
+        FILE_NAME="${FILE_PATH}/${REPERTOIRE}_aa_${KEY}_${CHAIN}.fasta"
+        TMP_FILE="${FILE_NAME}.tmp"
+        #echo $URL
+        wget $URL -O $TMP_FILE -q
+        awk '/<pre>/{i++}/<\/pre>/{j++}{if(j==2){exit}}{if(i==2 && j==1 && $0!~"^<pre>"){print}}' $TMP_FILE > $FILE_NAME
+        sed -i.bak "$REPLACE_VALUE" $FILE_NAME && rm $FILE_NAME.bak
+        rm $TMP_FILE
+    done
 
 	# Download leaders
     echo "|- Spliced leader regions"
@@ -124,7 +150,6 @@ do
         sed -i.bak "$REPLACE_VALUE" $FILE_NAME && rm $FILE_NAME.bak
         rm $TMP_FILE
     done
-
 
 	# Download constant regions
     echo "|- Spliced constant regions"

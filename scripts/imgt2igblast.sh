@@ -58,25 +58,33 @@ for SPECIES in human mouse
 do
     for CHAIN in IG TR
     do
+        # VDJ nucleotides
         for SEGMENT in V D J
         do
             cat ${GERMDIR}/${SPECIES}/vdj/imgt_${SPECIES}_${CHAIN}?${SEGMENT}.fasta \
-                > $TMPDIR/imgt_${SPECIES,,}_${CHAIN,,}_${SEGMENT,,}.fasta
-            #SEGMENT_FASTA="${GERMDIR}/${SPECIES}/vdj/imgt_${SPECIES}_${CHAIN}?${SEGMENT}.fasta"
-            #if [ -f "${SEGMENT_FASTA}" ]; then
-            #    cat ${SEGMENT_FASTA} > "${TMPDIR}/imgt_${SPECIES,,}_${CHAIN,,}_${SEGMENT,,}.fasta"
-            #fi
+                > $TMPDIR/imgt_${SPECIES}_${CHAIN}_${SEGMENT}.fasta
         done
+
+        # V amino acids
+        cat ${GERMDIR}/${SPECIES}/vdj/imgt_aa_${SPECIES}_${CHAIN}?V.fasta \
+            > $TMPDIR/imgt_aa_${SPECIES}_${CHAIN}_V.fasta
     done
 done
 
 # Parse each created fasta file to create igblast database
 cd ${TMPDIR}
-for F in $(ls *.fasta)
-do
+NT_FILES=$(ls *.fasta | grep -E "imgt_(human|mouse).+\.fasta")
+for F in ${NT_FILES}; do
 	clean_imgtdb.py ${F} ${OUTDIR}/fasta/${F}
 	makeblastdb -parse_seqids -dbtype nucl -in ${OUTDIR}/fasta/${F} \
         -out ${OUTDIR}/database/${F%%.*}
+done
+
+AA_FILES=$(ls *.fasta | grep -E "imgt_aa_(human|mouse).+\.fasta")
+for G in ${AA_FILES}; do
+	clean_imgtdb.py ${G} ${OUTDIR}/fasta/${G}
+	makeblastdb -parse_seqids -dbtype prot -in ${OUTDIR}/fasta/${G} \
+        -out ${OUTDIR}/database/${G%%.*}
 done
 
 # Remove temporary fasta files
