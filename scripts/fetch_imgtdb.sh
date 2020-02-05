@@ -80,7 +80,7 @@ do
     # V amino acid for Ig
     for CHAIN in IGHV IGKV IGLV
     do
-        URL="http://www.imgt.org/IMGT_GENE-DB/GENElect?query=7.6+${CHAIN}&species=${VALUE}"
+        URL="http://www.imgt.org/IMGT_GENE-DB/GENElect?query=7.3+${CHAIN}&species=${VALUE}"
         FILE_NAME="${FILE_PATH}/${REPERTOIRE}_aa_${KEY}_${CHAIN}.fasta"
         TMP_FILE="${FILE_NAME}.tmp"
         #echo $URL
@@ -108,7 +108,7 @@ do
     # V amino acid for TCR
     for CHAIN in TRAV TRBV TRDV TRGV
     do
-        URL="http://www.imgt.org/IMGT_GENE-DB/GENElect?query=7.6+${CHAIN}&species=${VALUE}"
+        URL="http://www.imgt.org/IMGT_GENE-DB/GENElect?query=7.3+${CHAIN}&species=${VALUE}"
         FILE_NAME="${FILE_PATH}/${REPERTOIRE}_aa_${KEY}_${CHAIN}.fasta"
         TMP_FILE="${FILE_NAME}.tmp"
         #echo $URL
