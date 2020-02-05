@@ -8,6 +8,10 @@ COPY Version.yaml /Version.yaml
 COPY Pipeline.yaml /Pipeline.yaml
 RUN builds write -n date -v "$(date +'%Y-%m-%d %T %Z')"
 
+# Set CRAN repo
+ARG R_REPO="http://lib.stat.cmu.edu/R/CRAN/"
+RUN echo "options(repos='${R_REPO}')" >> /usr/lib64/R/library/base/R/Rprofile
+
 # Install procotol data, utility scripts and pipelines
 RUN PACKAGE="immcantation" \
     && rm -rf /tmp/${PACKAGE} \

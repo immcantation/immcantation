@@ -61,7 +61,7 @@ RUN dnf -y update && dnf install -y \
 ENV LD_LIBRARY_PATH="/usr/lib64/R/lib:/usr/lib64/atlas"
 
 # R build setup
-ARG R_REPO="http://cran.cnr.berkeley.edu"
+ARG R_REPO="http://lib.stat.cmu.edu/R/CRAN/"
 ARG R_DEPS="c('Rcpp', \
               'devtools', \
               'roxygen2', \
