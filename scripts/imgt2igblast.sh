@@ -61,13 +61,13 @@ do
         # VDJ nucleotides
         for SEGMENT in V D J
         do
-            cat ${GERMDIR}/${SPECIES}/vdj/imgt_${SPECIES}_${CHAIN}?${SEGMENT}.fasta \
-                > $TMPDIR/imgt_${SPECIES}_${CHAIN}_${SEGMENT}.fasta
+            F=$(echo imgt_${SPECIES}_${CHAIN}_${SEGMENT}.fasta | tr '[:upper:]' '[:lower:]')
+            cat ${GERMDIR}/${SPECIES}/vdj/imgt_${SPECIES}_${CHAIN}?${SEGMENT}.fasta > ${TMPDIR}/${F}
         done
 
         # V amino acids
-        cat ${GERMDIR}/${SPECIES}/vdj/imgt_aa_${SPECIES}_${CHAIN}?V.fasta \
-            > $TMPDIR/imgt_aa_${SPECIES}_${CHAIN}_V.fasta
+        F=$(echo imgt_aa_${SPECIES}_${CHAIN}_v.fasta | tr '[:upper:]' '[:lower:]')
+        cat ${GERMDIR}/${SPECIES}/vdj/imgt_aa_${SPECIES}_${CHAIN}?V.fasta > ${TMPDIR}/${F}
     done
 done
 
@@ -81,10 +81,10 @@ for F in ${NT_FILES}; do
 done
 
 AA_FILES=$(ls *.fasta | grep -E "imgt_aa_(human|mouse).+\.fasta")
-for G in ${AA_FILES}; do
-	clean_imgtdb.py ${G} ${OUTDIR}/fasta/${G}
-	makeblastdb -parse_seqids -dbtype prot -in ${OUTDIR}/fasta/${G} \
-        -out ${OUTDIR}/database/${G%%.*}
+for F in ${AA_FILES}; do
+	clean_imgtdb.py ${F} ${OUTDIR}/fasta/${F}
+	makeblastdb -parse_seqids -dbtype prot -in ${OUTDIR}/fasta/${F} \
+        -out ${OUTDIR}/database/${F%%.*}
 done
 
 # Remove temporary fasta files
