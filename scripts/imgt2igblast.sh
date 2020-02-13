@@ -67,7 +67,7 @@ do
 
         # V amino acids
         F=$(echo imgt_aa_${SPECIES}_${CHAIN}_v.fasta | tr '[:upper:]' '[:lower:]')
-        cat ${GERMDIR}/${SPECIES}/vdj/imgt_aa_${SPECIES}_${CHAIN}?V.fasta > ${TMPDIR}/${F}
+        cat ${GERMDIR}/${SPECIES}/vdj_aa/imgt_aa_${SPECIES}_${CHAIN}?V.fasta > ${TMPDIR}/${F}
     done
 done
 

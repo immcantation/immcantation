@@ -60,7 +60,8 @@ do
 	# Download VDJ
 	echo "|- VDJ regions"
     FILE_PATH="${OUTDIR}/${KEY}/vdj"
-    mkdir -p $FILE_PATH
+    FILE_PATH_AA="${OUTDIR}/${KEY}/vdj_aa"
+    mkdir -p $FILE_PATH $FILE_PATH_AA
 
     # VDJ Ig
     echo "|---- Ig"
@@ -81,7 +82,7 @@ do
     for CHAIN in IGHV IGKV IGLV
     do
         URL="http://www.imgt.org/IMGT_GENE-DB/GENElect?query=7.3+${CHAIN}&species=${VALUE}"
-        FILE_NAME="${FILE_PATH}/${REPERTOIRE}_aa_${KEY}_${CHAIN}.fasta"
+        FILE_NAME="${FILE_PATH_AA}/${REPERTOIRE}_aa_${KEY}_${CHAIN}.fasta"
         TMP_FILE="${FILE_NAME}.tmp"
         #echo $URL
         wget $URL -O $TMP_FILE -q
@@ -109,7 +110,7 @@ do
     for CHAIN in TRAV TRBV TRDV TRGV
     do
         URL="http://www.imgt.org/IMGT_GENE-DB/GENElect?query=7.3+${CHAIN}&species=${VALUE}"
-        FILE_NAME="${FILE_PATH}/${REPERTOIRE}_aa_${KEY}_${CHAIN}.fasta"
+        FILE_NAME="${FILE_PATH_AA}/${REPERTOIRE}_aa_${KEY}_${CHAIN}.fasta"
         TMP_FILE="${FILE_NAME}.tmp"
         #echo $URL
         wget $URL -O $TMP_FILE -q
