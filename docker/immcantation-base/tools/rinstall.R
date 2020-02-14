@@ -25,7 +25,7 @@ opt <- parse_args(OptionParser(option_list=opt_list))
 
 # Build
 setwd(opt$PKG_DIR)
-install_deps(dependencies=TRUE, upgrade=TRUE, clean=TRUE)
+install_deps(dependencies=TRUE, upgrade=TRUE)
 compile_dll()
 document()
-install(build_vignettes=TRUE, clean=TRUE)
+install(build_vignettes=TRUE)

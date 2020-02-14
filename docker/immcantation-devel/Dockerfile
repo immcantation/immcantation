@@ -1,4 +1,4 @@
-FROM kleinstein/immcantation:base
+FROM kleinstein/immcantation:devel-base
 LABEL maintainer="Jason Anthony Vander Heiden [jason.vanderheiden@yale.edu], \
                   Susanna Marquez [susanna.marquez@yale.edu]" \
       description="Development build of the Immcantation framework."
@@ -76,7 +76,7 @@ RUN PHYLIP=$(versions get -n phylip) \
 RUN AIRR_PY=$(versions get -n airr-py) \
     && AIRR_R=$(versions get -n airr-r) \
     && pip3 install airr==${AIRR_PY} \
-    && Rscript -e "devtools::install_version('airr', '${AIRR_R}', quiet=FALSE, clean=TRUE)"
+    && Rscript -e "devtools::install_version('airr', '${AIRR_R}', quiet=FALSE)"
 
 # Install IgPhyML
 RUN IGPHYML="igphyml" \
