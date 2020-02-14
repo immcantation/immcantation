@@ -106,11 +106,18 @@ fi
 
 # Define IgBLAST directories and base command
 export IGDATA
-declare -A SEQTYPE
-SEQTYPE[ig]="Ig"
-SEQTYPE[tr]="TCR"
 AUXILIARY="${SPECIES}_gl.aux"
 IGBLAST_DB="${IGDATA}/database"
+
+# Define seqtype argument. No associative assays in bash v3
+case "$RECEPTOR" in
+    "ig")
+        SEQTYPE="Ig"
+        ;;
+    "tr")
+        SEQTYPE="TCR"
+        ;;
+esac
 
 if [ ${INPUT_TYPE} == "nt" ]; then
     IGBLAST_CMD="igblastn \
@@ -118,12 +125,12 @@ if [ ${INPUT_TYPE} == "nt" ]; then
         -germline_db_D ${IGBLAST_DB}/imgt_${SPECIES}_${RECEPTOR}_d \
         -germline_db_J ${IGBLAST_DB}/imgt_${SPECIES}_${RECEPTOR}_j \
         -auxiliary_data ${IGDATA}/optional_file/${AUXILIARY} \
-        -ig_seqtype ${SEQTYPE[${RECEPTOR}]} -organism ${SPECIES} \
+        -ig_seqtype ${SEQTYPE} -organism ${SPECIES} \
         -domain_system imgt -outfmt '7 std qseq sseq btop'"
 elif [ ${INPUT_TYPE} == "aa" ]; then
     IGBLAST_CMD="igblastp \
         -germline_db_V ${IGBLAST_DB}/imgt_aa_${SPECIES}_${RECEPTOR}_v \
-        -ig_seqtype ${SEQTYPE[${RECEPTOR}]} -organism ${SPECIES} \
+        -ig_seqtype ${SEQTYPE} -organism ${SPECIES} \
         -domain_system imgt -outfmt '7 std qseq sseq btop'"
 fi
 
@@ -133,6 +140,7 @@ OUTFILE="${OUTDIR}/${OUTFILE%.fasta}.fmt7"
 IGBLAST_VER=$(${IGBLAST_CMD} -version | grep 'Package' |sed s/'Package: '//)
 IGBLAST_RUN="${IGBLAST_CMD} -query ${READFILE} -out ${OUTFILE} -num_threads ${NPROC}"
 
+echo $IGBLAST_RUN
 # Align V(D)J segments using IgBLAST
 echo -e "   START> igblast"
 echo -e " VERSION> ${IGBLAST_VER}"
