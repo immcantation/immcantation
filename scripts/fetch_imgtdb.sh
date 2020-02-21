@@ -65,7 +65,7 @@ do
 
     # VDJ Ig
     echo "|---- Ig"
-    for CHAIN in IGHV IGHD IGHJ
+    for CHAIN in IGHV IGHD IGHJ IGKV IGKJ IGLV IGLJ
     do
         URL="http://www.imgt.org/IMGT_GENE-DB/GENElect?query=7.14+${CHAIN}&species=${VALUE}"
         FILE_NAME="${FILE_PATH}/${REPERTOIRE}_${KEY}_${CHAIN}.fasta"
