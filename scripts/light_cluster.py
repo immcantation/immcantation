@@ -93,11 +93,12 @@ def lightCluster(heavy_file, light_file, out_file, doublets='drop', format='airr
     light_df = pd.read_csv(light_file, dtype='object', na_values=['', 'None', 'NA'], sep='\t')
 
     # column checking
-    expected_columns = [cell_id, clone_id, v_call, j_call, junction_length, umi_count]
-    if set(expected_columns).issubset(heavy_df.columns) is False:
-        raise ValueError("Missing one or more columns in heavy chain file: " + ", ".join(expected_columns))
-    if set(expected_columns).issubset(light_df.columns) is False:
-        raise ValueError("Missing one or more columns in light chain file: " + ", ".join(expected_columns))
+    expected_heavy_columns = [cell_id, clone_id, v_call, j_call, junction_length, umi_count]
+    if set(expected_heavy_columns).issubset(heavy_df.columns) is False:
+        raise ValueError("Missing one or more columns in heavy chain file: " + ", ".join(expected_heavy_columns))
+    expected_light_columns = [cell_id, v_call, j_call, junction_length, umi_count]
+    if set(expected_light_columns).issubset(light_df.columns) is False:
+        raise ValueError("Missing one or more columns in light chain file: " + ", ".join(expected_light_columns))
 
     # Fix types
     heavy_df[junction_length] = heavy_df[junction_length].astype('int')
