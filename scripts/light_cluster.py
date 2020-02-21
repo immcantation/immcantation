@@ -107,6 +107,8 @@ def lightCluster(heavy_file, light_file, out_file, doublets='drop', format='airr
     # filter multiple heavy chains
     if doublets == 'drop':
         heavy_df = heavy_df.drop_duplicates(cell_id, keep=False)
+        if heavy_df.empty is True:
+            raise ValueError("Empty heavy chain data, after doublets drop. Are you combining experiments in a single file? If so, split your data into multiple files.")
     elif doublets == 'count':
         heavy_df[umi_count] = heavy_df[umi_count].astype('int')
         heavy_df = heavy_df.groupby(cell_id, sort=False).apply(lambda x: x.nlargest(1, umi_count))
