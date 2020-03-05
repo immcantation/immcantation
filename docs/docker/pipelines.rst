@@ -62,13 +62,15 @@ genome.
 
 .. _AbSeqPipeline:
 
-NEB AbSeq protocol preprocessing pipeline
+NEB ImmunoSeq protocol preprocessing pipeline
 --------------------------------------------------------------------------------
 
-A start to finish pRESTO processing script for AbSeq data. Primer sequences are
-available from the Immcantation repository under
+A start to finish pRESTO processing script for ImmunoSeq data. An example for human BCR processing
+is shown below. Primer sequences are available from the Immcantation repository under
 `protocols/AbSeq <https://bitbucket.org/kleinstein/immcantation/src/tip/protocols/AbSeq>`__
-or inside the container under ``/usr/local/share/protocols/AbSeq``.
+or inside the container under ``/usr/local/share/protocols/AbSeq``. Mouse primers are not supplied.
+TCR V gene references can be specified with the flag
+``-r /usr/local/share/igblast/fasta/imgt_human_tr_v.fasta``. 
 
 .. include:: ../_include/usage.rst
     :start-after: Start presto-abseq
