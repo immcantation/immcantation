@@ -226,8 +226,8 @@ Contributed Packages
 .. _alakazam: https://alakazam.readthedocs.io
 .. _shazam: https://shazam.readthedocs.io
 .. _tigger: https://tigger.readthedocs.io
-.. _rdi: https://rdi.readthedocs.io
 .. _scoper: https://scoper.readthedocs.io
+.. _rdi: https://rdi.readthedocs.io
 .. _igphyml: https://igphyml.readthedocs.io
 .. _rabhit: https://yaarilab.bitbucket.io/RAbHIT
 .. _sumrep: https://github.com/matsengrp/sumrep
