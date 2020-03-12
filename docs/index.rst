@@ -189,11 +189,6 @@ Contributed Packages
     :width: 200
     :target: tigger_
 
-.. |rdi-img| image:: _static/rdi.png
-    :align: middle
-    :width: 200
-    :target: rdi_
-
 .. |scoper-img| image:: _static/scoper.png
     :align: middle
     :width: 200
@@ -203,6 +198,11 @@ Contributed Packages
     :align: middle
     :width: 200
     :target: prestor_
+
+.. |rdi-img| image:: _static/rdi.png
+    :align: middle
+    :width: 200
+    :target: rdi_
 
 .. |igphyml-img| image:: _static/igphyml.png
     :align: middle
