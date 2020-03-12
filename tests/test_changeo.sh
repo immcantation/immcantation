@@ -156,7 +156,7 @@ get_output() {
     OUTPUT=$(get_output ${TEST} ${OUTDIR} ${FAILED})
 
     run MakeDb.py igblast -i $ALIGNMENT -s $READS -r $GERMLINES \
-        --regions --scores --cdr3 --log $LOG --format $FORMAT $OUTPUT
+        --extended --log $LOG --format $FORMAT $OUTPUT
 
     echo "$output" > $CONSOLE
 	[ "$status" -eq 0 ]
@@ -171,7 +171,7 @@ get_output() {
     OUTPUT=$(get_output ${TEST} ${OUTDIR} ${FAILED})
 
     run MakeDb.py ihmm -i $ALIGNMENT -s $READS -r $GERMLINES \
-        --regions --scores --log $LOG --format $FORMAT $OUTPUT
+        --extended --log $LOG --format $FORMAT $OUTPUT
 
     echo "$output" > $CONSOLE
 	[ "$status" -eq 0 ]
@@ -186,7 +186,7 @@ get_output() {
     OUTPUT=$(get_output ${TEST} ${OUTDIR} ${FAILED})
 
     run MakeDb.py imgt -i $ALIGNMENT -s $READS -r $GERMLINES \
-        --regions --scores --junction --log $LOG --format $FORMAT $OUTPUT
+        --extended --log $LOG --format $FORMAT $OUTPUT
 
     echo "$output" > $CONSOLE
 	[ "$status" -eq 0 ]
