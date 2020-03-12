@@ -92,6 +92,14 @@ def lightCluster(heavy_file, light_file, out_file, doublets='drop', format='airr
     heavy_df = pd.read_csv(heavy_file, dtype='object', na_values=['', 'None', 'NA'], sep='\t')
     light_df = pd.read_csv(light_file, dtype='object', na_values=['', 'None', 'NA'], sep='\t')
 
+    # column checking
+    expected_heavy_columns = [cell_id, clone_id, v_call, j_call, junction_length, umi_count]
+    if set(expected_heavy_columns).issubset(heavy_df.columns) is False:
+        raise ValueError("Missing one or more columns in heavy chain file: " + ", ".join(expected_heavy_columns))
+    expected_light_columns = [cell_id, v_call, j_call, junction_length, umi_count]
+    if set(expected_light_columns).issubset(light_df.columns) is False:
+        raise ValueError("Missing one or more columns in light chain file: " + ", ".join(expected_light_columns))
+
     # Fix types
     heavy_df[junction_length] = heavy_df[junction_length].astype('int')
     light_df[junction_length] = light_df[junction_length].astype('int')
@@ -99,6 +107,8 @@ def lightCluster(heavy_file, light_file, out_file, doublets='drop', format='airr
     # filter multiple heavy chains
     if doublets == 'drop':
         heavy_df = heavy_df.drop_duplicates(cell_id, keep=False)
+        if heavy_df.empty is True:
+            raise ValueError("Empty heavy chain data, after doublets drop. Are you combining experiments in a single file? If so, split your data into multiple files.")
     elif doublets == 'count':
         heavy_df[umi_count] = heavy_df[umi_count].astype('int')
         heavy_df = heavy_df.groupby(cell_id, sort=False).apply(lambda x: x.nlargest(1, umi_count))
