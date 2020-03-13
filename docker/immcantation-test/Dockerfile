@@ -1,4 +1,4 @@
-FROM kleinstein/immcantation:base
+FROM kleinstein/immcantation:devel-base
 LABEL maintainer="Jason Anthony Vander Heiden [jason.vanderheiden@yale.edu], \
                   Susanna Marquez [susanna.marquez@yale.edu]" \
       description="Test environment for the Immcantation framework."
