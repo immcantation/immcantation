@@ -47,6 +47,7 @@
     RDI <http://rdi.readthedocs.io>
     RAbHIT <https://yaarilab.bitbucket.io/RAbHIT/>
     IgPhyML <https://igphyml.readthedocs.io>
+    sumrep <https://github.com/matsengrp/sumrep>
     
 .. toctree::
     :maxdepth: 1
@@ -71,74 +72,95 @@ high-throughput AIRR-seq datasets. Beginning from raw reads, Python and R packag
 provided for pre-processing, population structure determination, and repertoire analysis.
 
 
-Component Packages
+Core Packages
 -----------------------------------------------------------------------------------------
 
 **Click on the images below for more details.**
 
 .. list-table::
-   :widths: 50 50
+    :widths: 40 60
+    :align: left
 
-   * - |presto-img|
-     - **pRESTO**
+    * - |presto-img|
+      - **pRESTO**
 
-       + Quality control
-       + Read assembly
-       + UMI processing
-       + Error profiling
+        + Quality control
+        + Read assembly
+        + UMI processing
+        + Error profiling
 
-   * - |changeo-img|
-     - **Change-O**
+    * - |changeo-img|
+      - **Change-O**
 
-       + V(D)J reference alignment standardization
-       + Clonal clustering
-       + Germline reconstruction
-       + Conversion and annotation
+        + V(D)J reference alignment standardization
+        + Clonal clustering
+        + Germline reconstruction
+        + Conversion and annotation
 
-   * - |alakazam-img|
-     - **Alakazam**
+    * - |alakazam-img|
+      - **Alakazam**
 
-       + Clonal lineage reconstruction
-       + Lineage topology analysis
-       + Repertoire diversity
-       + V(D)J gene usage
-       + Physicochemical property analysis
+        + Clonal lineage reconstruction
+        + Lineage topology analysis
+        + Repertoire diversity
+        + V(D)J gene usage
+        + Physicochemical property analysis
 
-   * - |shazam-img|
-     - **SHazaM**
+    * - |shazam-img|
+      - **SHazaM**
 
-       + Mutation profiling
-       + Selection pressure quantification
-       + Empirical SHM models
-       + Chimera detection
-       + Clonal clustering threshold tuning
+        + Mutation profiling
+        + Selection pressure quantification
+        + Empirical SHM models
+        + Chimera detection
+        + Clonal clustering threshold tuning
 
-   * - |tigger-img|
-     - **TIgGER**
+    * - |tigger-img|
+      - **TIgGER**
 
-       + Novel polymorphism detection
-       + Genotyping
+        + Novel polymorphism detection
+        + Genotyping
 
-   * - |rdi-img|
-     - **RDI**
+    * - |scoper-img|
+      - **SCOPer**
 
-       + Repertoire Dissimilarity Index
+        + Spectral clonal clustering methods
 
-   * - |scoper-img|
-     - **SCOPer**
+    * - |prestoR-img|
+      - **prestoR**
 
-       + Spectral clonal clustering methods
+        + pRESTO report generation
 
-   * - |prestoR-img|
-     - **prestoR**
+Contributed Packages
+-----------------------------------------------------------------------------------------
 
-       + pRESTO report generation
+**Click on the images below for more details.**
 
-   * - |igphyml-img|
-     - **IgPhyML**
+.. list-table::
+    :widths: 40 60
+    :align: left
 
-       + Clonal lineage tree contruction
-       + Mutation/selection hypothesis testing       
+    * - |rdi-img|
+      - **RDI**
+
+        + Repertoire Dissimilarity Index
+
+    * - |rabhit-img|
+      - **RAbHIT**
+
+        + Determination of V-D-J haplotypes
+
+    * - |igphyml-img|
+      - **IgPhyML**
+
+        + Clonal lineage tree construction
+        + Mutation/selection hypothesis testing
+
+    * - |sumrep-img|
+      - **sumrep**
+
+        + Generate repertoire summary statistics.
+        + Visualize and comparing repertoire summaries.
 
 .. Image substitutions
 
@@ -167,11 +189,6 @@ Component Packages
     :width: 200
     :target: tigger_
 
-.. |rdi-img| image:: _static/rdi.png
-    :align: middle
-    :width: 200
-    :target: rdi_
-
 .. |scoper-img| image:: _static/scoper.png
     :align: middle
     :width: 200
@@ -182,19 +199,36 @@ Component Packages
     :width: 200
     :target: prestor_
 
+.. |rdi-img| image:: _static/rdi.png
+    :align: middle
+    :width: 200
+    :target: rdi_
+
 .. |igphyml-img| image:: _static/igphyml.png
     :align: middle
     :width: 180
     :target: igphyml_
 
+.. |rabhit-img| image:: _static/rabhit.png
+    :align: middle
+    :width: 140
+    :target: rabhit_
+
+.. |sumrep-img| image:: _static/sumrep.png
+    :align: middle
+    :width: 180
+    :target: sumrep_
+
 .. Doc links
 
-.. _presto: http://presto.readthedocs.io
-.. _changeo: http://changeo.readthedocs.io
-.. _alakazam: http://alakazam.readthedocs.io
-.. _shazam: http://shazam.readthedocs.io
-.. _tigger: http://tigger.readthedocs.io
-.. _rdi: http://rdi.readthedocs.io
-.. _scoper: http://scoper.readthedocs.io
-.. _igphyml: http://igphyml.readthedocs.io
+.. _presto: https://presto.readthedocs.io
+.. _changeo: https://changeo.readthedocs.io
+.. _alakazam: https://alakazam.readthedocs.io
+.. _shazam: https://shazam.readthedocs.io
+.. _tigger: https://tigger.readthedocs.io
+.. _scoper: https://scoper.readthedocs.io
+.. _rdi: https://rdi.readthedocs.io
+.. _igphyml: https://igphyml.readthedocs.io
+.. _rabhit: https://yaarilab.bitbucket.io/RAbHIT
+.. _sumrep: https://github.com/matsengrp/sumrep
 .. _prestor: packages/prestor.html

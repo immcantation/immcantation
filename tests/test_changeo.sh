@@ -1,6 +1,6 @@
 #!/usr/bin/env bats
 
-# Run parametes
+# Paths
 DATE=$(date +"%Y.%m.%d")
 DATA_DIR="data"
 DATA_DIR=$(realpath ${DATA_DIR})
@@ -10,10 +10,11 @@ RUN_DIR="run/changeo-${DATE}"
 NPROC=2
 OUTDIR=true
 FAILED=true
-GERMLINES="${HOME}/local/share/imgt/human/vdj"
+GERMLINES="${HOME}/local/share/germlines/human/vdj"
 V_GERMLINES="${HOME}/local/share/igblast/fasta/imgt_human_ig_v.fasta"
 IGBLAST_DATA="${HOME}/local/share/igblast"
-#FORMAT="--format airr"
+FORMAT="changeo"
+#FORMAT="airr"
 
 # Create output parent
 mkdir -p ${RUN_DIR}/logs ${RUN_DIR}/console ${RUN_DIR}/output
@@ -42,7 +43,7 @@ get_output() {
     OUTPUT=$(get_output ${TEST} ${OUTDIR} ${FAILED})
 
     run AlignRecords.py across -d $DB --sf SEQUENCE_INPUT GERMLINE_IMGT_D_MASK --gf JUNCTION_LENGTH \
-        --calls v d j --log $LOG --nproc $NPROC $OUTPUT
+        --calls v d j --log $LOG --nproc $NPROC --format $FORMAT $OUTPUT
 
     echo "$output" > $CONSOLE
 	[ "$status" -eq 0 ]
@@ -56,7 +57,7 @@ get_output() {
     OUTPUT=$(get_output ${TEST} ${OUTDIR} ${FAILED})
 
     run AlignRecords.py block -d $DB --sf SEQUENCE_INPUT GERMLINE_IMGT_D_MASK --gf CLONE \
-        --calls v d j --log $LOG --nproc $NPROC $OUTPUT
+        --calls v d j --log $LOG --nproc $NPROC --format $FORMAT $OUTPUT
 
     echo "$output" > $CONSOLE
 	[ "$status" -eq 0 ]
@@ -70,7 +71,7 @@ get_output() {
     OUTPUT=$(get_output ${TEST} ${OUTDIR} ${FAILED})
 
     run AlignRecords.py within -d $DB --sf SEQUENCE_INPUT GERMLINE_IMGT_D_MASK \
-        --log $LOG --nproc $NPROC $OUTPUT
+        --log $LOG --nproc $NPROC --format $FORMAT $OUTPUT
 
     echo "$output" > $CONSOLE
 	[ "$status" -eq 0 ]
@@ -112,7 +113,7 @@ get_output() {
     OUTPUT=$(get_output ${TEST} ${OUTDIR} ${FAILED})
 
     run CreateGermlines.py -d $DB -r $GERMLINES -g vonly dmask full regions \
-        --log $LOG $OUTPUT
+        --log $LOG --format $FORMAT $OUTPUT
 
     echo "$output" > $CONSOLE
 	[ "$status" -eq 0 ]
@@ -126,7 +127,7 @@ get_output() {
     OUTPUT=$(get_output ${TEST} ${OUTDIR} ${FAILED})
 
     run CreateGermlines.py -d $DB -r $GERMLINES -g vonly dmask full regions --cloned \
-        --log $LOG $OUTPUT
+        --log $LOG --format $FORMAT $OUTPUT
 
     echo "$output" > $CONSOLE
 	[ "$status" -eq 0 ]
@@ -140,7 +141,7 @@ get_output() {
     OUTPUT=$(get_output ${TEST} ${OUTDIR} ${FAILED})
 
     run DefineClones.py -d $DB --model ham --dist 0.15 --mode gene --maxmiss 0 --act set \
-        --log $LOG --nproc $NPROC $OUTPUT
+        --log $LOG --format $FORMAT --nproc $NPROC $OUTPUT
 
     echo "$output" > $CONSOLE
 	[ "$status" -eq 0 ]
@@ -155,7 +156,7 @@ get_output() {
     OUTPUT=$(get_output ${TEST} ${OUTDIR} ${FAILED})
 
     run MakeDb.py igblast -i $ALIGNMENT -s $READS -r $GERMLINES \
-        --regions --scores --cdr3 --log $LOG $OUTPUT
+        --extended --log $LOG --format $FORMAT $OUTPUT
 
     echo "$output" > $CONSOLE
 	[ "$status" -eq 0 ]
@@ -170,7 +171,7 @@ get_output() {
     OUTPUT=$(get_output ${TEST} ${OUTDIR} ${FAILED})
 
     run MakeDb.py ihmm -i $ALIGNMENT -s $READS -r $GERMLINES \
-        --regions --scores --log $LOG $OUTPUT
+        --extended --log $LOG --format $FORMAT $OUTPUT
 
     echo "$output" > $CONSOLE
 	[ "$status" -eq 0 ]
@@ -185,7 +186,7 @@ get_output() {
     OUTPUT=$(get_output ${TEST} ${OUTDIR} ${FAILED})
 
     run MakeDb.py imgt -i $ALIGNMENT -s $READS -r $GERMLINES \
-        --regions --scores --junction --log $LOG $OUTPUT
+        --extended --log $LOG --format $FORMAT $OUTPUT
 
     echo "$output" > $CONSOLE
 	[ "$status" -eq 0 ]
@@ -267,7 +268,7 @@ get_output() {
 
     run ConvertDb.py genbank -d $DB --inf "IgBLAST:1.7.0" --organism "Homo sapiens" \
         --sex Male --tissue "Peripheral blood" --cf CPRIMER --nf DUPCOUNT --if MID \
-        --asis-id --asn --sbt $SBT -y $YAML $OUTPUT
+        --asis-id --asn --sbt $SBT -y $YAML --format changeo $OUTPUT
 
     echo "$output" > $CONSOLE
 	[ "$status" -eq 0 ]
