@@ -178,7 +178,8 @@ RUN useradd magus -u 1000 -g users \
     && echo "magus ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/magus \
     && chmod 0440 /etc/sudoers.d/magus \
     && echo "umask 000" >> /home/magus/.bashrc
-USER magus
+    && echo "umask 000" >> /root/.bashrc
+# USER magus
 
 # Set commands
 CMD echo -e "Report version information:\n" \
