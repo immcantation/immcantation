@@ -11,6 +11,7 @@
 #       Defaults to /usr/local/share/protocols/Universal/Mouse_IG_CRegion_RC.fasta
 #   -r  V-segment reference file.
 #       Defaults to /usr/local/share/igblast/fasta/imgt_mouse_ig_v.fasta
+#   -y  YAML file providing description fields for report generation.
 #   -n  Sample name or run identifier which will be used as the output file prefix.
 #       Defaults to a truncated version of the read 1 filename.
 #   -o  Output directory. Will be created if it does not exist.
@@ -32,6 +33,7 @@ print_usage() {
             "     Defaults to /usr/local/share/protocols/Universal/Mouse_IG_CRegion_RC.fasta."
     echo -e "  -r  V-segment reference file.\n" \
             "     Defaults to /usr/local/share/igblast/fasta/imgt_mouse_ig_v.fasta."
+    echo -e "  -y  YAML file providing description fields for report generation."
     echo -e "  -n  Sample identifier which will be used as the output file prefix.\n" \
             "     Defaults to a truncated version of the read 1 filename."
     echo -e "  -o  Output directory. Will be created if it does not exist.\n" \
@@ -48,13 +50,14 @@ R1_READS_SET=false
 R2_READS_SET=false
 C_PRIMERS_SET=false
 VREF_SEQ_SET=false
+YAML_SET=FALSE
 OUTNAME_SET=false
 OUTDIR_SET=false
 NPROC_SET=false
 COORD_SET=false
 
 # Get commandline arguments
-while getopts "1:2:j:r:n:o:x:p:h" OPT; do
+while getopts "1:2:j:r:y:n:o:x:p:h" OPT; do
     case "$OPT" in
     1)  R1_READS=$OPTARG
         R1_READS_SET=true
@@ -70,6 +73,9 @@ while getopts "1:2:j:r:n:o:x:p:h" OPT; do
         ;;
     f)  SAMFIELD=$OPTARG
         SAMFIELD_SET=true
+        ;;
+    y)  YAML=$OPTARG
+        YAML_SET=true
         ;;
     n)  OUTNAME=$OPTARG
         OUTNAME_SET=true
@@ -98,6 +104,11 @@ done
 # Exit if required arguments are not provided
 if ! ${R1_READS_SET} || ! ${R2_READS_SET}; then
     echo -e "You must specify both read files using the -1 and -2 options." >&2
+    exit 1
+fi
+
+if ! ${YAML_SET}; then
+    echo -e "You must specify the description file in YAML format using the -y option." >&2
     exit 1
 fi
 
@@ -168,9 +179,18 @@ else
     exit 1
 fi
 
+# Check report yaml file
+if [ -e ${YAML} ]; then
+    YAML=$(realpath ${YAML})
+else
+    echo -e "File '${YAML}' not found." >&2
+    exit 1
+fi
+
 # Define pipeline steps
 ZIP_FILES=true
 DELETE_FILES=true
+REPORT=true
 
 # AssemblePairs-sequential run parameters
 AP_MAXERR=0.3
@@ -197,9 +217,11 @@ mkdir -p ${OUTDIR}; cd ${OUTDIR}
 
 # Define log files
 LOGDIR="logs"
+REPORTDIR="report"
 PIPELINE_LOG="${LOGDIR}/pipeline-presto.log"
 ERROR_LOG="${LOGDIR}/pipeline-presto.err"
 mkdir -p ${LOGDIR}
+mkdir -p ${REPORTDIR}
 echo '' > $PIPELINE_LOG
 echo '' > $ERROR_LOG
 
@@ -286,6 +308,13 @@ ParseLog.py -l "${LOGDIR}/cregion.log" -f ID PRSTART PRIMER ERROR \
     --outdir ${LOGDIR} > /dev/null 2> $ERROR_LOG &
 wait
 check_error
+
+# Generate pRESTO report
+if $REPORT; then
+    printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "Generating report"
+    REPORT_SCRIPT="buildReport(\"${LOGDIR}\", sample=\"${OUTNAME}\", output_dir=\"${REPORTDIR}\", template=\"Clontech\", config=\"${YAML}\", quiet=FALSE)"
+    Rscript -e "library(prestor); ${REPORT_SCRIPT}" > ${REPORTDIR}/report.out 2> ${REPORTDIR}/report.err
+fi
 
 # Zip or delete intermediate and log files
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "Compressing files"

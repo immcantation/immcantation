@@ -270,8 +270,8 @@ mkdir -p ${OUTDIR}; cd ${OUTDIR}
 # Define log files
 LOGDIR="logs"
 REPORTDIR="report"
-PIPELINE_LOG="${LOGDIR}/pipeline.log"
-ERROR_LOG="${LOGDIR}/pipeline.err"
+PIPELINE_LOG="${LOGDIR}/pipeline-presto.log"
+ERROR_LOG="${LOGDIR}/pipeline-presto.err"
 mkdir -p ${LOGDIR}
 mkdir -p ${REPORTDIR}
 echo '' > $PIPELINE_LOG
@@ -514,7 +514,7 @@ check_error
 # Generate pRESTO report
 if $REPORT; then
     printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "Generating report"
-    REPORT_SCRIPT="report_abseq3(\"${LOGDIR}\", sample=\"${OUTNAME}\", output_dir=\"${REPORTDIR}\", config=\"${YAML}\", quiet=FALSE)"
+    REPORT_SCRIPT="buildReport(\"${LOGDIR}\", sample=\"${OUTNAME}\", output_dir=\"${REPORTDIR}\", template=\"AbSeqV3\", config=\"${YAML}\", quiet=FALSE)"
     Rscript -e "library(prestor); ${REPORT_SCRIPT}" > ${REPORTDIR}/report.out 2> ${REPORTDIR}/report.err
 fi
 

@@ -1,6 +1,26 @@
 Release Notes
 ========================================================================
 
+Version 4.0.0:  April 1, 2020
+------------------------------------------------------------------------
+
+Version Updates:
+
++ changeo 1.0.0
++ alakazam 1.0.0
++ shazam 1.0.0
++ tigger 1.0.0
++ prestor 0.0.6
+
+Pipeline Changes:
+
++ Added report generation and the ``-y`` argument specifying the report
+  yaml config file to ``presto-clontech``.
++ Changed name of the console logs in ``presto-clontech`` to
+  ``pipeline-presto.log`` and ``pipeline-presto.err`
+  (was ``pipeline.log`` and ``pipeline.err`).
+
+
 Version 3.1.0:  December 16, 2019
 ------------------------------------------------------------------------
 
