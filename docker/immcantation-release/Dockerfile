@@ -178,7 +178,7 @@ ENV PATH="${PATH}:/usr/local/share/igphyml/src"
 RUN useradd magus -u 1000 -g users \
     && echo "magus ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/magus \
     && chmod 0440 /etc/sudoers.d/magus \
-    && echo "umask 000" >> /home/magus/.bashrc
+    && echo "umask 000" >> /home/magus/.bashrc \
     && echo "umask 000" >> /root/.bashrc
 # USER magus
 
