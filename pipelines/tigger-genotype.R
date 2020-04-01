@@ -88,6 +88,15 @@ if (!(file.access(opt$OUTDIR, mode=2) == 0)) {
     stop("Output directory '", opt$OUTDIR, "' cannot be written to.")
 }
 
+# Check alakazam version, to determine column names
+if (numeric_version(packageVersion("alakazam")) > numeric_version('0.3.0')) {
+    # lower case
+    v_call_genotyped <- "v_call_genotyped"
+} else {
+    # upper case
+    v_call_genotyped <- "V_CALL_GENOTYPED"
+}
+
 # Load data
 if (opt$FORMAT == "changeo") {
     db <- as.data.frame(alakazam::readChangeoDb(opt$DB))
@@ -126,9 +135,9 @@ writeFasta(gt_seq, file.path(opt$OUTDIR, paste0(opt$NAME, "_genotype.fasta")))
 db <- reassignAlleles(db, gt_seq, v_call=v_call, seq=sequence_alignment)
 
 # Rename genotyped V call column if necessary
-if (opt$VFIELD != "V_CALL_GENOTYPED") {
-    db[[opt$VFIELD]] <- db$V_CALL_GENOTYPED
-    db <- dplyr::select(db, -V_CALL_GENOTYPED)
+if (opt$VFIELD != v_call_genotyped) {
+    db[[opt$VFIELD]] <- db[[v_call_genotyped]]
+    db <- dplyr::select(db, -v_call_genotyped)
 }
 
 # Write genotyped data
