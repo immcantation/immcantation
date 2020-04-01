@@ -1,6 +1,6 @@
 immcantation:
-  version:  3.1.0
-  date:     2019.12.16
+  version:  4.0.0
+  date:     2020.04.01
 release:
   presto:   0.5.13
   changeo:  0.4.6
@@ -9,7 +9,7 @@ release:
   tigger:   0.4.0
   rdi:      1.0.0
   scoper:   0.2.0
-  prestor:  0.0.5
+  prestor:  0.0.6
   rabhit:   0.1.1
 software:
   muscle:   3.8.425
