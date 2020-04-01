@@ -120,6 +120,15 @@ if (FORMAT == "changeo") {
     junction <- "junction"
 }
 
+# Check alakazam version, to determine column names
+if (numeric_version(packageVersion("alakazam")) > numeric_version('0.3.0')) {
+    # lower case
+    dist_nearest <- "dist_nearest"
+} else {
+    # upper case
+    dist_nearest <- "DIST_NEAREST"
+}
+
 # Calculate distance-to-nearest
 db <- distToNearest(db, sequenceColumn=junction, vCallColumn=v_call, jCallColumn=j_call,
                     model="ham", first=FALSE, normalize="len", nproc=NPROC)
@@ -127,7 +136,7 @@ db <- distToNearest(db, sequenceColumn=junction, vCallColumn=v_call, jCallColumn
 # Simply plot and exit for method="none"
 if (METHOD == "none") {
     # Plot distToNearest distribution
-    p1 <- ggplot(filter(db, !is.na(DIST_NEAREST), DIST_NEAREST > 0), aes(x=DIST_NEAREST)) +
+    p1 <- ggplot(filter(db, !is.na(dist_nearest), dist_nearest > 0), aes(x=dist_nearest)) +
         baseTheme() +
         xlab("Distance") +
         ylab("Density") +
@@ -146,10 +155,10 @@ pdf(f, width=6, height=4, useDingbats=FALSE)
 threshold_list <- list()
 for(i in 1:REPEATS) {
     # Subsample distances
-    if (is.null(SUBSAMPLE) || length(db$DIST_NEAREST) < SUBSAMPLE){
-        sampling <- db$DIST_NEAREST
+    if (is.null(SUBSAMPLE) || length(db[[dist_nearest]]) < SUBSAMPLE){
+        sampling <- db[[dist_nearest]]
     } else {
-        sampling <- sample(db$DIST_NEAREST, SUBSAMPLE, replace=FALSE)
+        sampling <- sample(db[[dist_nearest]], SUBSAMPLE, replace=FALSE)
     }
 
     # Calculate threshold
