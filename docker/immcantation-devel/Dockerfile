@@ -81,7 +81,7 @@ RUN AIRR_PY=$(versions get -n airr-py) \
 # Install IgPhyML
 RUN IGPHYML="igphyml" \
     && mkdir -p /usr/local/share/igphyml \
-	&& git clone https://bitbucket.org/kbhoehn/igphyml /usr/local/share/igphyml \
+	&& git clone --single-branch --branch master https://bitbucket.org/kbhoehn/igphyml /usr/local/share/igphyml \
     && (cd /usr/local/share/igphyml && ./make_phyml_blas_omp)
 
 # Install tbl2asn
@@ -140,9 +140,9 @@ RUN PACKAGE="scoper" \
 # Install prestor
 RUN PACKAGE="prestor" \
     && rm -rf /tmp/${PACKAGE} \
-    && hg clone -b default https://bitbucket.org/javh/prototype-prestor /tmp/${PACKAGE} \
+    && git clone --single-branch --branch master https://bitbucket.org/kleinstein/prestor /tmp/${PACKAGE}
     && rinstall -p /tmp/${PACKAGE} \
-    && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
+    && (cd /tmp/${PACKAGE} && builds write -n ${PACKAGE} -v $(git describe --abbrev=12 --always --dirty=+)) \
     && rm -r /tmp/${PACKAGE}
 
 # Install RDI
@@ -158,10 +158,7 @@ RUN PACKAGE="rabhit" \
     && rm -rf /tmp/${PACKAGE} \
     && git clone --single-branch --branch master https://bitbucket.org/yaarilab/rabhit /tmp/${PACKAGE} \
     && rinstall -p /tmp/${PACKAGE} \
-    && HERE=$(pwd) \
-    && cd /tmp/${PACKAGE} \
-    && builds write -n ${PACKAGE} -v $(git describe --abbrev=12 --always --dirty=+) \
-    && cd ${HERE} \
+    && (cd /tmp/${PACKAGE} && builds write -n ${PACKAGE} -v $(git describe --abbrev=12 --always --dirty=+)) \
     && rm -r /tmp/${PACKAGE}
 
 # Download and build references databases

@@ -144,12 +144,23 @@ RUN PACKAGE="scoper" \
     && rm -r /tmp/${PACKAGE}
 
 # Install prestor
+# Install IgPhyML
+RUN IGPHYML=$(versions get -n igphyml) \
+    && wget -q --show-progress --no-check-certificate \
+       https://bitbucket.org/kbhoehn/igphyml/get/${IGPHYML}.tar.gz -O igphyml-${IGPHYML}.tar.gz \
+    && mkdir -p /usr/local/share/igphyml \
+    && tar -zxf igphyml-${IGPHYML}.tar.gz -C /usr/local/share/igphyml --strip-components 1 \
+    && (cd /usr/local/share/igphyml && ./make_phyml_blas_omp) \
+    && rm -r igphyml-${IGPHYML}.tar.gz
+
 RUN PACKAGE="prestor" \
-    && rm -rf /tmp/${PACKAGE} \
-    && hg clone -b default https://bitbucket.org/javh/prototype-prestor /tmp/${PACKAGE} \
-    && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} \
+    && PRESTOR=$(versions get -n ${PACKAGE})
+    && wget -q --show-progress --no-check-certificate \
+       https://bitbucket.org/kleinstein/prestor/get/${PRESTOR}.tar.gz -O ${PACKAGE}-${PRESTOR}.tar.gz \
+    && mkdir -p /tmp/${PACKAGE} \
+    && tar -zxf ${PACKAGE}-${PRESTOR}.tar.gz -C /tmp/${PACKAGE} --strip-components 1
     && rinstall -p /tmp/${PACKAGE} \
-    && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
+    && (cd /tmp/${PACKAGE} && builds write -n ${PACKAGE} -v $(git describe --abbrev=12 --always --dirty=+))
     && rm -r /tmp/${PACKAGE}
 
 # Install rdi

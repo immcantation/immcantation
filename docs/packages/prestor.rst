@@ -14,7 +14,7 @@ Download & Installation
 `prestor` is current not available from CRAN and must be installed from the
 bitbucket repo directly by first cloning the bitbucket repository:
 
-`http://bitbucket.org/javh/prototype-prestor <https://bitbucket.org/javh/prototype-prestor>`_
+`https://bitbucket.org/kleinstein/prestor <https://bitbucket.org/kleinstein/prestor>`_
 
 Then build using the following R commands from the package root::
 
