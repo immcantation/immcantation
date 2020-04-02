@@ -154,13 +154,13 @@ RUN IGPHYML=$(versions get -n igphyml) \
     && rm -r igphyml-${IGPHYML}.tar.gz
 
 RUN PACKAGE="prestor" \
-    && PRESTOR=$(versions get -n ${PACKAGE})
+    && PRESTOR=$(versions get -n ${PACKAGE}) \
     && wget -q --show-progress --no-check-certificate \
        https://bitbucket.org/kleinstein/prestor/get/${PRESTOR}.tar.gz -O ${PACKAGE}-${PRESTOR}.tar.gz \
     && mkdir -p /tmp/${PACKAGE} \
-    && tar -zxf ${PACKAGE}-${PRESTOR}.tar.gz -C /tmp/${PACKAGE} --strip-components 1
+    && tar -zxf ${PACKAGE}-${PRESTOR}.tar.gz -C /tmp/${PACKAGE} --strip-components 1 \
     && rinstall -p /tmp/${PACKAGE} \
-    && (cd /tmp/${PACKAGE} && builds write -n ${PACKAGE} -v $(git describe --abbrev=12 --always --dirty=+))
+    && (cd /tmp/${PACKAGE} && builds write -n ${PACKAGE} -v $(git describe --abbrev=12 --always --dirty=+)) \
     && rm -r /tmp/${PACKAGE}
 
 # Install rdi

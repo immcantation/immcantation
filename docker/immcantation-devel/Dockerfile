@@ -140,7 +140,7 @@ RUN PACKAGE="scoper" \
 # Install prestor
 RUN PACKAGE="prestor" \
     && rm -rf /tmp/${PACKAGE} \
-    && git clone --single-branch --branch master https://bitbucket.org/kleinstein/prestor /tmp/${PACKAGE}
+    && git clone --single-branch --branch master https://bitbucket.org/kleinstein/prestor /tmp/${PACKAGE} \
     && rinstall -p /tmp/${PACKAGE} \
     && (cd /tmp/${PACKAGE} && builds write -n ${PACKAGE} -v $(git describe --abbrev=12 --always --dirty=+)) \
     && rm -r /tmp/${PACKAGE}
