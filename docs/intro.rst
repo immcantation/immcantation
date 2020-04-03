@@ -46,7 +46,7 @@ This webinar covers:
 10x analysis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-For an example on how to process 10x data to be analyzed with Immcantation, `visit <https://changeo.readthedocs.io/en/stable/examples/10x.html>`_.
+For an example on how to process 10x data to be analyzed with Immcantation, visit `Parsing 10X Genomics V(D)J data <https://changeo.readthedocs.io/en/stable/examples/10x.html>`_.
 
 
 Overview of B Cell Repertoire Analysis
