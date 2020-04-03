@@ -14,6 +14,7 @@
 
     Welcome <self>
     Getting Started <intro>
+    10X Walkthrough <10X_walkthrough>
     Data Standard <datastandard>
     Contact & Cite <about>
     Contributing <contrib>
