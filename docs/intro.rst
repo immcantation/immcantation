@@ -22,7 +22,11 @@ in :ref:`DockerIntro` and basic usage is described in :ref:`DockerGuide`.
 Immcantation Tutorials
 -------------------------------------------------------------------------------------------
 
-General overview webinar and jupyter notebook
+Each tool in the framework has its own documentation site, with detailed usage information 
+and examples. A good starting point to familiarize yourself with the framework is to
+follow one the tutorials listed here.
+
+Introductory webinar and jupyter notebook
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 For a detailed use example for each Immcantation tool see the
