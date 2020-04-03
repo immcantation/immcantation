@@ -31,15 +31,13 @@ RUN pip3 install --no-cache-dir rpy2 tzlocal notebook==5.* RISE jupyter-contrib-
     jupyter nbextensions_configurator enable
 
 RUN Rscript -e "dir.create(path = Sys.getenv('R_LIBS_USER'), showWarnings = FALSE, recursive = TRUE)"
-ARG R_DEPS="c('repr', \
-            'IRdisplay', \
-            'evaluate', \
+ARG R_DEPS="c('evaluate', \
             'crayon', \
             'pbdZMQ', \
             'devtools', \
             'uuid', \
             'digest')"
-RUN Rscript -e "install.packages(${R_DEPS}, lib=Sys.getenv('R_LIBS_USER'),clean=TRUE);devtools::install_github('IRkernel/IRkernel');IRkernel::installspec(user = FALSE)"
+RUN Rscript -e "install.packages(${R_DEPS}, lib=Sys.getenv('R_LIBS_USER'),clean=TRUE);devtools::install_github(paste0('IRkernel/',c('repr', 'IRdisplay', 'IRkernel')));IRkernel::installspec(user = FALSE)"
 
 WORKDIR ${HOME}/notebooks
 EXPOSE 8888
