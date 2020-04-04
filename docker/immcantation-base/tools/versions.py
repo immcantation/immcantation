@@ -256,6 +256,17 @@ def getChangeset(version, repo):
             break
     print(changeset)
 
+    # from git import Repo
+    # r = Repo('~/workspace/prestor')
+    # tags = r.tags
+    # # r.tags[0].name
+    # changeset = None
+    # for x in tags:
+    #     if v.search(x.name):
+    #         changeset = '%s' % x.commit
+    #         break
+    # print(changeset)
+
     return changeset
 
 

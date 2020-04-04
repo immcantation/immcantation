@@ -16,7 +16,7 @@ software:
   vsearch:  2.13.6
   cd-hit:   4.8.1
   blast:    2.9.0
-  igblast:  1.14.0
+  igblast:  1.15.0
   phylip:   3.697
   igphyml:  null
   airr-py:  1.2.1

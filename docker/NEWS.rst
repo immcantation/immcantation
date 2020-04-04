@@ -1,7 +1,7 @@
 Release Notes
 ========================================================================
 
-Version 4.0.0:  April 1, 2020
+Version 4.0.0:  April 3, 2020
 ------------------------------------------------------------------------
 
 Version Updates:
@@ -10,7 +10,9 @@ Version Updates:
 + alakazam 1.0.0
 + shazam 1.0.0
 + tigger 1.0.0
++ scoper 1.0.0
 + prestor 0.0.6
++ igblast 1.15.0
 
 Pipeline Changes:
 

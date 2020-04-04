@@ -3,12 +3,12 @@ immcantation:
   date:     2020.04.01
 release:
   presto:   0.5.13
-  changeo:  0.4.6
-  alakazam: 0.3.0
-  shazam:   0.2.2
-  tigger:   0.4.0
+  changeo:  1.0.0
+  alakazam: 1.0.0
+  shazam:   1.0.0
+  tigger:   1.0.0
   rdi:      1.0.0
-  scoper:   0.2.0
+  scoper:   1.0.0
   prestor:  0.0.6
   rabhit:   0.1.1
 software:
@@ -16,7 +16,7 @@ software:
   vsearch:  2.13.6
   cd-hit:   4.8.1
   blast:    2.9.0
-  igblast:  1.14.0
+  igblast:  1.15.0
   phylip:   3.697
   igphyml:  1.0.6
   airr-py:  1.2.1

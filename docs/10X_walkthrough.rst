@@ -1,4 +1,7 @@
-10X BCR sequencing walkthrough
+
+.. _10X-walkthrough:
+
+10X Genomics V(D)J Sequencing Tutorial
 ===========================================================================================
 
 Overview
