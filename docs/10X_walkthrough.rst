@@ -4,7 +4,7 @@
 Overview
 -------------------------------------------------------------------------------------------
 
-This tutorial is simple walkthrough for defining B cell clonal families and building
+This tutorial is basic walkthrough for defining B cell clonal families and building
 B cell lineage trees using 10X BCR sequencing data. It is intended for users without prior experience with Immcantation. If you are familiar with Immcantation, `this page <https://changeo.readthedocs.io/en/stable/examples/10x.html>`__ may be more useful. Knowledge of basic command line usage is assumed. This tutorial will only scratch the surface of these areas. Please check out the documentation sites for the functions detailed in this tutorial before using them on your own data. For simplicity, this tutorial will use the `Immcantation Docker image <https://immcantation.readthedocs.io/en/stable/docker/intro.html>`__ which contains all necessary software. It is also possible to install the programs used separately, see `pRESTO <http://presto.readthedocs.io>`__, `Change-O <http://changeo.readthedocs.io>`__, and `Alakazam <http://alakazam.readthedocs.io>`__.
 
 
@@ -41,7 +41,7 @@ If the first command doesn't return the expected output, you probably aren't ins
 
 Assign V(D)J gene segments
 -------------------------------------------------------------------------------------------
-The first steps in this pipeline are to assign V, D, and J gene segments using IgBLAST, and then convert the output into Change-O TSV format. The options of these commands differ by species. Note also that this will overwrite gene segments called by Cell Ranger. For a full treatment of this topic, see `using IgBLAST <https://changeo.readthedocs.io/en/stable/examples/igblast.html>`__ and  `parsing 10X data <https://changeo.readthedocs.io/en/stable/examples/10x.html>`__. It is also important to note that this uses the standard IMGT reference database of human alleles. To infer novel alleles and subject-specific genotypes, which would result in more accurate assignments, use `TIgGER <https://tigger.readthedocs.io/en/stable/vignettes/Tigger-Vignette/>`__.
+The first steps in this pipeline are to assign V, D, and J gene segments using IgBLAST, and then convert the output into ``Change-O`` TSV format. The options of these commands differ by species. Note also that this will overwrite gene segments called by Cell Ranger. For a full treatment of this topic, see `using IgBLAST <https://changeo.readthedocs.io/en/stable/examples/igblast.html>`__ and  `parsing 10X data <https://changeo.readthedocs.io/en/stable/examples/10x.html>`__. It is also important to note that this uses the standard `IMGT <http://www.imgt.org/>`__ reference database of human alleles. To infer novel alleles and subject-specific genotypes, which would result in more accurate assignments, use `TIgGER <https://tigger.readthedocs.io/en/stable/vignettes/Tigger-Vignette/>`__.
 
 In the Docker container, enter::
 
@@ -54,7 +54,7 @@ In the Docker container, enter::
     -r /usr/local/share/germlines/imgt/human/vdj/imgt_human_*.fasta \
     --10x filtered_contig_annotations.csv --outname 10x_igblast
 
-This will result in the file '10x_igblast_db-pass.tab', which is the basis for the rest of the tutorial.
+This will result in the file ``10x_igblast_db-pass.tab``, which is the basis for the rest of the tutorial.
 
 Identify clonal groups
 -------------------------------------------------------------------------------------------
@@ -67,7 +67,7 @@ Clonal groups are B cells that descend from a common naive B cell ancestor. To g
  ParseDb.py select -d 10x_igblast_db-pass.tab -f LOCUS -u "IG[LK]" \
      --logic all --regex --outname light
 
-Next, define clonal groups using a fixed heavy junction distance threshold. The threshold we use here (--dist 0.1) is not appropriate for all datasets. Check `here <https://changeo.readthedocs.io/en/stable/examples/cloning.html>`__ for instruction on determining the correct threshold for your own data. Alternatively, you could use an adaptive threshold in `SCOPer <https://scoper.readthedocs.io/en/stable/>`__. To assign clones with the distance threshold 0.1, enter::
+Next, define clonal groups using a fixed heavy junction distance threshold. The threshold we use here (``--dist 0.1``) is not appropriate for all datasets. Check `here <https://changeo.readthedocs.io/en/stable/examples/cloning.html>`__ for instruction on determining the correct threshold for your own data. Alternatively, you could use an adaptive threshold in `SCOPer <https://scoper.readthedocs.io/en/stable/>`__. To assign clones with the distance threshold ``0.1``, enter::
 
  # Define heavy chain clones
  DefineClones.py -d heavy_parse-select.tab --act set --model ham \
@@ -79,12 +79,12 @@ Once we have defined clonal groups using heavy chains as above, we can split the
  light_cluster.py -d heavy_clone-pass.tab -e light_parse-select.tab \
      -o 10X_clone-pass.tab
 
-This results in the file '10X_clone-pass.tab' which contains heavy chain sequence information derived from '10x_igblast_db-pass.tab' with an additional column 'CLONE' specifying the clonal group of the sequence.
+This results in the file ``10X_clone-pass.tab`` which contains heavy chain sequence information derived from ``10x_igblast_db-pass.tab`` with an additional column ``CLONE`` specifying the clonal group of the sequence.
 
 Reconstruct heavy chain germlines
 -------------------------------------------------------------------------------------------
 
-We'll next want to reconstruct the germline heavy chain V and J segment for each clone, which will allow us to build lineage trees. Note that the options specified mask the D gene segment using 'N' nucleotides because the D gene is difficult to accurately reconstruct. For more guidance on reconstructing germlines `see this page <https://changeo.readthedocs.io/en/stable/examples/germlines.html>`__. Enter::
+We'll next want to reconstruct the germline heavy chain V and J segment for each clone, which will allow us to build lineage trees. Note that the options specified mask the D gene segment using ``N`` nucleotides because the D gene is difficult to accurately reconstruct. For more guidance on reconstructing germlines `see this page <https://changeo.readthedocs.io/en/stable/examples/germlines.html>`__. Enter::
 
  # Reconstruct germline V and J sequences
  CreateGermlines.py -d 10X_clone-pass.tab -g dmask --cloned \
@@ -95,9 +95,9 @@ We'll next want to reconstruct the germline heavy chain V and J segment for each
 
 Build lineage trees
 -------------------------------------------------------------------------------------------
-Lineage trees represent the series of shared and unshared mutations leading from clone's germline sequence to the observed sequence data. There are multiple ways of building and visualizing these trees. Currently the simplest within Immcantation is to use `Alakazam <https://alakazam.readthedocs.io>`__, which is built around building maximum parsimony trees using PHYLIP. Alternatively, you can use `IgPhyML <https://igphyml.readthedocs.io>`__, which builds maximum likelihood trees with B cell specific models. Here, for simplicity, we use Alakazam. For more detail see Alakazam's `lineage vignette <https://alakazam.readthedocs.io/en/stable/vignettes/Lineage-Vignette/>`__
+Lineage trees represent the series of shared and unshared mutations leading from clone's germline sequence to the observed sequence data. There are multiple ways of building and visualizing these trees. Currently the simplest within Immcantation is to use `Alakazam <https://alakazam.readthedocs.io>`__, which is built around building maximum parsimony trees using `PHYLIP <http://evolution.genetics.washington.edu/phylip.html>`__. Alternatively, you can use `IgPhyML <https://igphyml.readthedocs.io>`__, which builds maximum likelihood trees with B cell specific models. Here, for simplicity, we use Alakazam here. For more detail see Alakazam's `lineage vignette <https://alakazam.readthedocs.io/en/stable/vignettes/Lineage-Vignette/>`__
 
-The commands in this section are meant to be entered into an R session. Open R within the Docker container using the command R. Once inside the R session, load the appropriate libraries and read in the data::
+The commands in this section are meant to be entered into an ``R`` session. Open ``R`` within the Docker container using the command ``R``. Once inside the ``R`` session, load the appropriate libraries and read in the data::
 
  library(alakazam)
  library(igraph)
@@ -109,7 +109,7 @@ The commands in this section are meant to be entered into an R session. Open R w
  # remove cells without a constant region call
  db <- filter(db, !is.na(C_CALL))
 
-We next process clones into objects that can be used by Alakazam. This function will collapse all identical sequences within each clones, and has many options to specify which fields should be copied from the original data frame to the clone objects (i.e. text_fields)::
+We next process clones into objects that can be used by `Alakazam <https://alakazam.readthedocs.io>`__. This function will collapse all identical sequences within each clones, and has many options to specify which fields should be copied from the original data frame to the clone objects (i.e. ``text_fields``)::
 
  # Preprocess clones
  clones <- db %>%
@@ -118,7 +118,7 @@ We next process clones into objects that can be used by Alakazam. This function 
     text_fields=c("C_CALL", "CELL"), 
     num_fields="CONSCOUNT"))
 
-We can now build the trees using PHYLIP. The variable 'dnapars_exec' refers to the location of the program dnapars within the Docker container::
+We can now build the trees using `PHYLIP <http://evolution.genetics.washington.edu/phylip.html>`__. The variable ``dnapars_exec`` refers to the location of the PHYLIP program ``dnapars`` within the Docker container::
 
  dnapars_exec <- "/usr/local/bin/dnapars"
  
@@ -129,7 +129,7 @@ We can now build the trees using PHYLIP. The variable 'dnapars_exec' refers to t
  # remove trees with < 2 sequences
  graphs[sapply(graphs, is.null)] <- NULL
 
-Once built, we can visualize these trees using igraph. Here, we only visualize one tree, using default parameters. However, there are many ways to make more attractive lineage tree plots, detailed in Alakazam's `lineage vignette <https://alakazam.readthedocs.io/en/stable/vignettes/Lineage-Vignette/>`__. Enter into the R session::
+Once built, we can visualize these trees using igraph. Here, we only visualize one tree, using default parameters. However, there are many ways to make more attractive lineage tree plots, detailed in Alakazam's `lineage vignette <https://alakazam.readthedocs.io/en/stable/vignettes/Lineage-Vignette/>`__. Enter into the ``R`` session::
 
  graph <- graphs[[1]]
 
@@ -145,7 +145,7 @@ Once built, we can visualize these trees using igraph. Here, we only visualize o
 
    Graph-formatted lineage tree of example clone 1.
 
-The nodes of this tree represent observed and inferred sequences, while the edge labels represent the number of heavy chain mutations between the nodes. If you prefer more bifurcating trees, these are also detailed in Alakazam's `lineage vignette <https://alakazam.readthedocs.io/en/stable/vignettes/Lineage-Vignette/#converting-between-graph-phylo-and-newick-formats>`__.
+The nodes of this tree represent observed and inferred sequences, while the edge labels represent the number of heavy chain mutations between the nodes. If you prefer  bifurcating trees, these are also detailed in Alakazam's `lineage vignette <https://alakazam.readthedocs.io/en/stable/vignettes/Lineage-Vignette/#converting-between-graph-phylo-and-newick-formats>`__.
 
 To get the sequence attributes of the observed and inferred nodes within the tree, enter::
 
