@@ -47,10 +47,10 @@ This webinar covers:
 
 * Quantification of selection pressure
 
-10X Genomics V(D)J Analysis
+10X Genomics BCR Repertoire Analysis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-For an example on how to process 10x data to be analyzed with Immcantation, visit our :ref:`10X Genomics V(D)J tutorial<10X-walkthrough>` or the `Parsing 10X Genomics V(D)J data Change-O reference page <https://changeo.readthedocs.io/en/stable/examples/10x.html>`_.
+For information on how to process 10X data to be analyzed with Immcantation, visit our :ref:`10X Genomics V(D)J sequence analysis tutorial<10X-walkthrough>` or the `Parsing 10X Genomics V(D)J data Change-O example page <https://changeo.readthedocs.io/en/stable/examples/10x.html>`_.
 
 
 Overview of B Cell Repertoire Analysis
