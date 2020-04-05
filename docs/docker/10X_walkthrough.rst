@@ -74,7 +74,7 @@ Clonal groups are B cells that descend from a common naive B cell ancestor. To g
 
 In the above section, we used a predefined clonal clustering threshold of ``0.1`` using the ``-x`` option in the ``changeo-10x`` script. This is not appropriate for all datasets. Current best practice is to find the appropriate threshold for a given dataset. This can be done automatically in the ``changeo-10x`` script by specifying ``-x auto``.
 
-Using ``-x auto`` to assign clones doesn't always work, however. If this command fails, there are other options for manually defining clones from the file ``filtered_contig_heavy_FUNCTIONAL-T.tab``. The first is by inspecting `a plot of sequence distances <https://shazam.readthedocs.io/en/stable/vignettes/DistToNearest-Vignette/>`__. You can then define clones manually using the chosen threshold (for example ``0.09``)::
+Using ``-x auto`` to assign clones doesn't always work, however. If this command fails, there are other options for manually defining clones from the file ``filtered_contig_heavy_FUNCTIONAL-T.tab``. The first is by inspecting `a plot of sequence distances <https://shazam.readthedocs.io/en/stable/vignettes/DistToNearest-Vignette/>`__. This is supplied in the file ``filtered_contig_threshold-plot.pdf``. You can then define clones manually using the chosen threshold (for example ``0.09``)::
 
  # Define heavy chain clones
  DefineClones.py -d filtered_contig_heavy_FUNCTIONAL-T.tab --act set --model ham \
