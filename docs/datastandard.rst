@@ -9,7 +9,7 @@ Both standards use tab-delimited file format files with a set of predefined colu
 AIRR Community Data Standard
 -------------------------------------------------------------------------------------------
 
-As of release x.x.x, the default file format is the AIRR-C format, as described by the Rearrangement 
+As of release 4.0.0, the default file format is the AIRR-C format, as described by the Rearrangement 
 Schema (version 1.2). To learn about this format, the valid field names and their expected values, visit the 
 AIRR-C `Rearrangement Schema documentation site <https://docs.airr-community.org/en/v1.2.1/datarep/rearrangements.html>`__.
 
@@ -17,6 +17,8 @@ AIRR-C `Rearrangement Schema documentation site <https://docs.airr-community.org
     AIRR Community Standardized Representations for Annotated Immune Repertoires.
     *Frontiers in Immunology. 9, 2206 (2018).*
     `doi\:10.3389/fimmu.2018.02206 <https://doi.org/10.3389/fimmu.2018.02206>`__
+    
+    
 
 Change-O Format
 -------------------------------------------------------------------------------------------
