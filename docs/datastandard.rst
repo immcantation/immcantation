@@ -36,11 +36,18 @@ Release 4.0.0 introduces two main changes that can potentially break Immcantatio
 In this  section we explain these changes and provide an example to show how to update pipelines to
 work with release 4.0.0.
 
-The first chage is the adoption of the AIRR Standard as the default format expected by the 
+The first change is the adoption of the AIRR Standard as the default format expected by the 
 tools, which implies default values in all functions and pipelines have been adjusted to use
 AIRR Standard values. Users upgrading to 4.0.0, can experience that workflows that relied 
 on default values now fail. The solution is to review the workflow and specify the correct 
-values for the data format used.
+values for the data format in use.
+
+The second change that can break workflows is that all outputs now use lower case
+column names. This has been introduced for style consistency with the AIRR Standard 
+format. User workflows that expect columns previously created in upper case, will now 
+break. The solution is to update the code to use the current lowe case values.
+
+This example demonstrates how to fix broken workflows as a result of these two changes. 
 
 .. parsed-literal::
 
@@ -58,8 +65,10 @@ values for the data format used.
    [10] "NP1_LENGTH"           "NP2_LENGTH"           "SAMPLE"              
    [13] "ISOTYPE"              "DUPCOUNT"             "CLONE"  
    
+   # Change 1: default values follow the AIRR Standard specification 
+   #
    # As of release 4.0.0, the command below doesn't work if the input data is in 
-   # Change-O format, because the default values in `distToNearest` are 
+   # Change-O format, because the default values in `distToNearest` are now
    # AIRR Standard values:
    #    sequence_column="junction"
    #    vCallColumn="v_call"
@@ -68,7 +77,27 @@ values for the data format used.
    db <- distToNearest(db)      
    
    # The solution is to specify the correct values: 
-   db <- distToNearest(db, sequence_column="JUNCTION", vCallColumn="V_CALL", jCallColumn="J_CALL")      
+   db <- distToNearest(db, sequence_column="JUNCTION", 
+                           vCallColumn="V_CALL", 
+                           jCallColumn="J_CALL")      
+                           
+    # Change 2: outputs are generated using lower case
+    #
+    # In previous releases, `distToNearest` added the column `DIST_NEAREST` to `db`.
+    # As of release 4.0.0, it adds `dist_nearest`.
+    # The command below doesn't work, because `db` doesn't have a column named
+    # `DIST_NEAREST`
+    threshold <- findThreshold(db$DIST_NEAREST)
+    
+    # The solution is to update the function call to use the correct name:
+    threshold <- findThreshold(db$dist_nearest)
+    
+    
+
+   
+
+
+
 
    
    
