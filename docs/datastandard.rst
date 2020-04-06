@@ -29,7 +29,7 @@ of `Change-O <https://changeo.readthedocs.io/en/latest/standard.html>`__.
     Change-O\: a toolkit for analyzing large-scale B cell immunoglobulin repertoire sequencing data.
     *Bioinformatics 2015; doi\: 10.1093/bioinformatics/btv359*
 
-Change of the default format in v4.0.0
+Adoption of the AIRR Standard in v4.0.0
 --------------------------------------------------------------------------------------------
 
 Release 4.0.0 introduces two main changes that can potentially break Immcantation pipelines. 
