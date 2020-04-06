@@ -30,8 +30,8 @@ Introductory webinar and jupyter notebook
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 For a detailed use example for each Immcantation tool see the
-`slides and example data <https://goo.gl/FpW3Sc>`__ from our introductory webinar series. 
-You can find a jupyter notebook version of the webinar `here <https://bitbucket.org/kleinstein/immcantation/src/default/training/>`_.
+`slides and example data <https://goo.gl/FpW3Sc>`_ from our introductory webinar series. 
+You can find a jupyter notebook version of the webinar `here <https://bitbucket.org/kleinstein/immcantation/src/default/training/>`_. I you don't want to execute the jupyter notebook yourself, you can explore the rendered version of the notebook `here <https://kleinstein.bitbucket.io/tutorials/intro-lab/index.html>`_.
 
 This webinar covers:
 
