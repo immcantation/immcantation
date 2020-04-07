@@ -22,7 +22,34 @@ AIRR Community Standard
 
 The default file format for all functions in Immcantation is the AIRR-C format as of release 4.0.0.
 To learn more about this format (including the valid field names and their expected values), visit the
-`AIRR-C Rearrangement Schema (v1.2) documentation <https://docs.airr-community.org/en/v1.2.1/datarep/rearrangements.html>`__.
+`AIRR-C Rearrangement Schema (v1.2) documentation <https://docs.airr-community.org/en/v1.2.1/datarep/rearrangements.html>`__. The `Change-O package documentation <https://changeo.readthedocs.io/en/latest/standard.html>`__ contains a table with mappings 
+between both standards. Some of the most frequently used translations are:
+
++------------------------+----------------+
+| AIRR                   | Change-O       |
++========================+================+
+| sequence_id            | SEQUENCE_ID    |
++------------------------+----------------+
+| sequence               | SEQUENCE_INPUT |
++------------------------+----------------+
+| sequence_alignment     | SEQUENCE_IMGT  |
++------------------------+----------------+
+| productive             | FUNCTIONAL     |
++------------------------+----------------+
+| v_call                 | V_CALL         |
++------------------------+----------------+ 
+| d_call                 | D_CALL         |
++------------------------+----------------+  
+| j_call                 | J_CALL         |
++------------------------+----------------+
+| junction_length        | JUNCTION_LENGTH|
++------------------------+----------------+
+| junction               | JUNCTION       |
++------------------------+----------------+
+| germline_alignment     | GERMLINE_IMGT  |
++------------------------+----------------+
+| clone_id               | CLONE          |
++------------------------+----------------+
 
     **Vander Heiden et al**
     AIRR Community Standardized Representations for Annotated Immune Repertoires.
