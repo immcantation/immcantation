@@ -57,7 +57,7 @@ The following R-based example demonstrates how to fix broken workflows as a resu
     db <- ExampleDbChangeo
 
     # Inspect the column names
-    > colnames(db)
+    colnames(db)
     [1] "SEQUENCE_ID"          "SEQUENCE_IMGT"        "GERMLINE_IMGT_D_MASK"
     [4] "V_CALL"               "V_CALL_GENOTYPED"     "D_CALL"
     [7] "J_CALL"               "JUNCTION"             "JUNCTION_LENGTH"
@@ -67,6 +67,8 @@ The following R-based example demonstrates how to fix broken workflows as a resu
     # CHANGE 1: default values follow the AIRR Standard specification
 
     db <- distToNearest(db)
+    Error in distToNearest(db) : The column junction was not found
+
 
     # As of release 4.0.0, the `distToNearest` command above doesn't work if the input data
     # is in Change-O format because the default values are now AIRR Standard values:
@@ -76,14 +78,26 @@ The following R-based example demonstrates how to fix broken workflows as a resu
     # These values don't match the column names in `db` as previously seen, so the command doesn't work
 
     # The solution is to specify the actual column names:
-    db <- distToNearest(db, sequence_column="JUNCTION",
+    db <- distToNearest(db, sequenceColumn="JUNCTION",
                             vCallColumn="V_CALL",
                             jCallColumn="J_CALL")
+    colnames(db)
+    [1] "SEQUENCE_ID"          "SEQUENCE_IMGT"        "GERMLINE_IMGT_D_MASK"
+    [4] "V_CALL"               "V_CALL_GENOTYPED"     "D_CALL"              
+    [7] "J_CALL"               "JUNCTION"             "JUNCTION_LENGTH"     
+    [10] "NP1_LENGTH"           "NP2_LENGTH"           "SAMPLE"              
+    [13] "ISOTYPE"              "DUPCOUNT"             "CLONE"               
+    [16] "dist_nearest"                            
 
     # CHANGE 2: outputs are generated using lower case
 
     threshold <- findThreshold(db$DIST_NEAREST)
-
+    Error in h.ucv.default(unique(distances), 4) : 
+      argument 'x' must be numeric and need at least 3 data points
+    In addition: Warning message:
+    Unknown or uninitialised column: 'DIST_NEAREST'. 
+    
+    
     # In previous releases, `distToNearest` added the column `DIST_NEAREST` to `db`.
     # As of release 4.0.0, it adds `dist_nearest`, so the command above
     # doesn't work, because `db` doesn't have a column named `DIST_NEAREST`
