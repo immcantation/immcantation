@@ -1,106 +1,92 @@
 Data Standards
 ===========================================================================================
 
-Immcantation supports both the original Change-O standard and the new
+Immcantation supports both the original `Change-O standard <https://changeo.readthedocs.io/en/latest/standard.html>`__ and the new
 `Adaptive Immune Receptor Repertoire (AIRR) <https://docs.airr-community.org/en/latest/index.html>`__
 standard developed by the AIRR Community (`AIRR-C <https://www.antibodysociety.org/the-airr-community/>`__).
-Both standards use tab-delimited file format files with a set of predefined column names.
+Both standards use tab-delimited file formats with sets of specific predefined column names.
 
-AIRR Community Data Standard
+Change-O Standard
 -------------------------------------------------------------------------------------------
 
-As of release 4.0.0, the default file format is the AIRR-C format, as described by the Rearrangement 
-Schema (version 1.2). To learn about this format, the valid field names and their expected values, visit the 
-AIRR-C `Rearrangement Schema documentation site <https://docs.airr-community.org/en/v1.2.1/datarep/rearrangements.html>`__.
-
-    **Vander Heiden et al**
-    AIRR Community Standardized Representations for Annotated Immune Repertoires.
-    *Frontiers in Immunology.    9, 2206 (2018).*
-    `doi\:10.3389/fimmu.2018.02206 <https://doi.org/10.3389/fimmu.2018.02206>`__
-    
-Change-O Format
--------------------------------------------------------------------------------------------
-
-The Change-O format is the original common data format developed to enable the integration of 
-the multiple tools ind the Immcantation framework. It is described in detail in the documentation
-of `Change-O <https://changeo.readthedocs.io/en/latest/standard.html>`__.
+The Change-O format is the original data format developed to enable the integration of
+multiple tools in the Immcantation framework. It is described in detail (along with the corresponding AIRR-C Standard equivalents) in the
+`Change-O package documentation <https://changeo.readthedocs.io/en/latest/standard.html>`__.
 
     **Gupta NT\*, Vander Heiden JA\*, Uduman M, Gadala-Maria D, Yaari G, Kleinstein SH.**
     Change-O\: a toolkit for analyzing large-scale B cell immunoglobulin repertoire sequencing data.
-    *Bioinformatics 2015; doi\: 10.1093/bioinformatics/btv359*
+    *Bioinformatics 2015*; `doi\: 10.1093/bioinformatics/btv359 <https://doi.org/10.1093/bioinformatics/btv359>`__
 
-Adoption of the AIRR Standard in v4.0.0
+AIRR Community Standard
+-------------------------------------------------------------------------------------------
+
+The default file format for all functions in Immcantation is the AIRR-C format as of release 4.0.0.
+To learn more about this format (including the valid field names and their expected values), visit the
+`AIRR-C Rearrangement Schema (v1.2) documentation <https://docs.airr-community.org/en/v1.2.1/datarep/rearrangements.html>`__.
+
+    **Vander Heiden et al**
+    AIRR Community Standardized Representations for Annotated Immune Repertoires.
+    *Frontiers in Immunology. 9, 2206 (2018).*
+    `doi\:10.3389/fimmu.2018.02206 <https://doi.org/10.3389/fimmu.2018.02206>`__
+
+
+Potential Workflow Changes
 --------------------------------------------------------------------------------------------
 
-Release 4.0.0 introduces two main changes that can potentially break Immcantation pipelines. 
-In this  section we explain these changes and provide an example to show how to update pipelines to
+Release 4.0.0 introduces two main changes that can potentially break existing Immcantation workflows.
+In this section, we explain these changes, give solutions and provide an example to show how to update workflows in order to properly
 work with release 4.0.0.
 
-The first change is the adoption of the AIRR Standard as the default format expected by the 
-tools, which implies default values in all functions and pipelines have been adjusted to use
-AIRR Standard values. Users upgrading to 4.0.0, can experience that workflows that relied 
-on default values now fail. The solution is to review the workflow and specify the correct 
-values for the data format in use.
+The first change is the adoption of the AIRR Standard as the default format expected by the
+tools (note that Change-O is still available as an option). The default values in **all functions and pipelines**
+have been adjusted to use this standard. Users upgrading to 4.0.0 may find that workflows that relied upon
+default values now fail. *The solution is to review the workflow and specify the correct values for the data format being used.*
 
-The second change that can break workflows is that all outputs now use lower case
-column names. This has been introduced for style consistency with the AIRR Standard 
-format. User workflows that expect columns previously created in upper case, will now 
-break. The solution is to update the code to use the current lowe case values.
+The second change that can break workflows is that **all outputs now use lowercase column names** for style consistency with the AIRR Standard
+format. This means that user workflows that expect columns to be in uppercase will now
+break. *The solution is to update the code to use the current lowercase values.*
 
-This example demonstrates how to fix broken workflows as a result of these two changes. 
+The following R-based example demonstrates how to fix broken workflows as a result of these two changes:
 
 .. parsed-literal::
 
-   library(alakazam)
-   library(shazam)
-    
-   # alakazam provides an example dataset in Change-O format
-   db <- ExampleDbChangeo
-   
-   # Inspect the column names 
-   > colnames(db)
-   [1] "SEQUENCE_ID"          "SEQUENCE_IMGT"        "GERMLINE_IMGT_D_MASK"
-   [4] "V_CALL"               "V_CALL_GENOTYPED"     "D_CALL"              
-   [7] "J_CALL"               "JUNCTION"             "JUNCTION_LENGTH"     
-   [10] "NP1_LENGTH"           "NP2_LENGTH"           "SAMPLE"              
-   [13] "ISOTYPE"              "DUPCOUNT"             "CLONE"  
-   
-   # Change 1: default values follow the AIRR Standard specification 
-   #
-   # As of release 4.0.0, the command below doesn't work if the input data is in 
-   # Change-O format, because the default values in `distToNearest` are now
-   # AIRR Standard values:
-   #    sequence_column="junction"
-   #    vCallColumn="v_call"
-   #    jCallColumn="j_call"
-   # These values don't match column names in `db`, therefore the command doesn't work
-   db <- distToNearest(db)      
-   
-   # The solution is to specify the correct values: 
-   db <- distToNearest(db, sequence_column="JUNCTION", 
-                           vCallColumn="V_CALL", 
-                           jCallColumn="J_CALL")      
-                           
-    # Change 2: outputs are generated using lower case
-    #
-    # In previous releases, `distToNearest` added the column `DIST_NEAREST` to `db`.
-    # As of release 4.0.0, it adds `dist_nearest`.
-    # The command below doesn't work, because `db` doesn't have a column named
-    # `DIST_NEAREST`
+    library(alakazam)
+    library(shazam)
+
+    # alakazam provides an example dataset in Change-O format
+    db <- ExampleDbChangeo
+
+    # Inspect the column names
+    > colnames(db)
+    [1] "SEQUENCE_ID"          "SEQUENCE_IMGT"        "GERMLINE_IMGT_D_MASK"
+    [4] "V_CALL"               "V_CALL_GENOTYPED"     "D_CALL"
+    [7] "J_CALL"               "JUNCTION"             "JUNCTION_LENGTH"
+    [10] "NP1_LENGTH"           "NP2_LENGTH"           "SAMPLE"
+    [13] "ISOTYPE"              "DUPCOUNT"             "CLONE"
+
+    # CHANGE 1: default values follow the AIRR Standard specification
+
+    db <- distToNearest(db)
+
+    # As of release 4.0.0, the `distToNearest` command above doesn't work if the input data
+    # is in Change-O format because the default values are now AIRR Standard values:
+    #    sequence_column="junction"
+    #    vCallColumn="v_call"
+    #    jCallColumn="j_call"
+    # These values don't match the column names in `db` as previously seen, so the command doesn't work
+
+    # The solution is to specify the actual column names:
+    db <- distToNearest(db, sequence_column="JUNCTION",
+                            vCallColumn="V_CALL",
+                            jCallColumn="J_CALL")
+
+    # CHANGE 2: outputs are generated using lower case
+
     threshold <- findThreshold(db$DIST_NEAREST)
-    
+
+    # In previous releases, `distToNearest` added the column `DIST_NEAREST` to `db`.
+    # As of release 4.0.0, it adds `dist_nearest`, so the command above
+    # doesn't work, because `db` doesn't have a column named `DIST_NEAREST`
+
     # The solution is to update the function call to use the correct name:
     threshold <- findThreshold(db$dist_nearest)
-    
-    
-
-   
-
-
-
-
-   
-   
-   
-
-
