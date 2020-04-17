@@ -54,12 +54,12 @@ To check that everything is properly configured, enter the following commands::
 
 If the first command doesn't return the expected output, you probably aren't inside the right (or any) Docker container. If the second doesn't return the expected output, you may not be running the Docker image from the correct directory.
 
-Assign gene segments and define clonal groups
+Assign V, D, and J genes and define clonal groups
 -------------------------------------------------------------------------------------------
 
 Most of the processing for 10X data can be handled by the ``changeo-10x`` script supplied in the Docker container. This script will automatically:
 
-+ `Assign V, D, and J segments using IgBLAST <https://changeo.readthedocs.io/en/stable/examples/igblast.html>`__
++ `Assign V, D, and J genes using IgBLAST <https://changeo.readthedocs.io/en/stable/examples/igblast.html>`__
 + `Convert IgBLAST output to Change-O format. <https://changeo.readthedocs.io/en/stable/examples/igblast.html#processing-the-output-of-igblast>`__
 + `Remove nonfunctional sequences <https://changeo.readthedocs.io/en/stable/examples/filtering.html>`__
 + Define clonal groups (see the :ref:`next section <x-clones>`)
@@ -94,11 +94,12 @@ It will also create a /logs directory containing:
 For a full listing of script options, see the `10X Genomics V(D)J annotation pipeline <https://immcantation.readthedocs.io/en/stable/docker/pipelines.html#x-genomics-v-d-j-annotation-pipeline>`__. It is also important to note that this pipeline uses the standard `IMGT <http://www.imgt.org/>`__ reference database of human alleles. To infer novel alleles and subject-specific genotypes, which would result in more accurate assignments, see `TIgGER <https://tigger.readthedocs.io/en/stable/vignettes/Tigger-Vignette/>`__.
 
 
+
 .. _x-clones:
 
 Define clonal groups manually
 -------------------------------------------------------------------------------------------
-Clonal groups are B cells that descend from a common naive B cell ancestor. To group sequences into inferred clonal groups, we cluster BCR sequences that have the same heavy chain V and J segments and same junction length. We next cluster sequences with similar junction regions, using either a `defined sequence distance cutoff <https://changeo.readthedocs.io/en/stable/examples/cloning.html>`__, or an `adaptive threshold <https://scoper.readthedocs.io/en/stable/>`__. When available, we can also split clonal groups that have `differing light chain V and J segments. <https://changeo.readthedocs.io/en/stable/examples/10x.html>`__
+Clonal groups are B cells that descend from a common naive B cell ancestor. To group sequences into inferred clonal groups, we cluster BCR sequences that have the same heavy chain V and J genes and same junction length. We next cluster sequences with similar junction regions, using either a `defined sequence distance cutoff <https://changeo.readthedocs.io/en/stable/examples/cloning.html>`__, or an `adaptive threshold <https://scoper.readthedocs.io/en/stable/>`__. When available, we can also split clonal groups that have `differing light chain V and J genes. <https://changeo.readthedocs.io/en/stable/examples/10x.html>`__
 
 In the previous section, we used a predefined clonal clustering threshold of ``0.1`` using the ``-x`` option in the ``changeo-10x`` script.
 *This is not appropriate for all datasets.* The current best practice is to find the appropriate threshold for a given dataset, which can be done automatically in the ``changeo-10x`` script by specifying ``-x auto``.
@@ -112,13 +113,13 @@ The first is by inspecting `a plot of sequence distances <https://shazam.readthe
 
 If the sequence distance plot is not bimodal, it may be more appropriate to instead use `SCOPer <https://scoper.readthedocs.io/en/stable/>`__ to assign clones using an adaptive threshold. Just be sure to name the output file ``filtered_contig_heavy_clone-pass.tab`` (to match the output of ``DefineClones.py``).
 
-Once we have defined clonal groups using heavy chains, we can split these groups based on whether or not they have differing light chain V and J gene segments::
+Once we have defined clonal groups using heavy chains, we can split these groups based on whether or not they have differing light chain V and J genes::
 
  # split heavy chain clones with different light chains
  light_cluster.py -d filtered_contig_heavy_clone-pass.tab -e filtered_contig_light_FUNCTIONAL-T.tab \
      -o filtered_contig_heavy_clone-light.tab
 
-We can also `reconstruct the heavy chain germline V and J segments <https://changeo.readthedocs.io/en/stable/examples/germlines.html>`__ (using the output file from the previous command)::
+We can also `reconstruct the heavy chain germline V and J genes <https://changeo.readthedocs.io/en/stable/examples/germlines.html>`__ (using the output file from the previous command)::
 
  # reconstruct heavy chain germline V and J sequences
  CreateGermlines.py -d filtered_contig_heavy_clone-light.tab -g dmask --cloned \
@@ -186,3 +187,15 @@ The nodes of this tree represent observed and inferred sequences, while the edge
 To get the sequence attributes of the observed and inferred nodes within the tree, enter::
 
  attributes <- data.frame(vertex_attr(graph))
+
+
+Merge Cell Ranger annotations
+-------------------------------------------------------------------------------------------
+As detailed in the `Change-O reference <https://changeo.readthedocs.io/en/stable/examples/10x.html#joining-change-o-data-with-10x-v-d-j-annotations>`__, it is also possible to directly merege Change-O data tables with annotation information from the Cell Ranger pipeline.
+
+
+Other Immcanation Training Resources
+-------------------------------------------------------------------------------------------
+Other traing material in using Immcanation is available, such as the
+`slides and example data <https://goo.gl/FpW3Sc>`__ from our introductory webinar series. 
+You can find a jupyter notebook version of the webinar `here <https://bitbucket.org/kleinstein/immcantation/src/default/training/>`_.
