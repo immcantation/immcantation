@@ -57,6 +57,14 @@
 
     prestoR <packages/prestor>
 
+.. toctree::
+    :maxdepth: 1
+    :caption: Other
+    :hidden:
+
+    10X Tutorial <docker/10X_walkthrough>
+
+
 .. _Welcome:
 
 Welcome to the Immcantation Portal!

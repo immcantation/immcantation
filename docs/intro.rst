@@ -26,7 +26,8 @@ Each tool in the framework has its own documentation site, with detailed usage i
 and examples. A good starting point to familiarize yourself with the framework is to
 follow one the tutorials listed here.
 
-Introductory webinar and Jupyter notebook
+
+Introductory Webinar and Jupyter Notebook
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 For a detailed use example for each Immcantation tool see the
@@ -47,10 +48,10 @@ This webinar covers:
 
 * Quantification of selection pressure
 
-10x analysis
+10X Genomics BCR Repertoire Analysis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-For an example on how to process 10x data to be analyzed with Immcantation, visit `Parsing 10X Genomics V(D)J data <https://changeo.readthedocs.io/en/stable/examples/10x.html>`_.
+For information on how to process 10X data to be analyzed with Immcantation, visit our :ref:`10X Genomics V(D)J sequence analysis tutorial<10X-walkthrough>` or the `Parsing 10X Genomics V(D)J data Change-O example page <https://changeo.readthedocs.io/en/stable/examples/10x.html>`_.
 
 
 Overview of B Cell Repertoire Analysis
