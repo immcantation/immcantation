@@ -62,7 +62,7 @@
     :caption: Other
     :hidden:
 
-    10X Tutorial <docker/10Xtutorial>
+    10X Tutorial <docker/10x_tutorial>
 
 
 .. _Welcome:
