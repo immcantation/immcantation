@@ -191,11 +191,11 @@ To get the sequence attributes of the observed and inferred nodes within the tre
 
 Merge Cell Ranger annotations
 -------------------------------------------------------------------------------------------
-As detailed in the `Change-O reference <https://changeo.readthedocs.io/en/stable/examples/10x.html#joining-change-o-data-with-10x-v-d-j-annotations>`__, it is also possible to directly merege Change-O data tables with annotation information from the Cell Ranger pipeline.
+As detailed in the `Change-O reference <https://changeo.readthedocs.io/en/stable/examples/10x.html#joining-change-o-data-with-10x-v-d-j-annotations>`__, it is also possible to directly merge Change-O data tables with annotation information from the Cell Ranger pipeline.
 
 
-Other Immcanation Training Resources
+Other Immcantation Training Resources
 -------------------------------------------------------------------------------------------
-Other traing material in using Immcanation is available, such as the
-`slides and example data <https://goo.gl/FpW3Sc>`__ from our introductory webinar series. 
-You can find a jupyter notebook version of the webinar `here <https://bitbucket.org/kleinstein/immcantation/src/default/training/>`_.
+Other training material in using Immcantation is available, such as the
+`slides and example data <https://goo.gl/FpW3Sc>`__ from our introductory webinar series.
+You can find a Jupyter notebook version of the webinar `here <https://bitbucket.org/kleinstein/immcantation/src/default/training/>`_.
