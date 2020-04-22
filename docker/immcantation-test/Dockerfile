@@ -101,7 +101,7 @@ RUN PHYLIP=$(versions get -n phylip) \
 # Install IgPhyML
 RUN IGPHYML=$(versions get -n igphyml) \
     && wget -q --show-progress --no-check-certificate \
-       https://bitbucket.org/kbhoehn/igphyml/get/${IGPHYML}.tar.gz -O igphyml-${IGPHYML}.tar.gz \
+       https://bitbucket.org/kleinstein/igphyml/get/${IGPHYML}.tar.gz -O igphyml-${IGPHYML}.tar.gz \
     && mkdir -p /usr/local/share/igphyml \
     && tar -zxf igphyml-${IGPHYML}.tar.gz -C /usr/local/share/igphyml --strip-components 1 \
     && (cd /usr/local/share/igphyml && ./make_phyml_blas_omp) \

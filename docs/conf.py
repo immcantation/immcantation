@@ -17,6 +17,7 @@ import sys
 import os
 import yaml
 import sphinx_rtd_theme
+import datetime
 
 # Prolog
 docker_versions = yaml.load(open('../docker/immcantation-release/Version.yaml', 'r'), Loader=yaml.FullLoader)
@@ -54,7 +55,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'Immcantation'
-copyright = 'Kleinstein Lab, Yale University, 2019'
+copyright = 'Kleinstein Lab, Yale University, ' + str(datetime.datetime.now().year)
 author = 'Kleinstein Lab'
 
 # The version info for the project you're documenting, acts as replacement for
