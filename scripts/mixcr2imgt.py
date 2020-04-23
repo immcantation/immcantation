@@ -8,7 +8,7 @@ import csv
 import sys
 import pandas as pd
 from changeo.IO import readGermlines
-from changeo.Gene import allele_regex, gene_regex, parseAllele, gapV
+from changeo.Gene import getGene, gapV
 
 # Parse arguments
 clone_file = sys.argv[1]
@@ -62,7 +62,7 @@ writer.writeheader()
 
 for i, row in data.iterrows():
     # Build dictionary of required fields
-    v_call = '%s*01' % parseAllele(row['allVHitsWithScore'], gene_regex)
+    v_call = '%s*01' % getGene(row['allVHitsWithScore'])
     db = {'SEQUENCE_ID': row['cloneId'],
           'SEQUENCE_VDJ': row['clonalSequence'],
           'V_GERM_START_VDJ': row['targetFrom'] + 1,

@@ -10,7 +10,7 @@ import sys
 from argparse import ArgumentParser
 
 # Presto and changeo imports
-from changeo.Gene import parseAllele, gene_regex
+from changeo.Gene import getGene
 
 
 def clusterLinkage(cell_series, group_series):
@@ -120,9 +120,9 @@ def lightCluster(heavy_file, light_file, out_file, doublets='drop', format='airr
 
     # generate a "cluster_dict" of CELL:CLONE dictionary from light df  (TODO: use receptor object V/J gene names)
     cluster_dict = clusterLinkage(light_df[cell_id],
-                                  light_df.apply(lambda row: 
-                                                 parseAllele(row[v_call], regex = gene_regex) + ',' + \
-                                                 parseAllele(row[j_call], regex = gene_regex) + ',' + \
+                                  light_df.apply(lambda row:
+                                                 getGene(row[v_call]) + ',' + \
+                                                 getGene(row[j_call]) + ',' + \
                                                  str(row[junction_length]) + ',' + row[clone_id], axis=1))
 
     # add assignments to heavy_df
