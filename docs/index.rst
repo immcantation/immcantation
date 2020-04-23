@@ -14,7 +14,7 @@
 
     Welcome <self>
     Getting Started <intro>
-    Data Standard <datastandard>
+    Data Standards <datastandards>
     Contact & Cite <about>
     Contributing <contrib>
 
@@ -56,6 +56,14 @@
     :hidden:
 
     prestoR <packages/prestor>
+
+.. toctree::
+    :maxdepth: 1
+    :caption: Other
+    :hidden:
+
+    10X Tutorial <docker/10x_tutorial>
+
 
 .. _Welcome:
 
