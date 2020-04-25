@@ -22,7 +22,7 @@ Please `contact us <https://immcantation.readthedocs.io/en/stable/about.html>`__
 Getting started
 -------------------------------------------------------------------------------------------
 
-First, `download and unzip the example data <https://drive.google.com/open?id=1oRyGG5mYZBGgS7nnhjmhJpsDHjsfRz_I>`__. It represents the Ig V(D)J sequences from the PBMCs of a healthy human donor, and is based on `data provided by 10X Genomics <https://support.10xgenomics.com/single-cell-vdj/datasets/3.0.0/vdj_v1_hs_pbmc2_b?>`__ and processed with their `Cell Ranger pipeline <https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/what-is-cell-ranger>`__. We added a few sequences for instructional purposes.
+First, `download and unzip the example data <https://drive.google.com/open?id=1iXuNPkaKWiKXfyIlJP6nhzEuCkHKCVOa>`__. It represents the Ig V(D)J sequences from the PBMCs of a healthy human donor, and is based on `data provided by 10X Genomics <https://support.10xgenomics.com/single-cell-vdj/datasets/3.0.0/vdj_v1_hs_pbmc2_b?>`__ and processed with their `Cell Ranger pipeline <https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/what-is-cell-ranger>`__. We added a few sequences for instructional purposes.
 
 Second, install `Docker <https://www.docker.com/products/docker-desktop>`__ (if you don't have it already) and
 download the `Immcantation Docker image <https://immcantation.readthedocs.io/en/stable/docker/intro.html>`__.
@@ -32,16 +32,16 @@ running before entering the following commands.
 
 In a terminal, enter::
 
- # download the current stable Immcantation Docker image (may take a few minutes)
- docker pull kleinstein/immcantation:3.0.0
+ # download the current Immcantation Docker image (may take a few minutes)
+ docker pull kleinstein/immcantation:devel
 
 Move to the directory where you've placed the example data and load it (the current directory) into the Docker image::
 
  # Linux/Mac OS X
- docker run -it --workdir /data -v $(pwd):/data:z kleinstein/immcantation:3.0.0 bash
+ docker run -it --workdir /data -v $(pwd):/data:z kleinstein/immcantation:devel bash
 
  # Windows
- docker run -it --workdir /data -v %cd%:/data:z kleinstein/immcantation:3.0.0 bash
+ docker run -it --workdir /data -v %cd%:/data:z kleinstein/immcantation:devel bash
 
 After running the previous command, you'll now be in the mounted /data folder inside the container.
 To check that everything is properly configured, enter the following commands::
@@ -132,47 +132,34 @@ This results in the file ``filtered_contig_heavy_germ-pass.tab`` which contains 
 
 Build lineage trees
 -------------------------------------------------------------------------------------------
-Lineage trees represent the series of shared and unshared mutations leading from clone's germline sequence to the observed sequence data. There are multiple ways of building and visualizing these trees. Currently the simplest way within Immcantation is to use `Alakazam <https://alakazam.readthedocs.io>`__, which is built around building maximum parsimony trees using `PHYLIP <http://evolution.genetics.washington.edu/phylip.html>`__. Alternatively, you can use `IgPhyML <https://igphyml.readthedocs.io>`__, which builds maximum likelihood trees with B cell specific models. For simplicity, we use Alakazam here (see Alakazam's `lineage vignette <https://alakazam.readthedocs.io/en/stable/vignettes/Lineage-Vignette/>`__ for more details).
+Lineage trees represent the series of shared and unshared mutations leading from clone's germline sequence to the observed sequence data. There are multiple ways of building and visualizing these trees. Currently the simplest way within Immcantation is to use `Alakazam <https://alakazam.readthedocs.io>`__, which is built around building maximum parsimony trees using `PHYLIP <http://evolution.genetics.washington.edu/phylip.html>`__. Alternatively, you can use `IgPhyML <https://igphyml.readthedocs.io>`__, which builds maximum likelihood trees with B cell specific models. Here we use IgPhyML (see IgPhyML's `main help page <https://igphyml.readthedocs.io>`__ for more details). 
 
-The commands in this section are meant to be entered into an ``R`` session. Open ``R`` within the Docker container using the command ``R``. Once inside the ``R`` session, load the appropriate libraries and read in the data::
+To run IgPhyML from within the Docker container, use the BuildTrees.py script::
+
+ BuildTrees.py -d filtered_contig_heavy_germ-pass.tsv --minseq 3 --clean all \
+    --igphyml --collapse --nproc 2 --asr 0.1
+
+This will collapse identical sequences (``--collapse``), remove clones with fewer than
+3 unique sequences (``--minseq 3``), run IgPhyML (``--igphyml``) parallelized across 2 cores 
+(``--nproc 2``). It will also reconstruct the maximum likelihood intermediate sequences for
+each node (``--asr 0.1``). The number following ``--asr`` controls the amount of reported model uncertainty (range from 0-1, see below). ``--clean all`` deletes all intermediate files from this operation. This is a computationally intensive task and may take a few minutes.
+
+The following commands in this section are meant to be entered into an ``R`` session. Open ``R`` within the Docker container using the command ``R``. Once inside the ``R`` session, load the appropriate libraries and read in the data::
 
  library(alakazam)
- library(igraph)
+ library(ape)
  library(dplyr)
 
  # read in the data
- db <- readChangeoDb("filtered_contig_heavy_germ-pass.tab")
+ db <- readIgphyml("filtered_contig_heavy_germ-pass_igphyml-pass.tab", format="phylo",
+            branches="mutations")
 
- # remove cells without a constant region call
- db <- filter(db, !is.na(C_CALL))
+Once built, we can visualize these trees using ape. Here, we only visualize the largest tree using the default parameters. However, there are many ways to make more lineage tree plots, as detailed in Alakazam's `lineage vignette <https://alakazam.readthedocs.io/en/stable/vignettes/Lineage-Vignette/>`__. Enter into the ``R`` session::
 
-We next process clones into objects that can be used by `Alakazam <https://alakazam.readthedocs.io>`__. This function will collapse all identical sequences within each clones, and has many options to specify which fields should be copied from the original data frame to the clone objects (i.e. ``text_fields``)::
-
- # Preprocess clones
- clones <- db %>%
-     group_by(CLONE) %>%
-     do(CHANGEO=makeChangeoClone(.,
-       id="CELL", text_fields=c("C_CALL"),
-         num_fields="CONSCOUNT"))
-
-We can now build the trees using `PHYLIP <http://evolution.genetics.washington.edu/phylip.html>`__. The variable ``dnapars_exec`` refers to the location of the PHYLIP program ``dnapars`` within the Docker container::
-
- dnapars_exec <- "/usr/local/bin/dnapars"
-
- # build trees
- graphs <- lapply(clones$CHANGEO, buildPhylipLineage,
-      dnapars_exec=dnapars_exec, rm_temp=TRUE)
-
- # remove trees with < 2 sequences
- graphs[sapply(graphs, is.null)] <- NULL
-
-Once built, we can visualize these trees using igraph. Here, we only visualize one tree using the default parameters. However, there are many ways to make more attractive lineage tree plots, as detailed in Alakazam's `lineage vignette <https://alakazam.readthedocs.io/en/stable/vignettes/Lineage-Vignette/>`__. Enter into the ``R`` session::
-
- graph <- graphs[[1]]
-
- # save tree as a png image in the data directory
- png("graph.png",width=6,height=6,unit="in",res=300)
- plot(graph,layout=layout_as_tree)
+  # save the largest tree as a png image in the data directory
+ png("graph.png",width=8,height=6,unit="in",res=300)
+ plot(db$trees[[1]],show.node.label=TRUE)
+ add.scale.bar(length=5)
  dev.off()
 
 .. figure:: ../_static/graph.png
@@ -180,13 +167,19 @@ Once built, we can visualize these trees using igraph. Here, we only visualize o
    :align: center
    :alt: graph
 
-   Graph-formatted lineage tree of example clone 1.
+   Lineage tree of example clone 1.
 
-The nodes of this tree represent observed and inferred sequences, while the edge labels represent the number of heavy chain mutations between the nodes. If you prefer  bifurcating trees, these are also detailed in Alakazam's `lineage vignette <https://alakazam.readthedocs.io/en/stable/vignettes/Lineage-Vignette/#converting-between-graph-phylo-and-newick-formats>`__.
+The internal nodes of this tree represent inferred intermediate sequences, while the edge lengths represent the expected number of heavy chain mutations between the nodes (see scale bar to left). If you prefer  more graph-based trees, these are also detailed in Alakazam's `lineage vignette <https://alakazam.readthedocs.io/en/stable/vignettes/Lineage-Vignette/#converting-between-graph-phylo-and-newick-formats>`__.
 
-To get the sequence attributes of the observed and inferred nodes within the tree, enter::
+The reconstructed intermediate sequences for each node shown in the tree are available in the file ``filtered_contig_heavy_germ-pass_igphyml-pass.fasta``. For instance, the sequence for node ``0_7`` with the highest probability is::
 
- attributes <- data.frame(vertex_attr(graph))
+ >0_7
+ CAGGTGCAGCTGGTGCAATCTGGGTCTGAGTTGAAGAAGCCTGGGGCCTCAGTGAAGGTTTCCTGCAAGACTTCTGGATACACCTTCACTGACTATGGTGTGAACTGGGTGCGACAGGCCCCTGGACAAGGGCTTGAGTGGATGGGATGGATCAACGCCTACACCGGGAACCCAACGTATGCCCAGGGCTTCACAGGACGGTTTGTCTTCTCCTTGGACACCTCTGTCCGCACGGCATATCTGCAGATCAGCAGCCTGAAGGCTGAGGACACTGCCGTGTATTACTGTGCGATTATCCATGATAGTAGTACTTGGAGTCCTTTTGACTACTGGGGCCAGGGAGCCCTGGTCACCGTCTCCTCAGTG
+
+Just because this sequence is the most probable (given the tree topology and model parameters) doesn't mean it's actually a very likely sequence. Each possible codon has a certain probability of occuring at each site in the sequence. The number following ``--asr`` in ``BuildTrees`` specifies the probability interval desired for each site. For instance, if ``--asr 0.8`` and the relative probability of codon ``ATG`` is 0.5 and ``ATA`` is 0.4, IgPhyML would return ``ATR``. The ``R`` is the `IUPAC ambiguous nucleotide <https://www.bioinformatics.org/sms/iupac.html>`__ for A and G. Repeating all the steps detailed above with ``--asr 0.9`` shows more ambiguity in the reconstruction, particularly in the CDR3 region::
+
+ >0_7
+ CAGGTGCAGCTGGTGCAATCTGGGTCTGAGTTGAAGAAGCCTGGGGCCTCAGTGAAGGTTTCCTGCAAGACTTCTGGATACACCTTCASTGACTATGGTGTGAACTGGGTGCGACAGGCCCCTGGACAAGGGCTTGAGTGGATGGGATGGATCAACGCCTACACCGGGAACCCAACGTATGCCCAGGGCTTCACAGGACGGTTTGTCTTCTCCTTGGACACCTCTGTCCGCACGGCATATCTGCAGATCAGCAGCCTGAAGGCTGAGGACACTGCCGTGTATTACTGTGCGATTATCCATGATAGTAGTACYTGGAGTCCTTTTGACTACTGGGGCCAGGGAGCCCTGGTCACCGTCTCCTCAGNN
 
 
 Merge Cell Ranger annotations
