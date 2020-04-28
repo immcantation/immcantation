@@ -8,7 +8,8 @@ import csv
 import sys
 import pandas as pd
 from changeo.IO import readGermlines
-from changeo.Gene import getGene, gapV
+from changeo.Gene import getGene
+from changeo.Alignment import gapV
 
 # Parse arguments
 clone_file = sys.argv[1]
