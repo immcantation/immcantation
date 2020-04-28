@@ -150,25 +150,24 @@ get_output() {
 
 @test "AlignRecords-across" {
     TEST="${BATS_TEST_NUMBER}-${BATS_TEST_DESCRIPTION}"
-	DB="${DATA_DIR}/db/HD13M-VH_clone-pass.tsv"
-	SEQ_FIELD="sequence_alignment germline_alignment"
+	DB="${DATA_DIR}/db/HD13M-VH_germ-pass.tsv"
+	SEQ_FIELD="sequence_alignment germline_alignment_d_mask"
     GROUP_FIELD="junction_length"
 	LOG="${RUN_DIR}/logs/${TEST}.log"
 	CONSOLE="${RUN_DIR}/console/${TEST}.out"
     OUTPUT=$(get_output ${TEST} ${OUTDIR} ${FAILED})
 
-
     run AlignRecords.py across -d $DB --sf $SEQ_FIELD --gf $GROUP_FIELD \
         --calls v d j --log $LOG --nproc $NPROC --format $FORMAT $OUTPUT
-
+        
     echo "$output" > $CONSOLE
 	[ "$status" -eq 0 ]
 }
 
 @test "AlignRecords-block" {
     TEST="${BATS_TEST_NUMBER}-${BATS_TEST_DESCRIPTION}"
-	DB="${DATA_DIR}/db/HD13M-VH_clone-pass.tsv"
-	SEQ_FIELD="sequence_alignment germline_alignment"
+	DB="${DATA_DIR}/db/HD13M-VH_germ-pass.tsv"
+	SEQ_FIELD="sequence_alignment germline_alignment_d_mask"
     GROUP_FIELD="clone_id"
 	LOG="${RUN_DIR}/logs/${TEST}.log"
 	CONSOLE="${RUN_DIR}/console/${TEST}.out"
@@ -176,15 +175,15 @@ get_output() {
 
     run AlignRecords.py block -d $DB --sf $SEQ_FIELD --gf $GROUP_FIELD \
         --calls v d j --log $LOG --nproc $NPROC --format $FORMAT $OUTPUT
-
+        
     echo "$output" > $CONSOLE
 	[ "$status" -eq 0 ]
 }
 
 @test "AlignRecords-within" {
     TEST="${BATS_TEST_NUMBER}-${BATS_TEST_DESCRIPTION}"
-	DB="${DATA_DIR}/db/HD13M-VH_clone-pass.tsv"
-	SEQ_FIELD="sequence germline_alignment"
+	DB="${DATA_DIR}/db/HD13M-VH_germ-pass.tsv"
+	SEQ_FIELD="sequence germline_alignment_d_mask"
     GROUP_FIELD="clone_id"
 	LOG="${RUN_DIR}/logs/${TEST}.log"
 	CONSOLE="${RUN_DIR}/console/${TEST}.out"
@@ -192,14 +191,14 @@ get_output() {
 
     run AlignRecords.py within -d $DB --sf $SEQ_FIELD \
         --log $LOG --nproc $NPROC --format $FORMAT $OUTPUT
-
+        
     echo "$output" > $CONSOLE
 	[ "$status" -eq 0 ]
 }
 
 @test "ConvertDb-airr" {
     TEST="${BATS_TEST_NUMBER}-${BATS_TEST_DESCRIPTION}"
-	DB="${DATA_DIR}/db/HD13M-VH_clone-pass.tsv"
+	DB="${DATA_DIR}/db/HD13M-VH_germ-pass.tsv"
 	CONSOLE="${RUN_DIR}/console/${TEST}.out"
     OUTPUT=$(get_output ${TEST} ${OUTDIR} false)
 
@@ -211,7 +210,7 @@ get_output() {
 
 @test "ConvertDb-changeo" {
     TEST="${BATS_TEST_NUMBER}-${BATS_TEST_DESCRIPTION}"
-	DB="${DATA_DIR}/db/HD13M-VH_clone-pass.tsv"
+	DB="${DATA_DIR}/db/HD13M-VH_germ-pass.tsv"
 	CONSOLE="${RUN_DIR}/console/${TEST}.out"
     OUTPUT=$(get_output ${TEST} ${OUTDIR} false)
 
@@ -223,14 +222,17 @@ get_output() {
 
 @test "ConvertDb-baseline" {
     TEST="${BATS_TEST_NUMBER}-${BATS_TEST_DESCRIPTION}"
-	DB="${DATA_DIR}/db/HD13M-VH_clone-pass.tsv"
+	DB="${DATA_DIR}/db/HD13M-VH_germ-pass.tsv"
 	ID_FIELD="sequence_id"
 	SEQ_FIELD="sequence_alignment"
+	GERM_FIELD="germline_alignment_d_mask"
+	META_FIELD="v_call j_call"
+	CLONE_FIELD="clone_id"
 	CONSOLE="${RUN_DIR}/console/${TEST}.out"
     OUTPUT=$(get_output ${TEST} ${OUTDIR} false)
 
-    run ConvertDb.py baseline -d $DB --if $ID_FIELD --sf $SEQUENCE_FIELD \
-        --gf GERMLINE_IMGT_D_MASK --mf V_CALL J_CALL --cf CLONE $OUTPUT
+    run ConvertDb.py baseline -d $DB --if $ID_FIELD --sf $SEQ_FIELD \
+        --gf $GERM_FIELD --mf $META_FIELD --cf $CLONE_FIELD $OUTPUT
 
     echo "$output" > $CONSOLE
 	[ "$status" -eq 0 ]
@@ -244,7 +246,7 @@ get_output() {
 	CONSOLE="${RUN_DIR}/console/${TEST}.out"
     OUTPUT=$(get_output ${TEST} ${OUTDIR} false)
 
-    run ConvertDb.py fasta -d $DB --if $ID_FIELD --sf $SEQUENCE_FIELD \
+    run ConvertDb.py fasta -d $DB --if $ID_FIELD --sf $SEQ_FIELD \
         --mf V_CALL J_CALL $OUTPUT
 
     echo "$output" > $CONSOLE
@@ -253,7 +255,7 @@ get_output() {
 
 @test "ConvertDb-genbank" {
     TEST="${BATS_TEST_NUMBER}-${BATS_TEST_DESCRIPTION}"
-	DB="${DATA_DIR}/db/HD13M-VH_clone-pass.tsv"
+	DB="${DATA_DIR}/db/HD13M-VH_germ-pass.tsv"
 	SBT="${DATA_DIR}/db/template.sbt"
 	YAML="${DATA_DIR}/db/genbank.yaml"
 	CREGION_FIELD="c_call"
