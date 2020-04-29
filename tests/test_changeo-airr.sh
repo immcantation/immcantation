@@ -93,8 +93,8 @@ get_output() {
 
 @test "MakeDb-imgt" {
     TEST="${BATS_TEST_NUMBER}-${BATS_TEST_DESCRIPTION}"
-	READS="${DATA_DIR}/db/S43_atleast-2.fasta"
-	ALIGNMENT="${DATA_DIR}/db/S43_atleast-2.txz"
+	READS="${DATA_DIR}/db/HD13M-VH.fasta"
+	ALIGNMENT="${DATA_DIR}/db/HD13M-VH.txz"
 	LOG="${RUN_DIR}/logs/${TEST}.log"
 	CONSOLE="${RUN_DIR}/console/${TEST}.out"
     OUTPUT=$(get_output ${TEST} ${OUTDIR} ${FAILED})
