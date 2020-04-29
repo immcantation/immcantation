@@ -40,6 +40,7 @@ RUN dnf -y update && dnf install -y \
     perl \
     python3 \
     python3-biopython \
+    python3-GitPython \
     python3-hglib \
     python3-numpy \
     python3-pandas \

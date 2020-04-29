@@ -3,6 +3,7 @@
 Versioning helper script
 """
 # Imports
+import git
 import hglib
 import re
 import sys
@@ -44,10 +45,10 @@ def readVersions(version_file=default_version_file):
     Read a YAML version file
 
     Arguments:
-      version_file : YAML file containing version information.
+      version_file (str): YAML file containing version information.
 
     Returns:
-      Version : Version object.
+      Version: Version object.
     """
     with open(version_file, 'r') as handle:
         return Version(yaml.load(handle, Loader=yaml.FullLoader))
@@ -58,7 +59,7 @@ def inspectVersions(version_file=default_version_file):
     Determine installed package versions
 
     Arguments:
-      version_file : YAML file containing version information.
+      version_file (str): YAML file containing version information.
 
     Returns:
       dict: version strings.
@@ -207,9 +208,9 @@ def updateChangeset(package, repo, version_file):
     Print version for package
 
     Arguments:
-      package : name of the package to return version information for.
-      repo : path to mercurial repository.
-      version_file : YAML file containing version information.
+      package (str): name of the package to return version information for.
+      repo (str): path to mercurial repository.
+      version_file (str): YAML file containing version information.
 
     Returns:
       str: changeset updated to.
@@ -219,9 +220,17 @@ def updateChangeset(package, repo, version_file):
     changeset = getChangeset(version, repo=repo)
 
     # Update repo
-    if changeset is not None:
+    if changeset is None:
+        return None
+
+    try:
+        client = git.Repo(repo)
+        client.git.checkout(changeset)
+    except git.exc.InvalidGitRepositoryError:
         client = hglib.open(repo)
         client.update(changeset)
+    except:
+        exit('Repository %s cannot be opened.' % repo)
 
     return(changeset)
 
@@ -231,8 +240,8 @@ def getChangeset(version, repo):
     Print version for package
 
     Arguments:
-      version : Version string to search in tags for.
-      repo : Path to mercurial repository.
+      version (str): Version string to search in tags for.
+      repo (str): Path to mercurial repository.
 
     Returns:
       str: changeset.
@@ -244,28 +253,28 @@ def getChangeset(version, repo):
     # Build regex
     v = re.compile(r'(^|[\svV])' + version + r'([\s-]|$)')
 
-    # Open repo and retrieve tags
-    client = hglib.open(repo)
-    tags = client.tags()
-
-    # Check for version number in tags
     changeset = None
-    for x in tags:
-        if v.search(x[0].decode('utf-8')):
-            changeset = '%i:%s' % (x[1], x[2].decode('utf-8'))
-            break
-    print(changeset)
+    try:
+        client = git.Repo(repo)
+        tags = client.tags
+        for x in tags:
+            if v.search(x.name):
+                changeset = '%s' % x.commit
+                break
+    except git.exc.InvalidGitRepositoryError:
+        # Open repo and retrieve tags
+        client = hglib.open(repo)
+        tags = client.tags()
 
-    # from git import Repo
-    # r = Repo('~/workspace/prestor')
-    # tags = r.tags
-    # # r.tags[0].name
-    # changeset = None
-    # for x in tags:
-    #     if v.search(x.name):
-    #         changeset = '%s' % x.commit
-    #         break
-    # print(changeset)
+        # Check for version number in tags
+        for x in tags:
+            if v.search(x[0].decode('utf-8')):
+                changeset = '%i:%s' % (x[1], x[2].decode('utf-8'))
+                break
+    except:
+        exit('Repository %s cannot be opened.' % repo)
+
+    print(changeset)
 
     return changeset
 
@@ -275,8 +284,8 @@ def getVersion(package=default_package, version_file=default_version_file):
     Print version for package
 
     Arguments:
-      package : name of the package to return version information for.
-      version_file : YAML file containing version information.
+      package (str): name of the package to return version information for.
+      version_file (str): YAML file containing version information.
 
     Returns:
       str: version.
@@ -293,10 +302,10 @@ def reportVersions(version_file=default_version_file):
     Report all versions
 
     Arguments:
-      version_file : YAML file containing version information.
+      version_file (str): YAML file containing version information.
 
     Returns:
-      str : version.
+      str: version.
     """
     # Fetch versions
     versions = inspectVersions(version_file=version_file)
@@ -334,24 +343,24 @@ def getArgParser():
                             default=default_version_file, help='YAML version file.')
     parser_get.set_defaults(main=getVersion)
 
-    # Get mercurial changeset
+    # Get repo changeset
     parser_cset = subparsers.add_parser('changeset',
-                                        help='Retrieve changeset for a tagged version from a mercurial repository.',
-                                        description='Retrieve changeset for a tagged version from a mercurial repository.')
+                                        help='Retrieve changeset for a tagged version from a git or mercurial repository.',
+                                        description='Retrieve changeset for a tagged version from a git or mercurial repository.')
     parser_cset.add_argument('-v', action='store', dest='version', type=str, required=True,
                              help='Version number.')
     parser_cset.add_argument('-r', action='store', dest='repo', type=str, required=True,
-                             help='Path to the mercurial repository.')
+                             help='Path to the mercurial or git repository.')
     parser_cset.set_defaults(main=getChangeset)
 
-    # Update mercurial changeset
+    # Update repo changeset
     parser_update = subparsers.add_parser('update',
-                                          help='Update a mercurial repository to tagged version number from version file.',
-                                          description='Update a mercurial repository to tagged version number from version file.')
+                                          help='Update a git or mercurial repository to tagged version number from version file.',
+                                          description='Update a git or mercurial repository to tagged version number from version file.')
     parser_update.add_argument('-n', action='store', dest='package', type=str, required=True,
                                help='Package name.')
     parser_update.add_argument('-r', action='store', dest='repo', type=str, required=True,
-                               help='Path to the mercurial repository.')
+                               help='Path to the git or mercurial repository.')
     parser_update.add_argument('-f', action='store', dest='version_file', type=str,
                                default=default_version_file, help='YAML version file.')
     parser_update.set_defaults(main=updateChangeset)
