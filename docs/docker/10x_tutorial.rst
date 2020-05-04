@@ -30,18 +30,22 @@ For some operating systems, it may be necessary to use super-user privileges (su
 `Docker Desktop <https://hub.docker.com/editions/community/docker-ce-desktop-windows>`__
 running before entering the following commands.
 
-In a terminal, enter::
+In a terminal, enter:
+
+.. parsed-literal::
 
  # download the current Immcantation Docker image (may take a few minutes)
- docker pull kleinstein/immcantation:devel
+ docker pull kleinstein/immcantation:|docker-version|
 
-Within the terminal, move to the directory where you've placed the example data using the command ``cd``. Load the current directory into the Docker image::
+Within the terminal, move to the directory where you've placed the example data using the command ``cd``. Load the current directory into the Docker image:
+
+.. parsed-literal::
 
  # Linux/Mac OS X
- docker run -it --workdir /data -v $(pwd):/data:z kleinstein/immcantation:devel bash
+ docker run -it --workdir /data -v $(pwd):/data:z kleinstein/immcantation:|docker-version| bash
 
  # Windows
- docker run -it --workdir /data -v %cd%:/data:z kleinstein/immcantation:devel bash
+ docker run -it --workdir /data -v %cd%:/data:z kleinstein/immcantation:|docker-version| bash
 
 After running the previous command, you'll now be in the mounted /data folder inside the container.
 To check that everything is properly configured, enter the following commands::
