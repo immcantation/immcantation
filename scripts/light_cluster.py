@@ -147,7 +147,7 @@ if __name__ == "__main__":
                         help='Output file name.')
     parser.add_argument('--doublets', dest='doublets', default='drop', choices=('drop', 'count'),
                         help='Either drop cells with multiple heavy chains or keep the best one my UMI count.')
-    parser.add_argument('--format', dest='format', default='changeo', choices=('changeo', 'airr'),
+    parser.add_argument('--format', dest='format', default='airr', choices=('airr','changeo'),
                         help='File format.')
 
     # Parse arguments and call main
