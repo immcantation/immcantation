@@ -76,11 +76,11 @@ The ``-o`` option refers to the output directory of the processing. The ``-s`` a
 
 This script will create the following files (in addition to ``filtered_contig_annotations.csv`` and ``filtered_contig.fasta``):
 
-+ ``filtered_contig_heavy_FUNCTIONAL-F.tab``
-+ ``filtered_contig_heavy_germ-pass.tab``
++ ``filtered_contig_heavy_productive-F.tsv``
++ ``filtered_contig_heavy_germ-pass.tsv``
 + ``filtered_contig_igblast.fmt7``
-+ ``filtered_contig_light_FUNCTIONAL-F.tab``
-+ ``filtered_contig_light_FUNCTIONAL-T.tab``
++ ``filtered_contig_light_productive-F.tsv``
++ ``filtered_contig_light_productive-T.tsv``
 + ``filtered_contig_threshold-plot.pdf``
 + ``temp_files.tar.gz``
 
@@ -103,32 +103,32 @@ Clonal groups are B cells that descend from a common naive B cell ancestor. To g
 
 In the previous section, we used a predefined clonal clustering threshold of ``0.1`` using the ``-x`` option in the ``changeo-10x`` script.
 *This is not appropriate for all datasets.* The current best practice is to find the appropriate threshold for a given dataset, which can be done automatically in the ``changeo-10x`` script by specifying ``-x auto``.
-However, using ``-x auto`` to assign clones doesn't always work. If this command fails, there are other options for manually defining clones from the file ``filtered_contig_heavy_FUNCTIONAL-T.tab``.
+However, using ``-x auto`` to assign clones doesn't always work. If this command fails, there are other options for manually defining clones from the file ``filtered_contig_heavy_productive-T.tsv``.
 
 The first is by inspecting `a plot of sequence distances <https://shazam.readthedocs.io/en/stable/vignettes/DistToNearest-Vignette/>`__. This is supplied in the file ``filtered_contig_threshold-plot.pdf``. You can then define clones manually using the chosen threshold (e.g. ``0.09``)::
 
  # define heavy chain clones
- DefineClones.py -d filtered_contig_heavy_FUNCTIONAL-T.tab --act set --model ham \
+ DefineClones.py -d filtered_contig_heavy_productive-T.tsv --act set --model ham \
      --norm len --dist 0.09 --outname filtered_contig_heavy
 
-If the sequence distance plot is not bimodal, it may be more appropriate to instead use `SCOPer <https://scoper.readthedocs.io/en/stable/>`__ to assign clones using an adaptive threshold. Just be sure to name the output file ``filtered_contig_heavy_clone-pass.tab`` (to match the output of ``DefineClones.py``).
+If the sequence distance plot is not bimodal, it may be more appropriate to instead use `SCOPer <https://scoper.readthedocs.io/en/stable/>`__ to assign clones using an adaptive threshold. Just be sure to name the output file ``filtered_contig_heavy_clone-pass.tsv`` (to match the output of ``DefineClones.py``).
 
 Once we have defined clonal groups using heavy chains, we can split these groups based on whether or not they have differing light chain V and J genes::
 
  # split heavy chain clones with different light chains
- light_cluster.py -d filtered_contig_heavy_clone-pass.tab -e filtered_contig_light_FUNCTIONAL-T.tab \
-     -o filtered_contig_heavy_clone-light.tab
+ light_cluster.py -d filtered_contig_heavy_clone-pass.tsv -e filtered_contig_light_productive-T.tsv \
+     -o filtered_contig_heavy_clone-light.tsv
 
 We can also `reconstruct the heavy chain germline V and J genes <https://changeo.readthedocs.io/en/stable/examples/germlines.html>`__ (using the output file from the previous command)::
 
  # reconstruct heavy chain germline V and J sequences
- CreateGermlines.py -d filtered_contig_heavy_clone-light.tab -g dmask --cloned \
+ CreateGermlines.py -d filtered_contig_heavy_clone-light.tsv -g dmask --cloned \
     -r /usr/local/share/germlines/imgt/human/vdj/imgt_human_IGHV.fasta \
     /usr/local/share/germlines/imgt/human/vdj/imgt_human_IGHD.fasta \
     /usr/local/share/germlines/imgt/human/vdj/imgt_human_IGHJ.fasta \
     --outname filtered_contig_heavy
 
-This results in the file ``filtered_contig_heavy_germ-pass.tab`` which contains heavy chain sequence information derived from ``10x_igblast_db-pass.tab`` with an additional column ``CLONE`` specifying the clonal group of the sequence.
+This results in the file ``filtered_contig_heavy_germ-pass.tsv`` which contains heavy chain sequence information derived from ``10x_igblast_db-pass.tsv`` with an additional column ``clone_id`` specifying the clonal group of the sequence.
 
 Build lineage trees
 -------------------------------------------------------------------------------------------
@@ -151,7 +151,7 @@ The following commands in this section are meant to be entered into an ``R`` ses
  library(dplyr)
 
  # read in the data
- db <- readIgphyml("filtered_contig_heavy_germ-pass_igphyml-pass.tab", format="phylo",
+ db <- readIgphyml("filtered_contig_heavy_germ-pass_igphyml-pass.tsv", format="phylo",
             branches="mutations")
 
 Once built, we can visualize these trees using ape. Here, we only visualize the largest tree using the default parameters. However, there are many ways to make more lineage tree plots, as detailed in Alakazam's `lineage vignette <https://alakazam.readthedocs.io/en/stable/vignettes/Lineage-Vignette/>`__. Enter into the ``R`` session::
