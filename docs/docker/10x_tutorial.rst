@@ -35,7 +35,7 @@ In a terminal, enter::
  # download the current Immcantation Docker image (may take a few minutes)
  docker pull kleinstein/immcantation:devel
 
-Move to the directory where you've placed the example data and load it (the current directory) into the Docker image::
+Within the terminal, move to the directory where you've placed the example data using the command ``cd``. Load the current directory into the Docker image::
 
  # Linux/Mac OS X
  docker run -it --workdir /data -v $(pwd):/data:z kleinstein/immcantation:devel bash
@@ -47,7 +47,7 @@ After running the previous command, you'll now be in the mounted /data folder in
 To check that everything is properly configured, enter the following commands::
 
  BuildTrees.py --version
- # should return BuildTrees.py: 0.4.6 2019.07.19
+ # should return BuildTrees.py: 1.0.0 2020.05.01
 
  ls
  # should show filtered_contig_annotations.csv and filtered_contig.fasta, possibly others
@@ -103,7 +103,7 @@ Clonal groups are B cells that descend from a common naive B cell ancestor. To g
 
 In the previous section, we used a predefined clonal clustering threshold of ``0.1`` using the ``-x`` option in the ``changeo-10x`` script.
 *This is not appropriate for all datasets.* The current best practice is to find the appropriate threshold for a given dataset, which can be done automatically in the ``changeo-10x`` script by specifying ``-x auto``.
-However, using ``-x auto`` to assign clones doesn't always work. If this command fails, there are other options for manually defining clones from the file ``filtered_contig_heavy_productive-T.tsv``.
+However, using ``-x auto`` to assign clones doesn't always work. If this command fails, there are other options for manually defining clones from the file ``filtered_contig_heavy_productive-T.tsv``. If ``changeo-10x`` is run successfully above, this file will be in ``temp_files.tar.gz``. Otherwise it will be in the current working directory.
 
 The first is by inspecting `a plot of sequence distances <https://shazam.readthedocs.io/en/stable/vignettes/DistToNearest-Vignette/>`__. This is supplied in the file ``filtered_contig_threshold-plot.pdf``. You can then define clones manually using the chosen threshold (e.g. ``0.09``)::
 
@@ -111,7 +111,7 @@ The first is by inspecting `a plot of sequence distances <https://shazam.readthe
  DefineClones.py -d filtered_contig_heavy_productive-T.tsv --act set --model ham \
      --norm len --dist 0.09 --outname filtered_contig_heavy
 
-If the sequence distance plot is not bimodal, it may be more appropriate to instead use `SCOPer <https://scoper.readthedocs.io/en/stable/>`__ to assign clones using an adaptive threshold. Just be sure to name the output file ``filtered_contig_heavy_clone-pass.tsv`` (to match the output of ``DefineClones.py``).
+If the sequence distance plot is not bimodal, it may be more appropriate to instead use `SCOPer <https://scoper.readthedocs.io/en/stable/>`__ to assign clones using an adaptive threshold. For this tutorial, to be able to copy/and paste the commands as provided here to name the output file ``filtered_contig_heavy_clone-pass.tsv`` (to match the output of ``DefineClones.py``).
 
 Once we have defined clonal groups using heavy chains, we can split these groups based on whether or not they have differing light chain V and J genes::
 
