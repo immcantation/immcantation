@@ -151,7 +151,7 @@ The following commands in this section are meant to be entered into an ``R`` ses
  library(dplyr)
 
  # read in the data
- db <- readIgphyml("filtered_contig_heavy_germ-pass_igphyml-pass.tsv", format="phylo",
+ db <- readIgphyml("filtered_contig_heavy_germ-pass_igphyml-pass.tab", format="phylo",
             branches="mutations")
 
 Once built, we can visualize these trees using ape. Here, we only visualize the largest tree using the default parameters. However, there are many ways to make more lineage tree plots, as detailed in Alakazam's `lineage vignette <https://alakazam.readthedocs.io/en/stable/vignettes/Lineage-Vignette/>`__. Enter into the ``R`` session::
