@@ -1,8 +1,8 @@
 immcantation:
   version:  devel
-  date:     2020.04.01
+  date:     2020.05.05
 release:
-  presto:   0.5.13
+  presto:   0.6.0
   changeo:  1.0.0
   alakazam: 1.0.0
   shazam:   1.0.0
