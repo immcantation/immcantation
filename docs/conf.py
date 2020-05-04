@@ -13,8 +13,6 @@
 # All configuration values have a default; values that are commented out
 # serve to show the default.
 
-import sys
-import os
 import yaml
 import sphinx_rtd_theme
 import datetime
@@ -31,7 +29,7 @@ rst_prolog = '.. |docker-version| replace:: %s' % docker_versions['immcantation'
 # -- General configuration ------------------------------------------------
 
 # If your documentation needs a minimal Sphinx version, state it here.
-needs_sphinx = '1.6'
+needs_sphinx = '1.8'
 
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
@@ -99,8 +97,9 @@ exclude_patterns = ['_build']
 # output. They are ignored by default.
 #show_authors = False
 
-# The name of the Pygments (syntax highlighting) style to use.
-pygments_style = 'sphinx'
+# Syntax highlighting The name of the Pygments (syntax highlighting) style to use.
+highlight_language = 'bash'
+pygments_style = 'bw'
 
 # A list of ignored prefixes for module index sorting.
 #modindex_common_prefix = []
@@ -148,6 +147,9 @@ html_favicon = "_static/immcantation.ico"
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
+
+# Custom CSS
+# html_css_files = ['override.css']
 
 # Add any extra paths that contain custom files (such as robots.txt or
 # .htaccess) here, relative to this directory. These files are copied

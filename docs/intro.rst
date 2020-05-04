@@ -32,7 +32,10 @@ Introductory Webinar and Jupyter Notebook
 
 For a detailed use example for each Immcantation tool see the
 `slides and example data <https://goo.gl/FpW3Sc>`_ from our introductory webinar series. 
-You can find a Jupyter notebook version of the webinar `in the repository <https://bitbucket.org/kleinstein/immcantation/src/default/training/>`_. If you don't want to execute the Jupyter notebook yourself, you can explore a `website version of it here <https://kleinstein.bitbucket.io/tutorials/intro-lab/index.html>`_.
+You can find a Jupyter notebook version of the webinar `in the repository <https://bitbucket.org/kleinstein/immcantation/src/default/training/>`_.
+If you don't want to execute the Jupyter notebook yourself, you can explore a
+`website version of it here <https://kleinstein.bitbucket.io/tutorials/intro-lab/index.html>`_.
+
 
 This webinar covers:
 
@@ -51,7 +54,9 @@ This webinar covers:
 10X Genomics BCR Repertoire Analysis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-For information on how to process 10X data to be analyzed with Immcantation, visit our :ref:`10X Genomics V(D)J sequence analysis tutorial<10X-walkthrough>` or the `Parsing 10X Genomics V(D)J data Change-O example page <https://changeo.readthedocs.io/en/stable/examples/10x.html>`_.
+For information on how to process 10X data to be analyzed with Immcantation, visit our
+:ref:`10X Genomics V(D)J sequence analysis tutorial <10X-Tutorial>` or the
+`Parsing 10X Genomics V(D)J data Change-O example page <https://changeo.readthedocs.io/en/stable/examples/10x.html>`_.
 
 
 Overview of B Cell Repertoire Analysis
