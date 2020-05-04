@@ -11,7 +11,7 @@ This tutorial is a basic walkthrough for defining B cell clonal families and bui
 **It is intended for users without prior experience with Immcantation.**
 If you are familiar with Immcantation, then `this page <https://changeo.readthedocs.io/en/stable/examples/10x.html>`__ may be more useful.
 
-Knowledge of basic command line usage is assumed.
+*Knowledge of basic command line usage is assumed.*
 Please check out the individual documentation sites for the functions detailed in this tutorial before using them on your own data.
 For simplicity, this tutorial will use the `Immcantation Docker image <https://immcantation.readthedocs.io/en/stable/docker/intro.html>`__ which contains all necessary software.
 It is also possible to install the packages being used separately (see `pRESTO <http://presto.readthedocs.io>`__, `Change-O <http://changeo.readthedocs.io>`__, and `Alakazam <http://alakazam.readthedocs.io>`__).
@@ -30,22 +30,18 @@ For some operating systems, it may be necessary to use super-user privileges (su
 `Docker Desktop <https://hub.docker.com/editions/community/docker-ce-desktop-windows>`__
 running before entering the following commands.
 
-In a terminal, enter:
-
-.. parsed-literal::
+In a terminal, enter::
 
  # download the current Immcantation Docker image (may take a few minutes)
- docker pull kleinstein/immcantation:|docker-version|
+ docker pull kleinstein/immcantation:devel
 
-Within the terminal, move to the directory where you've placed the example data using the command ``cd``. Load the current directory into the Docker image:
-
-.. parsed-literal::
+Within the terminal, move to the directory where you've placed the example data using the command ``cd``. Load the current directory into the Docker image::
 
  # Linux/Mac OS X
- docker run -it --workdir /data -v $(pwd):/data:z kleinstein/immcantation:|docker-version| bash
+ docker run -it --workdir /data -v $(pwd):/data:z kleinstein/immcantation:devel bash
 
  # Windows
- docker run -it --workdir /data -v %cd%:/data:z kleinstein/immcantation:|docker-version| bash
+ docker run -it --workdir /data -v %cd%:/data:z kleinstein/immcantation:devel bash
 
 After running the previous command, you'll now be in the mounted /data folder inside the container.
 To check that everything is properly configured, enter the following commands::
@@ -56,7 +52,7 @@ To check that everything is properly configured, enter the following commands::
  ls
  # should show filtered_contig_annotations.csv and filtered_contig.fasta, possibly others
 
-If the first command doesn't return the expected output, you probably aren't inside the right (or any) Docker container. If the second doesn't return the expected output, you may not be running the Docker image from the correct directory.
+If the first command doesn't return the expected output, you probably aren't inside the right (or any) Docker container. If the second doesn't return the expected output, you may not be running the Docker image from the correct directory. Exit the image by typing ``exit`` then try again by navigating to the proper directory and rerunning the command above to enter the Docker image again.
 
 Assign V, D, and J genes and define clonal groups
 -------------------------------------------------------------------------------------------
@@ -70,7 +66,7 @@ Most of the processing for 10X data can be handled by the ``changeo-10x`` script
 + `Reconstruct heavy chain germline V and J sequences. <https://changeo.readthedocs.io/en/stable/examples/germlines.html>`__
 + Gather and compress intermediate files
 
-To run this script on the example dataset, enter the following command in the Docker container::
+To run this script on the example dataset, enter the following command in the Docker container (the ``\`` just indicates a new line for visual clarity)::
 
  # run 10X processing script
  changeo-10x -o . -s filtered_contig.fasta -a filtered_contig_annotations.csv \
@@ -103,11 +99,11 @@ For a full listing of script options, see the `10X Genomics V(D)J annotation pip
 
 Define clonal groups manually
 -------------------------------------------------------------------------------------------
-Clonal groups are B cells that descend from a common naive B cell ancestor. To group sequences into inferred clonal groups, we cluster BCR sequences that have the same heavy chain V and J genes and same junction length. We next cluster sequences with similar junction regions, using either a `defined sequence distance cutoff <https://changeo.readthedocs.io/en/stable/examples/cloning.html>`__, or an `adaptive threshold <https://scoper.readthedocs.io/en/stable/>`__. When available, we can also split clonal groups that have `differing light chain V and J genes. <https://changeo.readthedocs.io/en/stable/examples/10x.html>`__
+Clonal groups are B cells that descend from a common naive B cell ancestor. To group sequences into inferred clonal groups, we cluster BCR sequences that have the same heavy chain V and J genes and same junction length. We next cluster sequences with similar junction regions, using either a `defined sequence distance cutoff <https://changeo.readthedocs.io/en/stable/examples/cloning.html>`__, or an adaptive threshold (`SCOPer <https://scoper.readthedocs.io/en/stable/>`__). When available, we can also split clonal groups that have `differing light chain V and J genes. <https://changeo.readthedocs.io/en/stable/examples/10x.html>`__
 
 In the previous section, we used a predefined clonal clustering threshold of ``0.1`` using the ``-x`` option in the ``changeo-10x`` script.
 *This is not appropriate for all datasets.* The current best practice is to find the appropriate threshold for a given dataset, which can be done automatically in the ``changeo-10x`` script by specifying ``-x auto``.
-However, using ``-x auto`` to assign clones doesn't always work. If this command fails, there are other options for manually defining clones from the file ``filtered_contig_heavy_productive-T.tsv``. If ``changeo-10x`` is run successfully above, this file will be in ``temp_files.tar.gz``. Otherwise it will be in the current working directory.
+However, using ``-x auto`` to assign clones doesn't always work (e.g. if there weren't enough clones to generate a bimodal distance to nearest plot). If this command fails, there are other options for manually defining clones from the file ``filtered_contig_heavy_productive-T.tsv``. If ``changeo-10x`` is run successfully above, this file will be in ``temp_files.tar.gz``. Otherwise it will be in the current working directory.
 
 The first is by inspecting `a plot of sequence distances <https://shazam.readthedocs.io/en/stable/vignettes/DistToNearest-Vignette/>`__. This is supplied in the file ``filtered_contig_threshold-plot.pdf``. You can then define clones manually using the chosen threshold (e.g. ``0.09``)::
 
@@ -115,7 +111,7 @@ The first is by inspecting `a plot of sequence distances <https://shazam.readthe
  DefineClones.py -d filtered_contig_heavy_productive-T.tsv --act set --model ham \
      --norm len --dist 0.09 --outname filtered_contig_heavy
 
-If the sequence distance plot is not bimodal, it may be more appropriate to instead use `SCOPer <https://scoper.readthedocs.io/en/stable/>`__ to assign clones using an adaptive threshold. For this tutorial, to be able to copy/and paste the commands as provided here to name the output file ``filtered_contig_heavy_clone-pass.tsv`` (to match the output of ``DefineClones.py``).
+If the sequence distance plot is not bimodal, it may be more appropriate to instead use `SCOPer <https://scoper.readthedocs.io/en/stable/>`__ to assign clones using an adaptive threshold. In order to be able to directly copy/paste the commands provided in this tutorial, be sure to rename the output file ``filtered_contig_heavy_clone-pass.tsv`` (to match the output of ``DefineClones.py``).
 
 Once we have defined clonal groups using heavy chains, we can split these groups based on whether or not they have differing light chain V and J genes::
 
@@ -136,17 +132,16 @@ This results in the file ``filtered_contig_heavy_germ-pass.tsv`` which contains 
 
 Build lineage trees
 -------------------------------------------------------------------------------------------
-Lineage trees represent the series of shared and unshared mutations leading from clone's germline sequence to the observed sequence data. There are multiple ways of building and visualizing these trees. Currently the simplest way within Immcantation is to use `Alakazam <https://alakazam.readthedocs.io>`__, which is built around building maximum parsimony trees using `PHYLIP <http://evolution.genetics.washington.edu/phylip.html>`__. Alternatively, you can use `IgPhyML <https://igphyml.readthedocs.io>`__, which builds maximum likelihood trees with B cell specific models. Here we use IgPhyML (see IgPhyML's `main help page <https://igphyml.readthedocs.io>`__ for more details). 
+Lineage trees represent the series of shared and unshared mutations leading from clone's germline sequence to the observed sequence data. There are multiple ways of building and visualizing these trees. Currently the simplest way within Immcantation is to use `Alakazam <https://alakazam.readthedocs.io>`__, which is built around building maximum parsimony trees using `PHYLIP <http://evolution.genetics.washington.edu/phylip.html>`__. Alternatively, you can use `IgPhyML <https://igphyml.readthedocs.io>`__, which builds maximum likelihood trees with B cell specific models. Here we use IgPhyML (see IgPhyML's `main help page <https://igphyml.readthedocs.io>`__ for more details).
 
-To run IgPhyML from within the Docker container, use the BuildTrees.py script::
+To run IgPhyML from within the Docker container, use the ``BuildTrees.py`` script::
 
  BuildTrees.py -d filtered_contig_heavy_germ-pass.tsv --minseq 3 --clean all \
     --igphyml --collapse --nproc 2 --asr 0.1
 
-This will collapse identical sequences (``--collapse``), remove clones with fewer than
-3 unique sequences (``--minseq 3``), run IgPhyML (``--igphyml``) parallelized across 2 cores 
-(``--nproc 2``). It will also reconstruct the maximum likelihood intermediate sequences for
-each node (``--asr 0.1``). The number following ``--asr`` controls the amount of reported model uncertainty (range from 0-1, see below). ``--clean all`` deletes all intermediate files from this operation. This is a computationally intensive task and may take a few minutes.
+This will remove clones with fewer than 3 unique sequences (``--minseq 3``), run IgPhyML (``--igphyml``) parallelized across 2 cores
+(``--nproc 2``) and collapse identical sequences (``--collapse``). It will also reconstruct the maximum likelihood intermediate sequences for
+each node (``--asr 0.1``). The number following ``--asr`` controls the amount of reported model uncertainty (range from 0-1, see below). ``--clean all`` deletes all intermediate files from this operation. *This is a computationally intensive task and may take a few minutes.*
 
 The following commands in this section are meant to be entered into an ``R`` session. Open ``R`` within the Docker container using the command ``R``. Once inside the ``R`` session, load the appropriate libraries and read in the data::
 
@@ -160,7 +155,7 @@ The following commands in this section are meant to be entered into an ``R`` ses
 
 Once built, we can visualize these trees using ape. Here, we only visualize the largest tree using the default parameters. However, there are many ways to make more lineage tree plots, as detailed in Alakazam's `lineage vignette <https://alakazam.readthedocs.io/en/stable/vignettes/Lineage-Vignette/>`__. Enter into the ``R`` session::
 
-  # save the largest tree as a png image in the data directory
+ # save the largest tree as a png image in the data directory
  png("graph.png",width=8,height=6,unit="in",res=300)
  plot(db$trees[[1]],show.node.label=TRUE)
  add.scale.bar(length=5)
@@ -195,4 +190,4 @@ Other Immcantation Training Resources
 -------------------------------------------------------------------------------------------
 Other training material in using Immcantation is available, such as the
 `slides and example data <https://goo.gl/FpW3Sc>`__ from our introductory webinar series.
-You can find a Jupyter notebook version of the webinar `here <https://bitbucket.org/kleinstein/immcantation/src/default/training/>`_.
+You can find a Jupyter notebook version of the webinar `here <https://bitbucket.org/kleinstein/immcantation/src/default/training/>`_ and an interactive website version `here <https://kleinstein.bitbucket.io/tutorials/intro-lab/index.html>`_.
