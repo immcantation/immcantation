@@ -22,7 +22,7 @@
 #       Defaults to a truncated version of the read 1 filename.
 #   -o  Output directory. Will be created if it does not exist.
 #       Defaults to a directory matching the sample identifier in the current working directory.
-#   -f  Output format. One of changeo or airr. Defaults to changeo.
+#   -f  Output format. One of changeo or airr. Defaults to airr.
 #   -p  Number of subprocesses for multiprocessing tools.
 #       Defaults to the available processing units.
 #   -i  Specify to allow partial alignments.
@@ -49,7 +49,7 @@ print_usage() {
             "     Defaults to a truncated version of the sequence filename."
     echo -e "  -o  Output directory. Will be created if it does not exist.\n" \
             "     Defaults to a directory matching the sample identifier in the current working directory."
-    echo -e "  -f  Output format. One of changeo or airr. Defaults to changeo."
+    echo -e "  -f  Output format. One of changeo or airr. Defaults to airr."
     echo -e "  -p  Number of subprocesses for multiprocessing tools.\n" \
             "     Defaults to the available cores."
     echo -e "  -i  Specify to allow partial alignments."
