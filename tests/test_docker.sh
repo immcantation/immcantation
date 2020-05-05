@@ -88,7 +88,7 @@ RUN_DIR=$(realpath ${RUN_DIR})
 @test "tigger-genotype" {
 	SAMPLE=HD13M
 	DB="/scratch/changeo/${SAMPLE}_db-pass.${EXT}"
-	V_FIELD="V_CALL_GENOTYPED"
+	V_FIELD="v_call_genotyped"
 	MINSEQ=10
 	MINGERM=20
 	OUT_DIR="/scratch/changeo"
