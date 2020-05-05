@@ -20,8 +20,8 @@ Sharing files with the container
 --------------------------------------------------------------------------------
 
 Sharing files between the host operating system and the container requires you
-to bind one of the container's mount points to a folder on the host using the
-``-v`` argument to ``docker`` or the ``-B`` argument to ``singularity``.
+to bind a directory on the host to one of the container's mount points using the
+``-v`` argument for ``docker`` or the ``-B`` argument for ``singularity``.
 There are four available mount points defined in the container::
 
     /data
@@ -29,7 +29,7 @@ There are four available mount points defined in the container::
     /software
     /oasis
 
-To invoke a shell session inside the container with ``$HOME/project`` mounted to
+For example, to invoke a shell session inside the container with ``$HOME/project`` mounted to
 ``/data``:
 
 .. parsed-literal::
@@ -49,8 +49,8 @@ After invoking an interactive session inside the container, commands can be
 executed in the container shell as they would be executed in the host shell.
 
 Alternatively, it is possible to execute a specific command directly inside the 
-container, without starting an interactive session. The next example demonstrates 
-how to execute ``versions report`` having mounted ``$HOME/project`` to ``/data``:
+container without starting an interactive session. The next example demonstrates 
+how to execute ``versions report`` with ``$HOME/project`` mounted to ``/data``:
 
 .. parsed-literal::
 
