@@ -25,7 +25,7 @@ Getting started
 
 First, `download and unzip the example data <http://clip.med.yale.edu/immcantation/examples/10x_data.zip>`__.
 It represents the Ig V(D)J sequences from CD19+ B cells isolated from PBMCs of a healthy human donor, and is based on
-`data provided by 10X Genomics <https://support.10xgenomics.com/single-cell-vdj/datasets/2.2.0/vdj_v1_hs_cd19_b>`__
+`data provided by 10X Genomics <https://support.10xgenomics.com/single-cell-vdj/datasets/2.2.0/vdj_v1_hs_cd19_b>`__ under a `Creative Commons Attribute license <https://creativecommons.org/licenses/by/4.0/>`__,
 and processed with their `Cell Ranger pipeline <https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/what-is-cell-ranger>`__.
 
 Second, install `Docker <https://www.docker.com/products/docker-desktop>`__ (if you don't have it already) and
@@ -197,7 +197,7 @@ using the command ``R``. Once inside the ``R`` session, load the appropriate lib
     db <- readIgphyml("filtered_contig_heavy_germ-pass_igphyml-pass.tab", format="phylo",
           branches="mutations")
 
-Once built, we can visualize these trees using ape. Here, we only visualize the largest tree using the default parameters.
+Once built, we can visualize these trees using the R package ``ape``. Here, we only visualize the largest tree using the default parameters.
 However, there are many ways to make more lineage tree plots, as detailed in Alakazam's
 `lineage vignette <https://alakazam.readthedocs.io/en/stable/vignettes/Lineage-Vignette/>`__. 
 Enter into the ``R`` session and save the largest tree as a png image::
@@ -220,7 +220,7 @@ trees, these are also detailed in Alakazam's
 `lineage vignette <https://alakazam.readthedocs.io/en/stable/vignettes/Lineage-Vignette/#converting-between-graph-phylo-and-newick-formats>`__.
 
 The reconstructed intermediate sequences for each node shown in the tree are available in the file
-``filtered_contig_heavy_germ-pass_igphyml-pass_asr.fasta``. Each possible codon has a certain probability of occuring at each site in the sequence.
+``filtered_contig_heavy_germ-pass_igphyml-pass_hlp_asr.fasta``. Each possible codon has a certain probability of occuring at each site in the sequence.
 The number following ``--asr`` in ``BuildTrees`` specifies the probability interval desired for each site. For instance,
 if ``--asr 0.8`` and the relative probability of codon ``ATG`` is 0.5 and ``ATA`` is 0.4, IgPhyML would return ``ATR``.
 The ``R`` is the `IUPAC ambiguous nucleotide <https://www.bioinformatics.org/sms/iupac.html>`__ for A and G. These characters represent ambiguity in the reconstruction, and are particularly common in the CDR3 region::
