@@ -23,7 +23,7 @@ Please `contact us <https://immcantation.readthedocs.io/en/stable/about.html>`__
 Getting started
 -------------------------------------------------------------------------------------------
 
-First, `download and unzip the example data <clip.med.yale.edu/immcantation/examples/10x_data.zip>`__.
+First, `download and unzip the example data <http://clip.med.yale.edu/immcantation/examples/10x_data.zip>`__.
 It represents the Ig V(D)J sequences from the PBMCs of a healthy human donor, and is based on
 `data provided by 10X Genomics <https://support.10xgenomics.com/single-cell-vdj/datasets/3.0.0/vdj_v1_hs_pbmc2_b?>`__
 and processed with their `Cell Ranger pipeline <https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/what-is-cell-ranger>`__.
