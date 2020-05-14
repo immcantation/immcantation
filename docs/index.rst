@@ -19,13 +19,6 @@
     Contributing <contrib>
 
 .. toctree::
-    :maxdepth: 1
-    :caption: Tutorials
-    :hidden:
-
-    10X Tutorial <tutorials/10x_tutorial>
-
-.. toctree::
     :maxdepth: 3
     :hidden:
     :caption: Docker Container
