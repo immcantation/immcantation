@@ -24,10 +24,9 @@ Getting started
 -------------------------------------------------------------------------------------------
 
 First, `download and unzip the example data <http://clip.med.yale.edu/immcantation/examples/10x_data.zip>`__.
-It represents the Ig V(D)J sequences from the PBMCs of a healthy human donor, and is based on
-`data provided by 10X Genomics <https://support.10xgenomics.com/single-cell-vdj/datasets/3.0.0/vdj_v1_hs_pbmc2_b?>`__
+It represents the Ig V(D)J sequences from CD19+ B cells isolated from PBMCs of a healthy human donor, and is based on
+`data provided by 10X Genomics <https://support.10xgenomics.com/single-cell-vdj/datasets/2.2.0/vdj_v1_hs_cd19_b>`__
 and processed with their `Cell Ranger pipeline <https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/what-is-cell-ranger>`__.
-We added a few sequences for instructional purposes.
 
 Second, install `Docker <https://www.docker.com/products/docker-desktop>`__ (if you don't have it already) and
 download the `Immcantation Docker image <https://immcantation.readthedocs.io/en/stable/docker/intro.html>`__.
