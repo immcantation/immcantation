@@ -8,8 +8,11 @@ pull request to the relevant Bitbucket repository:
 + [SHazaM](https://bitbucket.org/kleinstein/shazam)
 + [TIgGER](https://bitbucket.org/kleinstein/tigger)
 
-All packages are under the free and open-source license
-[CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0).
+All Immcantation core software packages are under the free and open-source license
+[AGPL-3](https://www.gnu.org/licenses/agpl-3.0.html). Other core elements, 
+including, but not limited to, documentation and tutorials, are 
+under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0). Contributed 
+packages are subject to their licenses.
 
 ---
 
