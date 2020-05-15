@@ -14,6 +14,7 @@
 
     Welcome <self>
     Getting Started <intro>
+    Tutorials <tutorials/tutorials>
     Data Standards <datastandards>
     Contact & Cite <about>
     Contributing <contrib>
