@@ -18,8 +18,8 @@ Authors
 --------------------------------------------------------------------------------
 
 Jason A. Vander Heiden, Namita T. Gupta, Mohamed Uduman, Daniel Gadala-Maria,
-Susanna Marquez, Julian Zhou, Ruoyi Jiang, Ang Cui, Nima Nouri, Chris R. Bolen,
-Gur Yaari, Steven H. Kleinstein
+Susanna Marquez, Julian Zhou, Ruoyi Jiang, Ang Cui, Nima Nouri, Kenneth Hoehn,
+Edel Aron, Hailong Meng, Chris R. Bolen, Gur Yaari, Steven H. Kleinstein
 
 .. _Cite:
 
