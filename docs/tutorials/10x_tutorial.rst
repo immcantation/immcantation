@@ -47,10 +47,10 @@ Load the current directory into the Docker image:
 .. parsed-literal::
 
     # Linux/Mac OS X
-    docker run -it --workdir /data -v $(pwd):/data:z kleinstein/immcantation:|docker-version| bash
+    docker run -it --workdir /data -v $(pwd):/\data:z kleinstein/immcantation:|docker-version| bash
 
     # Windows
-    docker run -it --workdir /data -v %cd%:/data:z kleinstein/immcantation:|docker-version| bash
+    docker run -it --workdir /data -v %cd%:/\data:z kleinstein/immcantation:|docker-version| bash
 
 After running the previous command, you'll now be in the mounted /data folder inside the container.
 To check that everything is properly configured, enter the following commands::
