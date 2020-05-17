@@ -14,7 +14,7 @@ Version Updates:
 
 + presto 0.6.0
 + changeo 1.0.0
-+ alakazam 1.0.0
++ alakazam 1.0.1
 + shazam 1.0.0
 + tigger 1.0.0
 + scoper 1.0.0
