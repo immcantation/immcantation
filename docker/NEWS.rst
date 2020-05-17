@@ -1,12 +1,14 @@
 Release Notes
 ========================================================================
 
-Version 4.0.0:  May 15, 2020
+Version 4.0.0:  May 20, 2020
 ------------------------------------------------------------------------
 
 General:
 
-+ License changed to AGPL-3.
++ License changed to AGPL-3 for scripts, core packages, and other
+  software code. Non-software content remains unchanged under the
+  CC BY-SA 4.0 license.
 
 Version Updates:
 

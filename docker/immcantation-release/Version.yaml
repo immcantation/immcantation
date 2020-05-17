@@ -1,6 +1,6 @@
 immcantation:
   version:  devel
-  date:     2020.05.05
+  date:     2020.05.20
 release:
   presto:   0.6.0
   changeo:  1.0.0
