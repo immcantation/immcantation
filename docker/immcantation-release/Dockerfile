@@ -144,6 +144,14 @@ RUN PACKAGE="scoper" \
     && rm -r /tmp/${PACKAGE}
 
 # Install prestor
+RUN PACKAGE="prestor" \
+    && rm -rf /tmp/${PACKAGE} \
+    && git clone https://bitbucket.org/kleinstein/prestor /tmp/${PACKAGE} \
+    && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} \
+    && rinstall -p /tmp/${PACKAGE} \
+    && (cd /tmp/${PACKAGE} && builds write -n ${PACKAGE} -v $(git describe --abbrev=12 --always --dirty=+)) \
+    && rm -r /tmp/${PACKAGE}
+
 # Install IgPhyML
 RUN IGPHYML=$(versions get -n igphyml) \
     && wget -q --show-progress --no-check-certificate \
@@ -152,16 +160,6 @@ RUN IGPHYML=$(versions get -n igphyml) \
     && tar -zxf igphyml-${IGPHYML}.tar.gz -C /usr/local/share/igphyml --strip-components 1 \
     && (cd /usr/local/share/igphyml && ./make_phyml_blas_omp) \
     && rm -r igphyml-${IGPHYML}.tar.gz
-
-RUN PACKAGE="prestor" \
-    && PRESTOR=$(versions get -n ${PACKAGE}) \
-    && wget -q --show-progress --no-check-certificate \
-       https://bitbucket.org/kleinstein/prestor/get/${PRESTOR}.tar.gz -O ${PACKAGE}-${PRESTOR}.tar.gz \
-    && mkdir -p /tmp/${PACKAGE} \
-    && tar -zxf ${PACKAGE}-${PRESTOR}.tar.gz -C /tmp/${PACKAGE} --strip-components 1 \
-    && rinstall -p /tmp/${PACKAGE} \
-    && (cd /tmp/${PACKAGE} && builds write -n ${PACKAGE} -v $(git describe --abbrev=12 --always --dirty=+)) \
-    && rm -r /tmp/${PACKAGE}
 
 # Install rdi
 RUN PACKAGE="rdi" \
