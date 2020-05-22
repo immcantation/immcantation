@@ -1,26 +1,23 @@
 FROM immcantation/base:devel
 LABEL maintainer="Jason Anthony Vander Heiden [jason.vanderheiden@yale.edu], \
                   Susanna Marquez [susanna.marquez@yale.edu]" \
-      description="Development build of the Immcantation framework."
+      description="Full suite of the Immcantation framework tools and dependencies."
 
 # Version
 COPY Version.yaml /Version.yaml
 COPY Pipeline.yaml /Pipeline.yaml
 RUN builds write -n date -v "$(date +'%Y-%m-%d %T %Z')"
 
-# Set CRAN repo
-ARG R_REPO="http://lib.stat.cmu.edu/R/CRAN/"
-RUN echo "options(repos='${R_REPO}')" >> /usr/lib64/R/library/base/R/Rprofile
-
 # Install procotol data, utility scripts and pipelines
 RUN PACKAGE="immcantation" \
     && rm -rf /tmp/${PACKAGE} \
     && hg clone -b default https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
-    && pipelines copy -s /tmp/${PACKAGE}/pipelines/ -t /usr/local/bin/ \
+    && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} -d immcantation \
+	&& pipelines copy -s /tmp/${PACKAGE}/pipelines/ -t /usr/local/bin/ \
 	&& mv /tmp/${PACKAGE}/scripts/* /usr/local/bin/ \
-	&& mv /tmp/${PACKAGE}/protocols /usr/local/share/protocols \
-	&& builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
-	&& rm -r /tmp/${PACKAGE}
+    && mv /tmp/${PACKAGE}/protocols /usr/local/share/protocols \
+    && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
+    && rm -r /tmp/${PACKAGE}
 
 # Install muscle
 RUN MUSCLE=$(versions get -n muscle) \
@@ -33,11 +30,11 @@ RUN MUSCLE=$(versions get -n muscle) \
 # Install vsearch
 RUN VSEARCH=$(versions get -n vsearch) \
     && wget -q --show-progress --no-check-certificate \
-       https://github.com/torognes/vsearch/releases/download/v${VSEARCH}/vsearch-${VSEARCH}-linux-x86_64.tar.gz \
-	&& tar -zxf vsearch-${VSEARCH}-linux-x86_64.tar.gz \
-	&& mv vsearch-${VSEARCH}-linux-x86_64/bin/vsearch /usr/local/bin/vsearch \
-	&& ln -s /usr/local/bin/vsearch /usr/local/bin/usearch \
-	&& rm -r vsearch-${VSEARCH}-linux-x86_64.tar.gz vsearch-${VSEARCH}-linux-x86_64
+       http://github.com/torognes/vsearch/releases/download/v${VSEARCH}/vsearch-${VSEARCH}-linux-x86_64.tar.gz \
+    && tar -zxf vsearch-${VSEARCH}-linux-x86_64.tar.gz \
+    && mv vsearch-${VSEARCH}-linux-x86_64/bin/vsearch /usr/local/bin/vsearch \
+    && ln -s /usr/local/bin/vsearch /usr/local/bin/usearch \
+    && rm -r vsearch-${VSEARCH}-linux-x86_64.tar.gz vsearch-${VSEARCH}-linux-x86_64
 
 # Install CD-HIT
 RUN CDHIT=$(versions get -n cd-hit) \
@@ -72,18 +69,6 @@ RUN PHYLIP=$(versions get -n phylip) \
     && mv phylip-${PHYLIP}/exe/* /usr/local/bin \
     && rm -r phylip-${PHYLIP}.tar.gz phylip-${PHYLIP}
 
-# Install AIRR reference libraries
-RUN AIRR_PY=$(versions get -n airr-py) \
-    && AIRR_R=$(versions get -n airr-r) \
-    && pip3 install airr==${AIRR_PY} \
-    && Rscript -e "devtools::install_version('airr', '${AIRR_R}', quiet=FALSE)"
-
-# Install IgPhyML
-RUN IGPHYML="igphyml" \
-    && mkdir -p /usr/local/share/igphyml \
-	&& git clone --single-branch --branch master https://bitbucket.org/kleinstein/igphyml /usr/local/share/igphyml \
-    && (cd /usr/local/share/igphyml && ./make_phyml_blas_omp)
-
 # Install tbl2asn
 RUN wget -q --show-progress --no-check-certificate \
     ftp://ftp.ncbi.nih.gov/toolbox/ncbi_tools/converters/by_program/tbl2asn/linux64.tbl2asn.gz \
@@ -91,26 +76,35 @@ RUN wget -q --show-progress --no-check-certificate \
     && mv linux64.tbl2asn /usr/local/bin/tbl2asn \
     && chmod +x /usr/local/bin/tbl2asn
 
+# Install AIRR reference libraries
+RUN AIRR_PY=$(versions get -n airr-py) \
+    && AIRR_R=$(versions get -n airr-r) \
+    && pip3 install airr==${AIRR_PY} \
+    && Rscript -e "devtools::install_version('airr', '${AIRR_R}', quiet=FALSE, clean=TRUE)"
+
 # Install presto
 RUN PACKAGE="presto" \
     && rm -rf /tmp/${PACKAGE} \
     && hg clone -b default https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
-	&& pip3 install --no-cache-dir /tmp/${PACKAGE} \
-	&& builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
-	&& rm -r /tmp/${PACKAGE}
+    && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} -d immcantation \
+    && pip3 install --no-cache-dir /tmp/${PACKAGE} \
+    && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
+    && rm -r /tmp/${PACKAGE}
 
 # Install changeo
 RUN PACKAGE="changeo" \
     && rm -rf /tmp/${PACKAGE} \
     && hg clone -b default https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
-	&& pip3 install --no-cache-dir /tmp/${PACKAGE} \
-	&& builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
-	&& rm -r /tmp/${PACKAGE}
+    && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} -d immcantation \
+    && pip3 install --no-cache-dir /tmp/${PACKAGE} \
+    && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
+    && rm -r /tmp/${PACKAGE}
 
 # Install alakazam
 RUN PACKAGE="alakazam" \
     && rm -rf /tmp/${PACKAGE} \
     && hg clone -b default https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
+    && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} -d immcantation \
     && rinstall -p /tmp/${PACKAGE} \
     && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE})
 
@@ -118,6 +112,7 @@ RUN PACKAGE="alakazam" \
 RUN PACKAGE="shazam" \
     && rm -rf /tmp/${PACKAGE} \
     && hg clone -b default https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
+    && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} -d immcantation \
     && rinstall -p /tmp/${PACKAGE} \
     && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE})
 
@@ -125,14 +120,16 @@ RUN PACKAGE="shazam" \
 RUN PACKAGE="tigger" \
     && rm -rf /tmp/${PACKAGE} \
     && hg clone -b default https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
+    && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} -d immcantation \
     && rinstall -p /tmp/${PACKAGE} \
     && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
     && rm -r /tmp/${PACKAGE}
-
-# Install SCOPe
+    
+# Install SCOPer
 RUN PACKAGE="scoper" \
     && rm -rf /tmp/${PACKAGE} \
     && hg clone -b default https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
+    && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} -d immcantation \
     && rinstall -p /tmp/${PACKAGE} \
     && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
     && rm -r /tmp/${PACKAGE}
@@ -140,26 +137,33 @@ RUN PACKAGE="scoper" \
 # Install prestor
 RUN PACKAGE="prestor" \
     && rm -rf /tmp/${PACKAGE} \
-    && git clone --single-branch -b master https://bitbucket.org/kleinstein/prestor /tmp/${PACKAGE} \
+    && git clone https://bitbucket.org/kleinstein/prestor /tmp/${PACKAGE} \
+    && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} \
     && rinstall -p /tmp/${PACKAGE} \
     && (cd /tmp/${PACKAGE} && builds write -n ${PACKAGE} -v $(git describe --abbrev=12 --always --dirty=+)) \
     && rm -r /tmp/${PACKAGE}
 
-# Install RDI
+# Install IgPhyML
+RUN IGPHYML=$(versions get -n igphyml) \
+    && wget -q --show-progress --no-check-certificate \
+       https://bitbucket.org/kleinstein/igphyml/get/${IGPHYML}.tar.gz -O igphyml-${IGPHYML}.tar.gz \
+    && mkdir -p /usr/local/share/igphyml \
+    && tar -zxf igphyml-${IGPHYML}.tar.gz -C /usr/local/share/igphyml --strip-components 1 \
+    && (cd /usr/local/share/igphyml && ./make_phyml_blas_omp) \
+    && rm -r igphyml-${IGPHYML}.tar.gz
+
+# Install rdi
 RUN PACKAGE="rdi" \
     && rm -rf /tmp/${PACKAGE} \
-    && hg clone -u production https://bitbucket.org/cbolen1/rdicore /tmp/${PACKAGE} \
+    && hg clone https://bitbucket.org/cbolen1/rdicore /tmp/${PACKAGE} \
+    && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} \
     && rinstall -p /tmp/${PACKAGE} \
     && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
     && rm -r /tmp/${PACKAGE}
 
 # Install RAbHIT
-RUN PACKAGE="rabhit" \
-    && rm -rf /tmp/${PACKAGE} \
-    && git clone --single-branch --branch master https://bitbucket.org/yaarilab/rabhit /tmp/${PACKAGE} \
-    && rinstall -p /tmp/${PACKAGE} \
-    && (cd /tmp/${PACKAGE} && builds write -n ${PACKAGE} -v $(git describe --abbrev=12 --always --dirty=+)) \
-    && rm -r /tmp/${PACKAGE}
+RUN RABHIT=$(versions get -n rabhit) \
+    && Rscript -e "devtools::install_version('rabhit', '${RABHIT}', quiet=FALSE, clean=TRUE)"
 
 # Download and build references databases
 RUN fetch_igblastdb.sh -o /usr/local/share/igblast \
@@ -179,16 +183,9 @@ RUN useradd magus -u 1000 -g users \
 # USER magus
 
 # Set commands
-CMD echo -e "Report version information:\n" \
-            "  versions report\n" \
-            "Report build details:\n" \
-            "  builds report\n" \
-            "Available pipeline commands:\n" \
-            "  preprocess-phix\n" \
-            "  presto-abseq\n" \
-            "  presto-clontech\n" \
-            "  changeo-10x\n" \
-            "  changeo-igblast\n" \
-            "  changeo-clone\n" \
-            "  tigger-genotype\n" \
-            "  shazam-threshold"
+CMD echo -e " Version information:\n"\
+            "  versions report\n"\
+            "Build stamps:\n"\
+            "  builds report\n"\
+            "Description of available pipelines:\n"\
+            "  pipelines report"

@@ -17,7 +17,7 @@ yaml.add_representer(OrderedDict, dict_representer)
 yaml.add_constructor(yaml.resolver.BaseResolver.DEFAULT_MAPPING_TAG, dict_constructor)
 
 # Load pipeline list
-with open(os.path.abspath('../docker/immcantation-release/Pipeline.yaml'), 'r') as f:
+with open(os.path.abspath('../docker/suite/Pipeline.yaml'), 'r') as f:
     pipelines = yaml.load(f, Loader=yaml.FullLoader)
 
 # Capture usage statements

@@ -1,4 +1,4 @@
-FROM kleinstein/immcantation:devel
+FROM immcantation/suite:devel
 LABEL maintainer="Susanna Marquez [susanna.marquez@yale.edu]" \
       description="Immcantation Lab"
       

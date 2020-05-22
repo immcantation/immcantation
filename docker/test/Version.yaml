@@ -1,22 +1,23 @@
 immcantation:
   version:  null
   date:     null
-release:
+package:
   presto:   null
   changeo:  null
   alakazam: null
   shazam:   null
   tigger:   null
-  rdi:      null
-  prestor:  null
   scoper:   null
-software:
-  muscle:   3.8.425
-  vsearch:  2.13.6
-  cd-hit:   4.8.1
-  blast:    2.9.0
-  igblast:  1.15.0
-  phylip:   3.697
+  prestor:  null
+  rabhit:   null
+  rdi:      null
   igphyml:  1.1.3
+dependency:
   airr-py:  1.2.1
   airr-r:   1.2.0
+  blast:    2.9.0
+  cd-hit:   4.8.1
+  igblast:  1.16.0
+  muscle:   3.8.425
+  phylip:   3.697
+  vsearch:  2.13.6

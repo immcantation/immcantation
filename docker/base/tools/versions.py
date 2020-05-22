@@ -31,10 +31,10 @@ class Version():
         self.version = versions['immcantation']['version']
         self.date = versions['immcantation']['date']
         self.packages = {'immcantation': versions['immcantation']['version']}
-        self.packages.update(versions['release'])
-        self.packages.update(versions['software'])
-        self.sections = OrderedDict([('release', versions['release'].keys()),
-                                     ('software', versions['software'].keys())])
+        self.packages.update(versions['package'])
+        self.packages.update(versions['dependency'])
+        self.sections = OrderedDict([('package', versions['package'].keys()),
+                                     ('dependency', versions['dependency'].keys())])
 
     def package(self, x):
         return self.packages[x]
@@ -180,7 +180,7 @@ def inspectVersions(version_file=default_version_file):
     # IgPhyML
     try:
         igphyml = check_output('igphyml -h; exit 0', stderr=STDOUT, shell=True)
-        igphyml = igphyml.decode('utf-8').split('\n')[1]
+        igphyml = igphyml.decode('utf-8').split('\n')[2]
         versions.packages['igphyml'] = re.search(r'(?<=IgPhyML )([0-9.]+)', igphyml).group(0)
     except (CalledProcessError, AttributeError):
         versions.packages['igphyml'] = None
@@ -203,26 +203,32 @@ def inspectVersions(version_file=default_version_file):
     return versions
 
 
-def updateChangeset(package, repo, version_file):
+def updateChangeset(package, repo, devel=None, version_file=default_version_file):
     """
     Print version for package
 
     Arguments:
       package (str): name of the package to return version information for.
       repo (str): path to mercurial repository.
+      sdevel (str): name of a package to check for version "devel".
+                    It so, skip this update (do nothing).
       version_file (str): YAML file containing version information.
 
     Returns:
       str: changeset updated to.
     """
+    # Skip development versions
+    if devel is not None and getVersion(devel, version_file=version_file) == "devel":
+        return True
+
     # Get version and changeset
     version = getVersion(package, version_file=version_file)
     changeset = getChangeset(version, repo=repo)
 
-    # Update repo
     if changeset is None:
-        return None
+        exit('Version %s is invalid.' % version)
 
+    # Update repo
     try:
         client = git.Repo(repo)
         client.git.checkout(changeset)
@@ -232,7 +238,7 @@ def updateChangeset(package, repo, version_file):
     except:
         exit('Repository %s cannot be opened.' % repo)
 
-    return(changeset)
+    return changeset
 
 
 def getChangeset(version, repo):
@@ -275,7 +281,6 @@ def getChangeset(version, repo):
         exit('Repository %s cannot be opened.' % repo)
 
     print(changeset)
-
     return changeset
 
 
@@ -361,6 +366,8 @@ def getArgParser():
                                help='Package name.')
     parser_update.add_argument('-r', action='store', dest='repo', type=str, required=True,
                                help='Path to the git or mercurial repository.')
+    parser_update.add_argument('-d', action='store', dest='devel', type=str, required=False,
+                               help='Package name to check. If the version of the package is "devel" then skip the update (do nothing).')
     parser_update.add_argument('-f', action='store', dest='version_file', type=str,
                                default=default_version_file, help='YAML version file.')
     parser_update.set_defaults(main=updateChangeset)

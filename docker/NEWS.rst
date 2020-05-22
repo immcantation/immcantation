@@ -1,7 +1,7 @@
 Release Notes
 ========================================================================
 
-Version 4.0.0:  May 20, 2020
+Version 4.0.0:  May 24, 2020
 ------------------------------------------------------------------------
 
 General:
@@ -19,7 +19,8 @@ Version Updates:
 + tigger 1.0.0
 + scoper 1.0.0
 + prestor 0.0.6
-+ igblast 1.15.0
++ igphyml 1.1.3
++ igblast 1.16.0
 
 Pipeline Changes:
 
