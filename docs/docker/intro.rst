@@ -9,7 +9,7 @@ dependencies, accessory scripts, and IgBLAST in a
 IMGT reference germline sets, as well as several template pipeline scripts.
 The image is available on docker hub at:
 
-`kleinstein/immcantation <https://hub.docker.com/r/kleinstein/immcantation/>`__
+`immcantation/suite <https://hub.docker.com/r/immcantation/suite/>`__
 
 Images are versioned through tags with images containing official releases
 denoted by meta-version numbers (``x.y.z``). The ``devel`` tag denotes the
@@ -26,10 +26,10 @@ Docker
 .. parsed-literal::
 
     # Pull release version |docker-version|
-    docker pull kleinstein/immcantation:|docker-version|
+    docker pull immcantation/suite:|docker-version|
 
     # Pull the latest development build
-    docker pull kleinstein/immcantation:devel
+    docker pull immcantation/suite:devel
 
 
 Singularity
@@ -38,8 +38,8 @@ Singularity
 .. parsed-literal::
 
     # Pull release version |docker-version|
-    IMAGE="immcantation-|docker-version|.sif"
-    singularity build $IMAGE docker://kleinstein/immcantation:|docker-version|
+    IMAGE="immcantation_suite_|docker-version|.sif"
+    singularity build $IMAGE docker://immcantation/suite:|docker-version|
 
 The instructions to use containers from `Docker Hub <https://hub.docker.com/>`_ with Singularity can be slightly different for different versions of Singularity. If the command shown above doesn't work for you, please visit `Singularity Documentation <https://www.sylabs.io/docs/>`_ and look for the specific command for your Singularity version under *Build a container*.
 

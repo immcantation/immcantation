@@ -39,7 +39,7 @@ In a terminal, enter:
 .. parsed-literal::
 
     # download the current Immcantation Docker image (may take a few minutes)
-    docker pull kleinstein/immcantation:|docker-version|
+    docker pull immcantation/suite:|docker-version|
 
 Within the terminal, move to the directory where you've placed the example data using the command ``cd``.
 Load the current directory into the Docker image:
@@ -47,10 +47,10 @@ Load the current directory into the Docker image:
 .. parsed-literal::
 
     # Linux/Mac OS X
-    docker run -it --workdir /data -v $(pwd):/\data:z kleinstein/immcantation:|docker-version| bash
+    docker run -it --workdir /data -v $(pwd):/\data:z immcantation/suite:|docker-version| bash
 
     # Windows
-    docker run -it --workdir /data -v %cd%:/\data:z kleinstein/immcantation:|docker-version| bash
+    docker run -it --workdir /data -v %cd%:/\data:z immcantation/suite:|docker-version| bash
 
 After running the previous command, you'll now be in the mounted /data folder inside the container.
 To check that everything is properly configured, enter the following commands::

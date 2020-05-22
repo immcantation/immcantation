@@ -43,11 +43,11 @@ genome.
     NPROC=4
 
     # Run pipeline in docker image
-    docker run -v $DATA_DIR:/data:z kleinstein/immcantation:|docker-version| \\
+    docker run -v $DATA_DIR:/data:z immcantation/suite:|docker-version| \\
         preprocess-phix -s $READS -o $OUT_DIR -p $NPROC
 
     # Singularity command
-    singularity exec -B $DATA_DIR:/data immcantation-|docker-version|.sif \\
+    singularity exec -B $DATA_DIR:/data immcantation_suite_|docker-version|.sif \\
         preprocess-phix -s $READS -o $OUT_DIR -p $NPROC
 
 .. note::
@@ -106,12 +106,12 @@ file containing information about the data and processing. Valid fields are show
     NPROC=4
 
     # Docker command
-    docker run -v $DATA_DIR:/data:z kleinstein/immcantation:|docker-version| \\
+    docker run -v $DATA_DIR:/data:z immcantation/suite:|docker-version| \\
         presto-abseq -1 $READS_R1 -2 $READS_R2 -y $YAML \\
         -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC
 
     # Singularity command
-    singularity exec -B $DATA_DIR:/data immcantation-|docker-version|.sif \\
+    singularity exec -B $DATA_DIR:/data immcantation_suite_|docker-version|.sif \\
         presto-abseq -1 $READS_R1 -2 $READS_R2 -y $YAML \\
         -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC
 
@@ -146,12 +146,12 @@ or inside the container under ``/usr/local/share/protocols/Universal``.
     NPROC=4
 
     # Docker command
-    docker run -v $DATA_DIR:/data:z kleinstein/immcantation:|docker-version| \\
+    docker run -v $DATA_DIR:/data:z immcantation/suite:|docker-version| \\
         presto-clontech -1 $READS_R1 -2 $READS_R2 -j $CREGION -r $VREF \\
         -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC
 
     # Singularity command
-    singularity exec -B $DATA_DIR:/data immcantation-|docker-version|.sif \\
+    singularity exec -B $DATA_DIR:/data immcantation_suite_|docker-version|.sif \\
         presto-abseq -1 $READS_R1 -2 $READS_R2 -j $CREGION -r $VREF \\
         -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC
 
@@ -182,12 +182,12 @@ single-cell V(D)J data output by Cell Ranger.
     NPROC=4
 
     # Run pipeline in docker image
-    docker run -v $DATA_DIR:/data:z kleinstein/immcantation:|docker-version| \\
+    docker run -v $DATA_DIR:/data:z immcantation/suite:|docker-version| \\
         changeo-10x -s $READS -a $ANNOTATIONS -x $DIST -n $SAMPLE_NAME \\
         -o $OUT_DIR -p $NPROC
 
     # Singularity command
-    singularity exec -B $DATA_DIR:/data immcantation-|docker-version|.sif \\
+    singularity exec -B $DATA_DIR:/data immcantation_suite_|docker-version|.sif \\
         changeo-10x -s $READS -a $ANNOTATIONS -x $DIST -n $SAMPLE_NAME \\
         -o $OUT_DIR -p $NPROC
 
@@ -216,11 +216,11 @@ Change-O data standard.
     NPROC=4
 
     # Run pipeline in docker image
-    docker run -v $DATA_DIR:/data:z kleinstein/immcantation:|docker-version| \\
+    docker run -v $DATA_DIR:/data:z immcantation/suite:|docker-version| \\
         changeo-igblast -s $READS -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC
 
     # Singularity command
-    singularity exec -B $DATA_DIR:/data immcantation-|docker-version|.sif \\
+    singularity exec -B $DATA_DIR:/data immcantation_suite_|docker-version|.sif \\
         changeo-igblast -s $READS -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC
 
 
@@ -247,11 +247,11 @@ Infers V segment genotypes using TIgGER.
     NPROC=4
 
     # Run pipeline in docker image
-    docker run -v $DATA_DIR:/data:z kleinstein/immcantation:|docker-version| \\
+    docker run -v $DATA_DIR:/data:z immcantation/suite:|docker-version| \\
         tigger-genotype -d $DB -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC
 
     # Singularity command
-    singularity exec -B $DATA_DIR:/data immcantation-|docker-version|.sif \\
+    singularity exec -B $DATA_DIR:/data immcantation_suite_|docker-version|.sif \\
         tigger-genotype -d $DB -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC
 
 
@@ -278,11 +278,11 @@ Performs automated detection of the clonal assignment threshold.
     NPROC=4
 
     # Run pipeline in docker image
-    docker run -v $DATA_DIR:/data:z kleinstein/immcantation:|docker-version| \\
+    docker run -v $DATA_DIR:/data:z immcantation/suite:|docker-version| \\
         shazam-threshold -d $DB -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC
 
     # Singularity command
-    singularity exec -B $DATA_DIR:/data immcantation-|docker-version|.sif \\
+    singularity exec -B $DATA_DIR:/data immcantation_suite_|docker-version|.sif \\
         shazam-threshold -d $DB -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC
 
 
@@ -311,9 +311,9 @@ sequences.
     NPROC=4
 
     # Run pipeline in docker image
-    docker run -v $DATA_DIR:/data:z kleinstein/immcantation:|docker-version| \\
+    docker run -v $DATA_DIR:/data:z immcantation/suite:|docker-version| \\
         changeo-clone -d $DB -x $DIST -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC
 
     # Singularity command
-    singularity exec -B $DATA_DIR:/data immcantation-|docker-version|.sif \\
+    singularity exec -B $DATA_DIR:/data immcantation_suite_|docker-version|.sif \\
         changeo-clone -d $DB -x $DIST -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC
