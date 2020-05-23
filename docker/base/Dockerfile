@@ -1,4 +1,4 @@
-FROM fedora:32
+FROM fedora:31
 LABEL maintainer="Jason Anthony Vander Heiden [jason.vanderheiden@yale.edu], \
                   Susanna Marquez [susanna.marquez@yale.edu]" \
       description="Standard environment and dependencies for the Immcantation framework."
