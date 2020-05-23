@@ -2,7 +2,7 @@
 
 # Run parameters
 VERSION="devel"
-IMAGE="kleinstein/immcantation:${VERSION}"
+IMAGE="immcantation/suite:${VERSION}"
 DATE=$(date +"%Y.%m.%d")
 DATA_DIR=$(realpath data)
 RUN_DIR="run/docker-${DATE}-${VERSION}"

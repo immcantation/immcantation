@@ -196,13 +196,8 @@ check_error() {
     fi
 }
 
-# Set extension
+# Get changeo version
 CHANGEO_VERSION=$(python3 -c "import changeo; print('%s-%s' % (changeo.__version__, changeo.__date__))")
-if [[ $CHANGEO_VERSION == 0.4* ]]; then
-    DC_COMMAND=""
-else
-    DC_COMMAND="bygroup"
-fi
 
 # Start
 echo -e "IDENTIFIER: ${OUTNAME}"
@@ -224,8 +219,8 @@ else
 fi
 
 # Assign clones
-printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "DefineClones ${DC_COMMAND}"
-DefineClones.py ${DC_COMMAND} -d ${LAST_FILE} --model ${MODEL} \
+printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "DefineClones"
+DefineClones.py -d ${LAST_FILE} --model ${MODEL} \
     --dist ${DIST} --mode ${DC_MODE} --act ${DC_ACT} --nproc ${NPROC} \
     --outname "${OUTNAME}" --outdir . --format ${FORMAT} --log "${LOGDIR}/clone.log" \
     >> $PIPELINE_LOG 2> $ERROR_LOG

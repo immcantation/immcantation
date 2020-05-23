@@ -1,4 +1,4 @@
-FROM fedora:29
+FROM fedora:32
 LABEL maintainer="Jason Anthony Vander Heiden [jason.vanderheiden@yale.edu], \
                   Susanna Marquez [susanna.marquez@yale.edu]" \
       description="Standard environment and dependencies for the Immcantation framework."
@@ -27,9 +27,12 @@ RUN dnf -y update && dnf install -y \
     git \
     lapack-devel \
     libcurl-devel \
+    libgit2-devel \
     libidn \
     libidn1.34 \
     libnsl \
+    libssh2 \
+    libuv \
     libxml2-devel \
     mercurial \
     mesa-libGL-devel \
@@ -44,6 +47,7 @@ RUN dnf -y update && dnf install -y \
     python3-hglib \
     python3-numpy \
     python3-pandas \
+    python3-pip \
     python3-PyYAML \
     python3-setuptools \
     python3-scipy \
