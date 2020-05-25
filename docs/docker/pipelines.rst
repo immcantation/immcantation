@@ -47,7 +47,7 @@ genome.
         preprocess-phix -s $READS -o $OUT_DIR -p $NPROC
 
     # Singularity command
-    singularity exec -B $DATA_DIR:/data immcantation_suite_|docker-version|.sif \\
+    singularity exec -B $DATA_DIR:/data immcantation_suite-|docker-version|.sif \\
         preprocess-phix -s $READS -o $OUT_DIR -p $NPROC
 
 .. note::
@@ -111,7 +111,7 @@ file containing information about the data and processing. Valid fields are show
         -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC
 
     # Singularity command
-    singularity exec -B $DATA_DIR:/data immcantation_suite_|docker-version|.sif \\
+    singularity exec -B $DATA_DIR:/data immcantation_suite-|docker-version|.sif \\
         presto-abseq -1 $READS_R1 -2 $READS_R2 -y $YAML \\
         -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC
 
@@ -151,7 +151,7 @@ or inside the container under ``/usr/local/share/protocols/Universal``.
         -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC
 
     # Singularity command
-    singularity exec -B $DATA_DIR:/data immcantation_suite_|docker-version|.sif \\
+    singularity exec -B $DATA_DIR:/data immcantation_suite-|docker-version|.sif \\
         presto-abseq -1 $READS_R1 -2 $READS_R2 -j $CREGION -r $VREF \\
         -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC
 
@@ -187,7 +187,7 @@ single-cell V(D)J data output by Cell Ranger.
         -o $OUT_DIR -p $NPROC
 
     # Singularity command
-    singularity exec -B $DATA_DIR:/data immcantation_suite_|docker-version|.sif \\
+    singularity exec -B $DATA_DIR:/data immcantation_suite-|docker-version|.sif \\
         changeo-10x -s $READS -a $ANNOTATIONS -x $DIST -n $SAMPLE_NAME \\
         -o $OUT_DIR -p $NPROC
 
@@ -220,7 +220,7 @@ Change-O data standard.
         changeo-igblast -s $READS -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC
 
     # Singularity command
-    singularity exec -B $DATA_DIR:/data immcantation_suite_|docker-version|.sif \\
+    singularity exec -B $DATA_DIR:/data immcantation_suite-|docker-version|.sif \\
         changeo-igblast -s $READS -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC
 
 
@@ -251,7 +251,7 @@ Infers V segment genotypes using TIgGER.
         tigger-genotype -d $DB -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC
 
     # Singularity command
-    singularity exec -B $DATA_DIR:/data immcantation_suite_|docker-version|.sif \\
+    singularity exec -B $DATA_DIR:/data immcantation_suite-|docker-version|.sif \\
         tigger-genotype -d $DB -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC
 
 
@@ -282,7 +282,7 @@ Performs automated detection of the clonal assignment threshold.
         shazam-threshold -d $DB -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC
 
     # Singularity command
-    singularity exec -B $DATA_DIR:/data immcantation_suite_|docker-version|.sif \\
+    singularity exec -B $DATA_DIR:/data immcantation_suite-|docker-version|.sif \\
         shazam-threshold -d $DB -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC
 
 
@@ -315,5 +315,5 @@ sequences.
         changeo-clone -d $DB -x $DIST -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC
 
     # Singularity command
-    singularity exec -B $DATA_DIR:/data immcantation_suite_|docker-version|.sif \\
+    singularity exec -B $DATA_DIR:/data immcantation_suite-|docker-version|.sif \\
         changeo-clone -d $DB -x $DIST -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC

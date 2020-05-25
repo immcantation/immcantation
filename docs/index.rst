@@ -170,52 +170,52 @@ Contributed Packages
 .. |presto-img| image:: _static/presto.png
     :align: middle
     :width: 200
-    :target: presto_
+    :target: pRESTO_
 
 .. |changeo-img| image:: _static/changeo.png
     :align: middle
     :width: 200
-    :target: changeo_
+    :target: Change-O_
 
 .. |alakazam-img| image:: _static/alakazam.png
     :align: middle
     :width: 200
-    :target: alakazam_
+    :target: Alakazam_
 
 .. |shazam-img| image:: _static/shazam.png
     :align: middle
     :width: 200
-    :target: shazam_
+    :target: SHazaM_
 
 .. |tigger-img| image:: _static/tigger.png
     :align: middle
     :width: 200
-    :target: tigger_
+    :target: TIgGER_
 
 .. |scoper-img| image:: _static/scoper.png
     :align: middle
     :width: 200
-    :target: scoper_
+    :target: SCOPer_
 
 .. |prestoR-img| image:: _static/prestoR.png
     :align: middle
     :width: 200
-    :target: prestor_
+    :target: prestoR_
 
 .. |rdi-img| image:: _static/rdi.png
     :align: middle
     :width: 200
-    :target: rdi_
+    :target: RDI_
 
 .. |igphyml-img| image:: _static/igphyml.png
     :align: middle
     :width: 180
-    :target: igphyml_
+    :target: IgPhyML_
 
 .. |rabhit-img| image:: _static/rabhit.png
     :align: middle
     :width: 140
-    :target: rabhit_
+    :target: RAbHIT_
 
 .. |sumrep-img| image:: _static/sumrep.png
     :align: middle
@@ -224,14 +224,14 @@ Contributed Packages
 
 .. Doc links
 
-.. _presto: https://presto.readthedocs.io
-.. _changeo: https://changeo.readthedocs.io
-.. _alakazam: https://alakazam.readthedocs.io
-.. _shazam: https://shazam.readthedocs.io
-.. _tigger: https://tigger.readthedocs.io
-.. _scoper: https://scoper.readthedocs.io
-.. _rdi: https://rdi.readthedocs.io
-.. _igphyml: https://igphyml.readthedocs.io
-.. _rabhit: https://yaarilab.bitbucket.io/RAbHIT
+.. _pRESTO: https://presto.readthedocs.io
+.. _Change-O: https://changeo.readthedocs.io
+.. _Alakazam: https://alakazam.readthedocs.io
+.. _SHazaM: https://shazam.readthedocs.io
+.. _TIgGER: https://tigger.readthedocs.io
+.. _SCOPer: https://scoper.readthedocs.io
+.. _RDI: https://rdi.readthedocs.io
+.. _IgPhyML: https://igphyml.readthedocs.io
+.. _RAbHIT: https://yaarilab.bitbucket.io/RAbHIT
 .. _sumrep: https://github.com/matsengrp/sumrep
-.. _prestor: packages/prestor.html
+.. _prestoR: packages/prestor.html

@@ -14,7 +14,7 @@ To invoke a shell session inside the container:
     docker run -it immcantation/suite:|docker-version| bash
 
     # Singularity command
-    singularity shell immcantation_suite_|docker-version|.sif
+    singularity shell immcantation_suite-|docker-version|.sif
 
 Sharing files with the container
 --------------------------------------------------------------------------------
@@ -38,7 +38,7 @@ For example, to invoke a shell session inside the container with ``$HOME/project
     docker run -it -v $HOME/project:/data:z immcantation/suite:|docker-version| bash
 
     # Singularity command
-    singularity shell -B $HOME/project:/data immcantation_suite_|docker-version|.sif
+    singularity shell -B $HOME/project:/data immcantation_suite-|docker-version|.sif
 
 Note, the ``:z`` in the ``-v`` argument of the ``docker`` command is essential.
 

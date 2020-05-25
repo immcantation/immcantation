@@ -30,11 +30,18 @@ This webinar covers:
 
 * Quantification of selection pressure
 
-10X Genomics BCR Repertoire Analysis
+
+Single-cell Analysis
 -------------------------------------------------------------------------------------------
 
-For information on how to process 10X data to be analyzed with Immcantation, we offer an introductory tutorial for new users, and a Change-O reference page for users more familiar with Immcantation:
+For information on how to process 10X data to be analyzed with Immcantation, we offer an
+introductory tutorial for new users, and a Change-O reference page for users more familiar
+with Immcantation:
 
-* :ref:`10X Genomics V(D)J sequence analysis tutorial <10X-Tutorial>`
+.. toctree::
+    :maxdepth: 1
 
-* `Parsing 10X Genomics V(D)J data in Change-O <https://changeo.readthedocs.io/en/stable/examples/10x.html>`_
+    10x_tutorial
+    Parsing 10X Data with Change-O <https://changeo.readthedocs.io/en/stable/examples/10x.html>
+
+

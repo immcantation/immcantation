@@ -38,10 +38,14 @@ Singularity
 .. parsed-literal::
 
     # Pull release version |docker-version|
-    IMAGE="immcantation_suite_|docker-version|.sif"
+    IMAGE="immcantation_suite-|docker-version|.sif"
     singularity build $IMAGE docker://immcantation/suite:|docker-version|
 
-The instructions to use containers from `Docker Hub <https://hub.docker.com/>`_ with Singularity can be slightly different for different versions of Singularity. If the command shown above doesn't work for you, please visit `Singularity Documentation <https://www.sylabs.io/docs/>`_ and look for the specific command for your Singularity version under *Build a container*.
+The instructions to use containers from `Docker Hub <https://hub.docker.com/>`_
+with Singularity can be slightly different for different versions of Singularity.
+If the command shown above doesn't work for you, please visit
+`Singularity Documentation <https://www.sylabs.io/docs/>`_ and look for the
+specific command for your Singularity version under *Build a container*.
 
     
 What's in the Container

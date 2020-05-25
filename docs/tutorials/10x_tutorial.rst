@@ -7,17 +7,20 @@
 Overview
 -------------------------------------------------------------------------------------------
 
-This tutorial is a basic walkthrough for defining B cell clonal families and building B cell lineage trees using 10X BCR sequencing data.
+This tutorial is a basic walkthrough for defining B cell clonal families and building B cell
+lineage trees using 10X BCR sequencing data.
 **It is intended for users without prior experience with Immcantation.**
-If you are familiar with Immcantation, then `this page <https://changeo.readthedocs.io/en/stable/examples/10x.html>`__ may be more useful.
+If you are familiar with Immcantation, then `this page <https://changeo.readthedocs.io/en/stable/examples/10x.html>`__
+may be more useful.
 
 *Knowledge of basic command line usage is assumed.*
-Please check out the individual documentation sites for the functions detailed in this tutorial before using them on your own data.
-For simplicity, this tutorial will use the `Immcantation Docker image <https://immcantation.readthedocs.io/en/stable/docker/intro.html>`__
-which contains all necessary software. It is also possible to install the packages being used separately
-(see `pRESTO <http://presto.readthedocs.io>`__, `Change-O <http://changeo.readthedocs.io>`__, and `Alakazam <http://alakazam.readthedocs.io>`__).
+Please check out the individual documentation sites for the functions detailed in this tutorial
+before using them on your own data. For simplicity, this tutorial will use the
+:ref:`Immcantation Docker image <DockerIntro>` which contains all necessary software. It is
+also possible to install the packages being used separately (see `pRESTO`_,
+`Change-O`_, and `Alakazam`_).
 
-Please `contact us <https://immcantation.readthedocs.io/en/stable/about.html>`__ if you have any questions.
+Please :ref:`contact us <Contact>` if you have any questions.
 
 
 Getting started
@@ -29,7 +32,7 @@ It represents the Ig V(D)J sequences from CD19+ B cells isolated from PBMCs of a
 and processed with their `Cell Ranger pipeline <https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/what-is-cell-ranger>`__.
 
 Second, install `Docker <https://www.docker.com/products/docker-desktop>`__ (if you don't have it already) and
-download the `Immcantation Docker image <https://immcantation.readthedocs.io/en/stable/docker/intro.html>`__.
+download the :ref:`Immcantation Docker image <DockerIntro>`.
 For some operating systems, it may be necessary to use super-user privileges (sudo), and/or to have
 `Docker Desktop <https://hub.docker.com/editions/community/docker-ce-desktop-windows>`__
 running before entering the following commands.
@@ -108,11 +111,10 @@ It will also create a /logs directory containing:
 + ``pipeline-10x.err``
 + ``pipeline-10x.log``
 
-For a full listing of script options, see the
-`10X Genomics V(D)J annotation pipeline <https://immcantation.readthedocs.io/en/stable/docker/pipelines.html#x-genomics-v-d-j-annotation-pipeline>`__.
-It is also important to note that this pipeline uses the standard `IMGT <http://www.imgt.org/>`__ reference database of human alleles.
+For a full listing of script options, see the :ref:`10X Genomics V(D)J annotation pipeline <10XPipeline>`.
+It is also important to note that this pipeline uses the standard `IMGT <http://www.imgt.org>`__ reference database of human alleles.
 To infer novel alleles and subject-specific genotypes, which would result in more accurate assignments,
-see `TIgGER <https://tigger.readthedocs.io/en/stable/vignettes/Tigger-Vignette/>`__.
+see `TIgGER <https://tigger.readthedocs.io/en/stable/vignettes/Tigger-Vignette>`__.
 
 
 .. _10X-Clones:
@@ -123,8 +125,8 @@ Clonal groups are B cells that descend from a common naive B cell ancestor. To g
 inferred clonal groups, we cluster BCR sequences that have the same heavy chain V and J genes and same junction length.
 We next cluster sequences with similar junction regions, using either a
 `defined sequence distance cutoff <https://changeo.readthedocs.io/en/stable/examples/cloning.html>`__,
-or an adaptive threshold (`SCOPer <https://scoper.readthedocs.io/en/stable/>`__). When available,
-we can also split clonal groups that have `differing light chain V and J genes. <https://changeo.readthedocs.io/en/stable/examples/10x.html>`__
+or an adaptive threshold (`SCOPer`_). When available, we can also split clonal groups that have
+`differing light chain V and J genes. <https://changeo.readthedocs.io/en/stable/examples/10x.html>`__
 
 In the previous section, we used a predefined clonal clustering threshold of ``0.1``
 using the ``-x`` option in the ``changeo-10x`` script.
@@ -137,13 +139,14 @@ If ``changeo-10x`` is run successfully above, this file will be in ``temp_files.
 Otherwise it will be in the current working directory.
 
 The first is by inspecting `a plot of sequence distances <https://shazam.readthedocs.io/en/stable/vignettes/DistToNearest-Vignette/>`__.
-This is supplied in the file ``filtered_contig_threshold-plot.pdf``. You can then define clones manually using the chosen threshold (e.g. ``0.09``)::
+This is supplied in the file ``filtered_contig_threshold-plot.pdf``. You can then define clones manually
+using the chosen threshold (e.g. ``0.09``)::
 
     # define heavy chain clones
     DefineClones.py -d filtered_contig_heavy_productive-T.tsv --act set --model ham \
         --norm len --dist 0.09 --outname filtered_contig_heavy
 
-If the sequence distance plot is not bimodal, it may be more appropriate to instead use `SCOPer <https://scoper.readthedocs.io/en/stable/>`__
+If the sequence distance plot is not bimodal, it may be more appropriate to instead use `SCOPer`_
 to assign clones using an adaptive threshold. In order to be able to directly copy/paste the commands provided in this tutorial,
 be sure to rename the output file ``filtered_contig_heavy_clone-pass.tsv`` (to match the output of ``DefineClones.py``).
 
@@ -171,9 +174,9 @@ Build lineage trees
 -------------------------------------------------------------------------------------------
 Lineage trees represent the series of shared and unshared mutations leading from clone's germline
 sequence to the observed sequence data. There are multiple ways of building and visualizing these trees.
-Currently the simplest way within Immcantation is to use `Alakazam <https://alakazam.readthedocs.io>`__,
+Currently the simplest way within Immcantation is to use `Alakazam`_,
 which is built around building maximum parsimony trees using `PHYLIP <http://evolution.genetics.washington.edu/phylip.html>`__.
-Alternatively, you can use `IgPhyML <https://igphyml.readthedocs.io>`__, which builds maximum likelihood
+Alternatively, you can use `IgPhyML`_, which builds maximum likelihood
 trees with B cell specific models. Here we use IgPhyML.
 
 To run IgPhyML from within the Docker container, use the ``BuildTrees.py`` script::
@@ -240,3 +243,13 @@ Other training material in using Immcantation is available, such as the
 `slides and example data <https://goo.gl/FpW3Sc>`__ from our introductory webinar series.
 The webinar is available as a `Jupyter notebook <https://bitbucket.org/kleinstein/immcantation/src/default/training/>`_
 and an `interactive website <https://kleinstein.bitbucket.io/tutorials/intro-lab/index.html>`_.
+
+.. Doc links
+
+.. _pRESTO: https://presto.readthedocs.io
+.. _Change-O: https://changeo.readthedocs.io
+.. _Alakazam: https://alakazam.readthedocs.io
+.. _SHazaM: https://shazam.readthedocs.io
+.. _TIgGER: https://tigger.readthedocs.io
+.. _SCOPer: https://scoper.readthedocs.io
+.. _IgPhyML: https://igphyml.readthedocs.io
