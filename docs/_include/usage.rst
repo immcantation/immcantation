@@ -53,6 +53,7 @@ Usage: presto-clontech [OPTIONS]
       Defaults to /usr/local/share/protocols/Universal/Mouse_IG_CRegion_RC.fasta.
   -r  V-segment reference file.
       Defaults to /usr/local/share/igblast/fasta/imgt_mouse_ig_v.fasta.
+  -y  YAML file providing description fields for report generation.
   -n  Sample identifier which will be used as the output file prefix.
       Defaults to a truncated version of the read 1 filename.
   -o  Output directory. Will be created if it does not exist.
@@ -86,7 +87,7 @@ Usage: changeo-10x [OPTIONS]
       Defaults to a truncated version of the sequence filename.
   -o  Output directory. Will be created if it does not exist.
       Defaults to a directory matching the sample identifier in the current working directory.
-  -f  Output format. One of changeo or airr. Defaults to changeo.
+  -f  Output format. One of changeo or airr. Defaults to airr.
   -p  Number of subprocesses for multiprocessing tools.
       Defaults to the available cores.
   -i  Specify to allow partial alignments.
@@ -109,7 +110,7 @@ Usage: changeo-igblast [OPTIONS]
       Defaults to a truncated version of the sequence filename.
   -o  Output directory. Will be created if it does not exist.
       Defaults to a directory matching the sample identifier in the current working directory.
-  -f  Output format. One of changeo (default) or airr.
+  -f  Output format. One of airr (default) or changeo.
   -p  Number of subprocesses for multiprocessing tools.
       Defaults to the available cores.
   -k  Specify to filter the output to only productive/functional sequences.
@@ -131,7 +132,7 @@ Usage: changeo-clone [OPTIONS]
       Defaults to a truncated version of the input filename.
   -o  Output directory. Will be created if it does not exist.
       Defaults to a directory matching the sample identifier in the current working directory.
-  -f  Output format. One of changeo (default) or airr.
+  -f  Output format. One of airr (default) or changeo.
   -p  Number of subprocesses for multiprocessing tools.
       Defaults to the available cores.
   -a  Specify to clone the full data set.
@@ -156,7 +157,7 @@ Usage: shazam-threshold [options]
 		Output directory. Will be created if it does not exist. 
 		Defaults to the current working directory.
 	-f FORMAT, --format=FORMAT
-		File format. One of 'changeo' (default) or 'airr'.
+		File format. One of 'airr' (default) or 'changeo'.
 	-p NPROC, --nproc=NPROC
 		Number of subprocesses for multiprocessing tools. 
 		Defaults to the available processing units.
@@ -187,6 +188,13 @@ Usage: tigger-genotype [options]
 	-v VFIELD, --vfield=VFIELD
 		Name of the output field containing genotyped V assignments. 
 		Defaults to V_CALL_GENOTYPED.
+	-x MINSEQ, --minseq=MINSEQ
+		Minimum number of sequences in the mutation/coordinate range. 
+		Samples with insufficient sequences will be excluded. 
+		Defaults to 50.
+	-y MINGERM, --mingerm=MINGERM
+		Minimum number of sequences required to analyze a germline allele. 
+		Defaults to 200.
 	-n NAME, --name=NAME
 		Sample name or run identifier which will be used as the output file prefix. 
 		Defaults to a truncated version of the input filename.
@@ -194,7 +202,7 @@ Usage: tigger-genotype [options]
 		Output directory. Will be created if it does not exist. 
 		Defaults to the current working directory.
 	-f FORMAT, --format=FORMAT
-		File format. One of 'changeo' (default) or 'airr'.
+		File format. One of 'airr' (default) or 'changeo'.
 	-p NPROC, --nproc=NPROC
 		Number of subprocesses for multiprocessing tools. 
 		Defaults to the available processing units.
