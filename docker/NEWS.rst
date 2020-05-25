@@ -24,11 +24,16 @@ Version Updates:
 
 Pipeline Changes:
 
++ Changed the default output format of all pipeline
+  scripts to the AIRR Rearrangement standard. The legacy Change-O
+  format is still supported by specifying ``-f changeo``.
 + Added report generation and the ``-y`` argument specifying the report
   yaml config file to ``presto-clontech``.
 + Changed name of the console logs in ``presto-clontech`` to
   ``pipeline-presto.log`` and ``pipeline-presto.err`` 
   (was ``pipeline.log`` and ``pipeline.err``).
++ Added ``--minseq`` and ``--mingerm`` arguments to ``tigger-genotype``
+  to control sequence and allele exclusion criteria.
 
 
 Version 3.1.0:  December 16, 2019
