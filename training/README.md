@@ -20,13 +20,13 @@ Get a global overview of how the different tools in the Immcantation framework w
 
 ```
 # Example: pull the development version of the lab
-docker pull kleinstein/immcantation:devel-lab
+docker pull immcantation/lab:devel
 ```
     
 * 1.2 Run the container:
 
 ```
-docker run --network=host -it --rm -p 8888:8888 kleinstein/immcantation:devel-lab
+docker run --network=host -it --rm -p 8888:8888 immcantation/lab:devel
 ```
 
 Or, if you want to save the results in your computer:
@@ -34,7 +34,7 @@ Or, if you want to save the results in your computer:
 ```
 # Note: change my-out-dir for the full path to the local directory where 
 # you want to have the results saved to
-docker run --network=host -it --rm -v my-out-dir:/home/magus/notebooks/results:z -p 8888:8888 kleinstein/immcantation:devel-lab
+docker run --network=host -it --rm -v my-out-dir:/home/magus/notebooks/results:z -p 8888:8888 immcantation/lab:devel
 ```
 
 Once the container is running, You will see in the terminal a message asking you to visit a url like `http://<hostname>:8888/?token=<token>`
