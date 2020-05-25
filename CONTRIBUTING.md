@@ -7,6 +7,7 @@ pull request to the relevant Bitbucket repository:
 + [Alakazam](https://bitbucket.org/kleinstein/alakazam)
 + [SHazaM](https://bitbucket.org/kleinstein/shazam)
 + [TIgGER](https://bitbucket.org/kleinstein/tigger)
++ [SCOPer](https://bitbucket.org/kleinstein/scoper)
 
 All Immcantation core software packages are under the free and open-source license
 [AGPL-3](https://www.gnu.org/licenses/agpl-3.0.html). Other core elements, 

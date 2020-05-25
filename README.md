@@ -20,7 +20,7 @@ framework.
 
 Folder      | Contents
 ----------- | ----------------------------------------------------------
-docker      | Dockerfiles for images hosted on [Docker Hub](https://hub.docker.com/r/kleinstein/immcantation).
+docker      | Dockerfiles for images hosted on [Docker Hub](https://hub.docker.com/r/immcantation).
 docs        | Sphinx build files for docs hosted on [ReadTheDocs](https://immcantation.readthedocs.io).
 pipelines   | Pipeline template scripts for the docker images.
 protocols   | Primer sequences and amplicon designs for published experimental protocols.
@@ -33,7 +33,7 @@ its dependencies, accessory scripts, and IgBLAST in a
 [Docker](http://www.docker.com) image. The image also includes both the
 IgBLAST and IMGT reference germline sets, as well as several template
 pipeline scripts. The image is available on docker hub at
-[kleinstein/immcantation](https://hub.docker.com/r/kleinstein/immcantation)
+[immcantation/suite](https://hub.docker.com/r/immcantation/suite)
 
 Images are versioned through tags with images containing official
 releases denoted by meta-version numbers (eg, `1.0.0`). The `devel` tag
