@@ -77,7 +77,7 @@ This script will automatically:
 
 + `Assign V, D, and J genes using IgBLAST <https://changeo.readthedocs.io/en/stable/examples/igblast.html>`__
 + `Convert IgBLAST output to Change-O format. <https://changeo.readthedocs.io/en/stable/examples/igblast.html#processing-the-output-of-igblast>`__
-+ `Remove nonfunctional sequences <https://changeo.readthedocs.io/en/stable/examples/filtering.html>`__
++ `Remove non-productive sequences <https://changeo.readthedocs.io/en/stable/examples/filtering.html>`__
 + Define clonal groups (see the :ref:`next section <10X-Clones>`)
 + `Reconstruct heavy chain germline V and J sequences. <https://changeo.readthedocs.io/en/stable/examples/germlines.html>`__
 + Gather and compress intermediate files
