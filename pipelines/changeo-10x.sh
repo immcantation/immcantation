@@ -377,7 +377,7 @@ fi
 
 # Zip or delete intermediate files
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "Compressing files"
-TEMP_FILES=$(ls *.tsv *.tab 2> /dev/null | grep -v "${HEAVY_PROD}\|${LIGHT_PROD}\|${HEAVY_NON}\|${LIGHT_NON}")
+TEMP_FILES=$(ls *.tsv *.tab 2> /dev/null | grep -v "${HEAVY_PROD}\|${LIGHT_PROD}\|${HEAVY_NON}\|${LIGHT_NON}\|${DB_PASS}")
 if [[ ! -z $TEMP_FILES ]]; then
     if $ZIP_FILES; then
         tar -zcf temp_files.tar.gz $TEMP_FILES
