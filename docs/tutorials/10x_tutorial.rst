@@ -96,6 +96,8 @@ used for assigning sequences into clonal clusters.
 This script will create the following files (in addition to ``filtered_contig_annotations.csv`` and
 ``filtered_contig.fasta``):
 
+
++ ``filtered_contig_db-pass.tsv``
 + ``filtered_contig_heavy_productive-F.tsv``
 + ``filtered_contig_heavy_germ-pass.tsv``
 + ``filtered_contig_igblast.fmt7``
