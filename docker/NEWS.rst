@@ -1,7 +1,7 @@
 Release Notes
 ========================================================================
 
-Version 4.0.0:  May 25, 2020
+Version 4.0.0:  May 30, 2020
 ------------------------------------------------------------------------
 
 General:
@@ -34,6 +34,8 @@ Pipeline Changes:
   (was ``pipeline.log`` and ``pipeline.err``).
 + Added ``--minseq`` and ``--mingerm`` arguments to ``tigger-genotype``
   to control sequence and allele exclusion criteria.
++ The ``changeo-10x`` will no longer automatically archive the
+  ``db-pass`` file in the ``temp_files.tar.gz`` tarball.
 
 
 Version 3.1.0:  December 16, 2019
