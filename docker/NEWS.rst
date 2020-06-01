@@ -9,6 +9,7 @@ General:
 + License changed to AGPL-3 for scripts, core packages, and other
   software code. Non-software content remains unchanged under the
   CC BY-SA 4.0 license.
++ Updated base image to Fedora 31.
 
 Version Updates:
 
