@@ -1,7 +1,7 @@
 Release Notes
 ========================================================================
 
-Version 4.0.0:  May 30, 2020
+Version 4.0.0:  June 1, 2020
 ------------------------------------------------------------------------
 
 General:
@@ -9,6 +9,7 @@ General:
 + License changed to AGPL-3 for scripts, core packages, and other
   software code. Non-software content remains unchanged under the
   CC BY-SA 4.0 license.
++ Updated base image to Fedora 31.
 
 Version Updates:
 
@@ -21,6 +22,8 @@ Version Updates:
 + prestor 0.0.6
 + igphyml 1.1.3
 + igblast 1.16.0
++ airr-py 1.3.0
++ airr-r 1.3.0
 
 Pipeline Changes:
 
