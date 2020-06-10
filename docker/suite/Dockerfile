@@ -112,10 +112,11 @@ RUN PACKAGE="alakazam" \
 # Install shazam
 RUN PACKAGE="shazam" \
     && rm -rf /tmp/${PACKAGE} \
-    && hg clone -b default https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
+    && git clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
     && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} -d immcantation \
     && rinstall -p /tmp/${PACKAGE} \
-    && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE})
+    && (cd /tmp/${PACKAGE} && builds write -n ${PACKAGE} -v $(git describe --abbrev=12 --always --dirty=+)) \
+    && rm -r /tmp/${PACKAGE}
 
 # Install tigger
 RUN PACKAGE="tigger" \
