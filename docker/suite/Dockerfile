@@ -94,10 +94,10 @@ RUN PACKAGE="presto" \
 # Install changeo
 RUN PACKAGE="changeo" \
     && rm -rf /tmp/${PACKAGE} \
-    && hg clone -b default https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
+    && git clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
     && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} -d immcantation \
     && pip3 install --no-cache-dir /tmp/${PACKAGE} \
-    && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
+    && (cd /tmp/${PACKAGE} && builds write -n ${PACKAGE} -v $(git describe --abbrev=12 --always --dirty=+)) \
     && rm -r /tmp/${PACKAGE}
 
 # Install alakazam
