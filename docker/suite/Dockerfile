@@ -157,10 +157,10 @@ RUN IGPHYML=$(versions get -n igphyml) \
 # Install rdi
 RUN PACKAGE="rdi" \
     && rm -rf /tmp/${PACKAGE} \
-    && hg clone https://bitbucket.org/cbolen1/rdicore /tmp/${PACKAGE} \
-    && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} \
+    && git clone https://bitbucket.org/cbolen1/rdicore /tmp/${PACKAGE} \
+    && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} -d immcantation \
     && rinstall -p /tmp/${PACKAGE} \
-    && builds write -n ${PACKAGE} -v $(hg id -i /tmp/${PACKAGE}) \
+    && (cd /tmp/${PACKAGE} && builds write -n ${PACKAGE} -v $(git describe --abbrev=12 --always --dirty=+)) \
     && rm -r /tmp/${PACKAGE}
 
 # Install RAbHIT
