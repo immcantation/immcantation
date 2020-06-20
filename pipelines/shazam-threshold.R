@@ -130,8 +130,8 @@ if (numeric_version(packageVersion("alakazam")) > numeric_version('0.3.0')) {
 }
 
 # Calculate distance-to-nearest
-db <- distToNearest(db, sequenceColumn=junction, vCallColumn=v_call, jCallColumn=j_call,
-                    model="ham", first=FALSE, normalize="len", nproc=NPROC)
+db <- suppressWarnings(distToNearest(db, sequenceColumn=junction, vCallColumn=v_call, jCallColumn=j_call,
+                                     model="ham", first=FALSE, normalize="len", nproc=NPROC))
 
 # Simply plot and exit for method="none"
 if (METHOD == "none") {
