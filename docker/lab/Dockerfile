@@ -18,7 +18,7 @@ VOLUME ${HOME}/results
 # Get notebook from repo
 RUN PACKAGE="immcantation" \
     && rm -rf /tmp/${PACKAGE} \
-    && hg clone -b default https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
+    && git clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
     && mv /tmp/${PACKAGE}/training/intro-lab.ipynb ${HOME}/notebooks \
     && mv /tmp/${PACKAGE}/training/assets ${HOME}/notebooks/ \
     && rm -r /tmp/${PACKAGE}
