@@ -16,7 +16,7 @@ RUN PACKAGE="immcantation" \
     && pipelines copy -s /tmp/${PACKAGE}/pipelines/ -t /usr/local/bin/ \
     && mv /tmp/${PACKAGE}/scripts/* /usr/local/bin/ \
     && mv /tmp/${PACKAGE}/protocols /usr/local/share/protocols \
-    && builds write -n ${PACKAGE} -v $(git describe --abbrev=12 --always --dirty=+)) \
+    && (cd /tmp/${PACKAGE} && builds write -n ${PACKAGE} -v $(git describe --abbrev=12 --always --dirty=+)) \
     && rm -r /tmp/${PACKAGE}
     
 # Install muscle
@@ -155,13 +155,13 @@ RUN IGPHYML=$(versions get -n igphyml) \
     && rm -r igphyml-${IGPHYML}.tar.gz
 
 # Install rdi
-#RUN PACKAGE="rdi" \
-#    && rm -rf /tmp/${PACKAGE} \
-#    && git clone https://bitbucket.org/cbolen1/rdicore /tmp/${PACKAGE} \
-#    && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} -d immcantation \
-#    && rinstall -p /tmp/${PACKAGE} \
-#    && (cd /tmp/${PACKAGE} && builds write -n ${PACKAGE} -v $(git describe --abbrev=12 --always --dirty=+)) \
-#    && rm -r /tmp/${PACKAGE}
+RUN PACKAGE="rdi" \
+    && rm -rf /tmp/${PACKAGE} \
+    && git clone https://bitbucket.org/cbolen1/rdicore /tmp/${PACKAGE} \
+    && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} -d immcantation \
+    && rinstall -p /tmp/${PACKAGE} \
+    && (cd /tmp/${PACKAGE} && builds write -n ${PACKAGE} -v $(git describe --abbrev=12 --always --dirty=+)) \
+    && rm -r /tmp/${PACKAGE}
 
 # Install RAbHIT
 RUN RABHIT=$(versions get -n rabhit) \
