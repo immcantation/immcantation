@@ -1,0 +1,13 @@
+*~
+.idea
+.Rhistory
+.Rproj.user
+*.Rproj
+*.pyc
+*.pyo
+*.egg-info
+^run
+^dist
+^build
+^docs/_build
+^tests/data
