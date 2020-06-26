@@ -243,7 +243,7 @@ Other Immcantation Training Resources
 -------------------------------------------------------------------------------------------
 Other training material in using Immcantation is available, such as the
 `slides and example data <https://goo.gl/FpW3Sc>`__ from our introductory webinar series.
-The webinar is available as a `Jupyter notebook <https://bitbucket.org/kleinstein/immcantation/src/default/training/>`_
+The webinar is available as a `Jupyter notebook <https://bitbucket.org/kleinstein/immcantation/src/master/training/>`_
 and an `interactive website <https://kleinstein.bitbucket.io/tutorials/intro-lab/index.html>`_.
 
 .. Doc links
