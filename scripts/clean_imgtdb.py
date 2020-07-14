@@ -2,6 +2,8 @@
 """
 Clean IMGT germline fasta files for IgBLAST database build
 """
+import Bio
+from pkg_resources import parse_version
 from sys import argv
 from Bio import SeqIO
 from Bio.SeqRecord import SeqRecord
@@ -22,5 +24,10 @@ for rec in SeqIO.parse(in_file, 'fasta'):
 
 # Overwrite file
 with open(out_file, 'w') as out_handle:
-    writer = SeqIO.FastaIO.FastaWriter(out_handle, wrap=None)
-    writer.write_file(seq_list)
+    if parse_version(Bio.__version__) >= parse_version('1.71'):
+        # Biopython >= v1.71
+        SeqIO.write(seq_list, out_handle, format='fasta-2line')
+    else:
+        # Biopython < v1.71
+        writer = SeqIO.FastaIO.FastaWriter(out_handle, wrap=None)
+        writer.write_file(seq_list)
