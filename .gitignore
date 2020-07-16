@@ -6,8 +6,7 @@
 *.pyc
 *.pyo
 *.egg-info
-^run
-^dist
-^build
-^docs/_build
-^tests/data
+dist/*
+docs/_build
+tests/data
+tests/run
