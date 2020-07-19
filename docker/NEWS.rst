@@ -10,6 +10,15 @@ Version Updates:
 + alakazam 1.0.2
 + shazam 1.0.1
 
+Pipeline Changes:
+
++ Fixed a clonal clustering threshold detection warning causing early
+  exit of ``changeo-10x`` in smoe cases.
+
+Image Changes:
+
++ Fixed a Biopython v1.77 incompatibility in ``clean_imgtdb.py``.
+
 
 Version 4.0.0:  June 1, 2020
 ------------------------------------------------------------------------
