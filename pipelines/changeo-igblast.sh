@@ -144,14 +144,24 @@ if ! ${REFDIR_SET}; then
         REFDIR="/usr/local/share/germlines/imgt/mouse/vdj"
     fi
 else
-    REFDIR=$(realpath ${REFDIR})
+    if [ -d ${REFDIR} ]; then
+        REFDIR=$(realpath ${REFDIR})
+    else
+        echo -e "Directory '${REFDIR}' not found." >&2
+        exit 1
+    fi
 fi
 
 # Set blast database
 if ! ${IGDATA_SET}; then
     IGDATA="/usr/local/share/igblast"
 else
-    IGDATA=$(realpath ${IGDATA})
+    if [ -d ${IGDATA} ]; then
+        IGDATA=$(realpath ${IGDATA})
+    else
+        echo -e "Directory '${IGDATA}' not found." >&2
+        exit 1
+    fi
 fi
 
 # Set output name
