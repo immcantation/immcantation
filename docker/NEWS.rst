@@ -8,7 +8,7 @@ Version Updates:
 
 + presto 0.6.1
 + alakazam 1.0.2
-+ shazam 1.0.1
++ shazam 1.0.2
 + scoper 1.1.0
 
 Pipeline Changes:

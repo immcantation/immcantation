@@ -1,11 +1,11 @@
 immcantation:
   version:  devel
-  date:     2020.07.19
+  date:     2020.08.10
 package:
   presto:   0.6.1
   changeo:  1.0.0
   alakazam: 1.0.2
-  shazam:   1.0.1
+  shazam:   1.0.2
   tigger:   1.0.0
   scoper:   1.1.0
   prestor:  0.0.6
