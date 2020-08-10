@@ -1,7 +1,7 @@
 Release Notes
 ========================================================================
 
-Version 4.1.0:  July 18, 2020
+Version 4.1.0:  August 10, 2020
 ------------------------------------------------------------------------
 
 Version Updates:
@@ -9,11 +9,12 @@ Version Updates:
 + presto 0.6.1
 + alakazam 1.0.2
 + shazam 1.0.1
++ scoper 1.1.0
 
 Pipeline Changes:
 
 + Fixed a clonal clustering threshold detection warning causing early
-  exit of ``changeo-10x`` in smoe cases.
+  exit of ``changeo-10x`` in some cases.
 
 Image Changes:
 
