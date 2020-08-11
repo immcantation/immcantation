@@ -79,6 +79,8 @@ RUN IGBLAST=$(versions get -n igblast) \
        ftp://ftp.ncbi.nih.gov/blast/executables/igblast/release/${IGBLAST}/ncbi-igblast-${IGBLAST}-x64-linux.tar.gz \
     && tar -zxf ncbi-igblast-${IGBLAST}-x64-linux.tar.gz \
     && mv ncbi-igblast-${IGBLAST}/bin/* /usr/local/bin \
+    && mkdir -p /usr/local/share/igblast \
+    && mv ncbi-igblast-${IGBLAST}/internal_data ncbi-igblast-${IGBLAST}/optional_file /usr/local/share/igblast \
     && rm -r ncbi-igblast-${IGBLAST}-x64-linux.tar.gz ncbi-igblast-${IGBLAST}
 
 # Install CD-HIT
@@ -112,6 +114,12 @@ RUN AIRR_PY=$(versions get -n airr-py) \
     && AIRR_R=$(versions get -n airr-r) \
     && pip3 install airr==${AIRR_PY} \
     && Rscript -e "devtools::install_version('airr', '${AIRR_R}', quiet=FALSE, clean=TRUE)"
+
+# Download and build references databases
+RUN fetch_igblastdb.sh -o /usr/local/share/igblast -x \
+    && fetch_imgtdb.sh -o /usr/local/share/germlines/imgt \
+    && imgt2igblast.sh -i /usr/local/share/germlines/imgt -o /usr/local/share/igblast \
+    && fetch_phix.sh -o /usr/local/share/phix
 
 # Set commands
 CMD echo -e "Report version information:\n" \
