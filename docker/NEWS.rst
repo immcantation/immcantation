@@ -20,6 +20,8 @@ Pipeline Changes:
 Image Changes:
 
 + Fixed a Biopython v1.77 incompatibility in ``clean_imgtdb.py``.
++ Updated IgBLAST installation procedure for new structure of
+  ``internal_data``, ``optional_file``, and ``database`` directories.
 
 
 Version 4.0.0:  June 1, 2020
