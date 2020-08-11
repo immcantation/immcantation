@@ -1,14 +1,14 @@
 
 .. _10X-Tutorial:
 
-10X Genomics V(D)J Sequence Analysis Tutorial
+10x Genomics V(D)J Sequence Analysis Tutorial
 ===========================================================================================
 
 Overview
 -------------------------------------------------------------------------------------------
 
 This tutorial is a basic walkthrough for defining B cell clonal families and building B cell
-lineage trees using 10X BCR sequencing data.
+lineage trees using 10x Genomics BCR sequencing data.
 **It is intended for users without prior experience with Immcantation.**
 If you are familiar with Immcantation, then `this page <https://changeo.readthedocs.io/en/stable/examples/10x.html>`__
 may be more useful.
@@ -28,7 +28,7 @@ Getting started
 
 First, `download and unzip the example data <http://clip.med.yale.edu/immcantation/examples/10x_data.zip>`__.
 It represents the Ig V(D)J sequences from CD19+ B cells isolated from PBMCs of a healthy human donor, and is based on
-`data provided by 10X Genomics <https://support.10xgenomics.com/single-cell-vdj/datasets/2.2.0/vdj_v1_hs_cd19_b>`__ under a `Creative Commons Attribute license <https://creativecommons.org/licenses/by/4.0/>`__,
+`data provided by 10x Genomics <https://support.10xgenomics.com/single-cell-vdj/datasets/2.2.0/vdj_v1_hs_cd19_b>`__ under a `Creative Commons Attribute license <https://creativecommons.org/licenses/by/4.0/>`__,
 and processed with their `Cell Ranger pipeline <https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/what-is-cell-ranger>`__.
 
 Second, install `Docker <https://www.docker.com/products/docker-desktop>`__ (if you don't have it already) and
@@ -72,7 +72,7 @@ to enter the Docker image again.
 Assign V, D, and J genes and define clonal groups
 -------------------------------------------------------------------------------------------
 
-Most of the processing for 10X data can be handled by the ``changeo-10x`` script supplied in the Docker container.
+Most of the processing for 10x Genomics data can be handled by the ``changeo-10x`` script supplied in the Docker container.
 This script will automatically:
 
 + `Assign V, D, and J genes using IgBLAST <https://changeo.readthedocs.io/en/stable/examples/igblast.html>`__
@@ -84,7 +84,7 @@ This script will automatically:
 
 To run this script on the example dataset, enter the following command in the Docker container (the ``\`` just indicates a new line for visual clarity)::
 
-    # run 10X processing script
+    # Run 10x Genomics processing script
     changeo-10x -s filtered_contig.fasta -a filtered_contig_annotations.csv -o . \
         -g human -t ig -x 0.1
 
@@ -113,7 +113,7 @@ It will also create a /logs directory containing:
 + ``pipeline-10x.err``
 + ``pipeline-10x.log``
 
-For a full listing of script options, see the :ref:`10X Genomics V(D)J annotation pipeline <10XPipeline>`.
+For a full listing of script options, see the :ref:`10x Genomics V(D)J annotation pipeline <10XPipeline>`.
 It is also important to note that this pipeline uses the standard `IMGT <http://www.imgt.org>`__ reference database of human alleles.
 To infer novel alleles and subject-specific genotypes, which would result in more accurate assignments,
 see `TIgGER <https://tigger.readthedocs.io/en/stable/vignettes/Tigger-Vignette>`__.

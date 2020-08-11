@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
-# Super script to run IgBLAST and Change-O on 10X data
+# Super script to run IgBLAST and Change-O on 10x data
 #
 # Author:  Jason Anthony Vander Heiden, Ruoyi Jiang
 # Date:    2019.05.15
 #
 # Arguments:
 #   -s  FASTA or FASTQ sequence file.
-#   -a  10X Cell Ranger V(D)J contig annotation file.
+#   -a  10x Genomics cellranger-vdj contig annotation file.
 #       Must corresponding with the FASTA/FASTQ input file (all, filtered or consensus).
 #   -r  Directory containing IMGT-gapped reference germlines.
 #       Defaults to /usr/local/share/germlines/imgt/human/vdj.
@@ -32,7 +32,7 @@
 print_usage() {
     echo -e "Usage: `basename $0` [OPTIONS]"
     echo -e "  -s  FASTA or FASTQ sequence file."
-    echo -e "  -a  10X Cell Ranger V(D)J contig annotation CSV file.\n" \
+    echo -e "  -a  10x Genomics cellranger-vdj contig annotation CSV file.\n" \
             "     Must corresponding with the FASTA/FASTQ input file (all, filtered or consensus)."
     echo -e "  -r  Directory containing IMGT-gapped reference germlines.\n" \
             "     Defaults to /usr/local/share/germlines/imgt/human/vdj when species is human.\n" \

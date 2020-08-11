@@ -34,7 +34,7 @@ This webinar covers:
 Single-cell Analysis
 -------------------------------------------------------------------------------------------
 
-For information on how to process 10X data to be analyzed with Immcantation, we offer an
+For information on how to process 10x Genomics data to be analyzed with Immcantation, we offer an
 introductory tutorial for new users, and a Change-O reference page for users more familiar
 with Immcantation:
 
@@ -42,4 +42,4 @@ with Immcantation:
     :maxdepth: 1
 
     10x_tutorial
-    Parsing 10X Data with Change-O <https://changeo.readthedocs.io/en/stable/examples/10x.html>
+    Parsing 10x Genomics data with Change-O <https://changeo.readthedocs.io/en/stable/examples/10x.html>

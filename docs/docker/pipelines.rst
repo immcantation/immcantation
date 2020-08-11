@@ -158,10 +158,10 @@ or inside the container under ``/usr/local/share/protocols/Universal``.
 
 .. _10XPipeline:
 
-10X Genomics V(D)J annotation pipeline
+10x Genomics V(D)J annotation pipeline
 --------------------------------------------------------------------------------
 
-Assigns new annotations and infers clonal relationships to 10X Genomics
+Assigns new annotations and infers clonal relationships to 10x Genomics
 single-cell V(D)J data output by Cell Ranger.
 
 .. include:: ../_include/usage.rst

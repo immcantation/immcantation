@@ -70,7 +70,7 @@ Usage: presto-clontech [OPTIONS]
 
 Usage: changeo-10x [OPTIONS]
   -s  FASTA or FASTQ sequence file.
-  -a  10X Cell Ranger V(D)J contig annotation CSV file.
+  -a  10x Genomics cellranger-vdj contig annotation CSV file.
       Must corresponding with the FASTA/FASTQ input file (all, filtered or consensus).
   -r  Directory containing IMGT-gapped reference germlines.
       Defaults to /usr/local/share/germlines/imgt/human/vdj when species is human.
