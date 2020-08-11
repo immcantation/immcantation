@@ -1,7 +1,7 @@
 Release Notes
 ========================================================================
 
-Version 4.1.0:  August 10, 2020
+Version 4.1.0:  August 11, 2020
 ------------------------------------------------------------------------
 
 Version Updates:
@@ -10,6 +10,7 @@ Version Updates:
 + alakazam 1.0.2
 + shazam 1.0.2
 + scoper 1.1.0
++ rabhit 0.1.5
 
 Pipeline Changes:
 
