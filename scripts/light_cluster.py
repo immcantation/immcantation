@@ -95,11 +95,12 @@ def lightCluster(heavy_file, light_file, out_file, doublets='drop', format='airr
     # column checking
     expected_heavy_columns = [cell_id, clone_id, v_call, j_call, junction_length, umi_count]
     if set(expected_heavy_columns).issubset(heavy_df.columns) is False:
-        raise ValueError("Missing one or more columns in heavy chain file: " + ", ".join(expected_heavy_columns))
+        raise ValueError("Missing one or more columns in heavy chain file: " + ", ".join(list(set(expected_heavy_columns).difference(heavy_df.columns))))
+        
     expected_light_columns = [cell_id, v_call, j_call, junction_length, umi_count]
     if set(expected_light_columns).issubset(light_df.columns) is False:
-        raise ValueError("Missing one or more columns in light chain file: " + ", ".join(expected_light_columns))
-
+        raise ValueError("Missing one or more columns in light chain file: " + ", ".join(list(set(expected_light_columns).difference(light_df.columns))))
+        
     # Fix types
     heavy_df[junction_length] = heavy_df[junction_length].astype('int')
     light_df[junction_length] = light_df[junction_length].astype('int')
