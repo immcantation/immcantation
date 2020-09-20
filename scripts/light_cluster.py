@@ -16,7 +16,7 @@ from changeo.Gene import getGene
 def clusterLinkage(cell_series, group_series):
     """
     Returns a dictionary of {cell_id : cluster_id} that identifies clusters of cells by analyzing their shared
-    features (group_series) using single linkage. 
+    features (group_series) using single linkage.
 
     Arguments:
       cell_series (iter): iter of cell ids.
@@ -30,13 +30,13 @@ def clusterLinkage(cell_series, group_series):
     # initial_dict = {cluster1: [cell1], cluster2: [cell1]}
     initial_dict = {}
     for cell, group in zip(cell_series, group_series):
-        try:    
+        try:
             initial_dict[group].append(cell)
         except KeyError:
             initial_dict[group] = [cell]
-               
+
     # naive single linkage clustering (ON^2 best case, ON^3 worst case) ...ie for cells with multiple light chains
-    # cluster_dict = {cluster1: [cell1, cell2]}, 2 cells belong in same group if they share 1 light chain 
+    # cluster_dict = {cluster1: [cell1, cell2]}, 2 cells belong in same group if they share 1 light chain
     while True:
         cluster_dict = {}
         for i, group in enumerate(initial_dict.keys()):
@@ -47,15 +47,15 @@ def clusterLinkage(cell_series, group_series):
                     cluster_dict[cluster] = cluster_dict[cluster] + initial_dict[group]
                     del cluster_dict[i]
                     break
-        # break if clusters stop changing, otherwise restart 
+        # break if clusters stop changing, otherwise restart
         if len(cluster_dict.keys()) == len(initial_dict.keys()):
             break
         else:
             initial_dict = cluster_dict.copy()
-    
+
     # invert cluster_dict for return
     assign_dict = {cell:k for k,v in cluster_dict.items() for cell in set(v)}
-    
+
     return assign_dict
 
 
@@ -147,7 +147,7 @@ if __name__ == "__main__":
     parser.add_argument('-o', dest='out_file', required=True,
                         help='Output file name.')
     parser.add_argument('--doublets', dest='doublets', default='drop', choices=('drop', 'count'),
-                        help='Either drop cells with multiple heavy chains or keep the best one my UMI count.')
+                        help='Either drop cells with multiple heavy chains or keep the best one by UMI count.')
     parser.add_argument('--format', dest='format', default='airr', choices=('airr','changeo'),
                         help='File format.')
 

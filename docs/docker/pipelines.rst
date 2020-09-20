@@ -43,7 +43,7 @@ genome.
     NPROC=4
 
     # Run pipeline in docker image
-    docker run -v $DATA_DIR:/data:z immcantation/suite:|docker-version| \\
+    docker run -v $DATA_DIR:/data\:z immcantation/suite:|docker-version| \\
         preprocess-phix -s $READS -o $OUT_DIR -p $NPROC
 
     # Singularity command
@@ -70,7 +70,7 @@ is shown below. Primer sequences are available from the Immcantation repository 
 `protocols/AbSeq <https://bitbucket.org/kleinstein/immcantation/src/tip/protocols/AbSeq>`__
 or inside the container under ``/usr/local/share/protocols/AbSeq``. Mouse primers are not supplied.
 TCR V gene references can be specified with the flag
-``-r /usr/local/share/igblast/fasta/imgt_human_tr_v.fasta``. 
+``-r /usr/local/share/igblast/fasta/imgt_human_tr_v.fasta``.
 
 .. include:: ../_include/usage.rst
     :start-after: Start presto-abseq
@@ -106,7 +106,7 @@ file containing information about the data and processing. Valid fields are show
     NPROC=4
 
     # Docker command
-    docker run -v $DATA_DIR:/data:z immcantation/suite:|docker-version| \\
+    docker run -v $DATA_DIR:/data\:z immcantation/suite:|docker-version| \\
         presto-abseq -1 $READS_R1 -2 $READS_R2 -y $YAML \\
         -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC
 
@@ -146,7 +146,7 @@ or inside the container under ``/usr/local/share/protocols/Universal``.
     NPROC=4
 
     # Docker command
-    docker run -v $DATA_DIR:/data:z immcantation/suite:|docker-version| \\
+    docker run -v $DATA_DIR:/data\:z immcantation/suite:|docker-version| \\
         presto-clontech -1 $READS_R1 -2 $READS_R2 -j $CREGION -r $VREF \\
         -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC
 
@@ -182,7 +182,7 @@ single-cell V(D)J data output by Cell Ranger.
     NPROC=4
 
     # Run pipeline in docker image
-    docker run -v $DATA_DIR:/data:z immcantation/suite:|docker-version| \\
+    docker run -v $DATA_DIR:/data\:z immcantation/suite:|docker-version| \\
         changeo-10x -s $READS -a $ANNOTATIONS -x $DIST -n $SAMPLE_NAME \\
         -o $OUT_DIR -p $NPROC
 
@@ -216,7 +216,7 @@ Change-O data standard.
     NPROC=4
 
     # Run pipeline in docker image
-    docker run -v $DATA_DIR:/data:z immcantation/suite:|docker-version| \\
+    docker run -v $DATA_DIR:/data\:z immcantation/suite:|docker-version| \\
         changeo-igblast -s $READS -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC
 
     # Singularity command
@@ -247,7 +247,7 @@ Infers V segment genotypes using TIgGER.
     NPROC=4
 
     # Run pipeline in docker image
-    docker run -v $DATA_DIR:/data:z immcantation/suite:|docker-version| \\
+    docker run -v $DATA_DIR:/data\:z immcantation/suite:|docker-version| \\
         tigger-genotype -d $DB -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC
 
     # Singularity command
@@ -278,7 +278,7 @@ Performs automated detection of the clonal assignment threshold.
     NPROC=4
 
     # Run pipeline in docker image
-    docker run -v $DATA_DIR:/data:z immcantation/suite:|docker-version| \\
+    docker run -v $DATA_DIR:/data\:z immcantation/suite:|docker-version| \\
         shazam-threshold -d $DB -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC
 
     # Singularity command
@@ -311,7 +311,7 @@ sequences.
     NPROC=4
 
     # Run pipeline in docker image
-    docker run -v $DATA_DIR:/data:z immcantation/suite:|docker-version| \\
+    docker run -v $DATA_DIR:/data\:z immcantation/suite:|docker-version| \\
         changeo-clone -d $DB -x $DIST -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC
 
     # Singularity command

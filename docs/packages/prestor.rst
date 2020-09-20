@@ -37,18 +37,21 @@ For an index of available functions see::
 
     help(package="prestor")
 
-For some common tasks see the following help pages:
+For some common tasks, see the following help pages:
 
 ====================  ===========================================================
 Function              Description
 ====================  ===========================================================
-report_abseq3         Generate a report for an AbSeq V3 pRESTO pipeline script
+buildReport           Generate a presto pipeline report
 loadConsoleLog	      Parse console output from a pRESTO pipeline
 loadLogTable	      Parse tabled log output from pRESTO tools
-plotConsoleLog	      Plot console output from a pRESTO pipeline
+pdfReport	          R Markdown to PDF format for pRESTO reports
+plotAlignSets	      Plot AlignSets log table
 plotAssemblePairs	  Plot AssemblePairs log table
 plotBuildConsensus	  Plot BuildConsensus log table
+plotConsoleLog	      Plot console output from a pRESTO pipeline
 plotFilterSeq	      Plot FilterSeq log table
 plotMaskPrimers	      Plot MaskPrimer log table
 plotParseHeaders	  Plot ParseHeaders log table
+report_abseq3         Generate a report for an AbSeq V3 pRESTO pipeline script
 ====================  ===========================================================

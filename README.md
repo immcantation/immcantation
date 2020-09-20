@@ -32,7 +32,7 @@ We have provided a complete installation of the Immcantation framework,
 its dependencies, accessory scripts, and IgBLAST in a
 [Docker](http://www.docker.com) image. The image also includes both the
 IgBLAST and IMGT reference germline sets, as well as several template
-pipeline scripts. The image is available on docker hub at
+pipeline scripts. The image is available on Docker Hub at
 [immcantation/suite](https://hub.docker.com/r/immcantation/suite)
 
 Images are versioned through tags with images containing official

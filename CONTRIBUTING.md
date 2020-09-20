@@ -192,11 +192,11 @@ or [Python](https://www.python.org/dev/peps/pep-0008) guides.
 ### Hidden Files ###
 
 As a general rule, do not commit hidden (`.*`) files such as project build files
-(eg, `*.Rproj`, `.idea`) or other local environment settings (eg, `.hgignore`),
+(eg, `*.Rproj`, `.idea`) or other local environment settings (eg, `.gitignore`),
 with the noted exception of `.Rbuildignore`. We use the following
-standard `.hgignore` files locally:
+standard `.gitignore` files locally:
 
-Standard `.hgignore` file for the Python packages:
+Standard `.gitignore` file for the Python packages:
 
 ```
 syntax: glob
@@ -212,7 +212,7 @@ build
 docs/_build
 ```
 
-Standard `.hgignore` file for the R packages:
+Standard `.gitignore` file for the R packages:
 
 ```
 syntax: glob
