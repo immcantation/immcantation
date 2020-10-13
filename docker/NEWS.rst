@@ -8,6 +8,7 @@ Version Updates:
 
 + presto 0.6.2
 + changeo 1.0.1
++ airr-py 1.3.1
 
 
 Version 4.1.0:  August 12, 2020
