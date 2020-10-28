@@ -128,3 +128,20 @@ The following R-based example demonstrates how to fix broken workflows as a resu
 
     # The solution is to update the function call to use the correct name:
     > threshold <- findThreshold(db$dist_nearest)
+    
+
+Convert between Change-O and AIRR-C format
+-------------------------------------------------------------------------------------------
+The default file format is the AIRR-C format. However, Immcantation provides a script ConvertDb in changeo package to convert the file from AIRR-C format to the legacy Change-O standard. For example, to convert a file named sample1_airr.tsv in AIRR-C format to Change-O format, you can run:
+
+.. code-block:: R
+
+    > ConvertDb changeo -d sample1_airr.tsv -o sample1_changeo.tab
+
+The output file sample1_changeo.tab is in Change-O format.
+
+In a similar way, you can also use ConvertDb to convert a change-O file to an AIRR-C file:
+
+.. code-block:: R
+
+    > ConvertDb airr -d sample1_changeo.tab -o sample1_airr.tsv
