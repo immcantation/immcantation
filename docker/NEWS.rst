@@ -1,7 +1,7 @@
 Release Notes
 ========================================================================
 
-Version 4.2.0:  October 13, 2020
+Version 4.2.0:  October 20, 2020
 ------------------------------------------------------------------------
 
 Version Updates:
@@ -9,6 +9,7 @@ Version Updates:
 + presto 0.6.2
 + changeo 1.0.1
 + airr-py 1.3.1
++ igblast 1.17.0
 
 
 Version 4.1.0:  August 12, 2020
