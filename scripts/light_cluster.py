@@ -10,7 +10,7 @@ clone_id identifiers from cells in the heavy chain data are transferred to the c
 chain sequences (merged by cell_id). Light chain v_call (first gene), j_call (first gene), junction_length 
 and clone_id (transferred from the heavy chain) are used to create groups of related cell_id. Groups that 
 share cell_id (Single linkage) are combined into clusters. The cluster number is used to add a suffix 
-to the heavy chain clone_id.
+to the heavy chain clone_id. Unpaired heavy chain sequences are removed.
 
 Example: clone_id 1 can be split into 1_1 and 1_2 if groups of sequences in clone 1 don't have similar light chains.
 
