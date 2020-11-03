@@ -4,7 +4,13 @@ Corrects IGH only cloning with IGK/L annotations (VERSION 1)
 
 This script uses light chain information to refine clone assignments generated using only the heavy chain.
 
-How it works: Doublets (cells with more than one heavy chain) in the heavy chain .tsv file are removed (--doublets drop) or only the heavy chain sequence with the highest umi_count is kept (--doublets count). clone_id identifiers from cells in the heavy chain data are transferred to the correspondent paired light chain sequences (merged by cell_id). Light chain v_call (first gene), j_call (first gene), junction_length and clone_id (transferred from the heavy chain) are used to create groups of related cell_id. Groups that share cell_id (Single linkage) are combined into clusters. The cluster number is used to add a suffix to the heavy chain clone_id.
+How it works: Doublets (cells with more than one heavy chain) in the heavy chain .tsv file are removed 
+(--doublets drop) or only the heavy chain sequence with the highest umi_count is kept (--doublets count). 
+clone_id identifiers from cells in the heavy chain data are transferred to the correspondent paired light 
+chain sequences (merged by cell_id). Light chain v_call (first gene), j_call (first gene), junction_length 
+and clone_id (transferred from the heavy chain) are used to create groups of related cell_id. Groups that 
+share cell_id (Single linkage) are combined into clusters. The cluster number is used to add a suffix 
+to the heavy chain clone_id.
 
 Example: clone_id 1 can be split into 1_1 and 1_2 if groups of sequences in clone 1 don't have similar light chains.
 
