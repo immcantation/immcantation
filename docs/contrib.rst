@@ -21,5 +21,5 @@ under `CC BY-SA 4.0 <https://creativecommons.org/licenses/by-sa/4.0>`__. Contrib
 packages are subject to their licenses.
 
 For details on documentation, coding style, and other conventions see the
-`CONTRIBUTING.md <https://bitbucket.org/kleinstein/immcantation/src/tip/CONTRIBUTING.md>`__ file on
+`CONTRIBUTING.md <https://bitbucket.org/kleinstein/immcantation/src/master/CONTRIBUTING.md>`__ file on
 Bitbucket.
