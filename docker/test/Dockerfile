@@ -48,6 +48,17 @@ ARG R_DEPS="c('ape', \
 #    && Rscript -e "install.packages(${R_DEPS}, clean=TRUE)"
 RUN Rscript -e "install.packages(${R_DEPS}, clean=TRUE)"
 
+# Install procotol data, utility scripts and pipelines
+RUN PACKAGE="immcantation" \
+    && rm -rf /tmp/${PACKAGE} \
+    && git clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
+    && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} -d immcantation \
+    && pipelines copy -s /tmp/${PACKAGE}/pipelines/ -t /usr/local/bin/ \
+    && mv /tmp/${PACKAGE}/scripts/* /usr/local/bin/ \
+    && mv /tmp/${PACKAGE}/protocols /usr/local/share/protocols \
+    && (cd /tmp/${PACKAGE} && builds write -n ${PACKAGE} -v $(git describe --abbrev=12 --always --dirty=+)) \
+    && rm -r /tmp/${PACKAGE}
+
 # Install muscle
 RUN MUSCLE=$(versions get -n muscle) \
     && wget -q --show-progress --no-check-certificate \
