@@ -23,7 +23,8 @@ RUN PACKAGE="immcantation" \
     && mv /tmp/${PACKAGE}/training/assets ${HOME}/notebooks/ \
     && rm -r /tmp/${PACKAGE}
         
-RUN pip3 install --no-cache-dir rpy2 tzlocal notebook==5.* RISE jupyter-contrib-nbextensions jupyter-nbextensions-configurator ipykernel bash_kernel && \
+RUN pip3 install --no-cache-dir rpy2 tzlocal notebook==6.* RISE && \
+    pip3 install --no-cache-dir jupyter-contrib-nbextensions jupyter-nbextensions-configurator ipykernel bash_kernel && \
     python3 -m bash_kernel.install && \
     jupyter contrib nbextension install --sys-prefix && \
     jupyter nbextension install rise --py --sys-prefix && \
@@ -33,11 +34,10 @@ RUN pip3 install --no-cache-dir rpy2 tzlocal notebook==5.* RISE jupyter-contrib-
 RUN Rscript -e "dir.create(path = Sys.getenv('R_LIBS_USER'), showWarnings = FALSE, recursive = TRUE)"
 ARG R_DEPS="c('evaluate', \
             'crayon', \
-            'pbdZMQ', \
             'devtools', \
             'uuid', \
             'digest')"
-RUN Rscript -e "install.packages(${R_DEPS}, lib=Sys.getenv('R_LIBS_USER'),clean=TRUE);devtools::install_github(paste0('IRkernel/',c('repr', 'IRdisplay', 'IRkernel')));IRkernel::installspec(user = FALSE)"
+RUN Rscript -e "install.packages(${R_DEPS}, lib=Sys.getenv('R_LIBS_USER'),clean=TRUE);devtools::install_github('RBigData/pbdZMQ');devtools::install_github(paste0('IRkernel/',c('repr', 'IRdisplay', 'IRkernel')));IRkernel::installspec(user = FALSE)"
 
 WORKDIR ${HOME}/notebooks
 EXPOSE 8888
