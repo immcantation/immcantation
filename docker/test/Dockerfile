@@ -109,7 +109,7 @@ RUN PHYLIP=$(versions get -n phylip) \
     && wget -q --show-progress --no-check-certificate \
        http://evolution.gs.washington.edu/phylip/download/phylip-${PHYLIP}.tar.gz \
     && tar -zxf phylip-${PHYLIP}.tar.gz \
-    && (cd phylip-${PHYLIP}/src && make -f Makefile.unx install) \
+    && (cd phylip-${PHYLIP}/src && make -f Makefile.unx install CFLAGS='-fcommon') \
     && mv phylip-${PHYLIP}/exe/* /usr/local/bin \
     && rm -r phylip-${PHYLIP}.tar.gz phylip-${PHYLIP}
 
