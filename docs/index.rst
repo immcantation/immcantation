@@ -232,6 +232,6 @@ Contributed Packages
 .. _SCOPer: https://scoper.readthedocs.io
 .. _RDI: https://rdi.readthedocs.io
 .. _IgPhyML: https://igphyml.readthedocs.io
-.. _RAbHIT: https://yaarilab.bitbucket.io/RAbHIT
+.. _RAbHIT: https://yaarilab.bitbucket.io/RAbHIT/
 .. _sumrep: https://github.com/matsengrp/sumrep
 .. _prestoR: packages/prestor.html

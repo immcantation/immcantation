@@ -5,9 +5,9 @@ Docker Container Installation and Overview
 
 We have provided a complete installation of the Immcantation framework, its
 dependencies, accessory scripts, and IgBLAST in a
-`Docker <http://www.docker.com>`__. The image also includes both the IgBLAST and
+`Docker image <http://www.docker.com>`__. The image also includes both the IgBLAST and
 IMGT reference germline sets, as well as several template pipeline scripts.
-The image is available on docker hub at:
+The image is available on Docker Hub at:
 
 `immcantation/suite <https://hub.docker.com/r/immcantation/suite/>`__
 
@@ -32,6 +32,11 @@ Docker
     docker pull immcantation/suite:devel
 
 
+Our containers are Linux-based, so if you are using a Windows computer,
+please make sure that you are using Linux containers and not Windows containers
+(this can be changed in Docker Desktop and won't affect your existing containers).
+
+
 Singularity
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -47,7 +52,7 @@ If the command shown above doesn't work for you, please visit
 `Singularity Documentation <https://www.sylabs.io/docs/>`_ and look for the
 specific command for your Singularity version under *Build a container*.
 
-    
+
 What's in the Container
 --------------------------------------------------------------------------------
 
@@ -61,7 +66,7 @@ Immcantation Tools
 * `TIgGER <https://tigger.readthedocs.io>`__
 * `RDI <https://rdi.readthedocs.io>`__
 * `SCOPer <https://scoper.readthedocs.io>`__
-* `prestoR <https://bitbucket.org/javh/prototype-prestor>`__
+* `prestoR <https://bitbucket.org/kleinstein/prestor>`__
 
 Third Party Tools
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
