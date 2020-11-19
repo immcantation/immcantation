@@ -23,7 +23,3 @@ with open(out_file, 'w') as out_handle:
         writer.write_file(records)
 
 print(out_file)
-
-
-
-

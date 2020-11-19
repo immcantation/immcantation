@@ -1,7 +1,7 @@
 Release Notes
 ========================================================================
 
-Version 4.2.0:  October 20, 2020
+Version 4.2.0:  November 19, 2020
 ------------------------------------------------------------------------
 
 Version Updates:
@@ -10,6 +10,10 @@ Version Updates:
 + changeo 1.0.1
 + airr-py 1.3.1
 + igblast 1.17.0
+
+Image Changes:
+
++ Fixed a Biopython v1.77 incompatibility in ``fastq2fasta.py``.
 
 
 Version 4.1.0:  August 12, 2020
