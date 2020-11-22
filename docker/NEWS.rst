@@ -1,7 +1,7 @@
 Release Notes
 ========================================================================
 
-Version 4.2.0:  November 19, 2020
+Version 4.2.0:  November 22, 2020
 ------------------------------------------------------------------------
 
 Version Updates:
@@ -14,6 +14,7 @@ Version Updates:
 Image Changes:
 
 + Fixed a Biopython v1.77 incompatibility in ``fastq2fasta.py``.
++ Updated base image to Fedora 33.
 
 
 Version 4.1.0:  August 12, 2020
