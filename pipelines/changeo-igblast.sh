@@ -39,7 +39,7 @@ print_usage() {
             "     Defaults to a truncated version of the sequence filename."
     echo -e "  -o  Output directory. Will be created if it does not exist.\n" \
             "     Defaults to a directory matching the sample identifier in the current working directory."
-    echo -e "  -f  Output format. One of airr (default) or changeo."
+    echo -e "  -f  Output format. One of airr (default) or changeo. Defaults to airr."
     echo -e "  -p  Number of subprocesses for multiprocessing tools.\n" \
             "     Defaults to the available cores."
     echo -e "  -k  Specify to filter the output to only productive/functional sequences."
