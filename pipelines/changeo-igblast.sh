@@ -260,8 +260,6 @@ else
 fi
 
 # Run IgBLAST
-#  run_igblast.sh -s ${IG_FILE} -g ${SPECIES} -t ${RECEPTOR} -b ${IGDATA} -n ${NPROC} \
-#       >> $PIPELINE_LOG 2> $ERROR_LOG
 AssignGenes.py igblast -s ${IG_FILE} --organism ${SPECIES} --loci ${RECEPTOR} \
       -b ${IGDATA} --format blast --nproc ${NPROC} \
       --outdir . --outname "${OUTNAME}" \
