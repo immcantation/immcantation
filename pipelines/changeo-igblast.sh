@@ -17,7 +17,7 @@
 #       Defaults to a truncated version of the read 1 filename.
 #   -o  Output directory. Will be created if it does not exist.
 #       Defaults to a directory matching the sample identifier in the current working directory.
-#   -f  Output format. One of changeo or airr. Defaults to changeo.
+#   -f  Output format. One of changeo or airr. Defaults to airr
 #   -p  Number of subprocesses for multiprocessing tools.
 #       Defaults to the available processing units.
 #   -k  Specify to filter the output to only productive/functional sequences.
@@ -260,12 +260,14 @@ else
 fi
 
 # Run IgBLAST
-printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "IgBLAST"
-run_igblast.sh -s ${IG_FILE} -g ${SPECIES} -t ${RECEPTOR} -b ${IGDATA} -n ${NPROC} \
-    >> $PIPELINE_LOG 2> $ERROR_LOG
-FMT7_FILE=$(basename ${IG_FILE})
-FMT7_FILE="${FMT7_FILE%.fasta}.fmt7"
-#check_error
+#  run_igblast.sh -s ${IG_FILE} -g ${SPECIES} -t ${RECEPTOR} -b ${IGDATA} -n ${NPROC} \
+#       >> $PIPELINE_LOG 2> $ERROR_LOG
+AssignGenes.py igblast -s ${IG_FILE} --organism ${SPECIES} --loci ${RECEPTOR} \
+      -b ${IGDATA} --format blast --nproc ${NPROC} \
+      --outdir . --outname "${OUTNAME}" \
+       >> $PIPELINE_LOG 2> $ERROR_LOG
+FMT7_FILE="${OUTNAME}_igblast.fmt7"
+check_error
 
 # Parse IgBLAST output
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "MakeDb igblast"
