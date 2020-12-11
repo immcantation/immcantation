@@ -2,7 +2,7 @@ Data Standards
 ===========================================================================================
 
 Immcantation supports both the original `Change-O standard <https://changeo.readthedocs.io/en/latest/standard.html>`__ and the new
-`Adaptive Immune Receptor Repertoire (AIRR) <https://docs.airr-community.org/en/latest/index.html>`__
+`Adaptive Immune Receptor Repertoire (AIRR) <https://docs.airr-community.org/en/stable/>`__
 standard developed by the AIRR Community (`AIRR-C <https://www.antibodysociety.org/the-airr-community/>`__).
 Both standards use tab-delimited file formats with sets of specific predefined column names.
 
