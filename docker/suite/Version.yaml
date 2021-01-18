@@ -1,9 +1,9 @@
 immcantation:
   version:  devel
-  date:     2020.10.13
+  date:     2021.01.18
 package:
   presto:   0.6.2
-  changeo:  1.0.1
+  changeo:  1.0.2
   alakazam: 1.0.2
   shazam:   1.0.2
   tigger:   1.0.0
