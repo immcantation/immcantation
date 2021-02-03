@@ -1,7 +1,7 @@
 Release Notes
 ========================================================================
 
-Version 4.2.0:  January 18, 2021
+Version 4.2.0:  January 21, 2021
 ------------------------------------------------------------------------
 
 Version Updates:
@@ -15,6 +15,7 @@ Image Changes:
 
 + Fixed a Biopython v1.77 incompatibility in ``fastq2fasta.py``.
 + Updated base image to Fedora 33.
++ Added January 21, 2021 IgBLAST ``mouse_gl.aux`` patch file.
 
 
 Version 4.1.0:  August 12, 2020

@@ -186,6 +186,11 @@ RUN fetch_imgtdb.sh -o /usr/local/share/germlines/imgt \
     && imgt2igblast.sh -i /usr/local/share/germlines/imgt -o /usr/local/share/igblast \
     && fetch_phix.sh -o /usr/local/share/phix
 
+# Patch IgBLAST database
+RUN wget -q --show-progress --no-check-certificate \
+    ftp://ftp.ncbi.nih.gov/blast/executables/igblast/release/patch/optional_file/mouse_gl.aux \
+    && mv -f mouse_gl.aux /usr/local/share/igblast/optional_file
+
 # Setup environment
 ENV PATH="${PATH}:/usr/local/share/igphyml/src"
 
