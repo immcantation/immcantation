@@ -88,11 +88,9 @@ RUN IGBLAST=$(versions get -n igblast) \
     && wget -q --show-progress --no-check-certificate \
        ftp://ftp.ncbi.nih.gov/blast/executables/igblast/release/${IGBLAST}/ncbi-igblast-${IGBLAST}-x64-linux.tar.gz \
     && tar -zxf ncbi-igblast-${IGBLAST}-x64-linux.tar.gz \
-    && fetch_igblastdb.sh -o ncbi-igblast-${IGBLAST} -x \
     && mv ncbi-igblast-${IGBLAST}/bin/* /usr/local/bin \
-    && mkdir -p /usr/local/share/igblast/database \
-    && tar -C /usr/local/share/igblast/database -xf ncbi-igblast-${IGBLAST}/database/mouse_gl_VDJ.tar \
-    && tar -C /usr/local/share/igblast/database -xf ncbi-igblast-${IGBLAST}/database/rhesus_monkey_VJ.tar \
+    && mkdir -p /usr/local/share/igblast \
+    && fetch_igblastdb.sh -o /usr/local/share/igblast \
     && mv ncbi-igblast-${IGBLAST}/internal_data ncbi-igblast-${IGBLAST}/optional_file /usr/local/share/igblast \
     && rm -r ncbi-igblast-${IGBLAST}-x64-linux.tar.gz ncbi-igblast-${IGBLAST}
 
