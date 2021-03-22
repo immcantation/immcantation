@@ -67,7 +67,7 @@ do
     echo "|---- Ig"
     for CHAIN in IGHV IGHD IGHJ IGKV IGKJ IGLV IGLJ
     do
-        URL="http://www.imgt.org/IMGT_GENE-DB/GENElect?query=7.14+${CHAIN}&species=${VALUE}"
+        URL="http://www.imgt.org/IMGT_GENE-DB/GENElect?query=7.1+${CHAIN}&species=${VALUE}"
         FILE_NAME="${FILE_PATH}/${REPERTOIRE}_${KEY}_${CHAIN}.fasta"
         TMP_FILE="${FILE_NAME}.tmp"
         #echo $URL
@@ -96,7 +96,7 @@ do
     echo "|---- TCR"
     for CHAIN in TRAV TRAJ TRBV TRBD TRBJ TRDV TRDD TRDJ TRGV TRGJ
     do
-        URL="http://www.imgt.org/IMGT_GENE-DB/GENElect?query=7.14+${CHAIN}&species=${VALUE}"
+        URL="http://www.imgt.org/IMGT_GENE-DB/GENElect?query=7.1+${CHAIN}&species=${VALUE}"
         FILE_NAME="${FILE_PATH}/${REPERTOIRE}_${KEY}_${CHAIN}.fasta"
         TMP_FILE="${FILE_NAME}.tmp"
         #echo $URL
