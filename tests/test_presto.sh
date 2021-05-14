@@ -13,6 +13,7 @@ FAILED=true
 GERMLINES="${HOME}/local/share/imgt/human/vdj"
 V_GERMLINES="${HOME}/local/share/igblast/fasta/imgt_human_ig_v.fasta"
 CLUSTER="cd-hit-est"
+MEMORY="2000"
 ALIGNER="blastn"
 #FASTA=true
 
@@ -143,7 +144,7 @@ get_output() {
     OUTPUT=$(get_output ${TEST} ${OUTDIR} false)
 
     run ClusterSets.py all -s $READS --id 0.80 --prefix A --cluster $CLUSTER \
-        --nproc $NPROC $OUTPUT
+        --mem $MEMORY --nproc $NPROC $OUTPUT
 
     echo "$output" > $CONSOLE
 	[ "$status" -eq 0 ]
@@ -156,7 +157,7 @@ get_output() {
     OUTPUT=$(get_output ${TEST} ${OUTDIR} false)
 
     run ClusterSets.py barcode -s $READS -f BARCODE --id 0.80 --prefix B --cluster $CLUSTER \
-        --nproc $NPROC $OUTPUT
+        --mem $MEMORY --nproc $NPROC $OUTPUT
 
     echo "$output" > $CONSOLE
 	[ "$status" -eq 0 ]
@@ -170,7 +171,7 @@ get_output() {
     OUTPUT=$(get_output ${TEST} ${OUTDIR} ${FAILED})
 
     run ClusterSets.py set -s $READS -f BARCODE --id 0.80 --prefix S \
-        --start 25 --end 275 --cluster $CLUSTER \
+        --start 25 --end 275 --cluster $CLUSTER --mem $MEMORY \
         --log $LOG --nproc $NPROC $OUTPUT
 
     echo "$output" > $CONSOLE
