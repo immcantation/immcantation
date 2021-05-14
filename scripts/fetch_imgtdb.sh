@@ -41,11 +41,18 @@ REPERTOIRE="imgt"
 DATE=$(date +"%Y.%m.%d")
 
 # Associative array (for BASH v3) where keys are species folder names and values are query strings
+# rabbit:Oryctolagus_cuniculus, rat:Rattus_norvegicus, rhesus_monkey:Macaca_mulatta
 SPECIES_QUERY=("human:Homo+sapiens"
-               "mouse:Mus")
+               "mouse:Mus"
+               "rat:Rattus+norvegicus"
+               "rabbit:Oryctolagus+cuniculus"
+               "rhesus_monkey:Macaca+mulatta")
 # Associative array (for BASH v3) with species name replacements
 SPECIES_REPLACE=('human:s/Homo sapiens/Homo_sapiens/g'
-                 'mouse:s/Mus musculus/Mus_musculus/g')   
+                 'mouse:s/Mus musculus/Mus_musculus/g'
+                 'rat:s/Rattus norvegicus/Rattus_norvegicus/g'
+                 'rabbit:s/Oryctolagus cuniculus/Oryctolagus_cuniculus/g'
+                 'rhesus_monkey:s/Macaca mulatta/Macaca_mulatta/g')
 
 # Counter for loop iteration, used for getting the right values of SPECIES_REPLACE
 COUNT=0
