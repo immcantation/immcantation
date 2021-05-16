@@ -68,7 +68,8 @@ do
 	echo "|- VDJ regions"
     FILE_PATH="${OUTDIR}/${KEY}/vdj"
     FILE_PATH_AA="${OUTDIR}/${KEY}/vdj_aa"
-    mkdir -p $FILE_PATH $FILE_PATH_AA
+    FILE_PATH_LV="${OUTDIR}/${KEY}/leader_vexon"
+    mkdir -p $FILE_PATH $FILE_PATH_AA $FILE_PATH_LV
 
     # VDJ Ig
     echo "|---- Ig"
@@ -76,6 +77,20 @@ do
     do
         URL="http://www.imgt.org/IMGT_GENE-DB/GENElect?query=7.1+${CHAIN}&species=${VALUE}"
         FILE_NAME="${FILE_PATH}/${REPERTOIRE}_${KEY}_${CHAIN}.fasta"
+        TMP_FILE="${FILE_NAME}.tmp"
+        #echo $URL
+        wget $URL -O $TMP_FILE -q
+        awk '/<pre>/{i++}/<\/pre>/{j++}{if(j==2){exit}}{if(i==2 && j==1 && $0!~"^<pre>"){print}}' $TMP_FILE > $FILE_NAME
+        # Make sed command work also for mac, see: https://stackoverflow.com/a/44864004
+        sed -i.bak "$REPLACE_VALUE" $FILE_NAME && rm $FILE_NAME.bak
+        rm $TMP_FILE
+    done
+
+    # Artificial spliced leader and V exon for Ig
+    for CHAIN in IGHV IGKV IGLV
+    do
+        URL="http://www.imgt.org/IMGT_GENE-DB/GENElect?query=8.1+${CHAIN}&species=${VALUE}&IMGTlabel=L-PART1+V-EXON"
+        FILE_NAME="${FILE_PATH_LV}/${REPERTOIRE}_lv_${KEY}_${CHAIN}.fasta"
         TMP_FILE="${FILE_NAME}.tmp"
         #echo $URL
         wget $URL -O $TMP_FILE -q
@@ -113,6 +128,20 @@ do
         rm $TMP_FILE
     done
 
+    # Artificial spliced leader and V exon for TCR
+    for CHAIN in TRAV TRBV TRDV TRGV
+    do
+        URL="http://www.imgt.org/IMGT_GENE-DB/GENElect?query=8.1+${CHAIN}&species=${VALUE}&IMGTlabel=L-PART1+V-EXON"
+        FILE_NAME="${FILE_PATH_LV}/${REPERTOIRE}_lv_${KEY}_${CHAIN}.fasta"
+        TMP_FILE="${FILE_NAME}.tmp"
+        #echo $URL
+        wget $URL -O $TMP_FILE -q
+        awk '/<pre>/{i++}/<\/pre>/{j++}{if(j==2){exit}}{if(i==2 && j==1 && $0!~"^<pre>"){print}}' $TMP_FILE > $FILE_NAME
+        # Make sed command work also for mac, see: https://stackoverflow.com/a/44864004
+        sed -i.bak "$REPLACE_VALUE" $FILE_NAME && rm $FILE_NAME.bak
+        rm $TMP_FILE
+    done
+
     # V amino acid for TCR
     for CHAIN in TRAV TRBV TRDV TRGV
     do
@@ -131,7 +160,7 @@ do
     FILE_PATH="${OUTDIR}/${KEY}/leader"
     mkdir -p $FILE_PATH
 
-    # Leader Ig
+    # Spliced leader Ig
     echo "|---- Ig"
     for CHAIN in IGH IGK IGL
     do
@@ -145,7 +174,7 @@ do
         rm $TMP_FILE
     done
 
-    # Leader TCR
+    # Spliced leader TCR
     echo "|---- TCR"
     for CHAIN in TRA TRB TRG TRD
     do
@@ -168,9 +197,10 @@ do
     echo "|---- Ig"
     for CHAIN in IGHC IGKC IGLC
     do
-        QUERY=14.1
-        if [ "${KEY}" == "mouse" ] && ([ "$CHAIN" == "IGKC" ] || [ "$CHAIN" == "IGLC" ]); then
-            # IMGT does not have artificially spliced mouse IGKC / IGLC
+        # IMGT does not have artificially spliced IGKC / IGLC for multiple species
+        if [ "$CHAIN" == "IGHC" ]; then
+            QUERY=14.1
+        else
             QUERY=7.5
         fi
 
