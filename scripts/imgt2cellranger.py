@@ -119,6 +119,10 @@ def main(input_files, output_file):
 if __name__ == "__main__":
     """
     Parses command line arguments and calls main
+    
+    Examples:
+        imgt2cellranger.py -i imgt/rat/leader_vexon/*IG?V.fasta imgt/rat/vdj/*IG?[DJ].fasta imgt/rat/constant/*IG?C.fasta \
+            -o Rattus_norvegicus_mkvdjref_input.fasta
     """
     parser = argparse.ArgumentParser(description='Convert IMGT germline fastq files to cellranger-mkvdjref input')
     parser.add_argument('-i', dest='input_files', required=True, nargs='+',
