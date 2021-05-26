@@ -18,7 +18,7 @@ if parse_version(Bio.__version__) < parse_version('1.71'):
     sys.exit('biopython >= 1.71 is required. Installed version is %s' % Bio.__version__)
 
 
-def convertHeader(seq, ident=1):
+def convertHeader(seq, ident=1, pseudogene=False):
     """
 
     Arguments:
@@ -55,6 +55,8 @@ def convertHeader(seq, ident=1):
 
     # Extract header into dictionary
     imgt = convertIMGTHeader(seq.description)
+
+    # Build cellranger-mkvdjref header
     seq_gene = imgt['ID']
     # print(imgt)
     # print(seq_gene)
@@ -69,10 +71,18 @@ def convertHeader(seq, ident=1):
     header = '%i|%s %s' % (ident, seq_gene, '|'.join(seq_ann))
     # print(header)
 
-    return seq_gene, header
+    # Return valid sequences
+    if 'N' in seq.seq.upper():
+        # print(seq.seq)
+        return seq_gene, None
+    if not pseudogene and imgt['FUNCTIONALITY'] not in ('F', 'ORF'):
+        # print(imgt)
+        return seq_gene, None
+    else:
+        return seq_gene, header
 
 
-def main(input_files, output_file):
+def main(input_files, output_file, pseudogene=False):
     """
     Convert IMGT germline fastq files to cellranger-mkvdjref input
 
@@ -102,10 +112,13 @@ def main(input_files, output_file):
     i = 1
     for f in input_files:
         for rec in Bio.SeqIO.parse(f, 'fasta'):
+            # Convert header and validate
             name, header = convertHeader(rec, i)
+            if header is None:  continue
+
+            # Append sequence record
             rec = SeqRecord(rec.seq.ungap('.').upper(), id=header, name=header, description='')
             # print(rec)
-
             if name not in name_set:
                 name_set.add(name)
                 seq_list.append(rec)
@@ -123,12 +136,17 @@ if __name__ == "__main__":
     Examples:
         imgt2cellranger.py -i imgt/rat/leader_vexon/*IG?V.fasta imgt/rat/vdj/*IG?[DJ].fasta imgt/rat/constant/*IG?C.fasta \
             -o Rattus_norvegicus_mkvdjref_input.fasta
+        
+        imgt2cellranger.py -i imgt/rat/vdj/*IG?[VDJ].fasta imgt/rat/constant/*IG?C.fasta \
+            -o Rattus_norvegicus_mkvdjref_input_sans-leader.fasta
     """
     parser = argparse.ArgumentParser(description='Convert IMGT germline fastq files to cellranger-mkvdjref input')
     parser.add_argument('-i', dest='input_files', required=True, nargs='+',
                         help='List of input IMGT reference fastq files.')
     parser.add_argument('-o', dest='output_file', required=True,
                         help='Output fasta file.')
+    parser.add_argument('-p', dest='pseudogene', action='store_true',
+                        help='If specified retain pseudogenes in the output. By default, only functional and ORF genes that contain no N characters are retained.')
     args = parser.parse_args()
 
     # Check that files exist
