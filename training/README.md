@@ -1,5 +1,7 @@
 # Immcantation training materials
 
+[TOC]
+
 ## Introduction to B cell repertoire analysis 
 
 Get a global overview of how the different tools in the Immcantation framework work together with a [Jupyter notebook](intro-lab.ipynb?viewer=nbviewer) based on the materials presented in the [webinar](https://immcantation.eventbrite.com). Use it online with 
