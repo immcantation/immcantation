@@ -83,4 +83,4 @@ This work is licensed under a [Creative Commons Attribution-NonCommercial 4.0 In
 
 ## Integration of BCR data and GEX data
 
-Learn how to integrate BCR repertoire and gene expression analysis with this [Jupyter notebook](BCR_Seurat_tutorial.ipynb.ipynb?viewer=nbviewer).
+Learn how to integrate BCR repertoire and gene expression analysis with this [Jupyter notebook](BCR_Seurat_tutorial.ipynb?viewer=nbviewer).
