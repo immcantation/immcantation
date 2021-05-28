@@ -79,3 +79,8 @@ Developed with the support of the National Library of Medicine (NIH NLM T15 LM00
 ### License
 
 This work is licensed under a [Creative Commons Attribution-NonCommercial 4.0 International License](https://creativecommons.org/licenses/by-nc/4.0/).
+
+
+## Integration of BCR data and GEX data
+
+Learn how to integrate BCR repertoire and gene expression analysis.
