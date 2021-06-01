@@ -78,14 +78,14 @@ This work is licensed under a [Creative Commons Attribution-NonCommercial 4.0 In
 
 ## Using the modules locally with Docker
 
-* 1.1 Pull the Immcantation Lab container image:
+* 1 Pull the Immcantation Lab container image:
 
 ```
 # Example: pull the development version of the lab
 docker pull immcantation/lab:devel
 ```
     
-* 1.2 Run the container:
+* 2 Run the container:
 
 ```
 docker run --network=host -it --rm -p 8888:8888 immcantation/lab:devel
@@ -101,7 +101,7 @@ docker run --network=host -it --rm -v my-out-dir:/home/magus/notebooks/results:z
 
 Once the container is running, You will see in the terminal a message asking you to visit a url like `http://<hostname>:8888/?token=<token>`
 
-* 1.3 Open your computer's internet browser and visit the url
+* 3 Open your computer's internet browser and visit the url
 
 When you visit the url from the previous step, you will start a Jupyter session in your browser.
 
@@ -109,7 +109,7 @@ When you visit the url from the previous step, you will start a Jupyter session 
 # Example: http://localhost:8888/?token=18303237b2521e72f00685e4fdf754f955f82a958a8e57ec
 ```
 
-* 1.4 Open the notebook
+* 4 Open the notebook
 
 Open the notebook you want to work with. Use CTRL+Enter to execute the commands inside the cells.
 
