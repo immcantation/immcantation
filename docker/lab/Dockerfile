@@ -19,7 +19,7 @@ VOLUME ${HOME}/results
 RUN PACKAGE="immcantation" \
     && rm -rf /tmp/${PACKAGE} \
     && git clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
-    && mv /tmp/${PACKAGE}/training/intro-lab.ipynb ${HOME}/notebooks \
+    && mv /tmp/${PACKAGE}/training/*.ipynb ${HOME}/notebooks/. \
     && mv /tmp/${PACKAGE}/training/assets ${HOME}/notebooks/ \
     && rm -r /tmp/${PACKAGE}
         
@@ -36,7 +36,8 @@ ARG R_DEPS="c('evaluate', \
             'crayon', \
             'devtools', \
             'uuid', \
-            'digest')"
+            'digest', \
+            'Seurat')"
 RUN Rscript -e "install.packages(${R_DEPS}, lib=Sys.getenv('R_LIBS_USER'),clean=TRUE);devtools::install_github('RBigData/pbdZMQ');devtools::install_github(paste0('IRkernel/',c('repr', 'IRdisplay', 'IRkernel')));IRkernel::installspec(user = FALSE)"
 
 WORKDIR ${HOME}/notebooks
@@ -52,13 +53,12 @@ RUN wget -v -O /home/${NB_USER}/immcantation-lab-intro.zip -L https://yale.box.c
     rm -rf immcantation-lab-intro.zip && \
     mv immcantation-lab-intro/example-input/* /home/${NB_USER}/data/. && \
     rm -rf immcantation-lab-intro
-    https://yale.box.com/s/6s8gzxxpfb3vmwx2izn9qur9teultzvu
 # Download BCR-Seurat tutorial data
-RUN wget -v -O /home/${NB_USER}/immcantation-BCR-Seurat-tutorial.zip -L https://yale.box.com/s/6s8gzxxpfb3vmwx2izn9qur9teultzvu && \
+RUN wget -v -O /home/${NB_USER}/immcantation-BCR-Seurat-tutorial.zip -L https://yale.box.com/shared/static/6s8gzxxpfb3vmwx2izn9qur9teultzvu.zip && \
     cd /home/${NB_USER}/ && \
     unzip -o immcantation-BCR-Seurat-tutorial.zip && \
     rm -rf immcantation-BCR-Seurat-tutorial.zip && \
-    mv immcantation-BCR-Seurat-tutorial/* /home/${NB_USER}/data/. && \
+    mv BCR.data.rds GEX.data.rds /home/${NB_USER}/data/. && \
     rm -rf immcantation-BCR-Seurat-tutorial    
 #RUN cd ${HOME}/notebooks && \
 #    jupyter nbconvert --ExecutePreprocessor.timeout=-1 --to notebook --execute intro-lab.ipynb && rm -rf results/*
