@@ -45,12 +45,21 @@ EXPOSE 8888
 COPY start-notebook.sh /usr/local/bin/
 RUN chown -R ${NB_UID} ${HOME}
 USER ${NB_USER}
+# Download intro lab data
 RUN wget -v -O /home/${NB_USER}/immcantation-lab-intro.zip -L https://yale.box.com/shared/static/4bo611b70x8u92qvss1pypmcr9wmqil4 && \
     cd /home/${NB_USER}/ && \
     unzip -o immcantation-lab-intro.zip && \
     rm -rf immcantation-lab-intro.zip && \
     mv immcantation-lab-intro/example-input/* /home/${NB_USER}/data/. && \
     rm -rf immcantation-lab-intro
+    https://yale.box.com/s/6s8gzxxpfb3vmwx2izn9qur9teultzvu
+# Download BCR-Seurat tutorial data
+RUN wget -v -O /home/${NB_USER}/immcantation-BCR-Seurat-tutorial.zip -L https://yale.box.com/s/6s8gzxxpfb3vmwx2izn9qur9teultzvu && \
+    cd /home/${NB_USER}/ && \
+    unzip -o immcantation-BCR-Seurat-tutorial.zip && \
+    rm -rf immcantation-BCR-Seurat-tutorial.zip && \
+    mv immcantation-BCR-Seurat-tutorial/* /home/${NB_USER}/data/. && \
+    rm -rf immcantation-BCR-Seurat-tutorial    
 #RUN cd ${HOME}/notebooks && \
 #    jupyter nbconvert --ExecutePreprocessor.timeout=-1 --to notebook --execute intro-lab.ipynb && rm -rf results/*
 CMD ["start-notebook.sh"]
