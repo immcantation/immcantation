@@ -1,24 +1,42 @@
 Release Notes
 ========================================================================
 
-Version 4.2.0:  June 20, 2021
+Version 4.2.0:  June 21, 2021
 ------------------------------------------------------------------------
 
 Version Updates:
 
 + presto 0.6.2
-+ changeo 1.0.2
++ changeo 1.1.0
 + alakazam 1.1.0
 + airr-py 1.3.1
 + igblast 1.17.1
 
+Pipeline Changes:
+
++ Added support for rat, rabbit and rhesus macaque to ``changeo-10x``
+  and ``changeo-igblast``.
++ Added the ``-z`` argument to ``changeo-10x``, ``changeo-igblast``,
+  and ``changeo-clone`` to allow compression and cleaning of temporary
+  intermediate files to be disabled.
++ Updated ``changeo-igblast`` to use the new IgBLAST wrapper in changeo
+  (AssignGenes).
+
 Image Changes:
 
-+ Fixed a Biopython v1.77 incompatibility in ``fastq2fasta.py``.
 + Updated base image to Fedora 33.
++ Fixed a Biopython v1.77 incompatibility in ``fastq2fasta.py``.
 + Updated ``fetch_igblastdb.sh`` for new file locations and disabled
   download of old ``internal_data`` and ``optional_file`` directories
   by default.
++ Added support for rat, rabbit and rhesus macaque to
+  ``fetch_imgtdb.sh``.
++ Added download of artificially spliced V exon and leader sequences to
+  ``fetch_imgtdb.sh``. Sequences are downloaded into the
+  ``leader_vexon`` subdirectory.
++ Added ``imgt2cellranger.py`` script which converts the IMGT reference
+  germline header format into the input format required by
+  ``cellranger mkvdjref``.
 
 
 Version 4.1.0:  August 12, 2020
