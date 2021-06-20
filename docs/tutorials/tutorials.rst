@@ -26,8 +26,8 @@ This webinar covers:
 Single-cell Analysis
 -------------------------------------------------------------------------------------------
 
-For information on how to process 10x Genomics data to be analyzed with Immcantation, we offer an
-introductory tutorial for new users:
+For information on how to process 10x Genomics data to be analyzed with Immcantation, we
+offer an introductory tutorial for new users:
 
 .. toctree::
     :maxdepth: 1
