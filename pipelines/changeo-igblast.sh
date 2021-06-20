@@ -7,8 +7,7 @@
 # Arguments:
 #   -s  FASTA or FASTQ sequence file.
 #   -r  Directory containing IMGT-gapped reference germlines.
-#       Defaults to /usr/local/share/germlines/imgt/human/vdj when species is human.
-#       Defaults to /usr/local/share/germlines/imgt/mouse/vdj when species is mouse.
+#       Defaults to /usr/local/share/germlines/imgt/[species name]/vdj.
 #   -g  Species name. One of human, mouse, rabbit, rat, or rhesus_monkey. Defaults to human.
 #   -t  Receptor type. One of ig or tr. Defaults to ig.
 #   -b  IgBLAST IGDATA directory, which contains the IgBLAST database, optional_file
@@ -30,8 +29,7 @@ print_usage() {
     echo -e "Usage: `basename $0` [OPTIONS]"
     echo -e "  -s  FASTA or FASTQ sequence file."
     echo -e "  -r  Directory containing IMGT-gapped reference germlines.\n" \
-            "     Defaults to /usr/local/share/germlines/imgt/human/vdj when species is human.\n" \
-            "     Defaults to /usr/local/share/germlines/imgt/mouse/vdj when species is mouse."
+            "     Defaults to /usr/local/share/germlines/imgt/[species name]/vdj."
     echo -e "  -g  Species name. One of human, mouse, rabbit, rat, or rhesus_monkey. Defaults to human."
     echo -e "  -t  Receptor type. One of ig or tr. Defaults to ig."
     echo -e "  -b  IgBLAST IGDATA directory, which contains the IgBLAST database, optional_file\n" \
