@@ -73,9 +73,8 @@ Usage: changeo-10x [OPTIONS]
   -a  10x Genomics cellranger-vdj contig annotation CSV file.
       Must corresponding with the FASTA/FASTQ input file (all, filtered or consensus).
   -r  Directory containing IMGT-gapped reference germlines.
-      Defaults to /usr/local/share/germlines/imgt/human/vdj when species is human.
-      Defaults to /usr/local/share/germlines/imgt/mouse/vdj when species is mouse.
-  -g  Species name. One of human or mouse. Defaults to human.
+      Defaults to /usr/local/share/germlines/imgt/[species name]/vdj.
+  -g  Species name. One of human, mouse, rabbit, rat, or rhesus_monkey. Defaults to human.
   -t  Receptor type. One of ig or tr. Defaults to ig.
   -x  Distance threshold for clonal assignment. Specify "auto" for automatic detection.
       If unspecified, clonal assignment is not performed.
@@ -91,6 +90,7 @@ Usage: changeo-10x [OPTIONS]
   -p  Number of subprocesses for multiprocessing tools.
       Defaults to the available cores.
   -i  Specify to allow partial alignments.
+  -z  Specify to disable cleaning and compression of temporary files.
   -h  This message.
 
 .. End changeo-10x
@@ -100,9 +100,8 @@ Usage: changeo-10x [OPTIONS]
 Usage: changeo-igblast [OPTIONS]
   -s  FASTA or FASTQ sequence file.
   -r  Directory containing IMGT-gapped reference germlines.
-      Defaults to /usr/local/share/germlines/imgt/human/vdj when species is human.
-      Defaults to /usr/local/share/germlines/imgt/mouse/vdj when species is mouse.
-  -g  Species name. One of human or mouse. Defaults to human.
+      Defaults to /usr/local/share/germlines/imgt/[species name]/vdj.
+  -g  Species name. One of human, mouse, rabbit, rat, or rhesus_monkey. Defaults to human.
   -t  Receptor type. One of ig or tr. Defaults to ig.
   -b  IgBLAST IGDATA directory, which contains the IgBLAST database, optional_file
       and auxillary_data directories. Defaults to /usr/local/share/igblast.
@@ -110,11 +109,12 @@ Usage: changeo-igblast [OPTIONS]
       Defaults to a truncated version of the sequence filename.
   -o  Output directory. Will be created if it does not exist.
       Defaults to a directory matching the sample identifier in the current working directory.
-  -f  Output format. One of airr (default) or changeo.
+  -f  Output format. One of airr (default) or changeo. Defaults to airr.
   -p  Number of subprocesses for multiprocessing tools.
       Defaults to the available cores.
   -k  Specify to filter the output to only productive/functional sequences.
   -i  Specify to allow partial alignments.
+  -z  Specify to disable cleaning and compression of temporary files.
   -h  This message.
 
 .. End changeo-igblast
@@ -137,6 +137,7 @@ Usage: changeo-clone [OPTIONS]
       Defaults to the available cores.
   -a  Specify to clone the full data set.
       By default the data will be filtering to only productive/functional sequences.
+  -z  Specify to disable cleaning and compression of temporary files.
   -h  This message.
 
 .. End changeo-clone
