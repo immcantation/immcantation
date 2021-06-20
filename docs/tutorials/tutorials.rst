@@ -13,8 +13,6 @@ For a detailed use example for each Immcantation tool see the Jupyter notebook f
 introductory webinar `in the repository <https://bitbucket.org/kleinstein/immcantation/src/master/training/>`_.
 If you don't want to execute the Jupyter notebook yourself, you can explore a
 `website version of it here <https://kleinstein.bitbucket.io/tutorials/intro-lab/index.html>`_.
-
-
 This webinar covers:
 
 + V(D)J gene annotation and novel polymorphism detection
@@ -29,11 +27,34 @@ Single-cell Analysis
 -------------------------------------------------------------------------------------------
 
 For information on how to process 10x Genomics data to be analyzed with Immcantation, we offer an
-introductory tutorial for new users, and a Change-O reference page for users more familiar
-with Immcantation:
+introductory tutorial for new users:
 
 .. toctree::
     :maxdepth: 1
 
     10x_tutorial
-    Parsing 10x Genomics data with Change-O <https://changeo.readthedocs.io/en/stable/examples/10x.html>
+
+
+Immcantation Vignettes
+-------------------------------------------------------------------------------------------
+
+Detailed usage documentation and tutorials for each individual tool in Immcantation are
+provided in the main documentation pages for each tool. The following list of shortcuts
+cover common usage examples. Note, each link will leave the main Immcantation portal page.
+
+.. toctree::
+    :maxdepth: 1
+
+    Assembling raw reads from simple Illumina sequencing protocols with pRESTO <https://presto.readthedocs.io/en/stable/workflows/Greiff2014_Workflow.html>
+    Assembling raw reads from 5'RACE UMI barcoded Illumina sequencing protocols with pRESTO <https://presto.readthedocs.io/en/stable/workflows/VanderHeiden2017_Workflow.html>
+    Processing 10x Genomics Cell Ranger data with Change-O <https://changeo.readthedocs.io/en/stable/examples/10x.html>
+    Processing IgBLAST data with Change-O <https://changeo.readthedocs.io/en/stable/examples/igblast.html>
+    Processing IMGT/HighV-QUEST data with Change-O <https://changeo.readthedocs.io/en/stable/examples/imgt.html>
+    Building lineage trees with IgPhyML <https://changeo.readthedocs.io/en/stable/examples/igphyml.html>
+    Assigning clonal groups with SCOPer <https://scoper.readthedocs.io/en/stable/vignettes/Scoper-Vignette>
+    Basic gene usage analysis with Alakazam <https://alakazam.readthedocs.io/en/stable/vignettes/GeneUsage-Vignette>
+    Clonality and diversity analysis with Alakazam <https://alakazam.readthedocs.io/en/stable/vignettes/Diversity-Vignette>
+    Mutational load analysis with SHazaM <https://shazam.readthedocs.io/en/stable/vignettes/Mutation-Vignette>
+    Selection pressure analysis with SHazaM <https://shazam.readthedocs.io/en/stable/vignettes/Baseline-Vignette>
+    Building SHM targeting models with SHazaM <https://shazam.readthedocs.io/en/stable/vignettes/Targeting-Vignette>
+    Novel allele detection and genotyping with TIgGER <https://tigger.readthedocs.io/en/stable/vignettes/Tigger-Vignette>
