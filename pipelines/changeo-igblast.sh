@@ -219,8 +219,6 @@ fi
 
 
 # Define pipeline steps
-ZIP_FILES=true
-DELETE_FILES=true
 GERMLINES=false
 
 # Create germlines parameters

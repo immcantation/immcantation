@@ -67,7 +67,7 @@ RUN_DIR=$(realpath ${RUN_DIR})
 
 	run docker run -v $DATA_DIR:/data:z -v $RUN_DIR:/scratch:z $IMAGE \
         changeo-10x -s $READS -a $ANNOTATIONS -x $DIST \
-        -n $SAMPLE -o $OUT_DIR -p $NPROC
+        -n $SAMPLE -o $OUT_DIR -p $NPROC -z
 
 	[ "$status" -eq 0 ]
 }
@@ -79,8 +79,20 @@ RUN_DIR=$(realpath ${RUN_DIR})
 	OUT_DIR="/scratch/changeo"
 
 	run docker run -v $DATA_DIR:/data:z -v $RUN_DIR:/scratch:z $IMAGE \
-		changeo-igblast -s $READS -n $SAMPLE -o $OUT_DIR -p $NPROC
+		changeo-igblast -s $READS -n $SAMPLE -o $OUT_DIR -p $NPROC -z
 
+	[ "$status" -eq 0 ]
+}
+
+# Change-O cloning
+@test "changeo-clone" {
+	SAMPLE=HD13M
+	DB="/scratch/changeo/${SAMPLE}_db-pass.${EXT}"
+	OUT_DIR="/scratch/changeo"
+	DIST=0.15
+
+	run docker run -v $DATA_DIR:/data:z -v $RUN_DIR:/scratch:z $IMAGE \
+		changeo-clone -d $DB -x $DIST -n $SAMPLE -o $OUT_DIR -p $NPROC -z
 	[ "$status" -eq 0 ]
 }
 
@@ -122,17 +134,5 @@ RUN_DIR=$(realpath ${RUN_DIR})
 		shazam-threshold -d $DB -m none \
         -n "${SAMPLE}-4" -o $OUT_DIR -p $NPROC
 
-	[ "$status" -eq 0 ]
-}
-
-# Change-O cloning
-@test "changeo-clone" {
-	SAMPLE=HD13M
-	DB="/scratch/changeo/${SAMPLE}_db-pass.${EXT}"
-	OUT_DIR="/scratch/changeo"
-	DIST=0.15
-
-	run docker run -v $DATA_DIR:/data:z -v $RUN_DIR:/scratch:z $IMAGE \
-		changeo-clone -d $DB -x $DIST -n $SAMPLE -o $OUT_DIR -p $NPROC
 	[ "$status" -eq 0 ]
 }

@@ -20,6 +20,7 @@
 #       Defaults to the available processing units.
 #   -a  Specify to clone the full data set.
 #       By default the data will be filtering to only productive/functional sequences.
+#   -z  Specify to disable cleaning and compression of temporary files.
 #   -h  Display help.
 
 # Print usage
@@ -40,6 +41,7 @@ print_usage() {
             "     Defaults to the available cores."
     echo -e "  -a  Specify to clone the full data set.\n" \
             "     By default the data will be filtering to only productive/functional sequences."
+    echo -e "  -z  Specify to disable cleaning and compression of temporary files."
     echo -e "  -h  This message."
 }
 
@@ -52,10 +54,14 @@ OUTNAME_SET=false
 OUTDIR_SET=false
 FORMAT_SET=false
 NPROC_SET=false
+
+# Argument defaults
 FUNCTIONAL=true
+ZIP_FILES=true
+DELETE_FILES=true
 
 # Get commandline arguments
-while getopts "d:x:m:r:n:o:f:p:ah" OPT; do
+while getopts "d:x:m:r:n:o:f:p:azh" OPT; do
     case "$OPT" in
     d)  DB=$OPTARG
         DB_SET=true
@@ -79,6 +85,9 @@ while getopts "d:x:m:r:n:o:f:p:ah" OPT; do
         NPROC_SET=true
         ;;
     a)  FUNCTIONAL=false
+        ;;
+    z)  ZIP_FILES=false
+        DELETE_FILES=false
         ;;
     h)  print_usage
         exit
@@ -165,8 +174,6 @@ else
 fi
 
 # Define pipeline steps
-ZIP_FILES=true
-DELETE_FILES=true
 GERMLINES=true
 
 # DefineClones run parameters
