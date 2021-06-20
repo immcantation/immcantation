@@ -1,7 +1,7 @@
 Release Notes
 ========================================================================
 
-Version 4.2.0:  February 7, 2021
+Version 4.2.0:  June 20, 2021
 ------------------------------------------------------------------------
 
 Version Updates:
@@ -10,13 +10,12 @@ Version Updates:
 + changeo 1.0.2
 + alakazam 1.1.0
 + airr-py 1.3.1
-+ igblast 1.17.0
++ igblast 1.17.1
 
 Image Changes:
 
 + Fixed a Biopython v1.77 incompatibility in ``fastq2fasta.py``.
 + Updated base image to Fedora 33.
-+ Added January 21, 2021 IgBLAST ``mouse_gl.aux`` patch file.
 + Updated ``fetch_igblastdb.sh`` for new file locations and disabled
   download of old ``internal_data`` and ``optional_file`` directories
   by default.

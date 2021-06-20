@@ -10,7 +10,7 @@
 #       Must corresponding with the FASTA/FASTQ input file (all, filtered or consensus).
 #   -r  Directory containing IMGT-gapped reference germlines.
 #       Defaults to /usr/local/share/germlines/imgt/human/vdj.
-#   -g  Species name. One of human or mouse. Defaults to human.
+#   -g  Species name. One of human, mouse, rabbit, rat, or rhesus_monkey. Defaults to human.
 #   -t  Receptor type. One of ig or tr. Defaults to ig.
 #   -x  Distance threshold for clonal assignment.
 #       If unspecified, clonal assignment is not performed.
@@ -26,6 +26,7 @@
 #   -p  Number of subprocesses for multiprocessing tools.
 #       Defaults to the available processing units.
 #   -i  Specify to allow partial alignments.
+#   -z  Specify to disable cleaning and compression of temporary files.
 #   -h  Display help.
 
 # Print usage
@@ -37,7 +38,7 @@ print_usage() {
     echo -e "  -r  Directory containing IMGT-gapped reference germlines.\n" \
             "     Defaults to /usr/local/share/germlines/imgt/human/vdj when species is human.\n" \
             "     Defaults to /usr/local/share/germlines/imgt/mouse/vdj when species is mouse."
-    echo -e "  -g  Species name. One of human or mouse. Defaults to human."
+    echo -e "  -g  Species name. One of human, mouse, rabbit, rat, or rhesus_monkey. Defaults to human."
     echo -e "  -t  Receptor type. One of ig or tr. Defaults to ig."
     echo -e "  -x  Distance threshold for clonal assignment. Specify \"auto\" for automatic detection.\n" \
             "     If unspecified, clonal assignment is not performed."
@@ -53,6 +54,7 @@ print_usage() {
     echo -e "  -p  Number of subprocesses for multiprocessing tools.\n" \
             "     Defaults to the available cores."
     echo -e "  -i  Specify to allow partial alignments."
+    echo -e "  -z  Specify to disable cleaning and compression of temporary files."
     echo -e "  -h  This message."
 }
 
@@ -60,7 +62,7 @@ print_usage() {
 READS_SET=false
 A10X_SET=false
 REFDIR_SET=false
-ORGANISM_SET=false
+SPECIES_SET=false
 LOCI_SET=false
 DIST_SET=false
 MODEL_SET=false
@@ -69,10 +71,14 @@ OUTNAME_SET=false
 OUTDIR_SET=false
 FORMAT_SET=false
 NPROC_SET=false
+
+# Argument defaults
 PARTIAL=""
+ZIP_FILES=true
+DELETE_FILES=true
 
 # Get commandline arguments
-while getopts "s:a:r:g:t:x:m:b:n:o:f:p:ih" OPT; do
+while getopts "s:a:r:g:t:x:m:b:n:o:f:p:izh" OPT; do
     case "$OPT" in
     s)  READS=$OPTARG
         READS_SET=true
@@ -83,8 +89,8 @@ while getopts "s:a:r:g:t:x:m:b:n:o:f:p:ih" OPT; do
     r)  REFDIR=$OPTARG
         REFDIR_SET=true
         ;;
-    g)  ORGANISM=$OPTARG
-        ORGANISM_SET=true
+    g)  SPECIES=$OPTARG
+        SPECIES_SET=true
         ;;
     t)  LOCI=$OPTARG
         LOCI_SET=true
@@ -111,7 +117,10 @@ while getopts "s:a:r:g:t:x:m:b:n:o:f:p:ih" OPT; do
         NPROC_SET=true
         ;;
     i)  PARTIAL="--partial"
-        ;;        
+        ;;
+    z)  ZIP_FILES=false
+        DELETE_FILES=false
+        ;;
     h)  print_usage
         exit
         ;;
@@ -151,10 +160,14 @@ else
 fi
 
 # Set and check species
-if ! ${ORGANISM_SET}; then
-    ORGANISM="human"
-elif [ ${ORGANISM} != "human" ] && [ ${ORGANISM} != "mouse" ]; then
-    echo "Species (-g) must be one of 'human' or 'mouse'." >&2
+if ! ${SPECIES_SET}; then
+    SPECIES="human"
+elif [ ${SPECIES} != "human" ] && \
+     [ ${SPECIES} != "mouse" ] && \
+     [ ${SPECIES} != "rabbit" ] && \
+     [ ${SPECIES} != "rat" ] && \
+     [ ${SPECIES} != "rhesus_monkey" ]; then
+    echo "Species (-g) must be one of 'human', 'mouse', 'rabbit', 'rat', or 'rhesus_monkey'." >&2
     exit 1
 fi
 
@@ -168,11 +181,7 @@ fi
 
 # Set reference sequence
 if ! ${REFDIR_SET}; then
-    if [ ${ORGANISM} == "human" ]; then
-        REFDIR="/usr/local/share/germlines/imgt/human/vdj"
-    elif [ ${ORGANISM} == "mouse" ]; then
-        REFDIR="/usr/local/share/germlines/imgt/mouse/vdj"
-    fi
+    REFDIR="/usr/local/share/germlines/imgt/${SPECIES}/vdj"
 else
     REFDIR=$(realpath ${REFDIR})
 fi
@@ -235,8 +244,6 @@ if ! ${NPROC_SET}; then
 fi
 
 # Define pipeline steps
-ZIP_FILES=true
-DELETE_FILES=true
 SPLIT=true
 GERMLINES=true
 if ! ${DIST_SET}; then
@@ -296,7 +303,7 @@ fi
 
 # Run IgBLAST
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "AssignGenes igblast"
-AssignGenes.py igblast -s ${IG_FILE} --organism ${ORGANISM} --loci ${LOCI} \
+AssignGenes.py igblast -s ${IG_FILE} --organism ${SPECIES} --loci ${LOCI} \
     -b ${IGDATA} --format blast --nproc ${NPROC} \
     --outname "${OUTNAME}" --outdir . \
      >> $PIPELINE_LOG 2> $ERROR_LOG

@@ -9,7 +9,7 @@
 #   -r  Directory containing IMGT-gapped reference germlines.
 #       Defaults to /usr/local/share/germlines/imgt/human/vdj when species is human.
 #       Defaults to /usr/local/share/germlines/imgt/mouse/vdj when species is mouse.
-#   -g  Species name. One of human or mouse. Defaults to human.
+#   -g  Species name. One of human, mouse, rabbit, rat, or rhesus_monkey. Defaults to human.
 #   -t  Receptor type. One of ig or tr. Defaults to ig.
 #   -b  IgBLAST IGDATA directory, which contains the IgBLAST database, optional_file
 #       and auxillary_data directories. Defaults to /usr/local/share/igblast.
@@ -22,6 +22,7 @@
 #       Defaults to the available processing units.
 #   -k  Specify to filter the output to only productive/functional sequences.
 #   -i  Specify to allow partial alignments.
+#   -z  Specify to disable cleaning and compression of temporary files.
 #   -h  Display help.
 
 # Print usage
@@ -31,7 +32,7 @@ print_usage() {
     echo -e "  -r  Directory containing IMGT-gapped reference germlines.\n" \
             "     Defaults to /usr/local/share/germlines/imgt/human/vdj when species is human.\n" \
             "     Defaults to /usr/local/share/germlines/imgt/mouse/vdj when species is mouse."
-    echo -e "  -g  Species name. One of human or mouse. Defaults to human."
+    echo -e "  -g  Species name. One of human, mouse, rabbit, rat, or rhesus_monkey. Defaults to human."
     echo -e "  -t  Receptor type. One of ig or tr. Defaults to ig."
     echo -e "  -b  IgBLAST IGDATA directory, which contains the IgBLAST database, optional_file\n" \
             "     and auxillary_data directories. Defaults to /usr/local/share/igblast."
@@ -44,6 +45,7 @@ print_usage() {
             "     Defaults to the available cores."
     echo -e "  -k  Specify to filter the output to only productive/functional sequences."
     echo -e "  -i  Specify to allow partial alignments."
+    echo -e "  -z  Specify to disable cleaning and compression of temporary files."
     echo -e "  -h  This message."
 }
 
@@ -58,10 +60,14 @@ OUTDIR_SET=false
 FORMAT_SET=false
 NPROC_SET=false
 FUNCTIONAL=false
+
+# Argument defaults
 PARTIAL=""
+ZIP_FILES=true
+DELETE_FILES=true
 
 # Get commandline arguments
-while getopts "s:r:g:t:b:n:o:f:p:kih" OPT; do
+while getopts "s:r:g:t:b:n:o:f:p:kizh" OPT; do
     case "$OPT" in
     s)  READS=$OPTARG
         READS_SET=true
@@ -93,7 +99,10 @@ while getopts "s:r:g:t:b:n:o:f:p:kih" OPT; do
     k)  FUNCTIONAL=true
         ;;
     i)  PARTIAL="--partial"
-        ;;        
+        ;;
+    z)  ZIP_FILES=false
+        DELETE_FILES=false
+        ;;
     h)  print_usage
         exit
         ;;
@@ -123,8 +132,12 @@ fi
 # Set and check species
 if ! ${SPECIES_SET}; then
     SPECIES="human"
-elif [ ${SPECIES} != "human" ] && [ ${SPECIES} != "mouse" ]; then
-    echo "Species (-g) must be one of 'human' or 'mouse'." >&2
+elif [ ${SPECIES} != "human" ] && \
+     [ ${SPECIES} != "mouse" ] && \
+     [ ${SPECIES} != "rabbit" ] && \
+     [ ${SPECIES} != "rat" ] && \
+     [ ${SPECIES} != "rhesus_monkey" ]; then
+    echo "Species (-g) must be one of 'human', 'mouse', 'rabbit', 'rat', or 'rhesus_monkey'." >&2
     exit 1
 fi
 
@@ -138,11 +151,7 @@ fi
 
 # Set reference sequence
 if ! ${REFDIR_SET}; then
-    if [ ${SPECIES} == "human" ]; then
-        REFDIR="/usr/local/share/germlines/imgt/human/vdj"
-    elif [ ${SPECIES} == "mouse" ]; then
-        REFDIR="/usr/local/share/germlines/imgt/mouse/vdj"
-    fi
+    REFDIR="/usr/local/share/germlines/imgt/${SPECIES}/vdj"
 else
     if [ -d ${REFDIR} ]; then
         REFDIR=$(realpath ${REFDIR})
