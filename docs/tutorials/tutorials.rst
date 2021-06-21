@@ -35,12 +35,12 @@ offer an introductory tutorial for new users:
     10x_tutorial
 
 
-Immcantation Vignettes
+Vignettes
 -------------------------------------------------------------------------------------------
 
 Detailed usage documentation and tutorials for each individual tool in Immcantation are
 provided in the main documentation pages for each tool. The following list of shortcuts
-cover common usage examples. Note, each link will leave the main Immcantation portal page.
+cover common analyses. Note, each link will leave the Immcantation portal page.
 
 .. toctree::
     :maxdepth: 1

@@ -107,9 +107,9 @@ fetch_imgtdb.sh
     Downloads the IMGT reference database.
 imgt2igblast.sh
     Imports the IMGT reference database into IgBLAST.
-run_igblast.sh
-    Simple IgBLAST wrapper for running IgBLAST with the required arguments
-    using the IMGT reference database.
+imgt2cellranger.py
+    Converts the IMGT fasta germline reference files to the input required by
+    cellranger-mkvdjref.
 
 Data
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
