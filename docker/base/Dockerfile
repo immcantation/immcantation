@@ -80,6 +80,6 @@ ARG R_BIOC_DEPS="c('Biostrings', \
               'IRanges')"              
 RUN echo "options(repos='${R_REPO}')" >> /usr/lib64/R/library/base/R/Rprofile \
     && mkdir -p /usr/share/doc/R/html \
-	&& cp /usr/lib64/R/library/stats/html/R.css /usr/share/doc/R/html/R.css \
-	&& Rscript -e "install.packages(${R_DEPS}, clean=TRUE)" \
-	&& Rscript -e "BiocManager::install(${R_BIOC_DEPS})"
+    && cp /usr/lib64/R/library/stats/html/R.css /usr/share/doc/R/html/R.css \
+    && Rscript -e "install.packages(${R_DEPS}, clean=TRUE)" \
+    && Rscript -e "BiocManager::install(${R_BIOC_DEPS})"
