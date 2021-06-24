@@ -113,12 +113,10 @@ RUN PACKAGE="alakazam" \
     && rm -r /tmp/${PACKAGE}
 
 # Install shazam
-# TODO: Remove deletion of targeting vignette
 RUN PACKAGE="shazam" \
     && rm -rf /tmp/${PACKAGE} \
     && git clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
     && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} -d immcantation \
-    && rm /tmp/${PACKAGE}/vignettes/Targeting-Vignette.Rmd \
     && rinstall -p /tmp/${PACKAGE} \
     && (cd /tmp/${PACKAGE} && builds write -n ${PACKAGE} -v $(git describe --abbrev=12 --always --dirty=+)) \
     && rm -r /tmp/${PACKAGE}
@@ -142,14 +140,13 @@ RUN PACKAGE="scoper" \
     && rm -r /tmp/${PACKAGE}
 
 # Install dowser
-# TODO: Enable dowser build
-#RUN PACKAGE="dowser" \
-#    && rm -rf /tmp/${PACKAGE} \
-#    && git clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
-#    && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} -d immcantation \
-#    && rinstall -p /tmp/${PACKAGE} \
-#    && (cd /tmp/${PACKAGE} && builds write -n ${PACKAGE} -v $(git describe --abbrev=12 --always --dirty=+)) \
-#    && rm -r /tmp/${PACKAGE}
+RUN PACKAGE="dowser" \
+    && rm -rf /tmp/${PACKAGE} \
+    && git clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
+    && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} -d immcantation \
+    && rinstall -p /tmp/${PACKAGE} \
+    && (cd /tmp/${PACKAGE} && builds write -n ${PACKAGE} -v $(git describe --abbrev=12 --always --dirty=+)) \
+    && rm -r /tmp/${PACKAGE}
 
 # Install prestor
 RUN PACKAGE="prestor" \

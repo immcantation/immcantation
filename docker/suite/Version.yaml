@@ -1,6 +1,6 @@
 immcantation:
-  version:  4.2.0
-  date:     2021.06.21
+  version:  devel
+  date:     2021.06.24
 package:
   presto:   0.6.2
   changeo:  1.1.0
