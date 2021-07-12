@@ -54,7 +54,7 @@ mkdir -p ${OUTDIR}/fasta
 TMPDIR=$(mktemp -d)
 
 # Create fasta files of each species, chain and segment combination
-for SPECIES in human mouse
+for SPECIES in human mouse rhesus_monkey
 do
     for CHAIN in IG TR
     do
@@ -73,14 +73,14 @@ done
 
 # Parse each created fasta file to create igblast database
 cd ${TMPDIR}
-NT_FILES=$(ls *.fasta | grep -E "imgt_(human|mouse).+\.fasta")
+NT_FILES=$(ls *.fasta | grep -E "imgt_(human|mouse|rhesus_monkey).+\.fasta")
 for F in ${NT_FILES}; do
 	clean_imgtdb.py ${F} ${OUTDIR}/fasta/${F}
 	makeblastdb -parse_seqids -dbtype nucl -in ${OUTDIR}/fasta/${F} \
         -out ${OUTDIR}/database/${F%%.*}
 done
 
-AA_FILES=$(ls *.fasta | grep -E "imgt_aa_(human|mouse).+\.fasta")
+AA_FILES=$(ls *.fasta | grep -E "imgt_aa_(human|mouse|rhesus_monkey).+\.fasta")
 for F in ${AA_FILES}; do
 	clean_imgtdb.py ${F} ${OUTDIR}/fasta/${F}
 	makeblastdb -parse_seqids -dbtype prot -in ${OUTDIR}/fasta/${F} \
