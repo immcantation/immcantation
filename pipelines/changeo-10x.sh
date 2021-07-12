@@ -170,6 +170,13 @@ elif [ ${SPECIES} != "human" ] && \
     exit 1
 fi
 
+# Set regions
+if [ ${SPECIES} == "rhesus_monkey" ]; then
+    REGIONS="rhesus-igl"
+else
+    REGIONS="default"
+fi
+
 # Set and check receptor type
 if ! ${LOCI_SET}; then
     LOCI="ig"
@@ -313,6 +320,7 @@ FMT7_FILE="${OUTNAME}_igblast.fmt7"
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "MakeDb igblast"
 MakeDb.py igblast -i ${FMT7_FILE} -s ${IG_FILE} --10x ${A10X} -r ${REFDIR} \
     --extended --failed ${PARTIAL} --outname "${OUTNAME}" --format ${FORMAT} \
+    --regions ${REGIONS} \
     >> $PIPELINE_LOG 2> $ERROR_LOG
 DB_PASS="${OUTNAME}_db-pass.${EXT}"
 DB_FAIL="${OUTNAME}_db-fail.${EXT}"
