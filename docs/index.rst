@@ -208,6 +208,11 @@ Contributed Packages
     :width: 200
     :target: prestoR_
 
+.. |dowser-img| image:: _static/dowser.png
+    :align: middle
+    :width: 200
+    :target: dowser_
+
 .. |rdi-img| image:: _static/rdi.png
     :align: middle
     :width: 200
@@ -236,6 +241,7 @@ Contributed Packages
 .. _SHazaM: https://shazam.readthedocs.io
 .. _TIgGER: https://tigger.readthedocs.io
 .. _SCOPer: https://scoper.readthedocs.io
+.. _dowser: https://dowser.readthedocs.io
 .. _RDI: https://rdi.readthedocs.io
 .. _IgPhyML: https://igphyml.readthedocs.io
 .. _RAbHIT: https://yaarilab.bitbucket.io/RAbHIT/
