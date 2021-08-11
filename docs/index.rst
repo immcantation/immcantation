@@ -2,12 +2,12 @@
    :description: Immcantation: An Integrated Framework for Adaptive Immune Receptor Repertoire Analysis
    :keywords: rep-seq, immuno-seq, vdj-seq, repertoire sequencing, BCR, TCR, Ig, AIRR,
     adaptive immunity, somatic hypermutation, AbSeq, AbPair, VDJ, immunoglobulin
-        
+
 .. meta::
     :twitter\:card:  summary_large_image
     :og\:title: Immcantation: An Integrated Framework for Adaptive Immune Receptor Repertoire Analysis
     :og\:image: _static/immcantation-card.png'
-   
+
 .. toctree::
     :maxdepth: 1
     :hidden:
@@ -40,17 +40,18 @@
     SHazaM <http://shazam.readthedocs.io>
     TIgGER <http://tigger.readthedocs.io>
     SCOPer <http://scoper.readthedocs.io>
-    
+    dowser <https://dowser.readthedocs.io/>
+
 .. toctree::
     :maxdepth: 1
     :caption: Contributed Packages
-    :hidden:    
+    :hidden:
 
     RDI <http://rdi.readthedocs.io>
     RAbHIT <https://yaarilab.bitbucket.io/RAbHIT/>
     IgPhyML <https://igphyml.readthedocs.io>
     sumrep <https://github.com/matsengrp/sumrep>
-    
+
 .. toctree::
     :maxdepth: 1
     :caption: In Development
@@ -133,6 +134,11 @@ Core Packages
       - **prestoR**
 
         + pRESTO report generation
+
+    * - |dowser-img|
+      - **dowser**
+
+        + Phylogenetic analysis on B cell receptor repertoires
 
 Contributed Packages
 -----------------------------------------------------------------------------------------
