@@ -8,6 +8,7 @@ package:
   shazam:   1.0.2
   tigger:   1.0.0
   scoper:   1.1.0
+  dowser:   0.1.0
   enchantr: 0.0.0
   prestor:  0.0.6
   rabhit:   0.1.5
