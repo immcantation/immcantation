@@ -32,11 +32,7 @@ RUN pip3 install --no-cache-dir rpy2 tzlocal notebook==6.* RISE && \
     jupyter nbextensions_configurator enable
 
 RUN Rscript -e "dir.create(path = Sys.getenv('R_LIBS_USER'), showWarnings = FALSE, recursive = TRUE)"
-ARG R_DEPS="c('evaluate', \
-            'crayon', \
-            'devtools', \
-            'uuid', \
-            'digest', \
+ARG R_DEPS="c('uuid', \
             'Seurat')"
 RUN Rscript -e "install.packages(${R_DEPS}, lib=Sys.getenv('R_LIBS_USER'),clean=TRUE);devtools::install_github('RBigData/pbdZMQ');devtools::install_github(paste0('IRkernel/',c('repr', 'IRdisplay', 'IRkernel')));IRkernel::installspec(user = FALSE)"
 
