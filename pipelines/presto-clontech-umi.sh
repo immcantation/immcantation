@@ -308,8 +308,8 @@ check_error
 
 # Assemble pairs
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "AssemblePairs sequential"
-AssemblePairs.py sequential -1 "${OUTNAME}-R1_consensus-pass_pair-pass.fastq" \
-    -2 "${OUTNAME}-R2_consensus-pass_pair-pass.fastq" \
+AssemblePairs.py sequential -1 "${OUTNAME}-R2_consensus-pass_pair-pass.fastq" \
+    -2 "${OUTNAME}-R1_consensus-pass_pair-pass.fastq" \
     -r ${VREF_SEQ} \
     --coord presto --rc tail --1f CONSCOUNT --2f PRCONS CONSCOUNT \
     --minlen ${AP_MINLEN} --maxerror ${AP_MAXERR} --alpha $AP_ALPHA --scanrev \
