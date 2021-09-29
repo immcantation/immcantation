@@ -83,4 +83,5 @@ RUN echo "options(repos='${R_REPO}')" >> /usr/lib64/R/library/base/R/Rprofile \
     && mkdir -p /usr/share/doc/R/html \
     && cp /usr/lib64/R/library/stats/html/R.css /usr/share/doc/R/html/R.css \
     && Rscript -e "install.packages(${R_DEPS}, clean=TRUE)" \
+    && Rscript -e "if (require('rvcheck', character.only = TRUE)) {remove.packages('rvcheck')};devtools::install_version('rvcheck', version='0.1.8')" \
     && Rscript -e "BiocManager::install(${R_BIOC_DEPS})"
