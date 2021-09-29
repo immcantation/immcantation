@@ -144,7 +144,7 @@ RUN PACKAGE="dowser" \
     && rm -rf /tmp/${PACKAGE} \
     && git clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
     && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} -d immcantation \
-    && rinstall -p /tmp/${PACKAGE} \
+    && rinstall -p /tmp/${PACKAGE} --upgrade never \
     && (cd /tmp/${PACKAGE} && builds write -n ${PACKAGE} -v $(git describe --abbrev=12 --always --dirty=+)) \
     && rm -r /tmp/${PACKAGE}
 
