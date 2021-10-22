@@ -28,7 +28,7 @@ Alternatively, you can install directly form the bitbucket repository, but this
 will not build the documentation::
 
     library(devtools)
-    install_bitbucket("javh/prototype-prestor@default")
+    install_bitbucket("kleinstein/prestor@master")
 
 Documentation
 --------------------------------------------------------------------------------
