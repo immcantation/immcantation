@@ -6,6 +6,7 @@
 #
 # Arguments:
 #   -p    Package source directory.
+#   -u    Upgrade argument to pass to devtools install
 #   -h    Display help.
 
 # Imports
@@ -21,8 +22,7 @@ UPGRADE <- "default"
 opt_list <- list(make_option(c("-p", "--package"), dest="PKG_DIR", default=PKG_DIR,
                              help="Package source directory. Defaults to current directory."),
                 make_option(c("-u", "--upgrade"), dest="UPGRADE", default=UPGRADE,
-                             help="Whether package dependencies should be upgraded.")
-                             )
+                             help="Whether package dependencies should be upgraded."))
 
 # Parse arguments
 opt <- parse_args(OptionParser(option_list=opt_list))
