@@ -48,13 +48,13 @@ RUN_DIR=$(realpath ${RUN_DIR})
     CREGION=/usr/local/share/protocols/Universal/Human_IG_CRegion_RC.fasta
     VREF=/usr/local/share/igblast/fasta/imgt_human_ig_v.fasta
     YAML=/data/report.yaml
-	  OUT_DIR="/scratch/clontech"
+    OUT_DIR="/scratch/clontech"
 
     run docker run -v $DATA_DIR:/data:z -v $RUN_DIR:/scratch:z $IMAGE \
         presto-clontech -1 $READS_R1 -2 $READS_R2 -j $CREGION -r $VREF \
         -y $YAML -n $SAMPLE -o $OUT_DIR -p $NPROC
 
-	  [ "$status" -eq 0 ]
+    [ "$status" -eq 0 ]
 }
 
 # 10X

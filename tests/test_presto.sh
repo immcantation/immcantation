@@ -45,7 +45,7 @@ get_output() {
     run AlignSets.py muscle -s $READS --bf BARCODE --log $LOG --nproc $NPROC $OUTPUT
 
     echo "$output" > $CONSOLE
-	  [ "$status" -eq 0 ]
+    [ "$status" -eq 0 ]
 }
 
 @test "AlignSets-table" {
@@ -58,7 +58,7 @@ get_output() {
     run AlignSets.py table -p $PRIMERS $OUTPUT
 
     echo "$output" > $CONSOLE
-	  [ "$status" -eq 0 ]
+    [ "$status" -eq 0 ]
 }
 
 @test "AssemblePairs-align" {
@@ -73,7 +73,7 @@ get_output() {
         --log $LOG --nproc $NPROC $OUTPUT
 
     echo "$output" > $CONSOLE
-	  [ "$status" -eq 0 ]
+    [ "$status" -eq 0 ]
 }
 
 @test "AssemblePairs-join" {
@@ -88,7 +88,7 @@ get_output() {
         --log $LOG --nproc $NPROC $OUTPUT
 
     echo "$output" > $CONSOLE
-	  [ "$status" -eq 0 ]
+    [ "$status" -eq 0 ]
 }
 
 @test "AssemblePairs-reference" {
@@ -104,7 +104,7 @@ get_output() {
         --log $LOG --nproc $NPROC $OUTPUT
 
     echo "$output" > $CONSOLE
-	  [ "$status" -eq 0 ]
+    [ "$status" -eq 0 ]
 }
 
 @test "AssemblePairs-sequential" {
@@ -120,7 +120,7 @@ get_output() {
         --log $LOG --nproc $NPROC $OUTPUT
 
     echo "$output" > $CONSOLE
-	  [ "$status" -eq 0 ]
+    [ "$status" -eq 0 ]
 }
 
 @test "BuildConsensus" {
@@ -134,7 +134,7 @@ get_output() {
         --log $LOG --nproc $NPROC $OUTPUT
 
     echo "$output" > $CONSOLE
-	  [ "$status" -eq 0 ]
+    [ "$status" -eq 0 ]
 }
 
 @test "ClusterSets-all" {
@@ -147,7 +147,7 @@ get_output() {
         --mem $MEMORY --nproc $NPROC $OUTPUT
 
     echo "$output" > $CONSOLE
-	  [ "$status" -eq 0 ]
+    [ "$status" -eq 0 ]
 }
 
 @test "ClusterSets-barcode" {
@@ -160,7 +160,7 @@ get_output() {
         --mem $MEMORY --nproc $NPROC $OUTPUT
 
     echo "$output" > $CONSOLE
-	  [ "$status" -eq 0 ]
+    [ "$status" -eq 0 ]
 }
 
 @test "ClusterSets-set" {
@@ -175,7 +175,7 @@ get_output() {
         --log $LOG --nproc $NPROC $OUTPUT
 
     echo "$output" > $CONSOLE
-	  [ "$status" -eq 0 ]
+    [ "$status" -eq 0 ]
 }
 
 @test "CollapseSeq" {
@@ -188,7 +188,7 @@ get_output() {
     run CollapseSeq.py -s $READS -n 20 --cf CONSCOUNT PRCONS --act sum set --inner $OUTPUT
 
     echo "$output" > $CONSOLE
-	  [ "$status" -eq 0 ]
+    [ "$status" -eq 0 ]
 }
 
 @test "FilterSeq-maskqual" {
@@ -201,7 +201,7 @@ get_output() {
     run FilterSeq.py maskqual -s $READS -q 20 --log $LOG --nproc $NPROC $OUTPUT
 
     echo "$output" > $CONSOLE
-	  [ "$status" -eq 0 ]
+    [ "$status" -eq 0 ]
 }
 
 @test "FilterSeq-quality" {
@@ -215,7 +215,7 @@ get_output() {
         --log $LOG --nproc $NPROC $OUTPUT
 
     echo "$output" > $CONSOLE
-  	[ "$status" -eq 0 ]
+    [ "$status" -eq 0 ]
 }
 
 @test "FilterSeq-trimqual" {
@@ -228,7 +228,7 @@ get_output() {
     run FilterSeq.py trimqual -s $READS -q 20 --log $LOG --nproc $NPROC $OUTPUT
 
     echo "$output" > $CONSOLE
-  	[ "$status" -eq 0 ]
+    [ "$status" -eq 0 ]
 }
 
 @test "MaskPrimers-align" {
@@ -243,7 +243,7 @@ get_output() {
         --log $LOG --nproc $NPROC $OUTPUT
 
     echo "$output" > $CONSOLE
-	  [ "$status" -eq 0 ]
+    [ "$status" -eq 0 ]
 }
 
 @test "MaskPrimers-extract" {
@@ -258,7 +258,7 @@ get_output() {
         --log $LOG --nproc $NPROC $OUTPUT
 
     echo "$output" > $CONSOLE
-	  [ "$status" -eq 0 ]
+    [ "$status" -eq 0 ]
 }
 
 @test "MaskPrimers-score" {
@@ -273,7 +273,7 @@ get_output() {
         --log $LOG --nproc $NPROC $OUTPUT
 
     echo "$output" > $CONSOLE
-	  [ "$status" -eq 0 ]
+    [ "$status" -eq 0 ]
 }
 
 @test "PairSeq" {
@@ -288,7 +288,7 @@ get_output() {
         $OUTPUT
 
     echo "$output" > $CONSOLE
-	  [ "$status" -eq 0 ]
+    [ "$status" -eq 0 ]
 }
 
 @test "ParseHeaders-collapse" {
@@ -300,7 +300,7 @@ get_output() {
     run ParseHeaders.py collapse -s $READS -f CONSCOUNT --act cat $OUTPUT
 
     echo "$output" > $CONSOLE
-	  [ "$status" -eq 0 ]
+    [ "$status" -eq 0 ]
 }
 
 @test "ParseHeaders-collapse" {
@@ -312,7 +312,7 @@ get_output() {
     run ParseHeaders.py copy -s $READS -f ID PRCONS CONSCOUNT -k UMI C_CALL COUNT --act set set sum $OUTPUT
 
     echo "$output" > $CONSOLE
-	  [ "$status" -eq 0 ]
+    [ "$status" -eq 0 ]
 }
 
 @test "ParseHeaders-merge" {
@@ -324,7 +324,7 @@ get_output() {
     run ParseHeaders.py merge -s $READS -f PRIMER BARCODE -k UMI --act cat --delete $OUTPUT
 
     echo "$output" > $CONSOLE
-	  [ "$status" -eq 0 ]
+    [ "$status" -eq 0 ]
 }
 
 @test "ParseHeaders-rename" {
@@ -336,7 +336,7 @@ get_output() {
     run ParseHeaders.py rename -s $READS -f CONSCOUNT PRCONS -k COUNT C_CALL $OUTPUT
 
     echo "$output" > $CONSOLE
-  	[ "$status" -eq 0 ]
+    [ "$status" -eq 0 ]
 }
 
 @test "ParseHeaders-table" {
@@ -348,7 +348,7 @@ get_output() {
     run ParseHeaders.py table -s $READS -f ID PRIMER BARCODE $OUTPUT
 
     echo "$output" > $CONSOLE
-	  [ "$status" -eq 0 ]
+    [ "$status" -eq 0 ]
 }
 
 @test "ParseLog" {
@@ -361,7 +361,7 @@ get_output() {
         $OUTPUT
 
     echo "$output" > $CONSOLE
-	  [ "$status" -eq 0 ]
+    [ "$status" -eq 0 ]
 }
 
 @test "SplitSeq-count" {
@@ -373,7 +373,7 @@ get_output() {
     run SplitSeq.py count -s $READS -n 300 $OUTPUT
 
     echo "$output" > $CONSOLE
-	  [ "$status" -eq 0 ]
+    [ "$status" -eq 0 ]
 }
 
 @test "SplitSeq-group" {
@@ -385,7 +385,7 @@ get_output() {
     run SplitSeq.py group -s $READS -f PRCONS $OUTPUT
 
     echo "$output" > $CONSOLE
-	  [ "$status" -eq 0 ]
+    [ "$status" -eq 0 ]
 }
 
 @test "SplitSeq-sample" {
@@ -397,7 +397,7 @@ get_output() {
     run SplitSeq.py sample -s $READS -n 10 100 -f PRCONS $OUTPUT
 
     echo "$output" > $CONSOLE
-  	[ "$status" -eq 0 ]
+    [ "$status" -eq 0 ]
 }
 
 
@@ -412,7 +412,7 @@ get_output() {
     run SplitSeq.py samplepair -1 $READS_1 -2 $READS_2 -n 10 100 $OUTPUT
 
     echo "$output" > $CONSOLE
-	  [ "$status" -eq 0 ]
+    [ "$status" -eq 0 ]
 }
 
 @test "SplitSeq-select" {
@@ -424,7 +424,7 @@ get_output() {
     run SplitSeq.py select -s $READS -f PRCONS -u Human-IGHA Human-IGHG $OUTPUT
 
     echo "$output" > $CONSOLE
-  	[ "$status" -eq 0 ]
+    [ "$status" -eq 0 ]
 }
 
 # Presto

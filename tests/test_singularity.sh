@@ -19,8 +19,8 @@ READS_R2=/data/AAYHL_HD13M/MG2v3_HD13M_BC13_AGTCAA_L001_R2_001.fastq
 OUT_DIR="/scratch/phix"
 
 singularity exec -e -B $DATA_DIR:/data -B $RUN_DIR:/scratch $IMAGE preprocess-phix \
-	-s $READS_R1 -o $OUT_DIR -p $NPROC
-	
+    -s $READS_R1 -o $OUT_DIR -p $NPROC
+
 # pRESTO
 READS_R1=/data/AAYHL_HD13M/MG2v3_HD13M_BC13_AGTCAA_L001_R1_001.fastq
 READS_R2=/data/AAYHL_HD13M/MG2v3_HD13M_BC13_AGTCAA_L001_R2_001.fastq
@@ -49,7 +49,7 @@ DB="/scratch/changeo/${SAMPLE}_genotyped.${EXT}"
 OUT_DIR="/scratch/changeo"
 
 singularity exec -B $DATA_DIR:/data -B $RUN_DIR:/scratch $IMAGE shazam-threshold \
-	-d $DB -n $SAMPLE -o $OUT_DIR -p $NPROC
+    -d $DB -n $SAMPLE -o $OUT_DIR -p $NPROC
 
 # Change-O clones
 DB="/scratch/changeo/${SAMPLE}_genotyped.${EXT}"
@@ -57,4 +57,4 @@ OUT_DIR="/scratch/changeo"
 DIST=0.15
 
 singularity exec -B $DATA_DIR:/data -B $RUN_DIR:/scratch $IMAGE changeo-clone \
-	-d $DB -x $DIST -n $SAMPLE -o $OUT_DIR -p $NPROC
+    -d $DB -x $DIST -n $SAMPLE -o $OUT_DIR -p $NPROC

@@ -1,6 +1,6 @@
 immcantation:
   version:  devel
-  date:     2021.07.28
+  date:     2021.10.26
 package:
   presto:   0.6.2
   changeo:  1.1.0
@@ -10,7 +10,7 @@ package:
   scoper:   1.1.0
   dowser:   0.1.0
   enchantr: 0.0.0
-  prestor:  0.0.6
+  prestor:  0.0.7
   rabhit:   0.1.5
   rdi:      1.0.0
   igphyml:  1.1.3

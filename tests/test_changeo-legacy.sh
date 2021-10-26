@@ -44,7 +44,7 @@ get_output() {
         --format airr $OUTPUT
 
     echo "$output" > $CONSOLE
-  	[ "$status" -eq 0 ]
+    [ "$status" -eq 0 ]
 }
 
 @test "AssignGenes-igblast-blast" {
@@ -58,7 +58,7 @@ get_output() {
         --format blast $OUTPUT
 
     echo "$output" > $CONSOLE
-  	[ "$status" -eq 0 ]
+    [ "$status" -eq 0 ]
 }
 
 @test "MakeDb-igblast" {
@@ -73,7 +73,7 @@ get_output() {
         --extended --log $LOG --format $FORMAT $OUTPUT
 
     echo "$output" > $CONSOLE
-  	[ "$status" -eq 0 ]
+    [ "$status" -eq 0 ]
 }
 
 @test "MakeDb-ihmm" {
@@ -88,7 +88,7 @@ get_output() {
         --extended --log $LOG --format $FORMAT $OUTPUT
 
     echo "$output" > $CONSOLE
-  	[ "$status" -eq 0 ]
+    [ "$status" -eq 0 ]
 }
 
 @test "MakeDb-imgt" {
@@ -131,7 +131,7 @@ get_output() {
         --log $LOG --format $FORMAT $OUTPUT
 
     echo "$output" > $CONSOLE
-	  [ "$status" -eq 0 ]
+    [ "$status" -eq 0 ]
 }
 
 @test "DefineClones" {
@@ -145,7 +145,7 @@ get_output() {
         --log $LOG --format $FORMAT --nproc $NPROC $OUTPUT
 
     echo "$output" > $CONSOLE
-  	[ "$status" -eq 0 ]
+    [ "$status" -eq 0 ]
 }
 
 @test "AlignRecords-across" {
@@ -159,7 +159,7 @@ get_output() {
         --calls v d j --log $LOG --nproc $NPROC --format $FORMAT $OUTPUT
 
     echo "$output" > $CONSOLE
-  	[ "$status" -eq 0 ]
+    [ "$status" -eq 0 ]
 }
 
 @test "AlignRecords-block" {
@@ -187,7 +187,7 @@ get_output() {
         --log $LOG --nproc $NPROC --format $FORMAT $OUTPUT
 
     echo "$output" > $CONSOLE
-  	[ "$status" -eq 0 ]
+    [ "$status" -eq 0 ]
 }
 
 @test "ConvertDb-airr" {
@@ -199,7 +199,7 @@ get_output() {
     run ConvertDb.py airr -d $DB $OUTPUT
 
     echo "$output" > $CONSOLE
-  	[ "$status" -eq 0 ]
+    [ "$status" -eq 0 ]
 }
 
 @test "ConvertDb-changeo" {
@@ -211,7 +211,7 @@ get_output() {
     run ConvertDb.py changeo -d $DB $OUTPUT
 
     echo "$output" > $CONSOLE
-  	[ "$status" -eq 0 ]
+    [ "$status" -eq 0 ]
 }
 
 @test "ConvertDb-baseline" {
@@ -224,7 +224,7 @@ get_output() {
         --gf GERMLINE_IMGT_D_MASK --mf V_CALL J_CALL --cf CLONE $OUTPUT
 
     echo "$output" > $CONSOLE
-  	[ "$status" -eq 0 ]
+    [ "$status" -eq 0 ]
 }
 
 @test "ConvertDb-fasta" {
@@ -237,7 +237,7 @@ get_output() {
         --mf V_CALL J_CALL $OUTPUT
 
     echo "$output" > $CONSOLE
-	  [ "$status" -eq 0 ]
+    [ "$status" -eq 0 ]
 }
 
 @test "ConvertDb-genbank-airr" {
@@ -258,10 +258,10 @@ get_output() {
 
 @test "ConvertDb-genbank-changeo" {
     TEST="${BATS_TEST_NUMBER}-${BATS_TEST_DESCRIPTION}"
-	DB="${DATA_DIR}/db/S43_changeo.tab"
-	SBT="${DATA_DIR}/db/template.sbt"
-	YAML="${DATA_DIR}/db/genbank.yaml"
-	CONSOLE="${RUN_DIR}/console/${TEST}.out"
+    DB="${DATA_DIR}/db/S43_changeo.tab"
+    SBT="${DATA_DIR}/db/template.sbt"
+    YAML="${DATA_DIR}/db/genbank.yaml"
+    CONSOLE="${RUN_DIR}/console/${TEST}.out"
     OUTPUT=$(get_output ${TEST} ${OUTDIR} false)
 
     run ConvertDb.py genbank -d $DB --inf "IgBLAST:1.7.0" --organism "Homo sapiens" \
@@ -269,7 +269,7 @@ get_output() {
         --asis-id --asn --sbt $SBT -y $YAML --format changeo $OUTPUT
 
     echo "$output" > $CONSOLE
-	[ "$status" -eq 0 ]
+    [ "$status" -eq 0 ]
 }
 
 @test "ParseDb-add" {
@@ -281,7 +281,7 @@ get_output() {
     run ParseDb.py add -d $DB -f ADD_1 ADD_2 -u 1 2 $OUTPUT
 
     echo "$output" > $CONSOLE
-  	[ "$status" -eq 0 ]
+    [ "$status" -eq 0 ]
 }
 
 @test "ParseDb-delete" {
@@ -293,7 +293,7 @@ get_output() {
     run ParseDb.py delete -d $DB -f PRCONS -u "IGHA|IGHG" --regex $OUTPUT
 
     echo "$output" > $CONSOLE
-  	[ "$status" -eq 0 ]
+    [ "$status" -eq 0 ]
 }
 
 @test "ParseDb-drop" {
@@ -305,7 +305,7 @@ get_output() {
     run ParseDb.py drop -d $DB -f V_CALL J_CALL $OUTPUT
 
     echo "$output" > $CONSOLE
-  	[ "$status" -eq 0 ]
+    [ "$status" -eq 0 ]
 }
 
 @test "ParseDb-index" {
@@ -317,7 +317,7 @@ get_output() {
     run ParseDb.py index -d $DB -f INDEX $OUTPUT
 
     echo "$output" > $CONSOLE
-  	[ "$status" -eq 0 ]
+    [ "$status" -eq 0 ]
 }
 
 @test "ParseDb-rename" {
@@ -329,7 +329,7 @@ get_output() {
     run ParseDb.py rename -d $DB -f V_CALL J_CALL -k V_RENAME J_RENAME $OUTPUT
 
     echo "$output" > $CONSOLE
-  	[ "$status" -eq 0 ]
+    [ "$status" -eq 0 ]
 }
 
 @test "ParseDb-select" {
@@ -341,7 +341,7 @@ get_output() {
     run ParseDb.py select -d $DB -f V_CALL J_CALL -u IGH --logic all --regex $OUTPUT
 
     echo "$output" > $CONSOLE
-	  [ "$status" -eq 0 ]
+    [ "$status" -eq 0 ]
 }
 
 @test "ParseDb-sort" {
@@ -353,7 +353,7 @@ get_output() {
     run ParseDb.py sort -d $DB -f DUPCOUNT --num --descend $OUTPUT
 
     echo "$output" > $CONSOLE
-  	[ "$status" -eq 0 ]
+    [ "$status" -eq 0 ]
 }
 
 @test "ParseDb-split" {
@@ -365,7 +365,7 @@ get_output() {
     run ParseDb.py split -d $DB -f PRCONS $OUTPUT
 
     echo "$output" > $CONSOLE
-  	[ "$status" -eq 0 ]
+    [ "$status" -eq 0 ]
 }
 
 @test "ParseDb-update" {
@@ -377,6 +377,6 @@ get_output() {
     run ParseDb.py update -d $DB -f PRCONS -u Human-IGHA Human-IGHG -t IGHA IGHG $OUTPUT
 
     echo "$output" > $CONSOLE
-  	[ "$status" -eq 0 ]
+    [ "$status" -eq 0 ]
 }
 
