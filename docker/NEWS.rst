@@ -7,6 +7,7 @@ Version 4.3.0:  October 26, 2021
 Version Updates:
 
 + prestor 0.0.7
++ dowser
 
 Pipeline Changes:
 
@@ -106,7 +107,7 @@ Pipeline Changes:
 + Added report generation and the ``-y`` argument specifying the report
   yaml config file to ``presto-clontech``.
 + Changed name of the console logs in ``presto-clontech`` to
-  ``pipeline-presto.log`` and ``pipeline-presto.err`` 
+  ``pipeline-presto.log`` and ``pipeline-presto.err``
   (was ``pipeline.log`` and ``pipeline.err``).
 + Added ``--minseq`` and ``--mingerm`` arguments to ``tigger-genotype``
   to control sequence and allele exclusion criteria.
@@ -190,7 +191,7 @@ Pipeline Changes:
 
 + Added ``-i`` argument to ``changeo-igblast`` to allow retention of
   partial alignments.
-  
+
 Image Changes:
 
 + Base system changed to Fedora 29.
