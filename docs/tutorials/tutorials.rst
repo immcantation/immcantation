@@ -35,12 +35,15 @@ offer an introductory tutorial for new users:
     10x_tutorial
 
 We also demonstrate an enhanced analysis by integrating 10x BCR and 10x GEX data in 
-this `jupyter notebook<https://bitbucket.org/kleinstein/immcantation/src/master/training/BCR_Seurat_tutorial.ipynb?viewer=nbviewer>`_.
+this `jupyter notebook <https://bitbucket.org/kleinstein/immcantation/src/master/training/BCR_Seurat_tutorial.ipynb?viewer=nbviewer>`_.
 
 Video presentations
 -------------------------------------------------------------------------------------------
 
-|youtube-img|
+.. image:: _static/immcantation-yt.png
+    :target: https://www.youtube.com/channel/UCWQgFmSnv8B9Q5G_kunOabw/about
+    :alt: Link to Immcantation's YouTube Channel
+    :align: left
 
 You can watch presentations by Immcantation developers and users in Immcantation's YouTube channel.
 
