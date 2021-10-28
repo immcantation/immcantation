@@ -26,7 +26,7 @@ If you don't want to execute the Jupyter notebook yourself, you can explore a
 Single-cell Analysis
 -------------------------------------------------------------------------------------------
 
-For information on how to process 10x Genomics data to be analyzed with Immcantation, we
+For information on how to process 10x Genomics VDJ data to be analyzed with Immcantation, we
 offer an introductory tutorial for new users:
 
 .. toctree::
@@ -34,11 +34,15 @@ offer an introductory tutorial for new users:
 
     10x_tutorial
 
-    
+We also demonstrate an enhanced analysis by integrating 10x BCR and 10x GEX data in 
+this `jupyter notebook<https://bitbucket.org/kleinstein/immcantation/src/master/training/BCR_Seurat_tutorial.ipynb?viewer=nbviewer>_`.
+
 Video presentations
 -------------------------------------------------------------------------------------------
 
-|youtube-img| You can watch presentations by Immcantation developers and users in Immcantation's YouTube channel.
+|youtube-img|
+
+You can watch presentations by Immcantation developers and users in Immcantation's YouTube channel.
 
 Here we provide links to other publicly available Immcantation presentations:
 
