@@ -6,9 +6,10 @@ Version 4.3.0:  October 28, 2021
 
 Version Updates:
 
-+ prestor 0.7.0
++ presto 0.7.0
++ changeo 1.2.0
 + prestor 0.0.7
-+ dowser
++ dowser 0.1.0
 
 Pipeline Changes:
 
