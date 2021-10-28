@@ -233,6 +233,11 @@ Contributed Packages
     :width: 180
     :target: sumrep_
 
+.. |youtube-img| image:: _static/immcantation-yt.png
+    :target: https://www.youtube.com/channel/UCWQgFmSnv8B9Q5G_kunOabw/about
+    :alt: Link to Immcantation's YouTube Channel
+    :align: left
+
 .. Doc links
 
 .. _pRESTO: https://presto.readthedocs.io

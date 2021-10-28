@@ -83,10 +83,3 @@ cover common analyses. Note, each link will leave the Immcantation portal page.
     Building SHM targeting models with SHazaM <https://shazam.readthedocs.io/en/stable/vignettes/Targeting-Vignette>
     Novel allele detection and genotyping with TIgGER <https://tigger.readthedocs.io/en/stable/vignettes/Tigger-Vignette>
 
-    
-.. Image substitutions
-
-.. |youtube-img| image:: ../_static/immcantation-yt.png
-    :target: https://www.youtube.com/channel/UCWQgFmSnv8B9Q5G_kunOabw/about
-    :alt: Link to Immcantation's YouTube Channel
-    :align: left
