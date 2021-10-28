@@ -40,7 +40,7 @@ this `jupyter notebook <https://bitbucket.org/kleinstein/immcantation/src/master
 Video presentations
 -------------------------------------------------------------------------------------------
 
-.. image:: _static/immcantation-yt.png
+.. image:: ../_static/immcantation-yt.png
     :target: https://www.youtube.com/channel/UCWQgFmSnv8B9Q5G_kunOabw/about
     :alt: Link to Immcantation's YouTube Channel
     :align: left
