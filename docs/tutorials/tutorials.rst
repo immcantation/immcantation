@@ -47,24 +47,6 @@ Video presentations
 
 You can watch presentations by Immcantation developers and users in Immcantation's YouTube channel.
 
-Here we provide links to other publicly available Immcantation presentations:
-
-`A unified maximum likelihood framework for B cell repertoire phylogenetics <https://www.youtube.com/watch?v=oIFDLP5UqLo&ab_channel=ISCB>`_
-Kenneth B. Hoehn
-ISMB 2018 (July 6-10, 2018)
-
-`Repertoire-wide phylogenetic models of B-cell molecular evolution reveal evolutionary signatures of aging and vaccination <https://www.youtube.com/watch?v=GwXfXD84K7o&ab_channel=AIRRCommunity>`_
-Kenneth B. Hoehn
-AIRR Community Meeting IV (May 11-15, 2019)
-
-`​B-cell lineage analysis and COVID-19 <https://www.youtube.com/watch?v=d1IRY0LSuv4&ab_channel=AIRRCommunity>`_
-Kenneth B. Hoehn
-AIRR Community Special Event: Leveraging AIRR-sequencing data to inform the biology of COVID-19 (September 8-10, 2020)
-
-`Comprehensive analysis of immunogenomics sequencing data in the cloud to facilitate reproducibility and rigor of immunogenomics research <https://www.youtube.com/watch?v=lmR6NX4qXaw&ab_channel=ISCB>`_
-Victor Greiff, Kenneth B. Hoehn, Steven H. Kleinstein, Serghei Mangul, Milena Pavlovic, Kerui Peng
-Tutorials - ISMB/ECCB 2021 (July 22, 2021)
-
 
 Vignettes
 -------------------------------------------------------------------------------------------
