@@ -55,7 +55,14 @@ RUN wget -v -O /home/${NB_USER}/immcantation-BCR-Seurat-tutorial.zip -L https://
     unzip -o immcantation-BCR-Seurat-tutorial.zip && \
     rm -rf immcantation-BCR-Seurat-tutorial.zip && \
     mv BCR.data.rds GEX.data.rds /home/${NB_USER}/data/. && \
-    rm -rf immcantation-BCR-Seurat-tutorial    
+    rm -rf immcantation-BCR-Seurat-tutorial
+# Download dowsert tutorial data
+RUN wget -v -O /home/${NB_USER}/immcantation-bcr_phylo_tutorial.zip -L https://yale.box.com/shared/static/96y1rlu4ujerprxr53qxw87g7ybc1y99 && \
+    cd /home/${NB_USER}/ && \
+    unzip -o immcantation-bcr_phylo_tutorial.zip && \
+    rm -rf immcantation-bcr_phylo_tutorial.zip && \
+    mv bcr_phylo_tutorial/* /home/${NB_USER}/data/. && \
+    rm -rf bcr_phylo_tutorial  
 #RUN cd ${HOME}/notebooks && \
 #    jupyter nbconvert --ExecutePreprocessor.timeout=-1 --to notebook --execute intro-lab.ipynb && rm -rf results/*
 CMD ["start-notebook.sh"]
