@@ -239,7 +239,7 @@ get_output() {
     CONSOLE="${RUN_DIR}/console/${TEST}.out"
     OUTPUT=$(get_output ${TEST} ${OUTDIR} ${FAILED})
 
-    run MaskPrimers.py align -s $READS -p $PRIMERS --maxlen 50 --maxerror 0.20 --barcode --mode cut \
+    run MaskPrimers.py align -s $READS -p $PRIMERS --maxlen 50 --maxerror 0.20 --mode cut \
         --log $LOG --nproc $NPROC $OUTPUT
 
     echo "$output" > $CONSOLE
@@ -248,13 +248,12 @@ get_output() {
 
 @test "MaskPrimers-extract" {
     TEST="${BATS_TEST_NUMBER}-${BATS_TEST_DESCRIPTION}"
-    READS="${DATA_DIR}/sequences/HD13M_L001_R1_001.fastq"
-    PRIMERS="${DATA_DIR}/primers/AbSeq_R1_Human_IG_Primers.fasta"
+    READS="${DATA_DIR}/sequences/HD13M_L001_R2_001.fastq"
     LOG="${RUN_DIR}/logs/${TEST}.log"
     CONSOLE="${RUN_DIR}/console/${TEST}.out"
     OUTPUT=$(get_output ${TEST} ${OUTDIR} ${FAILED})
 
-    run MaskPrimers.py extract -s $READS --start 17 --len 20 --barcode --mode cut \
+    run MaskPrimers.py extract -s $READS --start 17 --len 10 --barcode --mode cut \
         --log $LOG --nproc $NPROC $OUTPUT
 
     echo "$output" > $CONSOLE
@@ -263,13 +262,13 @@ get_output() {
 
 @test "MaskPrimers-score" {
     TEST="${BATS_TEST_NUMBER}-${BATS_TEST_DESCRIPTION}"
-    READS="${DATA_DIR}/sequences/HD13M_L001_R1_001.fastq"
-    PRIMERS="${DATA_DIR}/primers/AbSeq_R1_Human_IG_Primers.fasta"
+    READS="${DATA_DIR}/sequences/HD13M_L001_R2_001.fastq"
+    PRIMERS="${DATA_DIR}/primers/AbSeq_R2_TS.fasta"
     LOG="${RUN_DIR}/logs/${TEST}.log"
     CONSOLE="${RUN_DIR}/console/${TEST}.out"
     OUTPUT=$(get_output ${TEST} ${OUTDIR} ${FAILED})
 
-    run MaskPrimers.py score -s $READS -p $PRIMERS --start 0 --maxerror 0.20 --barcode --mode cut \
+    run MaskPrimers.py score -s $READS -p $PRIMERS --start 17 --maxerror 0.30 --barcode --mode cut \
         --log $LOG --nproc $NPROC $OUTPUT
 
     echo "$output" > $CONSOLE
