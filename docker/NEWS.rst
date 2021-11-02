@@ -1,15 +1,16 @@
 Release Notes
 ========================================================================
 
-Version 4.3.0:  October 28, 2021
+Version 4.3.0:  October 31, 2021
 ------------------------------------------------------------------------
 
 Version Updates:
 
 + presto 0.7.0
 + changeo 1.2.0
-+ prestor 0.0.7
++ alakazam 1.2.0
 + dowser 0.1.0
++ prestor 0.0.7
 
 Pipeline Changes:
 
