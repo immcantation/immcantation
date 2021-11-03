@@ -28,11 +28,15 @@ ARG R_DEPS="c('ape', \
               'KernSmooth', \
               'knitr', \
               'lazyeval', \
+              'markdown', \
               'MASS', \
               'openxlsx', \
+              'phangorn', \
+              'phylotate', \
               'progress', \
               'readr', \
               'rlang', \
+              'rmarkdown', \
               'rversions', \
               'scales', \
               'SDMTools', \
