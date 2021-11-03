@@ -61,8 +61,8 @@ RUN wget -v -O /home/${NB_USER}/immcantation-bcr_phylo_tutorial.zip -L https://y
     cd /home/${NB_USER}/ && \
     unzip -o immcantation-bcr_phylo_tutorial.zip && \
     rm -rf immcantation-bcr_phylo_tutorial.zip && \
-    mv bcr_phylo_tutorial/* /home/${NB_USER}/data/. && \
-    rm -rf bcr_phylo_tutorial  
+    mv bcr_phylo_tutorial /home/${NB_USER}/data/. && \
+    rm -rf __MACOSX
 #RUN cd ${HOME}/notebooks && \
 #    jupyter nbconvert --ExecutePreprocessor.timeout=-1 --to notebook --execute intro-lab.ipynb && rm -rf results/*
 CMD ["start-notebook.sh"]
