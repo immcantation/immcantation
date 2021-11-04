@@ -10,10 +10,10 @@ To install pRESTO and Change-O from PyPI::
 
     > pip3 install presto changeo --user
 
-To install Alakazam, SHazaM, TIgGER and SCOPer from CRAN::
+To install Alakazam, SHazaM, TIgGER, SCOPer and dowser from CRAN::
 
     > R
-    > install.packages(c("alakazam", "shazam", "tigger", "scoper"))
+    > install.packages(c("alakazam", "shazam", "tigger", "scoper", "dowser"))
     
 Alternatively, a complete installation of the Immcantation framework and its dependencies
 is available as a Docker container. Installation of the container is described
