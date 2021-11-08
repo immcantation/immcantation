@@ -50,19 +50,40 @@ executed in the container shell as they would be executed in the host shell.
 
 Alternatively, it is possible to execute a specific command directly inside the 
 container without starting an interactive session. The next example demonstrates 
-how to execute ``versions report`` with ``$HOME/project`` mounted to ``/data``:
+how to execute ``ls`` within ``$HOME/project`` mounted to ``/data``:
 
 .. parsed-literal::
 
     # Docker command
-    docker run -v $HOME/project:/data:z immcantation/suite:|docker-version| versions report
+    docker run -v $HOME/project:/data:z immcantation/suite:|docker-version| ls /data
 
     # Singularity command
-    singularity exec -B $HOME/project:/data immcantation_suite_|docker-version|.sif versions report
+    singularity exec -B $HOME/project:/data immcantation_suite_|docker-version|.sif ls /data
 
-In this case, we are executing the ``versions report`` command which will inspect
-the installed software versions and print them to standard output.
+Inspecting the container components
+--------------------------------------------------------------------------------
+
+The container includes three informational scripts that provided details about
+the versions of installed software and available pipelines.
+
+The ``versions report`` command which will inspect the installed software
+versions and print them to standard output.
 
 There is an analagous ``builds report`` command to display the build date and
 changesets used during the image build. This is particularly relevant if you
 are using the ``immcantation/suite:devel`` development builds.
+
+Finally, the ``pipeline report`` will display a list of available template
+pipelines included in the container.
+
+.. parsed-literal::
+
+    # Docker command
+    docker run immcantation/suite:|docker-version| versions report
+    docker run immcantation/suite:|docker-version| builds report
+    docker run immcantation/suite:|docker-version| pipelines report
+
+    # Singularity command
+    singularity exec immcantation_suite_|docker-version|.sif versions report
+    singularity exec immcantation_suite_|docker-version|.sif builds report
+    singularity exec immcantation_suite_|docker-version|.sif pipelines report
