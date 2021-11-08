@@ -73,17 +73,5 @@ There is an analagous ``builds report`` command to display the build date and
 changesets used during the image build. This is particularly relevant if you
 are using the ``immcantation/suite:devel`` development builds.
 
-Finally, the ``pipeline report`` will display a list of available template
+Finally, the ``pipelines report`` command will display a list of available template
 pipelines included in the container.
-
-.. parsed-literal::
-
-    # Docker command
-    docker run immcantation/suite:|docker-version| versions report
-    docker run immcantation/suite:|docker-version| builds report
-    docker run immcantation/suite:|docker-version| pipelines report
-
-    # Singularity command
-    singularity exec immcantation_suite_|docker-version|.sif versions report
-    singularity exec immcantation_suite_|docker-version|.sif builds report
-    singularity exec immcantation_suite_|docker-version|.sif pipelines report
