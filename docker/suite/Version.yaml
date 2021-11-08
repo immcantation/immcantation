@@ -1,5 +1,5 @@
 immcantation:
-  version:  devel
+  version:  4.3.0
   date:     2021.11.08
 package:
   presto:   0.7.0
