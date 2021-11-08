@@ -64,6 +64,7 @@ Immcantation Tools
 + `Alakazam <https://alakazam.readthedocs.io>`__
 + `SHazaM <https://shazam.readthedocs.io>`__
 + `TIgGER <https://tigger.readthedocs.io>`__
++ `dowser <https://dowser.readthedocs.io>`__
 + `RDI <https://rdi.readthedocs.io>`__
 + `SCOPer <https://scoper.readthedocs.io>`__
 + `prestoR <https://bitbucket.org/kleinstein/prestor>`__
@@ -86,6 +87,7 @@ Template Pipeline Scripts
 + :ref:`PhiXPipeline`
 + :ref:`AbSeqPipeline`
 + :ref:`ClontechPipeline`
++ :ref:`ClontechPipelineUMI`
 + :ref:`10XPipeline`
 + :ref:`IgBLASTPipeline`
 + :ref:`ClonePipeline`

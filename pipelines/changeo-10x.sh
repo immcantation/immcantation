@@ -171,11 +171,7 @@ elif [ ${SPECIES} != "human" ] && \
 fi
 
 # Set regions
-if [ ${SPECIES} == "rhesus_monkey" ]; then
-    REGIONS="rhesus-igl"
-else
-    REGIONS="default"
-fi
+REGIONS="default"
 
 # Set and check receptor type
 if ! ${LOCI_SET}; then

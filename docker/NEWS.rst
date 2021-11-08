@@ -1,7 +1,7 @@
 Release Notes
 ========================================================================
 
-Version 4.3.0:  November 1, 2021
+Version 4.3.0:  November 8, 2021
 ------------------------------------------------------------------------
 
 Version Updates:
@@ -16,7 +16,8 @@ Version Updates:
 
 Pipeline Changes:
 
-Image Changes:
++ Added the ``presto-clontech-umi`` pipeline to preprocess data from the
+  Takara Bio / Clontech SMARTer v2 kit that includes UMIs.
 
 
 Version 4.2.0:  June 21, 2021

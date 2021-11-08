@@ -66,6 +66,29 @@ Usage: presto-clontech [OPTIONS]
 
 .. End presto-clontech
 
+.. Start presto-clontech-umi
+
+Usage: presto-clontech-umi [OPTIONS]
+  -1  Read 1 FASTQ sequence file.
+      Sequence beginning with the C-region.
+  -2  Read 2 FASTQ sequence file.
+      Sequence beginning with the leader.
+  -j  C-region reference sequences (reverse complemented).
+      Defaults to /usr/local/share/protocols/Universal/Human_IG_CRegion_RC.fasta.
+  -r  V-segment reference file.
+      Defaults to /usr/local/share/igblast/fasta/imgt_human_ig_v.fasta.
+  -n  Sample identifier which will be used as the output file prefix.
+      Defaults to a truncated version of the read 1 filename.
+  -o  Output directory. Will be created if it does not exist.
+      Defaults to a directory matching the sample identifier in the current working directory.
+  -x  The mate-pair coordinate format of the raw data.
+      Defaults to illumina.
+  -p  Number of subprocesses for multiprocessing tools.
+      Defaults to the available cores.
+  -h  This message.
+
+.. End presto-clontech-umi
+
 .. Start changeo-10x
 
 Usage: changeo-10x [OPTIONS]

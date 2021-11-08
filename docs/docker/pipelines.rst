@@ -11,6 +11,7 @@ will explain its use. The available pipelines are:
 * preprocess-phix
 * presto-abseq
 * presto-clontech
+* presto-clontech-umi
 * changeo-10x
 * changeo-igblast
 * tigger-genotype
@@ -62,12 +63,12 @@ genome.
 
 .. _AbSeqPipeline:
 
-NEB ImmunoSeq protocol preprocessing pipeline
+NEBNext / AbSeq immune sequencing kit preprocessing pipeline
 --------------------------------------------------------------------------------
 
-A start to finish pRESTO processing script for ImmunoSeq data. An example for human BCR processing
-is shown below. Primer sequences are available from the Immcantation repository under
-`protocols/AbSeq <https://bitbucket.org/kleinstein/immcantation/src/master/protocols/AbSeq>`__
+A start to finish pRESTO processing script for NEBNext / AbSeq immune sequencing data.
+An example for human BCR processing is shown below. Primer sequences are available from the
+Immcantation repository under `protocols/AbSeq <https://bitbucket.org/kleinstein/immcantation/src/master/protocols/AbSeq>`__
 or inside the container under ``/usr/local/share/protocols/AbSeq``. Mouse primers are not supplied.
 TCR V gene references can be specified with the flag
 ``-r /usr/local/share/igblast/fasta/imgt_human_tr_v.fasta``.
@@ -118,11 +119,11 @@ file containing information about the data and processing. Valid fields are show
 
 .. _ClontechPipeline:
 
-Takara Bio (Clontech) SMARTer protocol preprocessing pipeline
+Takara Bio / Clontech SMARTer v1 immune sequencing kit preprocessing pipeline
 --------------------------------------------------------------------------------
 
-A start to finish pRESTO processing script for Takara Bio / Clontech SMARTer kit
-data. C-regions are assigned using the universal C-region primer sequences are
+A start to finish pRESTO processing script for Takara Bio / Clontech SMARTer v1 immune
+sequencing kit data. C-regions are assigned using the universal C-region primer sequences are
 available from the Immcantation repository under
 `protocols/Universal <https://bitbucket.org/kleinstein/immcantation/src/master/protocols/Universal>`__
 or inside the container under ``/usr/local/share/protocols/Universal``.
@@ -152,9 +153,48 @@ or inside the container under ``/usr/local/share/protocols/Universal``.
 
     # Singularity command
     singularity exec -B $DATA_DIR:/data immcantation_suite-|docker-version|.sif \\
-        presto-abseq -1 $READS_R1 -2 $READS_R2 -j $CREGION -r $VREF \\
+        presto-clontech -1 $READS_R1 -2 $READS_R2 -j $CREGION -r $VREF \\
         -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC
 
+
+.. _ClontechPipelineUMI:
+
+Takara Bio / Clontech SMARTer v2 (UMI) immune sequencing kit preprocessing pipeline
+--------------------------------------------------------------------------------
+
+A start to finish pRESTO processing script for Takara Bio / Clontech SMARTer v2 immune
+sequencing kit data that includes UMIs. C-regions are assigned using the universal C-region
+primer sequences are available from the Immcantation repository under
+`protocols/Universal <https://bitbucket.org/kleinstein/immcantation/src/master/protocols/Universal>`__
+or inside the container under ``/usr/local/share/protocols/Universal``.
+
+.. include:: ../_include/usage.rst
+    :start-after: Start presto-clontech-umi
+    :end-before: End presto-clontech-umi
+
+**Example: presto-clontech-umi**
+
+.. parsed-literal::
+
+    # Arguments
+    DATA_DIR=~/project
+    READS_R1=/data/raw/sample_R1.fastq
+    READS_R2=/data/raw/sample_R2.fastq
+    CREGION=/usr/local/share/protocols/Universal/Human_IG_CRegion_RC.fasta
+    VREF=/usr/local/share/igblast/fasta/imgt_human_ig_v.fasta
+    SAMPLE_NAME=sample
+    OUT_DIR=/data/presto/sample
+    NPROC=4
+
+    # Docker command
+    docker run -v $DATA_DIR:/data\:z immcantation/suite:|docker-version| \\
+        presto-clontech-umi -1 $READS_R1 -2 $READS_R2 -j $CREGION -r $VREF \\
+        -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC
+
+    # Singularity command
+    singularity exec -B $DATA_DIR:/data immcantation_suite-|docker-version|.sif \\
+        presto-clontech-umi -1 $READS_R1 -2 $READS_R2 -j $CREGION -r $VREF \\
+        -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC
 
 .. _10XPipeline:
 

@@ -3,10 +3,13 @@ preprocess-phix:
   - "PhiX cleaning"
 presto-abseq:
   - "presto-abseq.sh"
-  - "NEB AbSeq preprocessing"
+  - "NEBNext / AbSeq Immune Sequencing preprocessing"
 presto-clontech:
   - "presto-clontech.sh"
-  - "Takara Bio / Clontech preprocessing"
+  - "Takara Bio / Clontech SMARTer v1 preprocessing"
+presto-clontech-umi:
+  - "presto-clontech-umi.sh"
+  - "Takara Bio / Clontech SMARTer v2 (with UMI) preprocessing"
 changeo-10x:
   - "changeo-10x.sh"
   - "10X Genomics V(D)J annotation and clonal assignment"
