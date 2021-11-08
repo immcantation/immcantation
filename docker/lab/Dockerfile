@@ -1,4 +1,4 @@
-FROM immcantation/suite:devel
+FROM immcantation/suite:4.3.0
 LABEL maintainer="Susanna Marquez [susanna.marquez@yale.edu]" \
       description="Immcantation Lab"
       
