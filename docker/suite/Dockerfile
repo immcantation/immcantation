@@ -1,4 +1,4 @@
-FROM immcantation/base:4.3.0
+FROM immcantation/base:devel
 LABEL maintainer="Jason Anthony Vander Heiden [jason.vanderheiden@yale.edu], \
                   Susanna Marquez [susanna.marquez@yale.edu]" \
       description="Full suite of the Immcantation framework tools and dependencies."
@@ -149,13 +149,13 @@ RUN PACKAGE="dowser" \
     && rm -r /tmp/${PACKAGE}
 
 # Install enchantr
-#RUN PACKAGE="enchantr" \
-#    && rm -rf /tmp/${PACKAGE} \
-#    && git clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
-#    && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} -d immcantation \
-#    && rinstall -p /tmp/${PACKAGE} \
-#    && (cd /tmp/${PACKAGE} && builds write -n ${PACKAGE} -v $(git describe --abbrev=12 --always --dirty=+)) \
-#    && rm -r /tmp/${PACKAGE}
+RUN PACKAGE="enchantr" \
+    && rm -rf /tmp/${PACKAGE} \
+    && git clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
+    && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} -d immcantation \
+    && rinstall -p /tmp/${PACKAGE} \
+    && (cd /tmp/${PACKAGE} && builds write -n ${PACKAGE} -v $(git describe --abbrev=12 --always --dirty=+)) \
+    && rm -r /tmp/${PACKAGE}
 
 # Install prestor
 RUN PACKAGE="prestor" \

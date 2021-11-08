@@ -1,5 +1,5 @@
 immcantation:
-  version:  4.3.0
+  version:  devel
   date:     2021.11.08
 package:
   presto:   0.7.0
@@ -9,6 +9,7 @@ package:
   tigger:   1.0.0
   scoper:   1.2.0
   dowser:   0.1.0
+  enchantr: 0.0.0
   prestor:  0.0.7
   rabhit:   0.1.5
   rdi:      1.0.0
