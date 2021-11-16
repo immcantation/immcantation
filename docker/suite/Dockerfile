@@ -144,6 +144,7 @@ RUN PACKAGE="dowser" \
     && rm -rf /tmp/${PACKAGE} \
     && git clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
     && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} -d immcantation \
+    && Rscript -e 'remotes::install_version("phangorn", "2.7.1", upgrade="never")' \
     && rinstall -p /tmp/${PACKAGE} -u never \
     && (cd /tmp/${PACKAGE} && builds write -n ${PACKAGE} -v $(git describe --abbrev=12 --always --dirty=+)) \
     && rm -r /tmp/${PACKAGE}
