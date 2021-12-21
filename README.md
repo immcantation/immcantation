@@ -40,7 +40,9 @@ pipeline scripts. The image is available on Docker Hub at
 
 Images are versioned through tags with images containing official
 releases denoted by meta-version numbers (eg, `1.0.0`). The `devel` tag
-denotes the latest development (unstabled) builds.
+denotes the latest development (unstabled) builds. The tag `latest` is not 
+available. Images can be obtained with the command 
+`docker pull immcantation/suite:<tag>`.
 
 ### Documentation
 
