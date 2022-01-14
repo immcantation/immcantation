@@ -92,6 +92,9 @@ Core Packages
         + Read assembly
         + UMI processing
         + Error profiling
+        
+        .. image:: https://img.shields.io/pypi/dm/presto
+            :target: https://pypi.org/project/presto
 
     * - |changeo-img|
       - **Change-O**
