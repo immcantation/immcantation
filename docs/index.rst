@@ -103,6 +103,9 @@ Core Packages
         + Clonal clustering
         + Germline reconstruction
         + Conversion and annotation
+        
+        .. image:: https://img.shields.io/pypi/dm/changeo
+            :target: https://pypi.org/project/changeo        
 
     * - |alakazam-img|
       - **Alakazam**
@@ -112,6 +115,9 @@ Core Packages
         + Repertoire diversity
         + V(D)J gene usage
         + Physicochemical property analysis
+        
+        .. image:: https://cranlogs.r-pkg.org/badges/alakazam
+            :target: https://www.r-pkg.org/pkg/alakazam          
 
     * - |shazam-img|
       - **SHazaM**
@@ -122,17 +128,26 @@ Core Packages
         + Chimera detection
         + Clonal clustering threshold tuning
 
+        .. image:: https://cranlogs.r-pkg.org/badges/shazam
+            :target: https://www.r-pkg.org/pkg/shazam  
+            
     * - |tigger-img|
       - **TIgGER**
 
         + Novel polymorphism detection
         + Genotyping
+        
+        .. image:: https://cranlogs.r-pkg.org/badges/tigger
+            :target: https://www.r-pkg.org/pkg/tigger          
 
     * - |scoper-img|
       - **SCOPer**
 
         + Spectral clonal clustering methods
 
+        .. image:: https://cranlogs.r-pkg.org/badges/scoper
+            :target: https://www.r-pkg.org/pkg/scoper  
+            
     * - |prestoR-img|
       - **prestoR**
 
@@ -142,6 +157,9 @@ Core Packages
       - **dowser**
 
         + Phylogenetic analysis on B cell receptor repertoires
+        
+        .. image:: https://cranlogs.r-pkg.org/badges/dowser
+            :target: https://www.r-pkg.org/pkg/dowser          
 
 Contributed Packages
 -----------------------------------------------------------------------------------------
