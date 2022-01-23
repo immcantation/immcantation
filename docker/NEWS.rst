@@ -8,6 +8,10 @@ Version Updates:
 
 + igblast 1.18.0
 
+Image Changes:
+
++ Added build of constant region databases to ``imgt2igblast.sh``.
+
 
 Version 4.3.0:  November 8, 2021
 ------------------------------------------------------------------------
