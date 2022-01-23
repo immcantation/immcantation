@@ -1,6 +1,6 @@
 immcantation:
   version:  devel
-  date:     2021.11.08
+  date:     2022.01.23
 package:
   presto:   0.7.0
   changeo:  1.2.0
@@ -19,7 +19,7 @@ dependency:
   airr-r:   1.3.0
   blast:    2.9.0
   cd-hit:   4.8.1
-  igblast:  1.17.1
+  igblast:  1.18.0
   muscle:   3.8.425
   phylip:   3.697
   vsearch:  2.13.6
