@@ -86,11 +86,11 @@ Core Packages
     :align: left
 
     * - |presto-img|
-      - **pRESTO**
-      
-        .. image:: https://img.shields.io/pypi/dm/presto
+      - .. image:: https://img.shields.io/pypi/dm/presto
             :target: https://pypi.org/project/presto
             :align: right
+        
+        **pRESTO**
 
         + Quality control
         + Read assembly
