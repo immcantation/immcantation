@@ -87,8 +87,10 @@ Core Packages
 
     * - |presto-img|
       - **pRESTO**
+      
         .. image:: https://img.shields.io/pypi/dm/presto
             :target: https://pypi.org/project/presto
+            :align: right
 
         + Quality control
         + Read assembly
