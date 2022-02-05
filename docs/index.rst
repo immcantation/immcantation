@@ -98,56 +98,56 @@ Core Packages
         + Error profiling
 
     * - |changeo-img|
-      - **Change-O**
+      - .. image:: https://img.shields.io/pypi/dm/changeo
+            :target: https://pypi.org/project/changeo        
+
+        **Change-O**
 
         + V(D)J reference alignment standardization
         + Clonal clustering
         + Germline reconstruction
         + Conversion and annotation
         
-        .. image:: https://img.shields.io/pypi/dm/changeo
-            :target: https://pypi.org/project/changeo        
-
     * - |alakazam-img|
-      - **Alakazam**
+      - .. image:: https://cranlogs.r-pkg.org/badges/alakazam
+            :target: https://www.r-pkg.org/pkg/alakazam  
+
+        **Alakazam**
 
         + Clonal lineage reconstruction
         + Lineage topology analysis
         + Repertoire diversity
         + V(D)J gene usage
-        + Physicochemical property analysis
-        
-        .. image:: https://cranlogs.r-pkg.org/badges/alakazam
-            :target: https://www.r-pkg.org/pkg/alakazam          
+        + Physicochemical property analysis        
 
     * - |shazam-img|
-      - **SHazaM**
+      - .. image:: https://cranlogs.r-pkg.org/badges/shazam
+            :target: https://www.r-pkg.org/pkg/shazam
+
+        **SHazaM**
 
         + Mutation profiling
         + Selection pressure quantification
         + Empirical SHM models
         + Chimera detection
-        + Clonal clustering threshold tuning
-
-        .. image:: https://cranlogs.r-pkg.org/badges/shazam
-            :target: https://www.r-pkg.org/pkg/shazam  
+        + Clonal clustering threshold tuning  
             
     * - |tigger-img|
-      - **TIgGER**
+      - .. image:: https://cranlogs.r-pkg.org/badges/tigger
+            :target: https://www.r-pkg.org/pkg/tigger 
+
+        **TIgGER**
 
         + Novel polymorphism detection
         + Genotyping
-        
-        .. image:: https://cranlogs.r-pkg.org/badges/tigger
-            :target: https://www.r-pkg.org/pkg/tigger          
 
     * - |scoper-img|
-      - **SCOPer**
+      - .. image:: https://cranlogs.r-pkg.org/badges/scoper
+            :target: https://www.r-pkg.org/pkg/scoper
+
+        **SCOPer**
 
         + Spectral clonal clustering methods
-
-        .. image:: https://cranlogs.r-pkg.org/badges/scoper
-            :target: https://www.r-pkg.org/pkg/scoper  
             
     * - |prestoR-img|
       - **prestoR**
@@ -155,12 +155,12 @@ Core Packages
         + pRESTO report generation
 
     * - |dowser-img|
-      - **dowser**
+      - .. image:: https://cranlogs.r-pkg.org/badges/dowser
+            :target: https://www.r-pkg.org/pkg/dowser 
+        **dowser**
 
         + Phylogenetic analysis on B cell receptor repertoires
         
-        .. image:: https://cranlogs.r-pkg.org/badges/dowser
-            :target: https://www.r-pkg.org/pkg/dowser          
 
 Contributed Packages
 -----------------------------------------------------------------------------------------
