@@ -99,7 +99,8 @@ Core Packages
 
     * - |changeo-img|
       - .. image:: https://img.shields.io/pypi/dm/changeo
-            :target: https://pypi.org/project/changeo        
+            :target: https://pypi.org/project/changeo
+            :align: right
 
         **Change-O**
 
@@ -110,7 +111,8 @@ Core Packages
         
     * - |alakazam-img|
       - .. image:: https://cranlogs.r-pkg.org/badges/alakazam
-            :target: https://www.r-pkg.org/pkg/alakazam  
+            :target: https://www.r-pkg.org/pkg/alakazam
+            :align: right
 
         **Alakazam**
 
@@ -123,6 +125,7 @@ Core Packages
     * - |shazam-img|
       - .. image:: https://cranlogs.r-pkg.org/badges/shazam
             :target: https://www.r-pkg.org/pkg/shazam
+            :align: right
 
         **SHazaM**
 
@@ -134,7 +137,8 @@ Core Packages
             
     * - |tigger-img|
       - .. image:: https://cranlogs.r-pkg.org/badges/tigger
-            :target: https://www.r-pkg.org/pkg/tigger 
+            :target: https://www.r-pkg.org/pkg/tigger
+            :align: right
 
         **TIgGER**
 
@@ -144,6 +148,7 @@ Core Packages
     * - |scoper-img|
       - .. image:: https://cranlogs.r-pkg.org/badges/scoper
             :target: https://www.r-pkg.org/pkg/scoper
+            :align: right
 
         **SCOPer**
 
@@ -156,7 +161,9 @@ Core Packages
 
     * - |dowser-img|
       - .. image:: https://cranlogs.r-pkg.org/badges/dowser
-            :target: https://www.r-pkg.org/pkg/dowser 
+            :target: https://www.r-pkg.org/pkg/dowser
+            :align: right
+            
         **dowser**
 
         + Phylogenetic analysis on B cell receptor repertoires
