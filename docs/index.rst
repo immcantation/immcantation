@@ -83,12 +83,13 @@ Immcantation supports both the original Change-O standard and the new Adaptive I
 Receptor Repertoire (AIRR) standard developed by the
 `AIRR Community (AIRR-C) <https://www.antibodysociety.org/the-airr-community/>`_.
 
-The different tools are available from PyPi, CRAN and Bitbucket. Versioned containers with
-all tools installed are hosted on `Docker Hub <https://hub.docker.com/r/immcantation/suite>`_.
-
 .. image:: https://img.shields.io/docker/pulls/immcantation/suite
     :target: https://hub.docker.com/u/immcantation
     :align: left
+    
+The different tools are available from PyPi, CRAN and Bitbucket. Versioned containers with
+all tools installed are hosted on `Docker Hub <https://hub.docker.com/r/immcantation/suite>`_.
+
             
 Core Packages
 -----------------------------------------------------------------------------------------
