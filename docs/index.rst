@@ -88,7 +88,7 @@ all tools installed are hosted on `Docker Hub <https://hub.docker.com/r/immcanta
 
 .. image:: https://img.shields.io/docker/pulls/immcantation/suite
     :target: https://hub.docker.com/u/immcantation
-    :align: right
+    :align: left
             
 Core Packages
 -----------------------------------------------------------------------------------------
