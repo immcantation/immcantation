@@ -75,14 +75,18 @@ The Immcantation framework provide a start-to-finish analytical ecosystem for
 high-throughput AIRR-seq datasets. Beginning from raw reads, Python and R packages are
 provided for pre-processing, population structure determination, and repertoire analysis.
 
-- |airr-c-badge|
+.. image:: https://img.shields.io/static/v1?label=AIRR-C%20sw-tools%20v1&message=compliant&color=008AFF&labelColor=000000&style=plastic
+       :target: https://docs.airr-community.org/en/stable/swtools/airr_swtools_standard.html
+       :align: left
+
 Immcantation supports both the original Change-O standard and the new Adaptive Immune 
 Receptor Repertoire (AIRR) standard developed by the
-`AIRR Community (AIRR-C)<https://www.antibodysociety.org/the-airr-community/>`_.
+`AIRR Community (AIRR-C) <https://www.antibodysociety.org/the-airr-community/>`_.
 
 The different tools are available from PyPi, CRAN and Bitbucket. Versioned containers with
-all tools installed are hosted on `Docker Hub<https://hub.docker.com/r/immcantation/suite>`_.
-- .. image:: https://img.shields.io/docker/pulls/immcantation/suite
+all tools installed are hosted on `Docker Hub <https://hub.docker.com/r/immcantation/suite>`_.
+
+.. image:: https://img.shields.io/docker/pulls/immcantation/suite
     :target: https://hub.docker.com/u/immcantation
     :align: right
             
@@ -271,10 +275,6 @@ Contributed Packages
     :align: middle
     :width: 180
     :target: sumrep_
-    
-.. |airr-c-badge| image:: https://img.shields.io/static/v1?label=AIRR-C%20sw-tools%20v1&message=compliant&color=008AFF&labelColor=000000&style=plastic
-        :target: https://docs.airr-community.org/en/stable/swtools/airr_swtools_standard.html
-        :align: left
 
 .. Doc links
 
