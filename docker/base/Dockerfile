@@ -1,4 +1,4 @@
-FROM fedora:33
+FROM fedora:35
 LABEL maintainer="Jason Anthony Vander Heiden [jason.vanderheiden@yale.edu], \
                   Susanna Marquez [susanna.marquez@yale.edu]" \
       description="Standard environment and dependencies for the Immcantation framework."
@@ -39,7 +39,6 @@ RUN dnf -y update && dnf install -y \
     mesa-libGLU-devel \
     openssl-devel \
     pandoc \
-    pandoc-citeproc \
     perl \
     python3 \
     python3-biopython \
