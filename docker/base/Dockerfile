@@ -1,4 +1,4 @@
-FROM fedora:33
+FROM fedora:36
 LABEL maintainer="Jason Anthony Vander Heiden [jason.vanderheiden@yale.edu], \
                   Susanna Marquez [susanna.marquez@yale.edu]" \
       description="Standard environment and dependencies for the Immcantation framework."
@@ -19,7 +19,7 @@ COPY tools/rinstall.R /usr/local/bin/rinstall
 RUN (cd /etc/yum.repos.d; sed -i 's/https/http/g' *.repo)
 
 # Update and install required packages
-RUN dnf -y update && dnf install -y \
+RUN dnf clean all && dnf -y update && dnf install -y \
     automake \
     atlas-devel \
     biber \
@@ -39,7 +39,6 @@ RUN dnf -y update && dnf install -y \
     mesa-libGLU-devel \
     openssl-devel \
     pandoc \
-    pandoc-citeproc \
     perl \
     python3 \
     python3-biopython \
