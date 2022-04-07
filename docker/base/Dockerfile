@@ -19,7 +19,7 @@ COPY tools/rinstall.R /usr/local/bin/rinstall
 RUN (cd /etc/yum.repos.d; sed -i 's/https/http/g' *.repo)
 
 # # Update and install required packages
-# RUN dnf clean all && dnf -y update && dnf install -y \
+RUN dnf -y update # && dnf install -y \
 #     automake \
 #     atlas-devel \
 #     biber \
