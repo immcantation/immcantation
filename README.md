@@ -11,8 +11,9 @@ for biologically meaningful analysis - requiring the development of
 specialized computational methods.
 
 The Immcantation framework provide a start-to-finish analytical
-ecosystem for high-throughput AIRR-seq datasets. Beginning from raw
-reads, Python and R packages are provided for pre-processing,
+ecosystem for high-throughput AIRR-seq datasets. Although Immcantation 
+is focused on BCRs, methods are applicable to TCRs. Beginning from raw 
+reads, Python and R packages are provided for pre-processing, 
 population structure determination, and repertoire analysis.
 
 ### Repository
