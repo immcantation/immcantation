@@ -74,7 +74,8 @@ ARG R_DEPS="c('Rcpp', \
               'rmarkdown', \
               'knitr', \
               'optparse', \
-              'BiocManager')"
+              'BiocManager', \
+              'Matrix')"
 ARG R_BIOC_DEPS="c('Biostrings', \
               'GenomicAlignments', \
               'IRanges', \
