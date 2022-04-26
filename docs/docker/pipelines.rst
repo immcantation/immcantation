@@ -269,6 +269,12 @@ Change-O data standard.
 Genotyping pipeline
 --------------------------------------------------------------------------------
 
+Infers V segment genotypes using TIgGER.
+
+.. include:: ../_include/usage.rst
+    :start-after: Start tigger-genotype
+    :end-before: End tigger-genotype
+    
 TIgGER infers the subject-specific genotyped V gene calls and saves the corrected calls in a new column, ``v_call_genotyped``. ``v_call`` column should be updated by ``v_call_genotyped`` for future analysis.
 
 .. code-block:: R
@@ -276,11 +282,7 @@ TIgGER infers the subject-specific genotyped V gene calls and saves the correcte
    # update v_call
    db %>% 
       dplyr::mutate(v_call = v_call_genotyped) %>% 
-      select(-v_call_genotyped)
-
-.. include:: ../_include/usage.rst
-    :start-after: Start tigger-genotype
-    :end-before: End tigger-genotype
+      select(-v_call_genotyped)    
 
 **Example: tigger-genotype**
 
