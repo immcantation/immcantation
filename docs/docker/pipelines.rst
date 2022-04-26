@@ -269,7 +269,7 @@ Change-O data standard.
 Genotyping pipeline
 --------------------------------------------------------------------------------
 
-TIgGER infers the subject-specific genotyped V gene calls and saves the corrected calls in a new column, v_call_genotyped. v_call column should be updated by v_call_genotyped for future analysis.
+TIgGER infers the subject-specific genotyped V gene calls and saves the corrected calls in a new column, ``v_call_genotyped``. ``v_call`` column should be updated by ``v_call_genotyped`` for future analysis.
 
 .. code-block:: R
 
@@ -345,12 +345,12 @@ If the TIgGER, or another package, was applied previously to the data set for
 identifying a subject-specific genotype, including potentially novel V, D 
 and/or J genes, a new directory $NEW_REF with the personalized germline database 
 should be created.  For example, if TIgGER was run to identify a subject-specific 
-IGHV genotype, the directory would contain: 1) *_genotype.fasta file generated 
+IGHV genotype, the directory would contain: 1) ``*_genotype.fasta`` file generated 
 previously by TIgGER, which contains the subject-specific germline IGHV genes 
-2) imgt_human_IGHD.fasta and imgt_human _IGHJ.fasta, which contain the IMGT D 
+2) ``imgt_human_IGHD.fasta`` and ``imgt_human _IGHJ.fasta``, which contain the IMGT D 
 and J genes and can both be copied from the original germline 
-database: /usr/local/share/germlines/imgt/human/vdj/. When changeo-clone is 
-called, this new personalized germline database should be passed with parameter -r 
+database: ``/usr/local/share/germlines/imgt/human/vdj/``. When changeo-clone is 
+called, this new personalized germline database should be passed with parameter ``-r`` 
 (see example below).
 
 .. include:: ../_include/usage.rst
