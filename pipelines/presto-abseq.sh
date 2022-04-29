@@ -14,7 +14,7 @@
 #   -c  C-region FASTA sequences for the C-region internal to the primer.
 #       If unspecified internal C-region alignment is not performed.
 #   -r  V-segment reference file.
-#       Defaults to /usr/local/share/germlines/igblast/fasta/imgt_human_ig_v.fasta
+#       Defaults to /usr/local/share/igblast/fasta/imgt_human_ig_v.fasta
 #   -y  YAML file providing description fields for report generation.
 #   -n  Sample name or run identifier which will be used as the output file prefix.
 #       Defaults to a truncated version of the read 1 filename.
