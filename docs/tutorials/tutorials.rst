@@ -1,7 +1,7 @@
 Immcantation Tutorials
 ===========================================================================================
 
-Each tool in the framework has its own documentation site, with detailed usage information 
+Each tool in the framework has its own documentation site, with detailed usage information
 and examples. A good starting point to familiarize yourself with the framework is to
 follow one the tutorials listed here.
 
@@ -34,8 +34,21 @@ offer an introductory tutorial for new users:
 
     10x_tutorial
 
-We also demonstrate an enhanced analysis by integrating 10x BCR and 10x GEX data in 
+We also demonstrate an enhanced analysis by integrating 10x BCR and 10x GEX data in
 this `jupyter notebook <https://bitbucket.org/kleinstein/immcantation/src/master/training/BCR_Seurat_tutorial.ipynb?viewer=nbviewer>`_.
+
+Lineage tree reconstruction
+-------------------------------------------------------------------------------------------
+
+The tutorial *Reconstruction and analysis of B-cell lineage trees from single cell data using Immcantation* is `available
+as a Jupyter notebook in the Immcantation bitbucket repository <https://bitbucket.org/kleinstein/immcantation/src/master/training/dowser_tutorial.ipynb?viewer=nbviewer>`_.
+
+Beginning with processed single cell RNA-seq (scRNA-seq) + BCR data from 10X Genomics, you will learn:
+
++ how cell type annotations can be associated with BCR sequences,
++ how clonal clusters can be identified, and
++ how B cell phylogenetic trees can be built and visualized using these data sources.
+
 
 Video presentations
 -------------------------------------------------------------------------------------------
