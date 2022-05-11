@@ -29,7 +29,6 @@ RUN pip3 install --no-cache-dir rpy2 tzlocal notebook==6.* RISE && \
     pip3 install --no-cache-dir jupyter-contrib-nbextensions jupyter-nbextensions-configurator ipykernel bash_kernel && \
     python3 -m bash_kernel.install && \
     jupyter contrib nbextension install --sys-prefix && \
-    jupyter nbextension install rise --py --sys-prefix && \
     jupyter nbextension enable splitcell/splitcell && \
     sed -i 's/template_path/template_paths/g' /usr/local/lib/python${PYTHON_V}/site-packages/jupyter_contrib_nbextensions/nbconvert_support/toc2.py && \ 
     sed -i 's/template_path/template_paths/g' /usr/local/lib/python${PYTHON_V}/site-packages/jupyter_contrib_nbextensions/nbconvert_support/exporter_inliner.py && \ 
