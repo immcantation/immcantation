@@ -3,7 +3,9 @@ Immcantation Tutorials
 
 Each tool in the framework has its own documentation site, with detailed usage information
 and examples. A good starting point to familiarize yourself with the framework is to
-follow one the tutorials listed here.
+follow one the tutorials listed here. They are available as Jupyter notebooks under the
+folder `training <https://bitbucket.org/kleinstein/immcantation/src/master/training>`_
+in the Immcantation Bitbucket repository.
 
 
 Introductory Webinar and Jupyter Notebook
@@ -27,12 +29,9 @@ Single-cell Analysis
 -------------------------------------------------------------------------------------------
 
 For information on how to process 10x Genomics VDJ data to be analyzed with Immcantation, we
-offer an introductory tutorial for new users:
-
-.. toctree::
-    :maxdepth: 1
-
-    10x_tutorial
+offer the introductory tutorial `10x Genomics V(D)J Sequence Analysis with Immcantation Tutorial <https://bitbucket.org/kleinstein/immcantation/src/master/training/10x_tutorial.ipynb?viewer=nbviewer>`_.
+If you don't want to execute the Jupyter notebook yourself, you can explore a
+`website version of it here <https://kleinstein.bitbucket.io/tutorials/10x_tutorial/index.html>`_.
 
 We also demonstrate an enhanced analysis by integrating 10x BCR and 10x GEX data in
 this `jupyter notebook <https://bitbucket.org/kleinstein/immcantation/src/master/training/BCR_Seurat_tutorial.ipynb?viewer=nbviewer>`_.
