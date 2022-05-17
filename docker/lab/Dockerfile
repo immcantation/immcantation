@@ -23,7 +23,7 @@ RUN PACKAGE="immcantation" \
     && mv /tmp/${PACKAGE}/training/assets ${HOME}/notebooks/ \
     && rm -rf /tmp/${PACKAGE}
 
-RUN pip3 install --no-cache-dir "nbconvert<6"
+RUN pip3 install --no-cache-dir "nbconvert<6" "jupyter-client<7"
 RUN pip3 install --no-cache-dir "jinja2<3.1.0"
 RUN pip3 install --no-cache-dir rpy2 tzlocal notebook RISE
 RUN pip3 install --no-cache-dir pip install jupyter_contrib_nbextensions \
@@ -36,6 +36,7 @@ RUN jupyter contrib nbextension install --sys-prefix
 RUN sed -i 's/template_path/template_paths/g' /usr/local/lib/python3.9/site-packages/jupyter_contrib_nbextensions/nbconvert_support/toc2.py && \
     sed -i 's/template_path/template_paths/g' /usr/local/lib/python3.9/site-packages/jupyter_contrib_nbextensions/nbconvert_support/exporter_inliner.py
 
+RUN dnf install -y R-rgeos
 RUN Rscript -e "dir.create(path = Sys.getenv('R_LIBS_USER'), showWarnings = FALSE, recursive = TRUE)"
 ARG R_DEPS="c('uuid', \
             'Seurat')"
