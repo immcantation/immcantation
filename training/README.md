@@ -36,7 +36,7 @@ Developed with the support of the National Library of Medicine (NIH NLM T15 LM00
 
 ## 10x Genomics V(D)J analysis
 
-### Data
+Learn how to process 10x Genomics VDJ data to be analyzed with Immcantation.
 
 Download the 10x Genomics V(D)J analysis data [here](http://clip.med.yale.edu/immcantation/examples/10x_data_2subj.zip).
 
@@ -52,10 +52,15 @@ Learn how to integrate BCR repertoire and gene expression analysis with this [Ju
 
 ## Lineage tree reconstruction
 
+Beginning with processed single cell RNA-seq (scRNA-seq) + BCR data from 10X Genomics, you will learn:
 
-## Using the tutorials
+* how cell type annotations can be associated with BCR sequences,
+* how clonal clusters can be identified, and
+* how B cell phylogenetic trees can be built and visualized using these data sources.
 
-### With training Docker container
+# Using the tutorials
+
+## With the Immcantation training Docker container
 
 The training container `immcantation/lab`
 contains Immcantation, Jupyter Notebook,
@@ -104,10 +109,11 @@ Open the notebook you want to work with. Use CTRL+Enter to execute the commands 
 
 For an introduction to Jupyter, visit the [official documentation site](https://jupyter-notebook.readthedocs.io/en/latest/).
 
-### With a release container
+## With a release container
 
-The Immcantation release containers don't have Jupyter Notebook or the
-example data. But you can download the example data you need, start the
+The Immcantation release containers don't have Jupyter Notebook,
+example data and tools used in the notebooks (like `Seurat`).
+But you can download the example data you need, start the
 release container, and copy/paste the commands from the tutorial into
 the container terminal or R session.
 
@@ -130,7 +136,7 @@ docker run -it --workdir /data -v %cd%:/data:z immcantation/suite:4.3.0 bash
 singularity exec -B $10x_data_2subj:/data immcantation_suite-4.3.0.sif bash
 ```
 
-### Without Docker
+## Without Docker
 
 You can run the Jupyter notebooks locally. You will need to:
 
@@ -144,9 +150,7 @@ You can run the Jupyter notebooks locally. You will need to:
 
 * Install the Immcantation suite
 
-* Obtain reference germlines from IMGT
-
-* Install IgBLAST
+* (Install IgBLAST)[https://changeo.readthedocs.io/en/stable/examples/igblast.html].
 
 * Download the example data.
 
