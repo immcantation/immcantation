@@ -35,12 +35,14 @@ If you don't want to execute the Jupyter notebook yourself, you can explore a
 
 We also demonstrate an enhanced analysis by integrating 10x BCR and 10x GEX data in
 this `jupyter notebook <https://bitbucket.org/kleinstein/immcantation/src/master/training/BCR_Seurat_tutorial.ipynb?viewer=nbviewer>`_.
+Explore the website version of *Integration of BCR and GEX data* `here <https://kleinstein.bitbucket.io/tutorials/BCR_Seurat_tutorial>`_.
 
 Lineage tree reconstruction
 -------------------------------------------------------------------------------------------
 
 The tutorial *Reconstruction and analysis of B-cell lineage trees from single cell data using Immcantation* is `available
 as a Jupyter notebook in the Immcantation bitbucket repository <https://bitbucket.org/kleinstein/immcantation/src/master/training/dowser_tutorial.ipynb?viewer=nbviewer>`_.
+A website version of the notebook is available `here <https://kleinstein.bitbucket.io/tutorials/dowser_tutorial>`_.
 
 Beginning with processed single cell RNA-seq (scRNA-seq) + BCR data from 10X Genomics, you will learn:
 

@@ -109,13 +109,10 @@ For an introduction to Jupyter, visit the [official documentation site](https://
 The Immcantation release containers don't have Jupyter Notebook or the
 example data. But you can download the example data you need, start the
 release container, and copy/paste the commands from the tutorial into
-the container terminal.
-
-Example:
+the container terminal or R session.
 
 ```
 ## Get the 4.3.0 release of immcantation
-
 # Note: For some operating systems, it may be necessary to use super-user
 # privileges (sudo), and/or to have Docker Desktop running
 docker pull immcantation/suite:4.3.0
@@ -137,14 +134,20 @@ singularity exec -B $10x_data_2subj:/data immcantation_suite-4.3.0.sif bash
 
 You can run the Jupyter notebooks locally. You will need to:
 
+* Install Jupyter and dependencies:
+
+      * (IRkernel)[https://github.com/IRkernel/IRkernel]
+
+      * (rpy2)[https://rpy2.github.io]
+
+      * (bash_kernel)[https://pypi.org/project/bash_kernel]
+
 * Install the Immcantation suite
 
-* Obtain reference germline from IMGT
+* Obtain reference germlines from IMGT
 
 * Install IgBLAST
 
 * Download the example data.
 
 * Install dependencies specific for each tutorial
-
-* Install (rinterface)[https://rpy2.github.io/doc/latest/html/rinterface.html]
