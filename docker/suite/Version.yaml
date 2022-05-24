@@ -5,7 +5,7 @@ package:
   presto:   0.7.0
   changeo:  1.2.0
   alakazam: 1.2.0
-  shazam:   1.1.0
+  shazam:   1.1.1
   tigger:   1.0.0
   scoper:   1.2.0
   dowser:   0.1.0
