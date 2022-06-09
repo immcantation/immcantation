@@ -20,67 +20,67 @@ RUN (cd /etc/yum.repos.d; sed -i 's/https/http/g' *.repo)
 
 # # Update and install required packages
 RUN dnf -y update # && dnf install -y \
-#     automake \
-#     atlas-devel \
-#     biber \
-#     findutils \
-#     git \
-#     lapack-devel \
-#     libcurl-devel \
-#     libgit2-devel \
-#     libidn \
-#     libidn1.34 \
-#     libnsl \
-#     libssh2 \
-#     libuv \
-#     libxml2-devel \
-#     mercurial \
-#     mesa-libGL-devel \
-#     mesa-libGLU-devel \
-#     openssl-devel \
-#     pandoc \
-#     perl \
-#     python3 \
-#     python3-biopython \
-#     python3-GitPython \
-#     python3-hglib \
-#     python3-numpy \
-#     python3-pandas \
-#     python3-pip \
-#     python3-PyYAML \
-#     python3-setuptools \
-#     python3-scipy \
-#     R-core \
-#     R-core-devel \
-#     sudo \
-#     tar \
-#     texlive-scheme-basic \
-#     texlive-biblatex \
-#     texlive-titling \
-#     wget \
-#     && dnf clean all
-# 
-# # System environment variables
-# ENV LD_LIBRARY_PATH="/usr/lib64/R/lib:/usr/lib64/atlas"
-# 
-# # R build setup
-# ARG R_REPO="http://lib.stat.cmu.edu/R/CRAN/"
-# ARG R_DEPS="c('Rcpp', \
-#               'devtools', \
-#               'roxygen2', \
-#               'testthat', \
-#               'pkgbuild', \
-#               'rmarkdown', \
-#               'knitr', \
-#               'optparse', \
-#               'BiocManager')"
-# ARG R_BIOC_DEPS="c('Biostrings', \
-#               'GenomicAlignments', \
-#               'IRanges', \
-#               'ggtree')"              
-# RUN echo "options(repos='${R_REPO}')" >> /usr/lib64/R/library/base/R/Rprofile \
-#     && mkdir -p /usr/share/doc/R/html \
-#     && cp /usr/lib64/R/library/stats/html/R.css /usr/share/doc/R/html/R.css \
-#     && Rscript -e "install.packages(${R_DEPS}, clean=TRUE)" \
-#     && Rscript -e "if (require('rvcheck', character.only = TRUE)) {remove.packages('rvcheck')};devtools::install_version('rvcheck', version='0.1.8')" \
-#     && Rscript -e "BiocManager::install(${R_BIOC_DEPS})"
+    automake \
+    atlas-devel \
+    biber \
+    findutils \
+    git \
+    lapack-devel \
+    libcurl-devel \
+    libgit2-devel \
+    libidn \
+    libidn1.34 \
+    libnsl \
+    libssh2 \
+    libuv \
+    libxml2-devel \
+    mercurial \
+    mesa-libGL-devel \
+    mesa-libGLU-devel \
+    openssl-devel \
+    pandoc \
+    perl \
+    python3 \
+    python3-biopython \
+    python3-GitPython \
+    python3-hglib \
+    python3-numpy \
+    python3-pandas \
+    python3-pip \
+    python3-PyYAML \
+    python3-setuptools \
+    python3-scipy \
+    R-core \
+    R-core-devel \
+    sudo \
+    tar \
+    texlive-scheme-basic \
+    texlive-biblatex \
+    texlive-titling \
+    wget \
+    && dnf clean all
+
+# System environment variables
+ENV LD_LIBRARY_PATH="/usr/lib64/R/lib:/usr/lib64/atlas"
+
+# R build setup
+ARG R_REPO="http://lib.stat.cmu.edu/R/CRAN/"
+ARG R_DEPS="c('Rcpp', \
+              'devtools', \
+              'roxygen2', \
+              'testthat', \
+              'pkgbuild', \
+              'rmarkdown', \
+              'knitr', \
+              'optparse', \
+              'BiocManager')"
+ARG R_BIOC_DEPS="c('Biostrings', \
+              'GenomicAlignments', \
+              'IRanges', \
+              'ggtree')"              
+RUN echo "options(repos='${R_REPO}')" >> /usr/lib64/R/library/base/R/Rprofile \
+    && mkdir -p /usr/share/doc/R/html \
+    && cp /usr/lib64/R/library/stats/html/R.css /usr/share/doc/R/html/R.css \
+    && Rscript -e "install.packages(${R_DEPS}, clean=TRUE)" \
+    && Rscript -e "if (require('rvcheck', character.only = TRUE)) {remove.packages('rvcheck')};devtools::install_version('rvcheck', version='0.1.8')" \
+    && Rscript -e "BiocManager::install(${R_BIOC_DEPS})"
