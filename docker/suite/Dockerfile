@@ -1,4 +1,4 @@
-FROM immcantation/base:devel
+FROM immcantation/dockerhub:latest
 LABEL maintainer="Jason Anthony Vander Heiden [jason.vanderheiden@yale.edu], \
                   Susanna Marquez [susanna.marquez@yale.edu]" \
       description="Full suite of the Immcantation framework tools and dependencies."
