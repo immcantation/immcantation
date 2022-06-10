@@ -1,4 +1,4 @@
-FROM fedora:33
+FROM fedora:36
 LABEL maintainer="Jason Anthony Vander Heiden [jason.vanderheiden@yale.edu], \
                   Susanna Marquez [susanna.marquez@yale.edu]" \
       description="Standard environment and dependencies for the Immcantation framework."
@@ -39,7 +39,6 @@ RUN dnf -y update && dnf install -y \
     mesa-libGLU-devel \
     openssl-devel \
     pandoc \
-    pandoc-citeproc \
     perl \
     python3 \
     python3-biopython \
@@ -55,9 +54,6 @@ RUN dnf -y update && dnf install -y \
     R-core-devel \
     sudo \
     tar \
-    texlive-scheme-basic \
-    texlive-biblatex \
-    texlive-titling \
     wget \
     && dnf clean all
 
@@ -74,8 +70,7 @@ ARG R_DEPS="c('Rcpp', \
               'rmarkdown', \
               'knitr', \
               'optparse', \
-              'BiocManager', \
-              'Matrix')"
+              'BiocManager')"
 ARG R_BIOC_DEPS="c('Biostrings', \
               'GenomicAlignments', \
               'IRanges', \
@@ -84,5 +79,4 @@ RUN echo "options(repos='${R_REPO}')" >> /usr/lib64/R/library/base/R/Rprofile \
     && mkdir -p /usr/share/doc/R/html \
     && cp /usr/lib64/R/library/stats/html/R.css /usr/share/doc/R/html/R.css \
     && Rscript -e "install.packages(${R_DEPS}, clean=TRUE)" \
-    && Rscript -e "if (require('rvcheck', character.only = TRUE)) {remove.packages('rvcheck')};devtools::install_version('rvcheck', version='0.1.8')" \
     && Rscript -e "BiocManager::install(${R_BIOC_DEPS})"
