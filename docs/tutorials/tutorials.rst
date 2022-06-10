@@ -7,6 +7,10 @@ follow one the tutorials listed here. They are available as Jupyter notebooks un
 folder `training <https://bitbucket.org/kleinstein/immcantation/src/master/training>`_
 in the Immcantation Bitbucket repository.
 
+.. nbgallery::
+   ../training/10x_tutorial.ipynb
+   ../training/BCR_Seurat_tutorial.ipynb
+
 
 Introductory Webinar and Jupyter Notebook
 -------------------------------------------------------------------------------------------
