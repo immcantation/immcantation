@@ -1,11 +1,16 @@
 Release Notes
 ========================================================================
 
-Version 4.4.0.999:  May 24, 2022
+Version 4.4.0.999:  June 14, 2022
 ------------------------------------------------------------------------
+
+Image Changes:
+
++ Updated base image to Fedora 36.
 
 Version Updates:
 
++ igblast 1.19.0
 + shazam 1.1.1
 
 Version 4.4.0:  January 23, 2022
