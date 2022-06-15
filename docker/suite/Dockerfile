@@ -191,7 +191,7 @@ RUN RABHIT=$(versions get -n rabhit) \
 
 # Install Seurat
 RUN SEURAT=$(versions get -n seurat) \
-    && Rscript -e "devtools::install_version('Seurat', '${SEURAT}', quiet=FALSE, clean=TRUE)"
+    && Rscript -e "devtools::install_version('Seurat', '${SEURAT}', quiet=FALSE, clean=TRUE, upgrade='never')"
     
 # Download and build references databases
 RUN fetch_imgtdb.sh -o /usr/local/share/germlines/imgt \

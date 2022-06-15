@@ -1,12 +1,13 @@
 Release Notes
 ========================================================================
 
-Version 4.4.0.999:  June 14, 2022
+Version 4.4.0.999:  June 15, 2022
 ------------------------------------------------------------------------
 
 Image Changes:
 
 + Updated base image to Fedora 36.
++ Added the ``Seurat`` R package.
 
 Version Updates:
 
