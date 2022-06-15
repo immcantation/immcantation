@@ -189,6 +189,10 @@ RUN PACKAGE="rdi" \
 RUN RABHIT=$(versions get -n rabhit) \
     && Rscript -e "devtools::install_version('rabhit', '${RABHIT}', quiet=FALSE, clean=TRUE)"
 
+# Install Seurat
+RUN SEURAT=$(versions get -n seurat) \
+    && Rscript -e "devtools::install_version('Seurat', '${SEURAT}', quiet=FALSE, clean=TRUE)"
+    
 # Download and build references databases
 RUN fetch_imgtdb.sh -o /usr/local/share/germlines/imgt \
     && imgt2igblast.sh -i /usr/local/share/germlines/imgt -o /usr/local/share/igblast \
