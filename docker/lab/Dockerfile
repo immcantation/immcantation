@@ -32,14 +32,13 @@ RUN pip3 install --no-cache-dir pip install jupyter_contrib_nbextensions \
 RUN python3 -m bash_kernel.install
 RUN jupyter contrib nbextension install --sys-prefix
 # template_path workaround https://github.com/ipython-contrib/jupyter_contrib_nbextensions/issues/1529
-# RUN PYTHON_V=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
-RUN sed -i 's/template_path/template_paths/g' /usr/local/lib/python3.9/site-packages/jupyter_contrib_nbextensions/nbconvert_support/toc2.py && \
-    sed -i 's/template_path/template_paths/g' /usr/local/lib/python3.9/site-packages/jupyter_contrib_nbextensions/nbconvert_support/exporter_inliner.py
+#RUN PYTHON_V=$(python3 -c 'import sys; print(".".join(map(str, sys.version_info[:2])))') && \
+#    sed -i 's/template_path/template_paths/g' /usr/local/lib/python$PYTHON_V/site-packages/#jupyter_contrib_nbextensions/nbconvert_support/toc2.py && \
+#    sed -i 's/template_path/template_paths/g' /usr/local/lib/python$PYTHON_V/site-packages/#jupyter_contrib_nbextensions/nbconvert_support/exporter_inliner.py 
+RUN jupyter nbextensions_configurator enable --sys-prefix   
 
-RUN dnf install -y R-rgeos
 RUN Rscript -e "dir.create(path = Sys.getenv('R_LIBS_USER'), showWarnings = FALSE, recursive = TRUE)"
-ARG R_DEPS="c('uuid', \
-            'Seurat')"
+ARG R_DEPS="c('uuid')"
 RUN Rscript -e "install.packages(${R_DEPS}, lib=Sys.getenv('R_LIBS_USER'),clean=TRUE);devtools::install_github('RBigData/pbdZMQ');devtools::install_github(paste0('IRkernel/',c('repr', 'IRdisplay', 'IRkernel')));IRkernel::installspec(user = FALSE)"
 
 WORKDIR ${HOME}/notebooks
@@ -49,9 +48,9 @@ COPY start-notebook.sh /usr/local/bin/
 RUN chown -R ${NB_UID} ${HOME}
 USER ${NB_USER}
 
+# Enable for user magus
 RUN jupyter nbextension enable toc2/toc2
 RUN jupyter nbextension enable splitcell/splitcell
-# RUN jupyter nbextensions_configurator enable --sys-prefix
 
 # Download intro lab data
 RUN wget -v -O /home/${NB_USER}/immcantation-lab-intro.zip -L https://yale.box.com/shared/static/4bo611b70x8u92qvss1pypmcr9wmqil4 && \
