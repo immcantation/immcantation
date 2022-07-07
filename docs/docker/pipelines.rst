@@ -348,8 +348,10 @@ IGHV genotype, the directory would contain: 1) ``*_genotype.fasta`` file generat
 previously by TIgGER, which contains the subject-specific germline IGHV genes 
 2) ``imgt_human_IGHD.fasta`` and ``imgt_human _IGHJ.fasta``, which contain the IMGT IGHD 
 and IGHJ genes and can both be copied from the original germline 
-database: ``/usr/local/share/germlines/imgt/human/vdj/``. And please remember to update 
-``v_call`` column with subject-specific IGHV call (for TIgGER this is found in ``v_call_genotyped`` column).
+database: ``/usr/local/share/germlines/imgt/human/vdj/``. When changeo-clone is called, 
+this new personalized germline database should be passed with parameter ``-r`` 
+(see example below). And please remember to update ``v_call`` column with 
+subject-specific IGHV call (for TIgGER this is found in ``v_call_genotyped`` column).
 
 .. code-block:: R
 
@@ -357,9 +359,6 @@ database: ``/usr/local/share/germlines/imgt/human/vdj/``. And please remember to
    db %>% 
       dplyr::mutate(v_call = v_call_genotyped) %>% 
       select(-v_call_genotyped)  
-      
-When changeo-clone is called, this new personalized germline database should be passed with parameter ``-r`` 
-(see example below).
 
 .. include:: ../_include/usage.rst
     :start-after: Start changeo-clone
