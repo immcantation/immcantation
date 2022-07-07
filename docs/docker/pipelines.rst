@@ -298,7 +298,7 @@ Infers V segment genotypes using TIgGER.
 TIgGER infers the subject-specific genotyped V gene calls and saves the corrected calls in a new column, ``v_call_genotyped``. 
 TIgGER also generates a ``*_genotype.fasta`` file, which contains the subject-specific germline IGHV genes. In future analyses, 
 if ``v_call_genotyped`` column is used to replace ``v_call``, please remember to use  this ``*_genotype.fasta`` file generated previously 
-by TIgGER as the subject-specific IGHV gene germline. An example of this application can be found in the “Clonal assignment pipeline” section. 
+by TIgGER as the subject-specific IGHV gene germline. An example of this application can be found in the **Clonal assignment pipeline** section. 
 
 
 .. _ThresholdPipeline:
