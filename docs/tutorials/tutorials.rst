@@ -6,40 +6,58 @@ and examples. A good starting point to familiarize yourself with the framework i
 follow one the tutorials listed here. They are available as Jupyter notebooks under the
 folder `training <https://bitbucket.org/kleinstein/immcantation/src/master/training>`_
 in the Immcantation Bitbucket repository.
-
-.. nbgallery::
-   ../training/10x_tutorial.ipynb
-   ../training/BCR_Seurat_tutorial.ipynb
-
-
+  
 Introductory Webinar and Jupyter Notebook
 -------------------------------------------------------------------------------------------
 
-For a detailed use example for each Immcantation tool see the Jupyter notebook from our
-introductory webinar `in the repository <https://bitbucket.org/kleinstein/immcantation/src/master/training/>`_.
-If you don't want to execute the Jupyter notebook yourself, you can explore a
-`website version of it here <https://kleinstein.bitbucket.io/tutorials/intro-lab/index.html>`_.
-*Introduction to B cell repertoire analysis using the Immcantation framework* covers:
+.. image:: ../_static/start-here.png
+    :alt: Start here: Introductory Webinar and Jupyter Notebook
+    :align: left 
+    
+For a detailed use example for each Immcantation follow this tutorial based on our
+introductory webinar. It is also available as a Jupyter notebook 
+(`intro-lab.ipynb`) in the `Immcantation repository <https://bitbucket.org/kleinstein/immcantation/src/master/training>`_.
 
-+ V(D)J gene annotation and novel polymorphism detection
-+ Inference of B cell clonal relationships
-+ Diversity analysis
-+ Mutational load profiling
-+ Modeling of somatic hypermutation (SHM) targeting
-+ Quantification of selection pressure
+.. note:: *Introduction to B cell repertoire analysis using the Immcantation framework* covers:
 
+    + V(D)J gene annotation and novel polymorphism detection
+    + Inference of B cell clonal relationships
+    + Diversity analysis
+    + Mutational load profiling
+    + Modeling of somatic hypermutation (SHM) targeting
+    + Quantification of selection pressure
+
+.. toctree::
+   :maxdepth: 2
+   
+   intro-lab.nblink
 
 Single-cell Analysis
 -------------------------------------------------------------------------------------------
 
-For information on how to process 10x Genomics VDJ data to be analyzed with Immcantation, we
-offer the introductory tutorial `10x Genomics V(D)J Sequence Analysis with Immcantation Tutorial <https://bitbucket.org/kleinstein/immcantation/src/master/training/10x_tutorial.ipynb?viewer=nbviewer>`_.
-If you don't want to execute the Jupyter notebook yourself, you can explore a
-`website version of it here <https://kleinstein.bitbucket.io/tutorials/10x_tutorial/index.html>`_.
 
-We also demonstrate an enhanced analysis by integrating 10x BCR and 10x GEX data in
-this `jupyter notebook <https://bitbucket.org/kleinstein/immcantation/src/master/training/BCR_Seurat_tutorial.ipynb?viewer=nbviewer>`_.
-Explore the website version of *Integration of BCR and GEX data* `here <https://kleinstein.bitbucket.io/tutorials/BCR_Seurat_tutorial>`_.
+.. image:: ../_static/bcell.png
+    :alt: 10x Genomics V(D)J Sequence Analysis with Immcantation Tutorial
+    :align: left 
+    
+For information on how to process 10x Genomics VDJ data to be analyzed with Immcantation, we
+offer the introductory tutorial `10x Genomics V(D)J Sequence Analysis with Immcantation Tutorial <https://bitbucket.org/kleinstein/immcantation/src/master/training/10x_tutorial.ipynb?viewer=nbviewer>`_. It is available as a Jupyter notebook (`10x_tutorial.ipynb`) in the `Immcantation repository <https://bitbucket.org/kleinstein/immcantation/src/master/training>`_.
+
+.. toctree::
+   :maxdepth: 2
+   
+   10x_tutorial.nblink
+
+.. image:: ../_static/bcellgex.png
+    :alt: Integration of BCR and GEX data
+    :align: left 
+    
+In *Integration of BCR and GEX data* we demonstrate an enhanced analysis by integrating 10x BCR and 10x GEX data. The jupyter notebook (`BCR_Seurat_tutorial.ipynb`) is available in the `Immcantation repository <https://bitbucket.org/kleinstein/immcantation/src/master/training/>`_.
+
+.. toctree::
+   :maxdepth: 2
+   
+   BCR_Seurat_tutorial.ipynb
 
 Lineage tree reconstruction
 -------------------------------------------------------------------------------------------
