@@ -11,3 +11,18 @@
       overflow: visible !important;
    }
 }
+
+.rst-content .admonition-tutorial .admonition-title .fa-info-circle:before{content:""} 
+
+.fa-search-plus:before, .rst-content .admonition-tutorial .admonition-title:before, .wy-inline-validate.wy-inline-validate-info .wy-input-context:before, .wy-inline-validate.wy-inline-validate-warning .wy-input-context:before {
+    content: "";
+}
+
+
+.rst-content .admonition-tutorial {
+    clear: both;
+    border-style: dashed;
+    border-width: medium;
+    border-color: #e7f2fa;
+    background: white;
+}

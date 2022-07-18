@@ -7,18 +7,22 @@ follow one the tutorials listed here. They are available as Jupyter notebooks un
 folder `training <https://bitbucket.org/kleinstein/immcantation/src/master/training>`_
 in the Immcantation Bitbucket repository.
   
-Introductory Webinar and Jupyter Notebook
+Introductory Webinar
 -------------------------------------------------------------------------------------------
 
 .. image:: ../_static/start-here.png
     :alt: Start here: Introductory Webinar and Jupyter Notebook
     :align: left 
     
-For a detailed use example for each Immcantation follow this tutorial based on our
+For a detailed use example for each Immcantation follow the tutorial 
+*Introduction to B cell repertoire analysis using the Immcantation 
+framework*. This tutorial is based on our
 introductory webinar. It is also available as a Jupyter notebook 
 (`intro-lab.ipynb`) in the `Immcantation repository <https://bitbucket.org/kleinstein/immcantation/src/master/training>`_.
-
-.. note:: *Introduction to B cell repertoire analysis using the Immcantation framework* covers:
+ 
+.. admonition:: Tutorial
+    
+    :doc:`Introduction to B cell repertoire analysis using the Immcantation framework <intro-lab>` covers:
 
     + V(D)J gene annotation and novel polymorphism detection
     + Inference of B cell clonal relationships
@@ -27,10 +31,7 @@ introductory webinar. It is also available as a Jupyter notebook
     + Modeling of somatic hypermutation (SHM) targeting
     + Quantification of selection pressure
 
-.. toctree::
-   :maxdepth: 2
-   
-   intro-lab.nblink
+    
 
 Single-cell Analysis
 -------------------------------------------------------------------------------------------
@@ -43,10 +44,14 @@ Single-cell Analysis
 For information on how to process 10x Genomics VDJ data to be analyzed with Immcantation, we
 offer the introductory tutorial `10x Genomics V(D)J Sequence Analysis with Immcantation Tutorial <https://bitbucket.org/kleinstein/immcantation/src/master/training/10x_tutorial.ipynb?viewer=nbviewer>`_. It is available as a Jupyter notebook (`10x_tutorial.ipynb`) in the `Immcantation repository <https://bitbucket.org/kleinstein/immcantation/src/master/training>`_.
 
-.. toctree::
-   :maxdepth: 2
-   
-   10x_tutorial.nblink
+.. admonition:: Tutorial
+    
+    :doc:`10x Genomics V(D)J Sequence Analysis with Immcantation <10x_tutorial>` covers:
+
+    + V(D)J gene annotation
+    + Inference of clonal relationships
+    + Lineage tree reconstruction
+    + Incorporation of Cell Ranger annotations
 
 .. image:: ../_static/bcellgex.png
     :alt: Integration of BCR and GEX data
@@ -54,24 +59,36 @@ offer the introductory tutorial `10x Genomics V(D)J Sequence Analysis with Immca
     
 In *Integration of BCR and GEX data* we demonstrate an enhanced analysis by integrating 10x BCR and 10x GEX data. The jupyter notebook (`BCR_Seurat_tutorial.ipynb`) is available in the `Immcantation repository <https://bitbucket.org/kleinstein/immcantation/src/master/training/>`_.
 
-.. toctree::
-   :maxdepth: 2
+.. admonition:: Tutorial
+    
+    :doc:`Integration of BCR and GEX data <BCR_Seurat_tutorial>` covers:
+
+    + Integration of BCR data with the GEX Seurat object
+    + Highlight BCR cells in the GEX UMAP
+    + Integration of GEX cell annotations in the BCR data
+    + Identify GEX clusters in the BCR UMAP
+    + Highlight other BCR features in UMAPs
    
-   BCR_Seurat_tutorial.ipynb
 
 Lineage tree reconstruction
 -------------------------------------------------------------------------------------------
 
-The tutorial *Reconstruction and analysis of B-cell lineage trees from single cell data using Immcantation* is `available
-as a Jupyter notebook in the Immcantation bitbucket repository <https://bitbucket.org/kleinstein/immcantation/src/master/training/dowser_tutorial.ipynb?viewer=nbviewer>`_.
-A website version of the notebook is available `here <https://kleinstein.bitbucket.io/tutorials/dowser_tutorial>`_.
 
-Beginning with processed single cell RNA-seq (scRNA-seq) + BCR data from 10X Genomics, you will learn:
+.. image:: ../_static/tree.png
+    :alt: Reconstruction and analysis of B-cell lineage trees from single cell data using Immcantation
+    :align: left 
+    
+The tutorial *Reconstruction and analysis of B-cell lineage trees from single cell data using Immcantation* is available
+as a Jupyter notebook (`dowser_tutorial.ipynb`) in the `Immcantation repository <https://bitbucket.org/kleinstein/immcantation/src/master/training/>`_.
 
-+ how cell type annotations can be associated with BCR sequences,
-+ how clonal clusters can be identified, and
-+ how B cell phylogenetic trees can be built and visualized using these data sources.
+.. admonition:: Tutorial
 
+    Beginning with processed single cell RNA-seq (scRNA-seq) + BCR data from 10X Genomics, with :doc:`Reconstruction and analysis of B-cell lineage trees from single cell <dowser_tutorial>` you will learn:
+
+    + how cell type annotations can be associated with BCR sequences,
+    + how clonal clusters can be identified, and
+    + how B cell phylogenetic trees can be built and visualized using these data sources.
+   
 
 Video presentations
 -------------------------------------------------------------------------------------------
