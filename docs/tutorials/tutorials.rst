@@ -18,7 +18,7 @@ For a detailed use example for each Immcantation follow the tutorial
 *Introduction to B cell repertoire analysis using the Immcantation 
 framework*. This tutorial is based on our
 introductory webinar. It is also available as a Jupyter notebook 
-(`intro-lab.ipynb`) in the `Immcantation repository <https://bitbucket.org/kleinstein/immcantation/src/master/training>`_.
+(`intro-lab.ipynb <https://bitbucket.org/kleinstein/immcantation/src/master/training>`_) in the Immcantation repository.
  
 .. admonition:: Tutorial
     
@@ -42,7 +42,7 @@ Single-cell Analysis
     :align: left 
     
 For information on how to process 10x Genomics VDJ data to be analyzed with Immcantation, we
-offer the introductory tutorial `10x Genomics V(D)J Sequence Analysis with Immcantation Tutorial <https://bitbucket.org/kleinstein/immcantation/src/master/training/10x_tutorial.ipynb?viewer=nbviewer>`_. It is available as a Jupyter notebook (`10x_tutorial.ipynb`) in the `Immcantation repository <https://bitbucket.org/kleinstein/immcantation/src/master/training>`_.
+offer the introductory tutorial *10x Genomics V(D)J Sequence Analysis with Immcantation*. It is available as a Jupyter notebook (`10x_tutorial.ipynb <https://bitbucket.org/kleinstein/immcantation/src/master/training>`_) in the Immcantation repository.
 
 .. admonition:: Tutorial
     
@@ -57,7 +57,7 @@ offer the introductory tutorial `10x Genomics V(D)J Sequence Analysis with Immca
     :alt: Integration of BCR and GEX data
     :align: left 
     
-In *Integration of BCR and GEX data* we demonstrate an enhanced analysis by integrating 10x BCR and 10x GEX data. The jupyter notebook (`BCR_Seurat_tutorial.ipynb`) is available in the `Immcantation repository <https://bitbucket.org/kleinstein/immcantation/src/master/training/>`_.
+In *Integration of BCR and GEX data* we demonstrate an enhanced analysis by integrating 10x BCR and 10x GEX data. The jupyter notebook (`BCR_Seurat_tutorial.ipynb <https://bitbucket.org/kleinstein/immcantation/src/master/training/>`_) is available in the Immcantation repository.
 
 .. admonition:: Tutorial
     
@@ -79,7 +79,7 @@ Lineage tree reconstruction
     :align: left 
     
 The tutorial *Reconstruction and analysis of B-cell lineage trees from single cell data using Immcantation* is available
-as a Jupyter notebook (`dowser_tutorial.ipynb`) in the `Immcantation repository <https://bitbucket.org/kleinstein/immcantation/src/master/training/>`_.
+as a Jupyter notebook (`dowser_tutorial.ipynb <https://bitbucket.org/kleinstein/immcantation/src/master/training/>`_) in the Immcantation repository.
 
 .. admonition:: Tutorial
 
