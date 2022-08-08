@@ -53,6 +53,8 @@ RUN dnf -y update && dnf install -y \
     R-core \
     R-core-devel \
     R-rgeos \
+    R-ragg \
+    R-textshaping \
     sudo \
     tar \
     wget \
