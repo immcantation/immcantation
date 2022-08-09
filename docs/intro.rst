@@ -14,7 +14,7 @@ To install Alakazam, SHazaM, TIgGER, SCOPer and dowser from CRAN::
 
     > R
     > install.packages(c("alakazam", "shazam", "tigger", "scoper", "dowser"))
-    
+
 Alternatively, a complete installation of the Immcantation framework and its dependencies
 is available as a Docker container. Installation of the container is described
 in :ref:`DockerIntro` and basic usage is described in :ref:`DockerGuide`.
@@ -27,5 +27,3 @@ Overview of B Cell Repertoire Analysis
     Practical guidelines for B-cell receptor repertoire sequencing analysis.
     *Genome Medicine. 7, 121 (2015).*
     `doi\:10.1186/s13073-015-0243-2 <http://doi.org/10.1186/s13073-015-0243-2>`__
-
-

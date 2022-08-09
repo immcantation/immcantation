@@ -16,8 +16,8 @@ pull request to the relevant Bitbucket repository:
 + `dowser <https://bitbucket.org/kleinstein/dowser>`__
 
 All Immcantation core software packages are under the free and open-source license
-`AGPL-3 <https://www.gnu.org/licenses/agpl-3.0.html>`__. Other core elements, including, 
-but not limited to, documentation and tutorials, are 
+`AGPL-3 <https://www.gnu.org/licenses/agpl-3.0.html>`__. Other core elements, including,
+but not limited to, documentation and tutorials, are
 under `CC BY-SA 4.0 <https://creativecommons.org/licenses/by-sa/4.0>`__. Contributed
 packages are subject to their licenses.
 

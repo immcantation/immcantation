@@ -76,21 +76,21 @@ high-throughput AIRR-seq datasets. Beginning from raw reads, Python and R packag
 provided for pre-processing, population structure determination, and repertoire analysis.
 
 .. image:: https://img.shields.io/static/v1?label=AIRR-C%20sw-tools%20v1&message=compliant&color=008AFF&labelColor=000000&style=plastic
-       :target: https://docs.airr-community.org/en/stable/swtools/airr_swtools_standard.html
-       :align: left
+     :target: https://docs.airr-community.org/en/stable/swtools/airr_swtools_standard.html
+     :align: left
 
-Immcantation supports both the original Change-O standard and the new Adaptive Immune 
+Immcantation supports both the original Change-O standard and the new Adaptive Immune
 Receptor Repertoire (AIRR) standard developed by the
 `AIRR Community (AIRR-C) <https://www.antibodysociety.org/the-airr-community/>`_.
 
 .. image:: https://img.shields.io/docker/pulls/immcantation/suite
     :target: https://hub.docker.com/u/immcantation
     :align: left
-    
+
 The different tools are available from PyPi, CRAN and Bitbucket. Versioned containers with
 all tools installed are hosted on `Docker Hub <https://hub.docker.com/r/immcantation/suite>`_.
 
-            
+
 Core Packages
 -----------------------------------------------------------------------------------------
 
@@ -104,7 +104,8 @@ Core Packages
       - .. image:: https://img.shields.io/pypi/dm/presto
             :target: https://pypi.org/project/presto
             :align: right
-        
+            :alt: downloads
+
         **pRESTO**
 
         + Quality control
@@ -123,7 +124,7 @@ Core Packages
         + Clonal clustering
         + Germline reconstruction
         + Conversion and annotation
-        
+
     * - |alakazam-img|
       - .. image:: https://cranlogs.r-pkg.org/badges/alakazam
             :target: https://www.r-pkg.org/pkg/alakazam
@@ -135,7 +136,7 @@ Core Packages
         + Lineage topology analysis
         + Repertoire diversity
         + V(D)J gene usage
-        + Physicochemical property analysis        
+        + Physicochemical property analysis
 
     * - |shazam-img|
       - .. image:: https://cranlogs.r-pkg.org/badges/shazam
@@ -148,8 +149,8 @@ Core Packages
         + Selection pressure quantification
         + Empirical SHM models
         + Chimera detection
-        + Clonal clustering threshold tuning  
-            
+        + Clonal clustering threshold tuning
+
     * - |tigger-img|
       - .. image:: https://cranlogs.r-pkg.org/badges/tigger
             :target: https://www.r-pkg.org/pkg/tigger
@@ -168,7 +169,7 @@ Core Packages
         **SCOPer**
 
         + Spectral clonal clustering methods
-            
+
     * - |prestoR-img|
       - **prestoR**
 
@@ -178,11 +179,11 @@ Core Packages
       - .. image:: https://cranlogs.r-pkg.org/badges/dowser
             :target: https://www.r-pkg.org/pkg/dowser
             :align: right
-            
+
         **dowser**
 
         + Phylogenetic analysis on B cell receptor repertoires
-        
+
 
 Contributed Packages
 -----------------------------------------------------------------------------------------
@@ -221,6 +222,7 @@ Contributed Packages
     :align: middle
     :width: 200
     :target: pRESTO_
+    :alt: pRESTO
 
 .. |changeo-img| image:: _static/changeo.png
     :align: middle

@@ -384,7 +384,7 @@ subject-specific IGHV call (for TIgGER this is found in ``v_call_genotyped`` col
     singularity exec -B $DATA_DIR:/data immcantation_suite-|docker-version|.sif \\
         changeo-clone -d $DB -x $DIST -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC
 
-**Example: changeo-clone with personalinezed germline database**
+**Example: changeo-clone with personalized germline database**
 
 .. parsed-literal::
 
