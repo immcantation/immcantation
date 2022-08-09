@@ -117,6 +117,7 @@ Core Packages
       - .. image:: https://img.shields.io/pypi/dm/changeo
             :target: https://pypi.org/project/changeo
             :align: right
+            :alt: downloads
 
         **Change-O**
 
@@ -129,6 +130,7 @@ Core Packages
       - .. image:: https://cranlogs.r-pkg.org/badges/alakazam
             :target: https://www.r-pkg.org/pkg/alakazam
             :align: right
+            :alt: downloads
 
         **Alakazam**
 
@@ -142,6 +144,7 @@ Core Packages
       - .. image:: https://cranlogs.r-pkg.org/badges/shazam
             :target: https://www.r-pkg.org/pkg/shazam
             :align: right
+            :alt: downloads
 
         **SHazaM**
 
@@ -155,6 +158,7 @@ Core Packages
       - .. image:: https://cranlogs.r-pkg.org/badges/tigger
             :target: https://www.r-pkg.org/pkg/tigger
             :align: right
+            :alt: downloads
 
         **TIgGER**
 
@@ -165,6 +169,7 @@ Core Packages
       - .. image:: https://cranlogs.r-pkg.org/badges/scoper
             :target: https://www.r-pkg.org/pkg/scoper
             :align: right
+            :alt: downloads
 
         **SCOPer**
 
@@ -179,6 +184,7 @@ Core Packages
       - .. image:: https://cranlogs.r-pkg.org/badges/dowser
             :target: https://www.r-pkg.org/pkg/dowser
             :align: right
+            :alt: downloads
 
         **dowser**
 
@@ -228,56 +234,67 @@ Contributed Packages
     :align: middle
     :width: 200
     :target: Change-O_
+    :alt: Change-O
 
 .. |alakazam-img| image:: _static/alakazam.png
     :align: middle
     :width: 200
     :target: Alakazam_
+    :alt: alakazam
 
 .. |shazam-img| image:: _static/shazam.png
     :align: middle
     :width: 200
     :target: SHazaM_
+    :alt: SHazaM
 
 .. |tigger-img| image:: _static/tigger.png
     :align: middle
     :width: 200
     :target: TIgGER_
+    :alt:TIgGER
 
 .. |scoper-img| image:: _static/scoper.png
     :align: middle
     :width: 200
     :target: SCOPer_
+    :alt: SCOPer
 
 .. |prestoR-img| image:: _static/prestoR.png
     :align: middle
     :width: 200
     :target: prestoR_
+    :alt: prestoR
 
 .. |dowser-img| image:: _static/dowser.png
     :align: middle
     :width: 200
     :target: dowser_
+    :alt: dowser
 
 .. |rdi-img| image:: _static/rdi.png
     :align: middle
     :width: 200
     :target: RDI_
+    :alt: RDI
 
 .. |igphyml-img| image:: _static/igphyml.png
     :align: middle
     :width: 180
     :target: IgPhyML_
+    :alt: IgPhyML
 
 .. |rabhit-img| image:: _static/rabhit.png
     :align: middle
     :width: 140
     :target: RAbHIT_
+    :alt: RAbHIT
 
 .. |sumrep-img| image:: _static/sumrep.png
     :align: middle
     :width: 180
     :target: sumrep_
+    :alt: sumrep
 
 .. Doc links
 
