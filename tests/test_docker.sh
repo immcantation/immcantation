@@ -57,6 +57,21 @@ RUN_DIR=$(realpath ${RUN_DIR})
     [ "$status" -eq 0 ]
 }
 
+# Clontech-umi
+@test "presto-clontech-umi" {
+    SAMPLE=HD13M
+    READS_R1=/data/sequences/HD13M_10K_R1.fastq
+    READS_R2=/data/sequences/HD13M_10K_R2.fastq
+    CREGION=/usr/local/share/protocols/Universal/Human_IG_CRegion_RC.fasta
+    VREF=/usr/local/share/igblast/fasta/imgt_human_ig_v.fasta
+    OUT_DIR="/scratch/clontech-umi"
+
+    run docker run -v $DATA_DIR:/data:z -v $RUN_DIR:/scratch:z $IMAGE \
+        presto-clontech-umi -1 $READS_R1 -2 $READS_R2 -j $CREGION -r $VREF \
+        -n $SAMPLE -o $OUT_DIR -p $NPROC
+
+    [ "$status" -eq 0 ]
+}
 # 10X
 @test "changeo-10x" {
     SAMPLE=PBMC2B
