@@ -13,7 +13,7 @@
 #   -g  Species name. One of human, mouse, rabbit, rat, or rhesus_monkey. Defaults to human.
 #   -t  Receptor type. One of ig or tr. Defaults to ig.
 #   -x  Distance threshold for clonal assignment. Specify 'auto' for automatic detection.
-#       If unspecified, clonal assignment is not performed. 
+#       If unspecified, clonal assignment is not performed.
 #   -m  Distance model for clonal assignment.
 #       Defaults to the nucleotide Hamming distance model (nt). Options: nt, aa.
 #   -e  Method to use for determining the optimal threshold. One of "gmm" or "density".
@@ -52,13 +52,13 @@ print_usage() {
     echo -e "  -m  Distance model for clonal assignment.\n" \
             "     Defaults to the nucleotide Hamming distance model (ham)."
     echo -e "  -e Method to use for determining the optimal threshold. One of 'gmm' or 'density'. \n" \
-            "     Defaults to 'density'."    
+            "     Defaults to 'density'."
     echo -e "  -d Curve fitting model. Applies only when method (-e) is 'gmm'. One of 'norm-norm',\n" \
             "      'norm-gamma', 'gamma-norm' and 'gamma-gamma'. \n" \
-            "     Defaults to 'gamma-gamma'."  
+            "     Defaults to 'gamma-gamma'."
     echo -e "  -u Method to use for threshold selection. Applies only when method (-e) is 'gmm'. \n" \
             "     One of 'optimal', 'intersect' and 'user'. \n" \
-            "     Defaults to 'user'."             
+            "     Defaults to 'user'."
     echo -e "  -b  IgBLAST IGDATA directory, which contains the IgBLAST database, optional_file\n" \
             "     and auxillary_data directories. Defaults to /usr/local/share/igblast."
     echo -e "  -n  Sample identifier which will be used as the output file prefix.\n" \
@@ -122,13 +122,13 @@ while getopts "s:a:r:g:t:x:m:e:d:u:b:n:o:f:p:izh" OPT; do
         ;;
     e)  THRESHOLD_METHOD=$OPTARG
         THRESHOLD_METHOD_SET=true
-        ;;      
+        ;;
     d)  THRESHOLD_MODEL=$OPTARG
         THRESHOLD_MODEL_SET=true
-        ;;  
+        ;;
     u)  CUTOFF=$OPTARG
         CUTOFF_SET=true
-        ;;            
+        ;;
     b)  IGDATA=$OPTARG
         IGDATA_SET=true
         ;;
@@ -391,7 +391,7 @@ LIGHT_NON="${OUTNAME}_light_${PROD_FIELD}-F.${EXT}"
 # Assign clones
 if $CLONE; then
     printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "Single cell filter"
-    singlecell-filter.R -d ${HEAVY_PROD},${LIGHT_PROD} -o . -f ${FORMAT} \
+    singlecell-filter -d ${HEAVY_PROD},${LIGHT_PROD} -o . -f ${FORMAT} \
     > /dev/null 2> $ERROR_LOG
     check_error
     HEAVY_PROD="${OUTNAME}_heavy_${PROD_FIELD}-T_sc-pass.${EXT}"
@@ -406,18 +406,18 @@ if $CLONE; then
         DIST=$(tail -n1 "${OUTNAME}_threshold-values.tab" | cut -f2)
     else
         printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "Calculating distances"
-        shazam-threshold.R -d ${HEAVY_PROD} -m none -n "${OUTNAME}" \
+        shazam-threshold -d ${HEAVY_PROD} -m none -n "${OUTNAME}" \
         -f ${FORMAT} -p ${NPROC} \
         > /dev/null 2> $ERROR_LOG
         check_error
     fi
 
     printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "Define clones (scoper)"
-    define-clones-scoper.R -d ${HEAVY_PROD},${LIGHT_PROD} -o . -f ${FORMAT} \
+    define-clones-scoper -d ${HEAVY_PROD},${LIGHT_PROD} -o . -f ${FORMAT} \
     --method ${MODEL} --threshold ${DIST} --nproc ${NPROC} \
     > /dev/null 2> $ERROR_LOG
     CLONE_FILE="${OUTNAME}_heavy_${PROD_FIELD}-T_sc-pass_clone-pass.${EXT}"
-    check_error    
+    check_error
 
     printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "CreateGermlines"
     CreateGermlines.py -d ${CLONE_FILE} --cloned -r ${REFDIR} -g ${CG_GERM} \
