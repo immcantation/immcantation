@@ -5,13 +5,13 @@
 # Date:    2019.03.19
 #
 # Arguments:
-#   -d           Change-O formatted TSV (TAB) file.
-#   -m           Method to use for determining the optimal threshold.
-#                Defaults to density.
+#   -d           AIRR or Change-O formatted TSV (TAB) file(s).
+#   -t           distance threshold for clonal grouping.
+#   -m           Distance method for clonal assignment. Defaults to "nt".
 #   -n           Sample name or run identifier which will be used as the output file prefix.
 #                Defaults to a truncated version of the input filename.
 #   -o           Output directory. Will be created if it does not exist.
-#                Defaults to a directory matching the sample identifier in the current working directory.
+#                Defaults to the current working directory.
 #   -f           File format. One of 'airr' (default) or 'changeo'.
 #   -p           Number of subprocesses for multiprocessing tools.
 #                Defaults to the available processing units.
@@ -28,21 +28,18 @@ suppressPackageStartupMessages(library("scoper"))
 METHOD <- "nt"
 OUTDIR <- "."
 FORMAT <- "airr"
-MODEL <- "gamma-gamma"
-CUTOFF <- "optimal"
-SPC <- 0.995
 NPROC <- parallel::detectCores()
 
 # Define commmandline arguments
 opt_list <- list(make_option(c("-d", "--db"), dest="DB",
                              help="Tabulated data file, in Change-O (TAB) or AIRR format (TSV)."),
                  make_option(c("-t", "--threshold"), dest="THRESHOLD",
-                             help=paste("distance threshold for clonal grouping.",
-                                        "\n\t\t.One of 'nt' (nucleotide based clustering) or 'aa' (amino acid).")),                 
+                             help=paste("Distance threshold for clonal grouping.",
+                                        "\n\t\t.One of 'nt' (nucleotide based clustering) or 'aa' (amino acid).")),
                  make_option(c("-m", "--method"), dest="METHOD", default=METHOD,
                              help=paste("Distance method for clonal assignment.",
                                         "\n\t\t.One of 'nt' (nucleotide based clustering) or 'aa' (amino acid).",
-                                        "\n\t\tDefaults to 'nt'.")),                 
+                                        "\n\t\tDefaults to 'nt'.")),
                  make_option(c("-n", "--name"), dest="NAME",
                              help=paste("Sample name or run identifier which will be used as the output file prefix.",
                                         "\n\t\tDefaults to a truncated version of the input filename.")),
@@ -55,7 +52,7 @@ opt_list <- list(make_option(c("-d", "--db"), dest="DB",
                              help=paste("Number of subprocesses for multiprocessing tools.",
                                         "\n\t\tDefaults to the available processing units."))
 )
-                
+
 # Parse arguments
 opt <- parse_args(OptionParser(option_list=opt_list))
 
@@ -81,12 +78,13 @@ if (!(file.access(opt$OUTDIR, mode=2) == 0)) {
 
 # Reset parameters from opt (better for debugging)
 DB <- opt$DB
-METHOD <- opt$METHOD
 THRESHOLD <- opt$THRESHOLD
+METHOD <- opt$METHOD
+NAME <- opt$NAME
 OUTDIR <- opt$OUTDIR
 FORMAT <- opt$FORMAT
 NPROC <- opt$NPROC
-NAME <- opt$NAME
+
 
 db_files <- strsplit(DB,",")[[1]]
 
@@ -106,8 +104,8 @@ if (FORMAT == "changeo") {
    db <- bind_rows(
       lapply(db_files, airr::read_rearrangement),
       .id="input_id"
-   )   
-   
+   )
+
    v_call <- "v_call"
    j_call <- "j_call"
    junction <- "junction"
@@ -123,13 +121,13 @@ if ("cell_id" %in% colnames(db)) {
    cell_id <- NULL
 }
 
-db <- suppressWarnings(suppressMessages(hierarchicalClones(db, 
-                         threshold = THRESHOLD, 
-                         method = METHOD, 
-                         cell_id = cell_id, 
+db <- suppressWarnings(suppressMessages(hierarchicalClones(db,
+                         threshold = THRESHOLD,
+                         method = METHOD,
+                         cell_id = cell_id,
                          clone = clone,
-                         only_heavy = FALSE, 
-                         split_light = TRUE, 
+                         only_heavy = FALSE,
+                         split_light = TRUE,
                          summarize_clones = FALSE,
                          nproc=NPROC)))
 
@@ -138,13 +136,13 @@ heavy_chains <- c("IGH", "TRB", "TRD")
 db_h <- db %>%
    filter(getLocus(!!rlang::sym(v_call)) %in% heavy_chains)
 ab <- estimateAbundance(db_h)
-ab_plot <- plotAbundanceCurve(ab, colors = "steelblue", silent = T) + 
+ab_plot <- plotAbundanceCurve(ab, colors = "steelblue", silent = T) +
    labs(title="Clonal abundance distribution.")
 
 ## Save files and print log
 for (i in 1:length(db_files)) {
    cat("INPUT",i,"> ", basename(db_files[i]), "\n", sep="")
-   
+
    # Check and fill sample name
    if (!("NAME" %in% names(opt))) {
       n <- basename(db_files[i])
@@ -154,11 +152,11 @@ for (i in 1:length(db_files)) {
    }
    out_file <- file.path(OUTDIR, paste0(this_name, "_clone-pass.",ext))
    cat("OUTPUT",i,"> ", out_file, "\n", sep="")
-   
+
    # Save db
-   writeChangeoDb(db %>% 
-                     filter(input_id == i) %>% 
-                     select(-input_id), 
+   writeChangeoDb(db %>%
+                     filter(input_id == i) %>%
+                     select(-input_id),
                   out_file)
    if (i == 1) {
       #Save abundance

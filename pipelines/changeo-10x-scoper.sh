@@ -22,7 +22,7 @@
 #       'norm-norm', 'norm-gamma', 'gamma-norm' and 'gamma-gamma'.
 #       Defaults to 'gamma-gamma'.
 #   -u  Method to use for threshold selection. Applies only when method (-e) is 'gmm'.
-#       One of 'optimal', 'intersect' and 'user'
+#       One of 'optimal', 'intersect' and 'user'.
 #       Defaults to 'user'.
 #   -b  IgBLAST IGDATA directory, which contains the IgBLAST database, optional_file
 #       and auxillary_data directories. Defaults to /usr/local/share/igblast.
@@ -398,15 +398,15 @@ if $CLONE; then
     LIGHT_PROD="${OUTNAME}_light_${PROD_FIELD}-T_sc-pass.${EXT}"
     if [ "$DIST" == "auto" ]; then
         printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "Detect cloning threshold"
-        shazam-threshold -d ${HEAVY_PROD} -m ${THRESHOLD_METHOD} -n "${OUTNAME}" \
-        --model ${THRESHOLD_MODEL} --cutoff ${CUTOFF} --spc ${SPC} \
+        shazam-threshold -d ${HEAVY_PROD},${LIGHT_PROD}  -m ${THRESHOLD_METHOD} -n "${OUTNAME}" \
+        --model ${THRESHOLD_MODEL} --cutoff ${CUTOFF} --spc ${SPC} -o . \
         -f ${FORMAT} -p ${NPROC} \
         > /dev/null 2> $ERROR_LOG
         check_error
         DIST=$(tail -n1 "${OUTNAME}_threshold-values.tab" | cut -f2)
     else
         printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "Calculating distances"
-        shazam-threshold -d ${HEAVY_PROD} -m none -n "${OUTNAME}" \
+        shazam-threshold -d ${HEAVY_PROD} -m none -n "${OUTNAME}" -o . \
         -f ${FORMAT} -p ${NPROC} \
         > /dev/null 2> $ERROR_LOG
         check_error

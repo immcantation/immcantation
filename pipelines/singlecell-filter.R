@@ -5,7 +5,7 @@
 # Date:    2022.08.31
 #
 # Arguments:
-#   -d           AIRR or Change-O formatted TSV (TAB) file. Comma separated.
+#   -d           AIRR or Change-O formatted TSV (TAB) file(s). Comma separated.
 #   -n           Sample name or run identifier which will be used as the output file prefix.
 #                Defaults to a truncated version of the input filename.
 #   -o           Output directory. Will be created if it does not exist.
@@ -37,7 +37,7 @@ opt_list <- list(make_option(c("-d", "--db"), dest="DB",
                  make_option(c("-f", "--format"), dest="FORMAT", default=FORMAT,
                              help=paste("File format. One of 'airr' (default) or 'changeo'."))
                  )
-                
+
 # Parse arguments
 opt <- parse_args(OptionParser(option_list=opt_list))
 
@@ -75,7 +75,7 @@ if (FORMAT == "changeo") {
    db <- bind_rows(
       lapply(db_files, airr::read_rearrangement),
       .id="input_id"
-   )   
+   )
    v_call <- "v_call"
    ext <- "tsv"
 }
@@ -83,8 +83,8 @@ if (FORMAT == "changeo") {
 input_size <- nrow(db)
 
 if ("locus" %in% colnames(db) == F) {
-   db[["locus"]] <- getLocus(db[[v_call]]) 
-} 
+   db[["locus"]] <- getLocus(db[[v_call]])
+}
 
 input_heavy <- db %>% filter(locus %in% heavy_chains) %>% nrow()
 input_light <- db %>% filter(locus %in% heavy_chains == F) %>% nrow()
@@ -115,7 +115,7 @@ output_light <- db %>% filter(locus %in% heavy_chains == F) %>% nrow()
 ## Save files and print log
 for (i in 1:length(db_files)) {
    cat("INPUT",i,"> ", basename(db_files[i]), "\n", sep="")
-   
+
    # Check and fill sample name
    if (!("NAME" %in% names(opt))) {
       n <- basename(db_files[i])
@@ -125,9 +125,9 @@ for (i in 1:length(db_files)) {
    }
    out_file <- file.path(OUTDIR, paste0(this_name, "_sc-pass.",ext))
    cat("OUTPUT",i,"> ", out_file, "\n", sep="")
-   writeChangeoDb(db %>% 
-                     filter(input_id == i) %>% 
-                     select(-input_id), 
+   writeChangeoDb(db %>%
+                     filter(input_id == i) %>%
+                     select(-input_id),
                   out_file)
 }
 cat("INPUT_SIZE> ", input_size, "\n", sep="")

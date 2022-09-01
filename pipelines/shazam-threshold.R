@@ -5,13 +5,13 @@
 # Date:    2019.03.19
 #
 # Arguments:
-#   -d           Change-O formatted TSV (TAB) file.
+#   -d           AIRR or Change-O formatted TSV (TAB) file.
 #   -m           Method to use for determining the optimal threshold.
 #                Defaults to density.
 #   -n           Sample name or run identifier which will be used as the output file prefix.
 #                Defaults to a truncated version of the input filename.
 #   -o           Output directory. Will be created if it does not exist.
-#                Defaults to a directory matching the sample identifier in the current working directory.
+#                Defaults to the current working directory.
 #   -f           File format. One of 'airr' (default) or 'changeo'.
 #   -p           Number of subprocesses for multiprocessing tools.
 #                Defaults to the available processing units.

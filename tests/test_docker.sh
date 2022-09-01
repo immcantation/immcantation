@@ -87,6 +87,20 @@ RUN_DIR=$(realpath ${RUN_DIR})
     [ "$status" -eq 0 ]
 }
 
+@test "changeo-10x-scoper" {
+    SAMPLE=PBMC2B
+    READS=/data/sequences/PBMC2B.fasta
+    ANNOTATIONS=/data/sequences/PBMC2B_annotations.csv
+    DIST=0.15
+    OUT_DIR="/scratch/10x-scoper"
+
+    run docker run -v $DATA_DIR:/data:z -v $RUN_DIR:/scratch:z $IMAGE \
+        changeo-10x-scoper -s $READS -a $ANNOTATIONS -x $DIST \
+        -n $SAMPLE -o $OUT_DIR -p $NPROC -z
+
+    [ "$status" -eq 0 ]
+}
+
 # IgBLAST
 @test "changeo-igblast" {
     SAMPLE=HD13M
