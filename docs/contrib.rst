@@ -4,7 +4,7 @@ Contributing
 ================================================================================
 
 We welcome contributions to all components of the Immcantation framework through
-pull request to the relevant Bitbucket repository:
+pull requests to the relevant Bitbucket repository:
 
 + `Docker container, pipelines and portal documentation <https://bitbucket.org/kleinstein/immcantation>`__
 + `pRESTO <https://bitbucket.org/kleinstein/presto>`__
