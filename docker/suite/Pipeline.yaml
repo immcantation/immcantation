@@ -18,7 +18,10 @@ changeo-igblast:
   - "IgBLAST annotation"
 changeo-clone:
   - "changeo-clone.sh"
-  - "Clonal assignment"
+  - "Clonal assignment using Change-O"
+scoper-clone:
+  - "scoper-clone.sh"
+  - "Clonal assignment using SCOPer"
 shazam-threshold:
   - "shazam-threshold.R"
   - "Clonal threshold detection"

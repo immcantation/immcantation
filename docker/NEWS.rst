@@ -1,7 +1,7 @@
 Release Notes
 ========================================================================
 
-Version 4.4.0.999:  September 4, 2022
+Version 4.4.0.999:  September 5, 2022
 ------------------------------------------------------------------------
 
 Version Updates:
@@ -16,6 +16,11 @@ Image Changes:
 + Updated base image to Fedora 36.
 + Added the ``Seurat`` R package.
 + Added build of constant region databases to ``imgt2igblast.sh``.
+
+Pipeline Changes:
+
++ Added the ``scoper-clone`` pipeline to perform clonal clustering
+  using the SCOPer package.
 
 
 Version 4.3.0:  November 8, 2021
