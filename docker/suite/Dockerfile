@@ -63,6 +63,24 @@ RUN IGBLAST=$(versions get -n igblast) \
     && mv ncbi-igblast-${IGBLAST}/internal_data ncbi-igblast-${IGBLAST}/optional_file /usr/local/share/igblast \
     && rm -r ncbi-igblast-${IGBLAST}-x64-linux.tar.gz ncbi-igblast-${IGBLAST}
 
+# # Install IgBLAST data
+# RUN IGBLAST="1.19.0" \
+#     && wget -q --show-progress --no-check-certificate \
+#        ftp://ftp.ncbi.nih.gov/blast/executables/igblast/release/${IGBLAST}/ncbi-igblast-${IGBLAST}-x64-linux.tar.gz \
+#     && tar -zxf ncbi-igblast-${IGBLAST}-x64-linux.tar.gz \
+#     && mkdir -p /usr/local/share/igblast \
+#     && fetch_igblastdb.sh -o /usr/local/share/igblast \
+#     && mv ncbi-igblast-${IGBLAST}/internal_data ncbi-igblast-${IGBLAST}/optional_file /usr/local/share/igblast \
+#     && rm -r ncbi-igblast-${IGBLAST}-x64-linux.tar.gz ncbi-igblast-${IGBLAST}
+#
+# # Install IgBLAST executables
+# COPY ncbi-igblast-1.19.0-fedora36-x64.zip /ncbi-igblast-1.19.0-fedora36-x64.zip
+# RUN dnf install -y redhat-lsb-core sqlite-devel cmake
+# RUN unzip -q /ncbi-igblast-1.19.0-fedora36-x64.zip \
+#     && (cd ncbi-igblast-1.19.0-src/c++; make install) \
+#     && rm -r ncbi-igblast-1.19.0-src \
+#     && rm /ncbi-igblast-1.19.0-fedora36-x64.zip
+
 # Install PHYLIP
 RUN PHYLIP=$(versions get -n phylip) \
     && wget -q --show-progress --no-check-certificate \
