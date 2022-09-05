@@ -10,6 +10,9 @@
 #       Defaults to /usr/local/share/germline   s/imgt/human/vdj/imgt_human_IGHV.fasta.
 #   -v  Name of the output field containing genotyped V assignments.
 #       Defaults to V_CALL_GENOTYPED.
+#   -x  Minimum number of sequences in the mutation/coordinate range. Samples with 
+#       insufficient sequences will be excluded. Defaults to 50.
+#   -y  Minimum number of sequences required to analyze a germline allele. Defaults to 200.
 #   -n  Sample name or run identifier which will be used as the output file prefix.
 #       Defaults to a truncated version of the input filename.
 #   -o  Output directory. Will be created if it does not exist.

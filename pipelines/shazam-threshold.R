@@ -5,18 +5,23 @@
 # Date:    2019.03.19
 #
 # Arguments:
-#   -d           Change-O formatted TSV (TAB) file.
-#   -m           Method.
+#   -d           AIRR or Change-O formatted TSV (TAB) file.
+#   -m           Method to use for determining the optimal threshold.
 #                Defaults to density.
 #   -n           Sample name or run identifier which will be used as the output file prefix.
 #                Defaults to a truncated version of the input filename.
 #   -o           Output directory. Will be created if it does not exist.
-#                Defaults to a directory matching the sample identifier in the current working directory.
+#                Defaults to the current working directory.
 #   -f           File format. One of 'airr' (default) or 'changeo'.
 #   -p           Number of subprocesses for multiprocessing tools.
 #                Defaults to the available processing units.
 #   --model      Model when "-m gmm" is specified.
 #                Defaults to "gamma-gamma".
+#   --cutoff     Method to use for threshold selection.
+#                Defaults to "optimal".
+#   --spc        Specificity required for threshold selection. Applies only when
+#                method='gmm' and cutoff='user'.
+#                Defaults to 0.995.
 #   --subsample  Number of distances to downsample to before threshold calculation.
 #                By default, subsampling is not performed.
 #   --repeats    Number of times to repeat the threshold calculation (with plotting).
@@ -39,6 +44,8 @@ METHOD <- "density"
 OUTDIR <- "."
 FORMAT <- "airr"
 MODEL <- "gamma-gamma"
+CUTOFF <- "optimal"
+SPC <- 0.995
 NPROC <- parallel::detectCores()
 SUBSAMPLE <- NULL
 REPEATS <- 1
@@ -65,13 +72,21 @@ opt_list <- list(make_option(c("-d", "--db"), dest="DB",
                              help=paste("Model to use for the gmm model.",
                                         "\n\t\tOne of gamma-gamma, gamma-norm, norm-norm or norm-gamma.",
                                         "\n\t\tDefaults to gamma-gamma.")),
+                 make_option(c("--cutoff"), dest="CUTOFF", default=CUTOFF,
+                             help=paste("Method to use for threshold selection.",
+                                        "\n\t\tOne of optimal, intersect or user.",
+                                        "\n\t\tDefaults to optimal.")),
+                 make_option(c("--spc"), dest="SPC", default=SPC,
+                             help=paste("Specificity required for threshold selection.",
+                                        "\n\t\tApplies only when method='gmm' and cutoff='user'.",
+                                        "\n\t\tDefaults to 0.995.")),
                  make_option(c("--subsample"), dest="SUBSAMPLE", default=SUBSAMPLE,
                              help=paste("Number of distances to downsample the data to before threshold calculation.",
                                         "\n\t\tBy default, subsampling is not performed.")),
                  make_option(c("--repeats"), dest="REPEATS", default=REPEATS,
                              help=paste("Number of times to recalculate.",
                                         "\n\t\tDefaults to 1.")))
-                
+
 # Parse arguments
 opt <- parse_args(OptionParser(option_list=opt_list))
 
@@ -102,6 +117,8 @@ METHOD <- opt$METHOD
 OUTDIR <- opt$OUTDIR
 FORMAT <- opt$FORMAT
 MODEL <- opt$MODEL
+CUTOFF <- opt$CUTOFF
+SPC <- opt$SPC
 NPROC <- opt$NPROC
 NAME <- opt$NAME
 SUBSAMPLE <- opt$SUBSAMPLE
@@ -120,6 +137,12 @@ if (FORMAT == "changeo") {
     junction <- "junction"
 }
 
+if ("cell_id" %in% colnames(db)) {
+   cell_id <- "cell_id"
+} else {
+   cell_id <- NULL
+}
+
 # Check alakazam version, to determine column names
 if (numeric_version(packageVersion("alakazam")) > numeric_version('0.3.0')) {
     # lower case
@@ -130,8 +153,13 @@ if (numeric_version(packageVersion("alakazam")) > numeric_version('0.3.0')) {
 }
 
 # Calculate distance-to-nearest
-db <- suppressWarnings(distToNearest(db, sequenceColumn=junction, vCallColumn=v_call, jCallColumn=j_call,
-                                     model="ham", first=FALSE, normalize="len", nproc=NPROC))
+db <- suppressWarnings(distToNearest(db,
+                                    sequenceColumn=junction,
+                                    vCallColumn=v_call,
+                                    jCallColumn=j_call,
+                                    cellIdColumn=cell_id,
+                                    model="ham", first=FALSE,
+                                    normalize="len", nproc=NPROC))
 
 # Simply plot and exit for method="none"
 if (METHOD == "none") {
@@ -162,7 +190,11 @@ for(i in 1:REPEATS) {
     }
 
     # Calculate threshold
-    threshold <- findThreshold(sampling, method=METHOD, model=MODEL)
+    threshold <- findThreshold(sampling,
+                                method=METHOD,
+                                model=MODEL,
+                                cutoff=CUTOFF,
+                                spc=SPC)
 
     # Build results data.frame
     slots <- slotNames(threshold)
