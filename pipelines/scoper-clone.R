@@ -7,12 +7,13 @@
 # Arguments:
 #   -d           AIRR or Change-O formatted TSV (TAB) file(s).
 #   -t           distance threshold for clonal grouping.
-#   -m           Distance method for clonal assignment. Defaults to "nt".
+#   -m           Distance method for clonal assignment. Defaults to 'nt'.
 #   -n           Sample name or run identifier which will be used as the output file prefix.
 #                Defaults to a truncated version of the input filename.
 #   -o           Output directory. Will be created if it does not exist.
 #                Defaults to the current working directory.
 #   -f           File format. One of 'airr' (default) or 'changeo'.
+#   -l           Filename to save the log of 'hierarchicalClones'. The default is NULL for no action.
 #   -p           Number of subprocesses for multiprocessing tools.
 #                Defaults to the available processing units.
 #   -h           Display help.
@@ -29,6 +30,7 @@ METHOD <- "nt"
 OUTDIR <- "."
 FORMAT <- "airr"
 NPROC <- parallel::detectCores()
+LOGFILE <- NULL
 
 # Define commmandline arguments
 opt_list <- list(make_option(c("-d", "--db"), dest="DB",
@@ -48,6 +50,8 @@ opt_list <- list(make_option(c("-d", "--db"), dest="DB",
                                         "\n\t\tDefaults to the current working directory.")),
                  make_option(c("-f", "--format"), dest="FORMAT", default=FORMAT,
                              help=paste("File format. One of 'airr' (default) or 'changeo'.")),
+                 make_option(c("-l", "--logfile"), dest="LOGFILE", default=LOGFILE,
+                             help=paste("Filename to save the log of 'hierarchicalClones'. The default is NULL for no action.")),
                  make_option(c("-p", "--nproc"), dest="NPROC", default=NPROC,
                              help=paste("Number of subprocesses for multiprocessing tools.",
                                         "\n\t\tDefaults to the available processing units."))
@@ -58,7 +62,7 @@ opt <- parse_args(OptionParser(option_list=opt_list))
 
 # Check input file
 if (!("DB" %in% names(opt))) {
-    stop("You must provide a database file with the -d option.")
+     stop("You must provide a database file with the -d option.")
 }
 
 # Check threshold
@@ -84,6 +88,7 @@ NAME <- opt$NAME
 OUTDIR <- opt$OUTDIR
 FORMAT <- opt$FORMAT
 NPROC <- opt$NPROC
+LOGFILE <- opt$LOGFILE
 
 
 db_files <- strsplit(DB,",")[[1]]
@@ -129,6 +134,7 @@ db <- suppressWarnings(suppressMessages(hierarchicalClones(db,
                          only_heavy = FALSE,
                          split_light = TRUE,
                          summarize_clones = FALSE,
+                         log=LOGFILE,
                          nproc=NPROC)))
 
 # calculate and plot the rank-abundance curve

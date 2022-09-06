@@ -415,6 +415,7 @@ if $CLONE; then
     printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "Define clones (scoper)"
     scoper-clone -d ${HEAVY_PROD},${LIGHT_PROD} -o . -f ${FORMAT} \
         --method ${MODEL} --threshold ${DIST} --nproc ${NPROC} \
+        --log "${LOGDIR}/clone.log" \
         > /dev/null 2> $ERROR_LOG
     CLONE_FILE="${OUTNAME}_heavy_${PROD_FIELD}-T_sc-pass_clone-pass.${EXT}"
     check_error
