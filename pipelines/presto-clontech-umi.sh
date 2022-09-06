@@ -42,6 +42,8 @@ print_usage() {
             "     Defaults to illumina."
     echo -e "  -p  Number of subprocesses for multiprocessing tools.\n" \
             "     Defaults to the available cores."
+    echo -e "  -a  Specify to run multiple alignment of barcode groups prior to consensus.\n" \
+            "     This step is skipped by default."
     echo -e "  -h  This message."
 }
 
@@ -55,8 +57,11 @@ OUTDIR_SET=false
 NPROC_SET=false
 COORD_SET=false
 
+# Argument defaults
+ALIGN_BARCODE=false
+
 # Get commandline arguments
-while getopts "1:2:j:r:y:n:o:x:p:h" OPT; do
+while getopts "1:2:j:r:y:n:o:x:p:ah" OPT; do
     case "$OPT" in
     1)  R1_READS=$OPTARG
         R1_READS_SET=true
@@ -84,6 +89,8 @@ while getopts "1:2:j:r:y:n:o:x:p:h" OPT; do
         ;;
     p)  NPROC=$OPTARG
         NPROC_SET=true
+        ;;
+    a)  ALIGN_BARCODE=true
         ;;
     h)  print_usage
         exit
@@ -276,30 +283,37 @@ PairSeq.py -1 "${OUTNAME}-R2_primers-pass.fastq" \
 check_error
 
 # Multiple align UID read groups
-printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "AlignSets"
-AlignSets.py muscle -s "${OUTNAME}-R1_primers-pass_pair-pass.fastq" --exec $MUSCLE_EXEC \
-        --nproc ${NPROC} --log "${LOGDIR}/align-1.log" \
-        --outname "${OUTNAME}-R1"  >> $PIPELINE_LOG 2> $ERROR_LOG
-AlignSets.py muscle -s "${OUTNAME}-R2_primers-pass_pair-pass.fastq" --exec $MUSCLE_EXEC \
-        --nproc ${NPROC} --log "${LOGDIR}/align-2.log" \
-        --outname "${OUTNAME}-R2"  >> $PIPELINE_LOG 2> $ERROR_LOG
-check_error
+if $ALIGN_BARCODE; then
+    printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "AlignSets muscle"
+    AlignSets.py muscle -s "${OUTNAME}-R1_primers-pass_pair-pass.fastq" --exec $MUSCLE_EXEC \
+        --nproc $NPROC --log "${LOGDIR}/align-1.log" --outname "${OUTNAME}-R1" \
+        >> $PIPELINE_LOG 2> $ERROR_LOG
+    AlignSets.py muscle -s "${OUTNAME}-R2_primers-pass_pair-pass.fastq" --exec $MUSCLE_EXEC \
+        --nproc $NPROC --log "${LOGDIR}/align-2.log" --outname "${OUTNAME}-R2" \
+        >> $PIPELINE_LOG 2> $ERROR_LOG
+    BCR1_FILE="${OUTNAME}-R1_align-pass.fastq"
+    BCR2_FILE="${OUTNAME}-R2_align-pass.fastq"
+    check_error
+else
+    BCR1_FILE="${OUTNAME}-R1_primers-pass_pair-pass.fastq"
+    BCR2_FILE="${OUTNAME}-R2_primers-pass_pair-pass.fastq"
+fi
 
 # UMI consensus
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "BuildConsensus"
-BuildConsensus.py -s "${OUTNAME}-R2_align-pass.fastq" \
+BuildConsensus.py -s ${BCR1_FILE} \
+   --bf BARCODE --pf ${C_FIELD} --prcons ${BC_PRCONS} \
+   -n ${BC_MINCOUNT} -q ${BC_QUAL} --maxerror ${BC_MAXERR} --maxgap ${BC_MAXGAP}  \
+   --nproc ${NPROC} --log "${LOGDIR}/consensus-1.log"  \
+   --outdir . --outname "${OUTNAME}-R1" >> $PIPELINE_LOG 2> $ERROR_LOG
+BuildConsensus.py -s ${BCR2_FILE} \
    --bf BARCODE --pf ${C_FIELD} --prcons ${BC_PRCONS} \
    -n ${BC_MINCOUNT} -q ${BC_QUAL} --maxerror ${BC_MAXERR} --maxgap ${BC_MAXGAP}  \
    --nproc ${NPROC} --log "${LOGDIR}/consensus-2.log" \
    --outdir . --outname "${OUTNAME}-R2" >> $PIPELINE_LOG 2> $ERROR_LOG
-BuildConsensus.py -s "${OUTNAME}-R1_align-pass.fastq" \
-   --bf BARCODE --pf ${C_FIELD} --prcons ${BC_PRCONS} \
-   -n ${BC_MINCOUNT} -q ${BC_QUAL} --maxerror ${BC_MAXERR} --maxgap ${BC_MAXGAP}  \
-   --nproc ${NPROC} --log "${LOGDIR}/consensus-1.log"  \
-   --outdir . --outname "${OUTNAME}-R1"  >> $PIPELINE_LOG 2> $ERROR_LOG
 check_error
 
-# Syncronize reads
+# Synchronize reads
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "PairSeq"
 PairSeq.py -1 "${OUTNAME}-R1_consensus-pass.fastq" \
     -2 "${OUTNAME}-R2_consensus-pass.fastq" \
@@ -366,19 +380,19 @@ check_error
 # Process log files
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "ParseLog"
 ParseLog.py -l "logs/quality-R1.log" "logs/quality-R2.log" -f ID QUALITY \
-        --outdir ${LOGDIR} > /dev/null     
+    --outdir ${LOGDIR} > /dev/null
 ParseLog.py -l "${LOGDIR}/primers-1.log" -f ID PRIMER ERROR PRSTART \
-        --outdir "${LOGDIR}" > /dev/null 
+    --outdir "${LOGDIR}" > /dev/null
 ParseLog.py -l "${LOGDIR}/align-1.log" "${LOGDIR}/align-2.log" -f BARCODE SEQCOUNT \
-        --outdir "${LOGDIR}" > /dev/null 
+    --outdir "${LOGDIR}" > /dev/null
 ParseLog.py -l "${LOGDIR}/consensus-1.log" "${LOGDIR}/consensus-2.log" \
     -f BARCODE SEQCOUNT CONSCOUNT PRIMER PRCONS PRCOUNT PRFREQ ERROR \
-        --outdir "${LOGDIR}" > /dev/null 
+    --outdir "${LOGDIR}" > /dev/null
 ParseLog.py -l "${LOGDIR}/assemble.log" \
     -f ID REFID LENGTH OVERLAP GAP ERROR PVALUE EVALUE1 EVALUE2 IDENTITY FIELDS1 FIELDS2 \
-        --outdir "${LOGDIR}" > /dev/null 
+    --outdir "${LOGDIR}" > /dev/null
 ParseLog.py -l "${LOGDIR}/maskqual.log" -f ID MASKED \
-        --outdir "${LOGDIR}" > /dev/null 
+    --outdir "${LOGDIR}" > /dev/null
 
 wait
 check_error

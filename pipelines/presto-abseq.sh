@@ -390,7 +390,7 @@ fi
 check_error
 
 
-# Syncronize read files
+# Synchronize read files
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "PairSeq"
 PairSeq.py -1 "${OUTNAME}-R1_consensus-pass.fastq" -2 "${OUTNAME}-R2_consensus-pass.fastq" \
     --coord presto >> $PIPELINE_LOG 2> $ERROR_LOG
