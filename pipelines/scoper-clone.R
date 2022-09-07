@@ -43,8 +43,8 @@ opt_list <- list(make_option(c("-d", "--db"), dest="DB",
                                         "\n\t\t.One of 'nt' (nucleotide based clustering) or 'aa' (amino acid).",
                                         "\n\t\tDefaults to 'nt'.")),
                  make_option(c("-n", "--name"), dest="NAME",
-                             help=paste("Sample name or run identifier which will be used as the output file prefix.",
-                                        "\n\t\tDefaults to a truncated version of the input filename.")),
+                             help=paste("Sample name(s) or run identifier(s) which will be used as the output file prefix.",
+                                        "\n\t\tDefaults to a truncated version of the input filename(s).")),
                  make_option(c("-o", "--outdir"), dest="OUTDIR", default=OUTDIR,
                              help=paste("Output directory. Will be created if it does not exist.",
                                         "\n\t\tDefaults to the current working directory.")),
@@ -154,7 +154,7 @@ for (i in 1:length(db_files)) {
       n <- basename(db_files[i])
       this_name <- tools::file_path_sans_ext(n)
    } else {
-      this_name <- paste(NAME,i,sep="-")
+      this_name <- strsplit(NAME,",")[[1]][i]
    }
    out_file <- file.path(OUTDIR, paste0(this_name, "_clone-pass.",ext))
    cat("OUTPUT",i,"> ", out_file, "\n", sep="")

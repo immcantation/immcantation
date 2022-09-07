@@ -329,12 +329,14 @@ check_error() {
 # Set extension
 IGBLAST_VERSION=$(igblastn -version  | grep 'Package' |sed s/'Package: '//)
 CHANGEO_VERSION=$(python3 -c "import changeo; print('%s-%s' % (changeo.__version__, changeo.__date__))")
+SCOPER_VERSION=$(Rscript -e "v <- packageVersion('scoper');cat(as.character(v))")
 
 # Start
 echo -e "IDENTIFIER: ${OUTNAME}"
 echo -e "DIRECTORY: ${OUTDIR}"
 echo -e "CHANGEO VERSION: ${CHANGEO_VERSION}"
 echo -e "IGBLAST VERSION: ${IGBLAST_VERSION}"
+echo -e "SCOPER_VERSION: ${SCOPER_VERSION}"
 echo -e "\nSTART"
 STEP=0
 
@@ -416,8 +418,9 @@ if $CLONE; then
     scoper-clone -d ${HEAVY_PROD},${LIGHT_PROD} -o . -f ${FORMAT} \
         --method ${MODEL} --threshold ${DIST} --nproc ${NPROC} \
         --log "${LOGDIR}/clone.log" \
+        --name "${OUTNAME}_heavy","${OUTNAME}_light" \
         > /dev/null 2> $ERROR_LOG
-    CLONE_FILE="${OUTNAME}_heavy_${PROD_FIELD}-T_sc-pass_clone-pass.${EXT}"
+    CLONE_FILE="${OUTNAME}_heavy_clone-pass.${EXT}"
     check_error
 
     printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "CreateGermlines"
