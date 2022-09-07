@@ -60,6 +60,8 @@ opt_list <- list(make_option(c("-d", "--db"), dest="DB",
 # Parse arguments
 opt <- parse_args(OptionParser(option_list=opt_list))
 
+cat("\n\n     START> scoper-clone\n")
+
 # Check input file
 if (!("DB" %in% names(opt))) {
      stop("You must provide a database file with the -d option.")
@@ -147,7 +149,7 @@ ab_plot <- plotAbundanceCurve(ab, colors = "steelblue", silent = T) +
 
 ## Save files and print log
 for (i in 1:length(db_files)) {
-   cat("INPUT",i,"> ", basename(db_files[i]), "\n", sep="")
+   cat("    INPUT",i,"> ", basename(db_files[i]), "\n", sep="")
 
    # Check and fill sample name
    if (!("NAME" %in% names(opt))) {
@@ -157,7 +159,7 @@ for (i in 1:length(db_files)) {
       this_name <- strsplit(NAME,",")[[1]][i]
    }
    out_file <- file.path(OUTDIR, paste0(this_name, "_clone-pass.",ext))
-   cat("OUTPUT",i,"> ", out_file, "\n", sep="")
+   cat("   OUTPUT",i,"> ", out_file, "\n", sep="")
 
    # Save db
    writeChangeoDb(db %>%
@@ -174,6 +176,7 @@ for (i in 1:length(db_files)) {
              filename=file.path(OUTDIR, paste0(this_name, "_clone-pass_abundance.pdf")))
    }
 }
-cat("INPUT_SIZE> ", input_size, "\n", sep="")
-cat("OUTPUT_SIZE> ", nrow(db), "\n", sep="")
+cat("   RECORDS> ", input_size, "\n", sep="")
+cat("      PASS> ", nrow(db), "\n", sep="")
 cat("NUM_CLONES> ", length(unique(db[[clone]])), "\n", sep="")
+cat("       END> scoper-clone\n\n")

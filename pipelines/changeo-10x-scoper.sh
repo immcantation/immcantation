@@ -357,7 +357,7 @@ AssignGenes.py igblast -s ${IG_FILE} --organism ${SPECIES} --loci ${LOCI} \
     --outname "${OUTNAME}" --outdir . \
      >> $PIPELINE_LOG 2> $ERROR_LOG
 FMT7_FILE="${OUTNAME}_igblast.fmt7"
-#check_error
+check_error
 
 # Parse IgBLAST output
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "MakeDb igblast"
@@ -419,7 +419,8 @@ if $CLONE; then
         --method ${MODEL} --threshold ${DIST} --nproc ${NPROC} \
         --log "${LOGDIR}/clone.log" \
         --name "${OUTNAME}_heavy","${OUTNAME}_light" \
-        > /dev/null 2> $ERROR_LOG
+        >> $PIPELINE_LOG 2> $ERROR_LOG
+
     CLONE_FILE="${OUTNAME}_heavy_clone-pass.${EXT}"
     check_error
 
