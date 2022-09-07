@@ -225,7 +225,7 @@ fi
 ZIP_FILES=true
 DELETE_FILES=true
 FILTER_LOWQUAL=true
-ALIGN_SETS=false
+ALIGN_BARCODE=false
 MASK_LOWQUAL=false
 REPORT=true
 
@@ -333,7 +333,7 @@ check_error
 
 
 # Multiple align UID read groups
-if $ALIGN_SETS; then
+if $ALIGN_BARCODE; then
     printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "AlignSets muscle"
 	AlignSets.py muscle -s "${OUTNAME}-R1_primers-pass_pair-pass.fastq" --exec $MUSCLE_EXEC \
 	    --nproc $NPROC --log "${LOGDIR}/align-1.log" --outname "${OUTNAME}-R1" \

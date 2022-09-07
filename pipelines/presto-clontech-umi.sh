@@ -256,14 +256,6 @@ MPR1_FILE="${OUTNAME}-R1_quality-pass.fastq"
 MPR2_FILE="${OUTNAME}-R2_quality-pass.fastq"
 check_error
 
-# Identify primers and UMI in -2 reads
-printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "MaskPrimers extract"
-MaskPrimers.py extract -s ${MPR2_FILE} \
-     --start 12 --len 7 --barcode --bf BARCODE --mode cut \
-     --log "${LOGDIR}/primers-2.log" \
-    --outname "${OUTNAME}-R2" --outdir .  >> $PIPELINE_LOG 2> $ERROR_LOG
-check_error
-
 # Annotate -1 reads with internal C-region
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "MaskPrimers align"
 MaskPrimers.py align -s ${MPR1_FILE} \
@@ -273,6 +265,14 @@ MaskPrimers.py align -s ${MPR1_FILE} \
     --log "${LOGDIR}/primers-1.log" \
     --outname "${OUTNAME}-R1" --nproc ${NPROC} \
     --outdir .  >> $PIPELINE_LOG 2> $ERROR_LOG
+check_error
+
+# Identify primers and UMI in -2 reads
+printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "MaskPrimers extract"
+MaskPrimers.py extract -s ${MPR2_FILE} \
+     --start 12 --len 7 --barcode --bf BARCODE --mode cut \
+     --log "${LOGDIR}/primers-2.log" \
+    --outname "${OUTNAME}-R2" --outdir .  >> $PIPELINE_LOG 2> $ERROR_LOG
 check_error
 
 # Transfer annotation
@@ -332,26 +332,17 @@ AssemblePairs.py sequential -1 "${OUTNAME}-R2_consensus-pass_pair-pass.fastq" \
     --outname "${OUTNAME}" >> $PIPELINE_LOG 2> $ERROR_LOG
 check_error
 
-# Mask low quality positions
-printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "FilterSeq maskqual"
-FilterSeq.py maskqual -s "${OUTNAME}_assemble-pass.fastq" -q ${FS_MASK} --nproc ${NPROC} \
-        --outname "${OUTNAME}" --log "${LOGDIR}/maskqual.log" >> $PIPELINE_LOG 2> $ERROR_LOG
-check_error
-
 # Rewrite header with minimum of CONSCOUNT
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "ParseHeaders collapse"
-ParseHeaders.py collapse -s "${OUTNAME}_maskqual-pass.fastq" -f CONSCOUNT --act min \
-    --outname "${OUTNAME}-final-prcons" >> $PIPELINE_LOG 2> $ERROR_LOG
-mv "${OUTNAME}-final-prcons_reheader.fastq" "${OUTNAME}-final-prcons_total.fastq"
+ParseHeaders.py collapse -s "${OUTNAME}_assemble-pass.fastq" -f CONSCOUNT --act min \
+    >> $PIPELINE_LOG 2> $ERROR_LOG
 check_error
 
 # Rename PRCONS to C_CALL
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "ParseHeaders rename"
-ParseHeaders.py rename -s "${OUTNAME}-final-prcons_total.fastq" \
-    -f PRCONS -k C_CALL \
-    --outname "${OUTNAME}-final_total" >> $PIPELINE_LOG 2> $ERROR_LOG
-mv "${OUTNAME}-final_total_reheader.fastq" "${OUTNAME}-final_total.fastq"
-check error
+ParseHeaders.py rename -s "${OUTNAME}_assemble-pass_reheader.fastq" -f PRCONS -k C_CALL \
+    -o "${OUTNAME}-final_total.fastq" >> $PIPELINE_LOG 2> $ERROR_LOG
+check_error
 
 # Remove duplicate sequences
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "CollapseSeq"
@@ -376,24 +367,22 @@ ParseHeaders.py table -s "${OUTNAME}-final_collapse-unique_atleast-2.fastq" -f I
     --outname "final-unique-atleast2" --outdir ${LOGDIR} >> $PIPELINE_LOG 2> $ERROR_LOG
 check_error
 
-
 # Process log files
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "ParseLog"
 ParseLog.py -l "logs/quality-R1.log" "logs/quality-R2.log" -f ID QUALITY \
     --outdir ${LOGDIR} > /dev/null
 ParseLog.py -l "${LOGDIR}/primers-1.log" -f ID PRIMER ERROR PRSTART \
     --outdir "${LOGDIR}" > /dev/null
-ParseLog.py -l "${LOGDIR}/align-1.log" "${LOGDIR}/align-2.log" -f BARCODE SEQCOUNT \
+if $ALIGN_BARCODE; then
+    ParseLog.py -l "${LOGDIR}/align-1.log" "${LOGDIR}/align-2.log" -f BARCODE SEQCOUNT \
     --outdir "${LOGDIR}" > /dev/null
+fi
 ParseLog.py -l "${LOGDIR}/consensus-1.log" "${LOGDIR}/consensus-2.log" \
     -f BARCODE SEQCOUNT CONSCOUNT PRIMER PRCONS PRCOUNT PRFREQ ERROR \
     --outdir "${LOGDIR}" > /dev/null
 ParseLog.py -l "${LOGDIR}/assemble.log" \
     -f ID REFID LENGTH OVERLAP GAP ERROR PVALUE EVALUE1 EVALUE2 IDENTITY FIELDS1 FIELDS2 \
     --outdir "${LOGDIR}" > /dev/null
-ParseLog.py -l "${LOGDIR}/maskqual.log" -f ID MASKED \
-    --outdir "${LOGDIR}" > /dev/null
-
 wait
 check_error
 
@@ -408,8 +397,8 @@ fi
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "Compressing files"
 LOG_FILES=$(ls ${LOGDIR}/*.log | grep -v "pipeline")
 FILTER_FILES="$(basename ${R1_READS})\|$(basename ${R2_READS})\|$(basename ${C_PRIMERS}))"
-FILTER_FILES+="\|final_collapse-unique.fastq\|final_collapse-unique_atleast-2.fastq"
-TEMP_FILES=$(ls *.fastq | grep -v ${FILTER_FILES})
+FILTER_FILES+="\|final_total.fastq\|final_collapse-unique.fastq\|final_collapse-unique_atleast-2.fastq"
+TEMP_FILES=$(ls *.fastq  2>/dev/null | grep -v ${FILTER_FILES})
 if $ZIP_FILES; then
     tar -zcf log_files.tar.gz $LOG_FILES
     tar -zcf temp_files.tar.gz $TEMP_FILES
