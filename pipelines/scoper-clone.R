@@ -34,7 +34,7 @@ LOGFILE <- NULL
 
 # Define commmandline arguments
 opt_list <- list(make_option(c("-d", "--db"), dest="DB",
-                             help="Tabulated data file, in Change-O (TAB) or AIRR format (TSV)."),
+                             help="Tabulated data file(s), in Change-O (TAB) or AIRR format (TSV)."),
                  make_option(c("-t", "--threshold"), dest="THRESHOLD",
                              help=paste("Distance threshold for clonal grouping.",
                                         "\n\t\t.One of 'nt' (nucleotide based clustering) or 'aa' (amino acid).")),
