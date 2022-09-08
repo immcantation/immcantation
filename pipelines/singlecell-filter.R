@@ -41,6 +41,8 @@ opt_list <- list(make_option(c("-d", "--db"), dest="DB",
 # Parse arguments
 opt <- parse_args(OptionParser(option_list=opt_list))
 
+cat("\n\n            START> singlecell-filter\n")
+
 # Check input file
 if (!("DB" %in% names(opt))) {
     stop("You must provide a database file with the -d option.")
@@ -114,7 +116,7 @@ output_light <- db %>% filter(locus %in% heavy_chains == F) %>% nrow()
 
 ## Save files and print log
 for (i in 1:length(db_files)) {
-   cat("INPUT",i,"> ", basename(db_files[i]), "\n", sep="")
+   cat("           INPUT",i,"> ", basename(db_files[i]), "\n", sep="")
 
    # Check and fill sample name
    if (!("NAME" %in% names(opt))) {
@@ -124,17 +126,21 @@ for (i in 1:length(db_files)) {
       this_name <- paste(opt$NAME,i,sep="-")
    }
    out_file <- file.path(OUTDIR, paste0(this_name, "_sc-pass.",ext))
-   cat("OUTPUT",i,"> ", out_file, "\n", sep="")
+   cat("          OUTPUT",i,"> ", out_file, "\n", sep="")
+
    writeChangeoDb(db %>%
                      filter(input_id == i) %>%
                      select(-input_id),
                   out_file)
 }
-cat("INPUT_SIZE> ", input_size, "\n", sep="")
-cat("INPUT_HEAVY> ", input_heavy, "\n", sep="")
-cat("INPUT_LIGHT> ", input_light, "\n", sep="")
+
+
+cat("          RECORDS> ", input_size, "\n", sep="")
+cat("    RECORDS_HEAVY> ", input_heavy, "\n", sep="")
+cat("    RECORDS_LIGHT> ", input_light, "\n", sep="")
 cat("MULTI_HEAVY_CELLS> ", length(multi_heavy_cells), "\n", sep="")
-cat("NO_HEAVY_CELLS> ", length(no_heavy_cells), "\n", sep="")
-cat("OUTPUT_SIZE> ", output_size, "\n", sep="")
-cat("OUTPUT_HEAVY> ", output_heavy, "\n", sep="")
-cat("OUTPUT_LIGHT> ", output_light, "\n", sep="")
+cat("   NO_HEAVY_CELLS> ", length(no_heavy_cells), "\n", sep="")
+cat("             PASS> ", output_size, "\n", sep="")
+cat("       PASS_HEAVY> ", output_heavy, "\n", sep="")
+cat("       PASS_LIGHT> ", output_light, "\n", sep="")
+cat("              END> singlecell-filter\n\n")

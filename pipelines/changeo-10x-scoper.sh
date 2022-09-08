@@ -394,8 +394,9 @@ LIGHT_NON="${OUTNAME}_light_${PROD_FIELD}-F.${EXT}"
 if $CLONE; then
     printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "Single cell filter"
     singlecell-filter -d ${HEAVY_PROD},${LIGHT_PROD} -o . -f ${FORMAT} \
-    > /dev/null 2> $ERROR_LOG
+    >> $PIPELINE_LOG 2> $ERROR_LOG
     check_error
+
     HEAVY_PROD="${OUTNAME}_heavy_${PROD_FIELD}-T_sc-pass.${EXT}"
     LIGHT_PROD="${OUTNAME}_light_${PROD_FIELD}-T_sc-pass.${EXT}"
     if [ "$DIST" == "auto" ]; then
