@@ -8,6 +8,7 @@ Version Updates:
 
 + igblast 1.19.0
 + shazam 1.1.1
++ prestor 0.0.8
 + airr-py 1.4.1
 + airr-r 1.4.1
 

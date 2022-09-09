@@ -58,6 +58,7 @@ RUN dnf -y update && dnf install -y \
     R-textshaping \
     sudo \
     tar \
+    texlive-titling \
     wget \
     && dnf clean all
 
