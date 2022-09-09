@@ -25,6 +25,7 @@ RUN dnf -y update && dnf install -y \
     biber \
     findutils \
     git \
+    langpacks-en \
     lapack-devel \
     libcurl-devel \
     libgit2-devel \
@@ -77,7 +78,7 @@ ARG R_DEPS="c('Rcpp', \
 ARG R_BIOC_DEPS="c('Biostrings', \
               'GenomicAlignments', \
               'IRanges', \
-              'ggtree')"              
+              'ggtree')"
 RUN echo "options(repos='${R_REPO}')" >> /usr/lib64/R/library/base/R/Rprofile \
     && mkdir -p /usr/share/doc/R/html \
     && cp /usr/lib64/R/library/stats/html/R.css /usr/share/doc/R/html/R.css \
