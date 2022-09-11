@@ -13,15 +13,12 @@ presto-clontech-umi:
 changeo-10x:
   - "changeo-10x.sh"
   - "10X Genomics V(D)J annotation and clonal assignment"
-changeo-10x-scoper:
-  - "changeo-10x-scoper.sh"
-  - "10X Genomics V(D)J annotation and clonal assignment"  
 changeo-igblast:
   - "changeo-igblast.sh"
   - "IgBLAST annotation"
 changeo-clone:
   - "changeo-clone.sh"
-  - "Clonal assignment using Change-O"  
+  - "Clonal assignment using Change-O"
 scoper-clone:
   - "scoper-clone.R"
   - "Clonal assignment using SCOPer"
@@ -30,7 +27,7 @@ shazam-threshold:
   - "Clonal threshold detection"
 singlecell-filter:
   - "singlecell-filter.R"
-  - "Remove doublet and light chain only cells."  
+  - "Remove doublet and light chain only cells."
 tigger-genotype:
   - "tigger-genotype.R"
   - "Polymorphism detection and genotyping"
