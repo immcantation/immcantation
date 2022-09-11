@@ -1,7 +1,7 @@
 Release Notes
 ========================================================================
 
-Version 4.4.0.999:  September 5, 2022
+Version 4.4.0.999:  September 11, 2022
 ------------------------------------------------------------------------
 
 Version Updates:
@@ -22,6 +22,10 @@ Pipeline Changes:
 
 + Added the ``scoper-clone`` pipeline to perform clonal clustering
   using the SCOPer package.
++ Added the ``singlecell-filter`` pipeline to remove cells with
+  with zero or more than one heavy chain sequences.
++ Updated ``changeo-10x``. Added a new step to use ``singlecell-filter``.
+  Replaced ``DefineCones.py`` with ``scoper-clone``.
 
 
 Version 4.3.0:  November 8, 2021
