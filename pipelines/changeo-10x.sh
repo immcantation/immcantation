@@ -51,12 +51,12 @@ print_usage() {
             "     If unspecified, clonal assignment is not performed."
     echo -e "  -m  Distance model for clonal assignment.\n" \
             "     Defaults to the nucleotide Hamming distance model (ham)."
-    echo -e "  -e Method to use for determining the optimal threshold. One of 'gmm' or 'density'. \n" \
+    echo -e "  -e  Method to use for determining the optimal threshold. One of 'gmm' or 'density'. \n" \
             "     Defaults to 'density'."
-    echo -e "  -d Curve fitting model. Applies only when method (-e) is 'gmm'. One of 'norm-norm',\n" \
+    echo -e "  -d  Curve fitting model. Applies only when method (-e) is 'gmm'. One of 'norm-norm',\n" \
             "      'norm-gamma', 'gamma-norm' and 'gamma-gamma'. \n" \
             "     Defaults to 'gamma-gamma'."
-    echo -e "  -u Method to use for threshold selection. Applies only when method (-e) is 'gmm'. \n" \
+    echo -e "  -u  Method to use for threshold selection. Applies only when method (-e) is 'gmm'. \n" \
             "     One of 'optimal', 'intersect' and 'user'. \n" \
             "     Defaults to 'user'."
     echo -e "  -b  IgBLAST IGDATA directory, which contains the IgBLAST database, optional_file\n" \
