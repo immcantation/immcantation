@@ -85,6 +85,8 @@ Usage: presto-clontech-umi [OPTIONS]
       Defaults to illumina.
   -p  Number of subprocesses for multiprocessing tools.
       Defaults to the available cores.
+  -a  Specify to run multiple alignment of barcode groups prior to consensus.
+      This step is skipped by default.
   -h  This message.
 
 .. End presto-clontech-umi
@@ -103,6 +105,13 @@ Usage: changeo-10x [OPTIONS]
       If unspecified, clonal assignment is not performed.
   -m  Distance model for clonal assignment.
       Defaults to the nucleotide Hamming distance model (ham).
+  -e  Method to use for determining the optimal threshold. One of 'gmm' or 'density'. 
+      Defaults to 'density'.
+  -d  Curve fitting model. Applies only when method (-e) is 'gmm'. One of 'norm-norm',       'norm-gamma', 'gamma-norm' and 'gamma-gamma'. 
+      Defaults to 'gamma-gamma'.
+  -u  Method to use for threshold selection. Applies only when method (-e) is 'gmm'. 
+      One of 'optimal', 'intersect' and 'user'. 
+      Defaults to 'user'.
   -b  IgBLAST IGDATA directory, which contains the IgBLAST database, optional_file
       and auxillary_data directories. Defaults to /usr/local/share/igblast.
   -n  Sample identifier which will be used as the output file prefix.
@@ -165,6 +174,37 @@ Usage: changeo-clone [OPTIONS]
 
 .. End changeo-clone
 
+.. Start scoper-clone
+
+Usage: scoper-clone [options]
+	-d DB, --db=DB
+		Tabulated data file(s), in Change-O (TAB) or AIRR format (TSV).
+	-t THRESHOLD, --threshold=THRESHOLD
+		Distance threshold for clonal grouping. 
+		.One of 'nt' (nucleotide based clustering) or 'aa' (amino acid).
+	-m METHOD, --method=METHOD
+		Distance method for clonal assignment. 
+		.One of 'nt' (nucleotide based clustering) or 'aa' (amino acid). 
+		Defaults to 'nt'.
+	-n NAME, --name=NAME
+		Sample name(s) or run identifier(s) which will be used as the output file prefix. 
+		Defaults to a truncated version of the input filename(s).
+	-o OUTDIR, --outdir=OUTDIR
+		Output directory. Will be created if it does not exist. 
+		Defaults to the current working directory.
+	-f FORMAT, --format=FORMAT
+		File format. One of 'airr' (default) or 'changeo'.
+	-l LOGFILE, --logfile=LOGFILE
+		Filename to save the log of 'hierarchicalClones'. The default is NULL for no action.
+	-p NPROC, --nproc=NPROC
+		Number of subprocesses for multiprocessing tools. 
+		Defaults to the available processing units.
+	-h, --help
+		Show this help message and exit
+
+
+.. End scoper-clone
+
 .. Start shazam-threshold
 
 Usage: shazam-threshold [options]
@@ -189,6 +229,14 @@ Usage: shazam-threshold [options]
 		Model to use for the gmm model. 
 		One of gamma-gamma, gamma-norm, norm-norm or norm-gamma. 
 		Defaults to gamma-gamma.
+	--cutoff=CUTOFF
+		Method to use for threshold selection. 
+		One of optimal, intersect or user. 
+		Defaults to optimal.
+	--spc=SPC
+		Specificity required for threshold selection. 
+		Applies only when method='gmm' and cutoff='user'. 
+		Defaults to 0.995.
 	--subsample=SUBSAMPLE
 		Number of distances to downsample the data to before threshold calculation. 
 		By default, subsampling is not performed.
@@ -200,6 +248,25 @@ Usage: shazam-threshold [options]
 
 
 .. End shazam-threshold
+
+.. Start singlecell-filter
+
+Usage: singlecell-filter [options]
+	-d DB, --db=DB
+		Tabulated data files, in Change-O (TAB) or AIRR format (TSV).
+	-n NAME, --name=NAME
+		Sample name or run identifier which will be used as the output file prefix. 
+		Defaults to a truncated version of the first input filename.
+	-o OUTDIR, --outdir=OUTDIR
+		Output directory. Will be created if it does not exist. 
+		Defaults to the current working directory.
+	-f FORMAT, --format=FORMAT
+		File format. One of 'airr' (default) or 'changeo'.
+	-h, --help
+		Show this help message and exit
+
+
+.. End singlecell-filter
 
 .. Start tigger-genotype
 
