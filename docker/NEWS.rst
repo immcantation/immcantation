@@ -1,7 +1,7 @@
 Release Notes
 ========================================================================
 
-Version 4.4.0.999:  September 11, 2022
+Version 4.4.0.999:  September 20, 2022
 ------------------------------------------------------------------------
 
 Version Updates:
@@ -11,6 +11,7 @@ Version Updates:
 + prestor 0.0.8
 + airr-py 1.4.1
 + airr-r 1.4.1
++ alakazam 1.2.1
 
 Image Changes:
 
