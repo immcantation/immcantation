@@ -12,6 +12,7 @@ Version Updates:
 + airr-py 1.4.1
 + airr-r 1.4.1
 + alakazam 1.2.1
++ tigger 1.0.1
 
 Image Changes:
 
