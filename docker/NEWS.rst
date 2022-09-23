@@ -1,7 +1,7 @@
 Release Notes
 ========================================================================
 
-Version 4.4.0.999:  September 20, 2022
+Version 4.4.0.999:  September 23, 2022
 ------------------------------------------------------------------------
 
 Version Updates:
@@ -13,6 +13,7 @@ Version Updates:
 + airr-r 1.4.1
 + alakazam 1.2.1
 + tigger 1.0.1
++ scoper 1.2.1
 
 Image Changes:
 
