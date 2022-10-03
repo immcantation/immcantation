@@ -1,17 +1,17 @@
 Release Notes
 ========================================================================
 
-Version 4.4.0.999:  September 23, 2022
+Version 4.4.0.999:  October 3, 2022
 ------------------------------------------------------------------------
 
 Version Updates:
 
 + igblast 1.19.0
-+ shazam 1.1.1
 + prestor 0.0.8
 + airr-py 1.4.1
 + airr-r 1.4.1
 + alakazam 1.2.1
++ shazam 1.1.2
 + tigger 1.0.1
 + scoper 1.2.1
 
