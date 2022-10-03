@@ -6,14 +6,15 @@ Version 4.4.0.999:  October 3, 2022
 
 Version Updates:
 
-+ igblast 1.19.0
-+ prestor 0.0.8
-+ airr-py 1.4.1
-+ airr-r 1.4.1
++ presto 0.7.1
 + alakazam 1.2.1
 + shazam 1.1.2
 + tigger 1.0.1
 + scoper 1.2.1
++ prestor 0.0.8
++ igblast 1.19.0
++ airr-py 1.4.1
++ airr-r 1.4.1
 
 Image Changes:
 
