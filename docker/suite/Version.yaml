@@ -1,6 +1,6 @@
 immcantation:
   version:  devel
-  date:     2022.10.23
+  date:     2022.10.24
 package:
   presto:   0.7.1
   changeo:  1.2.0
@@ -9,7 +9,7 @@ package:
   tigger:   1.0.1
   scoper:   1.2.1
   dowser:   0.1.0
-  enchantr: 0.0.2
+  enchantr: 0.0.3
   prestor:  0.0.8
   rabhit:   0.1.5
   rdi:      1.0.0
