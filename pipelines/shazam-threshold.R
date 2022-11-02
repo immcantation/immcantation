@@ -5,7 +5,7 @@
 # Date:    2019.03.19
 #
 # Arguments:
-#   -d           AIRR or Change-O formatted TSV (TAB) file.
+#   -d           AIRR or Change-O formatted TSV (TAB) file(s). If multiple files, comma separated.
 #   -m           Method to use for determining the optimal threshold.
 #                Defaults to density.
 #   -n           Sample name or run identifier which will be used as the output file prefix.
@@ -124,14 +124,23 @@ NAME <- opt$NAME
 SUBSAMPLE <- opt$SUBSAMPLE
 REPEATS <- opt$REPEATS
 
+
+db_files <- strsplit(DB,",")[[1]]
+
 # Load data
 if (FORMAT == "changeo") {
-    db <- as.data.frame(alakazam::readChangeoDb(DB))
+    db <- bind_rows(
+            lapply(db_files, alakazam::readChangeoDb),
+            .id="input_id"
+    )
     v_call <- "V_CALL"
     j_call <- "J_CALL"
     junction <- "JUNCTION"
 } else if (FORMAT == "airr") {
-    db <- airr::read_rearrangement(DB)
+    db <- bind_rows(
+             lapply(db_files, airr::read_rearrangement),
+             .id="input_id"
+    )   
     v_call <- "v_call"
     j_call <- "j_call"
     junction <- "junction"
