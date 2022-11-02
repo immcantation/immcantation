@@ -1,6 +1,6 @@
 immcantation:
   version:  devel
-  date:     2022.10.26
+  date:     2022.11.02
 package:
   presto:   0.7.1
   changeo:  1.2.0
