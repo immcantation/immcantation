@@ -5,7 +5,7 @@
 # Date:    2019.03.19
 #
 # Arguments:
-#   -d           AIRR or Change-O formatted TSV (TAB) file(s).
+#   -d           AIRR or Change-O formatted TSV (TAB) file(s). If multiple files, comma separated.
 #   -t           distance threshold for clonal grouping.
 #   -m           Distance method for clonal assignment. Defaults to 'nt'.
 #   -n           Sample name or run identifier which will be used as the output file prefix.
