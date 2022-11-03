@@ -93,6 +93,8 @@ NPROC <- opt$NPROC
 LOGFILE <- opt$LOGFILE
 
 
+cat(" THRESHOLD> ", THRESHOLD, "\n", sep="")
+
 db_files <- strsplit(DB,",")[[1]]
 
 # Load data
