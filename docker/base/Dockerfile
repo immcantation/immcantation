@@ -79,9 +79,14 @@ ARG R_DEPS="c('Rcpp', \
 ARG R_BIOC_DEPS="c('Biostrings', \
               'GenomicAlignments', \
               'IRanges', \
-              'ggtree')"
+              'ggtree')"           
+# tmp install ggtree from bitbucket
+# to avoid "object 'warning_wrap' not found error"
+# https://github.com/YuLab-SMU/ggtree/issues/544
+#              'ggtree')"
 RUN echo "options(repos='${R_REPO}')" >> /usr/lib64/R/library/base/R/Rprofile \
     && mkdir -p /usr/share/doc/R/html \
     && cp /usr/lib64/R/library/stats/html/R.css /usr/share/doc/R/html/R.css \
-    && Rscript -e "install.packages(${R_DEPS}, clean=TRUE)" \
-    && Rscript -e "BiocManager::install(${R_BIOC_DEPS})"
+    && Rscript -e "install.packages(${R_DEPS}, clean=TRUE)" \    
+    && Rscript -e "remotes::install_github('YuLab-SMU/ggtree', upgrade='never')" \
+    && Rscript -e "BiocManager::install(${R_BIOC_DEPS},update=F,ask=F,method='wget')"
