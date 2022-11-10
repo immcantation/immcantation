@@ -78,8 +78,7 @@ ARG R_DEPS="c('Rcpp', \
               'BiocManager')"
 ARG R_BIOC_DEPS="c('Biostrings', \
               'GenomicAlignments', \
-              'IRanges', \
-              'ggtree')"           
+              'IRanges')"           
 # tmp install ggtree from bitbucket
 # to avoid "object 'warning_wrap' not found error"
 # https://github.com/YuLab-SMU/ggtree/issues/544
