@@ -1,4 +1,4 @@
-FROM fedora:36
+FROM fedora:37
 LABEL maintainer="Jason Anthony Vander Heiden [jason.vanderheiden@yale.edu], \
                   Susanna Marquez [susanna.marquez@yale.edu]" \
       description="Standard environment and dependencies for the Immcantation framework."
@@ -78,14 +78,10 @@ ARG R_DEPS="c('Rcpp', \
               'BiocManager')"
 ARG R_BIOC_DEPS="c('Biostrings', \
               'GenomicAlignments', \
+              'ggtree', \
               'IRanges')"           
-# tmp install ggtree from bitbucket
-# to avoid "object 'warning_wrap' not found error"
-# https://github.com/YuLab-SMU/ggtree/issues/544
-#              'ggtree')"
 RUN echo "options(repos='${R_REPO}')" >> /usr/lib64/R/library/base/R/Rprofile \
     && mkdir -p /usr/share/doc/R/html \
     && cp /usr/lib64/R/library/stats/html/R.css /usr/share/doc/R/html/R.css \
     && Rscript -e "install.packages(${R_DEPS}, clean=TRUE)" \    
-    && Rscript -e "remotes::install_github('YuLab-SMU/ggtree', upgrade='never')" \
     && Rscript -e "BiocManager::install(${R_BIOC_DEPS},update=F,ask=F,method='wget')"
