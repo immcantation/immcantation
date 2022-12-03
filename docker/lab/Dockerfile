@@ -3,10 +3,12 @@ LABEL maintainer="Susanna Marquez [susanna.marquez@yale.edu]" \
       description="Immcantation Lab"
 
 USER root
-# Remove this allele, for tigger to be able to find it
-RUN sudo sed -i -e '/IGHV3-20\*04/{N;d;}' /usr/local/share/igblast/fasta/imgt_human_ig_v.fasta && \
-    sed -i -e '/IGHV3-20\*04/{N;d;}' /usr/local/share/germlines/imgt/human/vdj/imgt_human_IGHV.fasta && \
-    imgt2igblast.sh -i /usr/local/share/germlines/imgt -o /usr/local/share/igblast
+# Create databases without this allele, for tigger to be able to find it in the tutorial
+RUN cp -r /usr/local/share/germlines/imgt /usr/local/share/germlines/imgt_test_tigger && \
+    cp -r /usr/local/share/igblast /usr/local/share/igblast_test_tigger && \
+    sudo sed -i -e '/IGHV3-20\*04/{N;d;}' /usr/local/share/igblast_test_tigger/fasta/imgt_human_ig_v.fasta && \
+    sed -i -e '/IGHV3-20\*04/{N;d;}' /usr/local/share/germlines/imgt_test_tigger/human/vdj/imgt_human_IGHV.fasta && \
+    imgt2igblast.sh -i /usr/local/share/germlines/imgt_test_tigger -o /usr/local/share/igblast_test_tigger
 
 ENV NB_USER magus
 ENV NB_UID 1000
