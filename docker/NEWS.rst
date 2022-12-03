@@ -1,7 +1,7 @@
 Release Notes
 ========================================================================
 
-Version 4.4.0.999:  October 3, 2022
+Version 4.4.0.999:  December 3, 2022
 ------------------------------------------------------------------------
 
 Version Updates:
@@ -12,13 +12,14 @@ Version Updates:
 + tigger 1.0.1
 + scoper 1.2.1
 + prestor 0.0.8
-+ igblast 1.19.0
++ blast 2.13.0
++ igblast 1.20.0
 + airr-py 1.4.1
 + airr-r 1.4.1
 
 Image Changes:
 
-+ Updated base image to Fedora 36.
++ Updated base image to Fedora 37.
 + Added the ``Seurat`` R package.
 + Added build of constant region databases to ``imgt2igblast.sh``.
 
