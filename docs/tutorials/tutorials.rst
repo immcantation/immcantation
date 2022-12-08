@@ -14,7 +14,7 @@ Introductory Webinar
     :alt: Start here: Introductory Webinar and Jupyter Notebook
     :align: left 
     
-For a detailed use example for each Immcantation follow the tutorial 
+For a detailed use example for each Immcantation tool follow the tutorial 
 *Introduction to B cell repertoire analysis using the Immcantation 
 framework*. This tutorial is based on our
 introductory webinar. It is also available as a Jupyter notebook 
