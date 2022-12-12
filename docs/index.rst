@@ -58,6 +58,7 @@
     :hidden:
 
     prestoR <packages/prestor>
+    enchantR <https://enchantr.readthedocs.io/>
 
 
 .. _Welcome:
