@@ -1,8 +1,9 @@
-FROM immcantation/base:devel
+ARG BASE_TAG=devel
+FROM immcantation/base:${BASE_TAG}
 LABEL maintainer="Jason Anthony Vander Heiden [jason.vanderheiden@yale.edu], \
                   Susanna Marquez [susanna.marquez@yale.edu]" \
       description="Full suite of the Immcantation framework tools and dependencies."
-
+ARG BASE_TAG
 # Version
 COPY Version.yaml /Version.yaml
 COPY Pipeline.yaml /Pipeline.yaml
@@ -18,7 +19,7 @@ RUN PACKAGE="immcantation" \
     && mv /tmp/${PACKAGE}/protocols /usr/local/share/protocols \
     && (cd /tmp/${PACKAGE} && builds write -n ${PACKAGE} -v $(git describe --abbrev=12 --always --dirty=+)) \
     && rm -r /tmp/${PACKAGE}
-    
+
 # Install muscle
 RUN MUSCLE=$(versions get -n muscle) \
     && wget -q --show-progress --no-check-certificate \
@@ -147,7 +148,7 @@ RUN PACKAGE="tigger" \
     && rinstall -p /tmp/${PACKAGE} \
     && (cd /tmp/${PACKAGE} && builds write -n ${PACKAGE} -v $(git describe --abbrev=12 --always --dirty=+)) \
     && rm -r /tmp/${PACKAGE}
-    
+
 # Install SCOPer
 RUN PACKAGE="scoper" \
     && rm -rf /tmp/${PACKAGE} \
@@ -209,7 +210,7 @@ RUN RABHIT=$(versions get -n rabhit) \
 # Install Seurat
 RUN SEURAT=$(versions get -n seurat) \
     && Rscript -e "devtools::install_version('Seurat', '${SEURAT}', quiet=FALSE, clean=TRUE, upgrade='never')"
-    
+
 # Download and build references databases
 RUN fetch_imgtdb.sh -o /usr/local/share/germlines/imgt \
     && imgt2igblast.sh -i /usr/local/share/germlines/imgt -o /usr/local/share/igblast \
