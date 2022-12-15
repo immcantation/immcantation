@@ -1,7 +1,9 @@
-FROM immcantation/suite:devel
+ARG BASE_TAG=devel
+FROM immcantation/suite:${BASE_TAG}
 LABEL maintainer="Susanna Marquez [susanna.marquez@yale.edu]" \
       description="Immcantation Lab"
-
+ARG BASE_TAG
+RUN echo $BASE_TAG
 USER root
 # Create databases without this allele, for tigger to be able to find it in the tutorial
 RUN cp -r /usr/local/share/germlines/imgt /usr/local/share/germlines/imgt_test_tigger && \
@@ -36,8 +38,8 @@ RUN jupyter contrib nbextension install --sys-prefix
 # template_path workaround https://github.com/ipython-contrib/jupyter_contrib_nbextensions/issues/1529
 #RUN PYTHON_V=$(python3 -c 'import sys; print(".".join(map(str, sys.version_info[:2])))') && \
 #    sed -i 's/template_path/template_paths/g' /usr/local/lib/python$PYTHON_V/site-packages/#jupyter_contrib_nbextensions/nbconvert_support/toc2.py && \
-#    sed -i 's/template_path/template_paths/g' /usr/local/lib/python$PYTHON_V/site-packages/#jupyter_contrib_nbextensions/nbconvert_support/exporter_inliner.py 
-RUN jupyter nbextensions_configurator enable --sys-prefix   
+#    sed -i 's/template_path/template_paths/g' /usr/local/lib/python$PYTHON_V/site-packages/#jupyter_contrib_nbextensions/nbconvert_support/exporter_inliner.py
+RUN jupyter nbextensions_configurator enable --sys-prefix
 
 RUN Rscript -e "dir.create(path = Sys.getenv('R_LIBS_USER'), showWarnings = FALSE, recursive = TRUE)"
 ARG R_DEPS="c('uuid')"
