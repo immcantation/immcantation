@@ -2,13 +2,15 @@
 How to use the Immcantation Lab container
 --------------------------------------------------------------------------------------------
 
+[UNDER CONSTRUCTION]
+
 Immacantation containers include Immcantation, dependencies,... For reproducibility, if possible,
 always use a release version to analyze your data.
 
 
 <tag> means a version. Release versions are in the form x.y.z.
 
-available tags: https://hub.docker.com/repository/docker/immcantation/suite/tags?page=1&ordering=last_updated
+Available tags: https://hub.docker.com/repository/docker/immcantation/suite/tags?page=1&ordering=last_updated
 
 +---------------------------------------+-----------------------------------------------------------------------------------------+
 | Name                                  | Contents                                                                                |
@@ -22,9 +24,10 @@ available tags: https://hub.docker.com/repository/docker/immcantation/suite/tags
 | immcantation/lab:devel                | immcantation/suite:devel, Jupyter Notebook and traning notebooks.                       |
 +---------------------------------------+-----------------------------------------------------------------------------------------+
 
- Installation and use of the containers is described in :ref:`DockerIntro` and basic usage is described in :ref:`DockerGuide`. In this section focus: lab container, notebooks.
+Installation and use of the containers is described in :ref:`DockerIntro` and basic usage is described in :ref:`DockerGuide`.
+In this section we focus on the Lab container and the notebooks.
 
-Steps to use the container and the tutorials
+Steps to obtain and use the Lab container and the tutorials
 -------------------------------------------------------------------------------------------
 
 1. Install Docker for your system

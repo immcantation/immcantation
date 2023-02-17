@@ -14,15 +14,15 @@ The Immcantation Lab container
     :alt: How to use the Immcantation Lab container
     :align: left
 
-Lorem ipsum dolor.
+Learn how to obtain and use the container with the Jupyter Notebooks and data neeed to follo
+the other Immcantation tutorials.
 
 .. admonition:: Tutorial
 
-    :doc:`How to use containers <containers>` covers:
+    :doc:`How to use the Immcantation Lab container <containers>` covers:
 
-    + Lorem
-    + ipsum
-    + dolor
+    + Overview of the available containers
+    + Steps to obtain and use the Lab container and the tutorials
 
 
 Introductory Webinar
