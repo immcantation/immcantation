@@ -14,7 +14,7 @@ The Immcantation Lab container
     :alt: How to use the Immcantation Lab container
     :align: left
 
-Learn how to obtain and use the container with the Jupyter Notebooks and data neeed to follo
+Learn how to obtain and use the container with the Jupyter Notebooks and data neeed to follow
 the other Immcantation tutorials.
 
 .. admonition:: Tutorial
