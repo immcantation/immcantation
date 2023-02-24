@@ -5,17 +5,29 @@ Docker Container Installation and Overview
 
 We have provided a complete installation of the Immcantation framework, its
 dependencies, accessory scripts, and IgBLAST in a
-`Docker image <http://www.docker.com>`__. The image also includes both the IgBLAST and
+`Docker container <http://www.docker.com>`__. The `container <https://hub.docker.com/r/immcantation/suite/>`__ also includes both the IgBLAST and
 IMGT reference germline sets, as well as several template pipeline scripts.
-The image is available on Docker Hub at:
 
-`immcantation/suite <https://hub.docker.com/r/immcantation/suite/>`__
+We currently have four containers available on `DockerHub <https://hub.docker.com/r/immcantation/>`__:
 
-Images are versioned through tags with images containing official releases
-denoted by meta-version numbers (``x.y.z``). The ``devel`` tag denotes the
-latest development (unstabled) builds.
++---------------------------------------+-----------------------------------------------------------------------------------------+
+| Name                                  | Contents                                                                                |
++=======================================+=========================================================================================+
+| immcantation/suite            | Immcantation suite, supporting applications and databases.                                             |
++---------------------------------------+-----------------------------------------------------------------------------------------+
+| immcantation/lab            | Immcantation tutorial materials. Only for training, not to be used in production.         |
++---------------------------------------+-----------------------------------------------------------------------------------------+
+| immcantation/base            | Base image for Immcantation development builds.            |
++---------------------------------------+-----------------------------------------------------------------------------------------+
+| immcantation/test            | Immcantation unit test image.        |
++---------------------------------------+-----------------------------------------------------------------------------------------+
 
-Getting the Container
+**For tutorial purposes**, use immcantation/lab (be sure to replace ``suite`` with ``lab`` in the following code chunks) and follow the directions :doc:`here <DockerGuide>`. For all Immcantation uses, use immcantation/suite.
+Note that containers are versioned through tags with containers containing official releases
+denoted by meta-version numbers (``x.y.z``). *The ``devel`` tag denotes the
+latest development (unstabled) builds.*
+
+Getting the /suite Container
 --------------------------------------------------------------------------------
 
 Requires an installation of Docker 1.9+ or Singularity 2.3+.
@@ -53,7 +65,7 @@ If the command shown above doesn't work for you, please visit
 specific command for your Singularity version under *Build a container*.
 
 
-What's in the Container
+What's in the /suite Container
 --------------------------------------------------------------------------------
 
 Immcantation Tools
@@ -123,7 +135,7 @@ Data
 ``/usr/local/share/igblast``
     IgBLAST data directory.
 ``/usr/local/share/igblast/fasta``
-    Directory containing ungapped IMGT references sequences with IGH/IGL/IGL and
+    Directory containing ungapped IMGT references sequences with IGH/IGK/IGL and
     TRA/TRB/TRG/TRD combined into single FASTA files, respectively.
 ``/usr/local/share/protocols``
     Directory containing primer, template switch and internal constant region
