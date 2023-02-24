@@ -22,7 +22,7 @@ We currently have four containers available on `DockerHub <https://hub.docker.co
 | immcantation/test                     | Immcantation unit test image.                                                           |
 +---------------------------------------+-----------------------------------------------------------------------------------------+
 
-*For tutorial purposes, use immcantation/lab (be sure to replace ``suite`` with ``lab`` in the following code chunks) and follow the directions :doc:`here <guide>`.* For all Immcantation uses, use immcantation/suite.
+**For tutorial purposes**, use immcantation/lab (be sure to replace ``suite`` with ``lab`` in the following code chunks) and follow the directions :ref:`DockerGuide`. For all Immcantation uses, use immcantation/suite.
 Note that containers are versioned through tags with containers containing official releases
 denoted by meta-version numbers (``x.y.z``). The ``devel`` tag denotes the
 latest development (unstable) builds.
