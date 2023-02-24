@@ -80,6 +80,8 @@ Each command can be run using:
     # Singularity command
     singularity exec immcantation_suite_|docker-version|.sif [command]
 
+.. _DockerGuideTutorials:
+
 Using the container for tutorials
 --------------------------------------------------------------------------------
 
