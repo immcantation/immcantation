@@ -14,7 +14,7 @@ The Immcantation Lab container
     :alt: How to use the Immcantation Lab container
     :align: left
 
-Information on obtaining and using the container with the Jupyter notebooks and data needed to follow the Immcantation tutorials can be found within the general :ref:`DockerGuide`.
+Information on obtaining and using the container with the Jupyter notebooks and data needed to follow the Immcantation tutorials can be found within the general :ref:`guide <DockerGuide>`.
 
 
 Introductory Webinar
