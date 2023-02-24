@@ -13,19 +13,19 @@ We currently have four containers available on `DockerHub <https://hub.docker.co
 +---------------------------------------+-----------------------------------------------------------------------------------------+
 | Name                                  | Contents                                                                                |
 +=======================================+=========================================================================================+
-| immcantation/suite            | Immcantation suite, supporting applications and databases.                                             |
+| immcantation/suite                    | Immcantation suite, supporting applications and databases.                              |
 +---------------------------------------+-----------------------------------------------------------------------------------------+
-| immcantation/lab            | Immcantation tutorial materials. Only for training, not to be used in production.         |
+| immcantation/lab                      | Immcantation tutorial materials. Only for training, not to be used in production.       |
 +---------------------------------------+-----------------------------------------------------------------------------------------+
-| immcantation/base            | Base image for Immcantation development builds.            |
+| immcantation/base                     | Base image for Immcantation development builds.                                         |
 +---------------------------------------+-----------------------------------------------------------------------------------------+
-| immcantation/test            | Immcantation unit test image.        |
+| immcantation/test                     | Immcantation unit test image.                                                           |
 +---------------------------------------+-----------------------------------------------------------------------------------------+
 
-**For tutorial purposes**, use immcantation/lab (be sure to replace ``suite`` with ``lab`` in the following code chunks) and follow the directions :doc:`here <DockerGuide>`. For all Immcantation uses, use immcantation/suite.
+*For tutorial purposes, use immcantation/lab (be sure to replace ``suite`` with ``lab`` in the following code chunks) and follow the directions :doc:`here <guide>`.* For all Immcantation uses, use immcantation/suite.
 Note that containers are versioned through tags with containers containing official releases
-denoted by meta-version numbers (``x.y.z``). *The ``devel`` tag denotes the
-latest development (unstabled) builds.*
+denoted by meta-version numbers (``x.y.z``). The ``devel`` tag denotes the
+latest development (unstable) builds.
 
 Getting the /suite Container
 --------------------------------------------------------------------------------

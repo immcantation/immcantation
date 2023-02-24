@@ -101,8 +101,7 @@ Visit the url and open the notebook you want to use.
 **Note:** If you want to save the results locally in your computer, you need to bind the folder where you want to save the results to (`<my-out-dir>`), and the results folder in the container.
 
 .. parsed-literal::
-    # change my-out-dir for the full path to the local directory where
-    # you want to have the results saved to
+    # change my-out-dir for the full path to the local directory where you want to have the results saved to
     docker run --network=host -it --rm \\
     -v <my-out-dir>:/home/magus/notebooks/results:z \\
     -p 8888:8888 immcantation/lab:devel

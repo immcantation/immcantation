@@ -14,15 +14,7 @@ The Immcantation Lab container
     :alt: How to use the Immcantation Lab container
     :align: left
 
-Learn how to obtain and use the container with the Jupyter Notebooks and data neeed to follow
-the other Immcantation tutorials.
-
-.. admonition:: Tutorial
-
-    :doc:`How to use the Immcantation Lab container <containers>` covers:
-
-    + Overview of the available containers
-    + Steps to obtain and use the Lab container and the tutorials
+Information on obtaining and using the container with the Jupyter notebooks and data needed to follow the Immcantation tutorials can be found within the general :doc:`Docker guide <intro>`.
 
 
 Introductory Webinar
@@ -142,4 +134,3 @@ cover common analyses. Note, each link will leave the Immcantation portal page.
     Selection pressure analysis with SHazaM <https://shazam.readthedocs.io/en/stable/vignettes/Baseline-Vignette>
     Building SHM targeting models with SHazaM <https://shazam.readthedocs.io/en/stable/vignettes/Targeting-Vignette>
     Novel allele detection and genotyping with TIgGER <https://tigger.readthedocs.io/en/stable/vignettes/Tigger-Vignette>
-
