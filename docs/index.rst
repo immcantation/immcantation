@@ -253,7 +253,7 @@ Contributed Packages
     :align: middle
     :width: 200
     :target: TIgGER_
-    :alt:TIgGER
+    :alt: TIgGER
 
 .. |scoper-img| image:: _static/scoper.png
     :align: middle
