@@ -1,6 +1,6 @@
 immcantation:
   version:  devel
-  date:     2022.12.15
+  date:     2023.03.08
 package:
   presto:   0.7.1
   changeo:  1.3.0
@@ -9,7 +9,7 @@ package:
   tigger:   1.0.1
   scoper:   1.2.1
   dowser:   1.1.1
-  enchantr: 0.0.6
+  enchantr: 0.1.1
   prestor:  0.0.8
   rabhit:   0.1.5
   rdi:      1.0.0
@@ -23,4 +23,4 @@ dependency:
   igblast:  1.20.0
   muscle:   3.8.425
   phylip:   3.697
-  vsearch:  2.13.6
+  vsearch:  2.22.1
