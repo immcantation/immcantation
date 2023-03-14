@@ -87,7 +87,7 @@ The first step in the analysis of processed reads (`input.fasta`) is to annotate
 
 Here, we will use IgBLAST. Change-O provides a wrapper script (`AssignGenes.py`) to run IgBLAST using the reference V(D)J germline sequences in the container.
 
-##  A test with 200 sequences
+## A test with 200 sequences
 
 It is often useful to prototype analysis pipelines using a small subset of sequences. For a quick test of Change-O's V(D)J assignment tool, use `SplitSeq.py` to extract 200 sequences from `input.fasta`, then assign the V(D)J genes with `AssignGenes.py`.
 
@@ -178,7 +178,6 @@ V(D)J assignment is a key step in analyzing repertoires and is done by matching 
 After loading the libraries needed, the process is started by using `readChangeoDb` to read the tabulated data generated in the previous step.
 
 ```{r}
-
 suppressPackageStartupMessages(library(airr))
 suppressPackageStartupMessages(library(alakazam))
 suppressPackageStartupMessages(library(dplyr))
@@ -186,14 +185,17 @@ suppressPackageStartupMessages(library(ggplot2))
 suppressPackageStartupMessages(library(tigger))
 
 dir.create(file.path("results","tigger"))
-db <- read_rearrangement(file.path("results","changeo","data_ph_parse-select.tsv"))
+db <- read_rearrangement(file.path("results", "changeo",
+                                   "data_ph_parse-select.tsv"))
 colnames(db) # show the column names in the database
 ```
 
 `readIgFasta` loads the reference V germline genes that were used in the V(D)J assignment (in this case the sequences in the Immcantation container).
 
 ```{r}
-ighv <- readIgFasta(file.path("","usr","local","share","germlines","imgt_test_tigger","human","vdj","imgt_human_IGHV.fasta"))
+ighv <- readIgFasta(file.path("", "usr", "local", "share", "germlines",
+                              "imgt_test_tigger", "human", "vdj",
+                              "imgt_human_IGHV.fasta"))
 ighv[1] # show the first germline
 ```
 
@@ -232,7 +234,7 @@ gt <- inferGenotype(db, germline_db = ighv, novel = nv)
 
 # save genotype inf .fasta format to be used later with CreateGermlines.py
 gtseq <- genotypeFasta(gt, ighv, nv)
-writeFasta(gtseq, file.path("results","tigger","v_genotype.fasta"))
+writeFasta(gtseq, file.path("results", "tigger", "v_genotype.fasta"))
 
 gt %>% arrange(total) %>% slice(1:3) # show the first 3 rows
 ```
@@ -253,7 +255,10 @@ With `write_rearrangement` the updated data is saved as a tabulated file for use
 db <- reassignAlleles(db, gtseq)
 
 # show some of the corrected gene calls
-db %>% filter(v_call != v_call_genotyped) %>% sample_n(3) %>% select(v_call, v_call_genotyped)
+db %>%
+  dplyr::filter(v_call != v_call_genotyped) %>%
+  sample_n(3) %>%
+  select(v_call, v_call_genotyped)
 ```
 
 ```{r}
@@ -303,7 +308,8 @@ We first split sequences into groups that share the same V and J gene assignment
 
 # get the distance to nearest neighbors
 suppressPackageStartupMessages(library(shazam))
-db <- distToNearest(db, model = "ham", normalize = "len", vCallColumn = "v_call_genotyped", nproc = 4)
+db <- distToNearest(db, model = "ham", normalize = "len",
+                    vCallColumn = "v_call_genotyped", nproc = 4)
 
 # determine the threshold
 threshold <- findThreshold(db$dist_nearest, method = "density")
@@ -369,7 +375,8 @@ The tab-delimited file is loaded with the function `read_rearrangement`. In this
 names(IG_COLORS) <- c( "IGHA", "IGHD", "IGHE", "IGHG", "IGHM","IGHK", "IGHL")
 
 # read in the file that passed cloning and germline creation
-db <- read_rearrangement(file.path("results", "changeo", "data_ph_genotyped_germ-pass.tsv"))
+db <- read_rearrangement(file.path("results", "changeo",
+                                   "data_ph_genotyped_germ-pass.tsv"))
 
 # subset data to IgA, IgG and IgM
 db <- subset(db, isotype %in% c("IGHA", "IGHG", "IGHM"))
@@ -405,7 +412,8 @@ p <- plot(d, silent = T)
 p + geom_vline(xintercept = c(0,1,2), color = "grey50", linetype = "dashed") + 
     geom_text(data = data.frame(q = c(0,1,2), y = round(max(p$data$d_upper)/2), 
               label = c("Richness", "Shannon", "Simpson")), 
-              aes(x = q, y = y,label = label), size = 3, angle = 90, vjust = -0.4, inherit.aes  =  F, color = "grey50")
+              aes(x = q, y = y,label = label), size = 3, angle = 90,
+              vjust = -0.4, inherit.aes  =  F, color = "grey50")
 ```
 
 # Alakazam: Physicochemical properties of the CDR3
@@ -416,7 +424,9 @@ The figure below, generated with standard `ggplot` commands, shows the distribut
 
 ```{r}
 # calculate CDR3 amino acid properties
-db <- aminoAcidProperties(db, seq = "junction", nt = T, trim = T, label = "cdr3")
+db <- aminoAcidProperties(db, seq = "junction", nt = T,
+                          trim = T, label = "cdr3")
+
 # Plot
 ggplot(db, aes(x = isotype, y = cdr3_aa_length)) + theme_bw() +
   ggtitle("CDR3 length") + xlab("Isotype") + ylab("Amino acids") +
@@ -436,18 +446,20 @@ Here, `countGenes` counts V gene family usage (`mode = "family"`) by isotype (`g
 # V family usage by isotype
 # "clone" specifies to consider one gene per clone_id,
 # the most common gene within each clone
-usage_fam_iso <- countGenes(db, gene = "v_call_genotyped", groups = "isotype", clone = "clone_id", mode = "family")
+usage_fam_iso <- countGenes(db, gene = "v_call_genotyped", groups = "isotype",
+                            clone = "clone_id", mode = "family")
 # groups = "isotype", then usage by isotype sums 1
 usage_fam_iso %>% group_by(isotype) %>% summarize(total = sum(clone_freq))
 ```
 
 ```{r}
 ggplot(usage_fam_iso, aes(x = isotype, y = clone_freq)) + 
-geom_point(aes(color = isotype), size = 4) +
-scale_fill_manual(name = "Isotype", values = IG_COLORS) + 
-facet_wrap(~gene, nrow = 1) +
-theme_bw() + ggtitle("V Family usage by isotype") +
-ylab("Percent of repertoire") + xlab("Isotype")
+  geom_point(aes(color = isotype), size = 4) +
+  labs(title = "V Family usage by isotype",
+       x = "Isotype", y = "Percent of repertoire")
+  scale_fill_manual(name = "Isotype", values = IG_COLORS) + 
+  facet_wrap(~gene, nrow = 1) +
+  theme_bw()
 ```
 
 # Alakazam: lineage reconstruction
@@ -461,8 +473,10 @@ Before performing lineage reconstruction, some preprocessing in needed. The code
 ```{r}
 # Select one clone, the 2nd largest, just as an example
 largest_clone <- countClones(db) %>% slice(2) %>% select(clone_id) %>% as.character()
+
 # Subset db, get db with data for largest_clone
 db_clone <- subset(db, clone_id == largest_clone)
+
 # Build tree from a single clone
 x <- makeChangeoClone(db_clone, v_call = "v_call_genotyped", text_fields = "isotype")
 ```
@@ -482,22 +496,22 @@ plot(g)
 
 ```{r}
 # Retrieve the most ancestral sequence
-getMRCA(g, root="Germline")
+getMRCA(g, root = "Germline")
 ```
 
 ```{r}
 # Calculate distance from germline
-getPathLengths(g, root="Germline") %>% top_n(2)
+getPathLengths(g, root = "Germline") %>% top_n(2)
 ```
 
 ```{r}
 # Calculate subtree properties
-summarizeSubtrees(g, fields="isotype") %>% top_n(2)
+summarizeSubtrees(g, fields = "isotype") %>% top_n(2)
 ```
 
 ```{r}
 # Tabulate isotype edge relationships
-tableEdges(g, "isotype", exclude=c("Germline", NA))
+tableEdges(g, "isotype", exclude = c("Germline", NA))
 ```
 
 # SHazaM: mutational load
@@ -510,14 +524,15 @@ Standard `ggplot` commands can be used to generate boxplots to visualize the dis
 
 ```{r}
 # Calculate total mutation count, R and S combined
-db <- observedMutations(db,
-            sequenceColumn="sequence_alignment", 
-            germlineColumn="germline_alignment_d_mask",
-            regionDefinition=NULL, frequency=F, combine = T, nproc=4)
-ggplot(db, aes(x=isotype, y=mu_count, fill=isotype)) +
-geom_boxplot() +
-scale_fill_manual(name="Isotype",values=IG_COLORS) +
-xlab("Isotype") + ylab("Mutation count") + theme_bw()
+db <- observedMutations(db, sequenceColumn = "sequence_alignment", 
+                        germlineColumn = "germline_alignment_d_mask",
+                        regionDefinition = NULL, frequency = F,
+                        combine = T, nproc = 4)
+
+ggplot(db, aes(x = isotype, y = mu_count, fill = isotype)) +
+  geom_boxplot() +
+  scale_fill_manual(name = "Isotype", values = IG_COLORS) +
+  xlab("Isotype") + ylab("Mutation count") + theme_bw()
 ```
 
 # SHazaM: models of SHM targeting biases
@@ -531,9 +546,10 @@ The resulting model can be visualized as a hedgehog plot with `plotMutability`. 
 
 ```{r}
 # Build and plot SHM targeting model
-m <- createTargetingModel(db, vCallColumn="v_call_genotyped")
+m <- createTargetingModel(db, vCallColumn = "v_call_genotyped")
+
 # nucleotides: center nucleotide characters to plot
-plotMutability(m, nucleotides=c("A","C"), size=1.2)
+plotMutability(m, nucleotides = c("A","C"), size = 1.2)
 ```
 
 # SHazaM: quantification of selection pressure
@@ -560,11 +576,13 @@ These PDF can be visualized with `plot`. FWR are critical to maintenance the ove
 ```{r}
 # Calculate clonal consensus and selection using the BASELINe method
 z <- collapseClones(db)
-b <- calcBaseline(z, regionDefinition=IMGT_V)
+b <- calcBaseline(z, regionDefinition = IMGT_V)
+
 # Combine selection scores for all clones in each group
-g <- groupBaseline(b, groupBy="isotype")
+g <- groupBaseline(b, groupBy = "isotype")
+
 # Plot probability densities for the selection pressure
-plot(g, "isotype", sigmaLimits=c(-1, 1), silent=F)
+plot(g, "isotype", sigmaLimits = c(-1, 1), silent = F)
 ```
 
 # SHazaM: Built in mutation models
@@ -646,4 +664,3 @@ e134–e134.
 Yaari,G. et al. (2013) Models of somatic hypermutation targeting and
 substitution based on synonymous mutations from high-throughput
 immunoglobulin sequencing data. Frontiers in immunology, 4, 358.
-
