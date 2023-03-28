@@ -1,9 +1,9 @@
 ---
-title: An R Markdown document converted from "dowser_tutorial.ipynb"
+title: "Reconstruction and Analysis of B-cell Lineage Trees from Single Cell Data using Immcantation"
 output: html_document
 ---
 
-# Reconstruction and analysis of B-cell lineage trees from single cell data using Immcantation
+# Reconstruction and Analysis of B-cell Lineage Trees from Single Cell Data using Immcantation
 
 ![](assets/dowser-tutorial-cover.png)
 
@@ -13,24 +13,24 @@ Human B cells play a fundamental role in the adaptive immune response to infecti
 
 Beginning with processed single cell RNA-seq (scRNA-seq) + BCR data from 10X Genomics, we will show:
 
--   how cell type annotations can be associated with BCR sequences,
--   how clonal clusters can be identified, and
--   how B cell phylogenetic trees can be built and visualized using these data sources.
+* how cell type annotations can be associated with BCR sequences,
+* how clonal clusters can be identified, and
+* how B cell phylogenetic trees can be built and visualized using these data sources.
 
 [Watch on YouTube](https://youtu.be/ZNOSQGh22X4) a recorded version of this tutorial, that was presented at the [Adaptive Immune Receptor Repertoires Webinar Series](https://www.antibodysociety.org/learningcenter/adaptive-immune-receptor-repertoires-webinar-series/) organized by the [AIRR Community](http://airr-community.org/) and [The Antibody Society](https://www.antibodysociety.org/) (November 9, 2021).
 
 ## Resources
 
--   You can email [immcantation\@googlegroups.com](mailto:immcantation@googlegroups.com) with any questions or issues.
--   Documentation: <http://immcantation.org>
--   Source code and bug reports: <https://bitbucket.org/kleinstein/immcantation>
--   Docker/Singularity container for this lab: <https://hub.docker.com/r/immcantation/lab>
+* You can email [immcantation\@googlegroups.com](mailto:immcantation@googlegroups.com) with any questions or issues.
+* Documentation: <http://immcantation.org>
+* Source code and bug reports: <https://bitbucket.org/kleinstein/immcantation>
+* Docker image for this tutorial: https://hub.docker.com/r/immcantation/lab
 
 ## How to use the notebook
 
-Jupyter Notebook documentation: <https://jupyter-notebook.readthedocs.io/en/stable/>
+R Markdown documentation: https://rmarkdown.rstudio.com/
 
-**Ctrl+Enter** will run the code in the selected cell and **Shift+Enter** will run the code and move to the following cell.
+**Ctrl+Enter** will run the code in the selected cell.
 
 ## Inside this container
 
@@ -54,11 +54,10 @@ builds report
 
 ### Example data used in the tutorial
 
--   `../data/bcr_phylo_tutorial/BCR.data.tsv`: B-Cell Receptor Data. Adaptive Immune Receptor Repertoire (AIRR) tsv BCRs already aligned to IMGT V, D, and J genes. This process is not covered in this tutorial. To learn more visit <https://immcantation.readthedocs.io/en/stable/tutorials/tutorials.html>
+* `../data/bcr_phylo_tutorial/BCR.data.tsv`: B-Cell Receptor Data. Adaptive Immune Receptor Repertoire (AIRR) tsv BCRs already aligned to IMGT V, D, and J genes. This process is not covered in this tutorial. To learn more visit <https://immcantation.readthedocs.io/en/stable/tutorials/tutorials.html>
+* `../data/bcr_phylo_tutorial/GEX.data.rds`: Gene Expression Data. This file contains a Seurat object with RNA-seq data already processed and annotated. Processing and annotation are not covered in this tutorial. You can learn more on these topics in Seurat's documentation and tutorials: <https://satijalab.org/seurat/articles/pbmc3k_tutorial.html>
 
--   `../data/bcr_phylo_tutorial/GEX.data.rds`: Gene Expression Data. This file contains a Seurat object with RNA-seq data already processed and annotated. Processing and annotation are not covered in this tutorial. You can learn more on these topics in Seurat's documentation and tutorials: <https://satijalab.org/seurat/articles/pbmc3k_tutorial.html>
-
-These two files are subsamples of the original 10x scRNA-seq and BCR sequencing data from Turner et al. (2020) *Human germinal centres engage memory and naive B cells after influenza vaccination* Nature. 586, 127--132 [link](https://www.nature.com/articles/s41586-020-2711-0) The study consists of blood and limph node samples taken from a single patient at mulitple time points following influenza vaccination.
+These two files are subsamples of the original 10x scRNA-seq and BCR sequencing data from Turner et al. (2020) *Human germinal centres engage memory and naive B cells after influenza vaccination* Nature. 586, 127--132 [link](https://www.nature.com/articles/s41586-020-2711-0) The study consists of blood and lymph node samples taken from a single patient at multiple time points following influenza vaccination.
 
 Note: The example files are available for download [here](https://yale.box.com/shared/static/96y1rlu4ujerprxr53qxw87g7ybc1y99).
 
@@ -151,7 +150,7 @@ head(select(bcr_db, cell_id, v_call, j_call, sample, day), 1)
 
 ## Standardize cell IDs
 
-Both of the example datasets have been processed separately, and use slighty different cell identifiers. To consolidate the data into one object, we need to standardize the cell identifiers. This step could be different, or not necessary at all, with other datasets.
+Both of the example datasets have been processed separately, and use slightly different cell identifiers. To consolidate the data into one object, we need to standardize the cell identifiers. This step could be different, or not necessary at all, with other datasets.
 
 ```{r}
 # Make cell IDs in BCR match those in Seurat Object
@@ -192,7 +191,7 @@ The vector `match.index` contains the position of the GEX cells in the BCR data.
 # match index to find the position of the GEX cells in the BCR data
 match.index <- match(Cells(gex_db), bcr_db$cell_id_unique)
 
-# In this data, not all cells are B cells. 
+# In this data, not all cells are B cells
 # What proportion of cells don’t have BCRs?
 mean(is.na(match.index))
 ```
@@ -258,9 +257,10 @@ The GEX cell annotations can be added as additional columns in the BCR table.
 ```{r}
 # Add annotations to BCR data
 cell.annotation <- as.character(Idents(gex_db))
-bcr_db$gex_annotation <- 
-   unlist(lapply(match.index,function(x){ifelse(is.na(x), NA,
-                                                cell.annotation[x])}))
+bcr_db$gex_annotation <-
+   unlist(lapply(match.index, function(x) {
+      ifelse(is.na(x), NA, cell.annotation[x])
+   }))
 bcr_db$gex_annotation[1:5]
 ```
 
@@ -272,10 +272,14 @@ The UMAP coordinates can be added as additional columns in the BCR table as well
 # Add UMAP coordinates to BCR data
 umap1 <- gex_db@reductions$umap@cell.embeddings[, 1]
 umap2 <- gex_db@reductions$umap@cell.embeddings[, 2]
-bcr_db$gex_umap1 <- unlist(lapply(match.index, function(x){ifelse(is.na(x), NA,
-                                                                  umap1[x])}))
-bcr_db$gex_umap2 <- unlist(lapply(match.index, function(x){ifelse(is.na(x), NA,
-                                                                  umap2[x])}))
+bcr_db$gex_umap1 <-
+   unlist(lapply(match.index, function(x) {
+      ifelse(is.na(x), NA, umap1[x])
+   }))
+bcr_db$gex_umap2 <-
+   unlist(lapply(match.index, function(x) {
+      ifelse(is.na(x), NA, umap2[x])
+   }))
 
 bcr_db[1:5, ] %>% select(cell_id_unique, gex_umap1, gex_umap2, gex_annotation)
 ```
@@ -284,7 +288,7 @@ bcr_db[1:5, ] %>% select(cell_id_unique, gex_umap1, gex_umap2, gex_annotation)
 
 ```{r}
 # Remove cells that didn’t match
-bcr_db = dplyr::filter(bcr_db, !is.na(gex_annotation))
+bcr_db <- dplyr::filter(bcr_db, !is.na(gex_annotation))
 ```
 
 ### Ensure information transferred from Seurat object
@@ -317,7 +321,7 @@ The germinal center and plasmablast cells, primarily express IgG and IgA.
 ```{r}
 # Plot isotype on UMAP
 ggplot(bcr_db) +
-   geom_point(aes(x = gex_umap1,y = gex_umap2, color = isotype)) +
+   geom_point(aes(x = gex_umap1, y = gex_umap2, color = isotype)) +
    theme_bw()
 ```
 
@@ -420,7 +424,7 @@ ggplot(clone_sizes, aes(x = seq_count)) +
 
 The goal is to reconstruct the sequence of the unmutated ancestor of each clone.
 We use a reference database of known alleles ([IMGT](http://www.imgt.org)).
-Because it is very difficult to ccurately infer the D region and the junction
+Because it is very difficult to accurately infer the D region and the junction
 region for BCR sequences, we mask this region with `N`.
 
 Note: If you opted for a native installation to run this tutorial, you can
@@ -437,10 +441,10 @@ suppressPackageStartupMessages(library(dowser))
 # references = readIMGT(dir = "human/vdj/")
 
 # Read in IMGT data if using in Docker image
-references = readIMGT(dir = "/usr/local/share/germlines/imgt/human/vdj")
+references <- readIMGT(dir = "/usr/local/share/germlines/imgt/human/vdj")
 
 # Reconstruct germlines
-results_db = createGermlines(results_db, references)
+results_db <- createGermlines(results_db, references)
 
 # Check output column
 results_db$germline_alignment_d_mask[1]
@@ -498,7 +502,7 @@ head(trees)
 
 ### Standard maximum likelihood
 
-These methods model each sequence separately. Use a markov model of the mutation process and try to find the tree, not the branch lengths, that maximizes the likehood of seen data.
+These methods model each sequence separately. Use a markov model of the mutation process and try to find the tree, not the branch lengths, that maximizes the likelihood of seen data.
 
 ```{r}
 # Two options for standard maximum likelihood trees
@@ -530,7 +534,7 @@ All tree building methods are plotted using the same method in dowser, `plotTree
 
 ```{r}
 # Plot all trees
-plots = plotTrees(trees, tips = "isotype", tipsize = 2)
+plots <- plotTrees(trees, tips = "isotype", tipsize = 2)
 ```
 
 ```{r}
@@ -554,7 +558,7 @@ Plot trees so that tips are colored by cell type, scaled by sample day, and labe
 suppressPackageStartupMessages(library(ggtree))
 
 # Scale branches to mutations rather than mutations/site
-trees = scaleBranches(trees)
+trees <- scaleBranches(trees)
 
 # Make fancy tree plot of second largest tree
 plotTrees(trees, scale = 5)[[2]] +
@@ -571,12 +575,12 @@ Get the predicted intermediate sequence at an internal node in the second larges
 suppressPackageStartupMessages(library(ggtree))
 
 # Collapse nodes with identical sequences
-trees = collapseNodes(trees)
+trees <- collapseNodes(trees)
 
 # node_nums=TRUE labels each internal node
 p <- plotTrees(trees, node_nums = TRUE, labelsize = 6, scale = 5)[[2]] +
-       geom_tippoint(aes(colour = gex_annotation, size = day)) + 
-       geom_tiplab(aes(label = isotype), offset = 0.002) + 
+       geom_tippoint(aes(colour = gex_annotation, size = day)) +
+       geom_tiplab(aes(label = isotype), offset = 0.002) +
        scale_colour_manual(values = col_anno)
 print(p)
 
@@ -592,18 +596,18 @@ Hoehn, K. B. et al. (2021) Human B cell lineages engaged by germinal centers fol
 
 ```{r}
 # Correlation test
-trees = correlationTest(trees, time = "day")
+trees <- correlationTest(trees, time = "day")
 
 # Remove trees with one timepoint, order by p value
-trees = dplyr::filter(trees, !is.na(p))
-trees = trees[order(trees$p), ]
+trees <- dplyr::filter(trees, !is.na(p))
+trees <- trees[order(trees$p), ]
 
 # Fancy tree plots coloring tips by sample day
-p = plotTrees(trees)
-p = lapply(p, function(x)
-   x + 
-      geom_tippoint(aes(fill = day), shape = 21, size = 3) +
-      scale_fill_distiller(palette = "RdYlBu"))
+p <- plotTrees(trees)
+p <- lapply(p, function(x) {
+            x +
+               geom_tippoint(aes(fill = day), shape = 21, size = 3) +
+               scale_fill_distiller(palette = "RdYlBu")})
 
 # Save all trees to a pdf file
 treesToPDF(p, file = "results/dowser_tutorial/time_data_trees.pdf")
