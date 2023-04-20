@@ -1,16 +1,39 @@
 Release Notes
 ========================================================================
 
-Version 4.4.0:  January 23, 2022
+Version 4.4.0:  December 15, 2022
 ------------------------------------------------------------------------
 
 Version Updates:
 
-+ igblast 1.18.0
++ presto 0.7.1
++ changeo 1.3.0
++ alakazam 1.2.1
++ shazam 1.1.2
++ tigger 1.0.1
++ scoper 1.2.1
++ dowser 1.1.1
++ prestor 0.0.8
++ blast 2.13.0
++ igblast 1.20.0
++ igphyml 1.1.5
++ airr-py 1.4.1
++ airr-r 1.4.1
 
 Image Changes:
 
++ Updated base image to Fedora 37.
++ Added the ``Seurat`` R package (version 4.3.0).
 + Added build of constant region databases to ``imgt2igblast.sh``.
+
+Pipeline Changes:
+
++ Added the ``scoper-clone`` pipeline to perform clonal clustering
+  using the SCOPer package.
++ Added the ``singlecell-filter`` pipeline to remove cells with
+  with zero or more than one heavy chain sequences.
++ Updated ``changeo-10x``. Added a new step to use ``singlecell-filter``.
+  Replaced ``DefineCones.py`` with ``scoper-clone``.
 
 
 Version 4.3.0:  November 8, 2021

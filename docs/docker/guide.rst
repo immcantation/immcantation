@@ -67,7 +67,7 @@ The container includes three informational scripts that provide details about
 the versions of installed software and available pipelines.
 
 * The ``versions report`` command will inspect the installed software versions and print them to standard output.
-* The analagous ``builds report`` command will display the build date and changesets used during the image build. This is particularly relevant if you are using the ``immcantation/suite:devel`` development builds.
+* The analogous ``builds report`` command will display the build date and changesets used during the image build. This is particularly relevant if you are using the ``immcantation/suite:devel`` development builds.
 * Finally, the ``pipelines report`` command will display a list of available template pipelines included in the container.
 
 Each command can be run using:
@@ -79,3 +79,31 @@ Each command can be run using:
 
     # Singularity command
     singularity exec immcantation_suite_|docker-version|.sif [command]
+
+.. _DockerGuideTutorials:
+
+Using the container for tutorials
+--------------------------------------------------------------------------------
+
+If you would like to run and interact with the Jupyter notebook tutorials from your Docker container, run the following command (replace ``devel`` with a release version if applicable):
+
+.. parsed-literal::
+    docker run --network=host -it --rm -p 8888:8888 immcantation/lab:devel
+
+Note that in the container, Jupyter uses the default port 8888. Once the container is running, you will see a message in the terminal asking you to visit a url similar to \http://<hostname>:8888/?token=<token>
+
+.. image:: ../_static/startnotebooks.png
+    :alt: Immcantation lab startup
+
+Visit the url and open the notebook you want to use.
+
+.. image:: ../_static/notebookshome.png
+    :alt: Jupyter home page
+
+**Note:** If you want to save the results locally in your computer, you need to bind the folder where you want to save the results to (`<my-out-dir>`), and the results folder in the container.
+
+.. parsed-literal::
+    # change my-out-dir to the local directory where you want to have the results saved to
+    docker run --network=host -it --rm \\
+    -v <my-out-dir>:/home/magus/notebooks/results:z \\
+    -p 8888:8888 immcantation/lab:devel

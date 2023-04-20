@@ -1,41 +1,104 @@
 Immcantation Tutorials
 ===========================================================================================
 
-Each tool in the framework has its own documentation site, with detailed usage information 
+Each tool in the framework has its own documentation site, with detailed usage information
 and examples. A good starting point to familiarize yourself with the framework is to
-follow one the tutorials listed here.
+follow one the tutorials listed here. They are available as Jupyter notebooks under the
+folder `training <https://bitbucket.org/kleinstein/immcantation/src/master/training>`_
+in the Immcantation Bitbucket repository.
 
-
-Introductory Webinar and Jupyter Notebook
+The Immcantation Lab container
 -------------------------------------------------------------------------------------------
 
-For a detailed use example for each Immcantation tool see the Jupyter notebook from our
-introductory webinar `in the repository <https://bitbucket.org/kleinstein/immcantation/src/master/training/>`_.
-If you don't want to execute the Jupyter notebook yourself, you can explore a
-`website version of it here <https://kleinstein.bitbucket.io/tutorials/intro-lab/index.html>`_.
-*Introduction to B cell repertoire analysis using the Immcantation framework* covers:
+.. image:: ../_static/immcantationlab.png
+    :alt: How to use the Immcantation Lab container
+    :align: left
 
-+ V(D)J gene annotation and novel polymorphism detection
-+ Inference of B cell clonal relationships
-+ Diversity analysis
-+ Mutational load profiling
-+ Modeling of somatic hypermutation (SHM) targeting
-+ Quantification of selection pressure
+Information on obtaining and using the container with the Jupyter notebooks and data needed to follow the Immcantation tutorials can be found within the general :ref:`guide <DockerGuide>`.
+
+
+Introductory Webinar
+-------------------------------------------------------------------------------------------
+
+.. image:: ../_static/start-here.png
+    :alt: Start here: Introductory Webinar and Jupyter Notebook
+    :align: left
+
+For a detailed use example for each Immcantation tool follow the tutorial
+*Introduction to B cell repertoire analysis using the Immcantation
+framework*. This tutorial is based on our
+introductory webinar. It is also available as a Jupyter notebook
+(`intro-lab.ipynb <https://bitbucket.org/kleinstein/immcantation/src/master/training>`_) in the Immcantation repository.
+
+.. admonition:: Tutorial
+
+    :doc:`Introduction to B cell repertoire analysis using the Immcantation framework <intro-lab>` covers:
+
+    + V(D)J gene annotation and novel polymorphism detection
+    + Inference of B cell clonal relationships
+    + Diversity analysis
+    + Mutational load profiling
+    + Modeling of somatic hypermutation (SHM) targeting
+    + Quantification of selection pressure
+
 
 
 Single-cell Analysis
 -------------------------------------------------------------------------------------------
 
+
+.. image:: ../_static/bcell.png
+    :alt: 10x Genomics V(D)J Sequence Analysis with Immcantation Tutorial
+    :align: left
+
 For information on how to process 10x Genomics VDJ data to be analyzed with Immcantation, we
-offer an introductory tutorial for new users:
+offer the introductory tutorial *10x Genomics V(D)J Sequence Analysis with Immcantation*. It is available as a Jupyter notebook (`10x_tutorial.ipynb <https://bitbucket.org/kleinstein/immcantation/src/master/training>`_) in the Immcantation repository.
 
-.. toctree::
-    :maxdepth: 1
+.. admonition:: Tutorial
 
-    10x_tutorial
+    :doc:`10x Genomics V(D)J Sequence Analysis with Immcantation <10x_tutorial>` covers:
 
-We also demonstrate an enhanced analysis by integrating 10x BCR and 10x GEX data in 
-this `jupyter notebook <https://bitbucket.org/kleinstein/immcantation/src/master/training/BCR_Seurat_tutorial.ipynb?viewer=nbviewer>`_.
+    + V(D)J gene annotation
+    + Inference of clonal relationships
+    + Lineage tree reconstruction
+    + Incorporation of Cell Ranger annotations
+
+.. image:: ../_static/bcellgex.png
+    :alt: Integration of BCR and GEX data
+    :align: left
+
+In *Integration of BCR and GEX data* we demonstrate an enhanced analysis by integrating 10x BCR and 10x GEX data. The jupyter notebook (`BCR_Seurat_tutorial.ipynb <https://bitbucket.org/kleinstein/immcantation/src/master/training/>`_) is available in the Immcantation repository.
+
+.. admonition:: Tutorial
+
+    :doc:`Integration of BCR and GEX data <BCR_Seurat_tutorial>` covers:
+
+    + Integration of BCR data with the GEX Seurat object
+    + Highlight BCR cells in the GEX UMAP
+    + Integration of GEX cell annotations in the BCR data
+    + Identify GEX clusters in the BCR UMAP
+    + Highlight other BCR features in UMAPs
+
+
+Lineage tree reconstruction
+-------------------------------------------------------------------------------------------
+
+
+.. image:: ../_static/tree.png
+    :alt: Reconstruction and analysis of B-cell lineage trees from single cell data using Immcantation
+    :align: left
+
+The tutorial *Reconstruction and analysis of B-cell lineage trees from single cell data using Immcantation* is available
+as a Jupyter notebook (`dowser_tutorial.ipynb <https://bitbucket.org/kleinstein/immcantation/src/master/training/>`_) in the Immcantation repository.
+
+.. admonition:: Tutorial
+
+    Beginning with processed single cell RNA-seq (scRNA-seq) + BCR data from 10X Genomics, with :doc:`Reconstruction and analysis of B-cell lineage trees from single cell <dowser_tutorial>` you will learn:
+
+    + how cell type annotations can be associated with BCR sequences,
+    + how clonal clusters can be identified, and
+    + how B cell phylogenetic trees can be built and visualized using these data sources.
+
 
 Video presentations
 -------------------------------------------------------------------------------------------
@@ -71,4 +134,3 @@ cover common analyses. Note, each link will leave the Immcantation portal page.
     Selection pressure analysis with SHazaM <https://shazam.readthedocs.io/en/stable/vignettes/Baseline-Vignette>
     Building SHM targeting models with SHazaM <https://shazam.readthedocs.io/en/stable/vignettes/Targeting-Vignette>
     Novel allele detection and genotyping with TIgGER <https://tigger.readthedocs.io/en/stable/vignettes/Tigger-Vignette>
-

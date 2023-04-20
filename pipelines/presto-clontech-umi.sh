@@ -42,6 +42,8 @@ print_usage() {
             "     Defaults to illumina."
     echo -e "  -p  Number of subprocesses for multiprocessing tools.\n" \
             "     Defaults to the available cores."
+    echo -e "  -a  Specify to run multiple alignment of barcode groups prior to consensus.\n" \
+            "     This step is skipped by default."
     echo -e "  -h  This message."
 }
 
@@ -55,8 +57,11 @@ OUTDIR_SET=false
 NPROC_SET=false
 COORD_SET=false
 
+# Argument defaults
+ALIGN_BARCODE=false
+
 # Get commandline arguments
-while getopts "1:2:j:r:y:n:o:x:p:h" OPT; do
+while getopts "1:2:j:r:y:n:o:x:p:ah" OPT; do
     case "$OPT" in
     1)  R1_READS=$OPTARG
         R1_READS_SET=true
@@ -84,6 +89,8 @@ while getopts "1:2:j:r:y:n:o:x:p:h" OPT; do
         ;;
     p)  NPROC=$OPTARG
         NPROC_SET=true
+        ;;
+    a)  ALIGN_BARCODE=true
         ;;
     h)  print_usage
         exit
@@ -249,14 +256,6 @@ MPR1_FILE="${OUTNAME}-R1_quality-pass.fastq"
 MPR2_FILE="${OUTNAME}-R2_quality-pass.fastq"
 check_error
 
-# Identify primers and UMI in -2 reads
-printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "MaskPrimers extract"
-MaskPrimers.py extract -s ${MPR2_FILE} \
-     --start 12 --len 7 --barcode --bf BARCODE --mode cut \
-     --log "${LOGDIR}/primers-2.log" \
-    --outname "${OUTNAME}-R2" --outdir .  >> $PIPELINE_LOG 2> $ERROR_LOG
-check_error
-
 # Annotate -1 reads with internal C-region
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "MaskPrimers align"
 MaskPrimers.py align -s ${MPR1_FILE} \
@@ -268,6 +267,14 @@ MaskPrimers.py align -s ${MPR1_FILE} \
     --outdir .  >> $PIPELINE_LOG 2> $ERROR_LOG
 check_error
 
+# Identify primers and UMI in -2 reads
+printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "MaskPrimers extract"
+MaskPrimers.py extract -s ${MPR2_FILE} \
+     --start 12 --len 7 --barcode --bf BARCODE --mode cut \
+     --log "${LOGDIR}/primers-2.log" \
+    --outname "${OUTNAME}-R2" --outdir .  >> $PIPELINE_LOG 2> $ERROR_LOG
+check_error
+
 # Transfer annotation
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "PairSeq"
 PairSeq.py -1 "${OUTNAME}-R2_primers-pass.fastq" \
@@ -276,30 +283,37 @@ PairSeq.py -1 "${OUTNAME}-R2_primers-pass.fastq" \
 check_error
 
 # Multiple align UID read groups
-printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "AlignSets"
-AlignSets.py muscle -s "${OUTNAME}-R1_primers-pass_pair-pass.fastq" --exec $MUSCLE_EXEC \
-        --nproc ${NPROC} --log "${LOGDIR}/align-1.log" \
-        --outname "${OUTNAME}-R1"  >> $PIPELINE_LOG 2> $ERROR_LOG
-AlignSets.py muscle -s "${OUTNAME}-R2_primers-pass_pair-pass.fastq" --exec $MUSCLE_EXEC \
-        --nproc ${NPROC} --log "${LOGDIR}/align-2.log" \
-        --outname "${OUTNAME}-R2"  >> $PIPELINE_LOG 2> $ERROR_LOG
-check_error
+if $ALIGN_BARCODE; then
+    printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "AlignSets muscle"
+    AlignSets.py muscle -s "${OUTNAME}-R1_primers-pass_pair-pass.fastq" --exec $MUSCLE_EXEC \
+        --nproc $NPROC --log "${LOGDIR}/align-1.log" --outname "${OUTNAME}-R1" \
+        >> $PIPELINE_LOG 2> $ERROR_LOG
+    AlignSets.py muscle -s "${OUTNAME}-R2_primers-pass_pair-pass.fastq" --exec $MUSCLE_EXEC \
+        --nproc $NPROC --log "${LOGDIR}/align-2.log" --outname "${OUTNAME}-R2" \
+        >> $PIPELINE_LOG 2> $ERROR_LOG
+    BCR1_FILE="${OUTNAME}-R1_align-pass.fastq"
+    BCR2_FILE="${OUTNAME}-R2_align-pass.fastq"
+    check_error
+else
+    BCR1_FILE="${OUTNAME}-R1_primers-pass_pair-pass.fastq"
+    BCR2_FILE="${OUTNAME}-R2_primers-pass_pair-pass.fastq"
+fi
 
 # UMI consensus
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "BuildConsensus"
-BuildConsensus.py -s "${OUTNAME}-R2_align-pass.fastq" \
+BuildConsensus.py -s ${BCR1_FILE} \
+   --bf BARCODE --pf ${C_FIELD} --prcons ${BC_PRCONS} \
+   -n ${BC_MINCOUNT} -q ${BC_QUAL} --maxerror ${BC_MAXERR} --maxgap ${BC_MAXGAP}  \
+   --nproc ${NPROC} --log "${LOGDIR}/consensus-1.log"  \
+   --outdir . --outname "${OUTNAME}-R1" >> $PIPELINE_LOG 2> $ERROR_LOG
+BuildConsensus.py -s ${BCR2_FILE} \
    --bf BARCODE --pf ${C_FIELD} --prcons ${BC_PRCONS} \
    -n ${BC_MINCOUNT} -q ${BC_QUAL} --maxerror ${BC_MAXERR} --maxgap ${BC_MAXGAP}  \
    --nproc ${NPROC} --log "${LOGDIR}/consensus-2.log" \
    --outdir . --outname "${OUTNAME}-R2" >> $PIPELINE_LOG 2> $ERROR_LOG
-BuildConsensus.py -s "${OUTNAME}-R1_align-pass.fastq" \
-   --bf BARCODE --pf ${C_FIELD} --prcons ${BC_PRCONS} \
-   -n ${BC_MINCOUNT} -q ${BC_QUAL} --maxerror ${BC_MAXERR} --maxgap ${BC_MAXGAP}  \
-   --nproc ${NPROC} --log "${LOGDIR}/consensus-1.log"  \
-   --outdir . --outname "${OUTNAME}-R1"  >> $PIPELINE_LOG 2> $ERROR_LOG
 check_error
 
-# Syncronize reads
+# Synchronize reads
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "PairSeq"
 PairSeq.py -1 "${OUTNAME}-R1_consensus-pass.fastq" \
     -2 "${OUTNAME}-R2_consensus-pass.fastq" \
@@ -318,26 +332,17 @@ AssemblePairs.py sequential -1 "${OUTNAME}-R2_consensus-pass_pair-pass.fastq" \
     --outname "${OUTNAME}" >> $PIPELINE_LOG 2> $ERROR_LOG
 check_error
 
-# Mask low quality positions
-printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "FilterSeq maskqual"
-FilterSeq.py maskqual -s "${OUTNAME}_assemble-pass.fastq" -q ${FS_MASK} --nproc ${NPROC} \
-        --outname "${OUTNAME}" --log "${LOGDIR}/maskqual.log" >> $PIPELINE_LOG 2> $ERROR_LOG
-check_error
-
 # Rewrite header with minimum of CONSCOUNT
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "ParseHeaders collapse"
-ParseHeaders.py collapse -s "${OUTNAME}_maskqual-pass.fastq" -f CONSCOUNT --act min \
-    --outname "${OUTNAME}-final-prcons" >> $PIPELINE_LOG 2> $ERROR_LOG
-mv "${OUTNAME}-final-prcons_reheader.fastq" "${OUTNAME}-final-prcons_total.fastq"
+ParseHeaders.py collapse -s "${OUTNAME}_assemble-pass.fastq" -f CONSCOUNT --act min \
+    >> $PIPELINE_LOG 2> $ERROR_LOG
 check_error
 
 # Rename PRCONS to C_CALL
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "ParseHeaders rename"
-ParseHeaders.py rename -s "${OUTNAME}-final-prcons_total.fastq" \
-    -f PRCONS -k C_CALL \
-    --outname "${OUTNAME}-final_total" >> $PIPELINE_LOG 2> $ERROR_LOG
-mv "${OUTNAME}-final_total_reheader.fastq" "${OUTNAME}-final_total.fastq"
-check error
+ParseHeaders.py rename -s "${OUTNAME}_assemble-pass_reheader.fastq" -f PRCONS -k C_CALL \
+    -o "${OUTNAME}-final_total.fastq" >> $PIPELINE_LOG 2> $ERROR_LOG
+check_error
 
 # Remove duplicate sequences
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "CollapseSeq"
@@ -362,24 +367,22 @@ ParseHeaders.py table -s "${OUTNAME}-final_collapse-unique_atleast-2.fastq" -f I
     --outname "final-unique-atleast2" --outdir ${LOGDIR} >> $PIPELINE_LOG 2> $ERROR_LOG
 check_error
 
-
 # Process log files
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "ParseLog"
 ParseLog.py -l "logs/quality-R1.log" "logs/quality-R2.log" -f ID QUALITY \
-        --outdir ${LOGDIR} > /dev/null     
+    --outdir ${LOGDIR} > /dev/null
 ParseLog.py -l "${LOGDIR}/primers-1.log" -f ID PRIMER ERROR PRSTART \
-        --outdir "${LOGDIR}" > /dev/null 
-ParseLog.py -l "${LOGDIR}/align-1.log" "${LOGDIR}/align-2.log" -f BARCODE SEQCOUNT \
-        --outdir "${LOGDIR}" > /dev/null 
+    --outdir "${LOGDIR}" > /dev/null
+if $ALIGN_BARCODE; then
+    ParseLog.py -l "${LOGDIR}/align-1.log" "${LOGDIR}/align-2.log" -f BARCODE SEQCOUNT \
+    --outdir "${LOGDIR}" > /dev/null
+fi
 ParseLog.py -l "${LOGDIR}/consensus-1.log" "${LOGDIR}/consensus-2.log" \
     -f BARCODE SEQCOUNT CONSCOUNT PRIMER PRCONS PRCOUNT PRFREQ ERROR \
-        --outdir "${LOGDIR}" > /dev/null 
+    --outdir "${LOGDIR}" > /dev/null
 ParseLog.py -l "${LOGDIR}/assemble.log" \
     -f ID REFID LENGTH OVERLAP GAP ERROR PVALUE EVALUE1 EVALUE2 IDENTITY FIELDS1 FIELDS2 \
-        --outdir "${LOGDIR}" > /dev/null 
-ParseLog.py -l "${LOGDIR}/maskqual.log" -f ID MASKED \
-        --outdir "${LOGDIR}" > /dev/null 
-
+    --outdir "${LOGDIR}" > /dev/null
 wait
 check_error
 
@@ -394,8 +397,8 @@ fi
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "Compressing files"
 LOG_FILES=$(ls ${LOGDIR}/*.log | grep -v "pipeline")
 FILTER_FILES="$(basename ${R1_READS})\|$(basename ${R2_READS})\|$(basename ${C_PRIMERS}))"
-FILTER_FILES+="\|final_collapse-unique.fastq\|final_collapse-unique_atleast-2.fastq"
-TEMP_FILES=$(ls *.fastq | grep -v ${FILTER_FILES})
+FILTER_FILES+="\|final_total.fastq\|final_collapse-unique.fastq\|final_collapse-unique_atleast-2.fastq"
+TEMP_FILES=$(ls *.fastq  2>/dev/null | grep -v ${FILTER_FILES})
 if $ZIP_FILES; then
     tar -zcf log_files.tar.gz $LOG_FILES
     tar -zcf temp_files.tar.gz $TEMP_FILES

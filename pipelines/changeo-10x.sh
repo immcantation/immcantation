@@ -12,10 +12,18 @@
 #       Defaults to /usr/local/share/germlines/imgt/[species name]/vdj.
 #   -g  Species name. One of human, mouse, rabbit, rat, or rhesus_monkey. Defaults to human.
 #   -t  Receptor type. One of ig or tr. Defaults to ig.
-#   -x  Distance threshold for clonal assignment.
+#   -x  Distance threshold for clonal assignment. Specify 'auto' for automatic detection.
 #       If unspecified, clonal assignment is not performed.
 #   -m  Distance model for clonal assignment.
-#       Defaults to the nucleotide Hamming distance model (ham).
+#       Defaults to the nucleotide Hamming distance model (nt). Options: nt, aa.
+#   -e  Method to use for determining the optimal threshold. One of "gmm" or "density".
+#       Defaults to "density".
+#   -d  Curve fitting model. Applies only when method (-e) is 'gmm'. Options: are
+#       'norm-norm', 'norm-gamma', 'gamma-norm' and 'gamma-gamma'.
+#       Defaults to 'gamma-gamma'.
+#   -u  Method to use for threshold selection. Applies only when method (-e) is 'gmm'.
+#       One of 'optimal', 'intersect' and 'user'.
+#       Defaults to 'user'.
 #   -b  IgBLAST IGDATA directory, which contains the IgBLAST database, optional_file
 #       and auxillary_data directories. Defaults to /usr/local/share/igblast.
 #   -n  Sample name or run identifier which will be used as the output file prefix.
@@ -43,6 +51,14 @@ print_usage() {
             "     If unspecified, clonal assignment is not performed."
     echo -e "  -m  Distance model for clonal assignment.\n" \
             "     Defaults to the nucleotide Hamming distance model (ham)."
+    echo -e "  -e  Method to use for determining the optimal threshold. One of 'gmm' or 'density'. \n" \
+            "     Defaults to 'density'."
+    echo -e "  -d  Curve fitting model. Applies only when method (-e) is 'gmm'. One of 'norm-norm', " \
+            "     'norm-gamma', 'gamma-norm' and 'gamma-gamma'. \n" \
+            "     Defaults to 'gamma-gamma'."
+    echo -e "  -u  Method to use for threshold selection. Applies only when method (-e) is 'gmm'. \n" \
+            "     One of 'optimal', 'intersect' and 'user'. \n" \
+            "     Defaults to 'user'."
     echo -e "  -b  IgBLAST IGDATA directory, which contains the IgBLAST database, optional_file\n" \
             "     and auxillary_data directories. Defaults to /usr/local/share/igblast."
     echo -e "  -n  Sample identifier which will be used as the output file prefix.\n" \
@@ -65,6 +81,9 @@ SPECIES_SET=false
 LOCI_SET=false
 DIST_SET=false
 MODEL_SET=false
+THRESHOLD_METHOD_SET=false
+THRESHOLD_MODEL_SET=false
+CUTOFF_SET=false
 IGDATA_SET=false
 OUTNAME_SET=false
 OUTDIR_SET=false
@@ -75,9 +94,10 @@ NPROC_SET=false
 PARTIAL=""
 ZIP_FILES=true
 DELETE_FILES=true
+SPC=0.995
 
 # Get commandline arguments
-while getopts "s:a:r:g:t:x:m:b:n:o:f:p:izh" OPT; do
+while getopts "s:a:r:g:t:x:m:e:d:u:b:n:o:f:p:izh" OPT; do
     case "$OPT" in
     s)  READS=$OPTARG
         READS_SET=true
@@ -99,6 +119,15 @@ while getopts "s:a:r:g:t:x:m:b:n:o:f:p:izh" OPT; do
         ;;
     m)  MODEL=$OPTARG
         MODEL_SET=true
+        ;;
+    e)  THRESHOLD_METHOD=$OPTARG
+        THRESHOLD_METHOD_SET=true
+        ;;
+    d)  THRESHOLD_MODEL=$OPTARG
+        THRESHOLD_MODEL_SET=true
+        ;;
+    u)  CUTOFF=$OPTARG
+        CUTOFF_SET=true
         ;;
     b)  IGDATA=$OPTARG
         IGDATA_SET=true
@@ -190,7 +219,23 @@ fi
 
 # Set distance model
 if ! ${MODEL_SET}; then
-    MODEL="ham"
+    MODEL="nt"
+fi
+
+# Set threshold method
+if ! ${THRESHOLD_METHOD_SET}; then
+    THRESHOLD_METHOD="density"
+fi
+
+# Set threshold model
+if ! ${THRESHOLD_MODEL_SET}; then
+    THRESHOLD_MODEL="gamma-gamma"
+fi
+
+
+# Set cutoff (method to use for threshold selection)
+if ! ${CUTOFF_SET}; then
+    CUTOFF="user"
 fi
 
 # Set blast database
@@ -284,12 +329,14 @@ check_error() {
 # Set extension
 IGBLAST_VERSION=$(igblastn -version  | grep 'Package' |sed s/'Package: '//)
 CHANGEO_VERSION=$(python3 -c "import changeo; print('%s-%s' % (changeo.__version__, changeo.__date__))")
+SCOPER_VERSION=$(Rscript -e "v <- packageVersion('scoper');cat(as.character(v))")
 
 # Start
 echo -e "IDENTIFIER: ${OUTNAME}"
 echo -e "DIRECTORY: ${OUTDIR}"
 echo -e "CHANGEO VERSION: ${CHANGEO_VERSION}"
 echo -e "IGBLAST VERSION: ${IGBLAST_VERSION}"
+echo -e "SCOPER_VERSION: ${SCOPER_VERSION}"
 echo -e "\nSTART"
 STEP=0
 
@@ -310,7 +357,7 @@ AssignGenes.py igblast -s ${IG_FILE} --organism ${SPECIES} --loci ${LOCI} \
     --outname "${OUTNAME}" --outdir . \
      >> $PIPELINE_LOG 2> $ERROR_LOG
 FMT7_FILE="${OUTNAME}_igblast.fmt7"
-#check_error
+check_error
 
 # Parse IgBLAST output
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "MakeDb igblast"
@@ -345,37 +392,38 @@ LIGHT_NON="${OUTNAME}_light_${PROD_FIELD}-F.${EXT}"
 
 # Assign clones
 if $CLONE; then
+    printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "Single cell filter"
+    singlecell-filter -d ${HEAVY_PROD},${LIGHT_PROD} -o . -f ${FORMAT} \
+    >> $PIPELINE_LOG 2> $ERROR_LOG
+    check_error
+
+    HEAVY_PROD="${OUTNAME}_heavy_${PROD_FIELD}-T_sc-pass.${EXT}"
+    LIGHT_PROD="${OUTNAME}_light_${PROD_FIELD}-T_sc-pass.${EXT}"
     if [ "$DIST" == "auto" ]; then
         printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "Detect cloning threshold"
-        shazam-threshold -d ${HEAVY_PROD} -m density -n "${OUTNAME}" \
+        shazam-threshold -d ${HEAVY_PROD},${LIGHT_PROD}  -m ${THRESHOLD_METHOD} -n "${OUTNAME}" \
+        --model ${THRESHOLD_MODEL} --cutoff ${CUTOFF} --spc ${SPC} -o . \
         -f ${FORMAT} -p ${NPROC} \
         > /dev/null 2> $ERROR_LOG
         check_error
         DIST=$(tail -n1 "${OUTNAME}_threshold-values.tab" | cut -f2)
     else
         printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "Calculating distances"
-        shazam-threshold -d ${HEAVY_PROD} -m none -n "${OUTNAME}" \
+        shazam-threshold -d ${HEAVY_PROD} -m none -n "${OUTNAME}" -o . \
         -f ${FORMAT} -p ${NPROC} \
-         &> /dev/null
+        > /dev/null 2> $ERROR_LOG
+        check_error
     fi
 
-    printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "DefineClones"
-    DefineClones.py -d ${HEAVY_PROD} --model ${MODEL} \
-        --dist ${DIST} --mode ${DC_MODE} --act ${DC_ACT} --nproc ${NPROC} \
-        --outname "${OUTNAME}_heavy" --log "${LOGDIR}/clone.log" --format ${FORMAT} \
+    printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "Define clones (scoper)"
+    scoper-clone -d ${HEAVY_PROD},${LIGHT_PROD} -o . -f ${FORMAT} \
+        --method ${MODEL} --threshold ${DIST} --nproc ${NPROC} \
+        --log "${LOGDIR}/clone.log" \
+        --name "${OUTNAME}_heavy","${OUTNAME}_light" \
         >> $PIPELINE_LOG 2> $ERROR_LOG
+
     CLONE_FILE="${OUTNAME}_heavy_clone-pass.${EXT}"
     check_error
-
-    if [ -f "${LIGHT_PROD}" ]; then
-        printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "VL clone correction"
-        light_cluster.py -d ${CLONE_FILE} -e ${LIGHT_PROD} \
-            -o "${OUTNAME}_heavy_clone-light.${EXT}" --format ${FORMAT} --doublets count \
-            > /dev/null 2> $ERROR_LOG
-        CLONE_FILE="${OUTNAME}_heavy_clone-light.${EXT}"
-    else
-        printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "VL correction skipped"
-    fi
 
     printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "CreateGermlines"
     CreateGermlines.py -d ${CLONE_FILE} --cloned -r ${REFDIR} -g ${CG_GERM} \

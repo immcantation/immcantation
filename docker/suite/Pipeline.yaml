@@ -18,10 +18,16 @@ changeo-igblast:
   - "IgBLAST annotation"
 changeo-clone:
   - "changeo-clone.sh"
-  - "Clonal assignment"
+  - "Clonal assignment using Change-O"
+scoper-clone:
+  - "scoper-clone.R"
+  - "Clonal assignment using SCOPer"
 shazam-threshold:
   - "shazam-threshold.R"
   - "Clonal threshold detection"
+singlecell-filter:
+  - "singlecell-filter.R"
+  - "Remove doublet and light chain only cells."
 tigger-genotype:
   - "tigger-genotype.R"
   - "Polymorphism detection and genotyping"

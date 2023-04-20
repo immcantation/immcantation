@@ -129,6 +129,14 @@ def inspectVersions(version_file=default_version_file):
     except (CalledProcessError, AttributeError):
         versions.packages['prestor'] = None
 
+    # enchantr
+    try:
+        enchantr = check_output('Rscript -e \"cat(packageDescription(\'enchantr\', fields=\'Version\'))\"',
+                               stderr=STDOUT, shell=True)
+        versions.packages['enchantr'] = re.search(r'([0-9.]+)', enchantr.decode('utf-8')).group(0)
+    except (CalledProcessError, AttributeError):
+        versions.packages['enchantr'] = None
+
     # MUSCLE
     try:
         muscle = check_output('muscle -version', stderr=STDOUT, shell=True)

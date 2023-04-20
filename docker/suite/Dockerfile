@@ -1,8 +1,9 @@
-FROM immcantation/dockerhub:latest
+ARG BASE_TAG=devel
+FROM immcantation/base:${BASE_TAG}
 LABEL maintainer="Jason Anthony Vander Heiden [jason.vanderheiden@yale.edu], \
                   Susanna Marquez [susanna.marquez@yale.edu]" \
       description="Full suite of the Immcantation framework tools and dependencies."
-
+ARG BASE_TAG
 # Version
 COPY Version.yaml /Version.yaml
 COPY Pipeline.yaml /Pipeline.yaml
@@ -18,7 +19,7 @@ RUN PACKAGE="immcantation" \
     && mv /tmp/${PACKAGE}/protocols /usr/local/share/protocols \
     && (cd /tmp/${PACKAGE} && builds write -n ${PACKAGE} -v $(git describe --abbrev=12 --always --dirty=+)) \
     && rm -r /tmp/${PACKAGE}
-    
+
 # Install muscle
 RUN MUSCLE=$(versions get -n muscle) \
     && wget -q --show-progress --no-check-certificate \
@@ -62,6 +63,24 @@ RUN IGBLAST=$(versions get -n igblast) \
     && fetch_igblastdb.sh -o /usr/local/share/igblast \
     && mv ncbi-igblast-${IGBLAST}/internal_data ncbi-igblast-${IGBLAST}/optional_file /usr/local/share/igblast \
     && rm -r ncbi-igblast-${IGBLAST}-x64-linux.tar.gz ncbi-igblast-${IGBLAST}
+
+# # Install IgBLAST data
+# RUN IGBLAST="1.19.0" \
+#     && wget -q --show-progress --no-check-certificate \
+#        ftp://ftp.ncbi.nih.gov/blast/executables/igblast/release/${IGBLAST}/ncbi-igblast-${IGBLAST}-x64-linux.tar.gz \
+#     && tar -zxf ncbi-igblast-${IGBLAST}-x64-linux.tar.gz \
+#     && mkdir -p /usr/local/share/igblast \
+#     && fetch_igblastdb.sh -o /usr/local/share/igblast \
+#     && mv ncbi-igblast-${IGBLAST}/internal_data ncbi-igblast-${IGBLAST}/optional_file /usr/local/share/igblast \
+#     && rm -r ncbi-igblast-${IGBLAST}-x64-linux.tar.gz ncbi-igblast-${IGBLAST}
+#
+# # Install IgBLAST executables
+# COPY ncbi-igblast-1.19.0-fedora36-x64.zip /ncbi-igblast-1.19.0-fedora36-x64.zip
+# RUN dnf install -y redhat-lsb-core sqlite-devel cmake
+# RUN unzip -q /ncbi-igblast-1.19.0-fedora36-x64.zip \
+#     && (cd ncbi-igblast-1.19.0-src/c++; make install) \
+#     && rm -r ncbi-igblast-1.19.0-src \
+#     && rm /ncbi-igblast-1.19.0-fedora36-x64.zip
 
 # Install PHYLIP
 RUN PHYLIP=$(versions get -n phylip) \
@@ -129,7 +148,7 @@ RUN PACKAGE="tigger" \
     && rinstall -p /tmp/${PACKAGE} \
     && (cd /tmp/${PACKAGE} && builds write -n ${PACKAGE} -v $(git describe --abbrev=12 --always --dirty=+)) \
     && rm -r /tmp/${PACKAGE}
-    
+
 # Install SCOPer
 RUN PACKAGE="scoper" \
     && rm -rf /tmp/${PACKAGE} \
@@ -144,7 +163,6 @@ RUN PACKAGE="dowser" \
     && rm -rf /tmp/${PACKAGE} \
     && git clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
     && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} -d immcantation \
-    && Rscript -e 'remotes::install_version("phangorn", "2.7.1", upgrade="never")' \
     && rinstall -p /tmp/${PACKAGE} -u never \
     && (cd /tmp/${PACKAGE} && builds write -n ${PACKAGE} -v $(git describe --abbrev=12 --always --dirty=+)) \
     && rm -r /tmp/${PACKAGE}
@@ -188,6 +206,10 @@ RUN PACKAGE="rdi" \
 # Install RAbHIT
 RUN RABHIT=$(versions get -n rabhit) \
     && Rscript -e "devtools::install_version('rabhit', '${RABHIT}', quiet=FALSE, clean=TRUE)"
+
+# Install Seurat
+RUN SEURAT=$(versions get -n seurat) \
+    && Rscript -e "devtools::install_version('Seurat', '${SEURAT}', quiet=FALSE, clean=TRUE, upgrade='never')"
 
 # Download and build references databases
 RUN fetch_imgtdb.sh -o /usr/local/share/germlines/imgt \

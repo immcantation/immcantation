@@ -58,6 +58,7 @@
     :hidden:
 
     prestoR <packages/prestor>
+    enchantR <https://enchantr.readthedocs.io/>
 
 
 .. _Welcome:
@@ -76,21 +77,21 @@ high-throughput AIRR-seq datasets. Beginning from raw reads, Python and R packag
 provided for pre-processing, population structure determination, and repertoire analysis.
 
 .. image:: https://img.shields.io/static/v1?label=AIRR-C%20sw-tools%20v1&message=compliant&color=008AFF&labelColor=000000&style=plastic
-       :target: https://docs.airr-community.org/en/stable/swtools/airr_swtools_standard.html
-       :align: left
+     :target: https://docs.airr-community.org/en/stable/swtools/airr_swtools_standard.html
+     :align: left
 
-Immcantation supports both the original Change-O standard and the new Adaptive Immune 
+Immcantation supports both the original Change-O standard and the new Adaptive Immune
 Receptor Repertoire (AIRR) standard developed by the
 `AIRR Community (AIRR-C) <https://www.antibodysociety.org/the-airr-community/>`_.
 
 .. image:: https://img.shields.io/docker/pulls/immcantation/suite
     :target: https://hub.docker.com/u/immcantation
     :align: left
-    
+
 The different tools are available from PyPi, CRAN and Bitbucket. Versioned containers with
 all tools installed are hosted on `Docker Hub <https://hub.docker.com/r/immcantation/suite>`_.
 
-            
+
 Core Packages
 -----------------------------------------------------------------------------------------
 
@@ -104,7 +105,8 @@ Core Packages
       - .. image:: https://img.shields.io/pypi/dm/presto
             :target: https://pypi.org/project/presto
             :align: right
-        
+            :alt: downloads
+
         **pRESTO**
 
         + Quality control
@@ -116,6 +118,7 @@ Core Packages
       - .. image:: https://img.shields.io/pypi/dm/changeo
             :target: https://pypi.org/project/changeo
             :align: right
+            :alt: downloads
 
         **Change-O**
 
@@ -123,11 +126,12 @@ Core Packages
         + Clonal clustering
         + Germline reconstruction
         + Conversion and annotation
-        
+
     * - |alakazam-img|
       - .. image:: https://cranlogs.r-pkg.org/badges/alakazam
             :target: https://www.r-pkg.org/pkg/alakazam
             :align: right
+            :alt: downloads
 
         **Alakazam**
 
@@ -135,12 +139,13 @@ Core Packages
         + Lineage topology analysis
         + Repertoire diversity
         + V(D)J gene usage
-        + Physicochemical property analysis        
+        + Physicochemical property analysis
 
     * - |shazam-img|
       - .. image:: https://cranlogs.r-pkg.org/badges/shazam
             :target: https://www.r-pkg.org/pkg/shazam
             :align: right
+            :alt: downloads
 
         **SHazaM**
 
@@ -148,12 +153,13 @@ Core Packages
         + Selection pressure quantification
         + Empirical SHM models
         + Chimera detection
-        + Clonal clustering threshold tuning  
-            
+        + Clonal clustering threshold tuning
+
     * - |tigger-img|
       - .. image:: https://cranlogs.r-pkg.org/badges/tigger
             :target: https://www.r-pkg.org/pkg/tigger
             :align: right
+            :alt: downloads
 
         **TIgGER**
 
@@ -164,11 +170,12 @@ Core Packages
       - .. image:: https://cranlogs.r-pkg.org/badges/scoper
             :target: https://www.r-pkg.org/pkg/scoper
             :align: right
+            :alt: downloads
 
         **SCOPer**
 
         + Spectral clonal clustering methods
-            
+
     * - |prestoR-img|
       - **prestoR**
 
@@ -178,11 +185,12 @@ Core Packages
       - .. image:: https://cranlogs.r-pkg.org/badges/dowser
             :target: https://www.r-pkg.org/pkg/dowser
             :align: right
-            
+            :alt: downloads
+
         **dowser**
 
         + Phylogenetic analysis on B cell receptor repertoires
-        
+
 
 Contributed Packages
 -----------------------------------------------------------------------------------------
@@ -221,61 +229,73 @@ Contributed Packages
     :align: middle
     :width: 200
     :target: pRESTO_
+    :alt: pRESTO
 
 .. |changeo-img| image:: _static/changeo.png
     :align: middle
     :width: 200
     :target: Change-O_
+    :alt: Change-O
 
 .. |alakazam-img| image:: _static/alakazam.png
     :align: middle
     :width: 200
     :target: Alakazam_
+    :alt: alakazam
 
 .. |shazam-img| image:: _static/shazam.png
     :align: middle
     :width: 200
     :target: SHazaM_
+    :alt: SHazaM
 
 .. |tigger-img| image:: _static/tigger.png
     :align: middle
     :width: 200
     :target: TIgGER_
+    :alt: TIgGER
 
 .. |scoper-img| image:: _static/scoper.png
     :align: middle
     :width: 200
     :target: SCOPer_
+    :alt: SCOPer
 
 .. |prestoR-img| image:: _static/prestoR.png
     :align: middle
     :width: 200
     :target: prestoR_
+    :alt: prestoR
 
 .. |dowser-img| image:: _static/dowser.png
     :align: middle
     :width: 200
     :target: dowser_
+    :alt: dowser
 
 .. |rdi-img| image:: _static/rdi.png
     :align: middle
     :width: 200
     :target: RDI_
+    :alt: RDI
 
 .. |igphyml-img| image:: _static/igphyml.png
     :align: middle
     :width: 180
     :target: IgPhyML_
+    :alt: IgPhyML
 
 .. |rabhit-img| image:: _static/rabhit.png
     :align: middle
     :width: 140
     :target: RAbHIT_
+    :alt: RAbHIT
 
 .. |sumrep-img| image:: _static/sumrep.png
     :align: middle
     :width: 180
     :target: sumrep_
+    :alt: sumrep
 
 .. Doc links
 

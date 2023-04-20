@@ -14,7 +14,7 @@
 #   -c  C-region FASTA sequences for the C-region internal to the primer.
 #       If unspecified internal C-region alignment is not performed.
 #   -r  V-segment reference file.
-#       Defaults to /usr/local/share/germlines/igblast/fasta/imgt_human_ig_v.fasta
+#       Defaults to /usr/local/share/igblast/fasta/imgt_human_ig_v.fasta
 #   -y  YAML file providing description fields for report generation.
 #   -n  Sample name or run identifier which will be used as the output file prefix.
 #       Defaults to a truncated version of the read 1 filename.
@@ -225,7 +225,7 @@ fi
 ZIP_FILES=true
 DELETE_FILES=true
 FILTER_LOWQUAL=true
-ALIGN_SETS=false
+ALIGN_BARCODE=false
 MASK_LOWQUAL=false
 REPORT=true
 
@@ -333,7 +333,7 @@ check_error
 
 
 # Multiple align UID read groups
-if $ALIGN_SETS; then
+if $ALIGN_BARCODE; then
     printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "AlignSets muscle"
 	AlignSets.py muscle -s "${OUTNAME}-R1_primers-pass_pair-pass.fastq" --exec $MUSCLE_EXEC \
 	    --nproc $NPROC --log "${LOGDIR}/align-1.log" --outname "${OUTNAME}-R1" \
@@ -390,7 +390,7 @@ fi
 check_error
 
 
-# Syncronize read files
+# Synchronize read files
 printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "PairSeq"
 PairSeq.py -1 "${OUTNAME}-R1_consensus-pass.fastq" -2 "${OUTNAME}-R2_consensus-pass.fastq" \
     --coord presto >> $PIPELINE_LOG 2> $ERROR_LOG

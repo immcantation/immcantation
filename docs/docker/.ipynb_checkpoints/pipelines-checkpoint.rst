@@ -160,7 +160,7 @@ or inside the container under ``/usr/local/share/protocols/Universal``.
 .. _ClontechPipelineUMI:
 
 Takara Bio / Clontech SMARTer v2 (UMI) immune sequencing kit preprocessing pipeline
---------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 
 A start to finish pRESTO processing script for Takara Bio / Clontech SMARTer v2 immune
 sequencing kit data that includes UMIs. C-regions are assigned using the universal C-region
@@ -295,12 +295,15 @@ Infers V segment genotypes using TIgGER.
         tigger-genotype -d $DB -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC
 
 
-TIgGER infers the subject-specific genotyped V gene calls and saves the corrected calls in a new column, ``v_call_genotyped``. 
-TIgGER also generates a ``*_genotype.fasta`` file, which contains the subject-specific germline IGHV genes. In future analyses, 
-if ``v_call_genotyped`` column is used to replace ``v_call``, please remember to use  this ``*_genotype.fasta`` file generated previously 
-by TIgGER as the subject-specific IGHV gene germline. An example of this application can be found in the **Clonal assignment pipeline** section. 
+TIgGER infers the subject-specific genotyped V gene calls and saves the corrected calls in a new column, ``v_call_genotyped``. ``v_call`` column should be updated by ``v_call_genotyped`` for future analysis.
 
+.. code-block:: R
 
+   # update v_call
+   db %>% 
+      dplyr::mutate(v_call = v_call_genotyped) %>% 
+      select(-v_call_genotyped)  
+      
 .. _ThresholdPipeline:
 
 Clonal threshold inference pipeline
@@ -346,19 +349,11 @@ and/or J genes, a new directory $NEW_REF with the personalized germline database
 should be created.  For example, if TIgGER was run to identify a subject-specific 
 IGHV genotype, the directory would contain: 1) ``*_genotype.fasta`` file generated 
 previously by TIgGER, which contains the subject-specific germline IGHV genes 
-2) ``imgt_human_IGHD.fasta`` and ``imgt_human _IGHJ.fasta``, which contain the IMGT IGHD 
-and IGHJ genes and can both be copied from the original germline 
-database: ``/usr/local/share/germlines/imgt/human/vdj/``. When changeo-clone is called, 
-this new personalized germline database should be passed with parameter ``-r`` 
-(see example below). And please remember to update ``v_call`` column with 
-subject-specific IGHV call (for TIgGER this is found in ``v_call_genotyped`` column).
-
-.. code-block:: R
-
-   # update v_call
-   db %>% 
-      dplyr::mutate(v_call = v_call_genotyped) %>% 
-      select(-v_call_genotyped)  
+2) ``imgt_human_IGHD.fasta`` and ``imgt_human _IGHJ.fasta``, which contain the IMGT D 
+and J genes and can both be copied from the original germline 
+database: ``/usr/local/share/germlines/imgt/human/vdj/``. When changeo-clone is 
+called, this new personalized germline database should be passed with parameter ``-r`` 
+(see example below).
 
 .. include:: ../_include/usage.rst
     :start-after: Start changeo-clone
@@ -384,7 +379,7 @@ subject-specific IGHV call (for TIgGER this is found in ``v_call_genotyped`` col
     singularity exec -B $DATA_DIR:/data immcantation_suite-|docker-version|.sif \\
         changeo-clone -d $DB -x $DIST -n $SAMPLE_NAME -o $OUT_DIR -p $NPROC
 
-**Example: changeo-clone with personalized germline database**
+**Example: changeo-clone with personalinezed germline database**
 
 .. parsed-literal::
 

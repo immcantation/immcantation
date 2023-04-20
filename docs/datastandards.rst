@@ -38,9 +38,9 @@ between both standards. Some of the most frequently used translations are:
 | productive             | FUNCTIONAL     |
 +------------------------+----------------+
 | v_call                 | V_CALL         |
-+------------------------+----------------+ 
++------------------------+----------------+
 | d_call                 | D_CALL         |
-+------------------------+----------------+  
++------------------------+----------------+
 | j_call                 | J_CALL         |
 +------------------------+----------------+
 | junction_length        | JUNCTION_LENGTH|
@@ -128,7 +128,7 @@ The following R-based example demonstrates how to fix broken workflows as a resu
 
     # The solution is to update the function call to use the correct name:
     > threshold <- findThreshold(db$dist_nearest)
-    
+
 
 Convert between Change-O and AIRR-C format
 -------------------------------------------------------------------------------------------
