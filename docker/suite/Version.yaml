@@ -20,7 +20,7 @@ dependency:
   airr-r:   1.4.1
   blast:    2.13.0
   cd-hit:   4.8.1
-  igblast:  1.20.0
+  igblast:  1.21.0
   muscle:   3.8.425
   phylip:   3.697
   vsearch:  2.22.1
