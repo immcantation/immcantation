@@ -10,7 +10,7 @@ docker pull immcantation/studio:devel
 ### Run:
 
 Start RStudio at http://localhost:8787/ by executing the command below. You
-must set a password with `-e`. You can give the imaga a name with `--name`.
+must set a password with `-e`. You can give the image a name with `--name`.
 
 
 ```
