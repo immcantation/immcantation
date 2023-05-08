@@ -49,4 +49,17 @@ docker image ls
 docker stop MyImmcantationProject
 ```
 
+## Edit notebooks
 
+Bind the local notebooks' dir to the containers' notebooks dir. 
+Go to the `notebooks` folder and make it the working directory.
+Open the `.Rmd` you want to edit, and edit/knit.
+
+```
+docker run --network=host \
+	--name MyImmcantationProject \
+	--detach \
+	-v <Path-to-immcantation-training>:/home/magus/notebooks:z \
+	-e PASSWORD=MyPassword \
+	--rm -p 8787:8787 immcantation/studio:devel
+```
