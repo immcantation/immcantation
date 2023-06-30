@@ -101,31 +101,7 @@ Core Packages
     :widths: 40 60
     :align: left
 
-    * - |presto-img|
-      - .. image:: https://img.shields.io/pypi/dm/presto
-            :target: https://pypi.org/project/presto
-            :align: right
-            :alt: downloads
 
-        **pRESTO**
-
-        + Quality control
-        + Read assembly
-        + UMI processing
-        + Error profiling
-
-    * - |changeo-img|
-      - .. image:: https://img.shields.io/pypi/dm/changeo
-            :target: https://pypi.org/project/changeo
-            :align: right
-            :alt: downloads
-
-        **Change-O**
-
-        + V(D)J reference alignment standardization
-        + Clonal clustering
-        + Germline reconstruction
-        + Conversion and annotation
 
     * - |alakazam-img|
       - .. image:: https://cranlogs.r-pkg.org/badges/alakazam
@@ -135,11 +111,54 @@ Core Packages
 
         **Alakazam**
 
-        + Clonal lineage reconstruction
-        + Lineage topology analysis
         + Repertoire diversity
         + V(D)J gene usage
         + Physicochemical property analysis
+
+    * - |changeo-img|
+      - .. image:: https://img.shields.io/pypi/dm/changeo
+            :target: https://pypi.org/project/changeo
+            :align: right
+            :alt: downloads
+
+        **Change-O**
+
+        + V(D)J alignment with IgBLAST and IMGT
+
+    * - |dowser-img|
+      - .. image:: https://cranlogs.r-pkg.org/badges/dowser
+            :target: https://www.r-pkg.org/pkg/dowser
+            :align: right
+            :alt: downloads
+
+        **dowser**
+
+        + Build and analyze B cell lineage trees
+        + Infer migration and differentiation patterns
+        + Detect ongoing evolution over time
+    
+
+    * - |presto-img|
+      - .. image:: https://img.shields.io/pypi/dm/presto
+            :target: https://pypi.org/project/presto
+            :align: right
+            :alt: downloads
+
+        **pRESTO**
+
+        + Bulk BCR sequence data pre-processing
+        + Read assembly and QC
+        + UMI processing
+
+    * - |scoper-img|
+      - .. image:: https://cranlogs.r-pkg.org/badges/scoper
+            :target: https://www.r-pkg.org/pkg/scoper
+            :align: right
+            :alt: downloads
+
+        **SCOPer**
+
+        + Identify clonal relationships
 
     * - |shazam-img|
       - .. image:: https://cranlogs.r-pkg.org/badges/shazam
@@ -149,11 +168,10 @@ Core Packages
 
         **SHazaM**
 
+        + Clonal clustering threshold tuning
         + Mutation profiling
         + Selection pressure quantification
         + Empirical SHM models
-        + Chimera detection
-        + Clonal clustering threshold tuning
 
     * - |tigger-img|
       - .. image:: https://cranlogs.r-pkg.org/badges/tigger
@@ -165,31 +183,6 @@ Core Packages
 
         + Novel polymorphism detection
         + Genotyping
-
-    * - |scoper-img|
-      - .. image:: https://cranlogs.r-pkg.org/badges/scoper
-            :target: https://www.r-pkg.org/pkg/scoper
-            :align: right
-            :alt: downloads
-
-        **SCOPer**
-
-        + Spectral clonal clustering methods
-
-    * - |prestoR-img|
-      - **prestoR**
-
-        + pRESTO report generation
-
-    * - |dowser-img|
-      - .. image:: https://cranlogs.r-pkg.org/badges/dowser
-            :target: https://www.r-pkg.org/pkg/dowser
-            :align: right
-            :alt: downloads
-
-        **dowser**
-
-        + Phylogenetic analysis on B cell receptor repertoires
 
 
 Contributed Packages
