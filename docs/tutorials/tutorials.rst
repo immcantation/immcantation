@@ -116,7 +116,7 @@ Vignettes
 
 Detailed usage documentation and tutorials for each individual tool in Immcantation are
 provided in the main documentation pages for each tool. The following list of shortcuts
-cover common analyses. Note, each link will leave the Immcantation portal page.
+cover common analyses. *Note that each link below will leave the Immcantation portal page.*
 
 .. toctree::
     :maxdepth: 1

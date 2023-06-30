@@ -36,7 +36,7 @@
 
     Alakazam <http://alakazam.readthedocs.io>
     Change-O <http://changeo.readthedocs.io>
-    dowser <https://dowser.readthedocs.io/>
+    Dowser <https://dowser.readthedocs.io/>
     pRESTO <http://presto.readthedocs.io>
     SCOPer <http://scoper.readthedocs.io>
     SHazaM <http://shazam.readthedocs.io>
