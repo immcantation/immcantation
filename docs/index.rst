@@ -34,22 +34,22 @@
     :caption: Core Packages
     :hidden:
 
-    pRESTO <http://presto.readthedocs.io>
-    Change-O <http://changeo.readthedocs.io>
     Alakazam <http://alakazam.readthedocs.io>
+    Change-O <http://changeo.readthedocs.io>
+    dowser <https://dowser.readthedocs.io/>
+    pRESTO <http://presto.readthedocs.io>
+    SCOPer <http://scoper.readthedocs.io>
     SHazaM <http://shazam.readthedocs.io>
     TIgGER <http://tigger.readthedocs.io>
-    SCOPer <http://scoper.readthedocs.io>
-    dowser <https://dowser.readthedocs.io/>
 
 .. toctree::
     :maxdepth: 1
     :caption: Contributed Packages
     :hidden:
 
-    RDI <http://rdi.readthedocs.io>
-    RAbHIT <https://yaarilab.bitbucket.io/RAbHIT/>
     IgPhyML <https://igphyml.readthedocs.io>
+    RAbHIT <https://yaarilab.bitbucket.io/RAbHIT/>
+    RDI <http://rdi.readthedocs.io>
     sumrep <https://github.com/matsengrp/sumrep>
 
 .. toctree::
@@ -57,8 +57,8 @@
     :caption: In Development
     :hidden:
 
-    prestoR <packages/prestor>
     enchantR <https://enchantr.readthedocs.io/>
+    prestoR <packages/prestor>
 
 
 .. _Welcome:
@@ -136,7 +136,7 @@ Core Packages
         + Build and analyze B cell lineage trees
         + Infer migration and differentiation patterns
         + Detect ongoing evolution over time
-    
+
 
     * - |presto-img|
       - .. image:: https://img.shields.io/pypi/dm/presto
@@ -293,15 +293,15 @@ Contributed Packages
 
 .. Doc links
 
-.. _pRESTO: https://presto.readthedocs.io
-.. _Change-O: https://changeo.readthedocs.io
 .. _Alakazam: https://alakazam.readthedocs.io
-.. _SHazaM: https://shazam.readthedocs.io
-.. _TIgGER: https://tigger.readthedocs.io
-.. _SCOPer: https://scoper.readthedocs.io
+.. _Change-O: https://changeo.readthedocs.io
 .. _Dowser: https://dowser.readthedocs.io
-.. _RDI: https://rdi.readthedocs.io
 .. _IgPhyML: https://igphyml.readthedocs.io
-.. _RAbHIT: https://yaarilab.bitbucket.io/RAbHIT/
-.. _sumrep: https://github.com/matsengrp/sumrep
+.. _pRESTO: https://presto.readthedocs.io
 .. _prestoR: packages/prestor.html
+.. _RAbHIT: https://yaarilab.bitbucket.io/RAbHIT/
+.. _RDI: https://rdi.readthedocs.io
+.. _SCOPer: https://scoper.readthedocs.io
+.. _SHazaM: https://shazam.readthedocs.io
+.. _sumrep: https://github.com/matsengrp/sumrep
+.. _TIgGER: https://tigger.readthedocs.io

@@ -46,7 +46,8 @@ Docker
 
 Our containers are Linux-based, so if you are using a Windows computer,
 please make sure that you are using Linux containers and not Windows containers
-(this can be changed in Docker Desktop and won't affect your existing containers).
+(this can be changed in `Docker Desktop <https://www.docker.com/products/docker-desktop/>`_
+and won't affect your existing containers).
 
 
 Singularity
