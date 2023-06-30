@@ -131,7 +131,7 @@ Core Packages
             :align: right
             :alt: downloads
 
-        **dowser**
+        **Dowser**
 
         + Build and analyze B cell lineage trees
         + Infer migration and differentiation patterns
@@ -194,21 +194,22 @@ Contributed Packages
     :widths: 40 60
     :align: left
 
-    * - |rdi-img|
-      - **RDI**
+    * - |igphyml-img|
+      - **IgPhyML**
 
-        + Repertoire Dissimilarity Index
+        + Method to build lineage trees
+        + Mutation/selection hypothesis testing
+        + Best used via `Dowser`_ package
 
     * - |rabhit-img|
       - **RAbHIT**
 
         + Determination of V-D-J haplotypes
 
-    * - |igphyml-img|
-      - **IgPhyML**
+    * - |rdi-img|
+      - **RDI**
 
-        + Clonal lineage tree construction
-        + Mutation/selection hypothesis testing
+        + Repertoire Dissimilarity Index
 
     * - |sumrep-img|
       - **sumrep**
@@ -298,7 +299,7 @@ Contributed Packages
 .. _SHazaM: https://shazam.readthedocs.io
 .. _TIgGER: https://tigger.readthedocs.io
 .. _SCOPer: https://scoper.readthedocs.io
-.. _dowser: https://dowser.readthedocs.io
+.. _Dowser: https://dowser.readthedocs.io
 .. _RDI: https://rdi.readthedocs.io
 .. _IgPhyML: https://igphyml.readthedocs.io
 .. _RAbHIT: https://yaarilab.bitbucket.io/RAbHIT/
