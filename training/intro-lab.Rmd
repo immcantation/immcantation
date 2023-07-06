@@ -3,11 +3,11 @@ title: "Introduction to B Cell Repertoire Analysis using the Immcantation Framew
 output: html_document
 ---
 
-# Introduction to B Cell Repertoire Analysis using the Immcantation Framework
+# Introduction to Bulk B Cell Repertoire Analysis using the Immcantation Framework
 
 ![Cover](assets/cover.png)
 
-The field of high-throughput adaptive immune receptor repertoire sequencing (AIRR-seq) has experienced significant growth in recent years, but this growth has come with considerable complexity and variety in experimental design. These complexities, combined with the high germline and somatic diversity of immunoglobulin repertoires, present analytical challenges requiring specialized methodologies.
+The field of high-throughput adaptive immune receptor repertoire sequencing (AIRR-seq) has experienced significant growth in recent years, but this growth has come with considerable complexity and variety in experimental design. These complexities, combined with the high germline and somatic diversity of immunoglobulin repertoires, present analytical challenges requiring specialized methodologies. In this tutorial, we present an example pipeline for the bulk BCR data analysis.
 
 **This tutorial covers:**
 
@@ -168,15 +168,7 @@ import rpy2.rinterface
 %load_ext rpy2.ipython
 ```
 
-## Genotyping and discovery of novel V gene alleles with TIgGER
-
-*Gadala-Maria D, Yaari G, Uduman M, Kleinstein S (2015). “Automated analysis of high-throughput B cell sequencing data reveals a high frequency of novel immunoglobulin V gene segment alleles.” Proceedings of the National Academy of Science of the United States of America, E862-70.*
-
-*Gadala-Maria D, et al. (2019). “Identification of subject-specific immunoglobulin alleles from expressed repertoire sequencing data.” Frontiers in Immunology.*
-
-V(D)J assignment is a key step in analyzing repertoires and is done by matching the sequences against a database of known V(D)J alleles. However, current databases are incomplete and this process will fail for sequences that utilize previously undetected alleles. Some assignments may also occur to genes which are not carried by the individual. The TIgGER R package infers subject-specific V genotypes (including novel alleles), then uses the results to improve the V gene annotations. 
-
-### Load libraries and read in the data
+## Load libraries and read in the data
 
 After loading the libraries needed, the process is started by using `readChangeoDb` to read the tabulated data generated in the previous step.
 
@@ -193,6 +185,33 @@ db <- read_rearrangement(file.path("results", "changeo",
                                    "data_ph_parse-select.tsv"))
 colnames(db) # show the column names in the database
 ```
+
+### Remove sequences with large Ns using filterN 
+
+Bulk BCR data in general includes ambiguous nucleotides (Ns), and we will remove those low-quality sequences with many Ns
+```{r, message = FALSE}
+source("filterN.R")
+
+# Identify sequences with at least 20 Ns or continuous 15 Ns in the v_region
+v_n_stretches_plot <- filterN(db, "sequence_alignment",
+                                  start=1, end=312, 
+                                  ignore.gaps=T,
+                                  max.n=20, max.n.stretch = 15,
+                                  label="v_region",
+                                  plot=FALSE)
+
+v_region_n_pass <- v_n_stretches_plot$df_pass
+db = db[which(v_region_n_pass),]
+```
+
+## Genotyping and discovery of novel V gene alleles with TIgGER
+
+*Gadala-Maria D, Yaari G, Uduman M, Kleinstein S (2015). “Automated analysis of high-throughput B cell sequencing data reveals a high frequency of novel immunoglobulin V gene segment alleles.” Proceedings of the National Academy of Science of the United States of America, E862-70.*
+
+*Gadala-Maria D, et al. (2019). “Identification of subject-specific immunoglobulin alleles from expressed repertoire sequencing data.” Frontiers in Immunology.*
+
+V(D)J assignment is a key step in analyzing repertoires and is done by matching the sequences against a database of known V(D)J alleles. However, current databases are incomplete and this process will fail for sequences that utilize previously undetected alleles. Some assignments may also occur to genes which are not carried by the individual. The TIgGER R package infers subject-specific V genotypes (including novel alleles), then uses the results to improve the V gene annotations. 
+
 
 `readIgFasta` loads the reference V germline genes that were used in the V(D)J assignment (in this case the sequences in the Immcantation container).
 
