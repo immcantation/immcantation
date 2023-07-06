@@ -201,7 +201,11 @@ v_n_stretches_plot <- filterN(db, "sequence_alignment",
                                   plot=FALSE)
 
 v_region_n_pass <- v_n_stretches_plot$df_pass
+# number of sequences before filtering N
+dim(db)
 db = db[which(v_region_n_pass),]
+# number of sequences after filtering N
+dim(db)
 ```
 
 ## Genotyping and discovery of novel V gene alleles with TIgGER
