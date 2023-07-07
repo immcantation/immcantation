@@ -119,8 +119,6 @@ AssignGenes.py igblast -s ../data/input.fasta \
 
 ## Data standardization using Change-O
 
-*Gupta NT, Vander Heiden JA, Uduman M, Gadala-Maria D, Yaari G, Kleinstein SH. Change-O: a toolkit for analyzing large-scale B cell immunoglobulin repertoire sequencing data. Bioinformatics 2015; doi:10.1093/bioinformatics/btv359.*
-
 Once the V(D)J annotation is finished, the IgBLAST results are parsed into a [standardized format](https://changeo.readthedocs.io/en/stable/standard.html) suitable for downstream analysis. All tools in the Immcantation framework use this format, which allows for interoperability and provides flexibility when designing complex workflows.
 
 In this example analysis, the `fmt7` results from IgBLAST are converted into the [AIRR](https://docs.airr-community.org/en/latest/datarep/rearrangements.html) format, a tabulated text file with one sequence per row. Columns provide the annotation for each sequence using standard column names as described here: https://docs.airr-community.org/en/latest/datarep/rearrangements.html.
@@ -210,9 +208,6 @@ dim(db)
 
 ## Genotyping and discovery of novel V gene alleles with TIgGER
 
-*Gadala-Maria D, Yaari G, Uduman M, Kleinstein S (2015). “Automated analysis of high-throughput B cell sequencing data reveals a high frequency of novel immunoglobulin V gene segment alleles.” Proceedings of the National Academy of Science of the United States of America, E862-70.*
-
-*Gadala-Maria D, et al. (2019). “Identification of subject-specific immunoglobulin alleles from expressed repertoire sequencing data.” Frontiers in Immunology.*
 
 V(D)J assignment is a key step in analyzing repertoires and is done by matching the sequences against a database of known V(D)J alleles. However, current databases are incomplete and this process will fail for sequences that utilize previously undetected alleles. Some assignments may also occur to genes which are not carried by the individual. The TIgGER R package infers subject-specific V genotypes (including novel alleles), then uses the results to improve the V gene annotations. 
 
@@ -306,10 +301,6 @@ Summary of the key steps:
 
 ### Clonal assignment using the CDR3 as a fingerprint
 
-*Gupta et al. (2017)*
-
-*Nouri and Steven H Kleinstein (2018b)*
-
 Clonal relationships can be inferred from sequencing data. Hierarchical clustering is a widely used method for identify clonally related sequences. This method requires a measure of distance between pairs of sequences and a choice of linkage to define the distance between groups of sequences. Since the result will be a tree, a threshold to cut the hierarchy into discrete clonal groups is also needed. 
 
 The figure below shows a tree and the chosen threshold (red dotted line). Sequences which have a distance under this threshold are considered to be part of the same clone (i.e., clonally-related) whereas sequences which have distance above this threshold are considered to be part of independent clones (i.e., not clonally related). 
@@ -324,14 +315,11 @@ The figure below shows the distance-to-nearest distribution for a repertoire. Ty
 
 ### Setting the clonal distance threshold with SHazaM
 
-*Gupta et al. (2015)*
-
 We first split sequences into groups that share the same V and J gene assignments and that have the same junction (or equivalently CDR3) length. This is based on the assumption that members of a clone will share all of these properties. `distToNearest` performs this grouping step, then counts the number of mismatches in the junction region between all pairs of sequences in each group and returns the smallest non-zero value for each sequence. At the end of this step, a new column (`dist_nearest`) which contains the distances to the closest non-identical sequence in each group will be added to `db`.
 
 `findThreshold` uses the distribution of distances calculated in the previous step to determine an appropriate threshold for the dataset. This can be done using either a `density` or `mixture` based method. The function `plot` can be used to visualize the distance-to-nearest distribution and the threshold.
 
-```{python}
-%%R -o thr
+```{r}
 
 # get the distance to nearest neighbors
 suppressPackageStartupMessages(library(shazam))
@@ -350,8 +338,6 @@ plot(threshold) # plot the distribution
 
 #### Advanced method: Spectral-based clonal clustering (SCOPer)
 
-*Nouri and Steven H Kleinstein (2018a)*
-
 In some datasets, the distance-to-nearest distribution may not be bimodal and `findThreshold` may fail to determine the distance threshold. In these cases, spectral clustering with an adaptive threshold to determine the local sequence neighborhood may be used. This can be done with functions from the [SCOPer R package](https://scoper.readthedocs.io/).
 
 ### Change-O: Clonal assignment
@@ -363,139 +349,31 @@ Once a threshold is decided, the command line tool `DefineClones.py` from Change
 
 At the end of this step, the output file will have an additional column (`clone_id`) that provides an identifier for each sequence to indicate which clone it belongs to (i.e., sequences that have the same identifier are clonally-related). *Note that these identifiers are only unique to the dataset used to carry out the clonal assignments.*
 
-```{python}
-# assign clonal groups
-! DefineClones.py -d results/tigger/data_ph_genotyped.tsv --vf v_call_genotyped \
---model ham --norm len --dist {thr[0]} --format airr --nproc 8 \
---outname data_ph_genotyped --outdir results/changeo/
+```{r, message = FALSE}
+library(scoper)
+# Clonal assignment using hierarchical clustering
+results <- hierarchicalClones(db, threshold=thr)
+
+# Plot a histogram of inter and intra clonal distances
+plot(results, binwidth=0.02)
 ```
 
-### Change-O: add full length germline sequences
+### TBD: See vignettes of Alakazam
 
-The next step is to identify the V(D)J germline sequences from which each of the observed sequences is derived. These germlines will be used in downstream analysis to infer somatic mutations and reconstruct lineages. `CreatGermlines.py` takes the alignment information in the Change-O file (`-d`) as well as the reference database used by the alignment software (`-r`) and generates a germline sequence for each individual observed sequence. 
-
-If the argument `--cloned` is used, the function assigns the same germline to all sequences belonging to the same clone. `-g` is used to specify the type of germlines to be reconstructed. In this example, `-g dmask` is used to mask the D region, meaning that all nucleotides in the  N/P and D-segments are replaced with N's. This is often done because the germline base calls from this region are unreliable for B cell receptor alignments. 
-
-At the end of this step, the data file will have the germline sequence in the `germline_alignment_d_mask` column.
-
-```{bash}
-CreateGermlines.py -d results/changeo/data_ph_genotyped_clone-pass.tsv \
--r /usr/local/share/germlines/imgt/human/vdj/*IGH[DJ].fasta results/tigger/v_genotype.fasta \
--g dmask --cloned --vf v_call_genotyped \
---format airr --outname data_ph_genotyped
-```
-
-### Alakazam: Analysis of clonal diversity
-
-*Gupta et al. (2015)*
-
-Once the database is annotated with clonal relationships (`clone_id`), the R package `alakazam` is used to analyze clonal diversity and abundance.
-
-#### Load data and subset to IGHM, IGHG and IGHA
-
-The tab-delimited file is loaded with the function `read_rearrangement`. In this example, the analysis will focus separately on sequences with different isotypes. 
-* The isotype for each sequences (IGHM, IGHG or IGHA) is in the `isotype` column.  
-* The function `subset` is used to keep only those sequences as part of the analysis.
-
-```{r}
-# update names in alakazam’s default colors (IG_COLORS)
-names(IG_COLORS) <- c("IGHA", "IGHD", "IGHE", "IGHG", "IGHM", "IGHK", "IGHL")
-
-# read in the file that passed cloning and germline creation
-db <- read_rearrangement(file.path("results", "changeo",
-                                   "data_ph_genotyped_germ-pass.tsv"))
-
-# subset data to IgA, IgG and IgM
-db <- subset(db, isotype %in% c("IGHA", "IGHG", "IGHM"))
-```
-
-#### Clonal abundance
-
-Clonal abundance is the size of each clone (as a fraction of the entire repertoire). `estimateAbundance` estimates the clonal abundance distribution along with confidence intervals on these clone sizes using bootstrapping. 
-
-In this example, the abundance is analyzed by isotype (`group = "isotype"`). In the figure below, the y-axis shows the clone abundance (i.e., the size as a percent of the repertoire) and the x-axis is a rank of each clone, where the rank is sorted by size from larger (rank 1, left) to smaller (right). The shaded areas are confidence intervals. 
-
-```{r}
-# calculate the rank-abundance curve
-a <- estimateAbundance(db, group = "isotype")
-plot(a, colors = IG_COLORS)
-```
-
-#### Clonal diversity
-
-The clonal abundance distribution can be characterized using diversity statistics. Diversity scores (`D`) are calculated using the generalized diversity index (Hill numbers), which covers many different measures of diversity in a single function with a single varying parameter, the diversity order `q`.
-
-The function `alphaDiversity` resamples the sequences and calculates diversity scores (`D`) over a interval of diversity orders (`q`). The diversity (`D`) is shown on the y-axis and the x-axis is the parameter `q`. 
-* `q = 0` corresponds to Species Richness
-* `q = 1` corresponds to Shannon Entropy
-* `q = 2` corresponds to Simpson Index
-
-Inspection of this figure is useful to determine whether any difference in diversity between two repertoires depends on the statistic used or if it is a universal property. For example, you can see that the blue curve is changing when you change `q`, whereas the  diversity of the green and red curves doesn't change significantly along values of `q`. 
-
-```{r}
-# generate the Hill diversity curve
-d <- alphaDiversity(db, group = "isotype")
-p <- plot(d, silent = TRUE)
-p + geom_vline(xintercept = c(0, 1, 2), color = "grey50", linetype = "dashed") +
-    geom_text(data = data.frame(q = c(0, 1, 2), y = round(max(p$data$d_upper) / 2),
-              label = c("Richness", "Shannon", "Simpson")),
-              aes(x = q, y = y, label = label), size = 3, angle = 90,
-              vjust = -0.4, inherit.aes = FALSE, color = "grey50")
-```
-
-## Alakazam: Physicochemical properties of the CDR3
-
-CDR3 is the most variable region of the antibody sequence and its physicochemical properties are key contributors to antigen specificity. The function `aminoAcidProperties` in the `alakazam` R package can calculate several amino acid sequence physicochemical properties such as length, hydrophobicity (GRAVY index), bulkiness, polarity and net charge, among others. To obtain the CDR3, the junction sequence (specified by `seq = "junction"`), which is available in the form of a nucleotide sequence (`nt = T`), is trimmed to remove the first and last codon/amino acids before calculating the properties.
-
-The figure below, generated with standard `ggplot` commands, shows the distribution of the CDR3 amino acid length by isotype.
-
-```{r}
-# calculate CDR3 amino acid properties
-db <- aminoAcidProperties(db, seq = "junction", nt = TRUE,
-                          trim = TRUE, label = "cdr3")
-
-# Plot
-ggplot(db, aes(x = isotype, y = cdr3_aa_length)) + theme_bw() +
-  ggtitle("CDR3 length") + xlab("Isotype") + ylab("Amino acids") +
-  scale_fill_manual(name = "Isotype", values = IG_COLORS) +
-  geom_boxplot(aes(fill = isotype))
-```
-
-## Alakazam: family, gene and allele usage
-
-The study of biases in gene usage is also of interest. The function `countGenes` from the `alakazam` R packages can determine the count and relative abundance of V, D and J at the level of alleles, genes, or families.
-
-### V family usage by isotype
-
-Here, `countGenes` counts V gene family usage (`mode = "family"`) by isotype (`groups = "isotype"`) using the V gene allele calls in the column `v_call_genotyped`. `--clone` specifies each clone will be considered only once, with the most common gene within the clone being used.
-
-```{r}
-# V family usage by isotype
-# "clone" specifies to consider one gene per clone_id,
-# the most common gene within each clone
-usage_fam_iso <- countGenes(db, gene = "v_call_genotyped", groups = "isotype",
-                            clone = "clone_id", mode = "family")
-# groups = "isotype", then usage by isotype sums 1
-usage_fam_iso %>% group_by(isotype) %>% summarize(total = sum(clone_freq))
-```
-
-```{r}
-ggplot(usage_fam_iso, aes(x = isotype, y = clone_freq)) +
-  geom_point(aes(color = isotype), size = 4) +
-  labs(title = "V Family usage by isotype",
-       x = "Isotype", y = "Percent of repertoire")
-  scale_fill_manual(name = "Isotype", values = IG_COLORS) +
-  facet_wrap(~gene, nrow = 1) +
-  theme_bw()
-```
+Links to other types of analysis. For example, see below "Clonal Lineages". 
 
 ## Alakazam: lineage reconstruction
 
-Hoehn et al. (2019)
+TBD: Update to Dowser version, which will involve the asignment of germlines as well (createGermlines())
 
 B cell repertoires often consist of hundreds to thousands of separate clones. A clonal lineage recapitulates the ancestor-descendant relationships between clonally-related B cells and uncovering these relationships can provide insights into affinity maturation. The R package `alakazam` uses PHYLIP to reconstruct lineages following a maximum parsimony technique. PHYLIP is already installed in the Immcantation container.
 
 Before performing lineage reconstruction, some preprocessing in needed. The code below shows an example of such preprocessing done for one of the largest clones in the example dataset. The function `makeChangeoClone` takes as input a data.frame with information for a clone (`db_clone`). `text_fields = "isotype"` specifies that annotation in the column `isotype` should be merged during duplicate removal. For example, if two duplicate sequences (defined by identical nucleotide composition) are found, and one is annotated as IGHM and the second one is an IGHG, then they will be "collapsed" into a single sequence that will have the `isotype` value "IGHM,IGHG". The preprocessing done by `makeChangeoClone` also includes masking gap positions and masking ragged ends.
+
+```{r, message = FALSE}
+# read in the file that passed cloning and germline creation
+db <- read_rearrangement(file.path("results", "changeo", "data_ph_genotyped_germ-pass.tsv"))
+```
 
 ```{r}
 # Select one clone, the 2nd largest, just as an example
@@ -520,171 +398,3 @@ suppressPackageStartupMessages(library(igraph))
 plot(g)
 ```
 
-## Alakazam: lineage topology analysis
-
-`alakazam` has several functions to analyze the reconstructed lineage. `getMRCA` retrieves the first non-root node of a lineage tree, which is the Most Recent Common Ancestor (MRCA) for all the sequences in the clone. `getpathlength` calculates all the path lengths (in terms of the number of point mutations) from the tree root to all individual sequences. `summarizeSubtrees` calculates summary statistics for each node of a tree (node name, name of the parent node, number of edges leading from the node, total number of nodes within the subtree rooted at the node...). `tableEdges` creates a table of the total number of connections (edges) for each unique pair of annotations within a tree over all nodes.
-
-```{r}
-# Retrieve the most ancestral sequence
-getMRCA(g, root = "Germline")
-```
-
-```{r}
-# Calculate distance from germline
-getPathLengths(g, root = "Germline") %>% top_n(2)
-```
-
-```{r}
-# Calculate subtree properties
-summarizeSubtrees(g, fields = "isotype") %>% top_n(2)
-```
-
-```{r}
-# Tabulate isotype edge relationships
-tableEdges(g, "isotype", exclude = c("Germline", NA))
-```
-
-## SHazaM: mutational load
-
-B cell repertoires differ in the number of mutations introduced during somatic hypermutation (SHM). The `shazam` R package provides a wide array of methods focused on the analysis of SHM, including the reconstruction of SHM targeting models and quantification of selection pressure.
-
-Having identified the germline sequence (`germline_alignment_d_mask`) in previous steps, we first identify the set of somatic hypermutations by comparing the observed sequence (`sequence_alignment`) to the germline sequence. `observedMutations` is next used to quantify the mutational load of each sequence using either absolute counts (`frequency=F`) or as a frequency (the number of mutations divided by the number of informative positions (`frequency=T`). Each mutation can be defined as either a replacement mutation (R, or non-synonymous mutation, which changes the amino acid sequence) or a silent mutation (S, or synonymous mutation, which does not change the amino acid sequence). R and S mutations can be counted together (`conmbine=T`) or independently (`combine=F`). Counting can be limited to mutations occurring within a particular region of the sequence (for example, to focus on the V region `regionDefinition=IMGT_V`) or use the whole sequence (`regionDefinition=NULL`).
-
-Standard `ggplot` commands can be used to generate boxplots to visualize the distribution of mutation counts across sequences, which are found in the column `mu_count` that `observedMutations` added to `db`.
-
-```{r}
-# Calculate total mutation count, R and S combined
-db <- observedMutations(db, sequenceColumn = "sequence_alignment", 
-                        germlineColumn = "germline_alignment_d_mask",
-                        regionDefinition = NULL, frequency = F,
-                        combine = T, nproc = 4)
-
-ggplot(db, aes(x = isotype, y = mu_count, fill = isotype)) +
-  geom_boxplot() +
-  scale_fill_manual(name = "Isotype", values = IG_COLORS) +
-  xlab("Isotype") + ylab("Mutation count") + theme_bw()
-```
-
-## SHazaM: models of SHM targeting biases
-Yaari et al. (2013)
-
-SHM is a stochastic process, but does not occur uniformly across the V(D)J sequence. Some nucleotide motifs (i.e., hot-spots) are targeted more frequently than others (i.e., cold-spots). These intrinsic biases are modeled using 5-mer nucleotide motifs. For each 5-mer (e.g., ATCTA), a SHM mutability model provides the relative likelihood for the center base (e.g., the C in ATCTA) to be mutated. As associated substitution model provides the relative probabilities of the center base in a 5-mer mutating to each of the other 3 bases. There are several pre-built SHM targeting models included in `shazam` which have been constructed based on experimental datasets. These include models for human and mouse, and for both light and heavy chains. In addition, `shazam` provides the `createTargetingModel` method to generate new SHM targeting models from user-supplied sequencing data.
-
-![](assets/5mer.png)
-
-The resulting model can be visualized as a hedgehog plot with `plotMutability`. In this visualization, 5-mers that belong to classically-defined SHM hot-spot motifs (e.g., WRC) are shown in red and green, cold-spot motifs in blue, and other motifs (i.e., neutral) in grey. The bars radiating outward are the relative mutabilities of each 5-mer. The middle circle is the central nucleotide being targeted for SHM, here shown by a green circle on the left plot (nucleotide A) and an orange circle on the right plot (nucleotide C). Moving from the center of the circle outward covers the 5-mer nucleotide motif (5' to 3'). As expected, higher relative mutation rates are observed at hot-spot motifs.
-
-```{r}
-# Build and plot SHM targeting model
-m <- createTargetingModel(db, vCallColumn = "v_call_genotyped")
-
-# nucleotides: center nucleotide characters to plot
-plotMutability(m, nucleotides = c("A","C"), size = 1.2)
-```
-
-## SHazaM: quantification of selection pressure
-
-Yaari et al. (2012)
-
-During T-cell dependent adaptive immune responses, B cells undergo cycles of SHM and affinity-dependent selection that leads to the accumulation of mutations that improve their ability to bind antigens. The ability to estimate selection pressure from sequence data is of interest to understand the events driving physiological and pathological immune responses. `shazam` incorporates the Bayesian estimation of Antigen-driven SELectIoN (BASELINe) framework, to detect and quantify selection pressure, based on the analysis of somatic hypermutation patterns. Briefly, `calcBaseline` analyzes the observed frequency of replacement and silent mutations normalized by their expected frequency based on a targeting model, and generates a probability density function (PDF) for the selection strength ($\sum$). This PDF can be used to statistically test for the occurrence of selection, as well as compare selection strength across conditions. An increased frequency of R mutations ($\sum>0$) suggests positive selection, and a decreased frequency of R mutations ($\sum<0$) points towards negative selection .
-<br><br>
-<div style="float:left; margin-right:2em">
-    
-$\sum \equiv log  \frac{\pi/(1-\pi)}{\hat{\pi}/(1-\hat{\pi})}$ 
-</div>
-<div>
-positive Σ: Replacement frequency higher than expected
-
-negative Σ: Replacement frequency lower than expected
-</div>
-
-The somatic hypermutations that are observed in clonally-related sequences are not independent events. In order to generate a set of independent SHM events, selection pressure analysis starts by collapsing each clone to one representative sequence (with its associated germline) using the function `collapseClones`. Next `calcBaseline` takes each representative sequences and calculates the selection pressure. The analysis can be focused on a particular region, the V region (`regionDefinition=IMGT_V`) in the example below. Because selection pressure may act differently across the BCR, we may also be interested to evaluate the selection strength for different regions such as the Complementary Determining Regions (CDR) or Framework Regions (FWR) separately. Selection strength can also be calculated separately for different isotopes or subjects. This can be done with `groupbaseline`, which convolves the PDFs from individual sequences into a single PDF representing the group of sequences (e.g., all IgG sequences). 
-
-
-These PDF can be visualized with `plot`. FWR are critical to maintenance the overall structure of the BCR and typically have a lower observed selection strength, because mutations that alter the amino acid sequence are often negatively selected. CDRs are the areas of the BCR that generally bind to the antigen and may be subject to increased selection strength, although this can depend on the point in affinity maturation when the sequence is observed. In the example, negative selection is observed in the FWR, and almost no selection is observed in the CDR. In both CDR and FWR, sequences annotated with IGHM isotype show more positive selection strength than sequences annotated with IGHG and IGHA.
-
-```{r}
-# Calculate clonal consensus and selection using the BASELINe method
-z <- collapseClones(db)
-b <- calcBaseline(z, regionDefinition = IMGT_V)
-
-# Combine selection scores for all clones in each group
-g <- groupBaseline(b, groupBy = "isotype")
-
-# Plot probability densities for the selection pressure
-plot(g, "isotype", sigmaLimits = c(-1, 1), silent = F)
-```
-
-## SHazaM: Built in mutation models
-
-`shazam` comes with several pre-built targeting models, mutation models and sequence region definitions. They can be used to change the default behavior of many functions. For example, mutations are usually defined as R when they introduce any change in the amino acid sequence (`NULL`). However, for some analyses, it may be useful to consider some amino acid substitutions to be equivalent (i.e., treated as silent mutations). For example, it is possible to define replacement mutations as only those that introduce a change in the amino acid side chain charge (`CHARGE_MUTATIONS`).
-
-Empirical SHM Targeting Models
-
-* HH_S5F: Human heavy chain 5-mer model
-* HKL_S5F: Human light chain 5-mer model
-* MK_RS5NF: Mouse light chain 5-mer model
-
-Mutation Definitions
-
-* NULL: Any mutation that results in an amino acid substitution is considered a replacement (R) mutation.
-* CHARGE_MUTATIONS:  Only mutations that alter side chain charge are replacements.
-* HYDOPATHY_MUTATIONS: Only mutations that alter hydrophobicity class are replacements.
-* POLARITY_MUTATIONS: Only mutations that alter polarity are replacements.
-* VOLUME_MUTATIONS: Only mutations that alter volume class are replacements.
-
-Sequence Region Definitions
-
-* NULL: Full sequence
-* IMGT_V: V segment broken into combined CDRs and FWRs
-* IMGT_V_BY_REGIONS: V segment broken into individual CDRs and FWRs
-
-## References
-
-Gadala-Maria, D. et al. (2019) Identification of subject-specific
-immunoglobulin alleles from expressed repertoire sequencing data. Frontiers
-in Immunology, 10, 129.
-
-Gadala-Maria, D. et al. (2015) Automated analysis of high-throughput b-cell
-sequencing data reveals a high frequency of novel immunoglobulin v gene
-segment alleles. Proceedings of the National Academy of Sciences,
-201417683.
-
-Gupta, N.T. et al. (2017) Hierarchical clustering can identify b cell clones
-with high confidence in ig repertoire sequencing data. The Journal of
-Immunology, 1601850.
-
-Gupta, N.T. et al. (2015) Change-o: A toolkit for analyzing large-scale b cell
-immunoglobulin repertoire sequencing data. Bioinformatics, 31, 3356–3358.
-
-Hoehn, K.B. et al. (2019) Repertoire-wide phylogenetic models of B cell
-molecular evolution reveal evolutionary signatures of aging and vaccination.
-PNAS 201906020.
-
-Laserson, U. et al. (2014) High-resolution antibody dynamics of
-vaccine-induced immune responses. Proc. Natl. Acad. Sci. U.S.A., 111,
-4928–4933.
-
-Nouri, N. and Kleinstein, S.H. (2018a) A spectral clustering-based method
-for identifying clones from high-throughput b cell repertoire sequencing data.
-Bioinformatics, 34, i341–i349.
-
-Nouri, N. and Kleinstein, S.H. (2018b) Optimized threshold inference for
-partitioning of clones from high-throughput b cell repertoire sequencing
-data. Frontiers in immunology, 9.
-
-Stern, J.N. et al. (2014) B cells populating the multiple sclerosis brain
-mature in the draining cervical lymph nodes. Science translational medicine,
-6, 248ra107–248ra107.
-
-Vander Heiden, J.A. et al. (2017) Dysregulation of b cell repertoire
-formation in myasthenia gravis patients revealed through deep sequencing.
-The Journal of Immunology, 1601415.
-
-Yaari, G. et al. (2012) Quantifying selection in high-throughput
-immunoglobulin sequencing data sets. Nucleic acids research, 40,
-e134–e134.
-
-Yaari, G. et al. (2013) Models of somatic hypermutation targeting and
-substitution based on synonymous mutations from high-throughput
-immunoglobulin sequencing data. Frontiers in immunology, 4, 358.
