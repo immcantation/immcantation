@@ -16,15 +16,6 @@ Knowledge of basic command line usage is assumed. Please check out the individua
   * For some operating systems, it may be necessary to use super-user privileges (sudo), and/or to have [Docker Desktop](https://hub.docker.com/editions/community/docker-ce-desktop-windows) running before entering the previous command.
 * It is also possible to install the packages being used separately (see [pRESTO](https://presto.readthedocs.io/en/stable/install.html#installation), [Change-O](https://changeo.readthedocs.io/en/stable/install.html#installation), and [Alakazam](https://alakazam.readthedocs.io/en/stable/install/)).
 
-The primary steps of processing 10x single cell BCR data include:
-
-* Assigning V, D, and J genes using IgBLAST
-* Filtering records
-* Finding thresholds for cloning (automatically or manually)
-* Defining clonal groups
-* Running `CreateGermlines`
-* Calculating SHM frequency in the heavy chain V genes
-
 You may also reference [this page](https://immcantation.readthedocs.io/en/stable/docker/pipelines.html) for a template pipeline script to process 10x data with Immcantation's [changeo-10x](https://bitbucket.org/kleinstein/immcantation/src/master/pipelines/changeo-10x.sh) template script.
 
 ## Resources
@@ -33,6 +24,18 @@ You may also reference [this page](https://immcantation.readthedocs.io/en/stable
 * Documentation: <http://immcantation.org>
 * Source code and bug reports: <https://bitbucket.org/kleinstein/immcantation>
 * Docker image for this tutorial: https://hub.docker.com/r/immcantation/lab
+
+## Outline of tutorial 
+
+* Assigning V, D, and J genes using IgBLAST
+* Filtering records
+* Integrating BCR and gene expression data
+* Finding thresholds for cloning (automatically or manually)
+* Performing clustering to define clonal groups
+* Creating germlines
+* Calculating SHM frequency in the heavy chain V genes
+* Building and visualizing trees
+* Analyzing B cell migration, differentiation, and evolution over time
 
 ## Getting started
 
@@ -54,7 +57,7 @@ The example data is already in the container (`/home/magus/data/10x_data_2subj/`
 * `../data/bcr_phylo_tutorial/GEX.data.rds`: Gene Expression Data. This file contains a Seurat object with RNA-seq data already processed and annotated. Processing and annotation are not covered in this tutorial. You can learn more on these topics in Seurat's documentation and tutorials: <https://satijalab.org/seurat/articles/pbmc3k_tutorial.html>
 
 
-The jupyter notebook with the code is also available in the container (`/home/magus/notebooks/10x_tutorial.ipynb`). 
+The R Markdown notebook with the code is also available in the container (`/home/magus/notebooks/10x_tutorial.Rmd`). 
 
 ```{bash}
 cd /home/magus/notebooks/
@@ -475,7 +478,7 @@ references <- readIMGT(dir = "/usr/local/share/germlines/imgt/human/vdj")
 # Reconstruct germlines
 results <- createGermlines(results, references)
 
-h <- dplyr::filter(results, locus == "IGH")
+results_heavy <- dplyr::filter(results, locus == "IGH")
 ```
 
 ## Calculate SHM frequency in the V gene
@@ -484,7 +487,7 @@ Basic mutational load calculations can be performed by the function `observedMut
 
 ```{r}
 # calculate SHM frequency in the V gene
-data_h <- observedMutations(h,
+data_mut <- observedMutations(results_heavy,
                             sequenceColumn = "sequence_alignment",
                             germlineColumn = "germline_alignment_d_mask",
                             regionDefinition = IMGT_V,
@@ -497,7 +500,7 @@ The plot below shows the distribution of median mutation frequency of clones:
 
 ```{r}
 # calculate the median mutation frequency of a clone
-mut_freq_clone <- data_h %>%
+mut_freq_clone <- data_mut %>%
                   group_by(clone_id) %>%
                   summarise(median_mut_freq = median(mu_freq))
 
@@ -530,7 +533,7 @@ uniqueness of the sequences, so they are not collapsed.
 # add up duplicate_count column for collapsed sequences
 # store day, isotype, gex_annotation
 # discard clones with < 5 distinct sequences
-clones <- formatClones(data_h,
+clones <- formatClones(data_mut,
                        traits = c("day", "isotype", "gex_annotation"),
                        num_fields = c("duplicate_count"), minseq = 5)
 clones
@@ -590,18 +593,18 @@ Regardless of how you build trees, they are visualized in the same manner with t
 
 ```{r}
 # Plot all trees
-plots <- plotTrees(trees, tips = "isotype", tipsize = 2) # c_call is the standard
+plots_all <- plotTrees(trees, tips = "isotype", tipsize = 2) # c_call is the standard
 ```
 
 ```{r}
 # Plot the largest tree
-plots[[1]]
+plots_all[[1]]
 ```
 
 ```{r}
 # Save PDF of all trees
 dir.create("results/dowser_tutorial/", recursive = TRUE)
-treesToPDF(plots,
+treesToPDF(plots_all,
            file = file.path("results/dowser_tutorial/final_data_trees.pdf"),
            nrow = 2, ncol = 2)
 ```
@@ -616,10 +619,11 @@ Plot trees so that tips are colored by cell type, scaled by sample day, and labe
 trees <- scaleBranches(trees)
 
 # Make fancy tree plot of second largest tree
-plotTrees(trees, scale = 5)[[2]] +
-   geom_tippoint(aes(colour = gex_annotation, size = day)) +
-   geom_tiplab(aes(label = isotype), offset = 0.002) +
-   scale_colour_manual(values = col_anno)
+plots_fancy <- plotTrees(trees, scale = 5)[[2]] +
+       geom_tippoint(aes(colour = gex_annotation, size = day)) +
+       geom_tiplab(aes(label = isotype), offset = 0.002) +
+       scale_colour_manual(values = col_anno)
+print(plots_fancy)
 ```
 
 ### Reconstruct intermediate sequences
@@ -633,11 +637,11 @@ Get the predicted intermediate sequence at an internal node in the second larges
 trees <- collapseNodes(trees)
 
 # node_nums=TRUE labels each internal node
-p <- plotTrees(trees, node_nums = TRUE, labelsize = 6, scale = 5)[[2]] +
+plots_fancy <- plotTrees(trees, node_nums = TRUE, labelsize = 6, scale = 5)[[2]] +
        geom_tippoint(aes(colour = gex_annotation, size = day)) +
        geom_tiplab(aes(label = isotype), offset = 0.002) +
        scale_colour_manual(values = col_anno)
-print(p)
+print(plots_fancy)
 
 # Get sequence at node 26 for the second clone_id in trees
 getNodeSeq(trees, clone = trees$clone_id[2], node = 26)
@@ -656,17 +660,17 @@ trees <- dplyr::filter(trees, !is.na(p))
 trees <- trees[order(trees$p), ]
 
 # Fancy tree plots coloring tips by sample day
-p <- plotTrees(trees)
-p <- lapply(p, function(x) {
+plots_time <- plotTrees(trees)
+plots_time <- lapply(plots_time, function(x) {
             x +
                geom_tippoint(aes(fill = day), shape = 21, size = 3) +
                scale_fill_distiller(palette = "RdYlBu")})
 
 # Save all trees to a pdf file
-treesToPDF(p, file = "results/dowser_tutorial/time_data_trees.pdf")
+treesToPDF(plots_time, file = "results/dowser_tutorial/time_data_trees.pdf")
 
 select(trees, clone_id, slope, correlation, p)
-print(p[[1]])
+print(plots_time[[1]])
 ```
 
 
