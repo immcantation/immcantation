@@ -9,6 +9,11 @@ output: html_document
 
 The field of high-throughput adaptive immune receptor repertoire sequencing (AIRR-seq) has experienced significant growth in recent years, but this growth has come with considerable complexity and variety in experimental design. These complexities, combined with the high germline and somatic diversity of immunoglobulin repertoires, present analytical challenges requiring specialized methodologies. In this tutorial, we present an example pipeline for processing bulk BCR data.
 
+-   Slides and example data: <https://goo.gl/FpW3Sc>
+-   The tutorial is available as a R Markdown notebook in the
+    Immcantation repository:
+    [intro-lab.Rmd](https://bitbucket.org/kleinstein/immcantation/src/master/training).
+
 **This tutorial covers:**
 
 * V(D)J gene annotation and novel polymorphism detection
@@ -21,24 +26,10 @@ The field of high-throughput adaptive immune receptor repertoire sequencing (AIR
 General workflow:  
 ![Workflow](assets/workflow_h_cmd.png)
 
-## Resources
+For installation of docker used in this tutorial, go to the link given
+below:
 
-* You can email [immcantation@googlegroups.com](mailto:immcantation@googlegroups.com) with any questions or issues.
-* Documentation: http://immcantation.org
-* Source code and bug reports: https://bitbucket.org/kleinstein/
-* Docker image for this tutorial: https://hub.docker.com/r/immcantation/lab
-* Slides and example data: https://goo.gl/FpW3Sc
-* The tutorial is available as a R Markdown notebook in the Immcantation repository: [intro-lab.Rmd](https://bitbucket.org/kleinstein/immcantation/src/master/training).
-
-## How to use the notebook
-
-R Markdown documentation: https://rmarkdown.rstudio.com/
-
-**Ctrl+Enter** will run the code in the selected cell.
-
-## Inside this container
-
-The lab Docker image container comes with software, scripts, reference V(D)J germline genes and example data that is ready to use. The commands `versions report` and `builds report` show the versions and dates respectively of the tools and data.
+<https://immcantation.readthedocs.io/en/stable/docker/intro.html>
 
 ### Software versions
 
