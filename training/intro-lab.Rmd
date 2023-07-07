@@ -7,7 +7,7 @@ output: html_document
 
 ![Cover](assets/cover.png)
 
-The field of high-throughput adaptive immune receptor repertoire sequencing (AIRR-seq) has experienced significant growth in recent years, but this growth has come with considerable complexity and variety in experimental design. These complexities, combined with the high germline and somatic diversity of immunoglobulin repertoires, present analytical challenges requiring specialized methodologies. In this tutorial, we present an example pipeline for the bulk BCR data analysis.
+The field of high-throughput adaptive immune receptor repertoire sequencing (AIRR-seq) has experienced significant growth in recent years, but this growth has come with considerable complexity and variety in experimental design. These complexities, combined with the high germline and somatic diversity of immunoglobulin repertoires, present analytical challenges requiring specialized methodologies. In this tutorial, we present an example pipeline for processing bulk BCR data.
 
 **This tutorial covers:**
 
@@ -186,7 +186,7 @@ db <- read_rearrangement(file.path("results", "changeo",
 colnames(db) # show the column names in the database
 ```
 
-### Remove sequences with large Ns using filterN 
+### Remove sequences with many Ns using filterN 
 
 Bulk BCR data in general includes ambiguous nucleotides (Ns), and we will remove those low-quality sequences with many Ns
 ```{r, message = FALSE}
