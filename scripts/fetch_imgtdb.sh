@@ -75,7 +75,7 @@ do
     echo "|---- Ig"
     for CHAIN in IGHV IGHD IGHJ IGKV IGKJ IGLV IGLJ
     do
-        URL="http://www.imgt.org/IMGT_GENE-DB/GENElect?query=7.1+${CHAIN}&species=${VALUE}"
+        URL="https://www.imgt.org/genedb/GENElect?query=7.1+${CHAIN}&species=${VALUE}"
         FILE_NAME="${FILE_PATH}/${REPERTOIRE}_${KEY}_${CHAIN}.fasta"
         TMP_FILE="${FILE_NAME}.tmp"
         #echo $URL
@@ -89,7 +89,7 @@ do
     # Artificial spliced leader and V exon for Ig
     for CHAIN in IGHV IGKV IGLV
     do
-        URL="http://www.imgt.org/IMGT_GENE-DB/GENElect?query=8.1+${CHAIN}&species=${VALUE}&IMGTlabel=L-PART1+V-EXON"
+        URL="https://www.imgt.org/genedb/GENElect?query=8.1+${CHAIN}&species=${VALUE}&IMGTlabel=L-PART1+V-EXON"
         FILE_NAME="${FILE_PATH_LV}/${REPERTOIRE}_lv_${KEY}_${CHAIN}.fasta"
         TMP_FILE="${FILE_NAME}.tmp"
         #echo $URL
@@ -103,7 +103,7 @@ do
     # V amino acid for Ig
     for CHAIN in IGHV IGKV IGLV
     do
-        URL="http://www.imgt.org/IMGT_GENE-DB/GENElect?query=7.3+${CHAIN}&species=${VALUE}"
+        URL="https://www.imgt.org/genedb/GENElect?query=7.3+${CHAIN}&species=${VALUE}"
         FILE_NAME="${FILE_PATH_AA}/${REPERTOIRE}_aa_${KEY}_${CHAIN}.fasta"
         TMP_FILE="${FILE_NAME}.tmp"
         #echo $URL
@@ -118,7 +118,7 @@ do
     echo "|---- TCR"
     for CHAIN in TRAV TRAJ TRBV TRBD TRBJ TRDV TRDD TRDJ TRGV TRGJ
     do
-        URL="http://www.imgt.org/IMGT_GENE-DB/GENElect?query=7.1+${CHAIN}&species=${VALUE}"
+        URL="https://www.imgt.org/genedb/GENElect?query=7.1+${CHAIN}&species=${VALUE}"
         FILE_NAME="${FILE_PATH}/${REPERTOIRE}_${KEY}_${CHAIN}.fasta"
         TMP_FILE="${FILE_NAME}.tmp"
         #echo $URL
@@ -131,7 +131,7 @@ do
     # Artificial spliced leader and V exon for TCR
     for CHAIN in TRAV TRBV TRDV TRGV
     do
-        URL="http://www.imgt.org/IMGT_GENE-DB/GENElect?query=8.1+${CHAIN}&species=${VALUE}&IMGTlabel=L-PART1+V-EXON"
+        URL="https://www.imgt.org/genedb/GENElect?query=8.1+${CHAIN}&species=${VALUE}&IMGTlabel=L-PART1+V-EXON"
         FILE_NAME="${FILE_PATH_LV}/${REPERTOIRE}_lv_${KEY}_${CHAIN}.fasta"
         TMP_FILE="${FILE_NAME}.tmp"
         #echo $URL
@@ -145,7 +145,7 @@ do
     # V amino acid for TCR
     for CHAIN in TRAV TRBV TRDV TRGV
     do
-        URL="http://www.imgt.org/IMGT_GENE-DB/GENElect?query=7.3+${CHAIN}&species=${VALUE}"
+        URL="https://www.imgt.org/genedb/GENElect?query=7.3+${CHAIN}&species=${VALUE}"
         FILE_NAME="${FILE_PATH_AA}/${REPERTOIRE}_aa_${KEY}_${CHAIN}.fasta"
         TMP_FILE="${FILE_NAME}.tmp"
         #echo $URL
@@ -164,7 +164,7 @@ do
     echo "|---- Ig"
     for CHAIN in IGH IGK IGL
     do
-        URL="http://www.imgt.org/IMGT_GENE-DB/GENElect?query=8.1+${CHAIN}V&species=${VALUE}&IMGTlabel=L-PART1+L-PART2"
+        URL="https://www.imgt.org/genedb/GENElect?query=8.1+${CHAIN}V&species=${VALUE}&IMGTlabel=L-PART1+L-PART2"
         FILE_NAME="${FILE_PATH}/${REPERTOIRE}_${KEY}_${CHAIN}L.fasta"
         TMP_FILE="${FILE_NAME}.tmp"
         #echo $URL
@@ -178,7 +178,7 @@ do
     echo "|---- TCR"
     for CHAIN in TRA TRB TRG TRD
     do
-        URL="http://www.imgt.org/IMGT_GENE-DB/GENElect?query=8.1+${CHAIN}V&species=${VALUE}&IMGTlabel=L-PART1+L-PART2"
+        URL="https://www.imgt.org/genedb/GENElect?query=8.1+${CHAIN}V&species=${VALUE}&IMGTlabel=L-PART1+L-PART2"
         FILE_NAME="${FILE_PATH}/${REPERTOIRE}_${KEY}_${CHAIN}L.fasta"
         TMP_FILE="${FILE_NAME}.tmp"
         #echo $URL
@@ -204,7 +204,7 @@ do
             QUERY=7.5
         fi
 
-        URL="http://www.imgt.org/IMGT_GENE-DB/GENElect?query=${QUERY}+${CHAIN}&species=${VALUE}"
+        URL="https://www.imgt.org/genedb/GENElect?query=${QUERY}+${CHAIN}&species=${VALUE}"
         FILE_NAME="${FILE_PATH}/${REPERTOIRE}_${KEY}_${CHAIN}.fasta"
         TMP_FILE="${FILE_NAME}.tmp"
         #echo $URL
@@ -218,7 +218,7 @@ do
     echo "|---- TCR"
     for CHAIN in TRAC TRBC TRGC TRDC
     do
-        URL="http://www.imgt.org/IMGT_GENE-DB/GENElect?query=14.1+${CHAIN}&species=${VALUE}"
+        URL="https://www.imgt.org/genedb/GENElect?query=14.1+${CHAIN}&species=${VALUE}"
         FILE_NAME="${FILE_PATH}/${REPERTOIRE}_${KEY}_${CHAIN}.fasta"
         TMP_FILE="${FILE_NAME}.tmp"
         #echo $URL
@@ -234,7 +234,7 @@ done
 
 # Write download info
 INFO_FILE=${OUTDIR}/IMGT.yaml
-echo -e "source:  http://www.imgt.org/IMGT_GENE-DB" > $INFO_FILE
+echo -e "source:  https://www.imgt.org/genedb" > $INFO_FILE
 echo -e "date:    ${DATE}" >> $INFO_FILE
 echo -e "species:" >> $INFO_FILE
 for Q in ${SPECIES_QUERY[@]}
