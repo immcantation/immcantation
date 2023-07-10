@@ -132,7 +132,8 @@ You may wish to subset your data to only productive sequences:
 
 ```{r}
 # read in the data
-data <- airr::read_rearrangement("results/filtered_contig_igblast_db-pass.tsv")
+data <- airr::read_rearrangement(file.path("results",
+                                           "filtered_contig_igblast_db-pass.tsv"))
 data <- data %>% dplyr::filter(productive)
 
 cat(paste("There are", nrow(data), "rows in the data.\n"))
@@ -175,7 +176,7 @@ cat(paste("There are", nrow(data), "rows in the data after filtering out cells
 ### GEX
 
 ```{r}
-gex_db <- readRDS("../data/bcr_phylo_tutorial/GEX.data.rds")
+gex_db <- readRDS(file.path("..", "data", "bcr_phylo_tutorial", "GEX.data.rds"))
 ```
 
 Inspect the data:
@@ -309,10 +310,10 @@ dist_nearest <- distToNearest(dplyr::filter(data, locus == "IGH"))
 # generate Hamming distance histogram
 p1 <- ggplot(subset(dist_nearest, !is.na(dist_nearest)),
              aes(x = dist_nearest)) +
-        theme_bw() +
-        xlab("Hamming distance") + ylab("Count") +
-        scale_x_continuous(breaks = seq(0, 1, 0.1)) +
         geom_histogram(color = "white", binwidth = 0.02) +
+        labs(x = "Hamming distance", y = "Count") +
+        scale_x_continuous(breaks = seq(0, 1, 0.1)) +
+        theme_bw() +
         theme(axis.title = element_text(size = 18))
 plot(p1)
 ```
@@ -359,7 +360,7 @@ In the example below, BCR data from donor 2 together with the BCR data from dono
 
 ```{r}
 # read in BCR data from donor 2
-data_10x_example <- airr::read_rearrangement("../data/10x_data_2subj/sc5p_v2_hs_B_1k_multi_5gex_b_Multiplex_vdj_b_all_contig_igblast_db-pass.tsv")
+data_10x_example <- airr::read_rearrangement(file.path("..", "data", "10x_data_2subj", "sc5p_v2_hs_B_1k_multi_5gex_b_Multiplex_vdj_b_all_contig_igblast_db-pass.tsv"))
 data_10x_example$subject <- "Subj2"
 
 cat(paste("There are", nrow(data_10x_example), "rows in the donor 2 data.\n"))
@@ -374,8 +375,7 @@ data_both_subjects %>% slice_sample(n = 5) # random examples
 
 ```{r}
 # calculate cross subjects distribution of distance to nearest
-dist_crossSubj <- distToNearest(dplyr::filter(data_both_subjects,
-                                              locus == "IGH"),
+dist_crossSubj <- distToNearest(dplyr::filter(data_both_subjects, locus == "IGH"),
                                 nproc = 1, cross = "subject")
 
 # find threshold for cloning automatically and initialize the Gaussian fit
@@ -439,8 +439,9 @@ clone_sizes <- countClones(results_db)
 
 # Plot cells per clone
 ggplot(clone_sizes, aes(x = seq_count)) +
-   geom_bar() + theme_bw() +
-   xlab("Sequences per clone")
+  geom_bar() +
+  labs(x = "Sequences per clone") +
+  theme_bw()
 ```
 
 ## Create Germlines
@@ -488,12 +489,12 @@ Basic mutational load calculations can be performed by the function `observedMut
 ```{r}
 # calculate SHM frequency in the V gene
 data_mut <- observedMutations(results_heavy,
-                            sequenceColumn = "sequence_alignment",
-                            germlineColumn = "germline_alignment_d_mask",
-                            regionDefinition = IMGT_V,
-                            frequency = TRUE,
-                            combine = TRUE,
-                            nproc = 1)
+                              sequenceColumn = "sequence_alignment",
+                              germlineColumn = "germline_alignment_d_mask",
+                              regionDefinition = IMGT_V,
+                              frequency = TRUE,
+                              combine = TRUE,
+                              nproc = 1)
 ```
 
 The plot below shows the distribution of median mutation frequency of clones:
@@ -501,12 +502,12 @@ The plot below shows the distribution of median mutation frequency of clones:
 ```{r}
 # calculate the median mutation frequency of a clone
 mut_freq_clone <- data_mut %>%
-                  group_by(clone_id) %>%
-                  summarise(median_mut_freq = median(mu_freq))
+                    group_by(clone_id) %>%
+                    summarize(median_mut_freq = median(mu_freq))
 
 ggplot(mut_freq_clone, aes(median_mut_freq)) +
-    geom_histogram(, binwidth = 0.005) + theme_bw() +
-    theme(axis.title = element_text(size = 18))
+  geom_histogram(, binwidth = 0.005) +
+  theme_bw() + theme(axis.title = element_text(size = 18))
 ```
 
 ## Building and visualizing trees
@@ -580,11 +581,11 @@ head(trees)
 
 Similar to the standard maximum likelihood, but incorporating SHM specific mutation biases into the tree building.
 
-```{r}
+```{r, eval = FALSE}
 # B cell specific maximum likelihood with IgPhyML
-# This code is commented out because of long running time
-# trees = getTrees(clones, build="igphyml", exec="/usr/local/share/igphyml/src/igphyml", nproc=2)
-# head(trees)
+# This code isn't set to run because of the long running time
+trees <- getTrees(clones, build = "igphyml", exec = "/usr/local/share/igphyml/src/igphyml", nproc=2)
+head(trees)
 ```
 
 ### Plotting trees with dowser and ggtree
@@ -605,7 +606,7 @@ plots_all[[1]]
 # Save PDF of all trees
 dir.create("results/dowser_tutorial/", recursive = TRUE)
 treesToPDF(plots_all,
-           file = file.path("results/dowser_tutorial/final_data_trees.pdf"),
+           file = file.path("results", "dowser_tutorial", "final_data_trees.pdf"),
            nrow = 2, ncol = 2)
 ```
 
@@ -620,9 +621,9 @@ trees <- scaleBranches(trees)
 
 # Make fancy tree plot of second largest tree
 plots_fancy <- plotTrees(trees, scale = 5)[[2]] +
-       geom_tippoint(aes(colour = gex_annotation, size = day)) +
-       geom_tiplab(aes(label = isotype), offset = 0.002) +
-       scale_colour_manual(values = col_anno)
+                 geom_tippoint(aes(color = gex_annotation, size = day)) +
+                 geom_tiplab(aes(label = isotype), offset = 0.002) +
+                 scale_color_manual(values = col_anno)
 print(plots_fancy)
 ```
 
@@ -638,9 +639,9 @@ trees <- collapseNodes(trees)
 
 # node_nums=TRUE labels each internal node
 plots_fancy <- plotTrees(trees, node_nums = TRUE, labelsize = 6, scale = 5)[[2]] +
-       geom_tippoint(aes(colour = gex_annotation, size = day)) +
-       geom_tiplab(aes(label = isotype), offset = 0.002) +
-       scale_colour_manual(values = col_anno)
+                 geom_tippoint(aes(color = gex_annotation, size = day)) +
+                 geom_tiplab(aes(label = isotype), offset = 0.002) +
+                 scale_color_manual(values = col_anno)
 print(plots_fancy)
 
 # Get sequence at node 26 for the second clone_id in trees
@@ -662,18 +663,18 @@ trees <- trees[order(trees$p), ]
 # Fancy tree plots coloring tips by sample day
 plots_time <- plotTrees(trees)
 plots_time <- lapply(plots_time, function(x) {
-            x +
-               geom_tippoint(aes(fill = day), shape = 21, size = 3) +
-               scale_fill_distiller(palette = "RdYlBu")})
+  x +
+    geom_tippoint(aes(fill = day), shape = 21, size = 3) +
+    scale_fill_distiller(palette = "RdYlBu")
+})
 
 # Save all trees to a pdf file
-treesToPDF(plots_time, file = "results/dowser_tutorial/time_data_trees.pdf")
+treesToPDF(plots_time, file = file.path("results", "dowser_tutorial",
+                                        "time_data_trees.pdf"))
 
 select(trees, clone_id, slope, correlation, p)
 print(plots_time[[1]])
 ```
-
-
 
 ### Analyzing B cell migration, differentiation, and evolution over time
 
