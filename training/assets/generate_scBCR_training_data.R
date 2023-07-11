@@ -2,7 +2,7 @@ library(airr)
 library(dplyr)
 
 # Script to extract fasta file and the necessary filtered_contig_annotations.csv file from the BCR.data.rds file for the tutorials
-tab <- readRDS("BCR.data.rds")
+tab <- readRDS("BCR.data.rds") %>% ungroup()
 
 tab_lightchain <- tab %>% filter(locus %in% c("IGL", "IGK")) 
 tab_heavychain <- tab %>% filter(locus %in% c("IGH")) %>%
