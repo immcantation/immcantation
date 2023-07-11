@@ -49,6 +49,7 @@ These two files are subsamples of the original 10x scRNA-seq and BCR sequencing 
 
 We extracted a subset (~3000 cells) of single cell GEX/BCR data of ultrasound-guided fine needle aspiration (FNA) samples of lymph nodes for subject P05. The example dataset (BCR.data.rds and GEX.data.rds) can be downloaded in a zip file from here.
 
+<!-- #TODO: update link to data and description according to current location -->
 The example data is already in the container (`/home/magus/data/10x_data_2subj/`). If you want to, you can download it from [example data](http://clip.med.yale.edu/immcantation/examples/10x_data_2subj.zip) and unzip it.
 
 * You will find two files called **filtered_contig.fasta** and **filtered_contig_annotations.csv** in the unzipped directory (*10x_data_2subj* unless you rename it). They are the direct Cell Ranger output files for donor 1. We are going to use the Ig V(D)J sequences from donor 1 to show how to process V(D)J data using Immcantation.
@@ -115,15 +116,15 @@ Note that you might need to install several Bioconductor packages.
 
 ```{r}
 # load libraries
-library(airr)
-library(alakazam)
-library(data.table)
-library(dowser)
-library(dplyr)
-library(ggplot2)
-library(scoper)
-library(Seurat)
-library(shazam)
+suppressPackageStartupMessages(library(airr))
+suppressPackageStartupMessages(library(alakazam))
+suppressPackageStartupMessages(library(data.table))
+suppressPackageStartupMessages(library(dowser))
+suppressPackageStartupMessages(library(dplyr))
+suppressPackageStartupMessages(library(ggplot2))
+suppressPackageStartupMessages(library(scoper))
+suppressPackageStartupMessages(library(Seurat))
+suppressPackageStartupMessages(library(shazam))
 
 # Bioconductor
 library(ggtree)
