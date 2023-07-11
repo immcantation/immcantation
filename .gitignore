@@ -1,5 +1,7 @@
 *~
 .DS_Store
+.RData
+.Rprofile
 .idea
 .Rhistory
 .Rproj.user
@@ -11,3 +13,5 @@ dist/*
 docs/_build
 tests/data
 tests/run
+renv/
+renv.lock
