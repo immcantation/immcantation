@@ -13,34 +13,40 @@
     :hidden:
 
     Welcome <self>
-    Getting Started <intro>
-    Tutorials <tutorials/tutorials>
     Data Standards <datastandards>
     Contact & Cite <about>
     Contributing <contrib>
 
 .. toctree::
-    :maxdepth: 3
+    :maxdepth: 1
     :hidden:
-    :caption: Docker Container
+    :caption: Installation
 
+    intro
     docker/intro
     docker/guide
     docker/pipelines
-    docker/news
+    docker/news    
+
+.. toctree::
+    :maxdepth: 3
+    :hidden:
+    :caption: Getting started
+
+    getting_started/getting-started
 
 .. toctree::
     :maxdepth: 1
     :caption: Core Packages
     :hidden:
 
-    Alakazam <http://alakazam.readthedocs.io>
-    Change-O <http://changeo.readthedocs.io>
+    Alakazam <https://alakazam.readthedocs.io>
+    Change-O <https://changeo.readthedocs.io>
     Dowser <https://dowser.readthedocs.io/>
-    pRESTO <http://presto.readthedocs.io>
-    SCOPer <http://scoper.readthedocs.io>
-    SHazaM <http://shazam.readthedocs.io>
-    TIgGER <http://tigger.readthedocs.io>
+    pRESTO <https://presto.readthedocs.io>
+    SCOPer <https://scoper.readthedocs.io>
+    SHazaM <https://shazam.readthedocs.io>
+    TIgGER <https://tigger.readthedocs.io>
 
 .. toctree::
     :maxdepth: 1
@@ -49,7 +55,7 @@
 
     IgPhyML <https://igphyml.readthedocs.io>
     RAbHIT <https://yaarilab.bitbucket.io/RAbHIT/>
-    RDI <http://rdi.readthedocs.io>
+    RDI <https://rdi.readthedocs.io>
     sumrep <https://github.com/matsengrp/sumrep>
 
 .. toctree::
