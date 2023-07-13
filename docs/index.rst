@@ -23,7 +23,8 @@
     :caption: Installation
 
     intro
-    docker/intro  
+    docker/intro
+    docker/news
 
 .. toctree::
     :maxdepth: 3
@@ -31,6 +32,7 @@
     :caption: Getting started
 
     getting_started/getting-started
+    getting_started/resources
 
 .. toctree::
     :maxdepth: 1

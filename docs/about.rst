@@ -40,5 +40,5 @@ To cite the Change-O, Alakazam, SHazaM and TIgGER software package in publicatio
     *Bioinformatics 31, 3356-8 (2015).*
     `doi\:10.1093/bioinformatics/btv359 <http://doi.org/10.1093/bioinformatics/btv359>`__
 
-Additional citations for specific methods within Alakazam, SHazaM and TIgGER may be determined
+Additional citations for specific methods within Alakazam, SHazaM, TIgGER, SCOper and Dowser may be determined
 using the ``citation()`` function within R.

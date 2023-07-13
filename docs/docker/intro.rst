@@ -34,5 +34,3 @@ latest development (unstable) builds.
 .. include:: guide.rst
 
 .. include:: pipelines.rst
-
-.. include:: news.rst
