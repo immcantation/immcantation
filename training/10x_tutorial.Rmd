@@ -16,7 +16,7 @@ Knowledge of basic command line usage is assumed. Please check out the individua
   * For some operating systems, it may be necessary to use super-user privileges (sudo), and/or to have [Docker Desktop](https://hub.docker.com/editions/community/docker-ce-desktop-windows) running before entering the previous command.
 * It is also possible to install the packages being used separately (see [pRESTO](https://presto.readthedocs.io/en/stable/install.html#installation), [Change-O](https://changeo.readthedocs.io/en/stable/install.html#installation), and [Alakazam](https://alakazam.readthedocs.io/en/stable/install/)).
 
-You may also reference [this page](https://immcantation.readthedocs.io/en/stable/docker/pipelines.html) for a template pipeline script to process 10x data with Immcantation's [changeo-10x](https://bitbucket.org/kleinstein/immcantation/src/master/pipelines/changeo-10x.sh) template script.
+You may also reference [this page](https://immcantation.readthedocs.io/en/stable/docker/pipelines.html) for an example pipeline script to process 10x data with Immcantation's [changeo-10x](https://bitbucket.org/kleinstein/immcantation/src/master/pipelines/changeo-10x.sh) example script.
 
 ## Resources
 

@@ -23,10 +23,7 @@
     :caption: Installation
 
     intro
-    docker/intro
-    docker/guide
-    docker/pipelines
-    docker/news    
+    docker/intro  
 
 .. toctree::
     :maxdepth: 3
