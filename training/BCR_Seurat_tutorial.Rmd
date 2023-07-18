@@ -31,7 +31,7 @@ for (n in seq_along(packages)) {
 path_data <- file.path("..", "data") # change this to fit your own structure
 ```
 
-In this tutorial, we will integrate the BCR and GEX data by using the cell barcodes. However, since cell barcodes can be duplicated in multiple samples, we suggest concatenating the sample ids with the cell ids in order to ensure the uniqueness of cell barcodes across multiple samples. The sample ids can be added as a prefix to the existing cell ids when the GEX data is being processed with a Seurat command such as `gex_obj <- RenameCells(object = gex_obj, add.cell.id = sample)`. 
+In this tutorial, we will integrate the BCR and GEX data by using the cell barcodes. However, since cell barcodes can be duplicated in multiple samples, we suggest concatenating the sample ids with the cell ids in order to ensure the uniqueness of cell barcodes across multiple samples. The sample ids can be added as a prefix to the existing cell ids when the GEX data is being processed with a Seurat command such as `gex_obj <- RenameCells(object = gex_obj, add.cell.id = sample)`.
 
 *Note: We have already added the sample ids to the cell ids as such in the example GEX data.*
 
@@ -40,17 +40,22 @@ In this tutorial, we will integrate the BCR and GEX data by using the cell barco
 gex_obj <- readRDS(file.path(path_data, "GEX.data.rds"))
 bcr_data <- readRDS(file.path(path_data, "BCR.data.rds"))
 
+# should be saved in the metadata
+gex_obj$annotated_clusters <- Idents(gex_obj)
+
 # concatenate the sample id (sample) and cell id (cell_id) in the BCR data
 bcr_data <- bcr_data %>%
               rowwise() %>%
               mutate(cell_id_unique =
                          paste(sample, strsplit(cell_id, split = "-")[[1]][1],
-                               sep = "_"))
+                               sep = "_")) %>%
+              ungroup()
 ```
 
 ## Integration of BCR data with the GEX Seurat object
 
 The meta.data data slot in the Seurat object contains metadata for each cell and is a good place to hold information from BCR data.
+
 * For example, we can indicate if a cell in the GEX data has a corresponding BCR or not by adding a column called “contains_bcr”.
 * If the column “has_BCR” is true, then we can add other useful BCR data information such as clonal lineage, mutation frequency, isotype, etc. to the metadata slot.
 * The new columns in Seurat object use names defined by the [AIRR standard](https://docs.airr-community.org/en/stable/index.html), but prefixed with "bcr_".*
@@ -60,12 +65,18 @@ The meta.data data slot in the Seurat object contains metadata for each cell and
 ```{r}
 new_meta_cols <- data.frame(cell_id_unique = Cells(gex_obj))
 
+# temporary cell id fix
+bcr_data$cell_id_unique <- paste(bcr_data$sample, bcr_data$cell_id, sep = "_")
+
 # select columns from BCR data
 bcr_data_selected <- bcr_data %>%
-                       select(cell_id_unique, clone_id, mu_freq, isotype) %>%
+                       select(cell_id_unique, clone_id, mu_freq, c_gene) %>%
                        rename(bcr_clone_id = clone_id,
                               bcr_mu_freq = mu_freq,
-                              bcr_isotype = isotype)
+                              bcr_isotype = c_gene)
+
+# only add in the heavy chains (otherwise the row counts differ)
+bcr_data_selected <- dplyr::filter(bcr_data_selected, !is.na(bcr_mu_freq))
 
 # sort BCR data by cell id in GEX Seurat Object
 new_meta_cols <- left_join(new_meta_cols, bcr_data_selected,
@@ -80,6 +91,7 @@ gex_obj$contains_bcr <- !is.na(gex_obj$bcr_clone_id)
 # examples of the new columns
 ncol_meta <- ncol(gex_obj[[]])
 gex_obj[[]][, (ncol_meta - 3):ncol_meta] %>%
+  dplyr::filter(contains_bcr) %>% # let's look at the ones that match with BCRs
   slice_sample(n = 5) # row names = cell ids
 ```
 
@@ -88,6 +100,9 @@ gex_obj[[]][, (ncol_meta - 3):ncol_meta] %>%
 After we integrate the BCR data into the Seurat object, we can highlight BCR cells in a GEX UMAP plot to check if annotations based upon biomarker gene expression are accurate or not.
 
 ```{r, fig.dim = c(7, 6)}
+# have to set the idents
+Idents(gex_obj) <- "annotated_clusters" # should be annotated
+
 highlighted_cells <- Cells(gex_obj)[which(gex_obj$contains_bcr)]
 
 UMAPPlot(object = gex_obj, cells.highlight = highlighted_cells,
@@ -100,7 +115,7 @@ As we can see, there is a very good correlation between the BCR cells (in red) a
 
 *UMAP labels note: DC = dendritic cells, GC B = germinal center B cells, NK = natural killer cells, PB = plasmablasts, RMB = resting memory B cells*
 
-## Integration of GEX cell annotations in the BCR data 
+## Integration of GEX cell annotations in the BCR data
 
 The annotation information of B cells (such as sub-types of B cells and their associated UMAP coordinates) identified by the GEX data can be integrated into BCR data.
 
@@ -131,12 +146,15 @@ Using the annotated information, we can layout cells from the BCR data in a UMAP
 plot color-coded by the B cell subtypes.
 
 ```{r, fig.dim = c(7, 6)}
-anno_cols <- c("GC B" = "dodgerblue2", "Naive B" = "darkgoldenrod2",
-               "PB" = "firebrick2", "RMB" = "plum2")
+anno_cols <- c("ABC" = "green",
+               "GC" = "dodgerblue2",
+               "Naive" = "darkgoldenrod2",
+               "PB" = "firebrick2",
+               "RMB" = "plum2")
 
-ggplot() +
-  geom_point(data = bcr_gex_data,
-             aes(x = gex_umap_1, y = gex_umap_2, color = gex_annotation)) +
+ggplot(data = bcr_gex_data,
+       aes(x = gex_umap_1, y = gex_umap_2, color = gex_annotation)) +
+  geom_point() +
   scale_colour_manual(values = anno_cols) +
   theme_bw()
 ```
@@ -145,24 +163,23 @@ ggplot() +
 
 Characteristics associated with the BCR can also be displayed in UMAP plots. The plots below show the mutation frequencies and isotypes of GC B cells at various time points.
 
-```{r, fig.dim = c(16, 4)}
+```{r}
 # base plot
-p <- ggplot() +
-       geom_point(data = dplyr::filter(bcr_gex_data, gex_annotation != "GC B"),
-                  aes(x = gex_umap_1, y = gex_umap_2),
-                  color = "lightgray", size = 1) +
+p <- ggplot(data = dplyr::filter(bcr_gex_data, gex_annotation != "GC"),
+                  aes(x = gex_umap_1, y = gex_umap_2)) +
+       geom_point(color = "lightgray", size = 1) +
        theme_bw() + facet_wrap(~day, nrow = 1)
 ```
 
-```{r}
+```{r, fig.dim = c(16, 4)}
 # isotype information
-p + geom_point(data = dplyr::filter(bcr_gex_data, gex_annotation == "GC B"),
-               aes(x = gex_umap_1, y = gex_umap_2, color = isotype), size = 1)
+p + geom_point(data = dplyr::filter(bcr_gex_data, gex_annotation == "GC"),
+               aes(x = gex_umap_1, y = gex_umap_2, color = c_gene), size = 1)
 ```
 
-```{r}
+```{r, fig.dim = c(16, 4)}
 # mutation frequency
-p + geom_point(data = dplyr::filter(bcr_gex_data, gex_annotation == "GC B"),
+p + geom_point(data = dplyr::filter(bcr_gex_data, gex_annotation == "GC"),
                aes(x = gex_umap_1, y = gex_umap_2, color = mu_freq), size = 1) +
     scale_colour_continuous(trans = "reverse")
 ```
