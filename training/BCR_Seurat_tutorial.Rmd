@@ -41,7 +41,11 @@ gex_obj <- readRDS(file.path(path_data, "GEX.data.rds"))
 bcr_data <- readRDS(file.path(path_data, "BCR.data.rds"))
 
 # should be saved in the metadata
-gex_obj$annotated_clusters <- Idents(gex_obj)
+# gex_obj$annotated_clusters <- Idents(gex_obj)
+```
+
+```{r, eval = FALSE}
+# this is already done in the provided data
 
 # concatenate the sample id (sample) and cell id (cell_id) in the BCR data
 bcr_data <- bcr_data %>%
@@ -64,9 +68,6 @@ The meta.data data slot in the Seurat object contains metadata for each cell and
 
 ```{r}
 new_meta_cols <- data.frame(cell_id_unique = Cells(gex_obj))
-
-# temporary cell id fix
-bcr_data$cell_id_unique <- paste(bcr_data$sample, bcr_data$cell_id, sep = "_")
 
 # select columns from BCR data
 bcr_data_selected <- bcr_data %>%
@@ -106,8 +107,9 @@ Idents(gex_obj) <- "annotated_clusters" # should be annotated
 highlighted_cells <- Cells(gex_obj)[which(gex_obj$contains_bcr)]
 
 UMAPPlot(object = gex_obj, cells.highlight = highlighted_cells,
-         label = TRUE, label.size = 6, pt.size = 0.7) +
-  scale_color_manual(labels = c("non-BCR", "BCR"),
+         label = TRUE, label.size = 5, pt.size = 0.7) +
+  scale_color_manual(name = "Data Type",
+                     labels = c("non-BCR", "BCR"),
                      values = c("gray", "red"))
 ```
 
@@ -137,25 +139,34 @@ bcr_gex_data <- dplyr::filter(bcr_gex_data, !is.na(gex_annotation))
 
 # examples of the new columns
 ncol_bcr_gex <- ncol(bcr_gex_data)
-head(bcr_gex_data[, (ncol_bcr_gex - 3):ncol_bcr_gex])
+bcr_gex_data[, (ncol_bcr_gex - 3):ncol_bcr_gex] %>% slice_sample(n = 5)
 ```
 
 ### Identify GEX clusters in the BCR UMAP
 
-Using the annotated information, we can layout cells from the BCR data in a UMAP
+Using the annotated information, we can lay out cells from the BCR data in a UMAP
 plot color-coded by the B cell subtypes.
 
 ```{r, fig.dim = c(7, 6)}
-anno_cols <- c("ABC" = "green",
-               "GC" = "dodgerblue2",
-               "Naive" = "darkgoldenrod2",
-               "PB" = "firebrick2",
-               "RMB" = "plum2")
+# use custom colors for the cell types
+anno_cols <- c("ABC" = "green", "GC" = "dodgerblue2", "Naive" = "darkgoldenrod2",
+               "PB" = "firebrick2", "RMB" = "plum2")
 
 ggplot(data = bcr_gex_data,
        aes(x = gex_umap_1, y = gex_umap_2, color = gex_annotation)) +
   geom_point() +
-  scale_colour_manual(values = anno_cols) +
+  scale_colour_manual(name = "GEX Cell Types", values = anno_cols) +
+  theme_bw()
+```
+
+Plot by isotype:
+
+```{r, fig.dim = c(7, 6)}
+# only plot the heavy chains
+ggplot(data = bcr_gex_data %>% dplyr::filter(locus == "IGH"),
+       aes(x = gex_umap_1, y = gex_umap_2, color = c_gene)) +
+  geom_point() +
+  labs(color = "Isotype") +
   theme_bw()
 ```
 
@@ -174,12 +185,14 @@ p <- ggplot(data = dplyr::filter(bcr_gex_data, gex_annotation != "GC"),
 ```{r, fig.dim = c(16, 4)}
 # isotype information
 p + geom_point(data = dplyr::filter(bcr_gex_data, gex_annotation == "GC"),
-               aes(x = gex_umap_1, y = gex_umap_2, color = c_gene), size = 1)
+               aes(x = gex_umap_1, y = gex_umap_2, color = c_gene),
+               size = 1)
 ```
 
 ```{r, fig.dim = c(16, 4)}
 # mutation frequency
 p + geom_point(data = dplyr::filter(bcr_gex_data, gex_annotation == "GC"),
-               aes(x = gex_umap_1, y = gex_umap_2, color = mu_freq), size = 1) +
+               aes(x = gex_umap_1, y = gex_umap_2, color = mu_freq),
+               size = 1) +
     scale_colour_continuous(trans = "reverse")
 ```
