@@ -1,13 +1,17 @@
 ---
-title: "Integration of BCR and GEX data"
+title: "Integration of BCR and GEX Data"
 output: html_document
 ---
 
-# Integration of BCR and GEX data
+# Integration of BCR and GEX Data
 
 ## Introduction
 
-10x BCR (B cell receptor) data and 10x GEX (gene expression) data can borrow information from each other for an improved analysis. This tutorial demonstrates a few approaches to integrating these data types along with examples on how the new information can be used. The example datasets (**BCR.data.rds** and **GEX.data.rds**) can be downloaded in a zip file from [here](https://yale.box.com/shared/static/6s8gzxxpfb3vmwx2izn9qur9teultzvu.zip).
+BCR (B cell receptor) data and GEX (gene expression) data can borrow information from each other for expanded analyses. This tutorial demonstrates several approaches to integrating these data types along with examples on how the new information can be used.
+
+The example datasets (**BCR.data.rds** and **GEX.data.rds**) were run using the 10x Genomics platform and can be downloaded in a zip file from [here](https://yale.box.com/shared/static/6s8gzxxpfb3vmwx2izn9qur9teultzvu.zip).
+
+Please note that you may have to alter the code in this tutorial if you are not using 10x or prefer a different single-cell system other than Seurat (such as [SingleCellExperiment](https://bioconductor.org/packages/release/bioc/html/SingleCellExperiment.html) or [scverse](https://scverse.org/)).
 
 ```{r}
 # make sure the environment is clear
@@ -31,7 +35,7 @@ for (n in seq_along(packages)) {
 path_data <- file.path("..", "data") # change this to fit your own structure
 ```
 
-In this tutorial, we will integrate the BCR and GEX data by using the cell barcodes. However, since cell barcodes can be duplicated in multiple samples, we suggest concatenating the sample ids with the cell ids in order to ensure the uniqueness of cell barcodes across multiple samples. The sample ids can be added as a prefix to the existing cell ids when the GEX data is being processed with a Seurat command such as `gex_obj <- RenameCells(object = gex_obj, add.cell.id = sample)`.
+In this tutorial, we will integrate the BCR and GEX data by using the cell barcodes. However, since cell barcodes can be duplicated in multiple samples, **we suggest concatenating the sample ids with the cell ids in order to ensure the uniqueness of cell barcodes across multiple samples**. The sample ids can be added as a prefix to the existing cell ids when the GEX data is being processed with a Seurat command such as `gex_obj <- RenameCells(object = gex_obj, add.cell.id = sample)`.
 
 *Note: We have already added the sample ids to the cell ids as such in the example GEX data.*
 
@@ -40,9 +44,18 @@ In this tutorial, we will integrate the BCR and GEX data by using the cell barco
 gex_obj <- readRDS(file.path(path_data, "GEX.data.rds"))
 bcr_data <- readRDS(file.path(path_data, "BCR.data.rds"))
 
-# should be saved in the metadata
-# gex_obj$annotated_clusters <- Idents(gex_obj)
+# examine the GEX data
+gex_obj
+names(gex_obj@commands) # the processing that we did on this data
+
+# examine a few select columns of the BCR data
+bcr_data %>%
+  ungroup %>%
+  select(day, sample, cell_id, cell_id_unique, v_call, j_call, c_gene) %>%
+  slice_sample(n = 5)
 ```
+
+The GEX data here has already had cell types annotated (using characteristic marker genes). We suggest creating a column in the object's metadata to store these annotations e.g. `gex_obj$annotated_clusters <- Idents(gex_obj)` (if the annotations are the `active.ident`).
 
 ```{r, eval = FALSE}
 # this is already done in the provided data
@@ -60,7 +73,7 @@ bcr_data <- bcr_data %>%
 
 The meta.data data slot in the Seurat object contains metadata for each cell and is a good place to hold information from BCR data.
 
-* For example, we can indicate if a cell in the GEX data has a corresponding BCR or not by adding a column called “contains_bcr”.
+* For example, we can indicate if a cell in the GEX data has a corresponding BCR or not by adding a column called “contains_BCR”.
 * If the column “has_BCR” is true, then we can add other useful BCR data information such as clonal lineage, mutation frequency, isotype, etc. to the metadata slot.
 * The new columns in Seurat object use names defined by the [AIRR standard](https://docs.airr-community.org/en/stable/index.html), but prefixed with "bcr_".*
 
@@ -72,12 +85,10 @@ new_meta_cols <- data.frame(cell_id_unique = Cells(gex_obj))
 # select columns from BCR data
 bcr_data_selected <- bcr_data %>%
                        select(cell_id_unique, clone_id, mu_freq, c_gene) %>%
-                       rename(bcr_clone_id = clone_id,
-                              bcr_mu_freq = mu_freq,
-                              bcr_isotype = c_gene)
+                       rename(Isotype = c_gene)
 
 # only add in the heavy chains (otherwise the row counts differ)
-bcr_data_selected <- dplyr::filter(bcr_data_selected, !is.na(bcr_mu_freq))
+bcr_data_selected <- dplyr::filter(bcr_data_selected, !is.na(mu_freq))
 
 # sort BCR data by cell id in GEX Seurat Object
 new_meta_cols <- left_join(new_meta_cols, bcr_data_selected,
@@ -87,12 +98,12 @@ new_meta_cols <- left_join(new_meta_cols, bcr_data_selected,
 for (colname in colnames(bcr_data_selected)) {
   gex_obj[[colname]] <- new_meta_cols[[colname]]
 }
-gex_obj$contains_bcr <- !is.na(gex_obj$bcr_clone_id)
+gex_obj$contains_BCR <- !is.na(gex_obj$clone_id)
 
 # examples of the new columns
 ncol_meta <- ncol(gex_obj[[]])
 gex_obj[[]][, (ncol_meta - 3):ncol_meta] %>%
-  dplyr::filter(contains_bcr) %>% # let's look at the ones that match with BCRs
+  dplyr::filter(contains_BCR) %>% # let's look at the ones that match with BCRs
   slice_sample(n = 5) # row names = cell ids
 ```
 
@@ -104,7 +115,7 @@ After we integrate the BCR data into the Seurat object, we can highlight BCR cel
 # have to set the idents
 Idents(gex_obj) <- "annotated_clusters" # should be annotated
 
-highlighted_cells <- Cells(gex_obj)[which(gex_obj$contains_bcr)]
+highlighted_cells <- Cells(gex_obj)[which(gex_obj$contains_BCR)]
 
 UMAPPlot(object = gex_obj, cells.highlight = highlighted_cells,
          label = TRUE, label.size = 5, pt.size = 0.7) +
