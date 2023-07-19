@@ -35,7 +35,6 @@ ARG R_DEPS="c('readxl', \
               'shiny')"
 RUN echo "options(repos='${R_REPO}')" >> /usr/lib64/R/library/base/R/Rprofile \
     && mkdir -p /usr/share/doc/R/html \
-    && cp /usr/lib64/R/library/stats/html/R.css /usr/share/doc/R/html/R.css \
     && Rscript -e "install.packages(${R_DEPS}, clean=TRUE)"
   
 ## Make RStudio compatible with case when R is built from source
