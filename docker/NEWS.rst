@@ -1,7 +1,7 @@
 Release Notes
 ========================================================================
 
-Version 4.4.0.999:  June 1, 2023
+Version 4.4.0.999:  July 19, 2023
 ------------------------------------------------------------------------
 
 Version Updates:
@@ -12,6 +12,7 @@ Version Updates:
 Image Changes:
 
 + Updated base image to Fedora 38.
++ Added ``RAxML-NG`` (https://github.com/amkozlov/raxml-ng)
 
 Version 4.4.0:  December 15, 2022
 ------------------------------------------------------------------------
