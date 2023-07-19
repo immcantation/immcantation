@@ -185,6 +185,14 @@ def inspectVersions(version_file=default_version_file):
     except (CalledProcessError, AttributeError):
         versions.packages['phylip'] = None
 
+    # RAxML-NG
+    try:
+        raxmlng = check_output('raxml-ng --version', stderr=STDOUT, shell=True)
+        raxmlng = raxmlng.decode('utf-8').split('\n')[1]
+        versions.packages['raxml-ng'] =  re.search(r'(?<=RAxML-NG v. )([0-9.]+)', raxmlng).group(0)
+    except (CalledProcessError, AttributeError):
+        versions.packages['raxml-ng'] = None        
+
     # IgPhyML
     try:
         igphyml = check_output('igphyml -h; exit 0', stderr=STDOUT, shell=True)

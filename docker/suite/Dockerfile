@@ -91,6 +91,15 @@ RUN PHYLIP=$(versions get -n phylip) \
     && mv phylip-${PHYLIP}/exe/* /usr/local/bin \
     && rm -r phylip-${PHYLIP}.tar.gz phylip-${PHYLIP}
 
+# Install RAxML-NG
+RUN RAXMLNG=$(versions get -n raxml-ng) \
+    && wget -q --show-progress --no-check-certificate \
+       https://github.com/amkozlov/raxml-ng/releases/download/1.2.0/raxml-ng_v${RAXMLNG}_linux_x86_64.zip \
+    && unzip -q raxml-ng_v${RAXMLNG}_linux_x86_64.zip \
+    && mv raxml-ng /usr/local/bin/raxml-ng \
+    && chmod +x /usr/local/bin/raxml-ng \
+    && rm -r raxml-ng_v${RAXMLNG}_linux_x86_64.zip
+
 # Install tbl2asn
 RUN wget -q --show-progress --no-check-certificate \
     ftp://ftp.ncbi.nih.gov/toolbox/ncbi_tools/converters/by_program/tbl2asn/linux64.tbl2asn.gz \

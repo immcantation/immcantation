@@ -23,4 +23,5 @@ dependency:
   igblast:  1.21.0
   muscle:   3.8.425
   phylip:   3.697
+  raxml-ng: 1.2.0
   vsearch:  2.22.1
