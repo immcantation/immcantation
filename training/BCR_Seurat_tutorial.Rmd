@@ -73,8 +73,8 @@ bcr_data <- bcr_data %>%
 
 The meta.data data slot in the Seurat object contains metadata for each cell and is a good place to hold information from BCR data.
 
-* For example, we can indicate if a cell in the GEX data has a corresponding BCR or not by adding a column called “contains_BCR”.
-* If the column “has_BCR” is true, then we can add other useful BCR data information such as clonal lineage, mutation frequency, isotype, etc. to the metadata slot.
+* For example, we can indicate if a cell in the GEX data has a corresponding BCR or not by adding a column called “contains_bcr”.
+* If the column “contains_bcr” is true, then we can add other useful BCR data information such as clonal lineage, mutation frequency, isotype, etc. to the metadata slot.
 * The new columns in Seurat object use names defined by the [AIRR standard](https://docs.airr-community.org/en/stable/index.html), but prefixed with "bcr_".*
 
 ### Create the new metadata columns
@@ -98,12 +98,12 @@ new_meta_cols <- left_join(new_meta_cols, bcr_data_selected,
 for (colname in colnames(bcr_data_selected)) {
   gex_obj[[colname]] <- new_meta_cols[[colname]]
 }
-gex_obj$contains_BCR <- !is.na(gex_obj$clone_id)
+gex_obj$contains_bcr <- !is.na(gex_obj$clone_id)
 
 # examples of the new columns
 ncol_meta <- ncol(gex_obj[[]])
 gex_obj[[]][, (ncol_meta - 3):ncol_meta] %>%
-  dplyr::filter(contains_BCR) %>% # let's look at the ones that match with BCRs
+  dplyr::filter(contains_bcr) %>% # let's look at the ones that match with BCRs
   slice_sample(n = 5) # row names = cell ids
 ```
 
@@ -115,7 +115,7 @@ After we integrate the BCR data into the Seurat object, we can highlight BCR cel
 # have to set the idents
 Idents(gex_obj) <- "annotated_clusters" # should be annotated
 
-highlighted_cells <- Cells(gex_obj)[which(gex_obj$contains_BCR)]
+highlighted_cells <- Cells(gex_obj)[which(gex_obj$contains_bcr)]
 
 UMAPPlot(object = gex_obj, cells.highlight = highlighted_cells,
          label = TRUE, label.size = 5, pt.size = 0.7) +
