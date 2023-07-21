@@ -160,7 +160,7 @@ or inside the container under ``/usr/local/share/protocols/Universal``.
 .. _ClontechPipelineUMI:
 
 Takara Bio / Clontech SMARTer v2 (UMI) immune sequencing kit preprocessing pipeline
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 A start to finish pRESTO processing script for Takara Bio / Clontech SMARTer v2 immune
 sequencing kit data that includes UMIs. C-regions are assigned using the universal C-region
