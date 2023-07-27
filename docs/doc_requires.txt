@@ -3,4 +3,5 @@ nbsphinx>=0.4.1
 nbsphinx_link
 sphinx~=3.5
 sphinx_rtd_theme>=0.5
+sphinx-gallery<=0.7.0
 PyYAML>=5.1

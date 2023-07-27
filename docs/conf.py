@@ -40,6 +40,10 @@ extensions = ['sphinx.ext.intersphinx',
               'nbsphinx',
               'nbsphinx_link']
 
+nbsphinx_custom_formats = {
+    '.Rmd': ['jupytext.reads', {'fmt': '.md'}]
+}
+
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 
@@ -47,11 +51,6 @@ templates_path = ['_templates']
 # You can specify multiple suffix as a list of string:
 # source_suffix = ['.rst', '.md']
 source_suffix = [ '.rst']
-
-
-nbsphinx_custom_formats = {
-'.Rmd': lambda s: jupytext.reads(s, '.Rmd')
-}
 
 # The encoding of source files.
 #source_encoding = 'utf-8-sig'
@@ -310,3 +309,36 @@ texinfo_documents = [(master_doc,
 intersphinx_mapping = {'python': ('https://docs.python.org/3', None),
                        'presto': ('https://presto.readthedocs.io/en/stable', None),
                        'changeo': ('https://changeo.readthedocs.io/en/stable', None)}
+
+#######
+
+# Add temporary copy of the .Rmd tutorials from ../training to get-started
+# and delete them when build finished
+
+import os, shutil
+
+src_dir = os.path.join("..","training")
+dest_dir = os.path.join("getting_started")
+
+for training_file in os.listdir(src_dir):
+    if training_file.endswith('.Rmd'):
+        src_rmd = os.path.join(src_dir, training_file)
+        if os.path.isfile(src_rmd):
+            dest_rmd = os.path.join(dest_dir, training_file)
+            print("Copying ",src_rmd, " to ", dest_rmd)
+            shutil.copy2(src_rmd, dest_rmd)
+
+assets_src_dir = os.path.join("..","training","assets")
+assets_dest_dir = os.path.join(dest_dir, "assets")
+shutil.copytree(assets_src_dir, assets_dest_dir)
+
+def remove_rmd_copies(app, exception):
+    src_dir = os.path.join("getting_started")
+    for training_file in os.listdir(src_dir):
+        if training_file.endswith('.Rmd'):
+            src_rmd = os.path.join(src_dir, training_file)
+            os.remove(src_rmd)
+    shutil.rmtree(os.path.join(src_dir,"assets"))
+
+def setup(app):
+    app.connect('build-finished', remove_rmd_copies)
