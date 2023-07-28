@@ -130,6 +130,10 @@ RUN chown -R ${RS_USER}:${GID} ${HOME}/notebooks \
     && chown -R ${RS_USER}:${GID} ${HOME}/results
 
 ##### End Tutorials ########
+
+##### Sphix #######
+RUN pip install sphinx sphinx_rtd_theme jupytext nbsphinx
+
 VOLUME ${HOME}/results
 WORKDIR ${HOME}/notebooks
 ENV PASSWORD rstudio
