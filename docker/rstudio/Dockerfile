@@ -132,9 +132,9 @@ RUN chown -R ${RS_USER}:${GID} ${HOME}/notebooks \
 ##### End Tutorials ########
 
 ##### Sphix #######
-RUN pip install sphinx sphinx_rtd_theme jupytext nbsphinx
+RUN pip install sphinx sphinx_rtd_theme jupytext nbsphinx nbsphinx_link ipykernel
 
 VOLUME ${HOME}/results
-WORKDIR ${HOME}/notebooks
+# WORKDIR ${HOME}/notebooks
 ENV PASSWORD rstudio
 CMD ["/usr/bin/run-rstudio.sh"]
