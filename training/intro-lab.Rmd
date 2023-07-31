@@ -3,6 +3,10 @@ title: "Introduction to B Cell Repertoire Analysis using the Immcantation Framew
 output: md_document
 ---
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, fig.path=file.path("intro-lab_files","intro-lab_"))
+```
+
 # Introduction to Bulk B Cell Repertoire Analysis using the Immcantation Framework
 
 ![Cover](assets/cover.png)

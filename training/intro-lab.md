@@ -168,9 +168,9 @@ the V(D)J genes with `AssignGenes.py`.
     ##      FIELD> None
     ##     VALUES> None
     ## 
-    ## PROGRESS> 12:14:52 |Reading files            | 0.0 minPROGRESS> 12:14:52 |Done                     | 0.0 min
+    ## PROGRESS> 22:02:37 |Reading files            | 0.0 minPROGRESS> 22:02:37 |Done                     | 0.0 min
     ## 
-    ## PROGRESS> 12:14:52 |Sampling n=200           | 0.0 minPROGRESS> 12:14:52 |Done                     | 0.0 min
+    ## PROGRESS> 22:02:37 |Sampling n=200           | 0.0 minPROGRESS> 22:02:37 |Done                     | 0.0 min
     ## 
     ## MAX_COUNT> 200
     ##   SAMPLED> 200
@@ -204,7 +204,7 @@ the V(D)J genes with `AssignGenes.py`.
     ##     LOCI> ig
     ##    NPROC> 8
     ## 
-    ## PROGRESS> 12:14:53 |Running IgBLAST          | 0.0 minPROGRESS> 12:14:56 |Done                     | 0.0 min
+    ## PROGRESS> 22:02:38 |Running IgBLAST          | 0.0 minPROGRESS> 22:02:40 |Done                     | 0.0 min
     ## 
     ##   PASS> 200
     ## OUTPUT> input_sample1-n200_igblast.fmt7
@@ -228,7 +228,7 @@ time to finish running.*
     ##     LOCI> ig
     ##    NPROC> 8
     ## 
-    ## PROGRESS> 12:14:57 |Running IgBLAST          | 0.0 minPROGRESS> 12:32:15 |Done                     | 17.3 min
+    ## PROGRESS> 22:02:41 |Running IgBLAST          | 0.0 minPROGRESS> 22:19:58 |Done                     | 17.3 min
     ## 
     ##   PASS> 91010
     ## OUTPUT> input_igblast.fmt7
@@ -276,9 +276,9 @@ AIRR format. The path to the reference germlines is provided by `-r`.
     ##       EXTENDED> False
     ## INFER_JUNCTION> False
     ## 
-    ## PROGRESS> 12:32:15 |Loading files       | 0.0 minPROGRESS> 12:32:16 |Done                | 0.0 min
+    ## PROGRESS> 22:19:58 |Loading files       | 0.0 minPROGRESS> 22:19:59 |Done                | 0.0 min
     ## 
-    ## PROGRESS> 12:32:16 |                    |   0% (     0) 0.0 minPROGRESS> 12:32:25 |#                   |   5% ( 4,551) 0.2 minPROGRESS> 12:32:27 |##                  |  10% ( 9,102) 0.2 minPROGRESS> 12:32:29 |###                 |  15% (13,653) 0.2 minPROGRESS> 12:32:32 |####                |  20% (18,204) 0.3 minPROGRESS> 12:32:34 |#####               |  25% (22,755) 0.3 minPROGRESS> 12:32:36 |######              |  30% (27,306) 0.3 minPROGRESS> 12:32:38 |#######             |  35% (31,857) 0.4 minPROGRESS> 12:32:40 |########            |  40% (36,408) 0.4 minPROGRESS> 12:32:42 |#########           |  45% (40,959) 0.4 minPROGRESS> 12:32:44 |##########          |  50% (45,510) 0.5 minPROGRESS> 12:32:46 |###########         |  55% (50,061) 0.5 minPROGRESS> 12:32:48 |############        |  60% (54,612) 0.5 minPROGRESS> 12:32:51 |#############       |  65% (59,163) 0.6 minPROGRESS> 12:32:53 |##############      |  70% (63,714) 0.6 minPROGRESS> 12:32:55 |###############     |  75% (68,265) 0.6 minPROGRESS> 12:32:57 |################    |  80% (72,816) 0.7 minPROGRESS> 12:32:59 |#################   |  85% (77,367) 0.7 minPROGRESS> 12:33:01 |##################  |  90% (81,918) 0.8 minPROGRESS> 12:33:04 |################### |  95% (86,469) 0.8 minPROGRESS> 12:33:06 |####################| 100% (91,010) 0.8 min
+    ## PROGRESS> 22:19:59 |                    |   0% (     0) 0.0 minPROGRESS> 22:20:10 |#                   |   5% ( 4,551) 0.2 minPROGRESS> 22:20:12 |##                  |  10% ( 9,102) 0.2 minPROGRESS> 22:20:14 |###                 |  15% (13,653) 0.2 minPROGRESS> 22:20:16 |####                |  20% (18,204) 0.3 minPROGRESS> 22:20:18 |#####               |  25% (22,755) 0.3 minPROGRESS> 22:20:21 |######              |  30% (27,306) 0.4 minPROGRESS> 22:20:23 |#######             |  35% (31,857) 0.4 minPROGRESS> 22:20:25 |########            |  40% (36,408) 0.4 minPROGRESS> 22:20:27 |#########           |  45% (40,959) 0.5 minPROGRESS> 22:20:29 |##########          |  50% (45,510) 0.5 minPROGRESS> 22:20:31 |###########         |  55% (50,061) 0.5 minPROGRESS> 22:20:34 |############        |  60% (54,612) 0.6 minPROGRESS> 22:20:36 |#############       |  65% (59,163) 0.6 minPROGRESS> 22:20:39 |##############      |  70% (63,714) 0.7 minPROGRESS> 22:20:41 |###############     |  75% (68,265) 0.7 minPROGRESS> 22:20:43 |################    |  80% (72,816) 0.7 minPROGRESS> 22:20:46 |#################   |  85% (77,367) 0.8 minPROGRESS> 22:20:48 |##################  |  90% (81,918) 0.8 minPROGRESS> 22:20:50 |################### |  95% (86,469) 0.9 minPROGRESS> 22:20:53 |####################| 100% (91,010) 0.9 min
     ## 
     ## OUTPUT> data_db-pass.tsv
     ##   PASS> 87504
@@ -307,7 +307,7 @@ output file (specified by `--outname`).
     ##  VALUES> T
     ##   REGEX> False
     ## 
-    ## PROGRESS> 12:33:07 |                    |   0% (     0) 0.0 minPROGRESS> 12:33:07 |#                   |   5% ( 4,376) 0.0 minPROGRESS> 12:33:07 |##                  |  10% ( 8,752) 0.0 minPROGRESS> 12:33:07 |###                 |  15% (13,128) 0.0 minPROGRESS> 12:33:07 |####                |  20% (17,504) 0.0 minPROGRESS> 12:33:08 |#####               |  25% (21,880) 0.0 minPROGRESS> 12:33:08 |######              |  30% (26,256) 0.0 minPROGRESS> 12:33:08 |#######             |  35% (30,632) 0.0 minPROGRESS> 12:33:08 |########            |  40% (35,008) 0.0 minPROGRESS> 12:33:08 |#########           |  45% (39,384) 0.0 minPROGRESS> 12:33:08 |##########          |  50% (43,760) 0.0 minPROGRESS> 12:33:08 |###########         |  55% (48,136) 0.0 minPROGRESS> 12:33:08 |############        |  60% (52,512) 0.0 minPROGRESS> 12:33:09 |#############       |  65% (56,888) 0.0 minPROGRESS> 12:33:09 |##############      |  70% (61,264) 0.0 minPROGRESS> 12:33:09 |###############     |  75% (65,640) 0.0 minPROGRESS> 12:33:09 |################    |  80% (70,016) 0.0 minPROGRESS> 12:33:09 |#################   |  85% (74,392) 0.0 minPROGRESS> 12:33:09 |##################  |  90% (78,768) 0.0 minPROGRESS> 12:33:09 |################### |  95% (83,144) 0.0 minPROGRESS> 12:33:09 |####################| 100% (87,504) 0.0 min
+    ## PROGRESS> 22:20:54 |                    |   0% (     0) 0.0 minPROGRESS> 22:20:54 |#                   |   5% ( 4,376) 0.0 minPROGRESS> 22:20:54 |##                  |  10% ( 8,752) 0.0 minPROGRESS> 22:20:54 |###                 |  15% (13,128) 0.0 minPROGRESS> 22:20:54 |####                |  20% (17,504) 0.0 minPROGRESS> 22:20:55 |#####               |  25% (21,880) 0.0 minPROGRESS> 22:20:55 |######              |  30% (26,256) 0.0 minPROGRESS> 22:20:55 |#######             |  35% (30,632) 0.0 minPROGRESS> 22:20:55 |########            |  40% (35,008) 0.0 minPROGRESS> 22:20:55 |#########           |  45% (39,384) 0.0 minPROGRESS> 22:20:55 |##########          |  50% (43,760) 0.0 minPROGRESS> 22:20:55 |###########         |  55% (48,136) 0.0 minPROGRESS> 22:20:56 |############        |  60% (52,512) 0.0 minPROGRESS> 22:20:56 |#############       |  65% (56,888) 0.0 minPROGRESS> 22:20:56 |##############      |  70% (61,264) 0.0 minPROGRESS> 22:20:56 |###############     |  75% (65,640) 0.0 minPROGRESS> 22:20:56 |################    |  80% (70,016) 0.0 minPROGRESS> 22:20:56 |#################   |  85% (74,392) 0.0 minPROGRESS> 22:20:56 |##################  |  90% (78,768) 0.0 minPROGRESS> 22:20:56 |################### |  95% (83,144) 0.0 minPROGRESS> 22:20:57 |####################| 100% (87,504) 0.0 min
     ## 
     ##    OUTPUT> data_p_parse-select.tsv
     ##   RECORDS> 87504
@@ -335,7 +335,7 @@ data.
     ##  VALUES> IGHV
     ##   REGEX> True
     ## 
-    ## PROGRESS> 12:33:10 |                    |   0% (     0) 0.0 minPROGRESS> 12:33:11 |#                   |   5% ( 3,245) 0.0 minPROGRESS> 12:33:11 |##                  |  10% ( 6,490) 0.0 minPROGRESS> 12:33:11 |###                 |  15% ( 9,735) 0.0 minPROGRESS> 12:33:11 |####                |  20% (12,980) 0.0 minPROGRESS> 12:33:11 |#####               |  25% (16,225) 0.0 minPROGRESS> 12:33:11 |######              |  30% (19,470) 0.0 minPROGRESS> 12:33:11 |#######             |  35% (22,715) 0.0 minPROGRESS> 12:33:11 |########            |  40% (25,960) 0.0 minPROGRESS> 12:33:11 |#########           |  45% (29,205) 0.0 minPROGRESS> 12:33:12 |##########          |  50% (32,450) 0.0 minPROGRESS> 12:33:12 |###########         |  55% (35,695) 0.0 minPROGRESS> 12:33:12 |############        |  60% (38,940) 0.0 minPROGRESS> 12:33:12 |#############       |  65% (42,185) 0.0 minPROGRESS> 12:33:12 |##############      |  70% (45,430) 0.0 minPROGRESS> 12:33:12 |###############     |  75% (48,675) 0.0 minPROGRESS> 12:33:12 |################    |  80% (51,920) 0.0 minPROGRESS> 12:33:12 |#################   |  85% (55,165) 0.0 minPROGRESS> 12:33:13 |##################  |  90% (58,410) 0.0 minPROGRESS> 12:33:13 |################### |  95% (61,655) 0.0 minPROGRESS> 12:33:13 |####################| 100% (64,892) 0.0 min
+    ## PROGRESS> 22:20:58 |                    |   0% (     0) 0.0 minPROGRESS> 22:20:58 |#                   |   5% ( 3,245) 0.0 minPROGRESS> 22:20:58 |##                  |  10% ( 6,490) 0.0 minPROGRESS> 22:20:58 |###                 |  15% ( 9,735) 0.0 minPROGRESS> 22:20:58 |####                |  20% (12,980) 0.0 minPROGRESS> 22:20:58 |#####               |  25% (16,225) 0.0 minPROGRESS> 22:20:58 |######              |  30% (19,470) 0.0 minPROGRESS> 22:20:58 |#######             |  35% (22,715) 0.0 minPROGRESS> 22:20:58 |########            |  40% (25,960) 0.0 minPROGRESS> 22:20:59 |#########           |  45% (29,205) 0.0 minPROGRESS> 22:20:59 |##########          |  50% (32,450) 0.0 minPROGRESS> 22:20:59 |###########         |  55% (35,695) 0.0 minPROGRESS> 22:20:59 |############        |  60% (38,940) 0.0 minPROGRESS> 22:20:59 |#############       |  65% (42,185) 0.0 minPROGRESS> 22:20:59 |##############      |  70% (45,430) 0.0 minPROGRESS> 22:20:59 |###############     |  75% (48,675) 0.0 minPROGRESS> 22:21:00 |################    |  80% (51,920) 0.0 minPROGRESS> 22:21:00 |#################   |  85% (55,165) 0.0 minPROGRESS> 22:21:00 |##################  |  90% (58,410) 0.0 minPROGRESS> 22:21:00 |################### |  95% (61,655) 0.0 minPROGRESS> 22:21:00 |####################| 100% (64,892) 0.0 min
     ## 
     ##    OUTPUT> data_ph_parse-select.tsv
     ##   RECORDS> 64892
@@ -490,7 +490,7 @@ This can be observed in the bottom panel.
 
     plotNovel(db, selectNovel(nv)[1, ]) # visualize the novel allele(s)
 
-![](intro-lab_files/figure-markdown_strict/unnamed-chunk-17-1.png)
+![](intro-lab_files/intro-lab_unnamed-chunk-17-1.png)
 
 ### Genotyping, including novel V gene alleles
 
@@ -526,7 +526,7 @@ that gene that are included in the inferred genotype.
 
     plotGenotype(gt) # genotyping including novel V gene alleles
 
-![](intro-lab_files/figure-markdown_strict/unnamed-chunk-19-1.png)
+![](intro-lab_files/intro-lab_unnamed-chunk-19-1.png)
 
 ### Reassign V gene allele annotations
 
@@ -549,11 +549,11 @@ for use in the following steps.
       select(v_call, v_call_genotyped)
 
     ## # A tibble: 3 x 2
-    ##   v_call                              v_call_genotyped
-    ##   <chr>                               <chr>           
-    ## 1 IGHV4-59*08,IGHV4-61*01,IGHV4-61*05 IGHV4-59*08     
-    ## 2 IGHV4-30-4*08                       IGHV4-30-4*01   
-    ## 3 IGHV4-61*08                         IGHV4-61*01
+    ##   v_call                    v_call_genotyped
+    ##   <chr>                     <chr>           
+    ## 1 IGHV3-30*18,IGHV3-30-5*01 IGHV3-30*18     
+    ## 2 IGHV4-30-4*09,IGHV4-31*03 IGHV4-30-4*09   
+    ## 3 IGHV4-30-4*09,IGHV4-31*03 IGHV4-30-4*09
 
     write_rearrangement(db, file.path("results", "tigger", "data_ph_genotyped.tsv"))
 
@@ -645,7 +645,7 @@ distribution and the threshold.
 
     plot(threshold) # plot the distribution
 
-![](intro-lab_files/figure-markdown_strict/unnamed-chunk-23-1.png)
+![](intro-lab_files/intro-lab_unnamed-chunk-23-1.png)
 
 #### Advanced method: Spectral-based clonal clustering (SCOPer)
 
@@ -678,7 +678,7 @@ the dataset used to carry out the clonal assignments.*
     # Plot a histogram of inter and intra clonal distances
     plot(results, binwidth=0.02)
 
-![](intro-lab_files/figure-markdown_strict/unnamed-chunk-24-1.png)
+![](intro-lab_files/intro-lab_unnamed-chunk-24-1.png)
 
 ### TBD: See vignettes of Alakazam
 
@@ -740,4 +740,4 @@ biological questions.
     suppressPackageStartupMessages(library(igraph))
     plot(g)
 
-![](intro-lab_files/figure-markdown_strict/unnamed-chunk-26-1.png)
+![](intro-lab_files/intro-lab_unnamed-chunk-26-1.png)
