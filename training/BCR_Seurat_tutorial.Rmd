@@ -3,6 +3,10 @@ title: "Integration of BCR and GEX Data"
 output: html_document
 ---
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(message = FALSE, warning = FALSE)
+```
+
 # Integration of BCR and GEX Data
 
 ## Introduction
@@ -75,6 +79,15 @@ bcr_data <- bcr_data %>%
               ungroup()
 ```
 
+Alphabetize the cell types within the GEX if desired:
+
+```{r reformat-gex-data}
+# nice for plotting
+gex_obj$annotated_clusters <- 
+  factor(gex_obj$annotated_clusters,
+         levels = sort(levels(gex_obj$annotated_clusters)))
+```
+
 ## Integration of BCR data with the GEX Seurat object
 
 The meta.data data slot in the Seurat object contains metadata for each cell and is a good place to hold information from BCR data.
@@ -119,11 +132,51 @@ gex_obj[[]][, (ncol_meta - 3):ncol_meta] %>%
 
 ### Examine integrated information
 
-```{r gex-bcr-bar, fig.dim=c(8, 6)}
+```{r gex-bcr-bar-contains-bcr, fig.dim=c(8, 6)}
 # you could fill by isotype to get even more info
 ggplot(gex_obj[[]], aes(x = contains_bcr, fill = Isotype)) +
   geom_bar(color = "black", linewidth = 0.2) +
-  labs(title = "GEX Data with Matching BCRs", x = "Contains BCRs", y = "Count") +
+  labs(title = "GEX Data with Matching BCRs",
+       x = "Contains BCRs", y = "Count") +
+  theme_bw() + theme(plot.title = element_text(hjust = 0.5))
+```
+
+Check the BCRS per annotated cell type:
+
+```{r gex-bcr-bar-cell-types, fig.dim=c(10, 6)}
+# calculate the percentage of each cell type that has BCRs
+pct_bcrs <- as.data.frame(table(gex_obj$contains_bcr,
+                                gex_obj$annotated_clusters)) %>% 
+              rename(contains_bcr = Var1, annotated_clusters = Var2,
+                     Count = Freq) %>% 
+              as_tibble() %>%
+              group_by(annotated_clusters) %>%
+              mutate(Percent = 100 * Count / sum(Count),
+                     contains_bcr = factor(contains_bcr,
+                                           levels = c(TRUE, FALSE)))
+
+# make a stacked bar plot, with raw counts for each group on top/bottom
+# you could use scales::label_percent to make the %'s nicer
+# change the label size, percent rounding, colors, etc. as desired
+ggplot(data = pct_bcrs,
+       aes(x = annotated_clusters, y = Percent, fill = contains_bcr)) +
+  geom_bar(stat = "identity", color = "black", linewidth = 0.2) +
+  labs(title = "Percent of BCRs per Cell Type",
+       x = "Cell Type", y = "BCR Percentage", fill = "Contains BCR") +
+  scale_fill_manual(values = c("TRUE" = "seagreen2", "FALSE" = "grey75"),
+                    limits = force) +
+  scale_y_continuous(expand = expansion(mult = 0.05)) +
+  geom_text(aes(label = ifelse(Percent > 2, paste0(round(Percent, 1), "%"), NA),
+                group = contains_bcr),
+            size = 3, position = position_stack(vjust = 0.5)) +
+  # counts on top
+  geom_text(mapping = aes(label = ifelse(contains_bcr == TRUE, Count, "")),
+            position = position_stack(), vjust = -0.5,
+            color = "black", size = 3) +
+  # counts on bottom
+  geom_text(mapping = aes(label = ifelse(contains_bcr == FALSE, Count, ""),
+                          y = -1),
+            color = "black", size = 3) +
   theme_bw() + theme(plot.title = element_text(hjust = 0.5))
 ```
 
@@ -131,7 +184,7 @@ ggplot(gex_obj[[]], aes(x = contains_bcr, fill = Isotype)) +
 
 After we integrate the BCR data into the Seurat object, we can highlight BCR cells in a GEX UMAP plot to check if annotations based upon biomarker gene expression are accurate or not.
 
-```{r gex-bcr-umap, fig.dim=c(7, 6), message=FALSE}
+```{r gex-bcr-umap, fig.dim=c(7, 6)}
 # have to set the idents
 Idents(gex_obj) <- "annotated_clusters" # should be annotated
 
