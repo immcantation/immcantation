@@ -2,6 +2,7 @@ jupytext
 nbsphinx>=0.4.1
 nbsphinx_link
 sphinx~=7.0
+docutils<0.19
 sphinx_rtd_theme>=0.5
 PyYAML>=5.1
 ipykernel
