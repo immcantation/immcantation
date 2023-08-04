@@ -40,7 +40,8 @@ needs_sphinx = '1.8'
 extensions = ['sphinx.ext.intersphinx',
               'sphinx.ext.todo',
               'nbsphinx',
-              'nbsphinx_link']
+              'nbsphinx_link',
+              'sphinx_rtd_theme']
 
 nbsphinx_custom_formats = {
     '.md': ['jupytext.reads', {'fmt': '.md'}]
