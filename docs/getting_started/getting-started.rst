@@ -29,7 +29,7 @@ For a detailed use example for each Immcantation tool follow the tutorial
 *Introduction to B cell repertoire analysis using the Immcantation
 framework*. This tutorial is based on our
 introductory webinar. It is also available as an R Notebook
-(`intro-lab.md <https://bitbucket.org/kleinstein/immcantation/src/master/training>`_) in the Immcantation repository.
+(`intro-lab.Rmd <https://bitbucket.org/kleinstein/immcantation/src/master/training>`_) in the Immcantation repository.
 
 .. admonition:: Tutorial
 
