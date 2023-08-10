@@ -9,7 +9,7 @@ version: 2
 build:
   os: ubuntu-22.04
   apt_packages:
-    - pandoc: "2.19.2"
+    - pandoc
   tools:
     python: "3.11"
 
