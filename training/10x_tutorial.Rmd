@@ -499,6 +499,35 @@ ggplot(mut_freq_clone, aes(median_mut_freq)) +
   theme_bw() + theme(axis.title = element_text(size = 18))
 ```
 
+The plots below show the distribution of mutation frequency of cells by subject, isotype and cell type:
+
+```{r}
+# plotting mu_freq by subject
+ggplot(data_mut, aes(y = mu_freq, x = subject, fill = subject)) +
+  geom_boxplot() +
+  geom_jitter(width = 0.2, alpha = 0.3) +
+  labs(x = "", y = "Mutation frequency", fill = "Subject") +
+  theme(axis.text.x = element_blank())
+```
+
+```{r}
+# plotting mu_freq by isotype
+ggplot(data_mut, aes(y = mu_freq, x = c_gene, fill = c_gene)) +
+  geom_boxplot() +
+  geom_jitter(width = 0.2, alpha = 0.3) +
+  labs(x = "", y = "Mutation frequency", fill = "Isotype") +
+  theme(axis.text.x = element_blank())
+```
+
+```{r}
+# plotting mu_freq by cell type
+ggplot(data_mut, aes(y = mu_freq, x = gex_annotation, fill = gex_annotation)) +
+  geom_boxplot() +
+  geom_jitter(width = 0.2, alpha = 0.3) +
+  labs(x = "", y = "Mutation frequency", fill = "Cell type") +
+  theme(axis.text.x = element_blank())
+```
+
 ## Building and visualizing trees
 
 1.  Formatting clones
