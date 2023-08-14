@@ -229,6 +229,16 @@ ncol_bcr_gex <- ncol(bcr_gex_data)
 bcr_gex_data[, (ncol_bcr_gex - 3):ncol_bcr_gex] %>% slice_sample(n = 5)
 ```
 
+#### Plot mutation frequency by cell type
+
+```{r bcr-gex-mu-freq-cell-type}
+ggplot(bcr_gex_data, aes(y = mu_freq, x = gex_annotation, fill = gex_annotation)) +
+  geom_boxplot() +
+  geom_jitter(width = 0.2, alpha = 0.3) +
+  labs(x = "", y = "Mutation frequency", fill = "Cell type") +
+  theme(axis.text.x = element_blank())
+```
+
 ### Identify GEX clusters in the BCR UMAP
 
 Using the annotated information, we can lay out cells from the BCR data in a UMAP plot color-coded by the B cell subtypes.
