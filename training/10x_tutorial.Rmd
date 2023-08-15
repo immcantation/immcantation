@@ -60,14 +60,14 @@ The example data is already in the container (`/home/magus/data/10x_data_2subj/`
 
 The R Markdown notebook with the code is also available in the container (`/home/magus/notebooks/10x_tutorial.Rmd`). 
 
-```{bash, eval=FALSE}
+```{bash}
 cd /home/magus/notebooks/
 ls ../data/10x_data_2subj
 ```
 
 Use the command `versions report` to list the versions of the of the Immcantation tools installed in  the container:
 
-```{bash, eval=FALSE}
+```{bash}
 docker run -it -v $PWD:/data:z immcantation/suite:devel bash
 versions report
 ```
@@ -78,9 +78,7 @@ To process 10x V(D)J data, a combination of `AssignGenes.py` and `MakeDb.py` can
 
 Generate AIRR Rearrangement data from the 10x V(D)J FASTA files using the steps below (the `\` just indicates a new line for visual clarity):
 
-```{bash, eval=FALSE}
-# TODO I made all the base statements eval=FALSE so it doesn't actually run, but displays. 
-# if this is incorrect please let me know. 
+```{bash}
 # assign V, D, and J genes using IgBLAST
 #AssignGenes.py igblast -s ../data/10x_data_2subj/filtered_contig.fasta -b /usr/local/share/igblast \
 #   --organism human --loci ig --format blast --outdir results
@@ -89,7 +87,7 @@ AssignGenes.py igblast -s /data/assets/BCR_data_sequences.fasta -b /usr/local/sh
    --organism human --loci ig --format blast --outdir results
 ```
 
-```{bash, eval=FALSE}
+```{bash}
 # convert IgBLAST output to AIRR format
 # TODO: update path to final path in container
 MakeDb.py igblast -i results/BCR_data_sequences_igblast.fmt7 -s /data/assets/BCR_data_sequences.fasta \
@@ -97,7 +95,7 @@ MakeDb.py igblast -i results/BCR_data_sequences_igblast.fmt7 -s /data/assets/BCR
    --10x /data/assets/filtered_contig_annotations.csv --extended
 ```
 
-```{bash, eval=FALSE}
+```{bash}
 ls results
 ```
 
@@ -201,10 +199,11 @@ Inspect the data:
 ```{r}
 # Object summary
 # `print` can be used to obtain a general overview of the Seurat object (number of features, number of samples...).
-head(gex_db)
+print(gex_db)
 ```
 ```{r}
 # `Idents` reports the cell ID and identities. The first annotation in this blood sample is a TCR.
+# 'head' can be used to see the first few (default is 5, here its's one) rows of an object
 # Cell type annotations
 head(Idents(gex_db), 1)
 ```
@@ -390,16 +389,18 @@ Once a threshold is decided, we perform the clonal assignment. At the end of thi
 Note: will print out "running in bulk mode" because the subsampled example data has only heavy chains. [Other options](https://scoper.readthedocs.io/en/stable/topics/hierarchicalClones/#single-cell-data) available if light chains are included.
 
 After we decide the threshold for calling clones, the `hierachicalClones` function in SCOPer package can be used to call clones using single cell mode:
+```{r, echo=FALSE}
+bcr_data <- select(bcr_data, -c("clone_id"))
+```
 
-```{r, eval=FALSE}
+
+```{r}
 # call clones using hierarchicalClones
 results <- hierarchicalClones(bcr_data, cell_id = "cell_id_unique",
                               threshold = threshold, only_heavy = TRUE,
                               split_light = TRUE, summarize_clones = FALSE, fields = "subject")
 ```
-```{r, echo=FALSE}
-results <- bcr_data
-```
+
 
 `HierarchicalClones` clusters B receptor sequences based on junction region sequence similarity within partitions that share the same V gene, J gene, and junction length, thus allowing for ambiguous V or J gene annotations. By setting it up the `cell_id` parameter, `HierarchicalClones` will run in single-cell mode with paired-chain sequences. With `only_heavy = FALSE` and `split_light = TRUE`, grouping should be done by using IGH plus IGK/IGL sequences and inferred clones should be split by the light/short chain (IGK and IGL) following heavy/long chain clustering.
 
@@ -450,7 +451,7 @@ git clone https://bitbucket.org/kleinstein/immcantation.git
 
 And passing `"human/vdj/"` to the `readIMGT` function.
 
-```{r}
+```{r,warning=FALSE, message=FALSE}
 # read in IMGT data if downloaded on your own (above)
 # and update `dir` to use the path to your `human/vdj` folder
 # references = readIMGT(dir = "human/vdj/")
@@ -462,19 +463,17 @@ And passing `"human/vdj/"` to the `readIMGT` function.
 # Read in IMGT files in Docker container
 references <- readIMGT(dir = "/usr/local/share/germlines/imgt/human/vdj")
 
-# Reconstruct germlines
-results <- createGermlines(results, references)
-
-results_heavy <- dplyr::filter(results, locus == "IGH")
+# Reconstruct Germlines
+results <- createGermlines(results, references, nproc = 1)
 ```
 
 ## Calculate SHM frequency in the V gene
 
 Basic mutational load calculations can be performed by the function `observedMutations` in the [SHazaM](https://shazam.readthedocs.io/en/stable/) R package:
 
-```{r}
+```{r, warning=FALSE}
 # This is typically only done on heavy chains, but can also be done on light chains 
-results_heavy <- dplyr::filterfilter(results, locus == "IGH")
+results_heavy <- dplyr::filter(results, locus == "IGH")
 
 # calculate SHM frequency in the V gene
 data_mut <- observedMutations(results_heavy,
@@ -488,7 +487,7 @@ data_mut <- observedMutations(results_heavy,
 
 The plot below shows the distribution of median mutation frequency of clones:
 
-```{r}
+```{r, warning=FALSE, message=FALSE}
 # calculate the median mutation frequency of a clone
 mut_freq_clone <- data_mut %>%
                     group_by(clone_id) %>%
@@ -539,22 +538,22 @@ ggplot(data_mut, aes(y = mu_freq, x = gex_annotation, fill = gex_annotation)) +
 
 In the rearrangement table, each row corresponds to a sequence, and each column is information about that sequence. We will create a new data structure, where each row is a clonal cluster, and each column is information about that clonal cluster. The function `formatClones` performs this processing and has options that are relevant to determine how the trees can be built and visualized. For example, `traits` determines the columns from the rearrangement data that will be included in the `clones` object, and will also be used to determine the uniqueness of the sequences, so they are not collapsed.
 
-```{r}
+```{r, warning=FALSE}
 # Make clone objects with aligned, processed sequences
 # collapse identical sequences unless differ by trait
 # add up duplicate_count column for collapsed sequences
-# store day, isotype, gex_annotation
+# store day, gex_annotation
 # discard clones with < 5 distinct sequences
 clones <- formatClones(results,
                        traits = c("day", "gex_annotation"),
                        num_fields = c("duplicate_count"), minseq = 5, nproc = 1)
-clones
+head(clones)
 ```
 
 
 
 ```{r, echo=FALSE, eval=FALSE}
-# this can be used once the new version of Dowser is released. 
+# this can be used once the new version of Dowser is released. If it's desired a chunk can also be shown how to make clones from just the light chains. 
 # Additionally, if there is paired heavy and light chain data, you can format the clones such that the paired data is used in building trees. There is an additional step that occurs before the `formatClones` step in this situation. In order for the trees to best use the addition of light chain information, we will need to assign `clone_subgroups` using dowser's function `resolveLightChains`. This group cells within a clone based on the light chain V and J gene and assign a subgroup to each sequence. Then, in the `formatClones` step, speciy `chain="HL"`. 
 comb <- resolveLightChains(results, nproc = 1)
 
@@ -576,66 +575,70 @@ This is the oldest method and very popular. It tries to minimize the number of m
 ```{r}
 # Two options for maximum parsimony trees
 # 1. phangorn
-trees <- getTrees(clones)
+trees <- getTrees(clones, nproc = 1)
 head(trees)
 ```
 
-```{r, eval=FALSE}
+```{r, warning=FALSE}
 # 2. dnapars (PHYLIP)
-trees <- getTrees(clones, build = "dnapars", exec = "/usr/local/bin/dnapars")
+# the executable path is the location of the executable in the docker container
+trees <- getTrees(clones, build = "dnapars", exec = "/usr/local/bin/dnapars", nproc = 1)
+head(trees)
 ```
 
 #### Standard maximum likelihood
 
 These methods model each sequence separately. Use a markov model of the mutation process and try to find the tree, not the branch lengths, that maximizes the likelihood of seen data.
 
-```{r}
+```{r, warning=FALSE}
 # Two options for standard maximum likelihood trees
 # 1. pml (phangorn)
-trees <- getTrees(clones, build = "pml", sub_model = "GTR", nproc = 1)
+trees <- getTrees(clones, build = "pml", nproc = 1)
 head(trees)
 ```
 
-```{r, eval=FALSE}
+```{r, warning=FALSE}
 # 2. dnaml (PHYLIP)
-trees <- getTrees(clones, build = "dnaml", exec = "/usr/local/bin/dnaml")
+# the executable path is the location of the executable in the docker container
+trees <- getTrees(clones, build = "dnaml", exec = "/usr/local/bin/dnaml", nproc = 1)
 ```
 
-```{r, eval=FALSE, echo=FALSE}
-# this is another thing for the dowser release, can get rid of the echo statement then 
+```{r, warning=FALSE}
 # 3. RAxML (RAxML-ng)
-trees <- getTrees(clones, build = "raxml", exec = "/user/local/raxml-ng/bin/raxml-ng")
+# the executable path is the location of the executable in the docker container
+trees <- getTrees(clones, build = "raxml", exec = "/usr/local/bin/raxml-ng", nproc = 1)
 ```
 
 #### B Cell specific maximum likelihood
 
 Similar to the standard maximum likelihood, but incorporating SHM specific mutation biases into the tree building.
 
-```{r, eval = FALSE}
+```{r, warning=FALSE}
 # B cell specific maximum likelihood with IgPhyML
+# the executable path is the location of the executable in the docker container
 trees <- getTrees(clones, build = "igphyml", exec = "/usr/local/igphyml/src/igphyml", nproc=1)
 ```
 
 
-```{r, echo=FALSE, eval=FALSE}
-# more release realted content. Once it's release the echo=FALSE can be deleted
+```{r, echo=FALSE, eval=FALSE, warning=FALSE}
+# more release related content. Once it's release the echo=FALSE can be deleted
 #### Partitioned maximum likelihood 
 # 
 # In addition to standard and b cell specific maximum likelihood, dowser offers partitioned maximum likelihood approaches for `RAxML` and `IgPhyML`. This approach should only be used when there is paired heavy and light chain data, not just heavy chain data because both methods will partition on the heavy chain and light chains separately. 
 # RAxML
-trees <- getTrees(clones, build = "raxml", exec = "/user/local/raxml-ng/bin/raxml-ng", partition = TRUE)
+trees <- getTrees(clones, build = "raxml", exec = "/user/local/raxml-ng/bin/raxml-ng", partition = "scaled")
 # IgPhML
-trees <- getTrees(clones, build = "igphyml", exec = "/user/local/igphyml/src/igphyml", omega = "e,e", rates = "0,1")
+trees <- getTrees(clones, build = "igphyml", exec = "/user/local/igphyml/src/igphyml", partition = "hl")
 ```
 
 
 ### Plotting trees with dowser and ggtree
 
-Regardless of how you build trees, they are visualized in the same manner with the `plotTrees` function. This will return a list of `ggplot` objects in the same order as the input object. Here, we color the tips by the `isotype` value because we specified that column in the `formatClones` step.
+Regardless of how you build trees, they are visualized in the same manner with the `plotTrees` function. This will return a list of `ggplot` objects in the same order as the input object. Here, we color the tips by the `day` value because we specified that column in the `formatClones` step.
 
 ```{r}
 # Plot all trees
-plots_all <- plotTrees(trees, tips = "day", tipsize = 2) # c_call is the standard
+plots_all <- plotTrees(trees, tips = "day", tipsize = 2)
 ```
 
 ```{r}
@@ -685,15 +688,15 @@ print(plots_all)
 ```
 
 ```{r}
-# Get sequence at node 26 for the second clone_id in trees
-getNodeSeq(trees, clone = trees$clone_id[2], node = 26)
+# Get sequence at node 5 for the second clone_id in trees
+getNodeSeq(trees, clone = trees$clone_id[2], node = 5)
 ```
 
 ### Test for measurable evolution
 
 Perform root-to-tip regression on each tree to detect if later-sampled timepoints are more diverged from the germline.
 
-```{r}
+```{r, warning=FALSE}
 # Correlation test
 trees <- correlationTest(trees, time = "day", nproc = 1)
 
@@ -709,10 +712,12 @@ plots_time <- lapply(plots_time, function(x) {
     scale_fill_distiller(palette = "RdYlBu")
 })
 ```
+
 ```{r}
 select(trees, clone_id, slope, correlation, p)
 print(plots_time[[1]])
 ```
+
 ```{r, eval=FALSE}
 # Save all trees to a pdf file
 treesToPDF(plots_time, file = file.path("results", "dowser_tutorial",
