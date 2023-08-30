@@ -5,41 +5,45 @@ output: html_document
 
 # Single Cell V(D)J Analysis Tutorial
 
+Tutorial outline:
+
+* [Overview]
+* [Getting started]
+* [Assign V, D, and J genes using IgBLAST]
+* [Load libraries]
+* [Filter records]
+* [Load in and reformat the data]
+* [Cloning thresholds] (automatically or manually)
+* [Define clonal groups]
+* [Create germlines]
+* [Calculate V gene SHM frequency] (in the heavy chain)
+* [Build and visualize trees]
+* [Analyze B cell migration, differentiation, and evolution over time]
+
 ## Overview
 
-This tutorial is a basic walk-through for defining B cell clonal families and building B cell lineage trees using [10x Genomics](https://www.10xgenomics.com/products/single-cell-immune-profiling) BCR sequencing data. 
+This tutorial is a basic walk-through for defining B cell clonal families and building B cell lineage trees using [10x Genomics](https://www.10xgenomics.com/products/single-cell-immune-profiling) BCR (B cell receptor) sequencing data. 
 
 Knowledge of basic command line usage is assumed. Please check out the individual documentation sites for the functions detailed in this tutorial before using them on your own data. 
 
-* For simplicity, this tutorial will use the [Immcantation Lab Docker image](https://hub.docker.com/repository/docker/immcantation/lab) which contains R Markdown notebooks and all necessary software to run this code.
+* For simplicity, this tutorial will use the [Immcantation Lab Docker image](https://hub.docker.com/repository/Docker/immcantation/lab) which contains R Markdown notebooks and all necessary software to run this code.
   * You can download the current Docker image with `docker pull immcantation/lab:devel`
   * For some operating systems, it may be necessary to use super-user privileges (sudo), and/or to have [Docker Desktop](https://hub.docker.com/editions/community/docker-ce-desktop-windows) running before entering the previous command.
+  * You can read more details about how to get and use the Docker container [here](https://immcantation.readthedocs.io/en/latest/docker/intro.html), including how to run tutorials such as this one.
 * It is also possible to install the packages being used separately (see [pRESTO](https://presto.readthedocs.io/en/stable/install.html#installation), [Change-O](https://changeo.readthedocs.io/en/stable/install.html#installation), and [Alakazam](https://alakazam.readthedocs.io/en/stable/install/)).
 
 You may also reference [this page](https://immcantation.readthedocs.io/en/stable/docker/pipelines.html) for an example pipeline script to process 10x data with Immcantation's [changeo-10x](https://bitbucket.org/kleinstein/immcantation/src/master/pipelines/changeo-10x.sh) example script.
 
-## Resources
+Resources:
 
 * You can email [immcantation\@googlegroups.com](mailto:immcantation@googlegroups.com) with any questions or issues.
 * Documentation: <http://immcantation.org>
 * Source code and bug reports: <https://bitbucket.org/kleinstein/immcantation>
 * Docker image for this tutorial: https://hub.docker.com/r/immcantation/lab
 
-## Outline of tutorial 
-
-* Assigning V, D, and J genes using IgBLAST
-* Filtering records
-* Integrating BCR and gene expression data
-* Finding thresholds for cloning (automatically or manually)
-* Performing clustering to define clonal groups
-* Creating germlines
-* Calculating SHM frequency in the heavy chain V genes
-* Building and visualizing trees
-* Analyzing B cell migration, differentiation, and evolution over time
-
 ## Getting started
 
-10x BCR (B cell receptor) data and 10x GEX (gene expression) data can borrow information from each other for an improved analysis. This tutorial demonstrates a few approaches to integrating these data types along with examples on how the new information can be used.
+10x BCR data and 10x GEX (gene expression) data can borrow information from each other for an improved analysis. This tutorial demonstrates a few approaches to integrating these data types along with examples on how the new information can be used.
 
 The example dataset used in this tutorial is from the following paper:
 
@@ -49,7 +53,6 @@ These two files are subsamples of the original 10x scRNA-seq and BCR sequencing 
 
 We extracted a subset (~3000 cells) of single cell GEX/BCR data of ultrasound-guided fine needle aspiration (FNA) samples of lymph nodes for subject P05. The example dataset (BCR.data.rds and GEX.data.rds) can be downloaded in a zip file from here.
 
-<!-- #TODO: update link to data and description according to current location -->
 The example data is already in the container (`/home/magus/data/10x_data_2subj/`). If you want to, you can download it from [example data](http://clip.med.yale.edu/immcantation/examples/10x_data_2subj.zip) and unzip it.
 
 * You will find two files called **filtered_contig.fasta** and **filtered_contig_annotations.csv** in the unzipped directory (*10x_data_2subj* unless you rename it). They are the direct Cell Ranger output files for donor 1. We are going to use the Ig V(D)J sequences from donor 1 to show how to process V(D)J data using Immcantation.
@@ -57,20 +60,7 @@ The example data is already in the container (`/home/magus/data/10x_data_2subj/`
 * `../data/bcr_phylo_tutorial/BCR.data.tsv`: B-Cell Receptor Data. Adaptive Immune Receptor Repertoire (AIRR) tsv BCRs already aligned to IMGT V, D, and J genes. This process is not covered in this tutorial. To learn more visit <https://immcantation.readthedocs.io/en/stable/tutorials/tutorials.html>
 * `../data/bcr_phylo_tutorial/GEX.data.rds`: Gene Expression Data. This file contains a Seurat object with RNA-seq data already processed and annotated. Processing and annotation are not covered in this tutorial. You can learn more on these topics in Seurat's documentation and tutorials: <https://satijalab.org/seurat/articles/pbmc3k_tutorial.html>
 
-
 The R Markdown notebook with the code is also available in the container (`/home/magus/notebooks/10x_tutorial.Rmd`). 
-
-```{bash}
-cd /home/magus/notebooks/
-ls ../data/10x_data_2subj
-```
-
-Use the command `versions report` to list the versions of the of the Immcantation tools installed in  the container:
-
-```{bash}
-docker run -it -v $PWD:/data:z immcantation/suite:devel bash
-versions report
-```
 
 ## Assign V, D, and J genes using IgBLAST
 
@@ -112,7 +102,7 @@ Please note that:
 
 ## Load libraries
 
-Note that you might need to install several Bioconductor packages.
+Note that you might need to install several Bioconductor packages that are dependencies for some of the R-based Immcantation packages.
 
 ```{r, warning=FALSE, message=FALSE}
 # load libraries
@@ -132,9 +122,9 @@ suppressPackageStartupMessages(library(ggtree))
 
 ## Filter records
 
-### Merging different samples
+### Merge different samples
 
-In order to merge different samples together for an common analysis, a column needs to be added to the resulting table to identify the sample. Additionally, the sequence IDs, need to be made unique across samples, for example by appending the `sample` ID to them. This step has been performed and the resulting table can be found under `assets/BCR_data.tsv`.
+In order to merge different samples together for an common analysis, a column needs to be added to the resulting table to identify the sample. Additionally, the sequence IDs need to be made unique across samples e.g. by appending the `sample` ID to them. This step has already been performed and the resulting table can be found under assets/BCR_data.tsv.
 
 ```{r}
 # read in the data
@@ -142,7 +132,7 @@ In order to merge different samples together for an common analysis, a column ne
 bcr_data <- airr::read_rearrangement("assets/BCR_data.tsv")
 ```
 
-### Removing non-productive sequences
+### Remove non-productive sequences
 
 You may wish to subset your data to only productive sequences:
 
@@ -154,7 +144,7 @@ cat(paste("There are", nrow(bcr_data), "rows in the data.\n"))
 bcr_data %>% slice_sample(n = 5) # random examples
 ```
 
-### Cells with multiple heavy chains
+### Remove cells with multiple heavy chains
 
 If your single cell data contains cells with multiple heavy chains, you need to handle it before calling clones (B cells that descend from a common naive B cell ancestor).
 
@@ -190,34 +180,35 @@ cat(paste("There are", nrow(bcr_data), "rows in the data after filtering out cel
 ### GEX
 
 ```{r}
-# update to pull from zenoto
-gex_db <- readRDS(file.path("assets","GEX.data.rds"))
+# update to pull from Zenodo
+gex_db <- readRDS(file.path("assets", "GEX.data.rds"))
 ```
 
 Inspect the data:
 
 ```{r}
 # Object summary
-# `print` can be used to obtain a general overview of the Seurat object (number of features, number of samples...).
+# `print` can be used to obtain a general overview of the Seurat object (number of features, number of samples...)
 print(gex_db)
 ```
+
+`Idents` reports the cell ID and identities. The first annotation in this blood sample is a TCR:
+
 ```{r}
-# `Idents` reports the cell ID and identities. The first annotation in this blood sample is a TCR.
-# 'head' can be used to see the first few (default is 5, here its's one) rows of an object
-# Cell type annotations
+# cell type annotations
 head(Idents(gex_db), 1)
 ```
 
 ### Inspect BCR (move this)
 
-The default file format for all functions in Immcantation is the AIRR-C format as of release 4.0.0. The rearrangement data is stored in a table where each row is a sequence, and each column an annotation fields. To learn more about this format (including the valid field names and their expected values), visit the [AIRR-C Rearrangement Schema documentation](https://docs.airr-community.org/en/stable/datarep/rearrangements.html#fields).
+The default file format for all functions in Immcantation is the AIRR-C format as of release `4.0.0`. The rearrangement data is stored in a table where each row is a sequence and each column is an annotation field. To learn more about this format (including the valid field names and their expected values), visit the [AIRR-C Rearrangement Schema documentation](https://docs.airr-community.org/en/stable/datarep/rearrangements.html#fields).
 
 ```{r}
 # object summary
 head(bcr_data, 1)
 ```
 
-It is possible to subset columns using regular `R` functions. The cell below shows how to subset some fields of interest for the first sequence in the table.
+It is possible to subset columns using regular `R` functions. The following code shows how to subset some fields of interest for the first sequence in the table:
 
 ```{r}
 # check out select columns
@@ -226,10 +217,10 @@ head(select(bcr_data, cell_id, v_call, j_call, sample, day), 1)
 
 ### Standardize cell IDs
 
-Both of the example datasets have been processed separately, and use slightly different cell identifiers. To consolidate the data into one object, we need to standardize the cell identifiers. This step could be different, or not necessary at all, with other datasets.
+Both of the example datasets have been processed separately and use slightly different cell identifiers. To consolidate the data into one object, we need to standardize the cell identifiers. This step could be different or even not necessary with other datasets.
 
 ```{r}
-# Make cell IDs in BCR match those in Seurat Object
+# make cell IDs in BCR match those in Seurat object
 bcr_data$cell_id_unique <- paste0(bcr_data$sample, "_", bcr_data$cell_id)
 bcr_data$cell_id_unique[1]
 ```
@@ -237,16 +228,16 @@ bcr_data$cell_id_unique[1]
 In addition, the cells in both datasets are not presented in the same order.
 
 ```{r}
-# First id in the BCR data
+# first id in the BCR data
 bcr_data$cell_id_unique[1]
 ```
 
 ```{r}
-# First id in the GEX data
+# first id in the GEX data
 Cells(gex_db)[1]
 ```
 
-Having common cell identifiers, we will be able to bring BCR data into the Seurat object, or the gene expression and annotation data from the Seurat object into the BCR table, by matching `cell_id_unique`.
+Having common cell identifiers, we can bring BCR data into the Seurat object, or the GEX and annotation data from the Seurat object into the BCR table, by matching `cell_id_unique`.
 
 ### Add GEX data to BCR object
 
@@ -255,24 +246,24 @@ Having common cell identifiers, we will be able to bring BCR data into the Seura
 We repeat the `match` step, reversing the order. The vector `match.index` will now contain the positions of the BCR sequences in the GEX data.
 
 ```{r}
-# Match indices to find the position of the BCR cells in the GEX data
-# Different from finding the position of the GEX cells in the BCR data!
+# match indices to find the position of the BCR cells in the GEX data
+# different from finding the position of the GEX cells in the BCR data!
 match.index <- match(bcr_data$cell_id_unique, Cells(gex_db))
 ```
 
-Some BCRs don't have GEX information. This can happen, for example, if the cell for which BCR's are covered didn't pass the GEX processing and quality controls thresholds. The proportion of BCRs that do not have GEX information is:
+Some BCRs don't have GEX information. This can happen, for example, if the cell for which BCRs are covered didn't pass the GEX processing and quality control thresholds. The proportion of BCRs that do not have GEX information is:
 
 ```{r}
-# What proportion of BCRs don’t have GEX information?
+# what proportion of BCRs don’t have GEX information?
 mean(is.na(match.index))
 ```
 
 #### Transfer GEX annotations into the BCR data
 
-The GEX cell annotations can be added as additional columns in the BCR table.
+The GEX cell annotations can be added as additional columns in the BCR table:
 
 ```{r}
-# Add annotations to BCR data
+# add annotations to BCR data
 cell.annotation <- as.character(Idents(gex_db))
 bcr_data$gex_annotation <-
    unlist(lapply(match.index, function(x) {
@@ -298,7 +289,7 @@ Summary of the key steps:
 - *Assign clonal groups:* add an annotation (`clone_id`) that can be used to identify a group of sequences that came from the same original naive cell.
 - *Reconstruct germline sequences:* figure out the germline sequence of the common ancestor, before mutations are introduced during clonal expansion and SMH.
 
-### Find the distance threshold for cloning manually
+### Manual
 
 Hierarchical clustering is a widely used distance-based method for identify clonally related sequences. An implementation of the hierarchical clustering approach is provided via the `hierachicalClones` function in the [SCOPer](https://scoper.readthedocs.io/en/stable/) R package.
 
@@ -324,11 +315,9 @@ The resulting distribution is often bimodal, with the first mode representing se
 
 For further details regarding inferring an appropriate threshold for the hierarchical clustering method, see the [Distance to Nearest Neighbor vignette](https://shazam.readthedocs.io/en/stable/vignettes/DistToNearest-Vignette/) in the shazam package.
 
-### Find the distance threshold for cloning automatically
+### Automatic
 
-The figure shows the distance-to-nearest distribution for the repertoire. Typically, the distribution is bimodal. The first mode (on the left) represents
-sequences that have at least one clonal relative in the dataset, while the second mode (on the right) is representative of the sequences that do not have
-any clonal relatives in the data (sometimes called "singletons"). A reasonable threshold will separate these two modes of the distribution.
+The figure shows the distance-to-nearest distribution for the repertoire. Typically, the distribution is bimodal. The first mode (on the left) represents sequences that have at least one clonal relative in the dataset, while the second mode (on the right) is representative of the sequences that do not have any clonal relatives in the data (sometimes called "singletons"). A reasonable threshold will separate these two modes of the distribution.
 
 The threshold itself can be also found using the automatic `findThreshold` function. There are different ways to find the threshold and details can also be found in the [Distance to Nearest Neighbor vignette](https://shazam.readthedocs.io/en/stable/vignettes/DistToNearest-Vignette/) in the shazam package.
 
@@ -352,9 +341,7 @@ The nearest-neighbor distance distribution is not always bimodal. In this case, 
 
 The nearest neighbor distances across subjects can be calculated by specifying the parameter `cross` in the function `distToNearest`. And then when we call function `findThreshold`, Gaussian fit parameters can be initialized by setting parameter `cross = dist_crossSubj$cross_dist_nearest`.
 
-In the above data there are two subjects. We will want to make make sure that the cross subject distToNearest values are valid. To calculate this do the following:
-
-
+In the above data, there are two subjects. We will want to make make sure that the cross subject `distToNearest` values are valid. To calculate this do the following:
 
 ```{r}
 # calculate cross subjects distribution of distance to nearest
@@ -388,7 +375,10 @@ Once a threshold is decided, we perform the clonal assignment. At the end of thi
 
 Note: will print out "running in bulk mode" because the subsampled example data has only heavy chains. [Other options](https://scoper.readthedocs.io/en/stable/topics/hierarchicalClones/#single-cell-data) available if light chains are included.
 
-After we decide the threshold for calling clones, the `hierachicalClones` function in SCOPer package can be used to call clones using single cell mode:
+### Run hierarchicalClones
+
+After we decide the threshold for calling clones, the `hierarchicalClones` function in `SCOPer` package can be used to call clones using single cell mode:
+
 ```{r, echo=FALSE}
 bcr_data <- select(bcr_data, -c("clone_id"))
 ```
@@ -401,36 +391,36 @@ results <- hierarchicalClones(bcr_data, cell_id = "cell_id_unique",
                               split_light = TRUE, summarize_clones = FALSE, fields = "subject")
 ```
 
+`hierarchicalClones` clusters B receptor sequences based on junction region sequence similarity within partitions that share the same V gene, J gene, and junction length, thus allowing for ambiguous V or J gene annotations. By setting it up the `cell_id` parameter, `hierarchicalClones` will run in single-cell mode with paired-chain sequences. With `only_heavy = FALSE` and `split_light = TRUE`, grouping should be done by using IGH plus IGK/IGL sequences and inferred clones should be split by the light/short chain (IGK and IGL) following heavy/long chain clustering.
 
-`HierarchicalClones` clusters B receptor sequences based on junction region sequence similarity within partitions that share the same V gene, J gene, and junction length, thus allowing for ambiguous V or J gene annotations. By setting it up the `cell_id` parameter, `HierarchicalClones` will run in single-cell mode with paired-chain sequences. With `only_heavy = FALSE` and `split_light = TRUE`, grouping should be done by using IGH plus IGK/IGL sequences and inferred clones should be split by the light/short chain (IGK and IGL) following heavy/long chain clustering.
-
-### Visualizing clone size distributions
+### Visualize clone size distributions
 
 After calling clones, a clonal abundance distribution can be displayed. To estimate the clonal abundance, we will select only the heavy chains:
 
 ```{r fig.width=8, fig.height=12}
 # calculate and plot the rank-abundance curve
-abund <- estimateAbundance(results %>% filter(locus %in% c("IGH")), group = "sample", nboot=100)
+abund <- estimateAbundance(dplyr::filter(results, locus == "IGH"),
+                           group = "sample", nboot=100)
 
-plot(abund) + facet_wrap("sample", ncol=3)
+plot(abund) + facet_wrap("sample", ncol = 3)
 ```
 
-Most real datasets, will have most clones of size 1 (one sequence). In this tutorial, we processed data to remove most of singleton clone and we don't see
-the much higher peak at 1 that we would normally expect. 
+Most real datasets, will have most clones of size 1 (one sequence). In this tutorial, we processed data to remove most of singleton clone and we don't see the much higher peak at 1 that we would normally expect. 
 
 ```{r fig.height=12, fig.width=8}
 # get clone sizes using dplyr functions
-clone_sizes <- countClones(results %>% filter(locus %in% c("IGH")), groups = "sample")
+clone_sizes <- countClones(dplyr::filter(results, locus == "IGH"),
+                           groups = "sample")
 
-# Plot cells per clone
+# plot cells per clone
 ggplot(clone_sizes, aes(x = seq_count)) +
    geom_bar() + 
-   facet_wrap("sample", ncol=3) +
-   labs( x= "Sequences per clone") +
+   facet_wrap("sample", ncol = 3) +
+   labs(x = "Sequences per clone") +
    theme_bw()
 ```
 
-## Create Germlines
+## Create germlines
 
 The goal is to reconstruct the sequence of the unmutated ancestor of each clone. We use a reference database of known alleles ([IMGT](http://www.imgt.org)). Because it is very difficult to accurately infer the D region and the junction region for BCR sequences, we mask this region with `N`.
 
@@ -456,23 +446,23 @@ And passing `"human/vdj/"` to the `readIMGT` function.
 # and update `dir` to use the path to your `human/vdj` folder
 # references = readIMGT(dir = "human/vdj/")
 
-
 # This won't be able to be run 
 # It has to be be display only due to the lack of viable reference locations
 # this also means that the data will need to already have germlines created. 
-# Read in IMGT files in Docker container
+
+# read in IMGT files in the Docker container
 references <- readIMGT(dir = "/usr/local/share/germlines/imgt/human/vdj")
 
-# Reconstruct Germlines
+# reconstruct germlines
 results <- createGermlines(results, references, nproc = 1)
 ```
 
-## Calculate SHM frequency in the V gene
+## Calculate V gene SHM frequency
 
 Basic mutational load calculations can be performed by the function `observedMutations` in the [SHazaM](https://shazam.readthedocs.io/en/stable/) R package:
 
 ```{r, warning=FALSE}
-# This is typically only done on heavy chains, but can also be done on light chains 
+# this is typically only done on heavy chains, but can also be done on light chains 
 results_heavy <- dplyr::filter(results, locus == "IGH")
 
 # calculate SHM frequency in the V gene
@@ -498,7 +488,7 @@ ggplot(mut_freq_clone, aes(median_mut_freq)) +
   theme_bw() + theme(axis.title = element_text(size = 18))
 ```
 
-The plots below show the distribution of mutation frequency of cells by subject, isotype and cell type:
+The plots below show the distribution of mutation frequency of cells by subject, isotype and cell type respectively:
 
 ```{r}
 # plotting mu_freq by subject
@@ -527,14 +517,16 @@ ggplot(data_mut, aes(y = mu_freq, x = gex_annotation, fill = gex_annotation)) +
   theme(axis.text.x = element_blank())
 ```
 
-## Building and visualizing trees
+## Build and visualize trees
+
+Steps:
 
 1.  Formatting clones
 2.  Tree building
 3.  Visualize trees
 4.  Reconstruct intermediate sequences
 
-### Formatting clones with dowser
+### Format clones with dowser
 
 In the rearrangement table, each row corresponds to a sequence, and each column is information about that sequence. We will create a new data structure, where each row is a clonal cluster, and each column is information about that clonal cluster. The function `formatClones` performs this processing and has options that are relevant to determine how the trees can be built and visualized. For example, `traits` determines the columns from the rearrangement data that will be included in the `clones` object, and will also be used to determine the uniqueness of the sequences, so they are not collapsed.
 
@@ -550,11 +542,10 @@ clones <- formatClones(results,
 head(clones)
 ```
 
-
-
 ```{r, echo=FALSE, eval=FALSE}
-# this can be used once the new version of Dowser is released. If it's desired a chunk can also be shown how to make clones from just the light chains. 
-# Additionally, if there is paired heavy and light chain data, you can format the clones such that the paired data is used in building trees. There is an additional step that occurs before the `formatClones` step in this situation. In order for the trees to best use the addition of light chain information, we will need to assign `clone_subgroups` using dowser's function `resolveLightChains`. This group cells within a clone based on the light chain V and J gene and assign a subgroup to each sequence. Then, in the `formatClones` step, speciy `chain="HL"`. 
+# this can be used once the new version of Dowser is released. If it is desired a chunk can also be shown how to make clones from just the light chains. 
+
+# additionally, if there is paired heavy and light chain data, you can format the clones such that the paired data is used in building trees. There is an additional step that occurs before the `formatClones` step in this situation. In order for the trees to best use the addition of light chain information, we will need to assign `clone_subgroups` using dowser's function `resolveLightChains`. This group cells within a clone based on the light chain V and J gene and assign a subgroup to each sequence. Then, in the `formatClones` step, speciy `chain="HL"`. 
 comb <- resolveLightChains(results, nproc = 1)
 
 clones <- formatClones(comb,
@@ -563,25 +554,25 @@ clones <- formatClones(comb,
 clones
 ```
 
+### Build trees with dowser
 
-### Tree building with dowser
-
-Dowser offers multiple ways to build B cell phylogenetic trees. These differ by the method used to estimate tree topology and branch lengths (e.g. maximum parsimony and maximum likelihood) and implementation (IgPhyML, PHYLIP, RAxML, or R packages ape and phangorn). Each method has pros and cons.
+Dowser offers multiple ways to build B cell phylogenetic trees. These differ by the method used to estimate tree topology and branch lengths (e.g. maximum parsimony and maximum likelihood) and implementation (IgPhyML, PHYLIP, RAxML, or R packages `ape` and `phangorn`). Each method has pros and cons.
 
 #### Maximum parsimony
 
 This is the oldest method and very popular. It tries to minimize the number of mutations from the germline to each of the tips. It can produce misleading results when parallel mutations are present.
 
+There are two options for maximum parsimony trees. The first uses phangorn:
+
 ```{r}
-# Two options for maximum parsimony trees
-# 1. phangorn
 trees <- getTrees(clones, nproc = 1)
 head(trees)
 ```
 
+And the second uses dnapars (PHYLIP):
+
 ```{r, warning=FALSE}
-# 2. dnapars (PHYLIP)
-# the executable path is the location of the executable in the docker container
+# the executable path is the location of the executable in the Docker container
 trees <- getTrees(clones, build = "dnapars", exec = "/usr/local/bin/dnapars", nproc = 1)
 head(trees)
 ```
@@ -590,64 +581,68 @@ head(trees)
 
 These methods model each sequence separately. Use a markov model of the mutation process and try to find the tree, not the branch lengths, that maximizes the likelihood of seen data.
 
+There are several options for standard maximum likelihood trees. The first uses pml (phangorn):
+
 ```{r, warning=FALSE}
-# Two options for standard maximum likelihood trees
-# 1. pml (phangorn)
 trees <- getTrees(clones, build = "pml", nproc = 1)
 head(trees)
 ```
 
+The second uses dnaml (PHYLIP):
+
 ```{r, warning=FALSE}
-# 2. dnaml (PHYLIP)
-# the executable path is the location of the executable in the docker container
+# the executable path is the location of the executable in the Docker container
 trees <- getTrees(clones, build = "dnaml", exec = "/usr/local/bin/dnaml", nproc = 1)
 ```
 
+And the third uses RAxML (RAxML-ng):
+
 ```{r, warning=FALSE}
-# 3. RAxML (RAxML-ng)
-# the executable path is the location of the executable in the docker container
+# the executable path is the location of the executable in the Docker container
 trees <- getTrees(clones, build = "raxml", exec = "/usr/local/bin/raxml-ng", nproc = 1)
 ```
 
-#### B Cell specific maximum likelihood
+#### B cell specific maximum likelihood
 
-Similar to the standard maximum likelihood, but incorporating SHM specific mutation biases into the tree building.
+This is similar to the standard maximum likelihood, but incorporates SHM specific mutation biases into the tree building:
 
 ```{r, warning=FALSE}
 # B cell specific maximum likelihood with IgPhyML
-# the executable path is the location of the executable in the docker container
+# the executable path is the location of the executable in the Docker container
 trees <- getTrees(clones, build = "igphyml", exec = "/usr/local/igphyml/src/igphyml", nproc=1)
 ```
 
+In addition to standard and B cell specific maximum likelihood, dowser offers partitioned maximum likelihood approaches for `RAxML` and `IgPhyML`. This approach should only be used when there is paired heavy and light chain data, not just heavy chain data because both methods will partition on the heavy chain and light chains separately.
 
 ```{r, echo=FALSE, eval=FALSE, warning=FALSE}
-# more release related content. Once it's release the echo=FALSE can be deleted
-#### Partitioned maximum likelihood 
-# 
-# In addition to standard and b cell specific maximum likelihood, dowser offers partitioned maximum likelihood approaches for `RAxML` and `IgPhyML`. This approach should only be used when there is paired heavy and light chain data, not just heavy chain data because both methods will partition on the heavy chain and light chains separately. 
+# more release related content. Once it is released, the echo=FALSE can be deleted
+
 # RAxML
-trees <- getTrees(clones, build = "raxml", exec = "/user/local/raxml-ng/bin/raxml-ng", partition = "scaled")
+trees <- getTrees(clones, build = "raxml",
+                  exec = "/user/local/raxml-ng/bin/raxml-ng", partition = "scaled")
 # IgPhML
-trees <- getTrees(clones, build = "igphyml", exec = "/user/local/igphyml/src/igphyml", partition = "hl")
+trees <- getTrees(clones, build = "igphyml",
+                  exec = "/user/local/igphyml/src/igphyml", partition = "hl")
 ```
 
-
-### Plotting trees with dowser and ggtree
+### Plot trees with dowser and ggtree
 
 Regardless of how you build trees, they are visualized in the same manner with the `plotTrees` function. This will return a list of `ggplot` objects in the same order as the input object. Here, we color the tips by the `day` value because we specified that column in the `formatClones` step.
 
+Plot all of the trees:
+
 ```{r}
-# Plot all trees
 plots_all <- plotTrees(trees, tips = "day", tipsize = 2)
 ```
 
+Plot the largest tree:
+
 ```{r}
-# Plot the largest tree
 plots_all[[1]]
 ```
 
 ```{r, eval=FALSE}
-# Save PDF of all trees
+# save a pdf of all trees
 dir.create("results/dowser_tutorial/", recursive = TRUE)
 treesToPDF(plots_all,
            file = file.path("results", "dowser_tutorial", "final_data_trees.pdf"),
@@ -656,10 +651,9 @@ treesToPDF(plots_all,
 
 ### More elaborate tree plots
 
-Plot trees so that tips are colored by cell type, scaled by sample day, and labelled by isotype.
+Plot trees so that tips are colored by cell type, scaled by sample day, and labelled by isotype:
 
 ```{r, warning=FALSE}
-
 # Scale branches to mutations rather than mutations/site
 trees <- scaleBranches(trees)
 
@@ -674,10 +668,10 @@ print(plots_all)
 
 Sequences of intermediate nodes are automatically reconstructed during the tree build process. To retrieve them, first plot the node numbers for each node. The function `collapseNodes` can help clean up the tree plots. 
 
-Get the predicted intermediate sequence at an internal node in the second largest tree. Dots represent IMGT gaps.
+Get the predicted intermediate sequence at an internal node in the second largest tree (dots represent IMGT gaps):
 
 ```{r, warning=FALSE}
-# Collapse nodes with identical sequences
+# collapse nodes with identical sequences
 trees <- collapseNodes(trees)
 
 # node_nums=TRUE labels each internal node
@@ -688,23 +682,23 @@ print(plots_all)
 ```
 
 ```{r}
-# Get sequence at node 5 for the second clone_id in trees
+# get sequence at node 5 for the second clone_id in trees
 getNodeSeq(trees, clone = trees$clone_id[2], node = 5)
 ```
 
 ### Test for measurable evolution
 
-Perform root-to-tip regression on each tree to detect if later-sampled timepoints are more diverged from the germline.
+Perform root-to-tip regression on each tree to detect if later-sampled timepoints are more diverged from the germline:
 
 ```{r, warning=FALSE}
-# Correlation test
+# correlation test
 trees <- correlationTest(trees, time = "day", nproc = 1)
 
-# Remove trees with one timepoint, order by p value
+# remove trees with one timepoint, order by p value
 trees <- dplyr::filter(trees, !is.na(p))
 trees <- trees[order(trees$p), ]
 
-# Coloring tips by sample day
+# coloring tips by sample day
 plots_time <- plotTrees(trees)
 plots_time <- lapply(plots_time, function(x) {
   x +
@@ -719,16 +713,16 @@ print(plots_time[[1]])
 ```
 
 ```{r, eval=FALSE}
-# Save all trees to a pdf file
+# save all trees to a pdf file
 treesToPDF(plots_time, file = file.path("results", "dowser_tutorial",
                                         "time_data_trees.pdf"))
 ```
 
-### Analyzing B cell migration, differentiation, and evolution over time
+## Analyze B cell migration, differentiation, and evolution over time
 
-In addition to the functions for building and visualizing trees, Dowser also implements new techniques for analyzing B cell migration and differentiation, as well as for detecting new B cell evolution over time. These are more advanced topics detailed on the [Dowser site](https://dowser.readthedocs.io).
+In addition to the functions for building and visualizing trees, `dowser` also implements new techniques for analyzing B cell migration and differentiation, as well as for detecting new B cell evolution over time. These are more advanced topics detailed on the [dowser website](https://dowser.readthedocs.io).
 
-If you have data from different **tissues, B cell subtypes, and/or isotypes** and want to use lineage trees to study the pattern of those traits along lineage trees, check out the [discrete trait vignette](https://dowser.readthedocs.io/en/latest/vignettes/Discrete-Trait-Vignette/).
+If you have data from **different tissues, B cell subtypes, and/or isotypes** and want to use lineage trees to study the pattern of those traits along lineage trees, check out the [discrete trait vignette](https://dowser.readthedocs.io/en/latest/vignettes/Discrete-Trait-Vignette/).
 
 If you have data from **multiple timepoints** from the same subject and want to determine if B cell lineages are evolving over the sampled interval, check out the [measurable evolution vignette](https://dowser.readthedocs.io/en/latest/vignettes/Measurable-Evolution/).
 
