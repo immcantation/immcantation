@@ -100,7 +100,7 @@ RUN RAXMLNG=$(versions get -n raxml-ng) \
     && chmod +x /usr/local/bin/raxml-ng \
     && rm -r raxml-ng_v${RAXMLNG}_linux_x86_64.zip
 
-# Install tbl2asn, version 2023-08-28
+# Install tbl2asn, version 2023-07-13
 # Important Announcement:
 # Source: ftp://ftp.ncbi.nih.gov/toolbox/ncbi_tools/converters/by_program/tbl2asn/README
 # tbl2asn is no longer available for download. We encourage you
@@ -109,7 +109,7 @@ RUN RAXMLNG=$(versions get -n raxml-ng) \
 # See its documentation at
 # https://ftp.ncbi.nih.gov/toolbox/ncbi_tools/converters/by_program/table2asn_GFF/DOCUMENTATION/table2asn_readme.txt
 RUN wget -q --show-progress --no-check-certificate \
-    ftp://ftp.ncbi.nih.gov/toolbox/ncbi_tools/converters/versions/2023-08-28/by_program/table2asn/linux64.table2asn.gz \
+    ftp://ftp.ncbi.nih.gov/toolbox/ncbi_tools/converters/versions/2023-07-13/by_program/tbl2asn/linux64.tbl2asn.gz \
     && gunzip linux64.tbl2asn.gz \
     && mv linux64.tbl2asn /usr/local/bin/tbl2asn \
     && chmod +x /usr/local/bin/tbl2asn
