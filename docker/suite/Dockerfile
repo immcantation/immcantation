@@ -28,6 +28,14 @@ RUN MUSCLE=$(versions get -n muscle) \
 	&& mv muscle${MUSCLE}_i86linux64 /usr/local/bin/muscle \
 	&& rm muscle${MUSCLE}_binaries.tar.gz
 
+# Install muscle5
+#RUN MUSCLE='5.1.0' \
+#    && MUSCLE_SHORT=$(sed 's/\.0$//g' <<<"$MUSCLE") \
+#    && wget -q --show-progress --no-check-certificate \
+#       https://github.com/rcedgar/muscle/releases/download/${MUSCLE}/muscle${MUSCLE_SHORT}.linux_intel64 \
+#    && chmod +x muscle${MUSCLE_SHORT}.linux_intel64 \
+#	 && mv muscle${MUSCLE_SHORT}.linux_intel64 /usr/local/bin/muscle5
+
 # Install vsearch
 RUN VSEARCH=$(versions get -n vsearch) \
     && wget -q --show-progress --no-check-certificate \
