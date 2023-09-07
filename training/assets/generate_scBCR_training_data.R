@@ -2,25 +2,18 @@ library(airr)
 library(dplyr)
 
 # Script to extract fasta file and the necessary filtered_contig_annotations.csv file from the BCR.data.rds file for the tutorials
-tab <- readRDS("BCR.data.rds") %>% ungroup()
+tab <- readRDS("BCR.data_08112023.rds") %>% ungroup()
 
-tab_lightchain <- tab %>% filter(locus %in% c("IGL", "IGK")) 
-tab_heavychain <- tab %>% filter(locus %in% c("IGH")) %>%
-                          mutate( c_gene = case_when( isotype == "IgM" ~ "IGHM",
-                                                      isotype == "IgG" ~ "IGHG",
-                                                      isotype == "IgA" ~ "IGHA",
-                                                      isotype == "IgD" ~ "IGHD"))
-
-tab_lightchain_fixed <- tab_lightchain %>%
-                          mutate( sequence_id = paste(sequence_id, sample, sep = "_") ) 
-
-tab_merged <- bind_rows(tab_heavychain, tab_lightchain_fixed)
-write_rearrangement(tab_merged %>% select(-c(c_gene, clone_id, clone_count, mu_freq)), "BCR_data.tsv")
-
-colnames(tab)
+tab_rearrangement <- tab %>%
+      mutate(
+        sample_id=sample,
+        subject_id=subject
+      )
+tab_rearrangement %>% select(-c(c_gene, clone_id, mu_freq, mutated_invariant))
+write.table(tab_rearrangement,"BCR_data.tsv", sep = "\t", quote = F, row.names = F)
 
 # Convert AIRR rearrangment format to filtered_contig_annotations.csv format for example data
-tab_10x <- tab_merged %>% ungroup() %>%
+tab_10x <- tab %>% ungroup() %>%
             mutate(
             barcode = sequence_id,
             is_cell = "true",
