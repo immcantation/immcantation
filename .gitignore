@@ -2,6 +2,7 @@
 .DS_Store
 .RData
 .Rprofile
+.history
 .idea
 .Rhistory
 .Rproj.user

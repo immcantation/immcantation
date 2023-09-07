@@ -1,12 +1,18 @@
 Release Notes
 ========================================================================
 
-Version 4.4.0.999:  April 20, 2023
+Version 4.4.0.999:  July 19, 2023
 ------------------------------------------------------------------------
 
 Version Updates:
 
 + igblast 1.21.0
++ dowser 1.1.2
+
+Image Changes:
+
++ Updated base image to Fedora 38.
++ Added ``RAxML-NG`` (https://github.com/amkozlov/raxml-ng)
 
 Version 4.4.0:  December 15, 2022
 ------------------------------------------------------------------------
@@ -40,7 +46,7 @@ Pipeline Changes:
 + Added the ``singlecell-filter`` pipeline to remove cells with
   with zero or more than one heavy chain sequences.
 + Updated ``changeo-10x``. Added a new step to use ``singlecell-filter``.
-  Replaced ``DefineCones.py`` with ``scoper-clone``.
+  Replaced ``DefineClones.py`` with ``scoper-clone``.
 
 
 Version 4.3.0:  November 8, 2021
@@ -365,7 +371,7 @@ Pipeline Changes:
 + Fixed a bug wherein ``changeo-igblast`` and ``changeo-clone`` were
   not working with an unspecified output directory (``-o`` argument).
 + Updated CPU core detection in ``tigger-genotype`` and
-  ``shazam-threshold`` for compatability with new R package versions.
+  ``shazam-threshold`` for compatibility with new R package versions.
 
 Accessory Script Changes:
 
@@ -394,7 +400,7 @@ Image Changes:
 
 + Added RDI R package.
 + Added CD-HIT.
-+ Added AIRR python and R reference libaries.
++ Added AIRR python and R reference libraries.
 + Added git, BLAS, and LAPACK to base image.
 
 

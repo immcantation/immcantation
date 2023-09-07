@@ -19,14 +19,14 @@ population structure determination, and repertoire analysis.
 ### Repository
 
 This repository contains common documentation, accessory scripts,
-template pipelines, and docker build files for tools in the Immcantation
+example pipelines, and docker build files for tools in the Immcantation
 framework.
 
 Folder      | Contents
 ----------- | ----------------------------------------------------------
 docker      | Dockerfiles for images hosted on [Docker Hub](https://hub.docker.com/r/immcantation).
 docs        | Sphinx build files for docs hosted on [ReadTheDocs](https://immcantation.readthedocs.io).
-pipelines   | Pipeline template scripts for the docker images.
+pipelines   | Example pipeline scripts for the docker images.
 protocols   | Primer sequences and amplicon designs for published experimental protocols.
 scripts     | Accessory scripts for IMGT, IgBLAST and VDJTools.
 
@@ -35,13 +35,13 @@ scripts     | Accessory scripts for IMGT, IgBLAST and VDJTools.
 We have provided a complete installation of the Immcantation framework,
 its dependencies, accessory scripts, and IgBLAST in a
 [Docker](http://www.docker.com) image. The image also includes both the
-IgBLAST and IMGT reference germline sets, as well as several template
+IgBLAST and IMGT reference germline sets, as well as several example
 pipeline scripts. The image is available on Docker Hub at
 [immcantation/suite](https://hub.docker.com/r/immcantation/suite)
 
 Images are versioned through tags with images containing official
 releases denoted by meta-version numbers (eg, `1.0.0`). The `devel` tag
-denotes the latest development (unstabled) builds. The tag `latest` is not
+denotes the latest development (unstable) builds. The tag `latest` is not
 available. Images can be obtained with the command
 `docker pull immcantation/suite:<tag>`.
 

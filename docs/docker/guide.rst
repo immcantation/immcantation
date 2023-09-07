@@ -1,10 +1,10 @@
 .. _DockerGuide:
 
 Using the Container
-================================================================================
+--------------------------------------------------------------------------------
 
 Invoking a shell inside the container
---------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To invoke a shell session inside the container:
 
@@ -17,7 +17,7 @@ To invoke a shell session inside the container:
     singularity shell immcantation_suite-|docker-version|.sif
 
 Sharing files with the container
---------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Sharing files between the host operating system and the container requires you
 to bind a directory on the host to one of the container's mount points using the
@@ -43,7 +43,7 @@ For example, to invoke a shell session inside the container with ``$HOME/project
 Note, the ``:z`` in the ``-v`` argument of the ``docker`` command is essential.
 
 Executing a specific command
---------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 After invoking an interactive session inside the container, commands can be
 executed in the container shell as they would be executed in the host shell.
@@ -61,14 +61,14 @@ how to execute ``ls`` within ``$HOME/project`` mounted to ``/data``:
     singularity exec -B $HOME/project:/data immcantation_suite_|docker-version|.sif ls /data
 
 Inspecting the container components
---------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The container includes three informational scripts that provide details about
 the versions of installed software and available pipelines.
 
 * The ``versions report`` command will inspect the installed software versions and print them to standard output.
 * The analogous ``builds report`` command will display the build date and changesets used during the image build. This is particularly relevant if you are using the ``immcantation/suite:devel`` development builds.
-* Finally, the ``pipelines report`` command will display a list of available template pipelines included in the container.
+* Finally, the ``pipelines report`` command will display a list of available example pipelines included in the container.
 
 Each command can be run using:
 
@@ -83,7 +83,7 @@ Each command can be run using:
 .. _DockerGuideTutorials:
 
 Using the container for tutorials
---------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If you would like to run and interact with the Jupyter notebook tutorials from your Docker container, run the following command (replace ``devel`` with a release version if applicable):
 

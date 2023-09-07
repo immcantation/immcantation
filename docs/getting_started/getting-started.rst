@@ -3,7 +3,7 @@ Immcantation Tutorials
 
 Each tool in the framework has its own documentation site, with detailed usage information
 and examples. A good starting point to familiarize yourself with the framework is to
-follow one the tutorials listed here. They are available as Jupyter notebooks under the
+follow one the tutorials listed here. They are available as Notebooks under the
 folder `training <https://bitbucket.org/kleinstein/immcantation/src/master/training>`_
 in the Immcantation Bitbucket repository.
 
@@ -14,21 +14,22 @@ The Immcantation Lab container
     :alt: How to use the Immcantation Lab container
     :align: left
 
-Information on obtaining and using the container with the Jupyter notebooks and data needed to follow the Immcantation tutorials can be found within the general :ref:`guide <DockerGuide>`.
+Information on obtaining and using the container with the notebooks and data needed to follow 
+the Immcantation tutorials can be found within the general :ref:`guide <DockerGuide>`.
 
 
 Introductory Webinar
 -------------------------------------------------------------------------------------------
 
 .. image:: ../_static/start-here.png
-    :alt: Start here: Introductory Webinar and Jupyter Notebook
+    :alt: Start here: Introductory Webinar and R Notebook
     :align: left
 
 For a detailed use example for each Immcantation tool follow the tutorial
 *Introduction to B cell repertoire analysis using the Immcantation
 framework*. This tutorial is based on our
-introductory webinar. It is also available as a Jupyter notebook
-(`intro-lab.ipynb <https://bitbucket.org/kleinstein/immcantation/src/master/training>`_) in the Immcantation repository.
+introductory webinar. It is also available as an R Notebook
+(`intro-lab.Rmd <https://bitbucket.org/kleinstein/immcantation/src/master/training>`_) in the Immcantation repository.
 
 .. admonition:: Tutorial
 
@@ -101,7 +102,7 @@ as a Jupyter notebook (`dowser_tutorial.ipynb <https://bitbucket.org/kleinstein/
 
 
 Video presentations
--------------------------------------------------------------------------------------------
+===========================================================================================
 
 .. image:: ../_static/immcantation-yt.png
     :target: https://www.youtube.com/channel/UCWQgFmSnv8B9Q5G_kunOabw/playlists
@@ -112,11 +113,11 @@ You can watch presentations by Immcantation developers and users in Immcantation
 
 
 Vignettes
--------------------------------------------------------------------------------------------
+===========================================================================================
 
 Detailed usage documentation and tutorials for each individual tool in Immcantation are
 provided in the main documentation pages for each tool. The following list of shortcuts
-cover common analyses. *Note that each link below will leave the Immcantation portal page.*
+cover common analyses. Note, each link will leave the Immcantation portal page.
 
 .. toctree::
     :maxdepth: 1

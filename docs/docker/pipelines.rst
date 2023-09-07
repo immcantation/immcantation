@@ -1,7 +1,7 @@
 .. _PipelineScripts:
 
-Pipeline Templates
-================================================================================
+Example pipelines
+--------------------------------------------------------------------------------
 
 You can always run your own pipeline scripts through the container, but the
 container also includes a set of predefined pipeline scripts that can be run as
@@ -18,13 +18,13 @@ will explain its use. The available pipelines are:
 * shazam-threshold
 * changeo-clone
 
-All template pipeline scripts can be found in ``/usr/local/bin``.
+All example pipeline scripts can be found in ``/usr/local/bin``.
 
 
 .. _PhiXPipeline:
 
 PhiX cleaning pipeline
---------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Removes reads from a sequence file that align against the PhiX174 reference
 genome.
@@ -64,7 +64,7 @@ genome.
 .. _AbSeqPipeline:
 
 NEBNext / AbSeq immune sequencing kit preprocessing pipeline
---------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 A start to finish pRESTO processing script for NEBNext / AbSeq immune sequencing data.
 An example for human BCR processing is shown below. Primer sequences are available from the
@@ -120,7 +120,7 @@ file containing information about the data and processing. Valid fields are show
 .. _ClontechPipeline:
 
 Takara Bio / Clontech SMARTer v1 immune sequencing kit preprocessing pipeline
---------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 A start to finish pRESTO processing script for Takara Bio / Clontech SMARTer v1 immune
 sequencing kit data. C-regions are assigned using the universal C-region primer sequences are
@@ -160,7 +160,7 @@ or inside the container under ``/usr/local/share/protocols/Universal``.
 .. _ClontechPipelineUMI:
 
 Takara Bio / Clontech SMARTer v2 (UMI) immune sequencing kit preprocessing pipeline
---------------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 A start to finish pRESTO processing script for Takara Bio / Clontech SMARTer v2 immune
 sequencing kit data that includes UMIs. C-regions are assigned using the universal C-region
@@ -199,7 +199,7 @@ or inside the container under ``/usr/local/share/protocols/Universal``.
 .. _10XPipeline:
 
 10x Genomics V(D)J annotation pipeline
---------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Assigns new annotations and infers clonal relationships to 10x Genomics
 single-cell V(D)J data output by Cell Ranger.
@@ -235,7 +235,7 @@ single-cell V(D)J data output by Cell Ranger.
 .. _IgBLASTPipeline:
 
 IgBLAST annotation pipeline
---------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Performs V(D)J alignment using IgBLAST and post-processes the output into the
 Change-O data standard.
@@ -267,7 +267,7 @@ Change-O data standard.
 .. _GenotypePipeline:
 
 Genotyping pipeline
---------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Infers V segment genotypes using TIgGER.
 
@@ -304,7 +304,7 @@ by TIgGER as the subject-specific IGHV gene germline. An example of this applica
 .. _ThresholdPipeline:
 
 Clonal threshold inference pipeline
---------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Performs automated detection of the clonal assignment threshold.
 
@@ -335,7 +335,7 @@ Performs automated detection of the clonal assignment threshold.
 .. _ClonePipeline:
 
 Clonal assignment pipeline
---------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Assigns Ig sequences into clonally related lineages and builds full germline
 sequences.

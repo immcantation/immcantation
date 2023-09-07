@@ -1,4 +1,4 @@
-Getting Started
+Local Installation
 ===========================================================================================
 
 Download & Installation

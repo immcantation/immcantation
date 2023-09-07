@@ -16,6 +16,9 @@
 import yaml
 import sphinx_rtd_theme
 import datetime
+import jupytext
+import os
+import shutil
 
 # Prolog
 docker_versions = yaml.load(open('../docker/suite/Version.yaml', 'r'), Loader=yaml.FullLoader)
@@ -38,7 +41,11 @@ extensions = ['sphinx.ext.intersphinx',
               'sphinx.ext.todo',
               'nbsphinx',
               'nbsphinx_link',
-              'sphinx_gallery.load_style']
+              'sphinx_rtd_theme']
+
+nbsphinx_custom_formats = {
+    '.md': ['jupytext.reads', {'fmt': '.md'}]
+}
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -46,7 +53,7 @@ templates_path = ['_templates']
 # The suffix(es) of source filenames.
 # You can specify multiple suffix as a list of string:
 # source_suffix = ['.rst', '.md']
-source_suffix = '.rst'
+source_suffix = [ '.rst']
 
 # The encoding of source files.
 #source_encoding = 'utf-8-sig'
@@ -73,7 +80,7 @@ release = '%s-%s' % (docker_versions['immcantation']['version'], docker_versions
 #
 # This is also used if you do content translation via gettext catalogs.
 # Usually you set "language" from the command line for these cases.
-language = None
+language = 'en'
 
 # There are two options for replacing |today|: either, you set today to some
 # non-false value, then it is used:
@@ -305,3 +312,59 @@ texinfo_documents = [(master_doc,
 intersphinx_mapping = {'python': ('https://docs.python.org/3', None),
                        'presto': ('https://presto.readthedocs.io/en/stable', None),
                        'changeo': ('https://changeo.readthedocs.io/en/stable', None)}
+
+#######
+
+# Hack to use the .Rmd tutorials in the documentation
+# Add temporary copy of the .md tutorials and files 
+# from ../training to gdocs/get-started
+# and delete them when build finished
+
+# Path to notebooks folder
+src_dir = os.path.join("..","training")
+# Path to destination folder under docs/
+dest_dir = os.path.join("getting_started")
+
+def copy_notebooks (app, exception):
+    for training_file in os.listdir(src_dir):
+        if training_file.endswith('.md'):
+            if training_file.endswith('README.md'):
+                continue
+            src_rmd = os.path.join(src_dir, training_file)
+            if os.path.isfile(src_rmd):
+                # copy .md
+                dest_rmd = os.path.join(dest_dir, training_file)
+                shutil.copy2(src_rmd, dest_rmd)
+                # Remove yaml header
+                #with open(dest_rmd, 'r') as f: dest_rmd_contents = f.read()
+                #f.close()
+                # copy md_files
+                rmd_name = os.path.basename(src_rmd).split(".")[0]
+                rmd_name = rmd_name + '_files'
+                rmd_files_src_dir = os.path.join(src_dir, rmd_name)
+                if os.path.exists(rmd_files_src_dir):
+                    rmd_files_dest_dir = os.path.join(dest_dir, rmd_name)
+                    shutil.copytree(rmd_files_src_dir, rmd_files_dest_dir)
+                # dest_rmd_contents = dest_rmd_contents.split('\n---\n\n')[1]
+                # with open(dest_rmd, 'w') as f: f.write(dest_rmd_contents)
+                # f.close()
+    assets_src_dir = os.path.join(src_dir,"assets")
+    assets_dest_dir = os.path.join(dest_dir, "assets")
+    shutil.copytree(assets_src_dir, assets_dest_dir)
+
+def remove_notebooks(app, exception):
+    src_dir = os.path.join("getting_started")
+    for training_file in os.listdir(src_dir):
+        if training_file.endswith('.md'):
+            src_rmd = os.path.join(src_dir, training_file)
+            os.remove(src_rmd)
+            rmd_name = os.path.basename(src_rmd).split(".")[0]
+            rmd_name = rmd_name + '_files'
+            rmd_files_src_dir = os.path.join(src_dir, rmd_name)   
+            if os.path.exists(rmd_files_src_dir):
+                shutil.rmtree(rmd_files_src_dir)          
+    shutil.rmtree(os.path.join(src_dir,"assets"))
+
+def setup(app):
+    app.connect('config-inited', copy_notebooks)
+    app.connect('build-finished', remove_notebooks)

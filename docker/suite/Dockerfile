@@ -28,6 +28,14 @@ RUN MUSCLE=$(versions get -n muscle) \
 	&& mv muscle${MUSCLE}_i86linux64 /usr/local/bin/muscle \
 	&& rm muscle${MUSCLE}_binaries.tar.gz
 
+# Install muscle5
+#RUN MUSCLE='5.1.0' \
+#    && MUSCLE_SHORT=$(sed 's/\.0$//g' <<<"$MUSCLE") \
+#    && wget -q --show-progress --no-check-certificate \
+#       https://github.com/rcedgar/muscle/releases/download/${MUSCLE}/muscle${MUSCLE_SHORT}.linux_intel64 \
+#    && chmod +x muscle${MUSCLE_SHORT}.linux_intel64 \
+#	 && mv muscle${MUSCLE_SHORT}.linux_intel64 /usr/local/bin/muscle5
+
 # Install vsearch
 RUN VSEARCH=$(versions get -n vsearch) \
     && wget -q --show-progress --no-check-certificate \
@@ -91,9 +99,25 @@ RUN PHYLIP=$(versions get -n phylip) \
     && mv phylip-${PHYLIP}/exe/* /usr/local/bin \
     && rm -r phylip-${PHYLIP}.tar.gz phylip-${PHYLIP}
 
-# Install tbl2asn
+# Install RAxML-NG
+RUN RAXMLNG=$(versions get -n raxml-ng) \
+    && wget -q --show-progress --no-check-certificate \
+       https://github.com/amkozlov/raxml-ng/releases/download/1.2.0/raxml-ng_v${RAXMLNG}_linux_x86_64.zip \
+    && unzip -q raxml-ng_v${RAXMLNG}_linux_x86_64.zip \
+    && mv raxml-ng /usr/local/bin/raxml-ng \
+    && chmod +x /usr/local/bin/raxml-ng \
+    && rm -r raxml-ng_v${RAXMLNG}_linux_x86_64.zip
+
+# Install tbl2asn, version 2023-07-13
+# Important Announcement:
+# Source: ftp://ftp.ncbi.nih.gov/toolbox/ncbi_tools/converters/by_program/tbl2asn/README
+# tbl2asn is no longer available for download. We encourage you
+# to check out our updated version table2asn
+# at https://ftp.ncbi.nlm.nih.gov/asn1-converters/by_program/table2asn/
+# See its documentation at
+# https://ftp.ncbi.nih.gov/toolbox/ncbi_tools/converters/by_program/table2asn_GFF/DOCUMENTATION/table2asn_readme.txt
 RUN wget -q --show-progress --no-check-certificate \
-    ftp://ftp.ncbi.nih.gov/toolbox/ncbi_tools/converters/by_program/tbl2asn/linux64.tbl2asn.gz \
+    ftp://ftp.ncbi.nih.gov/toolbox/ncbi_tools/converters/versions/2023-07-13/by_program/tbl2asn/linux64.tbl2asn.gz \
     && gunzip linux64.tbl2asn.gz \
     && mv linux64.tbl2asn /usr/local/bin/tbl2asn \
     && chmod +x /usr/local/bin/tbl2asn
@@ -177,10 +201,13 @@ RUN PACKAGE="enchantr" \
     && rm -r /tmp/${PACKAGE}
 
 # Install prestor
+# Note: Package ‘captioner’ was removed from the CRAN repository.
+# Archived on 2023-08-18
 RUN PACKAGE="prestor" \
     && rm -rf /tmp/${PACKAGE} \
     && git clone https://bitbucket.org/kleinstein/prestor /tmp/${PACKAGE} \
     && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} -d immcantation \
+    && Rscript -e "devtools::install_github('adletaw/captioner')" \
     && rinstall -p /tmp/${PACKAGE} \
     && (cd /tmp/${PACKAGE} && builds write -n ${PACKAGE} -v $(git describe --abbrev=12 --always --dirty=+)) \
     && rm -r /tmp/${PACKAGE}
