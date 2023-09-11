@@ -70,24 +70,22 @@ Generate AIRR Rearrangement data from the 10x V(D)J FASTA files using the steps 
 
 This step needs to be run in the command line after installing Change-O and igblast, or within the immcantation docker container. There is documentation on how to use the immcantation docker container on the [Docker container](https://immcantation.readthedocs.io/en/stable/docker/guide.html#invoking-a-shell-inside-the-container) section of the immcantation website. If not using the docker container, the path to the igblast executable will need to be updated to the local installation path.
 
-```{bash}
+```{bash, eval=F}
 # assign V, D, and J genes using IgBLAST
-#AssignGenes.py igblast -s ../data/10x_data_2subj/filtered_contig.fasta -b /usr/local/share/igblast \
-#   --organism human --loci ig --format blast --outdir results
 # TODO: update path to final path in container
-AssignGenes.py igblast -s /data/BCR_data_sequences.fasta -b /usr/local/share/igblast \ 
+AssignGenes.py igblast -s /data/filtered_contig.fasta -b /usr/local/share/igblast \ 
    --organism human --loci ig --format blast --outdir results
 ```
 
-```{bash}
+```{bash, eval=F}
 # convert IgBLAST output to AIRR format
 # TODO: update path to final path in container
-MakeDb.py igblast -i results/BCR_data_sequences_igblast.fmt7 -s /data/BCR_data_sequences.fasta \
+MakeDb.py igblast -i results/BCR_data_sequences_igblast.fmt7 -s /data/filtered_contig.fasta \
    -r /usr/local/share/germlines/imgt/human/vdj/imgt_human_*.fasta \
    --10x /data/filtered_contig_annotations.csv --extended
 ```
 
-```{bash}
+```{bash, eval=F}
 ls results
 ```
 
@@ -126,12 +124,12 @@ suppressPackageStartupMessages(library(ggtree))
 
 ### Merge different samples
 
-The previous steps should be performed individually for each of the samples that shoudl be analysed together. In order to merge different samples together for an common analysis, a column needs to be added to the resulting table to identify the sample. Additionally, the sequence IDs and cell barcodes need to be made unique across samples e.g. by appending the `sample` ID to them. This step has already been performed and the resulting table can be found under assets/BCR_data.tsv.
+The previous steps should be performed individually for each of the samples that should be analysed together. In order to merge different samples together for an common analysis, a column needs to be added to the resulting table to identify the sample. Additionally, the sequence IDs and cell barcodes need to be made unique across samples e.g. by appending the `sample` ID to them. This step has already been performed and the resulting table can be found under assets/BCR_data.tsv.
 
 ```{r warning=F}
 # read in the data
 # TODO: update to pull from zenodo
-bcr_data <- airr::read_rearrangement("assets/BCR_data.tsv")
+bcr_data <- airr::read_rearrangement(file.path("assets","zenodo","BCR_data.tsv"))
 ```
 
 ### Remove non-productive sequences
@@ -185,7 +183,7 @@ We load the gene expression data Seurat object that has already been pre-process
 
 ```{r}
 # update to pull from Zenodo
-gex_db <- readRDS(file.path("assets", "GEX.data_08112023.rds"))
+gex_db <- readRDS(file.path("assets", "zenodo", "GEX.data_08112023.rds"))
 ```
 
 Inspect the data:
@@ -439,14 +437,10 @@ git clone https://bitbucket.org/kleinstein/immcantation.git
 
 And passing `"human/vdj/"` to the `readIMGT` function.
 
-```{r,warning=FALSE, message=FALSE}
+```{r,warning=FALSE, message=FALSE, eval=FALSE}
 # read in IMGT data if downloaded on your own (above)
 # and update `dir` to use the path to your `human/vdj` folder
 # references = readIMGT(dir = "human/vdj/")
-
-# This won't be able to be run 
-# It has to be be display only due to the lack of viable reference locations
-# this also means that the data will need to already have germlines created. 
 
 # read in IMGT files in the Docker container
 references <- readIMGT(dir = "/usr/local/share/germlines/imgt/human/vdj")
@@ -482,18 +476,18 @@ mut_freq_clone <- data_mut %>%
                     summarize(median_mut_freq = median(mu_freq))
 
 ggplot(mut_freq_clone, aes(median_mut_freq)) +
-  geom_histogram(, binwidth = 0.005) +
+  geom_histogram( binwidth = 0.005) +
   theme_bw() + theme(axis.title = element_text(size = 18))
 ```
 
 The plots below show the distribution of mutation frequency of cells by subject, isotype and cell type respectively:
 
 ```{r}
-# plotting mu_freq by subject
-ggplot(data_mut, aes(y = mu_freq, x = subject, fill = subject)) +
+# plotting mu_freq by subject_id
+ggplot(data_mut, aes(y = mu_freq, x = subject_id, fill = subject_id)) +
   geom_boxplot() +
   geom_jitter(width = 0.2, alpha = 0.3) +
-  labs(x = "", y = "Mutation frequency", fill = "Subject") +
+  labs(x = "", y = "Mutation frequency", fill = "subject_id") +
   theme(axis.text.x = element_blank())
 ```
 
