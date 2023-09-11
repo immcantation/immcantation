@@ -2,30 +2,30 @@ library(airr)
 library(dplyr)
 
 # Script to extract fasta file and the necessary filtered_contig_annotations.csv file from the BCR.data.rds file for the tutorials
-tab <- readRDS("BCR.data.rds")
+tab <- readRDS("BCR.data_08112023.rds") %>% ungroup()
 
-tab_lightchain <- tab %>% filter(locus %in% c("IGL", "IGK")) 
-tab_heavychain <- tab %>% filter(locus %in% c("IGH")) %>%
-                          mutate( c_gene = case_when( isotype == "IgM" ~ "IGHM",
-                                                      isotype == "IgG" ~ "IGHG",
-                                                      isotype == "IgA" ~ "IGHA",
-                                                      isotype == "IgD" ~ "IGHD"))
+tab_rearrangement_onesample <- tab %>%
+      mutate(
+        sample_id=sample,
+        subject_id=subject
+      ) %>% filter(sample_id == "subject2_FNA_d60_1_Y1")
+tab_rearrangement_onesample <- tab_rearrangement_onesample %>% select(-c(sample, subject, sample_id, subject_id, c_gene, clone_id, mu_freq, mutated_invariant))
+write_rearrangement(tab_rearrangement_onesample,"BCR_data_sample1.tsv")
 
-tab_lightchain_fixed <- tab_lightchain %>%
-                          mutate( sequence_id = paste(sequence_id, sample, sep = "_") ) 
+tab_rearrangement <- tab %>%
+  mutate(
+    sample_id=sample,
+    subject_id=subject
+  )
+tab_rearrangement <- tab_rearrangement %>% select(-c(sample, subject, c_gene, clone_id, mu_freq, mutated_invariant))
+write.table(x = tab_rearrangement,file = "BCR_data.tsv", sep = "\t", quote = F, row.names = F)
 
-tab_merged <- bind_rows(tab_heavychain, tab_lightchain_fixed)
-write_rearrangement(tab_merged %>% select(-c(c_gene, clone_id, clone_count, mu_freq)), "BCR_data.tsv")
-
-colnames(tab)
-
-# Convert AIRR rearrangment format to filtered_contig_annotations.csv format for example data
-tab_10x <- tab_merged %>% ungroup() %>%
+# Convert AIRR rearrangement format to filtered_contig_annotations.csv format for example data
+tab_10x <- tab %>% ungroup() %>%
             mutate(
             barcode = sequence_id,
             is_cell = "true",
             contig_id = sequence_id,
-            sample_id = sample,
             high_confidence = "true",
             length = length(sequence),
             chain = locus,
@@ -45,9 +45,10 @@ tab_10x <- tab_merged %>% ungroup() %>%
             reads = consensus_count,
             umis = duplicate_count
         ) %>%
+        filter(sample == "subject2_FNA_d60_1_Y1") %>%
         select( barcode, is_cell, contig_id, high_confidence, length, chain, 
                 v_gene, d_gene, j_gene, c_gene, full_length, productive, fwr1_nt, cdr1_nt,
-                fwr2_nt, cdr2_nt, fwr3_nt, cdr3, cdr3_nt, fwr4_nt, reads, umis)
+                fwr2_nt, cdr2_nt, fwr3_nt, cdr3, cdr3_nt, fwr4_nt, reads, umis) 
 
 write.csv(tab_10x, "filtered_contig_annotations.csv", row.names = FALSE, quote = FALSE)
 
