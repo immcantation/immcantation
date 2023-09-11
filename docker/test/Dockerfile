@@ -24,7 +24,6 @@ ARG R_DEPS="c('ape', \
               'hexbin', \
               'igraph', \
               'iterators', \
-              'kedd', \
               'KernSmooth', \
               'knitr', \
               'lazyeval', \
