@@ -101,7 +101,8 @@ The following R-based example demonstrates how to fix broken workflows as a resu
     #    sequenceColumn="junction"
     #    vCallColumn="v_call"
     #    jCallColumn="j_call"
-    # These values don't match the column names in `db` as previously seen, so the command doesn't work
+    # These values don't match the column names in `db` as previously seen,
+    # so the command doesn't work
 
     # The solution is to specify the actual column names:
     > db <- distToNearest(db, sequenceColumn="JUNCTION",
