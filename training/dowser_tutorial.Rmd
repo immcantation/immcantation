@@ -91,11 +91,12 @@ list.files("../data/bcr_phylo_tutorial")
 The example files are expected to be in `../data/bcr_phylo_tutorial`. If you are using a different path, update the code in the cell bellow accordingly.
 
 ```{r}
+suppressPackageStartupMessages(library(airr))
 suppressPackageStartupMessages(library(alakazam))
 suppressPackageStartupMessages(library(Seurat))
 
 # Read BCR data
-bcr_db <- readChangeoDb("../data/bcr_phylo_tutorial/BCR.data.tsv")
+bcr_db <- airr::read_rearrangement("../data/bcr_phylo_tutorial/BCR.data.tsv")
 
 # Read GEX data
 gex_db <- readRDS("../data/bcr_phylo_tutorial/GEX.data.rds")
