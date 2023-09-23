@@ -73,14 +73,6 @@ Note: The example files are available for download [here](https://yale.box.com/s
 
 ## The R session
 
-The next two lines of code are required to be able to use R magic and run R code in this Jupyter notebook.
-
-```{python}
-# R for Python
-# Enable use of R magic to run R code
-import rpy2.rinterface
-%load_ext rpy2.ipython
-```
 
 The is the working directory:
 
