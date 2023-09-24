@@ -64,6 +64,7 @@ RUN dnf -y update && dnf install -y \
 
 # System environment variables
 ENV LD_LIBRARY_PATH="/usr/lib64/R/lib:/usr/lib64/atlas"
+RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 20
 
 # R build setup
 ARG R_REPO="http://lib.stat.cmu.edu/R/CRAN/"
