@@ -13,7 +13,7 @@ package:
   prestor:  0.0.8
   rabhit:   0.1.5
   rdi:      1.0.0
-  igphyml:  1.1.5
+  igphyml:  2.0.0
   seurat:   4.3.0
 dependency:
   airr-py:  1.5.0
