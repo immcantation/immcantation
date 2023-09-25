@@ -64,6 +64,7 @@ RUN dnf -y update && dnf install -y \
 
 # System environment variables
 ENV LD_LIBRARY_PATH="/usr/lib64/R/lib:/usr/lib64/atlas"
+RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 20
 
 # R build setup
 ARG R_REPO="http://lib.stat.cmu.edu/R/CRAN/"
@@ -84,3 +85,6 @@ RUN echo "options(repos='${R_REPO}')" >> /usr/lib64/R/library/base/R/Rprofile \
     && mkdir -p /usr/share/doc/R/html \
     && Rscript -e "install.packages(${R_DEPS}, clean=TRUE)" \
     && Rscript -e "BiocManager::install(${R_BIOC_DEPS},update=F,ask=F,method='wget')"
+RUN touch /.Rprofile \
+    && touch /.Renviron
+
