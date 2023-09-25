@@ -96,7 +96,12 @@ suppressPackageStartupMessages(library(alakazam))
 suppressPackageStartupMessages(library(Seurat))
 
 # Read BCR data
-bcr_db <- airr::read_rearrangement("../data/bcr_phylo_tutorial/BCR.data.tsv")
+bcr_db <- airr::read_rearrangement("../data/bcr_phylo_tutorial/BCR.data.tsv",
+               aux_types=c("v_germline_length"="i",
+                           "d_germline_length"="i",
+                           "j_germline_length"="i",
+                           "day"="i")
+            )
 
 # Read GEX data
 gex_db <- readRDS("../data/bcr_phylo_tutorial/GEX.data.rds")
