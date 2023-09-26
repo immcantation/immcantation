@@ -118,7 +118,7 @@ RUN wget -v -O /home/${NB_USER}/10x_data_2subj.zip -L http://clip.med.yale.edu/i
     filtered_contig_annotations.csv \
     filtered_contig.fasta /home/${NB_USER}/data/10x_data_2subj/.
 # Download dowsert tutorial data
-RUN wget -v -O /home/${NB_USER}/immcantation-bcr_phylo_tutorial.zip -L https://yale.box.com/shared/static/96y1rlu4ujerprxr53qxw87g7ybc1y99 && \
+RUN wget -v -O /home/${NB_USER}/immcantation-bcr_phylo_tutorial.zip -L https://yale.box.com/shared/static/96y1rlu4ujerprxr53qxw87g7ybc1y99.zip && \
     cd /home/${NB_USER}/ && \
     unzip -o immcantation-bcr_phylo_tutorial.zip && \
     rm -rf immcantation-bcr_phylo_tutorial.zip && \
