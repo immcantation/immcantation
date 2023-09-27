@@ -63,6 +63,7 @@ def writeBuild(field, value, build_file=default_build_file):
                  'tigger',
                  'rdi',
                  'scoper',
+                 'dowser',
                  'prestor']
         order = [x for x in order if x in build]
     else:
