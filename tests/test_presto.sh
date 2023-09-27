@@ -290,7 +290,7 @@ get_output() {
     [ "$status" -eq 0 ]
 }
 
-@test "ParseHeaders-collapse" {
+@test "ParseHeaders-collapse-1" {
     TEST="${BATS_TEST_NUMBER}-${BATS_TEST_DESCRIPTION}"
     READS="${DATA_DIR}/sequences/HD13M_assemble-pass.fastq"
     CONSOLE="${RUN_DIR}/console/${TEST}.out"
@@ -302,7 +302,7 @@ get_output() {
     [ "$status" -eq 0 ]
 }
 
-@test "ParseHeaders-collapse" {
+@test "ParseHeaders-collapse-2" {
     TEST="${BATS_TEST_NUMBER}-${BATS_TEST_DESCRIPTION}"
     READS="${DATA_DIR}/sequences/HD13M_assemble-pass.fastq"
     CONSOLE="${RUN_DIR}/console/${TEST}.out"
