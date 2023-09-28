@@ -117,12 +117,20 @@ RUN_DIR=$(realpath ${RUN_DIR})
     SAMPLE=HD13M
     DB="/scratch/changeo/${SAMPLE}_db-pass.${EXT}"
     V_FIELD="v_call_genotyped"
-    MINSEQ=10
-    MINGERM=20
+    MINSEQ=2
+    MINGERM=2
+    FIND_UNMUTATED=F
     OUT_DIR="/scratch/changeo"
+    DB_H="${SAMPLE}_igh_db-pass"
 
+    # Subset to heavy chain
     run docker run -v $DATA_DIR:/data:z -v $RUN_DIR:/scratch:z $IMAGE \
-        tigger-genotype -d $DB -v $V_FIELD -x $MINSEQ -y $MINGERM \
+        ParseDb.py select -d $DB -f v_call -u IGH --regex \
+        --outname "${DB_H}" --outdir $OUT_DIR
+        
+    run docker run -v $DATA_DIR:/data:z -v $RUN_DIR:/scratch:z $IMAGE \
+        tigger-genotype -d $OUT_DIR/$DB_H'_parse-select.tsv' -v $V_FIELD \
+        -x $MINSEQ -y $MINGERM -u $FIND_UNMUTATED \
         -n $SAMPLE -o $OUT_DIR -p $NPROC
 
     [ "$status" -eq 0 ]
