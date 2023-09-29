@@ -648,7 +648,7 @@ trees <- getTrees(clones, build = "raxml",
                   exec = "/user/local/bin/raxml-ng", partition = "scaled")
 # IgPhML
 trees <- getTrees(clones, build = "igphyml",
-                  exec = "/user/local/igphyml/src/igphyml", partition = "hl")
+                  exec = "/user/local/share/igphyml/src/igphyml", partition = "hl")
 ```
 
 ### Plot trees with dowser and ggtree
