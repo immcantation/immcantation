@@ -635,7 +635,7 @@ This is similar to the standard maximum likelihood, but incorporates SHM specifi
 # B cell specific maximum likelihood with IgPhyML
 # the executable path is the location of the executable in the Docker container
 trees <- getTrees(clones, build = "igphyml",
-                  exec = "/usr/local/igphyml/src/igphyml", nproc = 1)
+                  exec = "/usr/local/share/igphyml/src/igphyml", nproc = 1)
 ```
 
 In addition to standard and B cell specific maximum likelihood, dowser offers partitioned maximum likelihood approaches for `RAxML` and `IgPhyML`. This approach should only be used when there is paired heavy and light chain data, not just heavy chain data because both methods will partition on the heavy chain and light chains separately.
