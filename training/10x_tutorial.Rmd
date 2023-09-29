@@ -105,6 +105,7 @@ Please note that:
 
 Note that you might need to install several Bioconductor packages that are dependencies for some of the R-based Immcantation packages with `BiocManager`.
 
+```
 package.check <- lapply(
   packages,
   FUN = function(x) {
@@ -148,8 +149,13 @@ The previous steps should be performed individually for each of the samples that
 
 ```{r warning=FALSE}
 # read in the data
+# specify the data types of non AIRR-C standard fields
 # TODO: update to pull from Zenodo
-bcr_data <- airr::read_rearrangement(file.path("assets", "zenodo", "BCR_data.tsv"))
+bcr_data <- airr::read_rearrangement(file.path("assets", "zenodo", "BCR_data.tsv"),
+                                     aux_types=c("v_germline_length"="i",
+                                                 "d_germline_length"="i",
+                                                 "j_germline_length"="i",
+                                                 "day"="i"))
 ```
 
 ### Remove non-productive sequences
