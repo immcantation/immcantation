@@ -15,6 +15,7 @@
 #   -y  Minimum number of sequences required to analyze a germline allele. Defaults to 200.
 #   -n  Sample name or run identifier which will be used as the output file prefix.
 #       Defaults to a truncated version of the input filename.
+#   -u  Whether to use '-r' to find which samples are unmutated. Default is True.
 #   -o  Output directory. Will be created if it does not exist.
 #       Defaults to the current working directory.
 #   -f  File format. One of 'airr' (default) or 'changeo'.
@@ -35,6 +36,7 @@ NPROC <- parallel::detectCores()
 FORMAT <- "airr"
 MIN_SEQS <- 50
 GERMLINE_MIN <- 200
+FIND_UNMUTATED <- TRUE
 
 # Define commmandline arguments
 opt_list <- list(make_option(c("-d", "--db"), dest="DB",
@@ -59,6 +61,10 @@ opt_list <- list(make_option(c("-d", "--db"), dest="DB",
                  make_option(c("-n", "--name"), dest="NAME",
                              help=paste("Sample name or run identifier which will be used as the output file prefix.",
                                         "\n\t\tDefaults to a truncated version of the input filename.")),
+                 make_option(c("-u", "--find-unmutated"), dest="FIND_UNMUTATED",
+                             default=FIND_UNMUTATED,
+                             help=paste("Whether to use '-r' to find which samples are unmutated.",
+                                        "\n\t\tDefaults to TRUE.")),                 
                  make_option(c("-o", "--outdir"), dest="OUTDIR", default=".",
                              help=paste("Output directory. Will be created if it does not exist.",
                                         "\n\t\tDefaults to the current working directory.")),
@@ -81,6 +87,16 @@ if (!("NAME" %in% names(opt))) {
     opt$NAME <- tools::file_path_sans_ext(basename(opt$DB))
 }
 
+# Check unmutated
+opt$FIND_UNMUTATED <- tolower(as.character(opt$FIND_UNMUTATED))
+if (opt$FIND_UNMUTATED %in% c("true", "t", "1")) {
+    opt$FIND_UNMUTATED <- TRUE
+} else if  (opt$FIND_UNMUTATED %in% c("false", "f", "0"))  {
+    opt$FIND_UNMUTATED <- FALSE
+} else {
+    stop("Unexpected find unmutated.")
+}
+ 
 # Create output directory
 if (!(dir.exists(opt$OUTDIR))) {
     dir.create(opt$OUTDIR)
@@ -128,7 +144,8 @@ nv <- findNovelAlleles(db, germline_db=igv, v_call=v_call, j_call=j_call,
                        min_seqs=opt$MIN_SEQS, germline_min=opt$GERMLINE_MIN,
                        nproc=opt$NPROC)
 gt <- inferGenotype(db, germline_db=igv, novel=nv,
-                    v_call=v_call, seq=sequence_alignment)
+                    v_call=v_call, seq=sequence_alignment, 
+                    find_unmutated = opt$FIND_UNMUTATED)
 
 # Write genotype FASTA file
 gt_seq <- genotypeFasta(gt, germline_db=igv, novel=nv)

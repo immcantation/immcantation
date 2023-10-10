@@ -96,7 +96,12 @@ suppressPackageStartupMessages(library(alakazam))
 suppressPackageStartupMessages(library(Seurat))
 
 # Read BCR data
-bcr_db <- airr::read_rearrangement("../data/bcr_phylo_tutorial/BCR.data.tsv")
+bcr_db <- airr::read_rearrangement("../data/bcr_phylo_tutorial/BCR.data.tsv",
+               aux_types=c("v_germline_length"="i",
+                           "d_germline_length"="i",
+                           "j_germline_length"="i",
+                           "day"="i")
+            )
 
 # Read GEX data
 gex_db <- readRDS("../data/bcr_phylo_tutorial/GEX.data.rds")
@@ -437,7 +442,7 @@ suppressPackageStartupMessages(library(dowser))
 references <- readIMGT(dir = "/usr/local/share/germlines/imgt/human/vdj")
 
 # Reconstruct germlines
-results_db <- createGermlines(results_db, references)
+results_db <- suppressWarnings(createGermlines(results_db, references))
 
 # Check output column
 results_db$germline_alignment_d_mask[1]
@@ -469,7 +474,7 @@ uniqueness of the sequences, so they are not collapsed.
 # discard clones with < 5 distinct sequences
 clones <- formatClones(results_db,
                        traits = c("day", "isotype", "gex_annotation"),
-                       num_fields = c("duplicate_count"), minseq = 5)
+                       num_fields = c("duplicate_count"), minseq = 7)
 clones
 ```
 
@@ -485,6 +490,7 @@ This is the oldest method and very popular. It tries to minimize the number of m
 # Two options for maximum parsimony trees
 # 1. phangorn
 trees <- getTrees(clones)
+head(trees)
 ```
 
 ```{r}
