@@ -1,13 +1,20 @@
 Release Notes
 ========================================================================
 
-Version 4.4.0.999:  July 19, 2023
+Version 4.4.0.999:  October 11, 2023
 ------------------------------------------------------------------------
 
 Version Updates:
 
++ alakazam 1.3.0
++ shazam 1.2.0
++ tigger 1.1.0
++ scoper 1.3.0
++ dowser 2.0.0
++ enchantr 0.1.6
++ rabhit 0.2.5
 + igblast 1.21.0
-+ dowser 1.1.2
++ seurat 4.4.0
 
 Image Changes:
 
