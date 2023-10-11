@@ -93,7 +93,7 @@ RUN IGBLAST=$(versions get -n igblast) \
 # Install PHYLIP
 RUN PHYLIP=$(versions get -n phylip) \
     && wget -q --show-progress --no-check-certificate \
-       http://evolution.gs.washington.edu/phylip/download/phylip-${PHYLIP}.tar.gz \
+       https://phylipweb.github.io/phylip/download/phylip-${PHYLIP}.tar.gz \
     && tar -zxf phylip-${PHYLIP}.tar.gz \
     && (cd phylip-${PHYLIP}/src && make -f Makefile.unx install CFLAGS='-fcommon') \
     && mv phylip-${PHYLIP}/exe/* /usr/local/bin \
