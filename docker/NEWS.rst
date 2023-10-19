@@ -13,7 +13,7 @@ Version Updates:
 + dowser 2.0.0
 + enchantr 0.1.7
 + rabhit 0.2.5
-+ igblast 1.21.0
++ igblast 1.22.0
 + seurat 4.4.0
 
 Image Changes:
