@@ -11,7 +11,6 @@ Tutorial outline:
 * [Getting started]
 * [Assign V, D, and J genes using IgBLAST]
 * [Load libraries]
-* [Filter records]
 * [Load in and reformat the data]
 * [Cloning thresholds] (automatically or manually)
 * [Define clonal groups]
@@ -52,14 +51,11 @@ Turner JS, Zhou JQ, Han J, Schmitz AJ, Rizk AA, Alsoussi WB, Lei T, Amor M, McIn
 
 These two files are subsamples of the original 10x scRNA-seq and BCR sequencing data from Turner et al. (2020) *Human germinal centres engage memory and naive B cells after influenza vaccination* Nature. 586, 127--132 [link](https://www.nature.com/articles/s41586-020-2711-0) The study consists of blood and lymph node samples taken from a single patient at multiple time points following influenza vaccination.
 
-We extracted a subset (~3000 cells) of single cell GEX/BCR data of ultrasound-guided fine needle aspiration (FNA) samples of lymph nodes for subject P05. The example dataset (BCR.data.rds and GEX.data.rds) can be downloaded in a zip file from here.
+We extracted a subset (~3000 cells) of single cell GEX/BCR data of ultrasound-guided fine needle aspiration (FNA) samples of lymph nodes for subject P05. The example data is already in the container (`/home/magus/data/`). If you want to, you can download it from [Zenodo](https://zenodo.org/records/8179846). We will use these files:
 
-The example data is already in the container (`/home/magus/data/10x_data_2subj/`). If you want to, you can download it from [example data](http://clip.med.yale.edu/immcantation/examples/10x_data_2subj.zip) and unzip it.
-
-* You will find two files called **filtered_contig.fasta** and **filtered_contig_annotations.csv** in the unzipped directory (*10x_data_2subj* unless you rename it). They are the direct Cell Ranger output files for donor 1. We are going to use the Ig V(D)J sequences from donor 1 to show how to process V(D)J data using Immcantation.
-* You will also find a file called **sc5p_v2_hs_B_1k_multi_5gex_b_Multiplex_vdj_b_all_contig_igblast_db-pass.tsv**. This file contains processed Ig V(D)J sequences for donor 2, with assigned V, D, and J genes using AssignGenes.py and MakeDb.py. In the section of "Find the distance threshold for cloning automatically", those Ig V(D)J sequences together with the sequences from donor 1, were used to calculate the nearest neighbor distances across subjects.
-* `../data/bcr_phylo_tutorial/BCR.data.tsv`: B-Cell Receptor Data. Adaptive Immune Receptor Repertoire (AIRR) tsv BCRs already aligned to IMGT V, D, and J genes. This process is not covered in this tutorial. To learn more visit <https://immcantation.readthedocs.io/en/stable/tutorials/tutorials.html>
-* `../data/bcr_phylo_tutorial/GEX.data.rds`: Gene Expression Data. This file contains a Seurat object with RNA-seq data already processed and annotated. Processing and annotation are not covered in this tutorial. You can learn more on these topics in Seurat's documentation and tutorials: <https://satijalab.org/seurat/articles/pbmc3k_tutorial.html>
+* **filtered_contig.fasta** and **filtered_contig_annotations.csv**. They are the direct Cell Ranger output files for donor 1. We are going to use the Ig V(D)J sequences from donor 1 to show how to process V(D)J data using Immcantation.
+* **BCR_data.tsv**: B-Cell Receptor Data. Adaptive Immune Receptor Repertoire (AIRR) tsv BCRs from two subjects, already aligned to IMGT V, D, and J genes. 
+* `../data/bcr_phylo_tutorial/GEX.data_08112023.rds`: Gene Expression Data. This file contains a Seurat object with RNA-seq data already processed and annotated. Processing and annotation are not covered in this tutorial. You can learn more on these topics in Seurat's documentation and tutorials: <https://satijalab.org/seurat/articles/pbmc3k_tutorial.html>
 
 The R Markdown notebook with the code is also available in the container (`/home/magus/notebooks/10x_tutorial.Rmd`). 
 
@@ -73,17 +69,15 @@ This step needs to be run in the command line after installing Change-O and igbl
 
 ```{bash, eval=FALSE}
 # assign V, D, and J genes using IgBLAST
-# TODO: update path to final path in container
-AssignGenes.py igblast -s /data/filtered_contig.fasta -b /usr/local/share/igblast \ 
-   --organism human --loci ig --format blast --outdir results
+AssignGenes.py igblast -s /home/magus/data/filtered_contig.fasta -b /usr/local/share/igblast \
+   --organism human --loci ig --format blast --outdir results --outname BCR_data_sequences
 ```
 
 ```{bash, eval=FALSE}
 # convert IgBLAST output to AIRR format
-# TODO: update path to final path in container
-MakeDb.py igblast -i results/BCR_data_sequences_igblast.fmt7 -s /data/filtered_contig.fasta \
+MakeDb.py igblast -i results/BCR_data_sequences_igblast.fmt7 -s /home/magus/data/filtered_contig.fasta \
    -r /usr/local/share/germlines/imgt/human/vdj/imgt_human_*.fasta \
-   --10x /data/filtered_contig_annotations.csv --extended
+   --10x /home/magus/data/filtered_contig_annotations.csv --extended
 ```
 
 ```{bash, eval=FALSE}
@@ -99,7 +93,7 @@ Please note that:
 
 * **all_contig.fasta** can be exchanged for **filtered_contig.fasta**, and **all_contig_annotations.csv** can be exchanged for **filtered_contig_annotations.csv** to use the unfiltered cellranger data outputs.
 * The resulting tab-delimited table overwrites the V, D and J gene assignments generated by Cell Ranger and uses those generated by [IgBLAST](https://ncbi.github.io/igblast/) or [IMGT/HighV-QUEST](https://www.imgt.org/IMGTindex/IMGTHighV-QUEST.php) instead.
-* To process mouse data and/or TCR data, alter the `--organism` and `--loci` arguments to `AssignGenes.py` accordingly (e.g., `--organism mouse`, `--loci tcr`) and use the appropriate V(D)J IMGT reference database (e.g., **IMGT_Mouse_TR*.fasta**)
+* To process mouse data and/or TCR data, alter the `--organism` and `--loci` arguments to `AssignGenes.py` accordingly (e.g., `--organism mouse`, `--loci tcr`) and use the appropriate V(D)J IMGT reference database (e.g., **imgt_mouse_TR*.fasta**)
 
 ## Install and load libraries
 
@@ -124,6 +118,7 @@ if(!require(packages, character.only = TRUE)){
 }
 ```
 
+## Load libraries
 
 ```{r, warning=FALSE, message=FALSE}
 # load libraries
@@ -145,13 +140,12 @@ suppressPackageStartupMessages(library(ggtree))
 
 ### Merge different samples
 
-The previous steps should be performed individually for each of the samples that should be analysed together. In order to merge different samples together for an common analysis, a column needs to be added to the resulting table to identify the sample. Additionally, the sequence IDs and cell barcodes need to be made unique across samples e.g. by appending the `sample` ID to them. This step has already been performed and the resulting table can be found under assets/BCR_data.tsv.
+The previous steps should be performed individually for each of the samples that should be analysed together. In order to merge different samples together for an common analysis, a column needs to be added to the resulting table to identify the sample. Additionally, the sequence IDs and cell barcodes need to be made unique across samples e.g. by appending the `sample` ID to them. This step has already been performed and the resulting table can be found under `/home/magus/data/BCR_data.tsv`.
 
 ```{r warning=FALSE}
 # read in the data
 # specify the data types of non AIRR-C standard fields
-# TODO: update to pull from Zenodo
-bcr_data <- airr::read_rearrangement(file.path("assets", "zenodo", "BCR_data.tsv"),
+bcr_data <- airr::read_rearrangement(file.path("","home", "magus", "data", "BCR_data.tsv"),
                                      aux_types=c("v_germline_length"="i",
                                                  "d_germline_length"="i",
                                                  "j_germline_length"="i",
@@ -208,8 +202,7 @@ cat(paste("There are", nrow(bcr_data), "rows in the data after filtering out
 We load the gene expression data Seurat object that has already been pre-processed and the cell types (PBMCs) have been annotation following the standard Seurat workflow.
 
 ```{r}
-# update to pull from Zenodo
-gex_db <- readRDS(file.path("assets", "zenodo", "GEX.data_08112023.rds"))
+gex_db <- readRDS(file.path("", "home", "magus", "data", "GEX.data_08112023.rds"))
 ```
 
 Inspect the data:
@@ -304,7 +297,7 @@ Summary of the key steps:
 
 #### Manual
 
-Hierarchical clustering is a widely used distance-based method for identify clonally related sequences. An implementation of the hierarchical clustering approach is provided via the `hierachicalClones` function in the [SCOPer](https://scoper.readthedocs.io/en/stable/) R package.
+Hierarchical clustering is a widely used distance-based method for identify clonally related sequences. An implementation of the hierarchical clustering approach is provided via the `hierarchicalClones` function in the [SCOPer](https://scoper.readthedocs.io/en/stable/) R package.
 
 It is important to determine an appropriate threshold for trimming the hierarchical clustering into B cell clones before using this method. The ideal threshold for separating clonal groups is the value that separates the two modes of the nearest-neighbor distance distribution. The nearest-neighbor distance distribution can be generated by using the `distToNearest` function in the [SHazaM](https://shazam.readthedocs.io/en/stable/) R package.
 
@@ -446,24 +439,20 @@ plot(div) + facet_wrap("sample_id", ncol = 3)
 
 The goal is to reconstruct the sequence of the unmutated ancestor of each clone. We use a reference database of known alleles ([IMGT](http://www.imgt.org)). Because it is very difficult to accurately infer the D region and the junction region for BCR sequences, we mask this region with `N`.
 
-Note: If you opted for a native installation to run this tutorial, you can obtain reference germlines from IMGT with:
-
-        git clone https://bitbucket.org/kleinstein/immcantation
-        immcantation/scripts/fetch_imgtdb.sh
-
 Before B cell lineage trees can be built, it is necessary to construct the unmutated germline sequence for each B cell clone. Typically the IGH D segment is masked because the junction region of heavy chains often cannot be reliably reconstructed. Note that occasionally errors are thrown for some clones - this is typical and usually results in those clones being excluded.
 
 In the example below, we read in the IMGT germline references from our Docker container. If you're using a local installation, you can download the most up-to-date reference genome by cloning the Immcantation repository and running the script:
 
-```{bash, eval=FALSE}
-# will create directories where it is run
+```{bash, eval=FALSE, class.source="bg-info", class.output="bg-info"}
+# Retrieve reference genome with the script fetch_imgtdb.sh.
+# It will create directories where it is run
 git clone https://bitbucket.org/kleinstein/immcantation.git
 ./immcantation/scripts/fetch_imgtdb.sh 
 ```
 
 And passing `"human/vdj/"` to the `readIMGT` function.
 
-```{r, warning=FALSE, message=FALSE, eval=FALSE}
+```{r, warning=FALSE, message=FALSE, eval=TRUE}
 # read in IMGT data if downloaded on your own (above)
 # and update `dir` to use the path to your `human/vdj` folder
 # references <- readIMGT(dir = "human/vdj/")
@@ -472,7 +461,7 @@ And passing `"human/vdj/"` to the `readIMGT` function.
 references <- readIMGT(dir = "/usr/local/share/germlines/imgt/human/vdj")
 
 # reconstruct germlines
-results <- createGermlines(results, references, nproc = 1)
+results <- createGermlines(results, references, fields = "subject_id", nproc = 1)
 ```
 
 ## Calculate V gene SHM frequency
@@ -560,8 +549,7 @@ clones <- dowser::formatClones(results,
 head(clones)
 ```
 
-```{r, echo=FALSE, eval=FALSE}
-# This can be used once the new version of Dowser is released.
+```{r, echo=FALSE, eval=TRUE}
 # If it is desired a chunk can also be shown how to make clones from just the light chains.
 
 # Additionally, if there is paired heavy and light chain data, you can format the clones such that the paired data is used in building trees.
