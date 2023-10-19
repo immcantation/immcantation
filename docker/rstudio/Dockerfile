@@ -94,6 +94,12 @@ RUN PACKAGE="immcantation" \
     && mv /tmp/${PACKAGE}/training/assets ${HOME}/notebooks/ \
     && rm -rf /tmp/${PACKAGE}
 
+# Download Zenodo data
+RUN cd ~/data && \
+    wget -v -O zenodo.zip https://zenodo.org/api/records/8179846/files-archive && \
+    unzip -o zenodo.zip && \
+    rm -rf zenodo.zip
+
 # Download intro lab data
 RUN wget -v -O /home/${NB_USER}/immcantation-lab-intro.zip -L https://yale.box.com/shared/static/4bo611b70x8u92qvss1pypmcr9wmqil4 && \
     cd /home/${NB_USER}/ && \
