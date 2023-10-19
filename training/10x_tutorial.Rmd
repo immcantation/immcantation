@@ -452,7 +452,7 @@ git clone https://bitbucket.org/kleinstein/immcantation.git
 
 And passing `"human/vdj/"` to the `readIMGT` function.
 
-```{r, warning=FALSE, message=FALSE, eval=TRUE}
+```{r, warning=FALSE, message=FALSE}
 # read in IMGT data if downloaded on your own (above)
 # and update `dir` to use the path to your `human/vdj` folder
 # references <- readIMGT(dir = "human/vdj/")
@@ -548,14 +548,10 @@ clones <- dowser::formatClones(results,
                        num_fields = c("duplicate_count"), minseq = 5, nproc = 1)
 head(clones)
 ```
+Additionally, if there is paired heavy and light chain data, you can format the clones such that the paired data is used in building trees.
+There is an additional step that occurs before the `formatClones` step in this situation. In order for the trees to best use the addition of light chain information, we will need to assign `clone_subgroups` using dowser's function `resolveLightChains`. This group cells within a clone based on the light chain V and J gene and assign a subgroup to each sequence. Then, in the `formatClones` step, specify `chain="HL"`.
 
-```{r, echo=FALSE, eval=TRUE}
-# If it is desired a chunk can also be shown how to make clones from just the light chains.
-
-# Additionally, if there is paired heavy and light chain data, you can format the clones such that the paired data is used in building trees.
-# There is an additional step that occurs before the `formatClones` step in this situation.
-# In order for the trees to best use the addition of light chain information, we will need to assign `clone_subgroups` using dowser's function `resolveLightChains`.
-# This group cells within a clone based on the light chain V and J gene and assign a subgroup to each sequence. Then, in the `formatClones` step, speciy `chain="HL"`.
+```{r, echo=FALSE}
 
 comb <- resolveLightChains(results, nproc = 1)
 
@@ -628,15 +624,15 @@ trees <- getTrees(clones, build = "igphyml",
 
 In addition to standard and B cell specific maximum likelihood, dowser offers partitioned maximum likelihood approaches for `RAxML` and `IgPhyML`. This approach should only be used when there is paired heavy and light chain data, not just heavy chain data because both methods will partition on the heavy chain and light chains separately.
 
-```{r, echo=FALSE, eval=FALSE, warning=FALSE}
+```{r, echo=FALSE, warning=FALSE}
 # more release related content. Once it is released, the echo=FALSE can be deleted
 
 # RAxML
 trees <- getTrees(clones, build = "raxml",
-                  exec = "/user/local/bin/raxml-ng", partition = "scaled")
+                  exec = "/user/local/bin/raxml-ng", partition = "scaled", nproc = 1)
 # IgPhML
 trees <- getTrees(clones, build = "igphyml",
-                  exec = "/user/local/share/igphyml/src/igphyml", partition = "hl")
+                  exec = "/user/local/share/igphyml/src/igphyml", partition = "hl", nproc = 1)
 ```
 
 ### Plot trees with dowser and ggtree
@@ -645,7 +641,7 @@ Regardless of how you build trees, they are visualized in the same manner with t
 
 Plot all of the trees:
 
-```{r}
+```{r, warning=FALSE}
 plots_all <- plotTrees(trees, tips = "day", tipsize = 2)
 ```
 
