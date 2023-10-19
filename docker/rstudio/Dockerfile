@@ -114,16 +114,7 @@ RUN wget -v -O /home/${NB_USER}/immcantation-BCR-Seurat-tutorial.zip -L https://
     rm -rf immcantation-BCR-Seurat-tutorial.zip && \
     mv BCR.data.rds GEX.data.rds /home/${NB_USER}/data/. && \
     rm -rf immcantation-BCR-Seurat-tutorial
-# Download 10x tutorial data
-RUN wget -v -O /home/${NB_USER}/10x_data_2subj.zip -L http://clip.med.yale.edu/immcantation/examples/10x_data_2subj.zip && \
-    cd /home/${NB_USER}/ && \
-    unzip -o 10x_data_2subj.zip && \
-    rm -rf 10x_data_2subj.zip && \
-    mkdir -p  /home/${NB_USER}/data/10x_data_2subj && \
-    mv sc5p_v2_hs_B_1k_multi_5gex_b_Multiplex_vdj_b_all_contig_igblast_db-pass.tsv \
-    filtered_contig_annotations.csv \
-    filtered_contig.fasta /home/${NB_USER}/data/10x_data_2subj/.
-# Download dowsert tutorial data
+# Download dowser tutorial data
 RUN wget -v -O /home/${NB_USER}/immcantation-bcr_phylo_tutorial.zip -L https://yale.box.com/shared/static/96y1rlu4ujerprxr53qxw87g7ybc1y99.zip && \
     cd /home/${NB_USER}/ && \
     unzip -o immcantation-bcr_phylo_tutorial.zip && \
