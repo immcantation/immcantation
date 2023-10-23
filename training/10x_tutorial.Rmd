@@ -657,7 +657,7 @@ Plot the largest tree:
 plots_all[[1]]
 ```
 
-```{r, eval=FALSE}
+```{r}
 # save a pdf of all trees
 dir.create("results/dowser_tutorial/", recursive = TRUE)
 dowser::treesToPDF(plots_all,
@@ -728,7 +728,7 @@ dplyr::select(trees, clone_id, slope, correlation, p)
 print(plots_time[[1]])
 ```
 
-```{r, eval=FALSE}
+```{r}
 # save all trees to a pdf file
 treesToPDF(plots_time, file = file.path("results", "dowser_tutorial",
                                         "time_data_trees.pdf"))
