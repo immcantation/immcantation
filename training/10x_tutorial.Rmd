@@ -661,8 +661,8 @@ plots_all[[1]]
 # save a pdf of all trees
 dir.create("results/dowser_tutorial/", recursive = TRUE)
 dowser::treesToPDF(plots_all,
-           file = file.path("results", "dowser_tutorial", "final_data_trees.pdf"),
-           nrow = 2, ncol = 2)
+          file = file.path("results", "dowser_tutorial", "final_data_trees.pdf"),
+          nrow = 2, ncol = 2)
 ```
 
 ### Making more informative tree plots
@@ -675,8 +675,8 @@ trees <- scaleBranches(trees)
 
 # Make fancy tree plot of second largest tree
 plots_all <- plotTrees(trees, scale = 5)[[2]] +
-               geom_tippoint(aes(color = gex_annotation, size = day)) +
-               geom_tiplab(aes(label = day), offset = 0.002)
+              geom_tippoint(aes(color = gex_annotation, size = day)) +
+              geom_tiplab(aes(label = day), offset = 0.002)
 print(plots_all)
 ```
 
@@ -692,8 +692,8 @@ trees <- collapseNodes(trees)
 
 # node_nums=TRUE labels each internal node
 plots_all <- plotTrees(trees, node_nums = TRUE, labelsize = 6, scale = 5)[[2]] +
-               geom_tippoint(aes(color = gex_annotation, size = day)) +
-               geom_tiplab(aes(label = day), offset = 0.002)
+              geom_tippoint(aes(color = gex_annotation, size = day)) +
+              geom_tiplab(aes(label = day), offset = 0.002)
 print(plots_all)
 ```
 
