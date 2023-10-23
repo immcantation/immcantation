@@ -631,7 +631,7 @@ trees <- getTrees(clones, build = "igphyml",
 
 In addition to standard and B cell specific maximum likelihood, dowser offers partitioned maximum likelihood approaches for `RAxML` and `IgPhyML`. This approach should only be used when there is paired heavy and light chain data, not just heavy chain data because both methods will partition on the heavy chain and light chains separately.
 
-```{r, warning=FALSE, eval=FALSE}
+```{r, warning=FALSE, eval=params$eval_optional}
 # RAxML
 trees <- getTrees(clones, build = "raxml",
                   exec = "/usr/local/bin/raxml-ng", partition = "scaled", nproc = 1)
