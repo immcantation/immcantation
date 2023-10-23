@@ -431,8 +431,7 @@ The clonal diversity can also be displayed. To estimate the clonal diversity, we
 # calculate and plot the rank-abundance curve
 div <- alphaDiversity(dplyr::filter(results, locus == "IGH"),
                       group = "sample_id", nboot = 100)
-
-plot(div) + facet_wrap("sample_id", ncol = 3)
+plot(div, silent=T) + facet_wrap("sample_id", ncol = 3)
 ```
 
 ## Create germlines
