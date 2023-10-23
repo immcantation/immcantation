@@ -20,7 +20,7 @@ Tutorial outline:
 * [Assign V, D, and J genes using IgBLAST]
 * [Load libraries]
 * [Load in and reformat the data]
-* [Cloning thresholds] (automatically or manually)
+* [Cloning thresholds](#identify-clonal-threshold) (automatically or manually)
 * [Define clonal groups]
 * [Create germlines]
 * [Calculate V gene SHM frequency] (in the heavy chain)
