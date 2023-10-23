@@ -1,6 +1,14 @@
 ---
 title: "Single Cell V(D)J Analysis Tutorial"
-output: html_document
+output: 
+  html_document:
+    toc: false
+    toc_depth: 3
+  md_document:
+    toc: false
+    toc_depth: 3
+params:
+  eval_optional: FALSE
 ---
 
 # Single Cell V(D)J Analysis Tutorial
@@ -67,20 +75,20 @@ Generate AIRR Rearrangement data from the 10x V(D)J FASTA files using the steps 
 
 This step needs to be run in the command line after installing Change-O and igblast, or within the immcantation docker container. There is documentation on how to use the immcantation docker container on the [Docker container](https://immcantation.readthedocs.io/en/stable/docker/guide.html#invoking-a-shell-inside-the-container) section of the immcantation website. If not using the docker container, the path to the igblast executable will need to be updated to the local installation path.
 
-```{bash, eval=FALSE}
+```{bash, eval=params$eval_optional}
 # assign V, D, and J genes using IgBLAST
 AssignGenes.py igblast -s /home/magus/data/filtered_contig.fasta -b /usr/local/share/igblast \
    --organism human --loci ig --format blast --outdir results --outname BCR_data_sequences
 ```
 
-```{bash, eval=FALSE}
+```{bash, eval=params$eval_optional}
 # convert IgBLAST output to AIRR format
 MakeDb.py igblast -i results/BCR_data_sequences_igblast.fmt7 -s /home/magus/data/filtered_contig.fasta \
    -r /usr/local/share/germlines/imgt/human/vdj/imgt_human_*.fasta \
    --10x /home/magus/data/filtered_contig_annotations.csv --extended
 ```
 
-```{bash, eval=FALSE}
+```{bash, eval=params$eval_optional}
 ls results
 ```
 
