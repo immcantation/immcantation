@@ -47,61 +47,25 @@ RUN AIRR_PY=$(versions get -n airr-py) \
     && Rscript -e "devtools::install_version('airr', '${AIRR_R}', quiet=FALSE, clean=TRUE)"
 
 # Install alakazam
-RUN PACKAGE="alakazam" \
-    && rm -rf /tmp/${PACKAGE} \
-    && git clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
-    && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} -d immcantation \
-    && rinstall -p /tmp/${PACKAGE} \
-    && (cd /tmp/${PACKAGE} && builds write -n ${PACKAGE} -v $(git describe --abbrev=12 --always --dirty=+)) \
-    && rm -r /tmp/${PACKAGE}
+RUN ALAKAZAM_VER=$(versions get -n alakazam) \
+    && Rscript -e "devtools::install_version('alakazam', '${ALAKAZAM_VER}', quiet=FALSE, clean=TRUE)"
 
 # Install shazam
-RUN PACKAGE="shazam" \
-    && rm -rf /tmp/${PACKAGE} \
-    && git clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
-    && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} -d immcantation \
-    && rinstall -p /tmp/${PACKAGE} \
-    && (cd /tmp/${PACKAGE} && builds write -n ${PACKAGE} -v $(git describe --abbrev=12 --always --dirty=+)) \
-    && rm -r /tmp/${PACKAGE}
+RUN SHAZAM_VER=$(versions get -n shazam) \
+    && Rscript -e "devtools::install_version('shazam', '${SHAZAM_VER}', quiet=FALSE, clean=TRUE)"
 
 # Install SCOPer
-RUN PACKAGE="scoper" \
-    && rm -rf /tmp/${PACKAGE} \
-    && git clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
-    && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} -d immcantation \
-    && rinstall -p /tmp/${PACKAGE} \
-    && (cd /tmp/${PACKAGE} && builds write -n ${PACKAGE} -v $(git describe --abbrev=12 --always --dirty=+)) \
-    && rm -r /tmp/${PACKAGE}
+RUN SCOPER_VER=$(versions get -n scoper) \
+    && Rscript -e "devtools::install_version('scoper', '${SCOPER_VER}', quiet=FALSE, clean=TRUE)"
 
 # Install dowser
-RUN PACKAGE="dowser" \
-    && rm -rf /tmp/${PACKAGE} \
-    && git clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
-    && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} -d immcantation \
-    && rinstall -p /tmp/${PACKAGE} -u never \
-    && (cd /tmp/${PACKAGE} && builds write -n ${PACKAGE} -v $(git describe --abbrev=12 --always --dirty=+)) \
-    && rm -r /tmp/${PACKAGE}
+RUN DOWSER_VER=$(versions get -n dowser) \
+    && Rscript -e "devtools::install_version('dowser', '${DOWSER_VER}', quiet=FALSE, clean=TRUE)"
+
 
 # Install enchantr
-RUN PACKAGE="enchantr" \
-    && rm -rf /tmp/${PACKAGE} \
-    && git clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
-    && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} -d immcantation \
-    && rinstall -p /tmp/${PACKAGE} \
-    && (cd /tmp/${PACKAGE} && builds write -n ${PACKAGE} -v $(git describe --abbrev=12 --always --dirty=+)) \
-    && rm -r /tmp/${PACKAGE}
-
-# Install prestor
-# Note: Package ‘captioner’ was removed from the CRAN repository.
-# Archived on 2023-08-18
-RUN PACKAGE="prestor" \
-    && rm -rf /tmp/${PACKAGE} \
-    && git clone https://bitbucket.org/kleinstein/prestor /tmp/${PACKAGE} \
-    && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} -d immcantation \
-    && Rscript -e "devtools::install_github('adletaw/captioner')" \
-    && rinstall -p /tmp/${PACKAGE} \
-    && (cd /tmp/${PACKAGE} && builds write -n ${PACKAGE} -v $(git describe --abbrev=12 --always --dirty=+)) \
-    && rm -r /tmp/${PACKAGE}
+RUN ENCHANTR_VER=$(versions get -n enchantr) \
+    && Rscript -e "devtools::install_bitbucket('kleinstein/enchantr', '${ENCHANTR_VER}', quiet=FALSE, clean=TRUE)"
 
 # Install IgPhyML
 RUN IGPHYML=$(versions get -n igphyml) \
@@ -114,14 +78,6 @@ RUN IGPHYML=$(versions get -n igphyml) \
 
 # Setup environment
 ENV PATH="${PATH}:/usr/local/share/igphyml/src"
-
-# Setup users and permissions
-RUN useradd magus -u 1000 -g users \
-    && echo "magus ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/magus \
-    && chmod 0440 /etc/sudoers.d/magus \
-    && echo "umask 000" >> /home/magus/.bashrc \
-    && echo "umask 000" >> /root/.bashrc
-# USER magus
 
 # Set commands
 CMD echo -e " Version information:\n"\
