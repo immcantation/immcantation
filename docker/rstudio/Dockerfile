@@ -96,7 +96,7 @@ RUN PACKAGE="immcantation" \
 
 # Download Zenodo data
 RUN cd ~/data && \
-    wget -v -O zenodo.zip https://zenodo.org/api/records/8179846/files-archive && \
+    wget -v -O zenodo.zip https://zenodo.org/api/records/10028129/files-archive && \
     unzip -o zenodo.zip && \
     rm -rf zenodo.zip
 
