@@ -1,6 +1,6 @@
 immcantation:
   version:  devel
-  date:     2023.10.11
+  date:     2023.10.18
 package:
   presto:   0.7.1
   changeo:  1.3.0
@@ -9,7 +9,7 @@ package:
   tigger:   1.1.0
   scoper:   1.3.0
   dowser:   2.0.0
-  enchantr: 0.1.6
+  enchantr: 0.1.7
   prestor:  0.0.8
   rabhit:   0.2.5
   rdi:      1.0.0
@@ -20,7 +20,7 @@ dependency:
   airr-r:   1.5.0
   blast:    2.13.0
   cd-hit:   4.8.1
-  igblast:  1.21.0
+  igblast:  1.22.0
   muscle:   3.8.425
   phylip:   3.697
   raxml-ng: 1.2.0
