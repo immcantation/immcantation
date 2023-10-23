@@ -1,20 +1,16 @@
 immcantation:
-  version:  devel
+  version:  4.4.0
   date:     2023.09.11
 package:
   presto:   0.7.1
   changeo:  1.3.0
-  alakazam: 1.2.1
-  shazam:   1.1.2
+  alakazam: 1.3.0
+  shazam:   1.2.0
   tigger:   1.0.1
   scoper:   1.2.1
   dowser:   1.2.0
   enchantr: 0.1.7
-  prestor:  0.0.8
-  rabhit:   0.1.5
-  rdi:      1.0.0
   igphyml:  1.1.5
-  seurat:   4.3.0
 dependency:
   airr-py:  1.5.0
   airr-r:   1.5.0
@@ -22,6 +18,5 @@ dependency:
   cd-hit:   4.8.1
   igblast:  1.21.0
   muscle:   3.8.425
-  phylip:   3.697
   raxml-ng: 1.2.0
   vsearch:  2.22.1

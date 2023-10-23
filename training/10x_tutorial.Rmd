@@ -634,11 +634,11 @@ In addition to standard and B cell specific maximum likelihood, dowser offers pa
 ```{r, warning=FALSE, eval=FALSE}
 # RAxML
 trees <- getTrees(clones, build = "raxml",
-                  exec = "/user/local/bin/raxml-ng", partition = "scaled", nproc = 1)
+                  exec = "/usr/local/bin/raxml-ng", partition = "scaled", nproc = 1)
 
 # IgPhML
 trees <- getTrees(clones, build = "igphyml",
-                  exec = "/user/local/share/igphyml/src/igphyml", partition = "hl", nproc = 1)
+                  exec = "/usr/local/share/igphyml/src/igphyml", partition = "hl", nproc = 1)
 ```
 
 ### Plot trees with dowser and ggtree
