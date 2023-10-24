@@ -63,7 +63,7 @@ We extracted a subset (~3000 cells) of single cell GEX/BCR data of ultrasound-gu
 
 * **filtered_contig.fasta** and **filtered_contig_annotations.csv**. They are the direct Cell Ranger output files for donor 1. We are going to use the Ig V(D)J sequences from donor 1 to show how to process V(D)J data using Immcantation.
 * **BCR_data.tsv**: B-Cell Receptor Data. Adaptive Immune Receptor Repertoire (AIRR) tsv BCRs from two subjects, already aligned to IMGT V, D, and J genes. 
-* `../data/bcr_phylo_tutorial/GEX.data_08112023.rds`: Gene Expression Data. This file contains a Seurat object with RNA-seq data already processed and annotated. Processing and annotation are not covered in this tutorial. You can learn more on these topics in Seurat's documentation and tutorials: <https://satijalab.org/seurat/articles/pbmc3k_tutorial.html>
+* `/home/magus/data/GEX.data_08112023.rds`: Gene Expression Data. This file contains a Seurat object with RNA-seq data already processed and annotated. Processing and annotation are not covered in this tutorial. You can learn more on these topics in Seurat's documentation and tutorials: <https://satijalab.org/seurat/articles/pbmc3k_tutorial.html>
 
 The R Markdown notebook with the code is also available in the container (`/home/magus/notebooks/10x_tutorial.Rmd`). 
 
