@@ -9,7 +9,7 @@ package:
   tigger:   1.0.1
   scoper:   1.2.1
   dowser:   1.2.0
-  enchantr: 0.1.7
+  enchantr: 0.1.9
   igphyml:  1.1.5
 dependency:
   airr-py:  1.5.0
