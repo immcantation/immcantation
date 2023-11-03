@@ -26,9 +26,6 @@ The field of high-throughput adaptive immune receptor repertoire sequencing (AIR
 * Modeling of somatic hypermutation (SHM) targeting
 * Quantification of selection pressure
 
-General workflow:  
-![Workflow](assets/workflow_h_cmd.png)
-
 For installation of docker used in this tutorial, go to the link given
 below:
 
