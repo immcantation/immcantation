@@ -95,18 +95,17 @@ RUN PACKAGE="immcantation" \
     && rm -rf /tmp/${PACKAGE}
 
 # Download Zenodo data
-RUN cd ~/data && \
+# Intro
+RUN cd ${HOME}/data && \
+    wget -v -O zenodo.zip https://zenodo.org/api/records/10046916/files-archive && \
+    unzip -o zenodo.zip && \
+    rm -rf zenodo.zip
+# 10x
+RUN cd ${HOME}/data && \
     wget -v -O zenodo.zip https://zenodo.org/api/records/10028129/files-archive && \
     unzip -o zenodo.zip && \
     rm -rf zenodo.zip
-
-# Download intro lab data
-RUN wget -v -O /home/${NB_USER}/immcantation-lab-intro.zip -L https://yale.box.com/shared/static/4bo611b70x8u92qvss1pypmcr9wmqil4 && \
-    cd /home/${NB_USER}/ && \
-    unzip -o immcantation-lab-intro.zip && \
-    rm -rf immcantation-lab-intro.zip && \
-    mv immcantation-lab-intro/example-input/* /home/${NB_USER}/data/. && \
-    rm -rf immcantation-lab-intro
+    
 # Download BCR-Seurat tutorial data
 RUN wget -v -O /home/${NB_USER}/immcantation-BCR-Seurat-tutorial.zip -L https://yale.box.com/shared/static/6s8gzxxpfb3vmwx2izn9qur9teultzvu.zip && \
     cd /home/${NB_USER}/ && \

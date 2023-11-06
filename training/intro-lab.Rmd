@@ -1,6 +1,14 @@
 ---
 title: "Introduction to B Cell Repertoire Analysis using the Immcantation Framework"
-output: md_document
+output: 
+  html_document:
+    toc: false
+    toc_depth: 3
+  md_document:
+    toc: false
+    toc_depth: 3
+params:
+  eval_optional: FALSE
 ---
 
 ```{r setup, include=FALSE}
@@ -49,13 +57,14 @@ builds report
 
 ### Example data used in the tutorial
 
-`../data/input.fasta`: Processed B cell receptor reads from one healthy donor (PGP1) 3 weeks after flu vaccination (*Laserson et al. (2014)*)
+You can download the example data from Zenodo. It is alreday available in the container: 
+`/home/magus/data/input.fasta`: Processed B cell receptor reads from one healthy donor (PGP1) 3 weeks after flu vaccination (*Laserson et al. (2014)*)
 
 * As part of the processing, each sequence has been annotated with the isotype.
 * This step is not a part of the tutorial, but you can learn how to do it [here](https://presto.readthedocs.io/en/latest/examples/primers.html#assigning-isotype-annotations-from-the-constant-region-sequence).
 
 ```{bash}
-head ../data/input.fasta
+head /home/magus/data/input.fasta
 ```
 
 ### Reference germlines
@@ -82,7 +91,7 @@ It is often useful to prototype analysis pipelines using a small subset of seque
 
 ```{bash}
 mkdir -p results/igblast
-SplitSeq.py sample -n 200 --outdir results --fasta -s ../data/input.fasta
+SplitSeq.py sample -n 200 --outdir results --fasta -s /home/magus/data/input.fasta
 ```
 
 `AssignGenes.py` performs V(D)J assignment with IgBLAST.
@@ -103,7 +112,7 @@ AssignGenes.py igblast -s results/input_sample1-n200.fasta \
 To run the command on all of the data, modify it to change the input file (`-s`) to the full data set. *Please note that this may take some time to finish running.*
 
 ```{bash}
-AssignGenes.py igblast -s ../data/input.fasta \
+AssignGenes.py igblast -s /home/magus/data/input.fasta \
 -b /usr/local/share/igblast_test_tigger --organism human --loci ig \
 --format blast --outdir results/igblast --nproc 8
 ```
@@ -121,7 +130,7 @@ The command line tool `MakeDb.py igblast` requires the original input sequence f
 ```{bash}
 mkdir -p results/changeo
 MakeDb.py igblast \
--s ../data/input.fasta -i results/igblast/input_igblast.fmt7 \
+-s /home/magus/data/input.fasta -i results/igblast/input_igblast.fmt7 \
 --format airr \
 -r /usr/local/share/germlines/imgt_test_tigger/human/vdj/ --outdir results/changeo \
 --outname data
