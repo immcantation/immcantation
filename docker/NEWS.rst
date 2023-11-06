@@ -20,6 +20,8 @@ Image Changes:
 
 + Updated base image to Fedora 38.
 + Added ``RAxML-NG`` (https://github.com/amkozlov/raxml-ng)
++ Updated ``clean_imgtdb.py`` and ``ìmgt2cellranger.py`` to use ``seq.replace()``
+  instead of ``seq.ungap()`` to fix deprecation warning for Biopython v1.80.
 
 Version 4.4.0:  December 15, 2022
 ------------------------------------------------------------------------

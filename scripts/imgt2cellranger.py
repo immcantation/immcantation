@@ -117,7 +117,7 @@ def main(input_files, output_file, pseudogene=False):
             if header is None:  continue
 
             # Append sequence record
-            rec = SeqRecord(rec.seq.ungap('.').upper(), id=header, name=header, description='')
+            rec = SeqRecord(rec.seq.replabe('.','').upper(), id=header, name=header, description='')
             # print(rec)
             if name not in name_set:
                 name_set.add(name)
