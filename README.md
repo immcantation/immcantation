@@ -1,5 +1,6 @@
 [![Docker Pulls](https://img.shields.io/docker/pulls/immcantation/suite)](https://hub.docker.com/u/immcantation)
 [![](https://img.shields.io/static/v1?label=AIRR-C%20sw-tools%20v1&message=compliant&color=008AFF&labelColor=000000&style=plastic)](https://docs.airr-community.org/en/stable/swtools/airr_swtools_standard.html)
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md)
 
 # Immcantation
 
