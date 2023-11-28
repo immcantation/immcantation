@@ -44,9 +44,6 @@ extensions = ['sphinx.ext.intersphinx',
               'sphinx_rtd_theme',
               'myst_parser']
 
-nbsphinx_custom_formats = {
-    '.md': ['jupytext.reads', {'fmt': '.md'}]
-}
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
