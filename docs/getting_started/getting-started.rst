@@ -53,7 +53,9 @@ Single-cell Analysis
     :align: left
 
 For information on how to process 10x Genomics VDJ data to be analyzed with Immcantation, we
-offer the introductory tutorial *10x Genomics V(D)J Sequence Analysis with Immcantation*. It is available as a Jupyter notebook (`10x_tutorial.ipynb <https://bitbucket.org/kleinstein/immcantation/src/master/training>`_) in the Immcantation repository.
+offer the introductory tutorial *10x Genomics V(D)J Sequence Analysis with Immcantation*. It is 
+available as an R Notebook (`10x_tutorial.Rmd <https://bitbucket.org/kleinstein/immcantation/src/master/training>`_) 
+in the Immcantation repository.
 
 .. admonition:: Tutorial
 
@@ -90,7 +92,8 @@ Lineage tree reconstruction
     :align: left
 
 The tutorial *Reconstruction and analysis of B-cell lineage trees from single cell data using Immcantation* is available
-as a Jupyter notebook (`dowser_tutorial.ipynb <https://bitbucket.org/kleinstein/immcantation/src/master/training/>`_) in the Immcantation repository.
+as an R Notebook (`dowser_tutorial.Rmd <https://bitbucket.org/kleinstein/immcantation/src/master/training/>`_) 
+in the Immcantation repository.
 
 .. admonition:: Tutorial
 

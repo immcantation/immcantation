@@ -1,15 +1,20 @@
 ---
 title: "Single Cell V(D)J Analysis Tutorial"
 output: 
-  html_document:
+  md_document:
     toc: false
     toc_depth: 3
-  md_document:
+  html_document:
     toc: false
     toc_depth: 3
 params:
   eval_optional: FALSE
+  cache: FALSE
 ---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE, cache=params$cache, fig.path=file.path("10x_tutorial_files","10x_tutorial_"))
+```
 
 # Single Cell V(D)J Analysis Tutorial
 
@@ -555,6 +560,7 @@ clones <- dowser::formatClones(results,
                        num_fields = c("duplicate_count"), minseq = 5, nproc = 1)
 head(clones)
 ```
+
 Additionally, if there is paired heavy and light chain data, you can format the clones such that the paired data is used in building trees.
 There is an additional step that occurs before the `formatClones` step in this situation. In order for the trees to best use the addition of light chain information, we will need to assign `clone_subgroups` using dowser's function `resolveLightChains`. This group cells within a clone based on the light chain V and J gene and assign a subgroup to each sequence. Then, in the `formatClones` step, specify `chain="HL"`.
 
