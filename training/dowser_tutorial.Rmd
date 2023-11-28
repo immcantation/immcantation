@@ -1,7 +1,21 @@
 ---
 title: "Reconstruction and Analysis of B-cell Lineage Trees from Single Cell Data using Immcantation"
-output: html_document
+output: 
+  md_document:
+    toc: false
+    toc_depth: 3
+  html_document:
+    toc: false
+    toc_depth: 3
+params:
+  eval_optional: FALSE
+  cache: FALSE
 ---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE, cache=params$cache, fig.path=file.path("dowser_tutorial_files","dowser_tutorial_"))
+```
 
 # Reconstruction and Analysis of B-cell Lineage Trees from Single Cell Data using Immcantation
 
