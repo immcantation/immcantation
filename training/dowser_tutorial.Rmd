@@ -117,6 +117,9 @@ features, number of samples...).
 ```{r}
 library(Seurat)
 
+# Updates old Seurat objects to new structure.
+gex_db <- UpdateSeuratObject(gex_db)
+
 # Object summary
 print(gex_db)
 ```
