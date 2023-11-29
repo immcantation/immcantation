@@ -1,18 +1,19 @@
 ---
 title: "Introduction to B Cell Repertoire Analysis using the Immcantation Framework"
 output: 
-  html_document:
+  md_document:
     toc: false
     toc_depth: 3
-  md_document:
+  html_document:
     toc: false
     toc_depth: 3
 params:
   eval_optional: FALSE
+  cache: FALSE
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, fig.path=file.path("intro-lab_files","intro-lab_"))
+knitr::opts_chunk$set(echo=TRUE, cache=params$cache, fig.path=file.path("intro-lab_files","intro-lab_"))
 ```
 
 # Introduction to Bulk B Cell Repertoire Analysis using the Immcantation Framework
@@ -228,7 +229,7 @@ The function `plotNovel` helps visualize the supporting evidence for calling the
 
 By default, `findNovelAlleles` uses several additional filters to avoid false positive allele calls. For example, to avoid calling novel alleles resulting from clonally-related sequences, TIgGER requires that sequences perfectly matching the potential novel allele be found in sequences with a diverse set of J genes and a range of junction lengths. This can be observed in the bottom panel.
 
-```{r novel, fig.alt='novel'}
+```{r novel}
 plotNovel(db, selectNovel(nv)[1, ]) # visualize the novel allele(s)
 ```
 
@@ -252,7 +253,7 @@ gt %>% arrange(total) %>% slice(1:3) # show the first 3 rows
 
 The individual's genotype can be visualized with `plotGenotype`. Each row is a gene, with colored cells indicating each of the alleles for that gene that are included in the inferred genotype.
 
-```{r genotype, fig.alt='genotype'}
+```{r genotype}
 plotGenotype(gt) # genotyping including novel V gene alleles
 ```
 
@@ -321,7 +322,7 @@ thr <- round(threshold@threshold, 2)
 thr
 ```
 
-```{r threshold, fig.alt='threshold'}
+```{r threshold}
 plot(threshold) # plot the distribution
 ```
 
@@ -338,7 +339,7 @@ Once a threshold is decided, the function `hierarchicalClones` from the [SCOPer 
 
 At the end of this step, the output file will have an additional column (`clone_id`) that provides an identifier for each sequence to indicate which clone it belongs to (i.e., sequences that have the same identifier are clonally-related). *Note that these identifiers are only unique to the dataset used to carry out the clonal assignments.*
 
-```{r intra-inter-clonal-d, message = FALSE, fig.alt='intra-inter-clonal-d'}
+```{r intra-inter-clonal-d, message = FALSE}
 suppressPackageStartupMessages(library(scoper))
 # Clonal assignment using hierarchical clustering
 results <- hierarchicalClones(db, threshold=thr, v_call="v_call_genotyped")
@@ -379,7 +380,7 @@ x <- makeChangeoClone(db_clone, v_call = "v_call_genotyped",
 
 Lineage reconstruction is done with `buildPhylipLineage`. This function uses the `dnapars` tool from PHYLIP, which in the container is located at `/usr/local/bin/dnapars`, to build the lineage, and returns an `igraph` object. This object can be quickly visualized with the command `plot`. It is possible to use `igraph` or other tools to resize nodes (e.g., by the underlying sequence count) or add colors (e.g., to indicate tissue location of B cell subsets) to help answer specific biological questions.
 
-```{r build-phylip-lineage, fig.alt='build-phylip-lineage'}
+```{r build-phylip-lineage}
 # Lineage reconstruction
 g <- buildPhylipLineage(x, phylip_exec = "/usr/local/bin/dnapars")
 suppressPackageStartupMessages(library(igraph))

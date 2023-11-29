@@ -1,0 +1,2 @@
+```{include} intro-lab.md
+```
