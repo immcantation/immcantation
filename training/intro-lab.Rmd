@@ -348,13 +348,15 @@ results <- hierarchicalClones(db, threshold=thr, v_call="v_call_genotyped")
 plot(results, binwidth=0.02)
 ```
 
+<!--
 ### TBD: See vignettes of Alakazam
 
 Links to other types of analysis. For example, see below "Clonal Lineages". 
+-->
 
 ## Alakazam: lineage reconstruction
 
-TBD: Update to Dowser version, which will involve the assignment of germlines as well (createGermlines())
+<!-- TBD: Update to Dowser version, which will involve the assignment of germlines as well (createGermlines()) -->
 
 B cell repertoires often consist of hundreds to thousands of separate clones. A clonal lineage recapitulates the ancestor-descendant relationships between clonally-related B cells and uncovering these relationships can provide insights into affinity maturation. The R package `alakazam` uses PHYLIP to reconstruct lineages following a maximum parsimony technique. PHYLIP is already installed in the Immcantation container.
 
