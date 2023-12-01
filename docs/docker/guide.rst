@@ -85,20 +85,18 @@ Each command can be run using:
 Using the container for tutorials
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If you would like to run and interact with the Jupyter notebook tutorials from your Docker container, run the following command (replace ``devel`` with a release version if applicable):
+**Note:**  This section is under development
+
+If you would like to run and interact with the ``.Rmd`` tutorials from your 
+Docker container, run the following command (replace ``devel`` with a 
+release version if applicable):
 
 .. parsed-literal::
-    docker run --network=host -it --rm -p 8888:8888 immcantation/lab:devel
+    docker run --network=host -it --rm -p 8787:8787 -e PASSWORD=immcantation immcantation/lab:devel
 
-Note that in the container, Jupyter uses the default port 8888. Once the container is running, you will see a message in the terminal asking you to visit a url similar to \http://<hostname>:8888/?token=<token>
+You can change the password to another of your choice. Note that in the container, RStudio uses the default port 8787. Once the container is running, 
+visit the url \http://localhost:8787 to launch RStudio. Use user ``magus`` and the password you provided in the previous command.
 
-.. image:: ../_static/startnotebooks.png
-    :alt: Immcantation lab startup
-
-Visit the url and open the notebook you want to use.
-
-.. image:: ../_static/notebookshome.png
-    :alt: Jupyter home page
 
 **Note:** If you want to save the results locally in your computer, you need to bind the folder where you want to save the results to (`<my-out-dir>`), and the results folder in the container.
 
@@ -106,4 +104,4 @@ Visit the url and open the notebook you want to use.
     # change my-out-dir to the local directory where you want to have the results saved to
     docker run --network=host -it --rm \\
     -v <my-out-dir>:/home/magus/notebooks/results:z \\
-    -p 8888:8888 immcantation/lab:devel
+    -p 8787:8787 immcantation/lab:devel
