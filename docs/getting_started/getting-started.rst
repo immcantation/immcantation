@@ -70,7 +70,9 @@ in the Immcantation repository.
     :alt: Integration of BCR and GEX data
     :align: left
 
-In *Integration of BCR and GEX data* we demonstrate an enhanced analysis by integrating 10x BCR and 10x GEX data. The jupyter notebook (`BCR_Seurat_tutorial.ipynb <https://bitbucket.org/kleinstein/immcantation/src/master/training/>`_) is available in the Immcantation repository.
+In *Integration of BCR and GEX data* we demonstrate an enhanced analysis by integrating 10x BCR and 10x GEX data. 
+The R Notebook (`BCR_Seurat_tutorial.Rmd <https://bitbucket.org/kleinstein/immcantation/src/master/training/>`_) 
+is available in the Immcantation repository.
 
 .. admonition:: Tutorial
 
