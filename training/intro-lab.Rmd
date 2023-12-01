@@ -38,7 +38,7 @@ The field of high-throughput adaptive immune receptor repertoire sequencing (AIR
 For installation of docker used in this tutorial, go to the link given
 below:
 
-<https://immcantation.readthedocs.io/en/stable/docker/intro.html>
+<https://immcantation.readthedocs.io/en/latest/docker/intro.html>
 
 ### Software versions
 
