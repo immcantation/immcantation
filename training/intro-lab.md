@@ -26,7 +26,7 @@ tutorial, we present an example pipeline for processing bulk BCR data.
 For installation of docker used in this tutorial, go to the link given
 below:
 
-<https://immcantation.readthedocs.io/en/stable/docker/intro.html>
+<https://immcantation.readthedocs.io/en/latest/docker/intro.html>
 
 ### Software versions
 
@@ -68,8 +68,8 @@ build:
 
     builds report
 
-    ## date: 2023-11-28 13:40:02 UTC
-    ## immcantation: 4.4.0-186-g8d433f2938f1+
+    ## date: 2023-11-29 12:57:37 UTC
+    ## immcantation: 4.4.0-198-g9c4656907dfb+
     ## presto: 0.7.1-18-g2140c55eefae
     ## changeo: 1.3.0-18-gfd3372709f6f
     ## alakazam: 1.2.0-79-g8ff706f26deb
@@ -82,10 +82,12 @@ build:
 
 ### Example data used in the tutorial
 
-You can download the example data from Zenodo. It is alreday available
-in the container: `/home/magus/data/input.fasta`: Processed B cell
-receptor reads from one healthy donor (PGP1) 3 weeks after flu
-vaccination (*Laserson et al. (2014)*)
+You can download the example data from Zenodo
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10046916.svg)](https://doi.org/10.5281/zenodo.10046916).
+It is alreday available in the container:
+`/home/magus/data/input.fasta`: Processed B cell receptor reads from one
+healthy donor (PGP1) 3 weeks after flu vaccination (*Laserson et
+al. (2014)*)
 
 -   As part of the processing, each sequence has been annotated with the
     isotype.
@@ -165,9 +167,9 @@ the V(D)J genes with `AssignGenes.py`.
     ##      FIELD> None
     ##     VALUES> None
     ## 
-    ## PROGRESS> 12:52:35 |Reading files            | 0.0 minPROGRESS> 12:52:36 |Done                     | 0.0 min
+    ## PROGRESS> 12:02:52 |Reading files            | 0.0 minPROGRESS> 12:02:53 |Done                     | 0.0 min
     ## 
-    ## PROGRESS> 12:52:36 |Sampling n=200           | 0.0 minPROGRESS> 12:52:36 |Done                     | 0.0 min
+    ## PROGRESS> 12:02:53 |Sampling n=200           | 0.0 minPROGRESS> 12:02:53 |Done                     | 0.0 min
     ## 
     ## MAX_COUNT> 200
     ##   SAMPLED> 200
@@ -201,7 +203,7 @@ the V(D)J genes with `AssignGenes.py`.
     ##     LOCI> ig
     ##    NPROC> 8
     ## 
-    ## PROGRESS> 12:52:36 |Running IgBLAST          | 0.0 minPROGRESS> 12:52:39 |Done                     | 0.0 min
+    ## PROGRESS> 12:02:54 |Running IgBLAST          | 0.0 minPROGRESS> 12:02:57 |Done                     | 0.0 min
     ## 
     ##   PASS> 200
     ## OUTPUT> input_sample1-n200_igblast.fmt7
@@ -225,7 +227,7 @@ time to finish running.*
     ##     LOCI> ig
     ##    NPROC> 8
     ## 
-    ## PROGRESS> 12:52:40 |Running IgBLAST          | 0.0 minPROGRESS> 13:10:37 |Done                     | 17.9 min
+    ## PROGRESS> 12:02:58 |Running IgBLAST          | 0.0 minPROGRESS> 12:21:50 |Done                     | 18.9 min
     ## 
     ##   PASS> 91010
     ## OUTPUT> input_igblast.fmt7
@@ -273,9 +275,9 @@ AIRR format. The path to the reference germlines is provided by `-r`.
     ##       EXTENDED> False
     ## INFER_JUNCTION> False
     ## 
-    ## PROGRESS> 13:10:37 |Loading files       | 0.0 minPROGRESS> 13:10:38 |Done                | 0.0 min
+    ## PROGRESS> 12:21:50 |Loading files       | 0.0 minPROGRESS> 12:21:51 |Done                | 0.0 min
     ## 
-    ## PROGRESS> 13:10:38 |                    |   0% (     0) 0.0 minPROGRESS> 13:10:41 |#                   |   5% ( 4,551) 0.0 minPROGRESS> 13:10:43 |##                  |  10% ( 9,102) 0.1 minPROGRESS> 13:10:45 |###                 |  15% (13,653) 0.1 minPROGRESS> 13:10:47 |####                |  20% (18,204) 0.1 minPROGRESS> 13:10:49 |#####               |  25% (22,755) 0.2 minPROGRESS> 13:10:51 |######              |  30% (27,306) 0.2 minPROGRESS> 13:10:53 |#######             |  35% (31,857) 0.2 minPROGRESS> 13:10:55 |########            |  40% (36,408) 0.3 minPROGRESS> 13:10:57 |#########           |  45% (40,959) 0.3 minPROGRESS> 13:10:59 |##########          |  50% (45,510) 0.4 minPROGRESS> 13:11:01 |###########         |  55% (50,061) 0.4 minPROGRESS> 13:11:03 |############        |  60% (54,612) 0.4 minPROGRESS> 13:11:05 |#############       |  65% (59,163) 0.5 minPROGRESS> 13:11:08 |##############      |  70% (63,714) 0.5 minPROGRESS> 13:11:10 |###############     |  75% (68,265) 0.5 minPROGRESS> 13:11:12 |################    |  80% (72,816) 0.6 minPROGRESS> 13:11:14 |#################   |  85% (77,367) 0.6 minPROGRESS> 13:11:16 |##################  |  90% (81,918) 0.6 minPROGRESS> 13:11:19 |################### |  95% (86,469) 0.7 minPROGRESS> 13:11:21 |####################| 100% (91,010) 0.7 min
+    ## PROGRESS> 12:21:51 |                    |   0% (     0) 0.0 minPROGRESS> 12:21:54 |#                   |   5% ( 4,551) 0.0 minPROGRESS> 12:21:56 |##                  |  10% ( 9,102) 0.1 minPROGRESS> 12:21:58 |###                 |  15% (13,653) 0.1 minPROGRESS> 12:22:01 |####                |  20% (18,204) 0.2 minPROGRESS> 12:22:03 |#####               |  25% (22,755) 0.2 minPROGRESS> 12:22:06 |######              |  30% (27,306) 0.2 minPROGRESS> 12:22:08 |#######             |  35% (31,857) 0.3 minPROGRESS> 12:22:11 |########            |  40% (36,408) 0.3 minPROGRESS> 12:22:13 |#########           |  45% (40,959) 0.4 minPROGRESS> 12:22:15 |##########          |  50% (45,510) 0.4 minPROGRESS> 12:22:17 |###########         |  55% (50,061) 0.4 minPROGRESS> 12:22:20 |############        |  60% (54,612) 0.5 minPROGRESS> 12:22:22 |#############       |  65% (59,163) 0.5 minPROGRESS> 12:22:24 |##############      |  70% (63,714) 0.5 minPROGRESS> 12:22:26 |###############     |  75% (68,265) 0.6 minPROGRESS> 12:22:29 |################    |  80% (72,816) 0.6 minPROGRESS> 12:22:31 |#################   |  85% (77,367) 0.7 minPROGRESS> 12:22:34 |##################  |  90% (81,918) 0.7 minPROGRESS> 12:22:36 |################### |  95% (86,469) 0.7 minPROGRESS> 12:22:38 |####################| 100% (91,010) 0.8 min
     ## 
     ## OUTPUT> data_db-pass.tsv
     ##   PASS> 87793
@@ -304,7 +306,7 @@ output file (specified by `--outname`).
     ##  VALUES> T
     ##   REGEX> False
     ## 
-    ## PROGRESS> 13:11:23 |                    |   0% (     0) 0.0 minPROGRESS> 13:11:23 |#                   |   5% ( 4,390) 0.0 minPROGRESS> 13:11:23 |##                  |  10% ( 8,780) 0.0 minPROGRESS> 13:11:23 |###                 |  15% (13,170) 0.0 minPROGRESS> 13:11:23 |####                |  20% (17,560) 0.0 minPROGRESS> 13:11:23 |#####               |  25% (21,950) 0.0 minPROGRESS> 13:11:23 |######              |  30% (26,340) 0.0 minPROGRESS> 13:11:24 |#######             |  35% (30,730) 0.0 minPROGRESS> 13:11:24 |########            |  40% (35,120) 0.0 minPROGRESS> 13:11:24 |#########           |  45% (39,510) 0.0 minPROGRESS> 13:11:24 |##########          |  50% (43,900) 0.0 minPROGRESS> 13:11:24 |###########         |  55% (48,290) 0.0 minPROGRESS> 13:11:24 |############        |  60% (52,680) 0.0 minPROGRESS> 13:11:24 |#############       |  65% (57,070) 0.0 minPROGRESS> 13:11:25 |##############      |  70% (61,460) 0.0 minPROGRESS> 13:11:25 |###############     |  75% (65,850) 0.0 minPROGRESS> 13:11:25 |################    |  80% (70,240) 0.0 minPROGRESS> 13:11:25 |#################   |  85% (74,630) 0.0 minPROGRESS> 13:11:25 |##################  |  90% (79,020) 0.0 minPROGRESS> 13:11:25 |################### |  95% (83,410) 0.0 minPROGRESS> 13:11:25 |####################| 100% (87,793) 0.0 min
+    ## PROGRESS> 12:22:40 |                    |   0% (     0) 0.0 minPROGRESS> 12:22:40 |#                   |   5% ( 4,390) 0.0 minPROGRESS> 12:22:40 |##                  |  10% ( 8,780) 0.0 minPROGRESS> 12:22:40 |###                 |  15% (13,170) 0.0 minPROGRESS> 12:22:40 |####                |  20% (17,560) 0.0 minPROGRESS> 12:22:40 |#####               |  25% (21,950) 0.0 minPROGRESS> 12:22:40 |######              |  30% (26,340) 0.0 minPROGRESS> 12:22:40 |#######             |  35% (30,730) 0.0 minPROGRESS> 12:22:41 |########            |  40% (35,120) 0.0 minPROGRESS> 12:22:41 |#########           |  45% (39,510) 0.0 minPROGRESS> 12:22:41 |##########          |  50% (43,900) 0.0 minPROGRESS> 12:22:41 |###########         |  55% (48,290) 0.0 minPROGRESS> 12:22:41 |############        |  60% (52,680) 0.0 minPROGRESS> 12:22:41 |#############       |  65% (57,070) 0.0 minPROGRESS> 12:22:41 |##############      |  70% (61,460) 0.0 minPROGRESS> 12:22:42 |###############     |  75% (65,850) 0.0 minPROGRESS> 12:22:42 |################    |  80% (70,240) 0.0 minPROGRESS> 12:22:42 |#################   |  85% (74,630) 0.0 minPROGRESS> 12:22:42 |##################  |  90% (79,020) 0.0 minPROGRESS> 12:22:42 |################### |  95% (83,410) 0.0 minPROGRESS> 12:22:42 |####################| 100% (87,793) 0.0 min
     ## 
     ##    OUTPUT> data_p_parse-select.tsv
     ##   RECORDS> 87793
@@ -332,7 +334,7 @@ data.
     ##  VALUES> IGHV
     ##   REGEX> True
     ## 
-    ## PROGRESS> 13:11:26 |                    |   0% (     0) 0.0 minPROGRESS> 13:11:26 |#                   |   5% ( 3,249) 0.0 minPROGRESS> 13:11:26 |##                  |  10% ( 6,498) 0.0 minPROGRESS> 13:11:27 |###                 |  15% ( 9,747) 0.0 minPROGRESS> 13:11:27 |####                |  20% (12,996) 0.0 minPROGRESS> 13:11:27 |#####               |  25% (16,245) 0.0 minPROGRESS> 13:11:27 |######              |  30% (19,494) 0.0 minPROGRESS> 13:11:27 |#######             |  35% (22,743) 0.0 minPROGRESS> 13:11:27 |########            |  40% (25,992) 0.0 minPROGRESS> 13:11:27 |#########           |  45% (29,241) 0.0 minPROGRESS> 13:11:27 |##########          |  50% (32,490) 0.0 minPROGRESS> 13:11:27 |###########         |  55% (35,739) 0.0 minPROGRESS> 13:11:28 |############        |  60% (38,988) 0.0 minPROGRESS> 13:11:28 |#############       |  65% (42,237) 0.0 minPROGRESS> 13:11:28 |##############      |  70% (45,486) 0.0 minPROGRESS> 13:11:28 |###############     |  75% (48,735) 0.0 minPROGRESS> 13:11:28 |################    |  80% (51,984) 0.0 minPROGRESS> 13:11:28 |#################   |  85% (55,233) 0.0 minPROGRESS> 13:11:28 |##################  |  90% (58,482) 0.0 minPROGRESS> 13:11:28 |################### |  95% (61,731) 0.0 minPROGRESS> 13:11:29 |####################| 100% (64,971) 0.0 min
+    ## PROGRESS> 12:22:43 |                    |   0% (     0) 0.0 minPROGRESS> 12:22:43 |#                   |   5% ( 3,249) 0.0 minPROGRESS> 12:22:43 |##                  |  10% ( 6,498) 0.0 minPROGRESS> 12:22:43 |###                 |  15% ( 9,747) 0.0 minPROGRESS> 12:22:44 |####                |  20% (12,996) 0.0 minPROGRESS> 12:22:44 |#####               |  25% (16,245) 0.0 minPROGRESS> 12:22:44 |######              |  30% (19,494) 0.0 minPROGRESS> 12:22:44 |#######             |  35% (22,743) 0.0 minPROGRESS> 12:22:44 |########            |  40% (25,992) 0.0 minPROGRESS> 12:22:44 |#########           |  45% (29,241) 0.0 minPROGRESS> 12:22:44 |##########          |  50% (32,490) 0.0 minPROGRESS> 12:22:44 |###########         |  55% (35,739) 0.0 minPROGRESS> 12:22:45 |############        |  60% (38,988) 0.0 minPROGRESS> 12:22:45 |#############       |  65% (42,237) 0.0 minPROGRESS> 12:22:45 |##############      |  70% (45,486) 0.0 minPROGRESS> 12:22:45 |###############     |  75% (48,735) 0.0 minPROGRESS> 12:22:45 |################    |  80% (51,984) 0.0 minPROGRESS> 12:22:45 |#################   |  85% (55,233) 0.0 minPROGRESS> 12:22:45 |##################  |  90% (58,482) 0.0 minPROGRESS> 12:22:45 |################### |  95% (61,731) 0.0 minPROGRESS> 12:22:45 |####################| 100% (64,971) 0.0 min
     ## 
     ##    OUTPUT> data_ph_parse-select.tsv
     ##   RECORDS> 64971
@@ -379,6 +381,8 @@ step.
 Bulk BCR data in general includes ambiguous nucleotides (Ns), and we
 will remove those low-quality sequences with many Ns
 
+    # Source helper function also available here:
+    # https://bitbucket.org/kleinstein/immcantation/src/master/training/assets/filterN.R
     source("assets/filterN.R")
 
     # Identify sequences with at least 20 Ns or continuous 15 Ns in the v_region
@@ -539,11 +543,11 @@ for use in the following steps.
       select(v_call, v_call_genotyped)
 
     ## # A tibble: 3 x 2
-    ##   v_call                                v_call_genotyped
-    ##   <chr>                                 <chr>           
-    ## 1 IGHV4-30-4*09,IGHV4-31*03             IGHV4-30-4*09   
-    ## 2 IGHV3-30*04,IGHV3-30*07,IGHV3-30-3*01 IGHV3-30*18     
-    ## 3 IGHV4-30-4*09,IGHV4-31*03             IGHV4-30-4*09
+    ##   v_call                    v_call_genotyped        
+    ##   <chr>                     <chr>                   
+    ## 1 IGHV1-69*18               IGHV1-69*01,IGHV1-69D*01
+    ## 2 IGHV4-30-4*09,IGHV4-31*03 IGHV4-30-4*09           
+    ## 3 IGHV4-39*01,IGHV4-39*08   IGHV4-39*01
 
     write_rearrangement(db, file.path("results", "tigger", "data_ph_genotyped.tsv"))
 
@@ -668,15 +672,15 @@ the dataset used to carry out the clonal assignments.*
 
 ![](intro-lab_files/intro-lab_intra-inter-clonal-d-1.png)
 
+<!--
 ### TBD: See vignettes of Alakazam
 
-Links to other types of analysis. For example, see below “Clonal
-Lineages”.
+Links to other types of analysis. For example, see below "Clonal Lineages". 
+-->
 
 ## Alakazam: lineage reconstruction
 
-TBD: Update to Dowser version, which will involve the assignment of
-germlines as well (createGermlines())
+<!-- TBD: Update to Dowser version, which will involve the assignment of germlines as well (createGermlines()) -->
 
 B cell repertoires often consist of hundreds to thousands of separate
 clones. A clonal lineage recapitulates the ancestor-descendant
