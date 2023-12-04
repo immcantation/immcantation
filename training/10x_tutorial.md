@@ -71,6 +71,8 @@ Resources:
     <https://bitbucket.org/kleinstein/immcantation>
 -   Docker image for this tutorial:
     <https://hub.docker.com/r/immcantation/lab>
+-   Source code for Immcantation tutorials:
+    <https://bitbucket.org/kleinstein/immcantation/src/master/training/>
 
 ## Getting started
 
@@ -99,8 +101,9 @@ patient at multiple time points following influenza vaccination.
 We extracted a subset (~3000 cells) of single cell GEX/BCR data of
 ultrasound-guided fine needle aspiration (FNA) samples of lymph nodes
 for subject P05. The example data is already in the container
-(`/home/magus/data/`). If you want to, you can download it from
-[Zenodo](https://zenodo.org/records/10028129). We will use these files:
+(`/home/magus/data/`). If you want to, you can download it from Zenodo 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10028129.svg)](https://doi.org/10.5281/zenodo.10028129)
+. We will use these files:
 
 -   **filtered\_contig.fasta** and
     **filtered\_contig\_annotations.csv**. They are the direct Cell
@@ -110,7 +113,7 @@ for subject P05. The example data is already in the container
 -   **BCR\_data.tsv**: B-Cell Receptor Data. Adaptive Immune Receptor
     Repertoire (AIRR) tsv BCRs from two subjects, already aligned to
     IMGT V, D, and J genes.
--   `/home/magus/data/GEX.data_08112023.rds`: Gene Expression Data. This
+-   **GEX.data_08112023.rds**: Gene Expression Data. This
     file contains a Seurat object with RNA-seq data already processed
     and annotated. Processing and annotation are not covered in this
     tutorial. You can learn more on these topics in Seurat’s
