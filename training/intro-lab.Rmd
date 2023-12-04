@@ -179,6 +179,8 @@ colnames(db) # show the column names in the database
 
 Bulk BCR data in general includes ambiguous nucleotides (Ns), and we will remove those low-quality sequences with many Ns
 ```{r, message = FALSE}
+# Source helper function also available here:
+# https://bitbucket.org/kleinstein/immcantation/src/master/training/assets/filterN.R
 source("assets/filterN.R")
 
 # Identify sequences with at least 20 Ns or continuous 15 Ns in the v_region
