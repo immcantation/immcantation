@@ -58,7 +58,7 @@ builds report
 
 ### Example data used in the tutorial
 
-You can download the example data from Zenodo. It is alreday available in the container: 
+You can download the example data from Zenodo [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10046916.svg)](https://doi.org/10.5281/zenodo.10046916). It is alreday available in the container: 
 `/home/magus/data/input.fasta`: Processed B cell receptor reads from one healthy donor (PGP1) 3 weeks after flu vaccination (*Laserson et al. (2014)*)
 
 * As part of the processing, each sequence has been annotated with the isotype.
