@@ -85,8 +85,6 @@ Each command can be run using:
 Using the container for tutorials
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**Note:**  This section is under development
-
 If you would like to run and interact with the ``.Rmd`` tutorials from your 
 Docker container, run the following command (replace ``devel`` with a 
 release version if applicable):
@@ -95,10 +93,20 @@ release version if applicable):
     docker run -it --rm -p 8787:8787 -e PASSWORD=immcantation immcantation/lab:devel
 
 You can change the password to another of your choice. Note that in the container, 
-RStudio uses the default port 8787. Once the container is running, 
-visit the url \http://localhost:8787 to launch RStudio. Use user ``magus`` and the 
-password you provided in the previous command. The folder ``notebooks`` contains
-``.Rmd`` tutorials that can be executed in the container.
+RStudio uses the default port 8787. 
+
+Once the container is running, visit the url \http://localhost:8787 to launch RStudio. 
+Use user ``magus`` and the password you provided in the previous command. 
+
+.. image:: ../_static/startrstudio.png
+    :alt: Immcantation lab startup
+
+The folder ``notebooks`` contains ``.Rmd`` tutorials that can be executed in the container.
+You can open one of the ``.Rmd`` files, set the working directory to ``~notebooks``, and knit 
+the tutorial or start running chunks.
+
+.. image:: ../_static/rmdnotebooks.png
+    :alt: .Rmd notebooks
 
 **Note:** If you want to save the results locally in your computer, you need to 
 bind the folder where you want to save the results to (`<my-out-dir>`), and 
@@ -106,6 +114,6 @@ the results folder in the container.
 
 .. parsed-literal::
     # change my-out-dir to the local directory where you want to have the results saved to
-    docker run --network=host -it --rm \\
+    docker run -it --rm \\
     -v <my-out-dir>:/home/magus/notebooks/results:z \\
     -p 8787:8787 immcantation/lab:devel
