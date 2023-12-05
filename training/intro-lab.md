@@ -648,7 +648,7 @@ threshold to determine the local sequence neighborhood may be used. This
 can be done with functions from the [SCOPer R
 package](https://scoper.readthedocs.io/).
 
-### Change-O: Clonal assignment
+### Clonal assignment
 
 Once a threshold is decided, the function `hierarchicalClones` from the
 [SCOPer R package](https://scoper.readthedocs.io/) performs the clonal
