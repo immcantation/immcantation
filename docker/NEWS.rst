@@ -1,7 +1,7 @@
 Release Notes
 ========================================================================
 
-Version 4.4.0.999:  October 18, 2023
+Version 4.4.0.999:  December 18, 2023
 ------------------------------------------------------------------------
 
 Version Updates:
@@ -20,6 +20,7 @@ Image Changes:
 
 + Updated base image to Fedora 38.
 + Added ``RAxML-NG`` (https://github.com/amkozlov/raxml-ng)
++ Added ``PIgLET`` (https://bitbucket.org/yaarilab/piglet) to contributed packages.
 + Updated ``clean_imgtdb.py`` and ``ìmgt2cellranger.py`` to use ``seq.replace()``
   instead of ``seq.ungap()`` to fix deprecation warning for Biopython v1.80.
 
