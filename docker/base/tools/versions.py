@@ -145,6 +145,22 @@ def inspectVersions(version_file=default_version_file):
     except (CalledProcessError, AttributeError):
         versions.packages['enchantr'] = None
 
+    # RAbHIT
+    try:
+        rabhit = check_output('Rscript -e \"cat(packageDescription(\'rabhit\', fields=\'Version\'))\"',
+                            stderr=STDOUT, shell=True)
+        versions.packages['rabhit'] = re.search(r'([0-9.]+)', rabhit.decode('utf-8')).group(0)
+    except (CalledProcessError, AttributeError):
+        versions.packages['rabhit'] = None       
+
+    # piglet
+    try:
+        piglet = check_output('Rscript -e \"cat(packageDescription(\'piglet\', fields=\'Version\'))\"',
+                            stderr=STDOUT, shell=True)
+        versions.packages['piglet'] = re.search(r'([0-9.]+)', piglet.decode('utf-8')).group(0)
+    except (CalledProcessError, AttributeError):
+        versions.packages['piglet'] = None    
+
     # MUSCLE
     try:
         muscle = check_output('muscle -version', stderr=STDOUT, shell=True)

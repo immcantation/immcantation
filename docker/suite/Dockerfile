@@ -234,6 +234,10 @@ RUN PACKAGE="rdi" \
 RUN RABHIT=$(versions get -n rabhit) \
     && Rscript -e "devtools::install_version('rabhit', '${RABHIT}', quiet=FALSE, clean=TRUE)"
 
+# Install piglet
+RUN PIGLET=$(versions get -n piglet) \
+    && Rscript -e "devtools::install_version('piglet', '${PIGLET}', quiet=FALSE, clean=TRUE)"
+
 # Install Seurat
 RUN SEURAT=$(versions get -n seurat) \
     && Rscript -e "devtools::install_version('Seurat', '${SEURAT}', quiet=FALSE, clean=TRUE, upgrade='never')"
