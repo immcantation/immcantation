@@ -125,7 +125,7 @@ def inspectVersions(version_file=default_version_file):
     try:
         dowser = check_output('Rscript -e \"cat(packageDescription(\'dowser\', fields=\'Version\'))\"',
                             stderr=STDOUT, shell=True)
-        versions.packages['dowser'] = re.search(r'([0-9.]+)', scoper.decode('utf-8')).group(0)
+        versions.packages['dowser'] = re.search(r'([0-9.]+)', dowser.decode('utf-8')).group(0)
     except (CalledProcessError, AttributeError):
         versions.packages['dowser'] = None
 
