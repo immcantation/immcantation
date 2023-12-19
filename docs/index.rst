@@ -139,8 +139,8 @@ Core Packages
 
         **Dowser**
 
-        + Build and analyze B cell lineage trees
-        + Infer migration and differentiation patterns
+        + B cell lineage trees
+        + Migration and differentiation analysis
         + Detect ongoing evolution over time
 
 
