@@ -246,7 +246,7 @@ Immcantation also includes other methods for inferring subject-specific genotype
 ```{r}
 gt <- inferGenotype(db, germline_db = ighv, novel = nv)
 
-# save genotype inf .fasta format to be used later with CreateGermlines.py
+# save genotype inf .fasta format to be used later with dowser::createGermlines
 gtseq <- genotypeFasta(gt, ighv, nv)
 writeFasta(gtseq, file.path("results", "tigger", "v_genotype.fasta"))
 
@@ -332,7 +332,7 @@ plot(threshold) # plot the distribution
 
 In some datasets, the distance-to-nearest distribution may not be bimodal and `findThreshold` may fail to determine the distance threshold. In these cases, spectral clustering with an adaptive threshold to determine the local sequence neighborhood may be used. This can be done with functions from the [SCOPer R package](https://scoper.readthedocs.io/).
 
-### Change-O: Clonal assignment
+### Clonal assignment
 
 Once a threshold is decided, the function `hierarchicalClones` from the [SCOPer R package](https://scoper.readthedocs.io/) performs the clonal assignment. There are some arguments that usually need to be specified:
 * `model`: the distance metric used in `distToNearest`
@@ -356,38 +356,88 @@ plot(results, binwidth=0.02)
 Links to other types of analysis. For example, see below "Clonal Lineages". 
 -->
 
-## Alakazam: lineage reconstruction
+## Dowser: lineage reconstruction
 
 <!-- TBD: Update to Dowser version, which will involve the assignment of germlines as well (createGermlines()) -->
 
-B cell repertoires often consist of hundreds to thousands of separate clones. A clonal lineage recapitulates the ancestor-descendant relationships between clonally-related B cells and uncovering these relationships can provide insights into affinity maturation. The R package `alakazam` uses PHYLIP to reconstruct lineages following a maximum parsimony technique. PHYLIP is already installed in the Immcantation container.
+B cell repertoires often consist of hundreds to thousands of separate clones. A clonal lineage recapitulates the ancestor-descendant relationships between clonally-related B cells and uncovering these relationships can provide insights into affinity maturation. The R package `dowser` offers multiple ways to build B cell phylogenetic trees. Before performing lineage reconstruction, some preprocessing in needed.
 
-Before performing lineage reconstruction, some preprocessing in needed. The code below shows an example of such preprocessing done for one of the largest clones in the example dataset. The function `makeChangeoClone` takes as input a data.frame with information for a clone (`db_clone`). `text_fields = "isotype"` specifies that annotation in the column `isotype` should be merged during duplicate removal. For example, if two duplicate sequences (defined by identical nucleotide composition) are found, and one is annotated as IGHM and the second one is an IGHG, then they will be "collapsed" into a single sequence that will have the `isotype` value "IGHM,IGHG". The preprocessing done by `makeChangeoClone` also includes masking gap positions and masking ragged ends.
+### Create germlines
 
+The goal is to reconstruct the sequence of the unmutated ancestor of each clone. We use a reference database of known alleles ([IMGT](http://www.imgt.org)). Because it is very difficult to accurately infer the D region and the junction region for BCR sequences, we mask this region with `N`.
 
-```{r}
-# Select one clone, the 2nd largest, just as an example
+Before B cell lineage trees can be built, it is necessary to construct the unmutated germline sequence for each B cell clone. Typically the IGH D segment is masked because the junction region of heavy chains often cannot be reliably reconstructed. Note that occasionally errors are thrown for some clones - this is typical and usually results in those clones being excluded.
+
+In the example below, we read in the IMGT germline references from our Docker container. If you're using a local installation, you can download the most up-to-date reference genome by cloning the Immcantation repository and running the script:
+
+```{bash, eval=FALSE, class.source="bg-info", class.output="bg-info"}
+# Retrieve reference genome with the script fetch_imgtdb.sh.
+# It will create directories where it is run
+git clone https://bitbucket.org/kleinstein/immcantation.git
+./immcantation/scripts/fetch_imgtdb.sh 
+```
+
+And passing `"human/vdj/"` to the `readIMGT` function.
+
+```{r, warning=FALSE, message=FALSE}
+# read in IMGT data if downloaded on your own (above)
+# and update `dir` to use the path to your `human/vdj` folder
+# references <- readIMGT(dir = "human/vdj/")
+
+# read in IMGT files in the Docker container
+references <- dowser::readIMGT(dir = "/usr/local/share/germlines/imgt/human/vdj")
+
+# reconstruct germlines
+# select one clone, the 2nd largest, just as an example
 largest_clone <- countClones(results@db) %>%
                    slice(2) %>%
                    select(clone_id) %>% as.character()
-
-# Subset db, get db with data for largest_clone
-db_clone <- subset(results@db, clone_id == largest_clone)
-
-# Build tree from a single clone
-# TODO: I added pad_end = TRUE because of error:
-#Error in makeChangeoClone(db_clone, v_call = "v_call_genotyped", text_fields = "isotype") : 
-#  All sequences are not the same length for data with first sequence_id = seq248. Consider specifying pad_end=TRUE and verify the multiple alignment
-x <- makeChangeoClone(db_clone, v_call = "v_call_genotyped",
-                      text_fields = "isotype", pad_end = TRUE)
+db_largest_clone <- subset(results@db, clone_id == largest_clone)
+db_largest_clone <- dowser::createGermlines(db_largest_clone, references, nproc = 1)
 ```
 
-Lineage reconstruction is done with `buildPhylipLineage`. This function uses the `dnapars` tool from PHYLIP, which in the container is located at `/usr/local/bin/dnapars`, to build the lineage, and returns an `igraph` object. This object can be quickly visualized with the command `plot`. It is possible to use `igraph` or other tools to resize nodes (e.g., by the underlying sequence count) or add colors (e.g., to indicate tissue location of B cell subsets) to help answer specific biological questions.
+### Format clones
 
-```{r build-phylip-lineage}
-# Lineage reconstruction
-g <- buildPhylipLineage(x, phylip_exec = "/usr/local/bin/dnapars")
-suppressPackageStartupMessages(library(igraph))
-plot(g)
+In the rearrangement table, each row corresponds to a sequence, and each column is information about that sequence. We will create a new data structure, where each row is a clonal cluster, and each column is information about that clonal cluster. The function `formatClones` performs this processing and has options that are relevant to determine how the trees can be built and visualized. For example, `traits` determines the columns from the rearrangement data that will be included in the `clones` object, and will also be used to determine the uniqueness of the sequences, so they are not collapsed.
+
+```{r, warning=FALSE}
+# make clone objects with aligned, processed sequences
+# collapse identical sequences unless differ by trait
+# add up duplicate_count column for collapsed sequences
+# store day, gex_annotation
+# discard clones with < 5 distinct sequences
+db_largest_clone <- dowser::formatClones(db_largest_clone,
+                                         traits="isotype", 
+                                         minseq = 5, nproc = 1)
+head(db_largest_clone)
 ```
 
+### Build trees with dowser
+
+Dowser offers multiple ways to build B cell phylogenetic trees. These differ by the method used to estimate tree topology and branch lengths (e.g. maximum parsimony and maximum likelihood) and implementation (IgPhyML, PHYLIP, RAxML, or R packages `ape` and `phangorn`). Each method has pros and cons. In this tutorial we use PHYLIP to reconstruct lineages following a maximum parsimony technique. PHYLIP is already installed in the Immcantation container.
+
+```{r, warning=FALSE}
+# the executable path is the location of the executable in the Docker container
+trees <- dowser::getTrees(db_largest_clone, 
+                          build = "dnapars", 
+                          exec = "/usr/local/bin/dnapars", 
+                          nproc = 1)
+head(trees)
+```
+### Plot trees with dowser and ggtree
+
+Regardless of how you build trees, they are visualized in the same manner with the `plotTrees` function. This will return a list of `ggplot` objects in the same order as the input object. Here, we color the tips by the `day` value because we specified that column in the `formatClones` step.
+
+Plot all of the trees:
+
+```{r, warning=FALSE}
+plots_all <- dowser::plotTrees(trees, tips = "isotype", tipsize = 2)
+```
+
+Plot the largest tree:
+
+```{r}
+plots_all[[1]]
+```
+
+In addition to the functions for building and visualizing trees, `dowser` also implements new techniques for analyzing B cell migration and differentiation, as well as for detecting new B cell evolution over time. Visit the [dowser website](https://dowser.readthedocs.io) to learn more.

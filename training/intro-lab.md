@@ -167,9 +167,9 @@ the V(D)J genes with `AssignGenes.py`.
     ##      FIELD> None
     ##     VALUES> None
     ## 
-    ## PROGRESS> 12:02:52 |Reading files            | 0.0 minPROGRESS> 12:02:53 |Done                     | 0.0 min
+    ## PROGRESS> 12:09:09 |Reading files            | 0.0 minPROGRESS> 12:09:09 |Done                     | 0.0 min
     ## 
-    ## PROGRESS> 12:02:53 |Sampling n=200           | 0.0 minPROGRESS> 12:02:53 |Done                     | 0.0 min
+    ## PROGRESS> 12:09:09 |Sampling n=200           | 0.0 minPROGRESS> 12:09:09 |Done                     | 0.0 min
     ## 
     ## MAX_COUNT> 200
     ##   SAMPLED> 200
@@ -203,7 +203,7 @@ the V(D)J genes with `AssignGenes.py`.
     ##     LOCI> ig
     ##    NPROC> 8
     ## 
-    ## PROGRESS> 12:02:54 |Running IgBLAST          | 0.0 minPROGRESS> 12:02:57 |Done                     | 0.0 min
+    ## PROGRESS> 12:09:10 |Running IgBLAST          | 0.0 minPROGRESS> 12:09:13 |Done                     | 0.0 min
     ## 
     ##   PASS> 200
     ## OUTPUT> input_sample1-n200_igblast.fmt7
@@ -227,7 +227,7 @@ time to finish running.*
     ##     LOCI> ig
     ##    NPROC> 8
     ## 
-    ## PROGRESS> 12:02:58 |Running IgBLAST          | 0.0 minPROGRESS> 12:21:50 |Done                     | 18.9 min
+    ## PROGRESS> 12:09:14 |Running IgBLAST          | 0.0 minPROGRESS> 12:27:51 |Done                     | 18.6 min
     ## 
     ##   PASS> 91010
     ## OUTPUT> input_igblast.fmt7
@@ -275,9 +275,9 @@ AIRR format. The path to the reference germlines is provided by `-r`.
     ##       EXTENDED> False
     ## INFER_JUNCTION> False
     ## 
-    ## PROGRESS> 12:21:50 |Loading files       | 0.0 minPROGRESS> 12:21:51 |Done                | 0.0 min
+    ## PROGRESS> 12:27:51 |Loading files       | 0.0 minPROGRESS> 12:27:52 |Done                | 0.0 min
     ## 
-    ## PROGRESS> 12:21:51 |                    |   0% (     0) 0.0 minPROGRESS> 12:21:54 |#                   |   5% ( 4,551) 0.0 minPROGRESS> 12:21:56 |##                  |  10% ( 9,102) 0.1 minPROGRESS> 12:21:58 |###                 |  15% (13,653) 0.1 minPROGRESS> 12:22:01 |####                |  20% (18,204) 0.2 minPROGRESS> 12:22:03 |#####               |  25% (22,755) 0.2 minPROGRESS> 12:22:06 |######              |  30% (27,306) 0.2 minPROGRESS> 12:22:08 |#######             |  35% (31,857) 0.3 minPROGRESS> 12:22:11 |########            |  40% (36,408) 0.3 minPROGRESS> 12:22:13 |#########           |  45% (40,959) 0.4 minPROGRESS> 12:22:15 |##########          |  50% (45,510) 0.4 minPROGRESS> 12:22:17 |###########         |  55% (50,061) 0.4 minPROGRESS> 12:22:20 |############        |  60% (54,612) 0.5 minPROGRESS> 12:22:22 |#############       |  65% (59,163) 0.5 minPROGRESS> 12:22:24 |##############      |  70% (63,714) 0.5 minPROGRESS> 12:22:26 |###############     |  75% (68,265) 0.6 minPROGRESS> 12:22:29 |################    |  80% (72,816) 0.6 minPROGRESS> 12:22:31 |#################   |  85% (77,367) 0.7 minPROGRESS> 12:22:34 |##################  |  90% (81,918) 0.7 minPROGRESS> 12:22:36 |################### |  95% (86,469) 0.7 minPROGRESS> 12:22:38 |####################| 100% (91,010) 0.8 min
+    ## PROGRESS> 12:27:52 |                    |   0% (     0) 0.0 minPROGRESS> 12:27:55 |#                   |   5% ( 4,551) 0.0 minPROGRESS> 12:27:57 |##                  |  10% ( 9,102) 0.1 minPROGRESS> 12:27:59 |###                 |  15% (13,653) 0.1 minPROGRESS> 12:28:01 |####                |  20% (18,204) 0.1 minPROGRESS> 12:28:03 |#####               |  25% (22,755) 0.2 minPROGRESS> 12:28:05 |######              |  30% (27,306) 0.2 minPROGRESS> 12:28:07 |#######             |  35% (31,857) 0.3 minPROGRESS> 12:28:10 |########            |  40% (36,408) 0.3 minPROGRESS> 12:28:12 |#########           |  45% (40,959) 0.3 minPROGRESS> 12:28:14 |##########          |  50% (45,510) 0.4 minPROGRESS> 12:28:16 |###########         |  55% (50,061) 0.4 minPROGRESS> 12:28:18 |############        |  60% (54,612) 0.4 minPROGRESS> 12:28:20 |#############       |  65% (59,163) 0.5 minPROGRESS> 12:28:22 |##############      |  70% (63,714) 0.5 minPROGRESS> 12:28:24 |###############     |  75% (68,265) 0.5 minPROGRESS> 12:28:27 |################    |  80% (72,816) 0.6 minPROGRESS> 12:28:29 |#################   |  85% (77,367) 0.6 minPROGRESS> 12:28:31 |##################  |  90% (81,918) 0.6 minPROGRESS> 12:28:33 |################### |  95% (86,469) 0.7 minPROGRESS> 12:28:35 |####################| 100% (91,010) 0.7 min
     ## 
     ## OUTPUT> data_db-pass.tsv
     ##   PASS> 87793
@@ -306,7 +306,7 @@ output file (specified by `--outname`).
     ##  VALUES> T
     ##   REGEX> False
     ## 
-    ## PROGRESS> 12:22:40 |                    |   0% (     0) 0.0 minPROGRESS> 12:22:40 |#                   |   5% ( 4,390) 0.0 minPROGRESS> 12:22:40 |##                  |  10% ( 8,780) 0.0 minPROGRESS> 12:22:40 |###                 |  15% (13,170) 0.0 minPROGRESS> 12:22:40 |####                |  20% (17,560) 0.0 minPROGRESS> 12:22:40 |#####               |  25% (21,950) 0.0 minPROGRESS> 12:22:40 |######              |  30% (26,340) 0.0 minPROGRESS> 12:22:40 |#######             |  35% (30,730) 0.0 minPROGRESS> 12:22:41 |########            |  40% (35,120) 0.0 minPROGRESS> 12:22:41 |#########           |  45% (39,510) 0.0 minPROGRESS> 12:22:41 |##########          |  50% (43,900) 0.0 minPROGRESS> 12:22:41 |###########         |  55% (48,290) 0.0 minPROGRESS> 12:22:41 |############        |  60% (52,680) 0.0 minPROGRESS> 12:22:41 |#############       |  65% (57,070) 0.0 minPROGRESS> 12:22:41 |##############      |  70% (61,460) 0.0 minPROGRESS> 12:22:42 |###############     |  75% (65,850) 0.0 minPROGRESS> 12:22:42 |################    |  80% (70,240) 0.0 minPROGRESS> 12:22:42 |#################   |  85% (74,630) 0.0 minPROGRESS> 12:22:42 |##################  |  90% (79,020) 0.0 minPROGRESS> 12:22:42 |################### |  95% (83,410) 0.0 minPROGRESS> 12:22:42 |####################| 100% (87,793) 0.0 min
+    ## PROGRESS> 12:28:36 |                    |   0% (     0) 0.0 minPROGRESS> 12:28:36 |#                   |   5% ( 4,390) 0.0 minPROGRESS> 12:28:36 |##                  |  10% ( 8,780) 0.0 minPROGRESS> 12:28:37 |###                 |  15% (13,170) 0.0 minPROGRESS> 12:28:37 |####                |  20% (17,560) 0.0 minPROGRESS> 12:28:37 |#####               |  25% (21,950) 0.0 minPROGRESS> 12:28:37 |######              |  30% (26,340) 0.0 minPROGRESS> 12:28:37 |#######             |  35% (30,730) 0.0 minPROGRESS> 12:28:37 |########            |  40% (35,120) 0.0 minPROGRESS> 12:28:37 |#########           |  45% (39,510) 0.0 minPROGRESS> 12:28:37 |##########          |  50% (43,900) 0.0 minPROGRESS> 12:28:38 |###########         |  55% (48,290) 0.0 minPROGRESS> 12:28:38 |############        |  60% (52,680) 0.0 minPROGRESS> 12:28:38 |#############       |  65% (57,070) 0.0 minPROGRESS> 12:28:38 |##############      |  70% (61,460) 0.0 minPROGRESS> 12:28:38 |###############     |  75% (65,850) 0.0 minPROGRESS> 12:28:38 |################    |  80% (70,240) 0.0 minPROGRESS> 12:28:38 |#################   |  85% (74,630) 0.0 minPROGRESS> 12:28:38 |##################  |  90% (79,020) 0.0 minPROGRESS> 12:28:39 |################### |  95% (83,410) 0.0 minPROGRESS> 12:28:39 |####################| 100% (87,793) 0.0 min
     ## 
     ##    OUTPUT> data_p_parse-select.tsv
     ##   RECORDS> 87793
@@ -334,7 +334,7 @@ data.
     ##  VALUES> IGHV
     ##   REGEX> True
     ## 
-    ## PROGRESS> 12:22:43 |                    |   0% (     0) 0.0 minPROGRESS> 12:22:43 |#                   |   5% ( 3,249) 0.0 minPROGRESS> 12:22:43 |##                  |  10% ( 6,498) 0.0 minPROGRESS> 12:22:43 |###                 |  15% ( 9,747) 0.0 minPROGRESS> 12:22:44 |####                |  20% (12,996) 0.0 minPROGRESS> 12:22:44 |#####               |  25% (16,245) 0.0 minPROGRESS> 12:22:44 |######              |  30% (19,494) 0.0 minPROGRESS> 12:22:44 |#######             |  35% (22,743) 0.0 minPROGRESS> 12:22:44 |########            |  40% (25,992) 0.0 minPROGRESS> 12:22:44 |#########           |  45% (29,241) 0.0 minPROGRESS> 12:22:44 |##########          |  50% (32,490) 0.0 minPROGRESS> 12:22:44 |###########         |  55% (35,739) 0.0 minPROGRESS> 12:22:45 |############        |  60% (38,988) 0.0 minPROGRESS> 12:22:45 |#############       |  65% (42,237) 0.0 minPROGRESS> 12:22:45 |##############      |  70% (45,486) 0.0 minPROGRESS> 12:22:45 |###############     |  75% (48,735) 0.0 minPROGRESS> 12:22:45 |################    |  80% (51,984) 0.0 minPROGRESS> 12:22:45 |#################   |  85% (55,233) 0.0 minPROGRESS> 12:22:45 |##################  |  90% (58,482) 0.0 minPROGRESS> 12:22:45 |################### |  95% (61,731) 0.0 minPROGRESS> 12:22:45 |####################| 100% (64,971) 0.0 min
+    ## PROGRESS> 12:28:40 |                    |   0% (     0) 0.0 minPROGRESS> 12:28:40 |#                   |   5% ( 3,249) 0.0 minPROGRESS> 12:28:40 |##                  |  10% ( 6,498) 0.0 minPROGRESS> 12:28:40 |###                 |  15% ( 9,747) 0.0 minPROGRESS> 12:28:40 |####                |  20% (12,996) 0.0 minPROGRESS> 12:28:40 |#####               |  25% (16,245) 0.0 minPROGRESS> 12:28:40 |######              |  30% (19,494) 0.0 minPROGRESS> 12:28:40 |#######             |  35% (22,743) 0.0 minPROGRESS> 12:28:40 |########            |  40% (25,992) 0.0 minPROGRESS> 12:28:41 |#########           |  45% (29,241) 0.0 minPROGRESS> 12:28:41 |##########          |  50% (32,490) 0.0 minPROGRESS> 12:28:41 |###########         |  55% (35,739) 0.0 minPROGRESS> 12:28:41 |############        |  60% (38,988) 0.0 minPROGRESS> 12:28:41 |#############       |  65% (42,237) 0.0 minPROGRESS> 12:28:41 |##############      |  70% (45,486) 0.0 minPROGRESS> 12:28:41 |###############     |  75% (48,735) 0.0 minPROGRESS> 12:28:41 |################    |  80% (51,984) 0.0 minPROGRESS> 12:28:41 |#################   |  85% (55,233) 0.0 minPROGRESS> 12:28:42 |##################  |  90% (58,482) 0.0 minPROGRESS> 12:28:42 |################### |  95% (61,731) 0.0 minPROGRESS> 12:28:42 |####################| 100% (64,971) 0.0 min
     ## 
     ##    OUTPUT> data_ph_parse-select.tsv
     ##   RECORDS> 64971
@@ -503,7 +503,7 @@ genotypes (`inferGenotypeBayesian`).
 
     gt <- inferGenotype(db, germline_db = ighv, novel = nv)
 
-    # save genotype inf .fasta format to be used later with CreateGermlines.py
+    # save genotype inf .fasta format to be used later with dowser::createGermlines
     gtseq <- genotypeFasta(gt, ighv, nv)
     writeFasta(gtseq, file.path("results", "tigger", "v_genotype.fasta"))
 
@@ -543,11 +543,11 @@ for use in the following steps.
       select(v_call, v_call_genotyped)
 
     ## # A tibble: 3 x 2
-    ##   v_call                    v_call_genotyped        
-    ##   <chr>                     <chr>                   
-    ## 1 IGHV1-69*18               IGHV1-69*01,IGHV1-69D*01
-    ## 2 IGHV4-30-4*09,IGHV4-31*03 IGHV4-30-4*09           
-    ## 3 IGHV4-39*01,IGHV4-39*08   IGHV4-39*01
+    ##   v_call                    v_call_genotyped
+    ##   <chr>                     <chr>           
+    ## 1 IGHV4-30-4*09,IGHV4-31*03 IGHV4-30-4*09   
+    ## 2 IGHV3-30*18,IGHV3-30-5*01 IGHV3-30*18     
+    ## 3 IGHV3-7*01,IGHV3-7*03     IGHV3-7*01
 
     write_rearrangement(db, file.path("results", "tigger", "data_ph_genotyped.tsv"))
 
@@ -678,7 +678,7 @@ the dataset used to carry out the clonal assignments.*
 Links to other types of analysis. For example, see below "Clonal Lineages". 
 -->
 
-## Alakazam: lineage reconstruction
+## Dowser: lineage reconstruction
 
 <!-- TBD: Update to Dowser version, which will involve the assignment of germlines as well (createGermlines()) -->
 
@@ -686,50 +686,123 @@ B cell repertoires often consist of hundreds to thousands of separate
 clones. A clonal lineage recapitulates the ancestor-descendant
 relationships between clonally-related B cells and uncovering these
 relationships can provide insights into affinity maturation. The R
-package `alakazam` uses PHYLIP to reconstruct lineages following a
-maximum parsimony technique. PHYLIP is already installed in the
-Immcantation container.
+package `dowser` offers multiple ways to build B cell phylogenetic
+trees. Before performing lineage reconstruction, some preprocessing in
+needed.
 
-Before performing lineage reconstruction, some preprocessing in needed.
-The code below shows an example of such preprocessing done for one of
-the largest clones in the example dataset. The function
-`makeChangeoClone` takes as input a data.frame with information for a
-clone (`db_clone`). `text_fields = "isotype"` specifies that annotation
-in the column `isotype` should be merged during duplicate removal. For
-example, if two duplicate sequences (defined by identical nucleotide
-composition) are found, and one is annotated as IGHM and the second one
-is an IGHG, then they will be “collapsed” into a single sequence that
-will have the `isotype` value “IGHM,IGHG”. The preprocessing done by
-`makeChangeoClone` also includes masking gap positions and masking
-ragged ends.
+### Create germlines
 
-    # Select one clone, the 2nd largest, just as an example
+The goal is to reconstruct the sequence of the unmutated ancestor of
+each clone. We use a reference database of known alleles
+([IMGT](http://www.imgt.org)). Because it is very difficult to
+accurately infer the D region and the junction region for BCR sequences,
+we mask this region with `N`.
+
+Before B cell lineage trees can be built, it is necessary to construct
+the unmutated germline sequence for each B cell clone. Typically the IGH
+D segment is masked because the junction region of heavy chains often
+cannot be reliably reconstructed. Note that occasionally errors are
+thrown for some clones - this is typical and usually results in those
+clones being excluded.
+
+In the example below, we read in the IMGT germline references from our
+Docker container. If you’re using a local installation, you can download
+the most up-to-date reference genome by cloning the Immcantation
+repository and running the script:
+
+    # Retrieve reference genome with the script fetch_imgtdb.sh.
+    # It will create directories where it is run
+    git clone https://bitbucket.org/kleinstein/immcantation.git
+    ./immcantation/scripts/fetch_imgtdb.sh 
+
+And passing `"human/vdj/"` to the `readIMGT` function.
+
+    # read in IMGT data if downloaded on your own (above)
+    # and update `dir` to use the path to your `human/vdj` folder
+    # references <- readIMGT(dir = "human/vdj/")
+
+    # read in IMGT files in the Docker container
+    references <- dowser::readIMGT(dir = "/usr/local/share/germlines/imgt/human/vdj")
+
+    ## [1] "Read in 1173 from 17 fasta files"
+
+    # reconstruct germlines
+    # select one clone, the 2nd largest, just as an example
     largest_clone <- countClones(results@db) %>%
                        slice(2) %>%
                        select(clone_id) %>% as.character()
+    db_largest_clone <- subset(results@db, clone_id == largest_clone)
+    db_largest_clone <- dowser::createGermlines(db_largest_clone, references, nproc = 1)
 
-    # Subset db, get db with data for largest_clone
-    db_clone <- subset(results@db, clone_id == largest_clone)
+### Format clones
 
-    # Build tree from a single clone
-    # TODO: I added pad_end = TRUE because of error:
-    #Error in makeChangeoClone(db_clone, v_call = "v_call_genotyped", text_fields = "isotype") : 
-    #  All sequences are not the same length for data with first sequence_id = seq248. Consider specifying pad_end=TRUE and verify the multiple alignment
-    x <- makeChangeoClone(db_clone, v_call = "v_call_genotyped",
-                          text_fields = "isotype", pad_end = TRUE)
+In the rearrangement table, each row corresponds to a sequence, and each
+column is information about that sequence. We will create a new data
+structure, where each row is a clonal cluster, and each column is
+information about that clonal cluster. The function `formatClones`
+performs this processing and has options that are relevant to determine
+how the trees can be built and visualized. For example, `traits`
+determines the columns from the rearrangement data that will be included
+in the `clones` object, and will also be used to determine the
+uniqueness of the sequences, so they are not collapsed.
 
-Lineage reconstruction is done with `buildPhylipLineage`. This function
-uses the `dnapars` tool from PHYLIP, which in the container is located
-at `/usr/local/bin/dnapars`, to build the lineage, and returns an
-`igraph` object. This object can be quickly visualized with the command
-`plot`. It is possible to use `igraph` or other tools to resize nodes
-(e.g., by the underlying sequence count) or add colors (e.g., to
-indicate tissue location of B cell subsets) to help answer specific
-biological questions.
+    # make clone objects with aligned, processed sequences
+    # collapse identical sequences unless differ by trait
+    # add up duplicate_count column for collapsed sequences
+    # store day, gex_annotation
+    # discard clones with < 5 distinct sequences
+    db_largest_clone <- dowser::formatClones(db_largest_clone,
+                                             traits="isotype", 
+                                             minseq = 5, nproc = 1)
+    head(db_largest_clone)
 
-    # Lineage reconstruction
-    g <- buildPhylipLineage(x, phylip_exec = "/usr/local/bin/dnapars")
-    suppressPackageStartupMessages(library(igraph))
-    plot(g)
+    ## # A tibble: 1 x 4
+    ##   clone_id data       locus  seqs
+    ##   <chr>    <list>     <chr> <int>
+    ## 1 30934    <airrClon> IGH      23
 
-![](intro-lab_files/intro-lab_build-phylip-lineage-1.png)
+### Build trees with dowser
+
+Dowser offers multiple ways to build B cell phylogenetic trees. These
+differ by the method used to estimate tree topology and branch lengths
+(e.g. maximum parsimony and maximum likelihood) and implementation
+(IgPhyML, PHYLIP, RAxML, or R packages `ape` and `phangorn`). Each
+method has pros and cons. In this tutorial we use PHYLIP to reconstruct
+lineages following a maximum parsimony technique. PHYLIP is already
+installed in the Immcantation container.
+
+    # the executable path is the location of the executable in the Docker container
+    trees <- dowser::getTrees(db_largest_clone, 
+                              build = "dnapars", 
+                              exec = "/usr/local/bin/dnapars", 
+                              nproc = 1)
+    head(trees)
+
+    ## # A tibble: 1 x 5
+    ##   clone_id data       locus  seqs trees  
+    ##   <chr>    <list>     <chr> <int> <list> 
+    ## 1 30934    <airrClon> IGH      23 <phylo>
+
+### Plot trees with dowser and ggtree
+
+Regardless of how you build trees, they are visualized in the same
+manner with the `plotTrees` function. This will return a list of
+`ggplot` objects in the same order as the input object. Here, we color
+the tips by the `day` value because we specified that column in the
+`formatClones` step.
+
+Plot all of the trees:
+
+    plots_all <- dowser::plotTrees(trees, tips = "isotype", tipsize = 2)
+
+Plot the largest tree:
+
+    plots_all[[1]]
+
+![](intro-lab_files/intro-lab_unnamed-chunk-26-1.png)
+
+In addition to the functions for building and visualizing trees,
+`dowser` also implements new techniques for analyzing B cell migration
+and differentiation, as well as for detecting new B cell evolution over
+time. Visit the [dowser website](https://dowser.readthedocs.io) to learn
+more.
