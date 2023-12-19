@@ -101,9 +101,9 @@ patient at multiple time points following influenza vaccination.
 We extracted a subset (~3000 cells) of single cell GEX/BCR data of
 ultrasound-guided fine needle aspiration (FNA) samples of lymph nodes
 for subject P05. The example data is already in the container
-(`/home/magus/data/`). If you want to, you can download it from Zenodo 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10028129.svg)](https://doi.org/10.5281/zenodo.10028129)
-. We will use these files:
+(`/home/magus/data/`). If you want to, you can download it from Zenodo
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10028129.svg)](https://doi.org/10.5281/zenodo.10028129).
+We will use these files:
 
 -   **filtered\_contig.fasta** and
     **filtered\_contig\_annotations.csv**. They are the direct Cell
@@ -113,11 +113,10 @@ for subject P05. The example data is already in the container
 -   **BCR\_data.tsv**: B-Cell Receptor Data. Adaptive Immune Receptor
     Repertoire (AIRR) tsv BCRs from two subjects, already aligned to
     IMGT V, D, and J genes.
--   **GEX.data_08112023.rds**: Gene Expression Data. This
-    file contains a Seurat object with RNA-seq data already processed
-    and annotated. Processing and annotation are not covered in this
-    tutorial. You can learn more on these topics in Seurat’s
-    documentation and tutorials:
+-   **GEX.data\_08112023.rds**: Gene Expression Data. This file contains
+    a Seurat object with RNA-seq data already processed and annotated.
+    Processing and annotation are not covered in this tutorial. You can
+    learn more on these topics in Seurat’s documentation and tutorials:
     <https://satijalab.org/seurat/articles/pbmc3k_tutorial.html>
 
 The R Markdown notebook with the code is also available in the container
@@ -265,11 +264,11 @@ You may wish to subset your data to only productive sequences:
     ## # A tibble: 5 x 66
     ##   sequence_id                 sequence  rev_comp productive v_call d_call j_call
     ##   <chr>                       <chr>     <lgl>    <lgl>      <chr>  <chr>  <chr> 
-    ## 1 ACGGCCAGTAAGTGGC-1_contig_2 GGGATCAT~ FALSE    TRUE       IGHV1~ IGHD3~ IGHJ3~
-    ## 2 GTTCGGGTCCGAATGT-1_contig_2 TGGGGGGG~ FALSE    TRUE       IGLV2~ <NA>   IGLJ3~
-    ## 3 GGATTACTCTGGGCCA-1_contig_2 AGCTCTGG~ FALSE    TRUE       IGHV3~ IGHD1~ IGHJ6~
-    ## 4 CGAGCCACAATGAATG-1_contig_2 AGCTCTGA~ FALSE    TRUE       IGHV3~ <NA>   IGHJ6~
-    ## 5 GGTGAAGAGGAGCGTT-1_contig_2 TTTCTTAT~ FALSE    TRUE       IGHV4~ <NA>   IGHJ4~
+    ## 1 AGAGCTTAGAGACTAT-1_contig_2 AGCTTCAG~ FALSE    TRUE       IGLV1~ <NA>   IGLJ3~
+    ## 2 CCTACCACACAAGTAA-1_contig_1 AATTAGGA~ FALSE    TRUE       IGKV2~ <NA>   IGKJ2~
+    ## 3 CAACCTCAGCAAATCA-1_contig_1 GGAGTCTC~ FALSE    TRUE       IGHV5~ IGHD1~ IGHJ4~
+    ## 4 GGACAGATCAACACTG-1_contig_2 AGCTCTGG~ FALSE    TRUE       IGHV3~ IGHD3~ IGHJ4~
+    ## 5 AATCGGTGTGTGTGCC-1_contig_1 AGAGCTCT~ FALSE    TRUE       IGKV3~ <NA>   IGKJ2~
     ## # i 59 more variables: sequence_alignment <chr>, germline_alignment <chr>,
     ## #   junction <chr>, junction_aa <chr>, v_cigar <chr>, d_cigar <chr>,
     ## #   j_cigar <chr>, vj_in_frame <lgl>, stop_codon <lgl>, v_sequence_start <int>,
@@ -792,7 +791,7 @@ sequence. Then, in the `formatClones` step, specify `chain="HL"`.
     ## Warning in dowser::formatClones(comb, chain = "HL", traits = c("day",
     ## "gex_annotation"), : There was 2 sequence(s) with an inframe stop codon and
     ## were removed. If you want to keep these sequences use the option
-    ## filterStop=FALSE.
+    ## filterstop=FALSE.
 
     ## # A tibble: 6 x 4
     ##   clone_id data       locus    seqs
@@ -1007,18 +1006,18 @@ timepoints are more diverged from the germline:
     dplyr::select(trees, clone_id, slope, correlation, p)
 
     ## # A tibble: 31 x 4
-    ##    clone_id  slope correlation     p
-    ##    <chr>     <dbl>       <dbl> <dbl>
-    ##  1 605      0.0453       0.711 0.104
-    ##  2 741      0.120        0.877 0.179
-    ##  3 541      0.277        0.827 0.206
-    ##  4 608      0.0829       0.328 0.233
-    ##  5 1181     0.707        0.578 0.251
-    ##  6 208      0.307        0.770 0.259
-    ##  7 221      0.0538       0.384 0.275
-    ##  8 195      0.169        0.301 0.278
-    ##  9 383      2.57         0.833 0.342
-    ## 10 210      0.198        0.488 0.344
+    ##    clone_id  slope correlation      p
+    ##    <chr>     <dbl>       <dbl>  <dbl>
+    ##  1 605      0.0453       0.711 0.0759
+    ##  2 741      0.120        0.877 0.150 
+    ##  3 541      0.277        0.827 0.215 
+    ##  4 608      0.0829       0.328 0.240 
+    ##  5 1181     0.707        0.578 0.245 
+    ##  6 208      0.307        0.770 0.255 
+    ##  7 221      0.0538       0.384 0.292 
+    ##  8 195      0.169        0.301 0.294 
+    ##  9 210      0.198        0.488 0.318 
+    ## 10 383      2.57         0.833 0.353 
     ## # i 21 more rows
 
     print(plots_time[[1]])
