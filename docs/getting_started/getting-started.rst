@@ -63,6 +63,7 @@ in the Immcantation repository.
 
     + V(D)J gene annotation
     + Inference of clonal relationships
+    + V gene Somatic Hypermutation (SHM) frequency
     + Lineage tree reconstruction
     + Incorporation of Cell Ranger annotations
 
