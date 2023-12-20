@@ -85,27 +85,6 @@ is available in the Immcantation repository.
     + Highlight other BCR features in UMAPs
 
 
-Lineage tree reconstruction
--------------------------------------------------------------------------------------------
-
-
-.. image:: ../_static/tree.png
-    :alt: Reconstruction and analysis of B-cell lineage trees from single cell data using Immcantation
-    :align: left
-
-The tutorial *Reconstruction and analysis of B-cell lineage trees from single cell data using Immcantation* is available
-as an R Notebook (`dowser_tutorial.Rmd <https://bitbucket.org/kleinstein/immcantation/src/master/training/>`_) 
-in the Immcantation repository.
-
-.. admonition:: Tutorial
-
-    Beginning with processed single cell RNA-seq (scRNA-seq) + BCR data from 10X Genomics, with :doc:`Reconstruction and analysis of B-cell lineage trees from single cell <dowser_tutorial>` you will learn:
-
-    + how cell type annotations can be associated with BCR sequences,
-    + how clonal clusters can be identified, and
-    + how B cell phylogenetic trees can be built and visualized using these data sources.
-
-
 Video presentations
 ===========================================================================================
 
