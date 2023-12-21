@@ -388,12 +388,7 @@ And passing `"human/vdj/"` to the `readIMGT` function.
 references <- dowser::readIMGT(dir = "/usr/local/share/germlines/imgt/human/vdj")
 
 # reconstruct germlines
-# select one clone, the 2nd largest, just as an example
-largest_clone <- countClones(results@db) %>%
-                   slice(2) %>%
-                   select(clone_id) %>% as.character()
-db_largest_clone <- subset(results@db, clone_id == largest_clone)
-db_largest_clone <- dowser::createGermlines(db_largest_clone, references, nproc = 1)
+results@db <- dowser::createGermlines(results@db, references, nproc = 1)
 ```
 
 ### Format clones
@@ -406,10 +401,10 @@ In the rearrangement table, each row corresponds to a sequence, and each column 
 # add up duplicate_count column for collapsed sequences
 # store day, gex_annotation
 # discard clones with < 5 distinct sequences
-db_largest_clone <- dowser::formatClones(db_largest_clone,
+clones <- dowser::formatClones(results@db,
                                          traits="isotype", 
                                          minseq = 5, nproc = 1)
-head(db_largest_clone)
+head(clones)
 ```
 
 ### Build trees with dowser
@@ -418,7 +413,7 @@ Dowser offers multiple ways to build B cell phylogenetic trees. These differ by 
 
 ```{r, warning=FALSE}
 # the executable path is the location of the executable in the Docker container
-trees <- dowser::getTrees(db_largest_clone, 
+trees <- dowser::getTrees(clones, 
                           build = "dnapars", 
                           exec = "/usr/local/bin/dnapars", 
                           nproc = 1)
@@ -426,7 +421,7 @@ head(trees)
 ```
 ### Plot trees with dowser and ggtree
 
-Regardless of how you build trees, they are visualized in the same manner with the `plotTrees` function. This will return a list of `ggplot` objects in the same order as the input object. Here, we color the tips by the `day` value because we specified that column in the `formatClones` step.
+Regardless of how you build trees, they are visualized in the same manner with the `plotTrees` function. This will return a list of `ggplot` objects in the same order as the input object. Here, we color the tips by the `isotype` value because we specified that column in the `formatClones` step.
 
 Plot all of the trees:
 
@@ -438,6 +433,13 @@ Plot the largest tree:
 
 ```{r}
 plots_all[[1]]
+```
+
+```{r}
+# save a pdf of all trees
+dowser::treesToPDF(plots_all,
+          file = file.path("intro-lab_files", "final_data_trees.pdf"),
+          nrow = 2, ncol = 2)
 ```
 
 In addition to the functions for building and visualizing trees, `dowser` also implements new techniques for analyzing B cell migration and differentiation, as well as for detecting new B cell evolution over time. Visit the [dowser website](https://dowser.readthedocs.io) to learn more.

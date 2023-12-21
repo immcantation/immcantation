@@ -167,9 +167,9 @@ the V(D)J genes with `AssignGenes.py`.
     ##      FIELD> None
     ##     VALUES> None
     ## 
-    ## PROGRESS> 12:09:09 |Reading files            | 0.0 minPROGRESS> 12:09:09 |Done                     | 0.0 min
+    ## PROGRESS> 18:47:46 |Reading files            | 0.0 minPROGRESS> 18:47:46 |Done                     | 0.0 min
     ## 
-    ## PROGRESS> 12:09:09 |Sampling n=200           | 0.0 minPROGRESS> 12:09:09 |Done                     | 0.0 min
+    ## PROGRESS> 18:47:46 |Sampling n=200           | 0.0 minPROGRESS> 18:47:46 |Done                     | 0.0 min
     ## 
     ## MAX_COUNT> 200
     ##   SAMPLED> 200
@@ -203,7 +203,7 @@ the V(D)J genes with `AssignGenes.py`.
     ##     LOCI> ig
     ##    NPROC> 8
     ## 
-    ## PROGRESS> 12:09:10 |Running IgBLAST          | 0.0 minPROGRESS> 12:09:13 |Done                     | 0.0 min
+    ## PROGRESS> 18:47:47 |Running IgBLAST          | 0.0 minPROGRESS> 18:47:50 |Done                     | 0.0 min
     ## 
     ##   PASS> 200
     ## OUTPUT> input_sample1-n200_igblast.fmt7
@@ -227,7 +227,7 @@ time to finish running.*
     ##     LOCI> ig
     ##    NPROC> 8
     ## 
-    ## PROGRESS> 12:09:14 |Running IgBLAST          | 0.0 minPROGRESS> 12:27:51 |Done                     | 18.6 min
+    ## PROGRESS> 18:47:51 |Running IgBLAST          | 0.0 minPROGRESS> 19:06:42 |Done                     | 18.8 min
     ## 
     ##   PASS> 91010
     ## OUTPUT> input_igblast.fmt7
@@ -275,9 +275,9 @@ AIRR format. The path to the reference germlines is provided by `-r`.
     ##       EXTENDED> False
     ## INFER_JUNCTION> False
     ## 
-    ## PROGRESS> 12:27:51 |Loading files       | 0.0 minPROGRESS> 12:27:52 |Done                | 0.0 min
+    ## PROGRESS> 19:06:42 |Loading files       | 0.0 minPROGRESS> 19:06:43 |Done                | 0.0 min
     ## 
-    ## PROGRESS> 12:27:52 |                    |   0% (     0) 0.0 minPROGRESS> 12:27:55 |#                   |   5% ( 4,551) 0.0 minPROGRESS> 12:27:57 |##                  |  10% ( 9,102) 0.1 minPROGRESS> 12:27:59 |###                 |  15% (13,653) 0.1 minPROGRESS> 12:28:01 |####                |  20% (18,204) 0.1 minPROGRESS> 12:28:03 |#####               |  25% (22,755) 0.2 minPROGRESS> 12:28:05 |######              |  30% (27,306) 0.2 minPROGRESS> 12:28:07 |#######             |  35% (31,857) 0.3 minPROGRESS> 12:28:10 |########            |  40% (36,408) 0.3 minPROGRESS> 12:28:12 |#########           |  45% (40,959) 0.3 minPROGRESS> 12:28:14 |##########          |  50% (45,510) 0.4 minPROGRESS> 12:28:16 |###########         |  55% (50,061) 0.4 minPROGRESS> 12:28:18 |############        |  60% (54,612) 0.4 minPROGRESS> 12:28:20 |#############       |  65% (59,163) 0.5 minPROGRESS> 12:28:22 |##############      |  70% (63,714) 0.5 minPROGRESS> 12:28:24 |###############     |  75% (68,265) 0.5 minPROGRESS> 12:28:27 |################    |  80% (72,816) 0.6 minPROGRESS> 12:28:29 |#################   |  85% (77,367) 0.6 minPROGRESS> 12:28:31 |##################  |  90% (81,918) 0.6 minPROGRESS> 12:28:33 |################### |  95% (86,469) 0.7 minPROGRESS> 12:28:35 |####################| 100% (91,010) 0.7 min
+    ## PROGRESS> 19:06:43 |                    |   0% (     0) 0.0 minPROGRESS> 19:06:45 |#                   |   5% ( 4,551) 0.0 minPROGRESS> 19:06:48 |##                  |  10% ( 9,102) 0.1 minPROGRESS> 19:06:50 |###                 |  15% (13,653) 0.1 minPROGRESS> 19:06:52 |####                |  20% (18,204) 0.2 minPROGRESS> 19:06:54 |#####               |  25% (22,755) 0.2 minPROGRESS> 19:06:56 |######              |  30% (27,306) 0.2 minPROGRESS> 19:06:59 |#######             |  35% (31,857) 0.3 minPROGRESS> 19:07:01 |########            |  40% (36,408) 0.3 minPROGRESS> 19:07:03 |#########           |  45% (40,959) 0.3 minPROGRESS> 19:07:06 |##########          |  50% (45,510) 0.4 minPROGRESS> 19:07:08 |###########         |  55% (50,061) 0.4 minPROGRESS> 19:07:10 |############        |  60% (54,612) 0.5 minPROGRESS> 19:07:12 |#############       |  65% (59,163) 0.5 minPROGRESS> 19:07:15 |##############      |  70% (63,714) 0.5 minPROGRESS> 19:07:18 |###############     |  75% (68,265) 0.6 minPROGRESS> 19:07:20 |################    |  80% (72,816) 0.6 minPROGRESS> 19:07:22 |#################   |  85% (77,367) 0.7 minPROGRESS> 19:07:24 |##################  |  90% (81,918) 0.7 minPROGRESS> 19:07:27 |################### |  95% (86,469) 0.7 minPROGRESS> 19:07:29 |####################| 100% (91,010) 0.8 min
     ## 
     ## OUTPUT> data_db-pass.tsv
     ##   PASS> 87793
@@ -306,7 +306,7 @@ output file (specified by `--outname`).
     ##  VALUES> T
     ##   REGEX> False
     ## 
-    ## PROGRESS> 12:28:36 |                    |   0% (     0) 0.0 minPROGRESS> 12:28:36 |#                   |   5% ( 4,390) 0.0 minPROGRESS> 12:28:36 |##                  |  10% ( 8,780) 0.0 minPROGRESS> 12:28:37 |###                 |  15% (13,170) 0.0 minPROGRESS> 12:28:37 |####                |  20% (17,560) 0.0 minPROGRESS> 12:28:37 |#####               |  25% (21,950) 0.0 minPROGRESS> 12:28:37 |######              |  30% (26,340) 0.0 minPROGRESS> 12:28:37 |#######             |  35% (30,730) 0.0 minPROGRESS> 12:28:37 |########            |  40% (35,120) 0.0 minPROGRESS> 12:28:37 |#########           |  45% (39,510) 0.0 minPROGRESS> 12:28:37 |##########          |  50% (43,900) 0.0 minPROGRESS> 12:28:38 |###########         |  55% (48,290) 0.0 minPROGRESS> 12:28:38 |############        |  60% (52,680) 0.0 minPROGRESS> 12:28:38 |#############       |  65% (57,070) 0.0 minPROGRESS> 12:28:38 |##############      |  70% (61,460) 0.0 minPROGRESS> 12:28:38 |###############     |  75% (65,850) 0.0 minPROGRESS> 12:28:38 |################    |  80% (70,240) 0.0 minPROGRESS> 12:28:38 |#################   |  85% (74,630) 0.0 minPROGRESS> 12:28:38 |##################  |  90% (79,020) 0.0 minPROGRESS> 12:28:39 |################### |  95% (83,410) 0.0 minPROGRESS> 12:28:39 |####################| 100% (87,793) 0.0 min
+    ## PROGRESS> 19:07:30 |                    |   0% (     0) 0.0 minPROGRESS> 19:07:30 |#                   |   5% ( 4,390) 0.0 minPROGRESS> 19:07:30 |##                  |  10% ( 8,780) 0.0 minPROGRESS> 19:07:30 |###                 |  15% (13,170) 0.0 minPROGRESS> 19:07:30 |####                |  20% (17,560) 0.0 minPROGRESS> 19:07:31 |#####               |  25% (21,950) 0.0 minPROGRESS> 19:07:31 |######              |  30% (26,340) 0.0 minPROGRESS> 19:07:31 |#######             |  35% (30,730) 0.0 minPROGRESS> 19:07:31 |########            |  40% (35,120) 0.0 minPROGRESS> 19:07:31 |#########           |  45% (39,510) 0.0 minPROGRESS> 19:07:31 |##########          |  50% (43,900) 0.0 minPROGRESS> 19:07:31 |###########         |  55% (48,290) 0.0 minPROGRESS> 19:07:31 |############        |  60% (52,680) 0.0 minPROGRESS> 19:07:32 |#############       |  65% (57,070) 0.0 minPROGRESS> 19:07:32 |##############      |  70% (61,460) 0.0 minPROGRESS> 19:07:32 |###############     |  75% (65,850) 0.0 minPROGRESS> 19:07:32 |################    |  80% (70,240) 0.0 minPROGRESS> 19:07:32 |#################   |  85% (74,630) 0.0 minPROGRESS> 19:07:32 |##################  |  90% (79,020) 0.0 minPROGRESS> 19:07:32 |################### |  95% (83,410) 0.0 minPROGRESS> 19:07:32 |####################| 100% (87,793) 0.0 min
     ## 
     ##    OUTPUT> data_p_parse-select.tsv
     ##   RECORDS> 87793
@@ -334,7 +334,7 @@ data.
     ##  VALUES> IGHV
     ##   REGEX> True
     ## 
-    ## PROGRESS> 12:28:40 |                    |   0% (     0) 0.0 minPROGRESS> 12:28:40 |#                   |   5% ( 3,249) 0.0 minPROGRESS> 12:28:40 |##                  |  10% ( 6,498) 0.0 minPROGRESS> 12:28:40 |###                 |  15% ( 9,747) 0.0 minPROGRESS> 12:28:40 |####                |  20% (12,996) 0.0 minPROGRESS> 12:28:40 |#####               |  25% (16,245) 0.0 minPROGRESS> 12:28:40 |######              |  30% (19,494) 0.0 minPROGRESS> 12:28:40 |#######             |  35% (22,743) 0.0 minPROGRESS> 12:28:40 |########            |  40% (25,992) 0.0 minPROGRESS> 12:28:41 |#########           |  45% (29,241) 0.0 minPROGRESS> 12:28:41 |##########          |  50% (32,490) 0.0 minPROGRESS> 12:28:41 |###########         |  55% (35,739) 0.0 minPROGRESS> 12:28:41 |############        |  60% (38,988) 0.0 minPROGRESS> 12:28:41 |#############       |  65% (42,237) 0.0 minPROGRESS> 12:28:41 |##############      |  70% (45,486) 0.0 minPROGRESS> 12:28:41 |###############     |  75% (48,735) 0.0 minPROGRESS> 12:28:41 |################    |  80% (51,984) 0.0 minPROGRESS> 12:28:41 |#################   |  85% (55,233) 0.0 minPROGRESS> 12:28:42 |##################  |  90% (58,482) 0.0 minPROGRESS> 12:28:42 |################### |  95% (61,731) 0.0 minPROGRESS> 12:28:42 |####################| 100% (64,971) 0.0 min
+    ## PROGRESS> 19:07:33 |                    |   0% (     0) 0.0 minPROGRESS> 19:07:33 |#                   |   5% ( 3,249) 0.0 minPROGRESS> 19:07:34 |##                  |  10% ( 6,498) 0.0 minPROGRESS> 19:07:34 |###                 |  15% ( 9,747) 0.0 minPROGRESS> 19:07:34 |####                |  20% (12,996) 0.0 minPROGRESS> 19:07:34 |#####               |  25% (16,245) 0.0 minPROGRESS> 19:07:34 |######              |  30% (19,494) 0.0 minPROGRESS> 19:07:34 |#######             |  35% (22,743) 0.0 minPROGRESS> 19:07:34 |########            |  40% (25,992) 0.0 minPROGRESS> 19:07:34 |#########           |  45% (29,241) 0.0 minPROGRESS> 19:07:34 |##########          |  50% (32,490) 0.0 minPROGRESS> 19:07:35 |###########         |  55% (35,739) 0.0 minPROGRESS> 19:07:35 |############        |  60% (38,988) 0.0 minPROGRESS> 19:07:35 |#############       |  65% (42,237) 0.0 minPROGRESS> 19:07:35 |##############      |  70% (45,486) 0.0 minPROGRESS> 19:07:35 |###############     |  75% (48,735) 0.0 minPROGRESS> 19:07:35 |################    |  80% (51,984) 0.0 minPROGRESS> 19:07:35 |#################   |  85% (55,233) 0.0 minPROGRESS> 19:07:35 |##################  |  90% (58,482) 0.0 minPROGRESS> 19:07:35 |################### |  95% (61,731) 0.0 minPROGRESS> 19:07:36 |####################| 100% (64,971) 0.0 min
     ## 
     ##    OUTPUT> data_ph_parse-select.tsv
     ##   RECORDS> 64971
@@ -543,11 +543,11 @@ for use in the following steps.
       select(v_call, v_call_genotyped)
 
     ## # A tibble: 3 x 2
-    ##   v_call                    v_call_genotyped
-    ##   <chr>                     <chr>           
-    ## 1 IGHV4-30-4*09,IGHV4-31*03 IGHV4-30-4*09   
-    ## 2 IGHV3-30*18,IGHV3-30-5*01 IGHV3-30*18     
-    ## 3 IGHV3-7*01,IGHV3-7*03     IGHV3-7*01
+    ##   v_call                                v_call_genotyped
+    ##   <chr>                                 <chr>           
+    ## 1 IGHV2-26*02                           IGHV2-26*01     
+    ## 2 IGHV3-30*04,IGHV3-30*14,IGHV3-30-3*03 IGHV3-30*18     
+    ## 3 IGHV3-30*18,IGHV3-30-5*01             IGHV3-30*18
 
     write_rearrangement(db, file.path("results", "tigger", "data_ph_genotyped.tsv"))
 
@@ -727,12 +727,7 @@ And passing `"human/vdj/"` to the `readIMGT` function.
     ## [1] "Read in 1173 from 17 fasta files"
 
     # reconstruct germlines
-    # select one clone, the 2nd largest, just as an example
-    largest_clone <- countClones(results@db) %>%
-                       slice(2) %>%
-                       select(clone_id) %>% as.character()
-    db_largest_clone <- subset(results@db, clone_id == largest_clone)
-    db_largest_clone <- dowser::createGermlines(db_largest_clone, references, nproc = 1)
+    results@db <- dowser::createGermlines(results@db, references, nproc = 1)
 
 ### Format clones
 
@@ -751,15 +746,20 @@ uniqueness of the sequences, so they are not collapsed.
     # add up duplicate_count column for collapsed sequences
     # store day, gex_annotation
     # discard clones with < 5 distinct sequences
-    db_largest_clone <- dowser::formatClones(db_largest_clone,
+    clones <- dowser::formatClones(results@db,
                                              traits="isotype", 
                                              minseq = 5, nproc = 1)
-    head(db_largest_clone)
+    head(clones)
 
-    ## # A tibble: 1 x 4
+    ## # A tibble: 6 x 4
     ##   clone_id data       locus  seqs
     ##   <chr>    <list>     <chr> <int>
-    ## 1 30934    <airrClon> IGH      23
+    ## 1 19311    <airrClon> IGH      35
+    ## 2 17492    <airrClon> IGH      33
+    ## 3 22261    <airrClon> IGH      33
+    ## 4 8255     <airrClon> IGH      32
+    ## 5 24049    <airrClon> IGH      26
+    ## 6 30934    <airrClon> IGH      23
 
 ### Build trees with dowser
 
@@ -772,23 +772,28 @@ lineages following a maximum parsimony technique. PHYLIP is already
 installed in the Immcantation container.
 
     # the executable path is the location of the executable in the Docker container
-    trees <- dowser::getTrees(db_largest_clone, 
+    trees <- dowser::getTrees(clones, 
                               build = "dnapars", 
                               exec = "/usr/local/bin/dnapars", 
                               nproc = 1)
     head(trees)
 
-    ## # A tibble: 1 x 5
+    ## # A tibble: 6 x 5
     ##   clone_id data       locus  seqs trees  
     ##   <chr>    <list>     <chr> <int> <list> 
-    ## 1 30934    <airrClon> IGH      23 <phylo>
+    ## 1 19311    <airrClon> IGH      35 <phylo>
+    ## 2 17492    <airrClon> IGH      33 <phylo>
+    ## 3 22261    <airrClon> IGH      33 <phylo>
+    ## 4 8255     <airrClon> IGH      32 <phylo>
+    ## 5 24049    <airrClon> IGH      26 <phylo>
+    ## 6 30934    <airrClon> IGH      23 <phylo>
 
 ### Plot trees with dowser and ggtree
 
 Regardless of how you build trees, they are visualized in the same
 manner with the `plotTrees` function. This will return a list of
 `ggplot` objects in the same order as the input object. Here, we color
-the tips by the `day` value because we specified that column in the
+the tips by the `isotype` value because we specified that column in the
 `formatClones` step.
 
 Plot all of the trees:
@@ -800,6 +805,14 @@ Plot the largest tree:
     plots_all[[1]]
 
 ![](intro-lab_files/intro-lab_unnamed-chunk-26-1.png)
+
+    # save a pdf of all trees
+    dowser::treesToPDF(plots_all,
+              file = file.path("intro-lab_files", "final_data_trees.pdf"),
+              nrow = 2, ncol = 2)
+
+    ## png 
+    ##   2
 
 In addition to the functions for building and visualizing trees,
 `dowser` also implements new techniques for analyzing B cell migration
