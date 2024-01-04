@@ -10,7 +10,7 @@ Version Updates:
 + shazam 1.2.0
 + tigger 1.1.0
 + scoper 1.3.0
-+ dowser 2.0.0
++ dowser 2.1.0
 + enchantr 0.1.7
 + rabhit 0.2.5
 + igblast 1.22.0
