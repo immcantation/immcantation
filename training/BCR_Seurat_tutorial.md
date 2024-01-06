@@ -8,12 +8,12 @@ demonstrates several approaches to integrating these data types along
 with examples on how the new information can be used.
 
 These example files used in this tutorial are subsamples of the original
-10x scRNA-seq and BCR sequencing data from Turner et al. (2020) *Human
+10x scRNA-seq and BCR sequencing data from [Turner et
+al. (2020)](https://www.nature.com/articles/s41586-020-2711-0) *Human
 germinal centres engage memory and naive B cells after influenza
-vaccination* Nature. 586, 127–132
-[link](https://www.nature.com/articles/s41586-020-2711-0) The study
-consists of blood and lymph node samples taken from a single patient at
-multiple time points following influenza vaccination.
+vaccination* Nature. 586, 127–132. The study consists of blood and lymph
+node samples taken from a single patient at multiple time points
+following influenza vaccination.
 
 We extracted a subset (~3000 cells) of single cell GEX/BCR data of
 ultrasound-guided fine needle aspiration (FNA) samples of lymph nodes
@@ -23,7 +23,7 @@ for subject P05. The example data is already in the container
 We will use these files:
 
 -   **BCR.data\_08112023.rds**: R dataframe object containing the
-    single-cell BCR sequencing data for both samples 1 and 2.
+    single-cell BCR sequencing data.
 -   **GEX.data\_08112023.rds**: Gene Expression Data. This file contains
     a Seurat object with RNA-seq data already processed and annotated.
     Processing and annotation are not covered in this tutorial. You can
@@ -393,9 +393,10 @@ B cells at various time points.
 ![](BCR_Seurat_tutorial_files/BCR_Seurat_tutorial_bcr-gex-umap-other-isotypes-2.png)
 
     # mutation frequency
-    p + geom_point(data = dplyr::filter(bcr_gex_data, gex_annotation == "GC"),
+    # heavy only
+    p + geom_point(data = dplyr::filter(bcr_gex_data, gex_annotation == "GC",
+                                        locus == "IGH"),
                    aes(x = gex_umap_1, y = gex_umap_2, color = mu_freq),
-                   size = 1) +
-        scale_colour_continuous(trans = "reverse")
+                   size = 1)
 
 ![](BCR_Seurat_tutorial_files/BCR_Seurat_tutorial_bcr-gex-umap-other-mu-freq-1.png)
