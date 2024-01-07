@@ -7,7 +7,7 @@ information from each other for expanded analyses. This tutorial
 demonstrates several approaches to integrating these data types along
 with examples on how the new information can be used.
 
-These example files used in this tutorial are subsamples of the original
+The example files used in this tutorial are subsamples of the original
 10x scRNA-seq and BCR sequencing data from [Turner et
 al. (2020)](https://www.nature.com/articles/s41586-020-2711-0) *Human
 germinal centres engage memory and naive B cells after influenza
@@ -17,8 +17,11 @@ following influenza vaccination.
 
 We extracted a subset (~3000 cells) of single cell GEX/BCR data of
 ultrasound-guided fine needle aspiration (FNA) samples of lymph nodes
-for subject P05. The example data is already in the container
-(`/home/magus/data/`). If you want to, you can download it from Zenodo
+for subject P05. These 3000 cells were randomly divided into two
+pseudo-subjects, ensuring that each subject has distinct clones while
+maintaining a similar clone size distribution. The example data is
+already in the container (`/home/magus/data/`). If you want to, you can
+download it from Zenodo
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10028129.svg)](https://doi.org/10.5281/zenodo.10028129).
 We will use these files:
 
