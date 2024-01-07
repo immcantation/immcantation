@@ -43,11 +43,9 @@ tutorial before using them on your own data.
         container
         [here](https://immcantation.readthedocs.io/en/latest/docker/intro.html),
         including how to run tutorials such as this one.
--   It is also possible to install the packages being used separately
-    (see
-    [pRESTO](https://presto.readthedocs.io/en/stable/install.html#installation),
-    [Change-O](https://changeo.readthedocs.io/en/stable/install.html#installation),
-    and [Alakazam](https://alakazam.readthedocs.io/en/stable/install/)).
+-   It is also possible to install the packages being used separately.
+    Instructions are available in each package’s documentation site. See
+    Resources.
 
 You may also reference [this
 page](https://immcantation.readthedocs.io/en/stable/docker/pipelines.html)
@@ -81,38 +79,32 @@ from each other for an improved analysis. This tutorial demonstrates a
 few approaches to integrating these data types along with examples on
 how the new information can be used.
 
-The example dataset used in this tutorial is from the following paper:
-
-Turner JS, Zhou JQ, Han J, Schmitz AJ, Rizk AA, Alsoussi WB, Lei T, Amor
-M, McIntire KM, Meade P, Strohmeier S, Brent RI, Richey ST, Haile A,
-Yang YR, Klebert MK, Suessen T, Teefey S, Presti RM, Krammer F,
-Kleinstein SH, Ward AB, Ellebedy AH. Human germinal centres engage
-memory and naive B cells after influenza vaccination. Nature. 2020
-Oct;586(7827):127-132. doi: 10.1038/s41586-020-2711-0. Epub 2020 Aug 31.
-PMID: 32866963; PMCID: PMC7566073.
-
-These two files are subsamples of the original 10x scRNA-seq and BCR
-sequencing data from Turner et al. (2020) *Human germinal centres engage
-memory and naive B cells after influenza vaccination* Nature. 586,
-127–132 [link](https://www.nature.com/articles/s41586-020-2711-0) The
-study consists of blood and lymph node samples taken from a single
-patient at multiple time points following influenza vaccination.
+The example files used in this tutorial are subsamples of the original
+10x scRNA-seq and BCR sequencing data from [Turner et
+al. (2020)](https://www.nature.com/articles/s41586-020-2711-0) *Human
+germinal centres engage memory and naive B cells after influenza
+vaccination* Nature. 586, 127–132. The study consists of blood and lymph
+node samples taken from a single patient at multiple time points
+following influenza vaccination.
 
 We extracted a subset (~3000 cells) of single cell GEX/BCR data of
 ultrasound-guided fine needle aspiration (FNA) samples of lymph nodes
-for subject P05. The example data is already in the container
-(`/home/magus/data/`). If you want to, you can download it from Zenodo
+for subject P05. These 3000 cells were randomly divided into two
+pseudo-subjects, ensuring that each subject has distinct clones while
+maintaining a similar clone size distribution. The example data is
+already in the container (`/home/magus/data/`). If you want to, you can
+download it from Zenodo
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10028129.svg)](https://doi.org/10.5281/zenodo.10028129).
 We will use these files:
 
 -   **filtered\_contig.fasta** and
     **filtered\_contig\_annotations.csv**. They are the direct Cell
-    Ranger output files for donor 1. We are going to use the Ig V(D)J
-    sequences from donor 1 to show how to process V(D)J data using
-    Immcantation.
+    Ranger output files for one of the pseudo-subjects. We are going to
+    use the Ig V(D)J sequences from this sample to show how to process
+    V(D)J data using Immcantation.
 -   **BCR\_data.tsv**: B-Cell Receptor Data. Adaptive Immune Receptor
-    Repertoire (AIRR) tsv BCRs from two subjects, already aligned to
-    IMGT V, D, and J genes.
+    Repertoire (AIRR) tsv BCRs from two pseudo-subjects, already aligned
+    to IMGT V, D, and J genes.
 -   **GEX.data\_08112023.rds**: Gene Expression Data. This file contains
     a Seurat object with RNA-seq data already processed and annotated.
     Processing and annotation are not covered in this tutorial. You can
@@ -151,7 +143,7 @@ installation path.
 
     # convert IgBLAST output to AIRR format
     MakeDb.py igblast -i results/BCR_data_sequences_igblast.fmt7 -s /home/magus/data/filtered_contig.fasta \
-       -r /usr/local/share/germlines/imgt/human/vdj/imgt_human_*.fasta \
+       -r /usr/local/share/germlines/imgt/human/vdj/ \
        --10x /home/magus/data/filtered_contig_annotations.csv --extended
 
     ls results
@@ -231,17 +223,20 @@ are dependencies for some of the R-based Immcantation packages with
 
 ### Merge different samples
 
-The previous steps should be performed individually for each of the
-samples that should be analysed together. In order to merge different
-samples together for an common analysis, a column needs to be added to
-the resulting table to identify the sample. Additionally, the sequence
-IDs and cell barcodes need to be made unique across samples e.g. by
-appending the `sample` ID to them. This step has already been performed
-and the resulting table can be found under
+The preceding instructions outline the process of assigning V, D, and J
+genes using IgBLAST for a single sample. In practice, each sample should
+undergo individual processing following the same steps. To facilitate
+the amalgamation of various samples for subsequent analysis, it is
+necessary to augment the resulting table with a column labeled
+`sample_id` (and possibly `subject_id`) for sample identification.
+Furthermore, to ensure uniqueness across samples, sequence IDs and cell
+barcodes may be modified by appending the sample ID to them. This step
+has already been performed and the resulting table can be found under
 `/home/magus/data/BCR_data.tsv`.
 
     # read in the data
     # specify the data types of non AIRR-C standard fields
+    # we assign integer type to the *_length fields
     bcr_data <- airr::read_rearrangement(file.path("","home", "magus", "data", "BCR_data.tsv"),
                                          aux_types=c("v_germline_length"="i",
                                                      "d_germline_length"="i",
@@ -264,11 +259,11 @@ You may wish to subset your data to only productive sequences:
     ## # A tibble: 5 x 66
     ##   sequence_id                 sequence  rev_comp productive v_call d_call j_call
     ##   <chr>                       <chr>     <lgl>    <lgl>      <chr>  <chr>  <chr> 
-    ## 1 AGAGCTTAGAGACTAT-1_contig_2 AGCTTCAG~ FALSE    TRUE       IGLV1~ <NA>   IGLJ3~
-    ## 2 CCTACCACACAAGTAA-1_contig_1 AATTAGGA~ FALSE    TRUE       IGKV2~ <NA>   IGKJ2~
-    ## 3 CAACCTCAGCAAATCA-1_contig_1 GGAGTCTC~ FALSE    TRUE       IGHV5~ IGHD1~ IGHJ4~
-    ## 4 GGACAGATCAACACTG-1_contig_2 AGCTCTGG~ FALSE    TRUE       IGHV3~ IGHD3~ IGHJ4~
-    ## 5 AATCGGTGTGTGTGCC-1_contig_1 AGAGCTCT~ FALSE    TRUE       IGKV3~ <NA>   IGKJ2~
+    ## 1 GTGAAGGGTAGCTAAA-1_contig_1 AGAGCTCT~ FALSE    TRUE       IGKV3~ <NA>   IGKJ3~
+    ## 2 ACGCAGCGTAGTAGTA-1_contig_2 GGGAGAGG~ FALSE    TRUE       IGHV3~ IGHD2~ IGHJ6~
+    ## 3 CACATAGTCCGGCACA-1_contig_1 GAGCTACA~ FALSE    TRUE       IGKV4~ <NA>   IGKJ1~
+    ## 4 CATATTCCAGGTGCCT-1_contig_2 AGCATCAT~ FALSE    TRUE       IGHV1~ IGHD3~ IGHJ4~
+    ## 5 CAAGTTGAGAAGATTC-1_contig_1 AACGACGC~ FALSE    TRUE       IGLV2~ <NA>   IGLJ3~
     ## # i 59 more variables: sequence_alignment <chr>, germline_alignment <chr>,
     ## #   junction <chr>, junction_aa <chr>, v_cigar <chr>, d_cigar <chr>,
     ## #   j_cigar <chr>, vj_in_frame <lgl>, stop_codon <lgl>, v_sequence_start <int>,
@@ -412,6 +407,10 @@ BCR table:
 
 #### Remove cells without GEX data
 
+In this tutorial, we exclude cells from BCR data that lack corresponding
+partners in GEX data before conducting clonal analysis. This step
+deviates from the usual practice.
+
     # remove cells that didn’t match
     bcr_data <- dplyr::filter(bcr_data, !is.na(gex_annotation))
 
@@ -476,14 +475,16 @@ nearest-neighbor distance distribution generated above to manually
 select a threshold to separates the two modes of the nearest-neighbor
 distance distribution.
 
+This procedure should be repeated for all subjects in the dataset. A
+mean or median of the identified threshold can then be used as the final
+threshold for defining clones. We recommended to always inspect all the
+distance histograms to verify that the threshold selected is reasonable
+for all subjects.
+
 For further details regarding inferring an appropriate threshold for the
 hierarchical clustering method, see the [Distance to Nearest Neighbor
 vignette](https://shazam.readthedocs.io/en/stable/vignettes/DistToNearest-Vignette/)
 in the SHazaM package.
-
-This procedure should be repeated for all subjects in the dataset. A
-mean or median of the identified threshold can then be used as the final
-threshold for defining clones.
 
 #### Automatic
 
@@ -550,7 +551,7 @@ calculate this do the following:
     threshold_withcross <- threshold_output@threshold
     threshold_withcross
 
-    ## [1] 0.2037778
+    ## [1] 0.2038149
 
     # plot the threshold along the density plot
     plot(threshold_output, binwidth = 0.02,
@@ -590,10 +591,10 @@ region sequence similarity within partitions that share the same V gene,
 J gene, and junction length, thus allowing for ambiguous V or J gene
 annotations. By setting it up the `cell_id` parameter,
 `hierarchicalClones` will run in single-cell mode with paired-chain
-sequences. With `only_heavy = FALSE` and `split_light = TRUE`, grouping
-should be done by using IGH plus IGK/IGL sequences and inferred clones
-should be split by the light/short chain (IGK and IGL) following
-heavy/long chain clustering.
+sequences. With `only_heavy = TRUE` and `split_light = TRUE`, grouping
+should be done by using IGH only and inferred clones should be split by
+the light/short chain (IGK and IGL) following heavy/long chain
+clustering.
 
 ### Visualize clonal abundance
 
@@ -640,17 +641,12 @@ diversity, we will also select only the heavy chains:
 ## Create germlines
 
 The goal is to reconstruct the sequence of the unmutated ancestor of
-each clone. We use a reference database of known alleles
-([IMGT](http://www.imgt.org)). Because it is very difficult to
-accurately infer the D region and the junction region for BCR sequences,
-we mask this region with `N`.
-
-Before B cell lineage trees can be built, it is necessary to construct
-the unmutated germline sequence for each B cell clone. Typically the IGH
-D segment is masked because the junction region of heavy chains often
-cannot be reliably reconstructed. Note that occasionally errors are
-thrown for some clones - this is typical and usually results in those
-clones being excluded.
+each clone using a reference database of known alleles
+([IMGT](http://www.imgt.org)), before building B cell lineage trees. Due
+to the challenging nature of accurately inferring the D region and the
+junction region for BCR sequences, this region is masked with `N`. Note
+that occasionally errors are thrown for some clones - this is typical
+and usually results in those clones being excluded.
 
 In the example below, we read in the IMGT germline references from our
 Docker container. If you’re using a local installation, you can download
@@ -671,7 +667,7 @@ And passing `"human/vdj/"` to the `readIMGT` function.
     # read in IMGT files in the Docker container
     references <- readIMGT(dir = "/usr/local/share/germlines/imgt/human/vdj")
 
-    ## [1] "Read in 1173 from 17 fasta files"
+    ## [1] "Read in 1178 from 17 fasta files"
 
     # reconstruct germlines
     results <- createGermlines(results, references, fields = "subject_id", nproc = 1)
@@ -1008,16 +1004,16 @@ timepoints are more diverged from the germline:
     ## # A tibble: 31 x 4
     ##    clone_id  slope correlation      p
     ##    <chr>     <dbl>       <dbl>  <dbl>
-    ##  1 605      0.0453       0.711 0.0759
-    ##  2 741      0.120        0.877 0.150 
-    ##  3 541      0.277        0.827 0.215 
-    ##  4 608      0.0829       0.328 0.240 
-    ##  5 1181     0.707        0.578 0.245 
-    ##  6 208      0.307        0.770 0.255 
+    ##  1 605      0.0453       0.711 0.0899
+    ##  2 741      0.120        0.877 0.186 
+    ##  3 541      0.277        0.827 0.196 
+    ##  4 1181     0.707        0.578 0.215 
+    ##  5 608      0.0829       0.328 0.231 
+    ##  6 208      0.307        0.770 0.261 
     ##  7 221      0.0538       0.384 0.292 
-    ##  8 195      0.169        0.301 0.294 
-    ##  9 210      0.198        0.488 0.318 
-    ## 10 383      2.57         0.833 0.353 
+    ##  8 195      0.169        0.301 0.299 
+    ##  9 383      2.57         0.833 0.315 
+    ## 10 210      0.198        0.488 0.322 
     ## # i 21 more rows
 
     print(plots_time[[1]])
