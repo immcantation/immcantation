@@ -53,6 +53,7 @@
     :hidden:
 
     IgPhyML <https://igphyml.readthedocs.io>
+    PIgLET <https://bitbucket.org/yaarilab/piglet>
     RAbHIT <https://yaarilab.bitbucket.io/RAbHIT/>
     RDI <https://rdi.readthedocs.io>
     sumrep <https://github.com/matsengrp/sumrep>
@@ -138,8 +139,8 @@ Core Packages
 
         **Dowser**
 
-        + Build and analyze B cell lineage trees
-        + Infer migration and differentiation patterns
+        + B cell lineage trees
+        + Migration and differentiation analysis
         + Detect ongoing evolution over time
 
 
@@ -210,6 +211,11 @@ Contributed Packages
       - **RAbHIT**
 
         + Determination of V-D-J haplotypes
+
+    * - |piglet-img|
+      - **PIgLET**
+
+        + Tools to improve genotype inference      
 
     * - |rdi-img|
       - **RDI**
@@ -290,6 +296,12 @@ Contributed Packages
     :target: RAbHIT_
     :alt: RAbHIT
 
+.. |piglet-img| image:: _static/piglet.png
+    :align: middle
+    :width: 140
+    :target: PIgLET_
+    :alt: PIgLET    
+
 .. |sumrep-img| image:: _static/sumrep.png
     :align: middle
     :width: 180
@@ -302,6 +314,7 @@ Contributed Packages
 .. _Change-O: https://changeo.readthedocs.io
 .. _Dowser: https://dowser.readthedocs.io
 .. _IgPhyML: https://igphyml.readthedocs.io
+.. _PIgLET: https://bitbucket.org/yaarilab/piglet
 .. _pRESTO: https://presto.readthedocs.io
 .. _prestoR: packages/prestor.html
 .. _RAbHIT: https://yaarilab.bitbucket.io/RAbHIT/

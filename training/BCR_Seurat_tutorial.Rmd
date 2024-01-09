@@ -1,10 +1,21 @@
 ---
 title: "Integration of BCR and GEX Data"
-output: html_document
+output: 
+  md_document:
+    toc: false
+    toc_depth: 3
+  html_document:
+    toc: false
+    toc_depth: 3
+params:
+  eval_optional: FALSE
+  cache: FALSE
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(message = FALSE, warning = FALSE)
+knitr::opts_chunk$set(echo=TRUE, cache=params$cache, fig.path=file.path("BCR_Seurat_tutorial_files","BCR_Seurat_tutorial_"))
 ```
 
 # Integration of BCR and GEX Data
@@ -13,7 +24,12 @@ knitr::opts_chunk$set(message = FALSE, warning = FALSE)
 
 BCR (B cell receptor) data and GEX (gene expression) data can borrow information from each other for expanded analyses. This tutorial demonstrates several approaches to integrating these data types along with examples on how the new information can be used.
 
-The example datasets (**BCR.data.rds** and **GEX.data.rds**) were run using the 10x Genomics platform and can be downloaded in a zip file from [here](https://yale.box.com/shared/static/6s8gzxxpfb3vmwx2izn9qur9teultzvu.zip).
+The example files used in this tutorial are subsamples of the original 10x scRNA-seq and BCR sequencing data from [Turner et al. (2020)](https://www.nature.com/articles/s41586-020-2711-0) *Human germinal centres engage memory and naive B cells after influenza vaccination* Nature. 586, 127--132. The study consists of blood and lymph node samples taken from a single patient at multiple time points following influenza vaccination.
+
+We extracted a subset (~3000 cells) of single cell GEX/BCR data of ultrasound-guided fine needle aspiration (FNA) samples of lymph nodes for subject P05. These 3000 cells were randomly divided into two pseudo-subjects, ensuring that each subject has distinct clones while maintaining a similar clone size distribution. The example data is already in the container (`/home/magus/data/`). If you want to, you can download it from Zenodo [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10028129.svg)](https://doi.org/10.5281/zenodo.10028129). We will use these files:
+
+* **BCR.data_08112023.rds**: R dataframe object containing the single-cell BCR sequencing data.
+* **GEX.data_08112023.rds**: Gene Expression Data. This file contains a Seurat object with RNA-seq data already processed and annotated. Processing and annotation are not covered in this tutorial. You can learn more on these topics in Seurat's documentation and tutorials: <https://satijalab.org/seurat/articles/pbmc3k_tutorial.html>
 
 Please note that you may have to alter the code in this tutorial if you are not using 10x or prefer a different single-cell system other than Seurat (such as [SingleCellExperiment](https://bioconductor.org/packages/release/bioc/html/SingleCellExperiment.html) or [scverse](https://scverse.org/)).
 
@@ -47,8 +63,8 @@ In this tutorial, we will integrate the BCR and GEX data by using the cell barco
 
 ```{r read-in-data}
 # read in the data
-gex_obj <- readRDS(file.path(path_data, "GEX.data.rds"))
-bcr_data <- readRDS(file.path(path_data, "BCR.data.rds"))
+gex_obj <- readRDS(file.path(path_data, "GEX.data_08112023.rds"))
+bcr_data <- readRDS(file.path(path_data, "BCR.data_08112023.rds"))
 
 # examine the GEX data
 gex_obj
@@ -67,16 +83,8 @@ bcr_data %>%
 
 The GEX data here has already had cell types annotated (using characteristic marker genes). We suggest creating a column in the object's metadata to store these annotations e.g. `gex_obj$annotated_clusters <- Idents(gex_obj)` (if the annotations are the `active.ident`).
 
-```{r reformat-bcr-data, eval=FALSE}
-# this is already done in the provided data
-
-# concatenate the sample id (sample) and cell id (cell_id) in the BCR data
-bcr_data <- bcr_data %>%
-              rowwise() %>%
-              mutate(cell_id_unique =
-                         paste(sample, strsplit(cell_id, split = "-")[[1]][1],
-                               sep = "_")) %>%
-              ungroup()
+```{r reformat-bcr-data, eval=TRUE}
+gex_obj$annotated_clusters <- Idents(gex_obj)
 ```
 
 Alphabetize the cell types within the GEX if desired:
@@ -293,8 +301,9 @@ p + geom_point(data = dplyr::filter(bcr_gex_data, gex_annotation == "GC",
 
 ```{r bcr-gex-umap-other-mu-freq, fig.dim=c(16, 4)}
 # mutation frequency
-p + geom_point(data = dplyr::filter(bcr_gex_data, gex_annotation == "GC"),
+# heavy only
+p + geom_point(data = dplyr::filter(bcr_gex_data, gex_annotation == "GC",
+                                    locus == "IGH"),
                aes(x = gex_umap_1, y = gex_umap_2, color = mu_freq),
-               size = 1) +
-    scale_colour_continuous(trans = "reverse")
+               size = 1)
 ```

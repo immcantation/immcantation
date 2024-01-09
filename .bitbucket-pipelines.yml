@@ -1,10 +1,10 @@
-pipelines:
-  default:
-    - step:
-        name: Update immcantation/studio:devel
-        condition:
-          changesets:
-            includePaths:
-              - "training/**"
-        script:
-          - curl -H "Content-Type:application/json" --data '{"docker_tag":"devel"}' -X POST https://hub.docker.com/api/build/v1/source/${DOCKERHUB_REPO_STUDIO}/trigger/${DOCKERHUB_TRIGGER_STUDIO}/call/
+# pipelines:
+#   default:
+#     - step:
+#         name: Update immcantation/studio:devel
+#         condition:
+#           changesets:
+#             includePaths:
+#               - "training/**"
+#         script:
+#           - curl -H "Content-Type:application/json" --data '{"docker_tag":"devel"}' -X POST https://hub.docker.com/api/build/v1/source/${DOCKERHUB_REPO_STUDIO}/trigger/${DOCKERHUB_TRIGGER_STUDIO}/call/

@@ -10,7 +10,6 @@ germline and somatic diversity of immunoglobulin repertoires, present
 analytical challenges requiring specialized methodologies. In this
 tutorial, we present an example pipeline for processing bulk BCR data.
 
--   Slides and example data: <https://goo.gl/FpW3Sc>
 -   The tutorial is available as a R Markdown notebook in the
     Immcantation repository:
     [intro-lab.Rmd](https://bitbucket.org/kleinstein/immcantation/src/master/training).
@@ -24,13 +23,10 @@ tutorial, we present an example pipeline for processing bulk BCR data.
 -   Modeling of somatic hypermutation (SHM) targeting
 -   Quantification of selection pressure
 
-General workflow:  
-![Workflow](assets/workflow_h_cmd.png)
-
 For installation of docker used in this tutorial, go to the link given
 below:
 
-<https://immcantation.readthedocs.io/en/stable/docker/intro.html>
+<https://immcantation.readthedocs.io/en/latest/docker/intro.html>
 
 ### Software versions
 
@@ -39,27 +35,27 @@ Use this command to list the software versions:
     versions report
 
     ## immcantation: devel
-    ## date: 2023.07.08
+    ## date: 2023.10.18
     ## 
-    ## presto: 0.7.1
+    ## presto: 0.7.1.999
     ## changeo: 1.3.0
-    ## alakazam: 1.2.1.999
-    ## shazam: 1.1.2.999
-    ## tigger: 1.0.1.999
-    ## scoper: 1.2.1.999
-    ## dowser: 1.2.0
-    ## enchantr: 0.1.4
+    ## alakazam: 1.3.0
+    ## shazam: 1.2.0.999
+    ## tigger: 1.1.0
+    ## scoper: 1.3.0
+    ## dowser: 1.3.0
+    ## enchantr: 0.1.9
     ## prestor: 0.0.7
-    ## rabhit: 0.1.5
+    ## rabhit: 0.2.5
     ## rdi: 1.0.0
-    ## igphyml: 1.1.5
-    ## seurat: 4.3.0
+    ## igphyml: 2.0.0
+    ## seurat: 5.0.1
     ## 
-    ## airr-py: 1.4.1
-    ## airr-r: 1.4.1
+    ## airr-py: 1.5.0
+    ## airr-r: 1.5.0
     ## blast: 2.13.0
     ## cd-hit: 4.8.1
-    ## igblast: 1.21.0
+    ## igblast: 1.22.0
     ## muscle: 3.8.425
     ## phylip: 3.697
     ## raxml-ng: 1.2.0
@@ -72,21 +68,26 @@ build:
 
     builds report
 
-    ## date: 2023-08-03 17:37:05 UTC
-    ## immcantation: 4.4.0-83-ga5b27a5ff038+
-    ## presto: 0.7.1-9-g745dc25faa6d
-    ## changeo: 1.3.0-10-g7ca1495cb045
-    ## alakazam: 1.2.0-38-g35398512883e
-    ## shazam: 1.1.2-31-g7f4c6f9a93a4
-    ## tigger: 17b8ba3da16b
+    ## date: 2023-11-29 12:57:37 UTC
+    ## immcantation: 4.4.0-198-g9c4656907dfb+
+    ## presto: 0.7.1-18-g2140c55eefae
+    ## changeo: 1.3.0-18-gfd3372709f6f
+    ## alakazam: 1.2.0-79-g8ff706f26deb
+    ## shazam: 1.1.2-65-gae5ba7939d2f
+    ## tigger: b0ad8b4f4fb9
     ## rdi: d27b9067cab6+
-    ## scoper: 1.2.0-41-ge7a63d2dba99+
+    ## scoper: 1.2.0-65-gd3ee771d2b28
+    ## dowser: 2.0.0-7-g77e5189ea75f
     ## prestor: 0.0.8+
 
 ### Example data used in the tutorial
 
-`../data/input.fasta`: Processed B cell receptor reads from one healthy
-donor (PGP1) 3 weeks after flu vaccination (*Laserson et al. (2014)*)
+You can download the example data from Zenodo
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10046916.svg)](https://doi.org/10.5281/zenodo.10046916).
+It is alreday available in the container:
+`/home/magus/data/input.fasta`: Processed B cell receptor reads from one
+healthy donor (PGP1) 3 weeks after flu vaccination (*Laserson et
+al. (2014)*)
 
 -   As part of the processing, each sequence has been annotated with the
     isotype.
@@ -96,7 +97,7 @@ donor (PGP1) 3 weeks after flu vaccination (*Laserson et al. (2014)*)
 
 <!-- -->
 
-    head ../data/input.fasta
+    head /home/magus/data/input.fasta
 
     ## >seq1|ISOTYPE=IGHM
     ## nnnnnnnnnnnnnnnnnnnnnnnagtgtcaggtgcagctggtggagctggggagcgtggt
@@ -157,10 +158,8 @@ of sequences. For a quick test of Change-O’s V(D)J assignment tool, use
 the V(D)J genes with `AssignGenes.py`.
 
     mkdir -p results/igblast
-    SplitSeq.py sample -n 200 --outdir results --fasta -s ../data/input.fasta
+    SplitSeq.py sample -n 200 --outdir results --fasta -s /home/magus/data/input.fasta
 
-    ## /usr/lib64/python3.11/site-packages/Bio/pairwise2.py:278: BiopythonDeprecationWarning: Bio.pairwise2 has been deprecated, and we intend to remove it in a future release of Biopython. As an alternative, please consider using Bio.Align.PairwiseAligner as a replacement, and contact the Biopython developers if you still need the Bio.pairwise2 module.
-    ##   warnings.warn(
     ##      START> SplitSeq
     ##    COMMAND> sample
     ##       FILE> input.fasta
@@ -168,9 +167,9 @@ the V(D)J genes with `AssignGenes.py`.
     ##      FIELD> None
     ##     VALUES> None
     ## 
-    ## PROGRESS> 13:47:41 |Reading files            | 0.0 minPROGRESS> 13:47:41 |Done                     | 0.0 min
+    ## PROGRESS> 18:47:46 |Reading files            | 0.0 minPROGRESS> 18:47:46 |Done                     | 0.0 min
     ## 
-    ## PROGRESS> 13:47:41 |Sampling n=200           | 0.0 minPROGRESS> 13:47:41 |Done                     | 0.0 min
+    ## PROGRESS> 18:47:46 |Sampling n=200           | 0.0 minPROGRESS> 18:47:46 |Done                     | 0.0 min
     ## 
     ## MAX_COUNT> 200
     ##   SAMPLED> 200
@@ -198,13 +197,13 @@ the V(D)J genes with `AssignGenes.py`.
 
     ##    START> AssignGenes
     ##  COMMAND> igblast
-    ##  VERSION> 1.21.0
+    ##  VERSION> 1.22.0
     ##     FILE> input_sample1-n200.fasta
     ## ORGANISM> human
     ##     LOCI> ig
     ##    NPROC> 8
     ## 
-    ## PROGRESS> 13:47:43 |Running IgBLAST          | 0.0 minPROGRESS> 13:47:46 |Done                     | 0.1 min
+    ## PROGRESS> 18:47:47 |Running IgBLAST          | 0.0 minPROGRESS> 18:47:50 |Done                     | 0.0 min
     ## 
     ##   PASS> 200
     ## OUTPUT> input_sample1-n200_igblast.fmt7
@@ -216,19 +215,19 @@ To run the command on all of the data, modify it to change the input
 file (`-s`) to the full data set. *Please note that this may take some
 time to finish running.*
 
-    AssignGenes.py igblast -s ../data/input.fasta \
+    AssignGenes.py igblast -s /home/magus/data/input.fasta \
     -b /usr/local/share/igblast_test_tigger --organism human --loci ig \
     --format blast --outdir results/igblast --nproc 8
 
     ##    START> AssignGenes
     ##  COMMAND> igblast
-    ##  VERSION> 1.21.0
+    ##  VERSION> 1.22.0
     ##     FILE> input.fasta
     ## ORGANISM> human
     ##     LOCI> ig
     ##    NPROC> 8
     ## 
-    ## PROGRESS> 13:47:48 |Running IgBLAST          | 0.0 minPROGRESS> 14:05:37 |Done                     | 17.8 min
+    ## PROGRESS> 18:47:51 |Running IgBLAST          | 0.0 minPROGRESS> 19:06:42 |Done                     | 18.8 min
     ## 
     ##   PASS> 91010
     ## OUTPUT> input_igblast.fmt7
@@ -261,7 +260,7 @@ AIRR format. The path to the reference germlines is provided by `-r`.
 
     mkdir -p results/changeo
     MakeDb.py igblast \
-    -s ../data/input.fasta -i results/igblast/input_igblast.fmt7 \
+    -s /home/magus/data/input.fasta -i results/igblast/input_igblast.fmt7 \
     --format airr \
     -r /usr/local/share/germlines/imgt_test_tigger/human/vdj/ --outdir results/changeo \
     --outname data
@@ -276,13 +275,13 @@ AIRR format. The path to the reference germlines is provided by `-r`.
     ##       EXTENDED> False
     ## INFER_JUNCTION> False
     ## 
-    ## PROGRESS> 14:05:37 |Loading files       | 0.0 minPROGRESS> 14:05:38 |Done                | 0.0 min
+    ## PROGRESS> 19:06:42 |Loading files       | 0.0 minPROGRESS> 19:06:43 |Done                | 0.0 min
     ## 
-    ## PROGRESS> 14:05:38 |                    |   0% (     0) 0.0 minPROGRESS> 14:05:48 |#                   |   5% ( 4,551) 0.2 minPROGRESS> 14:05:51 |##                  |  10% ( 9,102) 0.2 minPROGRESS> 14:05:53 |###                 |  15% (13,653) 0.2 minPROGRESS> 14:05:55 |####                |  20% (18,204) 0.3 minPROGRESS> 14:05:58 |#####               |  25% (22,755) 0.3 minPROGRESS> 14:06:00 |######              |  30% (27,306) 0.4 minPROGRESS> 14:06:03 |#######             |  35% (31,857) 0.4 minPROGRESS> 14:06:05 |########            |  40% (36,408) 0.4 minPROGRESS> 14:06:07 |#########           |  45% (40,959) 0.5 minPROGRESS> 14:06:10 |##########          |  50% (45,510) 0.5 minPROGRESS> 14:06:12 |###########         |  55% (50,061) 0.6 minPROGRESS> 14:06:15 |############        |  60% (54,612) 0.6 minPROGRESS> 14:06:17 |#############       |  65% (59,163) 0.6 minPROGRESS> 14:06:20 |##############      |  70% (63,714) 0.7 minPROGRESS> 14:06:22 |###############     |  75% (68,265) 0.7 minPROGRESS> 14:06:24 |################    |  80% (72,816) 0.8 minPROGRESS> 14:06:27 |#################   |  85% (77,367) 0.8 minPROGRESS> 14:06:30 |##################  |  90% (81,918) 0.9 minPROGRESS> 14:06:32 |################### |  95% (86,469) 0.9 minPROGRESS> 14:06:35 |####################| 100% (91,010) 0.9 min
+    ## PROGRESS> 19:06:43 |                    |   0% (     0) 0.0 minPROGRESS> 19:06:45 |#                   |   5% ( 4,551) 0.0 minPROGRESS> 19:06:48 |##                  |  10% ( 9,102) 0.1 minPROGRESS> 19:06:50 |###                 |  15% (13,653) 0.1 minPROGRESS> 19:06:52 |####                |  20% (18,204) 0.2 minPROGRESS> 19:06:54 |#####               |  25% (22,755) 0.2 minPROGRESS> 19:06:56 |######              |  30% (27,306) 0.2 minPROGRESS> 19:06:59 |#######             |  35% (31,857) 0.3 minPROGRESS> 19:07:01 |########            |  40% (36,408) 0.3 minPROGRESS> 19:07:03 |#########           |  45% (40,959) 0.3 minPROGRESS> 19:07:06 |##########          |  50% (45,510) 0.4 minPROGRESS> 19:07:08 |###########         |  55% (50,061) 0.4 minPROGRESS> 19:07:10 |############        |  60% (54,612) 0.5 minPROGRESS> 19:07:12 |#############       |  65% (59,163) 0.5 minPROGRESS> 19:07:15 |##############      |  70% (63,714) 0.5 minPROGRESS> 19:07:18 |###############     |  75% (68,265) 0.6 minPROGRESS> 19:07:20 |################    |  80% (72,816) 0.6 minPROGRESS> 19:07:22 |#################   |  85% (77,367) 0.7 minPROGRESS> 19:07:24 |##################  |  90% (81,918) 0.7 minPROGRESS> 19:07:27 |################### |  95% (86,469) 0.7 minPROGRESS> 19:07:29 |####################| 100% (91,010) 0.8 min
     ## 
     ## OUTPUT> data_db-pass.tsv
-    ##   PASS> 87504
-    ##   FAIL> 3506
+    ##   PASS> 87793
+    ##   FAIL> 3217
     ##    END> MakeDb
 
 ### Subset the data to include productive heavy chain sequences
@@ -307,12 +306,12 @@ output file (specified by `--outname`).
     ##  VALUES> T
     ##   REGEX> False
     ## 
-    ## PROGRESS> 14:06:36 |                    |   0% (     0) 0.0 minPROGRESS> 14:06:36 |#                   |   5% ( 4,376) 0.0 minPROGRESS> 14:06:36 |##                  |  10% ( 8,752) 0.0 minPROGRESS> 14:06:37 |###                 |  15% (13,128) 0.0 minPROGRESS> 14:06:37 |####                |  20% (17,504) 0.0 minPROGRESS> 14:06:37 |#####               |  25% (21,880) 0.0 minPROGRESS> 14:06:37 |######              |  30% (26,256) 0.0 minPROGRESS> 14:06:37 |#######             |  35% (30,632) 0.0 minPROGRESS> 14:06:37 |########            |  40% (35,008) 0.0 minPROGRESS> 14:06:38 |#########           |  45% (39,384) 0.0 minPROGRESS> 14:06:38 |##########          |  50% (43,760) 0.0 minPROGRESS> 14:06:38 |###########         |  55% (48,136) 0.0 minPROGRESS> 14:06:38 |############        |  60% (52,512) 0.0 minPROGRESS> 14:06:38 |#############       |  65% (56,888) 0.0 minPROGRESS> 14:06:38 |##############      |  70% (61,264) 0.0 minPROGRESS> 14:06:39 |###############     |  75% (65,640) 0.0 minPROGRESS> 14:06:39 |################    |  80% (70,016) 0.0 minPROGRESS> 14:06:39 |#################   |  85% (74,392) 0.0 minPROGRESS> 14:06:39 |##################  |  90% (78,768) 0.0 minPROGRESS> 14:06:39 |################### |  95% (83,144) 0.1 minPROGRESS> 14:06:39 |####################| 100% (87,504) 0.1 min
+    ## PROGRESS> 19:07:30 |                    |   0% (     0) 0.0 minPROGRESS> 19:07:30 |#                   |   5% ( 4,390) 0.0 minPROGRESS> 19:07:30 |##                  |  10% ( 8,780) 0.0 minPROGRESS> 19:07:30 |###                 |  15% (13,170) 0.0 minPROGRESS> 19:07:30 |####                |  20% (17,560) 0.0 minPROGRESS> 19:07:31 |#####               |  25% (21,950) 0.0 minPROGRESS> 19:07:31 |######              |  30% (26,340) 0.0 minPROGRESS> 19:07:31 |#######             |  35% (30,730) 0.0 minPROGRESS> 19:07:31 |########            |  40% (35,120) 0.0 minPROGRESS> 19:07:31 |#########           |  45% (39,510) 0.0 minPROGRESS> 19:07:31 |##########          |  50% (43,900) 0.0 minPROGRESS> 19:07:31 |###########         |  55% (48,290) 0.0 minPROGRESS> 19:07:31 |############        |  60% (52,680) 0.0 minPROGRESS> 19:07:32 |#############       |  65% (57,070) 0.0 minPROGRESS> 19:07:32 |##############      |  70% (61,460) 0.0 minPROGRESS> 19:07:32 |###############     |  75% (65,850) 0.0 minPROGRESS> 19:07:32 |################    |  80% (70,240) 0.0 minPROGRESS> 19:07:32 |#################   |  85% (74,630) 0.0 minPROGRESS> 19:07:32 |##################  |  90% (79,020) 0.0 minPROGRESS> 19:07:32 |################### |  95% (83,410) 0.0 minPROGRESS> 19:07:32 |####################| 100% (87,793) 0.0 min
     ## 
     ##    OUTPUT> data_p_parse-select.tsv
-    ##   RECORDS> 87504
-    ##  SELECTED> 64892
-    ## DISCARDED> 22612
+    ##   RECORDS> 87793
+    ##  SELECTED> 64971
+    ## DISCARDED> 22822
     ##       END> ParseDb
 
 Next, we filter the data to include **only heavy chain** sequences.
@@ -335,11 +334,11 @@ data.
     ##  VALUES> IGHV
     ##   REGEX> True
     ## 
-    ## PROGRESS> 14:06:40 |                    |   0% (     0) 0.0 minPROGRESS> 14:06:40 |#                   |   5% ( 3,245) 0.0 minPROGRESS> 14:06:40 |##                  |  10% ( 6,490) 0.0 minPROGRESS> 14:06:41 |###                 |  15% ( 9,735) 0.0 minPROGRESS> 14:06:41 |####                |  20% (12,980) 0.0 minPROGRESS> 14:06:41 |#####               |  25% (16,225) 0.0 minPROGRESS> 14:06:41 |######              |  30% (19,470) 0.0 minPROGRESS> 14:06:41 |#######             |  35% (22,715) 0.0 minPROGRESS> 14:06:41 |########            |  40% (25,960) 0.0 minPROGRESS> 14:06:41 |#########           |  45% (29,205) 0.0 minPROGRESS> 14:06:42 |##########          |  50% (32,450) 0.0 minPROGRESS> 14:06:42 |###########         |  55% (35,695) 0.0 minPROGRESS> 14:06:42 |############        |  60% (38,940) 0.0 minPROGRESS> 14:06:42 |#############       |  65% (42,185) 0.0 minPROGRESS> 14:06:42 |##############      |  70% (45,430) 0.0 minPROGRESS> 14:06:42 |###############     |  75% (48,675) 0.0 minPROGRESS> 14:06:43 |################    |  80% (51,920) 0.0 minPROGRESS> 14:06:43 |#################   |  85% (55,165) 0.0 minPROGRESS> 14:06:43 |##################  |  90% (58,410) 0.0 minPROGRESS> 14:06:43 |################### |  95% (61,655) 0.0 minPROGRESS> 14:06:43 |####################| 100% (64,892) 0.0 min
+    ## PROGRESS> 19:07:33 |                    |   0% (     0) 0.0 minPROGRESS> 19:07:33 |#                   |   5% ( 3,249) 0.0 minPROGRESS> 19:07:34 |##                  |  10% ( 6,498) 0.0 minPROGRESS> 19:07:34 |###                 |  15% ( 9,747) 0.0 minPROGRESS> 19:07:34 |####                |  20% (12,996) 0.0 minPROGRESS> 19:07:34 |#####               |  25% (16,245) 0.0 minPROGRESS> 19:07:34 |######              |  30% (19,494) 0.0 minPROGRESS> 19:07:34 |#######             |  35% (22,743) 0.0 minPROGRESS> 19:07:34 |########            |  40% (25,992) 0.0 minPROGRESS> 19:07:34 |#########           |  45% (29,241) 0.0 minPROGRESS> 19:07:34 |##########          |  50% (32,490) 0.0 minPROGRESS> 19:07:35 |###########         |  55% (35,739) 0.0 minPROGRESS> 19:07:35 |############        |  60% (38,988) 0.0 minPROGRESS> 19:07:35 |#############       |  65% (42,237) 0.0 minPROGRESS> 19:07:35 |##############      |  70% (45,486) 0.0 minPROGRESS> 19:07:35 |###############     |  75% (48,735) 0.0 minPROGRESS> 19:07:35 |################    |  80% (51,984) 0.0 minPROGRESS> 19:07:35 |#################   |  85% (55,233) 0.0 minPROGRESS> 19:07:35 |##################  |  90% (58,482) 0.0 minPROGRESS> 19:07:35 |################### |  95% (61,731) 0.0 minPROGRESS> 19:07:36 |####################| 100% (64,971) 0.0 min
     ## 
     ##    OUTPUT> data_ph_parse-select.tsv
-    ##   RECORDS> 64892
-    ##  SELECTED> 64892
+    ##   RECORDS> 64971
+    ##  SELECTED> 64971
     ## DISCARDED> 0
     ##       END> ParseDb
 
@@ -382,6 +381,8 @@ step.
 Bulk BCR data in general includes ambiguous nucleotides (Ns), and we
 will remove those low-quality sequences with many Ns
 
+    # Source helper function also available here:
+    # https://bitbucket.org/kleinstein/immcantation/src/master/training/assets/filterN.R
     source("assets/filterN.R")
 
     # Identify sequences with at least 20 Ns or continuous 15 Ns in the v_region
@@ -391,24 +392,17 @@ will remove those low-quality sequences with many Ns
                                       label="v_region",
                                       plot=TRUE)
 
-    ## Warning: `aes_string()` was deprecated in ggplot2 3.0.0.
-    ## i Please use tidy evaluation idioms with `aes()`.
-    ## i See also `vignette("ggplot2-in-packages")` for more information.
-    ## This warning is displayed once every 8 hours.
-    ## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
-    ## generated.
-
     v_region_n_pass <- v_n_stretches_plot$db_pass
     # number of sequences before filtering N
     dim(db)
 
-    ## [1] 64892    34
+    ## [1] 64971    34
 
     db = db[which(v_region_n_pass),]
     # number of sequences after filtering N
     dim(db)
 
-    ## [1] 64892    34
+    ## [1] 64971    34
 
 ## Genotyping and discovery of novel V gene alleles with TIgGER
 
@@ -490,7 +484,7 @@ This can be observed in the bottom panel.
 
     plotNovel(db, selectNovel(nv)[1, ]) # visualize the novel allele(s)
 
-<img src="intro-lab_files/intro-lab_novel-1.png" alt="novel"  />
+![](intro-lab_files/intro-lab_novel-1.png)
 
 ### Genotyping, including novel V gene alleles
 
@@ -509,7 +503,7 @@ genotypes (`inferGenotypeBayesian`).
 
     gt <- inferGenotype(db, germline_db = ighv, novel = nv)
 
-    # save genotype inf .fasta format to be used later with CreateGermlines.py
+    # save genotype inf .fasta format to be used later with dowser::createGermlines
     gtseq <- genotypeFasta(gt, ighv, nv)
     writeFasta(gtseq, file.path("results", "tigger", "v_genotype.fasta"))
 
@@ -526,7 +520,7 @@ that gene that are included in the inferred genotype.
 
     plotGenotype(gt) # genotyping including novel V gene alleles
 
-<img src="intro-lab_files/intro-lab_genotype-1.png" alt="genotype"  />
+![](intro-lab_files/intro-lab_genotype-1.png)
 
 ### Reassign V gene allele annotations
 
@@ -549,11 +543,11 @@ for use in the following steps.
       select(v_call, v_call_genotyped)
 
     ## # A tibble: 3 x 2
-    ##   v_call                               v_call_genotyped        
-    ##   <chr>                                <chr>                   
-    ## 1 IGHV1-69*01,IGHV1-69*17,IGHV1-69D*01 IGHV1-69*01,IGHV1-69D*01
-    ## 2 IGHV4-59*11                          IGHV4-59*01             
-    ## 3 IGHV4-34*02                          IGHV4-34*01
+    ##   v_call                                v_call_genotyped
+    ##   <chr>                                 <chr>           
+    ## 1 IGHV2-26*02                           IGHV2-26*01     
+    ## 2 IGHV3-30*04,IGHV3-30*14,IGHV3-30-3*03 IGHV3-30*18     
+    ## 3 IGHV3-30*18,IGHV3-30-5*01             IGHV3-30*18
 
     write_rearrangement(db, file.path("results", "tigger", "data_ph_genotyped.tsv"))
 
@@ -634,8 +628,6 @@ distribution and the threshold.
     db <- distToNearest(db, model = "ham", normalize = "len",
                         vCallColumn = "v_call_genotyped", nproc = 4)
 
-    ## Joining with `by = join_by(DTN_ROW_ID)`
-
     # determine the threshold
     threshold <- findThreshold(db$dist_nearest, method = "density")
     thr <- round(threshold@threshold, 2)
@@ -645,7 +637,7 @@ distribution and the threshold.
 
     plot(threshold) # plot the distribution
 
-<img src="intro-lab_files/intro-lab_threshold-1.png" alt="threshold"  />
+![](intro-lab_files/intro-lab_threshold-1.png)
 
 #### Advanced method: Spectral-based clonal clustering (SCOPer)
 
@@ -656,7 +648,7 @@ threshold to determine the local sequence neighborhood may be used. This
 can be done with functions from the [SCOPer R
 package](https://scoper.readthedocs.io/).
 
-### Change-O: Clonal assignment
+### Clonal assignment
 
 Once a threshold is decided, the function `hierarchicalClones` from the
 [SCOPer R package](https://scoper.readthedocs.io/) performs the clonal
@@ -678,66 +670,152 @@ the dataset used to carry out the clonal assignments.*
     # Plot a histogram of inter and intra clonal distances
     plot(results, binwidth=0.02)
 
-<img src="intro-lab_files/intro-lab_intra-inter-clonal-d-1.png" alt="intra-inter-clonal-d"  />
+![](intro-lab_files/intro-lab_intra-inter-clonal-d-1.png)
 
+<!--
 ### TBD: See vignettes of Alakazam
 
-Links to other types of analysis. For example, see below “Clonal
-Lineages”.
+Links to other types of analysis. For example, see below "Clonal Lineages". 
+-->
 
-## Alakazam: lineage reconstruction
+## Dowser: lineage reconstruction
 
-TBD: Update to Dowser version, which will involve the assignment of
-germlines as well (createGermlines())
+<!-- TBD: Update to Dowser version, which will involve the assignment of germlines as well (createGermlines()) -->
 
 B cell repertoires often consist of hundreds to thousands of separate
 clones. A clonal lineage recapitulates the ancestor-descendant
 relationships between clonally-related B cells and uncovering these
 relationships can provide insights into affinity maturation. The R
-package `alakazam` uses PHYLIP to reconstruct lineages following a
-maximum parsimony technique. PHYLIP is already installed in the
-Immcantation container.
+package `dowser` offers multiple ways to build B cell phylogenetic
+trees. Before performing lineage reconstruction, some preprocessing in
+needed.
 
-Before performing lineage reconstruction, some preprocessing in needed.
-The code below shows an example of such preprocessing done for one of
-the largest clones in the example dataset. The function
-`makeChangeoClone` takes as input a data.frame with information for a
-clone (`db_clone`). `text_fields = "isotype"` specifies that annotation
-in the column `isotype` should be merged during duplicate removal. For
-example, if two duplicate sequences (defined by identical nucleotide
-composition) are found, and one is annotated as IGHM and the second one
-is an IGHG, then they will be “collapsed” into a single sequence that
-will have the `isotype` value “IGHM,IGHG”. The preprocessing done by
-`makeChangeoClone` also includes masking gap positions and masking
-ragged ends.
+### Create germlines
 
-    # Select one clone, the 2nd largest, just as an example
-    largest_clone <- countClones(results@db) %>%
-                       slice(2) %>%
-                       select(clone_id) %>% as.character()
+The goal is to reconstruct the sequence of the unmutated ancestor of
+each clone. We use a reference database of known alleles
+([IMGT](http://www.imgt.org)). Because it is very difficult to
+accurately infer the D region and the junction region for BCR sequences,
+we mask this region with `N`.
 
-    # Subset db, get db with data for largest_clone
-    db_clone <- subset(results@db, clone_id == largest_clone)
+Before B cell lineage trees can be built, it is necessary to construct
+the unmutated germline sequence for each B cell clone. Typically the IGH
+D segment is masked because the junction region of heavy chains often
+cannot be reliably reconstructed. Note that occasionally errors are
+thrown for some clones - this is typical and usually results in those
+clones being excluded.
 
-    # Build tree from a single clone
-    # TODO: I added pad_end = TRUE because of error:
-    #Error in makeChangeoClone(db_clone, v_call = "v_call_genotyped", text_fields = "isotype") : 
-    #  All sequences are not the same length for data with first sequence_id = seq248. Consider specifying pad_end=TRUE and verify the multiple alignment
-    x <- makeChangeoClone(db_clone, v_call = "v_call_genotyped",
-                          text_fields = "isotype", pad_end = TRUE)
+In the example below, we read in the IMGT germline references from our
+Docker container. If you’re using a local installation, you can download
+the most up-to-date reference genome by cloning the Immcantation
+repository and running the script:
 
-Lineage reconstruction is done with `buildPhylipLineage`. This function
-uses the `dnapars` tool from PHYLIP, which in the container is located
-at `/usr/local/bin/dnapars`, to build the lineage, and returns an
-`igraph` object. This object can be quickly visualized with the command
-`plot`. It is possible to use `igraph` or other tools to resize nodes
-(e.g., by the underlying sequence count) or add colors (e.g., to
-indicate tissue location of B cell subsets) to help answer specific
-biological questions.
+    # Retrieve reference genome with the script fetch_imgtdb.sh.
+    # It will create directories where it is run
+    git clone https://bitbucket.org/kleinstein/immcantation.git
+    ./immcantation/scripts/fetch_imgtdb.sh 
 
-    # Lineage reconstruction
-    g <- buildPhylipLineage(x, phylip_exec = "/usr/local/bin/dnapars")
-    suppressPackageStartupMessages(library(igraph))
-    plot(g)
+And passing `"human/vdj/"` to the `readIMGT` function.
 
-<img src="intro-lab_files/intro-lab_build-phylip-lineage-1.png" alt="build-phylip-lineage"  />
+    # read in IMGT data if downloaded on your own (above)
+    # and update `dir` to use the path to your `human/vdj` folder
+    # references <- readIMGT(dir = "human/vdj/")
+
+    # read in IMGT files in the Docker container
+    references <- dowser::readIMGT(dir = "/usr/local/share/germlines/imgt/human/vdj")
+
+    ## [1] "Read in 1173 from 17 fasta files"
+
+    # reconstruct germlines
+    results@db <- dowser::createGermlines(results@db, references, nproc = 1)
+
+### Format clones
+
+In the rearrangement table, each row corresponds to a sequence, and each
+column is information about that sequence. We will create a new data
+structure, where each row is a clonal cluster, and each column is
+information about that clonal cluster. The function `formatClones`
+performs this processing and has options that are relevant to determine
+how the trees can be built and visualized. For example, `traits`
+determines the columns from the rearrangement data that will be included
+in the `clones` object, and will also be used to determine the
+uniqueness of the sequences, so they are not collapsed.
+
+    # make clone objects with aligned, processed sequences
+    # collapse identical sequences unless differ by trait
+    # add up duplicate_count column for collapsed sequences
+    # store day, gex_annotation
+    # discard clones with < 5 distinct sequences
+    clones <- dowser::formatClones(results@db,
+                                             traits="isotype", 
+                                             minseq = 5, nproc = 1)
+    head(clones)
+
+    ## # A tibble: 6 x 4
+    ##   clone_id data       locus  seqs
+    ##   <chr>    <list>     <chr> <int>
+    ## 1 19311    <airrClon> IGH      35
+    ## 2 17492    <airrClon> IGH      33
+    ## 3 22261    <airrClon> IGH      33
+    ## 4 8255     <airrClon> IGH      32
+    ## 5 24049    <airrClon> IGH      26
+    ## 6 30934    <airrClon> IGH      23
+
+### Build trees with dowser
+
+Dowser offers multiple ways to build B cell phylogenetic trees. These
+differ by the method used to estimate tree topology and branch lengths
+(e.g. maximum parsimony and maximum likelihood) and implementation
+(IgPhyML, PHYLIP, RAxML, or R packages `ape` and `phangorn`). Each
+method has pros and cons. In this tutorial we use PHYLIP to reconstruct
+lineages following a maximum parsimony technique. PHYLIP is already
+installed in the Immcantation container.
+
+    # the executable path is the location of the executable in the Docker container
+    trees <- dowser::getTrees(clones, 
+                              build = "dnapars", 
+                              exec = "/usr/local/bin/dnapars", 
+                              nproc = 1)
+    head(trees)
+
+    ## # A tibble: 6 x 5
+    ##   clone_id data       locus  seqs trees  
+    ##   <chr>    <list>     <chr> <int> <list> 
+    ## 1 19311    <airrClon> IGH      35 <phylo>
+    ## 2 17492    <airrClon> IGH      33 <phylo>
+    ## 3 22261    <airrClon> IGH      33 <phylo>
+    ## 4 8255     <airrClon> IGH      32 <phylo>
+    ## 5 24049    <airrClon> IGH      26 <phylo>
+    ## 6 30934    <airrClon> IGH      23 <phylo>
+
+### Plot trees with dowser and ggtree
+
+Regardless of how you build trees, they are visualized in the same
+manner with the `plotTrees` function. This will return a list of
+`ggplot` objects in the same order as the input object. Here, we color
+the tips by the `isotype` value because we specified that column in the
+`formatClones` step.
+
+Plot all of the trees:
+
+    plots_all <- dowser::plotTrees(trees, tips = "isotype", tipsize = 2)
+
+Plot the largest tree:
+
+    plots_all[[1]]
+
+![](intro-lab_files/intro-lab_unnamed-chunk-26-1.png)
+
+    # save a pdf of all trees
+    dowser::treesToPDF(plots_all,
+              file = file.path("intro-lab_files", "final_data_trees.pdf"),
+              nrow = 2, ncol = 2)
+
+    ## png 
+    ##   2
+
+In addition to the functions for building and visualizing trees,
+`dowser` also implements new techniques for analyzing B cell migration
+and differentiation, as well as for detecting new B cell evolution over
+time. Visit the [dowser website](https://dowser.readthedocs.io) to learn
+more.

@@ -40,12 +40,10 @@ needs_sphinx = '1.8'
 extensions = ['sphinx.ext.intersphinx',
               'sphinx.ext.todo',
               'nbsphinx',
-              'nbsphinx_link',
-              'sphinx_rtd_theme']
+              'nbsphinx_link',              
+              'sphinx_rtd_theme',
+              'myst_parser']
 
-nbsphinx_custom_formats = {
-    '.md': ['jupytext.reads', {'fmt': '.md'}]
-}
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -316,8 +314,8 @@ intersphinx_mapping = {'python': ('https://docs.python.org/3', None),
 #######
 
 # Hack to use the .Rmd tutorials in the documentation
-# Add temporary copy of the .md tutorials and files 
-# from ../training to gdocs/get-started
+# Add temporary copy of the rendered .md tutorials and files 
+# from ../training to docs/get-started
 # and delete them when build finished
 
 # Path to notebooks folder
@@ -338,7 +336,6 @@ def copy_notebooks (app, exception):
                 # Remove yaml header
                 #with open(dest_rmd, 'r') as f: dest_rmd_contents = f.read()
                 #f.close()
-                # copy md_files
                 rmd_name = os.path.basename(src_rmd).split(".")[0]
                 rmd_name = rmd_name + '_files'
                 rmd_files_src_dir = os.path.join(src_dir, rmd_name)
@@ -356,6 +353,8 @@ def remove_notebooks(app, exception):
     src_dir = os.path.join("getting_started")
     for training_file in os.listdir(src_dir):
         if training_file.endswith('.md'):
+            if training_file.endswith('link.md'):
+                continue
             src_rmd = os.path.join(src_dir, training_file)
             os.remove(src_rmd)
             rmd_name = os.path.basename(src_rmd).split(".")[0]
