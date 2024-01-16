@@ -1,7 +1,7 @@
 Release Notes
 ========================================================================
 
-Version 4.4.0.999:  December 18, 2023
+Version 4.4.0.999:  January 11, 2024
 ------------------------------------------------------------------------
 
 Version Updates:
@@ -11,7 +11,7 @@ Version Updates:
 + tigger 1.1.0
 + scoper 1.3.0
 + dowser 2.1.0
-+ enchantr 0.1.7
++ enchantr 0.1.10
 + rabhit 0.2.5
 + igblast 1.22.0
 + seurat 5.0.1
