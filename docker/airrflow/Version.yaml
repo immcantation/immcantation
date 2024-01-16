@@ -1,5 +1,5 @@
 immcantation:
-  version:  devel
+  version:  4.4.0
   date:     2024.01.09
 package:
   presto:   0.7.1
@@ -9,7 +9,7 @@ package:
   tigger:   1.0.1
   scoper:   1.2.1
   dowser:   1.2.0
-  enchantr: dev
+  enchantr: 0.1.10
   igphyml:  1.1.5
 dependency:
   airr-py:  1.5.0
