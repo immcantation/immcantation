@@ -31,9 +31,7 @@ The field of high-throughput adaptive immune receptor repertoire sequencing (AIR
 * V(D)J gene annotation and novel polymorphism detection
 * Inference of B cell clonal relationships
 * Diversity analysis
-* Mutational load profiling
-* Modeling of somatic hypermutation (SHM) targeting
-* Quantification of selection pressure
+* Lineage tree reconstruction 
 
 For installation of docker used in this tutorial, go to the link given
 below:
@@ -357,8 +355,6 @@ Links to other types of analysis. For example, see below "Clonal Lineages".
 -->
 
 ## Dowser: lineage reconstruction
-
-<!-- TBD: Update to Dowser version, which will involve the assignment of germlines as well (createGermlines()) -->
 
 B cell repertoires often consist of hundreds to thousands of separate clones. A clonal lineage recapitulates the ancestor-descendant relationships between clonally-related B cells and uncovering these relationships can provide insights into affinity maturation. The R package `dowser` offers multiple ways to build B cell phylogenetic trees. Before performing lineage reconstruction, some preprocessing in needed.
 
