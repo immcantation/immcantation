@@ -18,11 +18,11 @@ Information on obtaining and using the container with the notebooks and data nee
 the Immcantation tutorials can be found within the general :ref:`guide <DockerGuide>`.
 
 
-Introductory Webinar
+Introduction to B cell repertoire analysis
 -------------------------------------------------------------------------------------------
 
 .. image:: ../_static/start-here.png
-    :alt: Start here: Introductory Webinar and R Notebook
+    :alt: Start here: Introductory tutorial and R Notebook
     :align: left
 
 For a detailed use example for each Immcantation tool follow the tutorial
@@ -38,10 +38,10 @@ introductory webinar. It is also available as an R Notebook
     + V(D)J gene annotation and novel polymorphism detection
     + Inference of B cell clonal relationships
     + Diversity analysis
+    + Lineage tree reconstruction
     + Mutational load profiling
     + Modeling of somatic hypermutation (SHM) targeting
     + Quantification of selection pressure
-
 
 
 Single-cell Analysis
