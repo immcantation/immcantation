@@ -1,7 +1,5 @@
 # Introduction to Bulk B Cell Repertoire Analysis using the Immcantation Framework
 
-![Cover](assets/cover.png)
-
 The field of high-throughput adaptive immune receptor repertoire
 sequencing (AIRR-seq) has experienced significant growth in recent
 years, but this growth has come with considerable complexity and variety

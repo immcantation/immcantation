@@ -18,8 +18,6 @@ knitr::opts_chunk$set(echo=TRUE, cache=params$cache, fig.path=file.path("intro-l
 
 # Introduction to Bulk B Cell Repertoire Analysis using the Immcantation Framework
 
-![Cover](assets/cover.png)
-
 The field of high-throughput adaptive immune receptor repertoire sequencing (AIRR-seq) has experienced significant growth in recent years, but this growth has come with considerable complexity and variety in experimental design. These complexities, combined with the high germline and somatic diversity of immunoglobulin repertoires, present analytical challenges requiring specialized methodologies. In this tutorial, we present an example pipeline for processing bulk BCR data.
 
 -   The tutorial is available as a R Markdown notebook in the
