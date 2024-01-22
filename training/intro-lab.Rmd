@@ -475,7 +475,7 @@ plotMutability(m, nucleotides = c("A","C"), size = 1.2)
 During T-cell dependent adaptive immune responses, B cells undergo cycles of SHM and affinity-dependent selection that leads to the accumulation of mutations that improve their ability to bind antigens. The ability to estimate selection pressure from sequence data is of interest to understand the events driving physiological and pathological immune responses. `shazam` incorporates the Bayesian estimation of Antigen-driven SELectIoN (BASELINe) framework, to detect and quantify selection pressure, based on the analysis of somatic hypermutation patterns. Briefly, `calcBaseline` analyzes the observed frequency of replacement and silent mutations normalized by their expected frequency based on a targeting model, and generates a probability density function (PDF) for the selection strength ($\sum$). This PDF can be used to statistically test for the occurrence of selection, as well as compare selection strength across conditions. An increased frequency of R mutations ($\sum>0$) suggests positive selection, and a decreased frequency of R mutations ($\sum<0$) points towards negative selection .
 <br><br>
 <div style="float:left; margin-right:2em">
-![Selection](assets/selection-formula.png)
+![Selection](assets/selection-formula.svg)
 </div>
 <div>
 positive Σ: Replacement frequency higher than expected

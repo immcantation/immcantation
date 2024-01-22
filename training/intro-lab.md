@@ -912,7 +912,7 @@ mutations (∑ &gt; 0) suggests positive selection, and a decreased
 frequency of R mutations (∑ &lt; 0) points towards negative selection .
 <br><br>
 
-$\sum \equiv log \frac{\pi/(1-\pi)}{\hat{\pi}/(1-\hat{\pi})}$
+![Selection](assets/cover.svg)
 
 positive Σ: Replacement frequency higher than expected negative Σ:
 Replacement frequency lower than expected
