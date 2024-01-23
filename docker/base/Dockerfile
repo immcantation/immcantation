@@ -66,9 +66,6 @@ RUN dnf -y update && dnf install -y \
 ENV LD_LIBRARY_PATH="/usr/lib64/R/lib:/usr/lib64/atlas"
 RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 20
 
-# Use biopython 1.81
-RUN pip install biopython==1.81
-
 # R build setup
 ARG R_REPO="http://lib.stat.cmu.edu/R/CRAN/"
 ARG R_DEPS="c('BiocManager', \
