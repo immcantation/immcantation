@@ -908,11 +908,11 @@ statistically test for the occurrence of selection, as well as compare
 selection strength across conditions. An increased frequency of R
 mutations (∑ &gt; 0) suggests positive selection, and a decreased
 frequency of R mutations (∑ &lt; 0) points towards negative selection .
-<br><br>
 
 ![Selection](assets/selection-formula.svg)
 
 positive Σ: Replacement frequency higher than expected negative Σ:
+
 Replacement frequency lower than expected
 
 The somatic hypermutations that are observed in clonally-related
