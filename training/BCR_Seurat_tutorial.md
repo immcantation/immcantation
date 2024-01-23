@@ -11,35 +11,42 @@ The example files used in this tutorial are subsamples of the original
 10x scRNA-seq and BCR sequencing data from [Turner et
 al. (2020)](https://www.nature.com/articles/s41586-020-2711-0) *Human
 germinal centres engage memory and naive B cells after influenza
-vaccination* Nature. 586, 127–132. The study consists of blood and lymph
-node samples taken from a single patient at multiple time points
-following influenza vaccination.
+vaccination*. The study consists of blood and lymph node samples taken
+from a single patient at multiple time points following influenza
+vaccination.
 
-We extracted a subset (~3000 cells) of single cell GEX/BCR data of
-ultrasound-guided fine needle aspiration (FNA) samples of lymph nodes
-for subject P05. These 3000 cells were randomly divided into two
-pseudo-subjects, ensuring that each subject has distinct clones while
-maintaining a similar clone size distribution. The example data is
-already in the container (`/home/magus/data/`). If you want to, you can
-download it from Zenodo
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10028129.svg)](https://doi.org/10.5281/zenodo.10028129).
-We will use these files:
+-   We extracted a subset (~3000 cells) of single cell GEX/BCR data of
+    ultrasound-guided fine needle aspiration (FNA) samples of lymph
+    nodes for subject P05.
+    -   These 3000 cells were randomly divided into two pseudo-subjects,
+        ensuring that each subject has distinct clones while maintaining
+        a similar clone size distribution.
+-   The example data is already in the container (`/home/magus/data/`).
+    If you want to, you can download it from Zenodo
+    [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10028129.svg)](https://doi.org/10.5281/zenodo.10028129).
+-   We will use these files in particular for this tutorial:
+    -   **BCR.data\_08112023.rds**: R dataframe object containing the
+        single-cell BCR sequencing data.
+    -   **GEX.data\_08112023.rds**: Gene expression data in the form of
+        a Seurat object. *Processing and annotation steps are not
+        covered in this tutorial.* You can learn more on these topics in
+        Seurat’s documentation and tutorials:
+        <https://satijalab.org/seurat/articles/pbmc3k_tutorial.html>
+-   Cell type abbreviations: DC = dendritic cells, GC B = germinal
+    center B cells, NK = natural killer cells, PB = plasmablasts, RMB =
+    resting memory B cells.
 
--   **BCR.data\_08112023.rds**: R dataframe object containing the
-    single-cell BCR sequencing data.
--   **GEX.data\_08112023.rds**: Gene Expression Data. This file contains
-    a Seurat object with RNA-seq data already processed and annotated.
-    Processing and annotation are not covered in this tutorial. You can
-    learn more on these topics in Seurat’s documentation and tutorials:
-    <https://satijalab.org/seurat/articles/pbmc3k_tutorial.html>
-
-Please note that you may have to alter the code in this tutorial if you
-are not using 10x or prefer a different single-cell system other than
-Seurat (such as
+Please note that in the code blocks that follow, `#` denote comments,
+`##` denote code outputs and plain text is the code itself. This allows
+you to copy/paste as needed. You may have to alter the code in this
+tutorial if you are not using 10x Genomics data or prefer a different
+single-cell system other than Seurat (such as
 [SingleCellExperiment](https://bioconductor.org/packages/release/bioc/html/SingleCellExperiment.html)
 or [scverse](https://scverse.org/)).
 
-    # make sure the environment is clear
+    # make sure the environment is clear of user objects
+    # note that custom set working directories, loaded libraries, etc. will be unaffected
+    # you may need to fully restart R for reproducibility
     rm(list = ls())
 
     # show some useful information
@@ -49,8 +56,8 @@ or [scverse](https://scverse.org/)).
         sep = "\n")
 
     ## R version 4.3.2 (2023-10-31)
-    ## Platform: x86_64-redhat-linux-gnu
-    ## Running under: Fedora Linux 38 (Container Image)
+    ## Platform: x86_64-pc-linux-gnu
+    ## Running under: Ubuntu 20.04.6 LTS
 
     # cat("\n")
 
@@ -63,10 +70,10 @@ or [scverse](https://scverse.org/)).
 
     ## dplyr: 1.1.4
     ## ggplot2: 3.4.4
-    ## Seurat: 5.0.1
+    ## Seurat: 4.4.0
 
     # set the data directory
-    path_data <- file.path("..", "data") # change this to fit your own structure
+    path_data <- file.path("/media/edelaron/Midas/immcantation/immcantation-BCR-Seurat-tutorial") # change this to fit your own structure
     # so that the plots are consistent
     set.seed(42)
 
@@ -116,16 +123,29 @@ the example GEX data. We have also renamed `c_call` to `c_gene`.*
       select(day, sample, cell_id, cell_id_unique, v_call, j_call, c_gene) %>%
       slice_sample(n = 5)
 
-    ## # A tibble: 5 x 7
+    ## # A tibble: 5 × 7
     ##     day sample                cell_id        cell_id_unique v_call j_call c_gene
     ##   <int> <chr>                 <chr>          <chr>          <chr>  <chr>  <chr> 
-    ## 1     0 subject1_FNA_d0_2_Y1  ATTATCCAGACAT~ subject1_FNA_~ IGHV3~ IGHJ2~ IGHA  
-    ## 2     5 subject1_FNA_d5_2_Y1  GACTGCGTCGTAG~ subject1_FNA_~ IGLV5~ IGLJ2~ IGLC2 
-    ## 3     0 subject2_FNA_d0_1_Y1  AGCCTAAGTATAT~ subject2_FNA_~ IGHV1~ IGHJ6~ IGHG  
-    ## 4    60 subject2_FNA_d60_1_Y1 CACATAGAGTACT~ subject2_FNA_~ IGKV4~ IGKJ1~ IGKC  
-    ## 5    60 subject1_FNA_d60_1_Y1 CATCGAAAGGCAG~ subject1_FNA_~ IGHV1~ IGHJ5~ IGHG
+    ## 1     0 subject1_FNA_d0_2_Y1  ATTATCCAGACAT… subject1_FNA_… IGHV3… IGHJ2… IGHA  
+    ## 2     5 subject1_FNA_d5_2_Y1  GACTGCGTCGTAG… subject1_FNA_… IGLV5… IGLJ2… IGLC2 
+    ## 3     0 subject2_FNA_d0_1_Y1  AGCCTAAGTATAT… subject2_FNA_… IGHV1… IGHJ6… IGHG  
+    ## 4    60 subject2_FNA_d60_1_Y1 CACATAGAGTACT… subject2_FNA_… IGKV4… IGKJ1… IGKC  
+    ## 5    60 subject1_FNA_d60_1_Y1 CATCGAAAGGCAG… subject1_FNA_… IGHV1… IGHJ5… IGHG
 
-The GEX data here has already had cell types annotated (using
+    # make sure that there are no empty c_gene rows
+    bcr_data <- bcr_data %>% dplyr::filter(!is.na(c_gene), c_gene != "")
+
+    # define custom colors for the cell types (for plotting later)
+    cols_anno <- c("ABC" = "green", "GC" = "dodgerblue2", "Naive" = "darkgoldenrod2",
+                   "PB" = "firebrick2", "RMB" = "plum2")
+
+    # define custom themes for plotting
+    labels_standard <- theme_bw() + theme(plot.title = element_text(hjust = 0.5))
+    clean_umap <- theme(axis.text = element_blank(),
+                        axis.ticks = element_blank(),
+                        aspect.ratio = 1)
+
+The GEX data used here has already had cell types annotated (using
 characteristic marker genes). We suggest creating a column in the
 object’s metadata to store these annotations
 e.g. `gex_obj$annotated_clusters <- Idents(gex_obj)` (if the annotations
@@ -135,27 +155,64 @@ are the `active.ident`).
 
 Alphabetize the cell types within the GEX if desired:
 
-    # nice for plotting
+    # useful for plotting
     gex_obj$annotated_clusters <- 
       factor(gex_obj$annotated_clusters,
              levels = sort(levels(gex_obj$annotated_clusters)))
 
+    # if you have a numerical component to your cluster names, you may want to use something like stringr::str_sort(..., numeric = TRUE) to have them alphabetize properly aka alphanumerically
+
 ## Integration of BCR data with the GEX Seurat object
 
-The meta.data data slot in the Seurat object contains metadata for each
-cell and is a good place to hold information from BCR data.
+The `meta.data` data slot in the Seurat object contains metadata for
+each cell and is a good place to hold information from BCR data.
 
 -   For example, we can indicate if a cell in the GEX data has a
     corresponding BCR or not by adding a column called `contains_bcr.`
--   If the column `contains_bcr` is valid, then we can add other useful
-    BCR data information such as clonal lineage, mutation frequency,
-    isotype, etc. to the metadata slot.
--   Note that you can only match information to one cell at a time in
-    the Seurat object. This means that you cannot integrate both the
+    -   If the column `contains_bcr` is valid, then we can add other
+        useful BCR data information such as clonal lineage, mutation
+        frequency, isotype, etc. to the `meta.data` slot.
+-   *Note that you can only match information to one cell at a time in
+    the Seurat object.* This means that you cannot integrate both the
     heavy chain and the light chain information for a cell. We suggest
     only adding in the heavy chain information.
 -   Make sure to check that all of your heavy chains had a `c_gene`
     assigned e.g. with `dplyr::filter(bcr_data, is.na(c_gene))`.
+
+### Check barcode styles
+
+Sometimes analysts will remove the GEM well indicating suffixes
+(e.g. “-1”) from barcodes when they first read in the initial data
+e.g. with `Read10X(..., strip.suffix = TRUE)`. If this has been done,
+you must ensure that the same is done with your AIRR data so that you
+can properly match up the barcodes for the following integration step.
+
+    # let's see what our GEX barcodes look like
+    head(Cells(gex_obj))
+
+    ## [1] "subject2_FNA_d60_1_Y1_GCGACCAGTTGGAGGT-1"
+    ## [2] "subject1_FNA_d60_2_Y1_GCATGCGAGCCACTAT-1"
+    ## [3] "subject1_FNA_d60_1_Y1_TGACGGCTCGTACCGG-1"
+    ## [4] "subject2_FNA_d60_1_Y1_GTTTCTATCAACCAAC-1"
+    ## [5] "subject1_FNA_d0_2_Y1_AACTCAGAGGAATCGC-1" 
+    ## [6] "subject2_FNA_d0_2_Y1_CTAGAGTTCAGTCAGT-1"
+
+    # now let's look at the BCR barcodes
+    head(bcr_data$cell_id_unique)
+
+    ## [1] "subject2_FNA_d60_1_Y1_GCGACCAGTTGGAGGT-1"
+    ## [2] "subject1_FNA_d60_1_Y1_GTGCTTCTCTGTCTCG-1"
+    ## [3] "subject1_FNA_d60_2_Y1_GCATGCGAGCCACTAT-1"
+    ## [4] "subject1_FNA_d60_1_Y1_TGACGGCTCGTACCGG-1"
+    ## [5] "subject2_FNA_d60_1_Y1_GTTTCTATCAACCAAC-1"
+    ## [6] "subject1_FNA_d0_2_Y1_AACTCAGAGGAATCGC-1"
+
+Our data here matches up, but if it hadn’t, we could have run a command
+such as
+`bcr_data %>% tidry::separate(cell_id_unique, sep = "-", into = "cell_id_unique_formatted", remove = FALSE, extra = "drop")`
+to create a new column called “cell\_id\_unique\_formatted” (or whatever
+you’d like to call it, you could even just replace the original column)
+without the suffixes.
 
 ### Create the new metadata columns
 
@@ -210,16 +267,22 @@ cell and is a good place to hold information from BCR data.
 
 ### Examine integrated information
 
-    # you could fill by isotype to get even more info
+This bar plot shows how much of your GEX data has corresponding BCRs.
+
+    # you can fill by isotype to get a little more info
     ggplot(gex_obj[[]], aes(x = contains_bcr, fill = Isotype)) +
       geom_bar(color = "black", linewidth = 0.2) +
       labs(title = "GEX Data with Matching BCRs",
            x = "Contains BCRs", y = "Count") +
-      theme_bw() + theme(plot.title = element_text(hjust = 0.5))
+      labels_standard
 
 ![](BCR_Seurat_tutorial_files/BCR_Seurat_tutorial_gex-bcr-bar-contains-bcr-1.png)
 
-Check the BCRS per annotated cell type:
+This stacked bar plot shows how much of the GEX data corresponds with
+BCRs broken down by cell type. You can see both the percentage and the
+raw counts on the top and bottom of each bar (since sometimes
+percentages can be misleading). For example, as expected, 100% of the
+475 T cells do not have any corresponding BCRs.
 
     # calculate the percentage of each cell type that has BCRs
     pct_bcrs <- as.data.frame(table(gex_obj$contains_bcr,
@@ -233,7 +296,7 @@ Check the BCRS per annotated cell type:
                                                levels = c(TRUE, FALSE)))
 
     # make a stacked bar plot, with raw counts for each group on top/bottom
-    # you could use scales::label_percent to make the %'s nicer
+    # you could use scales::label_percent to make the %'s nicer e.g. in the y axis
     # change the label size, percent rounding, colors, etc. as desired
     ggplot(data = pct_bcrs,
            aes(x = annotated_clusters, y = Percent, fill = contains_bcr)) +
@@ -254,7 +317,7 @@ Check the BCRS per annotated cell type:
       geom_text(mapping = aes(label = ifelse(contains_bcr == FALSE, Count, ""),
                               y = -1),
                 color = "black", size = 3) +
-      theme_bw() + theme(plot.title = element_text(hjust = 0.5))
+      labels_standard
 
     ## Warning: Removed 5 rows containing missing values (`geom_text()`).
 
@@ -271,23 +334,21 @@ biomarker gene expression are accurate or not.
 
     highlighted_cells <- Cells(gex_obj)[which(gex_obj$contains_bcr)]
 
+    # you could add a text box to the labels or repel them to make them easier to see
     UMAPPlot(object = gex_obj, cells.highlight = highlighted_cells,
              label = TRUE, label.size = 5, pt.size = 0.7) +
       scale_color_manual(name = "Data Type",
                          labels = c("non-BCR", "BCR"),
-                         values = c("gray", "red"))
+                         values = c("gray", "red")) +
+      labels_standard + clean_umap
 
     ## Scale for colour is already present.
     ## Adding another scale for colour, which will replace the existing scale.
 
 ![](BCR_Seurat_tutorial_files/BCR_Seurat_tutorial_gex-bcr-umap-1.png)
 
-As we can see, there is a very good correlation between the BCR cells
-(in red) and the clusters labeled as B cells.
-
-*UMAP labels explanation: DC = dendritic cells, GC B = germinal center B
-cells, NK = natural killer cells, PB = plasmablasts, RMB = resting
-memory B cells.*
+As we can see, there is a very good correlation between BCR cells with
+BCRs (in red) and the clusters labeled as B cells.
 
 ## Integration of GEX cell annotations in the BCR data
 
@@ -308,35 +369,37 @@ integrated into BCR data.
     bcr_gex_data <- left_join(bcr_data, gex_data_selected,
                               by = "cell_id_unique")
 
-    # keep BCR cells has matched cells from GEX data (assuming everything was annotated)
+    # keep BCR cells with matched GEX cells (assuming everything was annotated)
     bcr_gex_data <- dplyr::filter(bcr_gex_data, !is.na(gex_annotation))
-
-    # filter out the light chains?
 
     # examples of the new columns
     ncol_bcr_gex <- ncol(bcr_gex_data)
     bcr_gex_data[, (ncol_bcr_gex - 3):ncol_bcr_gex] %>% slice_sample(n = 5)
 
-    ## # A tibble: 5 x 4
+    ## # A tibble: 5 × 4
     ##   subject  gex_umap_1 gex_umap_2 gex_annotation
     ##   <chr>         <dbl>      <dbl> <fct>         
-    ## 1 subject1       4.46     9.39   RMB           
-    ## 2 subject1       9.01    -3.00   RMB           
-    ## 3 subject1       5.96     0.0959 Naive         
-    ## 4 subject2       7.29    -5.19   ABC           
-    ## 5 subject2       8.81    -3.88   RMB
+    ## 1 subject1       7.26     -4.29  RMB           
+    ## 2 subject1       9.01     -3.00  RMB           
+    ## 3 subject1      11.2      -4.39  ABC           
+    ## 4 subject2       6.28     -0.663 Naive         
+    ## 5 subject2       8.81     -3.88  RMB
 
 #### Plot mutation frequency by cell type
 
-    ggplot(bcr_gex_data, aes(y = mu_freq, x = gex_annotation, fill = gex_annotation)) +
+    ggplot(bcr_gex_data,
+           aes(y = mu_freq, x = gex_annotation, fill = gex_annotation)) +
       geom_boxplot() +
       geom_jitter(width = 0.2, alpha = 0.3) +
-      labs(x = "", y = "Mutation frequency", fill = "Cell type") +
-      theme(axis.text.x = element_blank())
+      scale_fill_manual(values = cols_anno) +
+      labs(title = "Mutation frequency by GEX cell type",
+           x = "", y = "Mutation frequency", fill = "Cell Type") +
+      labels_standard +
+      theme(axis.text.x = element_blank(), axis.ticks.x = element_blank())
 
-    ## Warning: Removed 2938 rows containing non-finite values (`stat_boxplot()`).
+    ## Warning: Removed 2922 rows containing non-finite values (`stat_boxplot()`).
 
-    ## Warning: Removed 2938 rows containing missing values (`geom_point()`).
+    ## Warning: Removed 2922 rows containing missing values (`geom_point()`).
 
 ![](BCR_Seurat_tutorial_files/BCR_Seurat_tutorial_bcr-gex-mu-freq-cell-type-1.png)
 
@@ -345,15 +408,12 @@ integrated into BCR data.
 Using the annotated information, we can lay out cells from the BCR data
 in a UMAP plot color-coded by the B cell subtypes.
 
-    # use custom colors for the cell types
-    anno_cols <- c("ABC" = "green", "GC" = "dodgerblue2", "Naive" = "darkgoldenrod2",
-                   "PB" = "firebrick2", "RMB" = "plum2")
-
     ggplot(data = bcr_gex_data,
            aes(x = gex_umap_1, y = gex_umap_2, color = gex_annotation)) +
       geom_point() +
-      scale_colour_manual(name = "GEX Cell Types", values = anno_cols) +
-      theme_bw()
+      labs(x = "GEX UMAP 1", y = "GEX UMAP 2") +
+      scale_color_manual(name = "Cell Type", values = cols_anno) +
+      labels_standard + clean_umap
 
 ![](BCR_Seurat_tutorial_files/BCR_Seurat_tutorial_bcr-gex-umap-clusters-1.png)
 
@@ -363,8 +423,8 @@ Plot by isotype:
     ggplot(data = dplyr::filter(bcr_gex_data, locus == "IGH"),
            aes(x = gex_umap_1, y = gex_umap_2, color = c_gene)) +
       geom_point() +
-      labs(color = "Isotype") +
-      theme_bw()
+      labs(x = "GEX UMAP 1", y = "GEX UMAP 2", color = "Isotype") +
+      labels_standard + clean_umap
 
 ![](BCR_Seurat_tutorial_files/BCR_Seurat_tutorial_bcr-gex-umap-isotypes-1.png)
 
@@ -378,12 +438,14 @@ B cells at various time points.
     p <- ggplot(data = dplyr::filter(bcr_gex_data, gex_annotation != "GC"),
                 aes(x = gex_umap_1, y = gex_umap_2)) +
            geom_point(color = "lightgray", size = 1) +
-           theme_bw() + facet_wrap(~day, nrow = 1)
+           labels_standard + facet_wrap(~day, nrow = 1)
 
     # isotype information
-    p + geom_point(data = dplyr::filter(bcr_gex_data, gex_annotation == "GC"),
+    p + geom_point(data = dplyr::filter(bcr_gex_data,
+                                        gex_annotation == "GC"),
                    aes(x = gex_umap_1, y = gex_umap_2, color = c_gene),
-                   size = 1)
+                   size = 1) +
+        labs(x = "GEX UMAP 1", y = "GEX UMAP 2")
 
 ![](BCR_Seurat_tutorial_files/BCR_Seurat_tutorial_bcr-gex-umap-other-isotypes-1.png)
 
@@ -391,7 +453,8 @@ B cells at various time points.
     p + geom_point(data = dplyr::filter(bcr_gex_data, gex_annotation == "GC",
                                         locus == "IGH"),
                    aes(x = gex_umap_1, y = gex_umap_2, color = c_gene),
-                   size = 1)
+                   size = 1) +
+        labs(x = "GEX UMAP 1", y = "GEX UMAP 2", color = "Isotype")
 
 ![](BCR_Seurat_tutorial_files/BCR_Seurat_tutorial_bcr-gex-umap-other-isotypes-2.png)
 
@@ -400,6 +463,7 @@ B cells at various time points.
     p + geom_point(data = dplyr::filter(bcr_gex_data, gex_annotation == "GC",
                                         locus == "IGH"),
                    aes(x = gex_umap_1, y = gex_umap_2, color = mu_freq),
-                   size = 1)
+                   size = 1) +
+        labs(x = "GEX UMAP 1", y = "GEX UMAP 2", color = "Mutation Frequency")
 
 ![](BCR_Seurat_tutorial_files/BCR_Seurat_tutorial_bcr-gex-umap-other-mu-freq-1.png)
