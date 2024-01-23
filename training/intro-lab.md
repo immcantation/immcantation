@@ -911,9 +911,9 @@ frequency of R mutations (∑ &lt; 0) points towards negative selection .
 
 ![Selection](assets/selection-formula.svg)
 
-positive Σ: Replacement frequency higher than expected negative Σ:
+positive Σ: Replacement frequency higher than expected 
 
-Replacement frequency lower than expected
+negative Σ: Replacement frequency lower than expected
 
 The somatic hypermutations that are observed in clonally-related
 sequences are not independent events. In order to generate a set of
