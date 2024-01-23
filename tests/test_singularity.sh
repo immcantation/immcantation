@@ -24,10 +24,11 @@ singularity exec -e -B $DATA_DIR:/data -B $RUN_DIR:/scratch $IMAGE preprocess-ph
     -s $READS_R1 -o $OUT_DIR -p $NPROC
 
 # AbSeq
+SAMPLE=HD13M
 READS_R1=/data/sequences/HD13M_10K_R1.fastq
 READS_R2=/data/sequences/HD13M_10K_R2.fastq
 YAML=/data/report.yaml
-OUT_DIR="/scratch/presto"
+OUT_DIR="/scratch/abseq"
 
 singularity exec -e -B $DATA_DIR:/data -B $RUN_DIR:/scratch $IMAGE presto-abseq \
     -1 $READS_R1 -2 $READS_R2 -y $YAML -n $SAMPLE -o $OUT_DIR -p $NPROC
@@ -72,7 +73,7 @@ singularity exec -e -B $DATA_DIR:/data -B $RUN_DIR:/scratch $IMAGE \
 
 # IgBLAST
 SAMPLE=HD13M
-READS="/scratch/presto/${SAMPLE}-final_collapse-unique_atleast-2.fastq"
+READS="/scratch/abseq/${SAMPLE}-final_collapse-unique_atleast-2.fastq"
 OUT_DIR="/scratch/changeo"
 
 singularity exec -B $DATA_DIR:/data -B $RUN_DIR:/scratch $IMAGE changeo-igblast \
