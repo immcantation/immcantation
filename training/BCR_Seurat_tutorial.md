@@ -73,7 +73,7 @@ or [scverse](https://scverse.org/)).
     ## Seurat: 4.4.0
 
     # set the data directory
-    path_data <- file.path("/media/edelaron/Midas/immcantation/immcantation-BCR-Seurat-tutorial") # change this to fit your own structure
+    path_data <- file.path("", "data") # change this to fit your own structure
     # so that the plots are consistent
     set.seed(42)
 
