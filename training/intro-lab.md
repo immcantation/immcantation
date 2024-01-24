@@ -34,9 +34,9 @@ Use this command to list the software versions:
     versions report
 
     ## immcantation: devel
-    ## date: 2024.01.11
+    ## date: 2024.01.23
     ## 
-    ## presto: 0.7.1.999
+    ## presto: 0.7.2
     ## changeo: 1.3.0
     ## alakazam: 1.3.0.999
     ## shazam: 1.2.0.999
@@ -68,9 +68,9 @@ build:
 
     builds report
 
-    ## date: 2024-01-21 18:39:41 UTC
-    ## immcantation: 4.4.0-238-g27d75636645a+
-    ## presto: 0.7.1-18-g2140c55eefae
+    ## date: 2024-01-24 07:50:57 UTC
+    ## immcantation: 4.4.0-251-ga68604b5037a+
+    ## presto: 0.7.2
     ## changeo: 1.3.0-20-g14bc8feffaaa
     ## alakazam: 1.2.0-85-gdfd2bff439c3+
     ## shazam: 1.1.2-67-gc1c6483baa5f+
@@ -167,9 +167,9 @@ the V(D)J genes with `AssignGenes.py`.
     ##      FIELD> None
     ##     VALUES> None
     ## 
-    ## PROGRESS> 20:28:12 |Reading files            | 0.0 minPROGRESS> 20:28:12 |Done                     | 0.0 min
+    ## PROGRESS> 13:43:20 |Reading files            | 0.0 minPROGRESS> 13:43:20 |Done                     | 0.0 min
     ## 
-    ## PROGRESS> 20:28:12 |Sampling n=200           | 0.0 minPROGRESS> 20:28:12 |Done                     | 0.0 min
+    ## PROGRESS> 13:43:20 |Sampling n=200           | 0.0 minPROGRESS> 13:43:20 |Done                     | 0.0 min
     ## 
     ## MAX_COUNT> 200
     ##   SAMPLED> 200
@@ -203,7 +203,7 @@ the V(D)J genes with `AssignGenes.py`.
     ##     LOCI> ig
     ##    NPROC> 8
     ## 
-    ## PROGRESS> 20:28:14 |Running IgBLAST          | 0.0 minPROGRESS> 20:28:17 |Done                     | 0.1 min
+    ## PROGRESS> 13:43:22 |Running IgBLAST          | 0.0 minPROGRESS> 13:43:24 |Done                     | 0.0 min
     ## 
     ##   PASS> 200
     ## OUTPUT> input_sample1-n200_igblast.fmt7
@@ -227,7 +227,7 @@ time to finish running.*
     ##     LOCI> ig
     ##    NPROC> 8
     ## 
-    ## PROGRESS> 20:28:18 |Running IgBLAST          | 0.0 minPROGRESS> 21:54:43 |Done                     | 86.4 min
+    ## PROGRESS> 13:43:27 |Running IgBLAST          | 0.0 minPROGRESS> 14:01:27 |Done                     | 18.0 min
     ## 
     ##   PASS> 91010
     ## OUTPUT> input_igblast.fmt7
@@ -275,9 +275,9 @@ AIRR format. The path to the reference germlines is provided by `-r`.
     ##       EXTENDED> False
     ## INFER_JUNCTION> False
     ## 
-    ## PROGRESS> 21:54:43 |Loading files       | 0.0 minPROGRESS> 21:54:44 |Done                | 0.0 min
+    ## PROGRESS> 14:01:27 |Loading files       | 0.0 minPROGRESS> 14:01:28 |Done                | 0.0 min
     ## 
-    ## PROGRESS> 21:54:44 |                    |   0% (     0) 0.0 minPROGRESS> 21:54:47 |#                   |   5% ( 4,551) 0.0 minPROGRESS> 21:54:49 |##                  |  10% ( 9,102) 0.1 minPROGRESS> 21:54:51 |###                 |  15% (13,653) 0.1 minPROGRESS> 21:54:54 |####                |  20% (18,204) 0.2 minPROGRESS> 21:54:56 |#####               |  25% (22,755) 0.2 minPROGRESS> 21:54:58 |######              |  30% (27,306) 0.2 minPROGRESS> 21:55:00 |#######             |  35% (31,857) 0.3 minPROGRESS> 21:55:02 |########            |  40% (36,408) 0.3 minPROGRESS> 21:55:04 |#########           |  45% (40,959) 0.3 minPROGRESS> 21:55:06 |##########          |  50% (45,510) 0.4 minPROGRESS> 21:55:08 |###########         |  55% (50,061) 0.4 minPROGRESS> 21:55:10 |############        |  60% (54,612) 0.4 minPROGRESS> 21:55:12 |#############       |  65% (59,163) 0.5 minPROGRESS> 21:55:14 |##############      |  70% (63,714) 0.5 minPROGRESS> 21:55:16 |###############     |  75% (68,265) 0.5 minPROGRESS> 21:55:18 |################    |  80% (72,816) 0.6 minPROGRESS> 21:55:20 |#################   |  85% (77,367) 0.6 minPROGRESS> 21:55:23 |##################  |  90% (81,918) 0.6 minPROGRESS> 21:55:25 |################### |  95% (86,469) 0.7 minPROGRESS> 21:55:27 |####################| 100% (91,010) 0.7 min
+    ## PROGRESS> 14:01:28 |                    |   0% (     0) 0.0 minPROGRESS> 14:01:31 |#                   |   5% ( 4,551) 0.0 minPROGRESS> 14:01:34 |##                  |  10% ( 9,102) 0.1 minPROGRESS> 14:01:36 |###                 |  15% (13,653) 0.1 minPROGRESS> 14:01:39 |####                |  20% (18,204) 0.2 minPROGRESS> 14:01:42 |#####               |  25% (22,755) 0.2 minPROGRESS> 14:01:44 |######              |  30% (27,306) 0.3 minPROGRESS> 14:01:46 |#######             |  35% (31,857) 0.3 minPROGRESS> 14:01:49 |########            |  40% (36,408) 0.3 minPROGRESS> 14:01:52 |#########           |  45% (40,959) 0.4 minPROGRESS> 14:01:54 |##########          |  50% (45,510) 0.4 minPROGRESS> 14:01:56 |###########         |  55% (50,061) 0.5 minPROGRESS> 14:01:59 |############        |  60% (54,612) 0.5 minPROGRESS> 14:02:01 |#############       |  65% (59,163) 0.5 minPROGRESS> 14:02:03 |##############      |  70% (63,714) 0.6 minPROGRESS> 14:02:06 |###############     |  75% (68,265) 0.6 minPROGRESS> 14:02:08 |################    |  80% (72,816) 0.7 minPROGRESS> 14:02:10 |#################   |  85% (77,367) 0.7 minPROGRESS> 14:02:13 |##################  |  90% (81,918) 0.7 minPROGRESS> 14:02:15 |################### |  95% (86,469) 0.8 minPROGRESS> 14:02:17 |####################| 100% (91,010) 0.8 min
     ## 
     ## OUTPUT> data_db-pass.tsv
     ##   PASS> 87785
@@ -306,7 +306,7 @@ output file (specified by `--outname`).
     ##  VALUES> T
     ##   REGEX> False
     ## 
-    ## PROGRESS> 21:55:28 |                    |   0% (     0) 0.0 minPROGRESS> 21:55:28 |#                   |   5% ( 4,390) 0.0 minPROGRESS> 21:55:28 |##                  |  10% ( 8,780) 0.0 minPROGRESS> 21:55:28 |###                 |  15% (13,170) 0.0 minPROGRESS> 21:55:28 |####                |  20% (17,560) 0.0 minPROGRESS> 21:55:28 |#####               |  25% (21,950) 0.0 minPROGRESS> 21:55:28 |######              |  30% (26,340) 0.0 minPROGRESS> 21:55:29 |#######             |  35% (30,730) 0.0 minPROGRESS> 21:55:29 |########            |  40% (35,120) 0.0 minPROGRESS> 21:55:29 |#########           |  45% (39,510) 0.0 minPROGRESS> 21:55:29 |##########          |  50% (43,900) 0.0 minPROGRESS> 21:55:29 |###########         |  55% (48,290) 0.0 minPROGRESS> 21:55:29 |############        |  60% (52,680) 0.0 minPROGRESS> 21:55:29 |#############       |  65% (57,070) 0.0 minPROGRESS> 21:55:29 |##############      |  70% (61,460) 0.0 minPROGRESS> 21:55:30 |###############     |  75% (65,850) 0.0 minPROGRESS> 21:55:30 |################    |  80% (70,240) 0.0 minPROGRESS> 21:55:30 |#################   |  85% (74,630) 0.0 minPROGRESS> 21:55:30 |##################  |  90% (79,020) 0.0 minPROGRESS> 21:55:30 |################### |  95% (83,410) 0.0 minPROGRESS> 21:55:30 |####################| 100% (87,785) 0.0 min
+    ## PROGRESS> 14:02:18 |                    |   0% (     0) 0.0 minPROGRESS> 14:02:18 |#                   |   5% ( 4,390) 0.0 minPROGRESS> 14:02:18 |##                  |  10% ( 8,780) 0.0 minPROGRESS> 14:02:18 |###                 |  15% (13,170) 0.0 minPROGRESS> 14:02:18 |####                |  20% (17,560) 0.0 minPROGRESS> 14:02:19 |#####               |  25% (21,950) 0.0 minPROGRESS> 14:02:19 |######              |  30% (26,340) 0.0 minPROGRESS> 14:02:19 |#######             |  35% (30,730) 0.0 minPROGRESS> 14:02:19 |########            |  40% (35,120) 0.0 minPROGRESS> 14:02:19 |#########           |  45% (39,510) 0.0 minPROGRESS> 14:02:19 |##########          |  50% (43,900) 0.0 minPROGRESS> 14:02:19 |###########         |  55% (48,290) 0.0 minPROGRESS> 14:02:19 |############        |  60% (52,680) 0.0 minPROGRESS> 14:02:20 |#############       |  65% (57,070) 0.0 minPROGRESS> 14:02:20 |##############      |  70% (61,460) 0.0 minPROGRESS> 14:02:20 |###############     |  75% (65,850) 0.0 minPROGRESS> 14:02:20 |################    |  80% (70,240) 0.0 minPROGRESS> 14:02:20 |#################   |  85% (74,630) 0.0 minPROGRESS> 14:02:20 |##################  |  90% (79,020) 0.0 minPROGRESS> 14:02:20 |################### |  95% (83,410) 0.0 minPROGRESS> 14:02:20 |####################| 100% (87,785) 0.0 min
     ## 
     ##    OUTPUT> data_p_parse-select.tsv
     ##   RECORDS> 87785
@@ -334,7 +334,7 @@ data.
     ##  VALUES> IGHV
     ##   REGEX> True
     ## 
-    ## PROGRESS> 21:55:31 |                    |   0% (     0) 0.0 minPROGRESS> 21:55:31 |#                   |   5% ( 3,249) 0.0 minPROGRESS> 21:55:31 |##                  |  10% ( 6,498) 0.0 minPROGRESS> 21:55:31 |###                 |  15% ( 9,747) 0.0 minPROGRESS> 21:55:31 |####                |  20% (12,996) 0.0 minPROGRESS> 21:55:32 |#####               |  25% (16,245) 0.0 minPROGRESS> 21:55:32 |######              |  30% (19,494) 0.0 minPROGRESS> 21:55:32 |#######             |  35% (22,743) 0.0 minPROGRESS> 21:55:32 |########            |  40% (25,992) 0.0 minPROGRESS> 21:55:32 |#########           |  45% (29,241) 0.0 minPROGRESS> 21:55:32 |##########          |  50% (32,490) 0.0 minPROGRESS> 21:55:32 |###########         |  55% (35,739) 0.0 minPROGRESS> 21:55:32 |############        |  60% (38,988) 0.0 minPROGRESS> 21:55:32 |#############       |  65% (42,237) 0.0 minPROGRESS> 21:55:33 |##############      |  70% (45,486) 0.0 minPROGRESS> 21:55:33 |###############     |  75% (48,735) 0.0 minPROGRESS> 21:55:33 |################    |  80% (51,984) 0.0 minPROGRESS> 21:55:33 |#################   |  85% (55,233) 0.0 minPROGRESS> 21:55:33 |##################  |  90% (58,482) 0.0 minPROGRESS> 21:55:33 |################### |  95% (61,731) 0.0 minPROGRESS> 21:55:33 |####################| 100% (64,968) 0.0 min
+    ## PROGRESS> 14:02:21 |                    |   0% (     0) 0.0 minPROGRESS> 14:02:21 |#                   |   5% ( 3,249) 0.0 minPROGRESS> 14:02:22 |##                  |  10% ( 6,498) 0.0 minPROGRESS> 14:02:22 |###                 |  15% ( 9,747) 0.0 minPROGRESS> 14:02:22 |####                |  20% (12,996) 0.0 minPROGRESS> 14:02:22 |#####               |  25% (16,245) 0.0 minPROGRESS> 14:02:22 |######              |  30% (19,494) 0.0 minPROGRESS> 14:02:22 |#######             |  35% (22,743) 0.0 minPROGRESS> 14:02:22 |########            |  40% (25,992) 0.0 minPROGRESS> 14:02:22 |#########           |  45% (29,241) 0.0 minPROGRESS> 14:02:22 |##########          |  50% (32,490) 0.0 minPROGRESS> 14:02:23 |###########         |  55% (35,739) 0.0 minPROGRESS> 14:02:23 |############        |  60% (38,988) 0.0 minPROGRESS> 14:02:23 |#############       |  65% (42,237) 0.0 minPROGRESS> 14:02:23 |##############      |  70% (45,486) 0.0 minPROGRESS> 14:02:23 |###############     |  75% (48,735) 0.0 minPROGRESS> 14:02:23 |################    |  80% (51,984) 0.0 minPROGRESS> 14:02:23 |#################   |  85% (55,233) 0.0 minPROGRESS> 14:02:23 |##################  |  90% (58,482) 0.0 minPROGRESS> 14:02:24 |################### |  95% (61,731) 0.0 minPROGRESS> 14:02:24 |####################| 100% (64,968) 0.0 min
     ## 
     ##    OUTPUT> data_ph_parse-select.tsv
     ##   RECORDS> 64968
@@ -543,11 +543,11 @@ for use in the following steps.
       select(v_call, v_call_genotyped)
 
     ## # A tibble: 3 x 2
-    ##   v_call                  v_call_genotyped
-    ##   <chr>                   <chr>           
-    ## 1 IGHV3-15*04             IGHV3-15*01     
-    ## 2 IGHV5-51*01,IGHV5-51*03 IGHV5-51*01     
-    ## 3 IGHV3-66*04             IGHV3-66*01
+    ##   v_call                      v_call_genotyped
+    ##   <chr>                       <chr>           
+    ## 1 IGHV4-30-4*09,IGHV4-31*03   IGHV4-30-4*09   
+    ## 2 IGHV3-7*01,IGHV3-7*03       IGHV3-7*01      
+    ## 3 IGHV4-30-2*07,IGHV4-30-4*01 IGHV4-30-2*07
 
     write_rearrangement(db, file.path("results", "tigger", "data_ph_genotyped.tsv"))
 
@@ -908,10 +908,11 @@ statistically test for the occurrence of selection, as well as compare
 selection strength across conditions. An increased frequency of R
 mutations (∑ &gt; 0) suggests positive selection, and a decreased
 frequency of R mutations (∑ &lt; 0) points towards negative selection .
+<br><br>
 
 ![Selection](assets/selection-formula.svg)
 
-positive Σ: Replacement frequency higher than expected 
+positive Σ: Replacement frequency higher than expected
 
 negative Σ: Replacement frequency lower than expected
 
