@@ -56,8 +56,8 @@ or [scverse](https://scverse.org/)).
         sep = "\n")
 
     ## R version 4.3.2 (2023-10-31)
-    ## Platform: x86_64-pc-linux-gnu
-    ## Running under: Ubuntu 20.04.6 LTS
+    ## Platform: x86_64-redhat-linux-gnu
+    ## Running under: Fedora Linux 38 (Container Image)
 
     # cat("\n")
 
@@ -70,10 +70,10 @@ or [scverse](https://scverse.org/)).
 
     ## dplyr: 1.1.4
     ## ggplot2: 3.4.4
-    ## Seurat: 4.4.0
+    ## Seurat: 5.0.1
 
     # set the data directory
-    path_data <- file.path("", "data") # change this to fit your own structure
+    path_data <- file.path("", "home", "magus", "data") # change this to fit your own structure
     # so that the plots are consistent
     set.seed(42)
 
@@ -123,14 +123,14 @@ the example GEX data. We have also renamed `c_call` to `c_gene`.*
       select(day, sample, cell_id, cell_id_unique, v_call, j_call, c_gene) %>%
       slice_sample(n = 5)
 
-    ## # A tibble: 5 × 7
+    ## # A tibble: 5 x 7
     ##     day sample                cell_id        cell_id_unique v_call j_call c_gene
     ##   <int> <chr>                 <chr>          <chr>          <chr>  <chr>  <chr> 
-    ## 1     0 subject1_FNA_d0_2_Y1  ATTATCCAGACAT… subject1_FNA_… IGHV3… IGHJ2… IGHA  
-    ## 2     5 subject1_FNA_d5_2_Y1  GACTGCGTCGTAG… subject1_FNA_… IGLV5… IGLJ2… IGLC2 
-    ## 3     0 subject2_FNA_d0_1_Y1  AGCCTAAGTATAT… subject2_FNA_… IGHV1… IGHJ6… IGHG  
-    ## 4    60 subject2_FNA_d60_1_Y1 CACATAGAGTACT… subject2_FNA_… IGKV4… IGKJ1… IGKC  
-    ## 5    60 subject1_FNA_d60_1_Y1 CATCGAAAGGCAG… subject1_FNA_… IGHV1… IGHJ5… IGHG
+    ## 1     0 subject1_FNA_d0_2_Y1  ATTATCCAGACAT~ subject1_FNA_~ IGHV3~ IGHJ2~ IGHA  
+    ## 2     5 subject1_FNA_d5_2_Y1  GACTGCGTCGTAG~ subject1_FNA_~ IGLV5~ IGLJ2~ IGLC2 
+    ## 3     0 subject2_FNA_d0_1_Y1  AGCCTAAGTATAT~ subject2_FNA_~ IGHV1~ IGHJ6~ IGHG  
+    ## 4    60 subject2_FNA_d60_1_Y1 CACATAGAGTACT~ subject2_FNA_~ IGKV4~ IGKJ1~ IGKC  
+    ## 5    60 subject1_FNA_d60_1_Y1 CATCGAAAGGCAG~ subject1_FNA_~ IGHV1~ IGHJ5~ IGHG
 
     # make sure that there are no empty c_gene rows
     bcr_data <- bcr_data %>% dplyr::filter(!is.na(c_gene), c_gene != "")
@@ -376,7 +376,7 @@ integrated into BCR data.
     ncol_bcr_gex <- ncol(bcr_gex_data)
     bcr_gex_data[, (ncol_bcr_gex - 3):ncol_bcr_gex] %>% slice_sample(n = 5)
 
-    ## # A tibble: 5 × 4
+    ## # A tibble: 5 x 4
     ##   subject  gex_umap_1 gex_umap_2 gex_annotation
     ##   <chr>         <dbl>      <dbl> <fct>         
     ## 1 subject1       7.26     -4.29  RMB           
