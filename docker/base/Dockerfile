@@ -71,15 +71,20 @@ ARG R_REPO="http://lib.stat.cmu.edu/R/CRAN/"
 ARG R_DEPS="c('BiocManager', \
               'devtools', \
               'knitr', \
+              'libsodium-devel', \
               'Matrix' , \
               'optparse', \
               'pkgbuild', \
+              'proj-devel', \
               'Rcpp', \
+              'redland-devel', \
               'rmarkdown', \
               'roxygen2', \
               'testthat')"
 ARG R_BIOC_DEPS="c('Biostrings', \
+              'DECIPHER', \
               'GenomicAlignments', \
+              'ggmsa', \
               'ggtree', \
               'IRanges')"           
 RUN echo "options(repos='${R_REPO}')" >> /usr/lib64/R/library/base/R/Rprofile \
