@@ -32,6 +32,7 @@ RUN dnf -y update && dnf install -y \
     libidn \
     libidn1.34 \
     libnsl \
+    libsodium-devel \
     libssh2 \
     libuv \
     libxml2-devel \
@@ -41,6 +42,7 @@ RUN dnf -y update && dnf install -y \
     openssl-devel \
     pandoc \
     perl \
+    proj-devel \    
     python3 \
     python3-biopython \
     python3-GitPython \
@@ -56,6 +58,7 @@ RUN dnf -y update && dnf install -y \
     R-rgeos \
     R-ragg \
     R-textshaping \
+    redland-devel \    
     sudo \
     tar \
     texlive-titling \
@@ -71,13 +74,10 @@ ARG R_REPO="http://lib.stat.cmu.edu/R/CRAN/"
 ARG R_DEPS="c('BiocManager', \
               'devtools', \
               'knitr', \
-              'libsodium-devel', \
-              'Matrix' , \
+              'Matrix', \
               'optparse', \
               'pkgbuild', \
-              'proj-devel', \
               'Rcpp', \
-              'redland-devel', \
               'rmarkdown', \
               'roxygen2', \
               'testthat')"
