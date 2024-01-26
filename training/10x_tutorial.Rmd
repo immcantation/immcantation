@@ -109,7 +109,7 @@ Please note that:
 
 Note that you might need to install several Bioconductor packages that are dependencies for some of the R-based Immcantation packages with `BiocManager`.
 
-```
+```{r, eval=FALSE}
 package.check <- lapply(
   packages,
   FUN = function(x) {
@@ -119,9 +119,9 @@ package.check <- lapply(
   }
 )
 
-# check for ggtree, a bioconductor package
+# check for ggtree, a Bioconductor package
 packages <- "ggtree"
-if(!require(packages, character.only = TRUE)){
+if (!require(packages, character.only = TRUE)) {
   if (!require("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
   BiocManager::install(packages)
@@ -156,11 +156,12 @@ The preceding instructions outline the process of assigning V, D, and J genes us
 # read in the data
 # specify the data types of non AIRR-C standard fields
 # we assign integer type to the *_length fields
-bcr_data <- airr::read_rearrangement(file.path("","home", "magus", "data", "BCR_data.tsv"),
-                                     aux_types=c("v_germline_length"="i",
-                                                 "d_germline_length"="i",
-                                                 "j_germline_length"="i",
-                                                 "day"="i"))
+bcr_data <- airr::read_rearrangement(file.path("", "home", "magus", "data",
+                                               "BCR_data.tsv"),
+                                     aux_types = c("v_germline_length" = "i",
+                                                   "d_germline_length" = "i",
+                                                   "j_germline_length" = "i",
+                                                   "day" = "i"))
 ```
 
 ### Remove non-productive sequences
@@ -407,7 +408,7 @@ results <- hierarchicalClones(bcr_data,
                               fields = "subject_id")
 ```
 
-`hierarchicalClones` clusters B receptor sequences based on junction region sequence similarity within partitions that share the same V gene, J gene, and junction length, thus allowing for ambiguous V or J gene annotations. By setting it up the `cell_id` parameter, `hierarchicalClones` will run in single-cell mode with paired-chain sequences. With `only_heavy = TRUE` and `split_light = TRUE`, grouping should be done by using IGH only and inferred clones should be split by the light/short chain (IGK and IGL) following heavy/long chain clustering.
+`hierarchicalClones` clusters B receptor sequences based on junction region sequence similarity within partitions that share the same V gene, J gene, and junction length, thus allowing for ambiguous V or J gene annotations. By setting it up the `cell_id` parameter, `hierarchicalClones` will run in single cell mode with paired-chain sequences. With `only_heavy = TRUE` and `split_light = TRUE`, grouping should be done by using IGH only and inferred clones should be split by the light/short chain (IGK and IGL) following heavy/long chain clustering.
 
 ### Visualize clonal abundance
 
@@ -471,7 +472,8 @@ And passing `"human/vdj/"` to the `readIMGT` function.
 references <- readIMGT(dir = "/usr/local/share/germlines/imgt/human/vdj")
 
 # reconstruct germlines
-results <- createGermlines(results, references, fields = "subject_id", nproc = 1)
+results <- createGermlines(results, references, fields = "subject_id",
+                           nproc = 1)
 ```
 
 ## Calculate V gene SHM frequency
@@ -483,13 +485,14 @@ Basic mutational load calculations can be performed by the function `observedMut
 results_heavy <- dplyr::filter(results, locus == "IGH")
 
 # calculate SHM frequency in the V gene
-data_mut <- shazam::observedMutations(results_heavy,
-                              sequenceColumn = "sequence_alignment",
-                              germlineColumn = "germline_alignment_d_mask",
-                              regionDefinition = IMGT_V,
-                              frequency = TRUE,
-                              combine = TRUE,
-                              nproc = 1)
+data_mut <-
+  shazam::observedMutations(results_heavy,
+                            sequenceColumn = "sequence_alignment",
+                            germlineColumn = "germline_alignment_d_mask",
+                            regionDefinition = IMGT_V,
+                            frequency = TRUE,
+                            combine = TRUE,
+                            nproc = 1)
 ```
 
 The plot below shows the distribution of median mutation frequency of clones:
@@ -518,7 +521,7 @@ ggplot(data_mut, aes(y = mu_freq, x = subject_id, fill = subject_id)) +
 
 ```{r}
 # plotting mu_freq by isotype
-ggplot2::ggplot(data_mut, aes(y = mu_freq, x = c_gene, fill = c_gene)) +
+ggplot(data_mut, aes(y = mu_freq, x = c_gene, fill = c_gene)) +
   geom_boxplot() +
   geom_jitter(width = 0.2, alpha = 0.3) +
   labs(x = "", y = "Mutation frequency", fill = "Isotype") +
@@ -527,7 +530,7 @@ ggplot2::ggplot(data_mut, aes(y = mu_freq, x = c_gene, fill = c_gene)) +
 
 ```{r}
 # plotting mu_freq by cell type
-ggplot2::ggplot(data_mut, aes(y = mu_freq, x = gex_annotation, fill = gex_annotation)) +
+ggplot(data_mut, aes(y = mu_freq, x = gex_annotation, fill = gex_annotation)) +
   geom_boxplot() +
   geom_jitter(width = 0.2, alpha = 0.3) +
   labs(x = "", y = "Mutation frequency", fill = "Cell type") +
@@ -553,9 +556,11 @@ In the rearrangement table, each row corresponds to a sequence, and each column 
 # add up duplicate_count column for collapsed sequences
 # store day, gex_annotation
 # discard clones with < 5 distinct sequences
-clones <- dowser::formatClones(results,
+clones <-
+  dowser::formatClones(results,
                        traits = c("day", "gex_annotation"),
                        num_fields = c("duplicate_count"), minseq = 5, nproc = 1)
+
 head(clones)
 ```
 
@@ -563,12 +568,13 @@ Additionally, if there is paired heavy and light chain data, you can format the 
 There is an additional step that occurs before the `formatClones` step in this situation. In order for the trees to best use the addition of light chain information, we will need to assign `clone_subgroups` using dowser's function `resolveLightChains`. This group cells within a clone based on the light chain V and J gene and assign a subgroup to each sequence. Then, in the `formatClones` step, specify `chain="HL"`.
 
 ```{r, echo=FALSE}
-
 comb <- resolveLightChains(results, nproc = 1)
 
-clones <- dowser::formatClones(comb,
+clones <-
+  dowser::formatClones(comb,
                        chain = "HL", traits = c("day", "gex_annotation"),
                        num_fields = c("duplicate_count"), minseq = 5, nproc = 1)
+
 head(clones)
 ```
 
@@ -591,7 +597,9 @@ And the second uses dnapars (PHYLIP):
 
 ```{r, warning=FALSE}
 # the executable path is the location of the executable in the Docker container
-trees <- getTrees(clones, build = "dnapars", exec = "/usr/local/bin/dnapars", nproc = 1)
+trees <- getTrees(clones, build = "dnapars",
+                  exec = "/usr/local/bin/dnapars", nproc = 1)
+
 head(trees)
 ```
 
@@ -638,11 +646,13 @@ In addition to standard and B cell specific maximum likelihood, dowser offers pa
 ```{r, warning=FALSE, eval=params$eval_optional}
 # RAxML
 trees <- getTrees(clones, build = "raxml",
-                  exec = "/usr/local/bin/raxml-ng", partition = "scaled", nproc = 1)
+                  exec = "/usr/local/bin/raxml-ng",
+                  partition = "scaled", nproc = 1)
 
 # IgPhML
 trees <- getTrees(clones, build = "igphyml",
-                  exec = "/usr/local/share/igphyml/src/igphyml", partition = "hl", nproc = 1)
+                  exec = "/usr/local/share/igphyml/src/igphyml",
+                  partition = "hl", nproc = 1)
 ```
 
 ### Plot trees with dowser and ggtree
@@ -664,9 +674,10 @@ plots_all[[1]]
 ```{r}
 # save a pdf of all trees
 dir.create("results/dowser_tutorial/", recursive = TRUE)
-dowser::treesToPDF(plots_all,
-          file = file.path("results", "dowser_tutorial", "final_data_trees.pdf"),
-          nrow = 2, ncol = 2)
+
+treesToPDF(plots_all, file = file.path("results", "dowser_tutorial",
+                                       "final_data_trees.pdf"),
+           nrow = 2, ncol = 2)
 ```
 
 ### Making more informative tree plots
@@ -679,8 +690,8 @@ trees <- scaleBranches(trees)
 
 # Make fancy tree plot of second largest tree
 plots_all <- plotTrees(trees, scale = 5)[[2]] +
-              geom_tippoint(aes(color = gex_annotation, size = day)) +
-              geom_tiplab(aes(label = day), offset = 0.002)
+               geom_tippoint(aes(color = gex_annotation, size = day)) +
+               geom_tiplab(aes(label = day), offset = 0.002)
 print(plots_all)
 ```
 
@@ -696,8 +707,8 @@ trees <- collapseNodes(trees)
 
 # node_nums=TRUE labels each internal node
 plots_all <- plotTrees(trees, node_nums = TRUE, labelsize = 6, scale = 5)[[2]] +
-              geom_tippoint(aes(color = gex_annotation, size = day)) +
-              geom_tiplab(aes(label = day), offset = 0.002)
+               geom_tippoint(aes(color = gex_annotation, size = day)) +
+               geom_tiplab(aes(label = day), offset = 0.002)
 print(plots_all)
 ```
 

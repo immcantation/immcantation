@@ -13,7 +13,8 @@ params:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo=TRUE, cache=params$cache, fig.path=file.path("intro-lab_files","intro-lab_"))
+knitr::opts_chunk$set(echo=TRUE, cache=params$cache,
+                      fig.path=file.path("intro-lab_files", "intro-lab_"))
 ```
 
 # Introduction to Bulk B Cell Repertoire Analysis using the Immcantation Framework
@@ -158,7 +159,7 @@ ParseDb.py select -d results/changeo/data_p_parse-select.tsv \
 
 ## Load libraries and read in the data
 
-After loading the libraries needed, the process is started by using `readChangeoDb` to read the tabulated data generated in the previous step.
+After loading the libraries needed, the process is started by using `read_rearrangement` to read the tabulated data generated in the previous step.
 
 ```{r, message = FALSE}
 suppressPackageStartupMessages(library(airr))
@@ -183,11 +184,9 @@ Bulk BCR data in general includes ambiguous nucleotides (Ns), and we will remove
 source("assets/filterN.R")
 
 # Identify sequences with at least 20 Ns or continuous 15 Ns in the v_region
-v_n_stretches_plot <- filterN(db, "sequence_alignment",
-                                  start=1, end=312, 
-                                  max_n=20, max_n_stretch = 15,
-                                  label="v_region",
-                                  plot=TRUE)
+v_n_stretches_plot <- filterN(db, "sequence_alignment", start=1, end=312, 
+                              max_n=20, max_n_stretch = 15, label="v_region",
+                              plot=TRUE)
 
 v_region_n_pass <- v_n_stretches_plot$db_pass
 # number of sequences before filtering N
@@ -392,9 +391,8 @@ In the rearrangement table, each row corresponds to a sequence, and each column 
 # add up duplicate_count column for collapsed sequences
 # store day, gex_annotation
 # discard clones with < 5 distinct sequences
-clones <- dowser::formatClones(results@db,
-                                         traits="isotype", 
-                                         minseq = 5, nproc = 1)
+clones <- dowser::formatClones(results@db, traits="isotype", minseq = 5,
+                               nproc = 1)
 head(clones)
 ```
 
@@ -405,8 +403,7 @@ Dowser offers multiple ways to build B cell phylogenetic trees. These differ by 
 ```{r, warning=FALSE}
 # the executable path is the location of the executable in the Docker container
 trees <- dowser::getTrees(clones, 
-                          build = "dnapars", 
-                          exec = "/usr/local/bin/dnapars", 
+                          build = "dnapars", exec = "/usr/local/bin/dnapars", 
                           nproc = 1)
 head(trees)
 ```
@@ -429,8 +426,8 @@ plots_all[[1]]
 ```{r}
 # save a pdf of all trees
 dowser::treesToPDF(plots_all,
-          file = file.path("intro-lab_files", "final_data_trees.pdf"),
-          nrow = 2, ncol = 2)
+                   file = file.path("intro-lab_files", "final_data_trees.pdf"),
+                   nrow = 2, ncol = 2)
 ```
 
 In addition to the functions for building and visualizing trees, `dowser` also implements new techniques for analyzing B cell migration and differentiation, as well as for detecting new B cell evolution over time. Visit the [dowser website](https://dowser.readthedocs.io) to learn more.
@@ -445,14 +442,17 @@ Standard `ggplot` commands can be used to generate boxplots to visualize the dis
 
 ```{r}
 # Calculate total mutation count, R and S combined
-results@db <- observedMutations(results@db, sequenceColumn = "sequence_alignment", 
-                        germlineColumn = "germline_alignment_d_mask",
-                        regionDefinition = NULL, frequency = F,
-                        combine = T, nproc = 4)
+results@db <- observedMutations(results@db,
+                                sequenceColumn = "sequence_alignment", 
+                                germlineColumn = "germline_alignment_d_mask",
+                                regionDefinition = NULL, frequency = FALSE,
+                                combine = TRUE, nproc = 4)
+
 ggplot(results@db, aes(x = isotype, y = mu_count, fill = isotype)) +
   geom_boxplot() +
   scale_fill_manual(name = "Isotype", values = IG_COLORS) +
-  xlab("Isotype") + ylab("Mutation count") + theme_bw()
+  labs(x = "Isotype", y = "Mutation count") +
+  theme_bw()
 ```
 
 ## SHazaM: models of SHM targeting biases
@@ -464,6 +464,7 @@ The resulting model can be visualized as a hedgehog plot with `plotMutability`. 
 ```{r}
 # Build and plot SHM targeting model
 m <- createTargetingModel(results@db, vCallColumn = "v_call_genotyped")
+
 # nucleotides: center nucleotide characters to plot
 plotMutability(m, nucleotides = c("A","C"), size = 1.2)
 ```
@@ -487,8 +488,10 @@ These PDF can be visualized with `plot`. FWR are critical to maintenance the ove
 # Calculate clonal consensus and selection using the BASELINe method
 z <- collapseClones(results@db)
 b <- calcBaseline(z, regionDefinition = IMGT_V)
+
 # Combine selection scores for all clones in each group
 g <- groupBaseline(b, groupBy = "isotype")
+
 # Plot probability densities for the selection pressure
 plot(g, "isotype", sigmaLimits = c(-1, 1), silent = F)
 ```
