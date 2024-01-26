@@ -1,4 +1,4 @@
-External resources
+External Resources
 ===========================================================================================
 
 Recorded sessions

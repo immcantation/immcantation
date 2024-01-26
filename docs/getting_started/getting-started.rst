@@ -7,7 +7,7 @@ follow one the tutorials listed here. They are available as Notebooks under the
 folder `training <https://bitbucket.org/kleinstein/immcantation/src/master/training>`_
 in the Immcantation Bitbucket repository.
 
-The Immcantation Lab container
+The Immcantation lab container
 -------------------------------------------------------------------------------------------
 
 .. image:: ../_static/immcantationlab.png
@@ -44,7 +44,7 @@ introductory webinar. It is also available as an R Notebook
     + Quantification of selection pressure
 
 
-Single-cell Analysis
+Single cell analysis
 -------------------------------------------------------------------------------------------
 
 
@@ -86,7 +86,7 @@ is available in the Immcantation repository.
     + Highlight other BCR features in UMAPs
 
 
-Video presentations
+Video Presentations
 ===========================================================================================
 
 .. image:: ../_static/immcantation-yt.png
