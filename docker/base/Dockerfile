@@ -25,6 +25,8 @@ RUN dnf -y update && dnf install -y \
     biber \
     findutils \
     git \
+    glpk-devel \
+    gmp-devel \
     langpacks-en \
     lapack-devel \
     libcurl-devel \
