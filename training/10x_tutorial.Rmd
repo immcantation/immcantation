@@ -13,7 +13,8 @@ params:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo=TRUE, cache=params$cache, fig.path=file.path("10x_tutorial_files","10x_tutorial_"))
+knitr::opts_chunk$set(echo=TRUE, cache=params$cache,
+                      fig.path=file.path("10x_tutorial_files", "10x_tutorial_"))
 ```
 
 # Single Cell V(D)J Analysis Tutorial
@@ -214,7 +215,8 @@ cat(paste("There are", nrow(bcr_data), "rows in the data after filtering out
 We load the gene expression data Seurat object that has already been pre-processed and the cell types (PBMCs) have been annotation following the standard Seurat workflow.
 
 ```{r}
-gex_db <- readRDS(file.path("", "home", "magus", "data", "GEX.data_08112023.rds"))
+gex_db <- readRDS(file.path("", "home", "magus", "data",
+                            "GEX.data_08112023.rds"))
 ```
 
 Inspect the data:
@@ -285,6 +287,7 @@ bcr_data$gex_annotation <-
   unlist(lapply(match.index, function(x) {
     ifelse(is.na(x), NA, cell.annotation[x])
   }))
+
 bcr_data$gex_annotation[1:5]
 ```
 
@@ -319,16 +322,17 @@ We define a clonal threshold only using the heavy chain locus, so we need to fil
 
 ```{r}
 dist_nearest <- distToNearest(dplyr::filter(bcr_data, locus == "IGH",
-                                            subject_id == "subject1"), )
+                                            subject_id == "subject1"))
 
 # generate Hamming distance histogram
-p1 <- ggplot2::ggplot(subset(dist_nearest, !is.na(dist_nearest)),
+p1 <- ggplot(subset(dist_nearest, !is.na(dist_nearest)),
              aes(x = dist_nearest)) +
         geom_histogram(color = "white", binwidth = 0.02) +
         labs(x = "Hamming distance", y = "Count") +
         scale_x_continuous(breaks = seq(0, 1, 0.1)) +
         theme_bw() +
         theme(axis.title = element_text(size = 18))
+
 plot(p1)
 ```
 
@@ -349,8 +353,8 @@ A robust way that we recommend is to use the nearest-neighbor distance of inter 
 ```{r}
 # find threshold for cloning automatically
 threshold_output <- shazam::findThreshold(dist_nearest$dist_nearest,
-                                  method = "gmm", model = "gamma-norm",
-                                  cutoff = "user", spc = 0.995)
+                                          method = "gmm", model = "gamma-norm",
+                                          cutoff = "user", spc = 0.995)
 threshold <- threshold_output@threshold
 threshold
 ```
@@ -376,9 +380,9 @@ dist_crossSubj <- distToNearest(dplyr::filter(bcr_data, locus == "IGH"),
 
 # distance of inter (between) clones using cross subjects distribution of distance to nearest
 threshold_output <- shazam::findThreshold(dist_nearest$dist_nearest,
-                                  method = "gmm", model = "gamma-norm",
-                                  cross = dist_crossSubj$cross_dist_nearest,
-                                  cutoff = "user", spc = 0.995)
+                                          method = "gmm", model = "gamma-norm",
+                                          cross = dist_crossSubj$cross_dist_nearest,
+                                          cutoff = "user", spc = 0.995)
 threshold_withcross <- threshold_output@threshold
 threshold_withcross
 ```
@@ -445,7 +449,8 @@ The clonal diversity can also be displayed. To estimate the clonal diversity, we
 # calculate and plot the rank-abundance curve
 div <- alphaDiversity(dplyr::filter(results, locus == "IGH"),
                       group = "sample_id", nboot = 100)
-plot(div, silent=T) + facet_wrap("sample_id", ncol = 3)
+
+plot(div, silent = TRUE) + facet_wrap("sample_id", ncol = 3)
 ```
 
 ## Create germlines
@@ -692,6 +697,7 @@ trees <- scaleBranches(trees)
 plots_all <- plotTrees(trees, scale = 5)[[2]] +
                geom_tippoint(aes(color = gex_annotation, size = day)) +
                geom_tiplab(aes(label = day), offset = 0.002)
+
 print(plots_all)
 ```
 
@@ -705,10 +711,11 @@ Get the predicted intermediate sequence at an internal node in the second larges
 # collapse nodes with identical sequences
 trees <- collapseNodes(trees)
 
-# node_nums=TRUE labels each internal node
+# node_nums = TRUE labels each internal node
 plots_all <- plotTrees(trees, node_nums = TRUE, labelsize = 6, scale = 5)[[2]] +
                geom_tippoint(aes(color = gex_annotation, size = day)) +
                geom_tiplab(aes(label = day), offset = 0.002)
+
 print(plots_all)
 ```
 
