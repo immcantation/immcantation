@@ -1,7 +1,5 @@
 # Introduction to Bulk B Cell Repertoire Analysis using the Immcantation Framework
 
-![Cover](assets/cover.png)
-
 The field of high-throughput adaptive immune receptor repertoire
 sequencing (AIRR-seq) has experienced significant growth in recent
 years, but this growth has come with considerable complexity and variety
@@ -19,6 +17,7 @@ tutorial, we present an example pipeline for processing bulk BCR data.
 -   V(D)J gene annotation and novel polymorphism detection
 -   Inference of B cell clonal relationships
 -   Diversity analysis
+-   Lineage tree reconstruction
 -   Mutational load profiling
 -   Modeling of somatic hypermutation (SHM) targeting
 -   Quantification of selection pressure
@@ -35,17 +34,18 @@ Use this command to list the software versions:
     versions report
 
     ## immcantation: devel
-    ## date: 2023.10.18
+    ## date: 2024.01.23
     ## 
-    ## presto: 0.7.1.999
+    ## presto: 0.7.2
     ## changeo: 1.3.0
-    ## alakazam: 1.3.0
+    ## alakazam: 1.3.0.999
     ## shazam: 1.2.0.999
     ## tigger: 1.1.0
     ## scoper: 1.3.0
-    ## dowser: 1.3.0
-    ## enchantr: 0.1.9
+    ## dowser: 2.1.0
+    ## enchantr: 0.1.10.999
     ## prestor: 0.0.7
+    ## piglet: None
     ## rabhit: 0.2.5
     ## rdi: 1.0.0
     ## igphyml: 2.0.0
@@ -68,16 +68,16 @@ build:
 
     builds report
 
-    ## date: 2023-11-29 12:57:37 UTC
-    ## immcantation: 4.4.0-198-g9c4656907dfb+
-    ## presto: 0.7.1-18-g2140c55eefae
-    ## changeo: 1.3.0-18-gfd3372709f6f
-    ## alakazam: 1.2.0-79-g8ff706f26deb
-    ## shazam: 1.1.2-65-gae5ba7939d2f
-    ## tigger: b0ad8b4f4fb9
+    ## date: 2024-01-24 07:50:57 UTC
+    ## immcantation: 4.4.0-251-ga68604b5037a+
+    ## presto: 0.7.2
+    ## changeo: 1.3.0-20-g14bc8feffaaa
+    ## alakazam: 1.2.0-85-gdfd2bff439c3+
+    ## shazam: 1.1.2-67-gc1c6483baa5f+
+    ## tigger: b0ad8b4f4fb9+
     ## rdi: d27b9067cab6+
-    ## scoper: 1.2.0-65-gd3ee771d2b28
-    ## dowser: 2.0.0-7-g77e5189ea75f
+    ## scoper: 1.2.0-65-gd3ee771d2b28+
+    ## dowser: 2.0.0-19-g8c0d17173ab5+
     ## prestor: 0.0.8+
 
 ### Example data used in the tutorial
@@ -167,9 +167,9 @@ the V(D)J genes with `AssignGenes.py`.
     ##      FIELD> None
     ##     VALUES> None
     ## 
-    ## PROGRESS> 18:47:46 |Reading files            | 0.0 minPROGRESS> 18:47:46 |Done                     | 0.0 min
+    ## PROGRESS> 13:43:20 |Reading files            | 0.0 minPROGRESS> 13:43:20 |Done                     | 0.0 min
     ## 
-    ## PROGRESS> 18:47:46 |Sampling n=200           | 0.0 minPROGRESS> 18:47:46 |Done                     | 0.0 min
+    ## PROGRESS> 13:43:20 |Sampling n=200           | 0.0 minPROGRESS> 13:43:20 |Done                     | 0.0 min
     ## 
     ## MAX_COUNT> 200
     ##   SAMPLED> 200
@@ -203,7 +203,7 @@ the V(D)J genes with `AssignGenes.py`.
     ##     LOCI> ig
     ##    NPROC> 8
     ## 
-    ## PROGRESS> 18:47:47 |Running IgBLAST          | 0.0 minPROGRESS> 18:47:50 |Done                     | 0.0 min
+    ## PROGRESS> 13:43:22 |Running IgBLAST          | 0.0 minPROGRESS> 13:43:24 |Done                     | 0.0 min
     ## 
     ##   PASS> 200
     ## OUTPUT> input_sample1-n200_igblast.fmt7
@@ -227,7 +227,7 @@ time to finish running.*
     ##     LOCI> ig
     ##    NPROC> 8
     ## 
-    ## PROGRESS> 18:47:51 |Running IgBLAST          | 0.0 minPROGRESS> 19:06:42 |Done                     | 18.8 min
+    ## PROGRESS> 13:43:27 |Running IgBLAST          | 0.0 minPROGRESS> 14:01:27 |Done                     | 18.0 min
     ## 
     ##   PASS> 91010
     ## OUTPUT> input_igblast.fmt7
@@ -275,13 +275,13 @@ AIRR format. The path to the reference germlines is provided by `-r`.
     ##       EXTENDED> False
     ## INFER_JUNCTION> False
     ## 
-    ## PROGRESS> 19:06:42 |Loading files       | 0.0 minPROGRESS> 19:06:43 |Done                | 0.0 min
+    ## PROGRESS> 14:01:27 |Loading files       | 0.0 minPROGRESS> 14:01:28 |Done                | 0.0 min
     ## 
-    ## PROGRESS> 19:06:43 |                    |   0% (     0) 0.0 minPROGRESS> 19:06:45 |#                   |   5% ( 4,551) 0.0 minPROGRESS> 19:06:48 |##                  |  10% ( 9,102) 0.1 minPROGRESS> 19:06:50 |###                 |  15% (13,653) 0.1 minPROGRESS> 19:06:52 |####                |  20% (18,204) 0.2 minPROGRESS> 19:06:54 |#####               |  25% (22,755) 0.2 minPROGRESS> 19:06:56 |######              |  30% (27,306) 0.2 minPROGRESS> 19:06:59 |#######             |  35% (31,857) 0.3 minPROGRESS> 19:07:01 |########            |  40% (36,408) 0.3 minPROGRESS> 19:07:03 |#########           |  45% (40,959) 0.3 minPROGRESS> 19:07:06 |##########          |  50% (45,510) 0.4 minPROGRESS> 19:07:08 |###########         |  55% (50,061) 0.4 minPROGRESS> 19:07:10 |############        |  60% (54,612) 0.5 minPROGRESS> 19:07:12 |#############       |  65% (59,163) 0.5 minPROGRESS> 19:07:15 |##############      |  70% (63,714) 0.5 minPROGRESS> 19:07:18 |###############     |  75% (68,265) 0.6 minPROGRESS> 19:07:20 |################    |  80% (72,816) 0.6 minPROGRESS> 19:07:22 |#################   |  85% (77,367) 0.7 minPROGRESS> 19:07:24 |##################  |  90% (81,918) 0.7 minPROGRESS> 19:07:27 |################### |  95% (86,469) 0.7 minPROGRESS> 19:07:29 |####################| 100% (91,010) 0.8 min
+    ## PROGRESS> 14:01:28 |                    |   0% (     0) 0.0 minPROGRESS> 14:01:31 |#                   |   5% ( 4,551) 0.0 minPROGRESS> 14:01:34 |##                  |  10% ( 9,102) 0.1 minPROGRESS> 14:01:36 |###                 |  15% (13,653) 0.1 minPROGRESS> 14:01:39 |####                |  20% (18,204) 0.2 minPROGRESS> 14:01:42 |#####               |  25% (22,755) 0.2 minPROGRESS> 14:01:44 |######              |  30% (27,306) 0.3 minPROGRESS> 14:01:46 |#######             |  35% (31,857) 0.3 minPROGRESS> 14:01:49 |########            |  40% (36,408) 0.3 minPROGRESS> 14:01:52 |#########           |  45% (40,959) 0.4 minPROGRESS> 14:01:54 |##########          |  50% (45,510) 0.4 minPROGRESS> 14:01:56 |###########         |  55% (50,061) 0.5 minPROGRESS> 14:01:59 |############        |  60% (54,612) 0.5 minPROGRESS> 14:02:01 |#############       |  65% (59,163) 0.5 minPROGRESS> 14:02:03 |##############      |  70% (63,714) 0.6 minPROGRESS> 14:02:06 |###############     |  75% (68,265) 0.6 minPROGRESS> 14:02:08 |################    |  80% (72,816) 0.7 minPROGRESS> 14:02:10 |#################   |  85% (77,367) 0.7 minPROGRESS> 14:02:13 |##################  |  90% (81,918) 0.7 minPROGRESS> 14:02:15 |################### |  95% (86,469) 0.8 minPROGRESS> 14:02:17 |####################| 100% (91,010) 0.8 min
     ## 
     ## OUTPUT> data_db-pass.tsv
-    ##   PASS> 87793
-    ##   FAIL> 3217
+    ##   PASS> 87785
+    ##   FAIL> 3225
     ##    END> MakeDb
 
 ### Subset the data to include productive heavy chain sequences
@@ -306,12 +306,12 @@ output file (specified by `--outname`).
     ##  VALUES> T
     ##   REGEX> False
     ## 
-    ## PROGRESS> 19:07:30 |                    |   0% (     0) 0.0 minPROGRESS> 19:07:30 |#                   |   5% ( 4,390) 0.0 minPROGRESS> 19:07:30 |##                  |  10% ( 8,780) 0.0 minPROGRESS> 19:07:30 |###                 |  15% (13,170) 0.0 minPROGRESS> 19:07:30 |####                |  20% (17,560) 0.0 minPROGRESS> 19:07:31 |#####               |  25% (21,950) 0.0 minPROGRESS> 19:07:31 |######              |  30% (26,340) 0.0 minPROGRESS> 19:07:31 |#######             |  35% (30,730) 0.0 minPROGRESS> 19:07:31 |########            |  40% (35,120) 0.0 minPROGRESS> 19:07:31 |#########           |  45% (39,510) 0.0 minPROGRESS> 19:07:31 |##########          |  50% (43,900) 0.0 minPROGRESS> 19:07:31 |###########         |  55% (48,290) 0.0 minPROGRESS> 19:07:31 |############        |  60% (52,680) 0.0 minPROGRESS> 19:07:32 |#############       |  65% (57,070) 0.0 minPROGRESS> 19:07:32 |##############      |  70% (61,460) 0.0 minPROGRESS> 19:07:32 |###############     |  75% (65,850) 0.0 minPROGRESS> 19:07:32 |################    |  80% (70,240) 0.0 minPROGRESS> 19:07:32 |#################   |  85% (74,630) 0.0 minPROGRESS> 19:07:32 |##################  |  90% (79,020) 0.0 minPROGRESS> 19:07:32 |################### |  95% (83,410) 0.0 minPROGRESS> 19:07:32 |####################| 100% (87,793) 0.0 min
+    ## PROGRESS> 14:02:18 |                    |   0% (     0) 0.0 minPROGRESS> 14:02:18 |#                   |   5% ( 4,390) 0.0 minPROGRESS> 14:02:18 |##                  |  10% ( 8,780) 0.0 minPROGRESS> 14:02:18 |###                 |  15% (13,170) 0.0 minPROGRESS> 14:02:18 |####                |  20% (17,560) 0.0 minPROGRESS> 14:02:19 |#####               |  25% (21,950) 0.0 minPROGRESS> 14:02:19 |######              |  30% (26,340) 0.0 minPROGRESS> 14:02:19 |#######             |  35% (30,730) 0.0 minPROGRESS> 14:02:19 |########            |  40% (35,120) 0.0 minPROGRESS> 14:02:19 |#########           |  45% (39,510) 0.0 minPROGRESS> 14:02:19 |##########          |  50% (43,900) 0.0 minPROGRESS> 14:02:19 |###########         |  55% (48,290) 0.0 minPROGRESS> 14:02:19 |############        |  60% (52,680) 0.0 minPROGRESS> 14:02:20 |#############       |  65% (57,070) 0.0 minPROGRESS> 14:02:20 |##############      |  70% (61,460) 0.0 minPROGRESS> 14:02:20 |###############     |  75% (65,850) 0.0 minPROGRESS> 14:02:20 |################    |  80% (70,240) 0.0 minPROGRESS> 14:02:20 |#################   |  85% (74,630) 0.0 minPROGRESS> 14:02:20 |##################  |  90% (79,020) 0.0 minPROGRESS> 14:02:20 |################### |  95% (83,410) 0.0 minPROGRESS> 14:02:20 |####################| 100% (87,785) 0.0 min
     ## 
     ##    OUTPUT> data_p_parse-select.tsv
-    ##   RECORDS> 87793
-    ##  SELECTED> 64971
-    ## DISCARDED> 22822
+    ##   RECORDS> 87785
+    ##  SELECTED> 64968
+    ## DISCARDED> 22817
     ##       END> ParseDb
 
 Next, we filter the data to include **only heavy chain** sequences.
@@ -334,11 +334,11 @@ data.
     ##  VALUES> IGHV
     ##   REGEX> True
     ## 
-    ## PROGRESS> 19:07:33 |                    |   0% (     0) 0.0 minPROGRESS> 19:07:33 |#                   |   5% ( 3,249) 0.0 minPROGRESS> 19:07:34 |##                  |  10% ( 6,498) 0.0 minPROGRESS> 19:07:34 |###                 |  15% ( 9,747) 0.0 minPROGRESS> 19:07:34 |####                |  20% (12,996) 0.0 minPROGRESS> 19:07:34 |#####               |  25% (16,245) 0.0 minPROGRESS> 19:07:34 |######              |  30% (19,494) 0.0 minPROGRESS> 19:07:34 |#######             |  35% (22,743) 0.0 minPROGRESS> 19:07:34 |########            |  40% (25,992) 0.0 minPROGRESS> 19:07:34 |#########           |  45% (29,241) 0.0 minPROGRESS> 19:07:34 |##########          |  50% (32,490) 0.0 minPROGRESS> 19:07:35 |###########         |  55% (35,739) 0.0 minPROGRESS> 19:07:35 |############        |  60% (38,988) 0.0 minPROGRESS> 19:07:35 |#############       |  65% (42,237) 0.0 minPROGRESS> 19:07:35 |##############      |  70% (45,486) 0.0 minPROGRESS> 19:07:35 |###############     |  75% (48,735) 0.0 minPROGRESS> 19:07:35 |################    |  80% (51,984) 0.0 minPROGRESS> 19:07:35 |#################   |  85% (55,233) 0.0 minPROGRESS> 19:07:35 |##################  |  90% (58,482) 0.0 minPROGRESS> 19:07:35 |################### |  95% (61,731) 0.0 minPROGRESS> 19:07:36 |####################| 100% (64,971) 0.0 min
+    ## PROGRESS> 14:02:21 |                    |   0% (     0) 0.0 minPROGRESS> 14:02:21 |#                   |   5% ( 3,249) 0.0 minPROGRESS> 14:02:22 |##                  |  10% ( 6,498) 0.0 minPROGRESS> 14:02:22 |###                 |  15% ( 9,747) 0.0 minPROGRESS> 14:02:22 |####                |  20% (12,996) 0.0 minPROGRESS> 14:02:22 |#####               |  25% (16,245) 0.0 minPROGRESS> 14:02:22 |######              |  30% (19,494) 0.0 minPROGRESS> 14:02:22 |#######             |  35% (22,743) 0.0 minPROGRESS> 14:02:22 |########            |  40% (25,992) 0.0 minPROGRESS> 14:02:22 |#########           |  45% (29,241) 0.0 minPROGRESS> 14:02:22 |##########          |  50% (32,490) 0.0 minPROGRESS> 14:02:23 |###########         |  55% (35,739) 0.0 minPROGRESS> 14:02:23 |############        |  60% (38,988) 0.0 minPROGRESS> 14:02:23 |#############       |  65% (42,237) 0.0 minPROGRESS> 14:02:23 |##############      |  70% (45,486) 0.0 minPROGRESS> 14:02:23 |###############     |  75% (48,735) 0.0 minPROGRESS> 14:02:23 |################    |  80% (51,984) 0.0 minPROGRESS> 14:02:23 |#################   |  85% (55,233) 0.0 minPROGRESS> 14:02:23 |##################  |  90% (58,482) 0.0 minPROGRESS> 14:02:24 |################### |  95% (61,731) 0.0 minPROGRESS> 14:02:24 |####################| 100% (64,968) 0.0 min
     ## 
     ##    OUTPUT> data_ph_parse-select.tsv
-    ##   RECORDS> 64971
-    ##  SELECTED> 64971
+    ##   RECORDS> 64968
+    ##  SELECTED> 64968
     ## DISCARDED> 0
     ##       END> ParseDb
 
@@ -396,13 +396,13 @@ will remove those low-quality sequences with many Ns
     # number of sequences before filtering N
     dim(db)
 
-    ## [1] 64971    34
+    ## [1] 64968    34
 
     db = db[which(v_region_n_pass),]
     # number of sequences after filtering N
     dim(db)
 
-    ## [1] 64971    34
+    ## [1] 64968    34
 
 ## Genotyping and discovery of novel V gene alleles with TIgGER
 
@@ -543,11 +543,11 @@ for use in the following steps.
       select(v_call, v_call_genotyped)
 
     ## # A tibble: 3 x 2
-    ##   v_call                                v_call_genotyped
-    ##   <chr>                                 <chr>           
-    ## 1 IGHV2-26*02                           IGHV2-26*01     
-    ## 2 IGHV3-30*04,IGHV3-30*14,IGHV3-30-3*03 IGHV3-30*18     
-    ## 3 IGHV3-30*18,IGHV3-30-5*01             IGHV3-30*18
+    ##   v_call                      v_call_genotyped
+    ##   <chr>                       <chr>           
+    ## 1 IGHV4-30-4*09,IGHV4-31*03   IGHV4-30-4*09   
+    ## 2 IGHV3-7*01,IGHV3-7*03       IGHV3-7*01      
+    ## 3 IGHV4-30-2*07,IGHV4-30-4*01 IGHV4-30-2*07
 
     write_rearrangement(db, file.path("results", "tigger", "data_ph_genotyped.tsv"))
 
@@ -672,15 +672,7 @@ the dataset used to carry out the clonal assignments.*
 
 ![](intro-lab_files/intro-lab_intra-inter-clonal-d-1.png)
 
-<!--
-### TBD: See vignettes of Alakazam
-
-Links to other types of analysis. For example, see below "Clonal Lineages". 
--->
-
 ## Dowser: lineage reconstruction
-
-<!-- TBD: Update to Dowser version, which will involve the assignment of germlines as well (createGermlines()) -->
 
 B cell repertoires often consist of hundreds to thousands of separate
 clones. A clonal lineage recapitulates the ancestor-descendant
@@ -724,7 +716,7 @@ And passing `"human/vdj/"` to the `readIMGT` function.
     # read in IMGT files in the Docker container
     references <- dowser::readIMGT(dir = "/usr/local/share/germlines/imgt/human/vdj")
 
-    ## [1] "Read in 1173 from 17 fasta files"
+    ## [1] "Read in 1181 from 17 fasta files"
 
     # reconstruct germlines
     results@db <- dowser::createGermlines(results@db, references, nproc = 1)
@@ -754,12 +746,12 @@ uniqueness of the sequences, so they are not collapsed.
     ## # A tibble: 6 x 4
     ##   clone_id data       locus  seqs
     ##   <chr>    <list>     <chr> <int>
-    ## 1 19311    <airrClon> IGH      35
-    ## 2 17492    <airrClon> IGH      33
-    ## 3 22261    <airrClon> IGH      33
-    ## 4 8255     <airrClon> IGH      32
-    ## 5 24049    <airrClon> IGH      26
-    ## 6 30934    <airrClon> IGH      23
+    ## 1 19339    <airrClon> IGH      35
+    ## 2 17519    <airrClon> IGH      33
+    ## 3 22288    <airrClon> IGH      33
+    ## 4 8284     <airrClon> IGH      32
+    ## 5 24074    <airrClon> IGH      26
+    ## 6 30958    <airrClon> IGH      23
 
 ### Build trees with dowser
 
@@ -781,12 +773,12 @@ installed in the Immcantation container.
     ## # A tibble: 6 x 5
     ##   clone_id data       locus  seqs trees  
     ##   <chr>    <list>     <chr> <int> <list> 
-    ## 1 19311    <airrClon> IGH      35 <phylo>
-    ## 2 17492    <airrClon> IGH      33 <phylo>
-    ## 3 22261    <airrClon> IGH      33 <phylo>
-    ## 4 8255     <airrClon> IGH      32 <phylo>
-    ## 5 24049    <airrClon> IGH      26 <phylo>
-    ## 6 30934    <airrClon> IGH      23 <phylo>
+    ## 1 19339    <airrClon> IGH      35 <phylo>
+    ## 2 17519    <airrClon> IGH      33 <phylo>
+    ## 3 22288    <airrClon> IGH      33 <phylo>
+    ## 4 8284     <airrClon> IGH      32 <phylo>
+    ## 5 24074    <airrClon> IGH      26 <phylo>
+    ## 6 30958    <airrClon> IGH      23 <phylo>
 
 ### Plot trees with dowser and ggtree
 
@@ -819,3 +811,189 @@ In addition to the functions for building and visualizing trees,
 and differentiation, as well as for detecting new B cell evolution over
 time. Visit the [dowser website](https://dowser.readthedocs.io) to learn
 more.
+
+## SHazaM: mutational load
+
+B cell repertoires differ in the number of mutations introduced during
+somatic hypermutation (SHM). The `shazam` R package provides a wide
+array of methods focused on the analysis of SHM, including the
+reconstruction of SHM targeting models and quantification of selection
+pressure.
+
+Having identified the germline sequence (`germline_alignment_d_mask`) in
+previous steps, we first identify the set of somatic hypermutations by
+comparing the observed sequence (`sequence_alignment`) to the germline
+sequence. `observedMutations` is next used to quantify the mutational
+load of each sequence using either absolute counts (`frequency=F`) or as
+a frequency (the number of mutations divided by the number of
+informative positions (`frequency=T`). Each mutation can be defined as
+either a replacement mutation (R, or non-synonymous mutation, which
+changes the amino acid sequence) or a silent mutation (S, or synonymous
+mutation, which does not change the amino acid sequence). R and S
+mutations can be counted together (`conmbine=T`) or independently
+(`combine=F`). Counting can be limited to mutations occurring within a
+particular region of the sequence (for example, to focus on the V region
+`regionDefinition=IMGT_V`) or use the whole sequence
+(`regionDefinition=NULL`).
+
+Standard `ggplot` commands can be used to generate boxplots to visualize
+the distribution of mutation counts across sequences, which are found in
+the column `mu_count` that `observedMutations` added to `db`.
+
+    # Calculate total mutation count, R and S combined
+    results@db <- observedMutations(results@db, sequenceColumn = "sequence_alignment", 
+                            germlineColumn = "germline_alignment_d_mask",
+                            regionDefinition = NULL, frequency = F,
+                            combine = T, nproc = 4)
+    ggplot(results@db, aes(x = isotype, y = mu_count, fill = isotype)) +
+      geom_boxplot() +
+      scale_fill_manual(name = "Isotype", values = IG_COLORS) +
+      xlab("Isotype") + ylab("Mutation count") + theme_bw()
+
+![](intro-lab_files/intro-lab_unnamed-chunk-28-1.png)
+
+## SHazaM: models of SHM targeting biases
+
+SHM is a stochastic process, but does not occur uniformly across the
+V(D)J sequence. Some nucleotide motifs (i.e., hot-spots) are targeted
+more frequently than others (i.e., cold-spots). These intrinsic biases
+are modeled using 5-mer nucleotide motifs. For each 5-mer (e.g., ATCTA),
+a SHM mutability model provides the relative likelihood for the center
+base (e.g., the C in ATCTA) to be mutated. As associated substitution
+model provides the relative probabilities of the center base in a 5-mer
+mutating to each of the other 3 bases. There are several pre-built SHM
+targeting models included in `shazam` which have been constructed based
+on experimental datasets. These include models for human and mouse, and
+for both light and heavy chains. In addition, `shazam` provides the
+`createTargetingModel` method to generate new SHM targeting models from
+user-supplied sequencing data. ![](assets/5mer.png) The resulting model
+can be visualized as a hedgehog plot with `plotMutability`. In this
+visualization, 5-mers that belong to classically-defined SHM hot-spot
+motifs (e.g., WRC) are shown in red and green, cold-spot motifs in blue,
+and other motifs (i.e., neutral) in grey. The bars radiating outward are
+the relative mutabilities of each 5-mer. The middle circle is the
+central nucleotide being targeted for SHM, here shown by a green circle
+on the left plot (nucleotide A) and an orange circle on the right plot
+(nucleotide C). Moving from the center of the circle outward covers the
+5-mer nucleotide motif (5’ to 3’). As expected, higher relative mutation
+rates are observed at hot-spot motifs.
+
+    # Build and plot SHM targeting model
+    m <- createTargetingModel(results@db, vCallColumn = "v_call_genotyped")
+
+    ## Warning in createMutabilityMatrix(db, sub_mat, model = model, sequenceColumn =
+    ## sequenceColumn, : Insufficient number of mutations to infer some 5-mers. Filled
+    ## with 0.
+
+    # nucleotides: center nucleotide characters to plot
+    plotMutability(m, nucleotides = c("A","C"), size = 1.2)
+
+![](intro-lab_files/intro-lab_unnamed-chunk-29-1.png)
+
+## SHazaM: quantification of selection pressure
+
+During T-cell dependent adaptive immune responses, B cells undergo
+cycles of SHM and affinity-dependent selection that leads to the
+accumulation of mutations that improve their ability to bind antigens.
+The ability to estimate selection pressure from sequence data is of
+interest to understand the events driving physiological and pathological
+immune responses. `shazam` incorporates the Bayesian estimation of
+Antigen-driven SELectIoN (BASELINe) framework, to detect and quantify
+selection pressure, based on the analysis of somatic hypermutation
+patterns. Briefly, `calcBaseline` analyzes the observed frequency of
+replacement and silent mutations normalized by their expected frequency
+based on a targeting model, and generates a probability density function
+(PDF) for the selection strength (∑). This PDF can be used to
+statistically test for the occurrence of selection, as well as compare
+selection strength across conditions. An increased frequency of R
+mutations (∑ &gt; 0) suggests positive selection, and a decreased
+frequency of R mutations (∑ &lt; 0) points towards negative selection .
+<br><br>
+
+![Selection](assets/selection-formula.svg)
+
+positive Σ: Replacement frequency higher than expected
+
+negative Σ: Replacement frequency lower than expected
+
+The somatic hypermutations that are observed in clonally-related
+sequences are not independent events. In order to generate a set of
+independent SHM events, selection pressure analysis starts by collapsing
+each clone to one representative sequence (with its associated germline)
+using the function `collapseClones`. Next `calcBaseline` takes each
+representative sequences and calculates the selection pressure. The
+analysis can be focused on a particular region, the V region
+(`regionDefinition=IMGT_V`) in the example below. Because selection
+pressure may act differently across the BCR, we may also be interested
+to evaluate the selection strength for different regions such as the
+Complementary Determining Regions (CDR) or Framework Regions (FWR)
+separately. Selection strength can also be calculated separately for
+different isotopes or subjects. This can be done with `groupbaseline`,
+which convolves the PDFs from individual sequences into a single PDF
+representing the group of sequences (e.g., all IgG sequences). These PDF
+can be visualized with `plot`. FWR are critical to maintenance the
+overall structure of the BCR and typically have a lower observed
+selection strength, because mutations that alter the amino acid sequence
+are often negatively selected. CDRs are the areas of the BCR that
+generally bind to the antigen and may be subject to increased selection
+strength, although this can depend on the point in affinity maturation
+when the sequence is observed. In the example, negative selection is
+observed in the FWR, and almost no selection is observed in the CDR. In
+both CDR and FWR, sequences annotated with IGHM isotype show more
+positive selection strength than sequences annotated with IGHG and IGHA.
+
+    # Calculate clonal consensus and selection using the BASELINe method
+    z <- collapseClones(results@db)
+    b <- calcBaseline(z, regionDefinition = IMGT_V)
+
+    ## calcBaseline will calculate observed and expected mutations for clonal_sequence using clonal_germline as a reference.
+
+    ## Calculating BASELINe probability density functions...
+
+    # Combine selection scores for all clones in each group
+    g <- groupBaseline(b, groupBy = "isotype")
+
+    ## Grouping BASELINe probability density functions...
+    ## Calculating BASELINe statistics...
+
+    # Plot probability densities for the selection pressure
+    plot(g, "isotype", sigmaLimits = c(-1, 1), silent = F)
+
+![](intro-lab_files/intro-lab_unnamed-chunk-30-1.png)
+
+## SHazaM: Built in mutation models
+
+`shazam` comes with several pre-built targeting models, mutation models
+and sequence region definitions. They can be used to change the default
+behavior of many functions. For example, mutations are usually defined
+as R when they introduce any change in the amino acid sequence (`NULL`).
+However, for some analyses, it may be useful to consider some amino acid
+substitutions to be equivalent (i.e., treated as silent mutations). For
+example, it is possible to define replacement mutations as only those
+that introduce a change in the amino acid side chain charge
+(`CHARGE_MUTATIONS`).
+
+Empirical SHM Targeting Models
+
+-   HH\_S5F: Human heavy chain 5-mer model
+-   HKL\_S5F: Human light chain 5-mer model
+-   MK\_RS5NF: Mouse light chain 5-mer model
+
+Mutation Definitions
+
+-   NULL: Any mutation that results in an amino acid substitution is
+    considered a replacement (R) mutation.
+-   CHARGE\_MUTATIONS: Only mutations that alter side chain charge are
+    replacements.
+-   HYDOPATHY\_MUTATIONS: Only mutations that alter hydrophobicity class
+    are replacements.
+-   POLARITY\_MUTATIONS: Only mutations that alter polarity are
+    replacements.
+-   VOLUME\_MUTATIONS: Only mutations that alter volume class are
+    replacements.
+
+Sequence Region Definitions
+
+-   NULL: Full sequence
+-   IMGT\_V: V segment broken into combined CDRs and FWRs
+-   IMGT\_V\_BY\_REGIONS: V segment broken into individual CDRs and FWRs

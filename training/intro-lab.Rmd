@@ -13,12 +13,11 @@ params:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo=TRUE, cache=params$cache, fig.path=file.path("intro-lab_files","intro-lab_"))
+knitr::opts_chunk$set(echo=TRUE, cache=params$cache,
+                      fig.path=file.path("intro-lab_files", "intro-lab_"))
 ```
 
 # Introduction to Bulk B Cell Repertoire Analysis using the Immcantation Framework
-
-![Cover](assets/cover.png)
 
 The field of high-throughput adaptive immune receptor repertoire sequencing (AIRR-seq) has experienced significant growth in recent years, but this growth has come with considerable complexity and variety in experimental design. These complexities, combined with the high germline and somatic diversity of immunoglobulin repertoires, present analytical challenges requiring specialized methodologies. In this tutorial, we present an example pipeline for processing bulk BCR data.
 
@@ -31,6 +30,7 @@ The field of high-throughput adaptive immune receptor repertoire sequencing (AIR
 * V(D)J gene annotation and novel polymorphism detection
 * Inference of B cell clonal relationships
 * Diversity analysis
+* Lineage tree reconstruction 
 * Mutational load profiling
 * Modeling of somatic hypermutation (SHM) targeting
 * Quantification of selection pressure
@@ -159,7 +159,7 @@ ParseDb.py select -d results/changeo/data_p_parse-select.tsv \
 
 ## Load libraries and read in the data
 
-After loading the libraries needed, the process is started by using `readChangeoDb` to read the tabulated data generated in the previous step.
+After loading the libraries needed, the process is started by using `read_rearrangement` to read the tabulated data generated in the previous step.
 
 ```{r, message = FALSE}
 suppressPackageStartupMessages(library(airr))
@@ -184,11 +184,9 @@ Bulk BCR data in general includes ambiguous nucleotides (Ns), and we will remove
 source("assets/filterN.R")
 
 # Identify sequences with at least 20 Ns or continuous 15 Ns in the v_region
-v_n_stretches_plot <- filterN(db, "sequence_alignment",
-                                  start=1, end=312, 
-                                  max_n=20, max_n_stretch = 15,
-                                  label="v_region",
-                                  plot=TRUE)
+v_n_stretches_plot <- filterN(db, "sequence_alignment", start=1, end=312, 
+                              max_n=20, max_n_stretch = 15, label="v_region",
+                              plot=TRUE)
 
 v_region_n_pass <- v_n_stretches_plot$db_pass
 # number of sequences before filtering N
@@ -350,15 +348,7 @@ results <- hierarchicalClones(db, threshold=thr, v_call="v_call_genotyped")
 plot(results, binwidth=0.02)
 ```
 
-<!--
-### TBD: See vignettes of Alakazam
-
-Links to other types of analysis. For example, see below "Clonal Lineages". 
--->
-
 ## Dowser: lineage reconstruction
-
-<!-- TBD: Update to Dowser version, which will involve the assignment of germlines as well (createGermlines()) -->
 
 B cell repertoires often consist of hundreds to thousands of separate clones. A clonal lineage recapitulates the ancestor-descendant relationships between clonally-related B cells and uncovering these relationships can provide insights into affinity maturation. The R package `dowser` offers multiple ways to build B cell phylogenetic trees. Before performing lineage reconstruction, some preprocessing in needed.
 
@@ -401,9 +391,8 @@ In the rearrangement table, each row corresponds to a sequence, and each column 
 # add up duplicate_count column for collapsed sequences
 # store day, gex_annotation
 # discard clones with < 5 distinct sequences
-clones <- dowser::formatClones(results@db,
-                                         traits="isotype", 
-                                         minseq = 5, nproc = 1)
+clones <- dowser::formatClones(results@db, traits="isotype", minseq = 5,
+                               nproc = 1)
 head(clones)
 ```
 
@@ -414,8 +403,7 @@ Dowser offers multiple ways to build B cell phylogenetic trees. These differ by 
 ```{r, warning=FALSE}
 # the executable path is the location of the executable in the Docker container
 trees <- dowser::getTrees(clones, 
-                          build = "dnapars", 
-                          exec = "/usr/local/bin/dnapars", 
+                          build = "dnapars", exec = "/usr/local/bin/dnapars", 
                           nproc = 1)
 head(trees)
 ```
@@ -438,8 +426,96 @@ plots_all[[1]]
 ```{r}
 # save a pdf of all trees
 dowser::treesToPDF(plots_all,
-          file = file.path("intro-lab_files", "final_data_trees.pdf"),
-          nrow = 2, ncol = 2)
+                   file = file.path("intro-lab_files", "final_data_trees.pdf"),
+                   nrow = 2, ncol = 2)
 ```
 
 In addition to the functions for building and visualizing trees, `dowser` also implements new techniques for analyzing B cell migration and differentiation, as well as for detecting new B cell evolution over time. Visit the [dowser website](https://dowser.readthedocs.io) to learn more.
+
+## SHazaM: mutational load
+
+B cell repertoires differ in the number of mutations introduced during somatic hypermutation (SHM). The `shazam` R package provides a wide array of methods focused on the analysis of SHM, including the reconstruction of SHM targeting models and quantification of selection pressure.
+
+Having identified the germline sequence (`germline_alignment_d_mask`) in previous steps, we first identify the set of somatic hypermutations by comparing the observed sequence (`sequence_alignment`) to the germline sequence. `observedMutations` is next used to quantify the mutational load of each sequence using either absolute counts (`frequency=F`) or as a frequency (the number of mutations divided by the number of informative positions (`frequency=T`). Each mutation can be defined as either a replacement mutation (R, or non-synonymous mutation, which changes the amino acid sequence) or a silent mutation (S, or synonymous mutation, which does not change the amino acid sequence). R and S mutations can be counted together (`conmbine=T`) or independently (`combine=F`). Counting can be limited to mutations occurring within a particular region of the sequence (for example, to focus on the V region `regionDefinition=IMGT_V`) or use the whole sequence (`regionDefinition=NULL`).
+
+Standard `ggplot` commands can be used to generate boxplots to visualize the distribution of mutation counts across sequences, which are found in the column `mu_count` that `observedMutations` added to `db`.
+
+```{r}
+# Calculate total mutation count, R and S combined
+results@db <- observedMutations(results@db,
+                                sequenceColumn = "sequence_alignment", 
+                                germlineColumn = "germline_alignment_d_mask",
+                                regionDefinition = NULL, frequency = FALSE,
+                                combine = TRUE, nproc = 4)
+
+ggplot(results@db, aes(x = isotype, y = mu_count, fill = isotype)) +
+  geom_boxplot() +
+  scale_fill_manual(name = "Isotype", values = IG_COLORS) +
+  labs(x = "Isotype", y = "Mutation count") +
+  theme_bw()
+```
+
+## SHazaM: models of SHM targeting biases
+
+SHM is a stochastic process, but does not occur uniformly across the V(D)J sequence. Some nucleotide motifs (i.e., hot-spots) are targeted more frequently than others (i.e., cold-spots). These intrinsic biases are modeled using 5-mer nucleotide motifs. For each 5-mer (e.g., ATCTA), a SHM mutability model provides the relative likelihood for the center base (e.g., the C in ATCTA) to be mutated. As associated substitution model provides the relative probabilities of the center base in a 5-mer mutating to each of the other 3 bases. There are several pre-built SHM targeting models included in `shazam` which have been constructed based on experimental datasets. These include models for human and mouse, and for both light and heavy chains. In addition, `shazam` provides the `createTargetingModel` method to generate new SHM targeting models from user-supplied sequencing data.
+![](assets/5mer.png)
+The resulting model can be visualized as a hedgehog plot with `plotMutability`. In this visualization, 5-mers that belong to classically-defined SHM hot-spot motifs (e.g., WRC) are shown in red and green, cold-spot motifs in blue, and other motifs (i.e., neutral) in grey. The bars radiating outward are the relative mutabilities of each 5-mer. The middle circle is the central nucleotide being targeted for SHM, here shown by a green circle on the left plot (nucleotide A) and an orange circle on the right plot (nucleotide C). Moving from the center of the circle outward covers the 5-mer nucleotide motif (5' to 3'). As expected, higher relative mutation rates are observed at hot-spot motifs.
+
+```{r}
+# Build and plot SHM targeting model
+m <- createTargetingModel(results@db, vCallColumn = "v_call_genotyped")
+
+# nucleotides: center nucleotide characters to plot
+plotMutability(m, nucleotides = c("A","C"), size = 1.2)
+```
+
+## SHazaM: quantification of selection pressure
+
+During T-cell dependent adaptive immune responses, B cells undergo cycles of SHM and affinity-dependent selection that leads to the accumulation of mutations that improve their ability to bind antigens. The ability to estimate selection pressure from sequence data is of interest to understand the events driving physiological and pathological immune responses. `shazam` incorporates the Bayesian estimation of Antigen-driven SELectIoN (BASELINe) framework, to detect and quantify selection pressure, based on the analysis of somatic hypermutation patterns. Briefly, `calcBaseline` analyzes the observed frequency of replacement and silent mutations normalized by their expected frequency based on a targeting model, and generates a probability density function (PDF) for the selection strength ($\sum$). This PDF can be used to statistically test for the occurrence of selection, as well as compare selection strength across conditions. An increased frequency of R mutations ($\sum>0$) suggests positive selection, and a decreased frequency of R mutations ($\sum<0$) points towards negative selection .
+<br><br>
+<div style="float:left; margin-right:2em">
+![Selection](assets/selection-formula.svg)
+</div>
+<div>
+positive Σ: Replacement frequency higher than expected
+
+negative Σ: Replacement frequency lower than expected
+</div>
+The somatic hypermutations that are observed in clonally-related sequences are not independent events. In order to generate a set of independent SHM events, selection pressure analysis starts by collapsing each clone to one representative sequence (with its associated germline) using the function `collapseClones`. Next `calcBaseline` takes each representative sequences and calculates the selection pressure. The analysis can be focused on a particular region, the V region (`regionDefinition=IMGT_V`) in the example below. Because selection pressure may act differently across the BCR, we may also be interested to evaluate the selection strength for different regions such as the Complementary Determining Regions (CDR) or Framework Regions (FWR) separately. Selection strength can also be calculated separately for different isotopes or subjects. This can be done with `groupbaseline`, which convolves the PDFs from individual sequences into a single PDF representing the group of sequences (e.g., all IgG sequences). 
+These PDF can be visualized with `plot`. FWR are critical to maintenance the overall structure of the BCR and typically have a lower observed selection strength, because mutations that alter the amino acid sequence are often negatively selected. CDRs are the areas of the BCR that generally bind to the antigen and may be subject to increased selection strength, although this can depend on the point in affinity maturation when the sequence is observed. In the example, negative selection is observed in the FWR, and almost no selection is observed in the CDR. In both CDR and FWR, sequences annotated with IGHM isotype show more positive selection strength than sequences annotated with IGHG and IGHA.
+
+```{r}
+# Calculate clonal consensus and selection using the BASELINe method
+z <- collapseClones(results@db)
+b <- calcBaseline(z, regionDefinition = IMGT_V)
+
+# Combine selection scores for all clones in each group
+g <- groupBaseline(b, groupBy = "isotype")
+
+# Plot probability densities for the selection pressure
+plot(g, "isotype", sigmaLimits = c(-1, 1), silent = F)
+```
+
+## SHazaM: Built in mutation models
+
+`shazam` comes with several pre-built targeting models, mutation models and sequence region definitions. They can be used to change the default behavior of many functions. For example, mutations are usually defined as R when they introduce any change in the amino acid sequence (`NULL`). However, for some analyses, it may be useful to consider some amino acid substitutions to be equivalent (i.e., treated as silent mutations). For example, it is possible to define replacement mutations as only those that introduce a change in the amino acid side chain charge (`CHARGE_MUTATIONS`).
+
+Empirical SHM Targeting Models
+
+* HH_S5F: Human heavy chain 5-mer model
+* HKL_S5F: Human light chain 5-mer model
+* MK_RS5NF: Mouse light chain 5-mer model
+
+Mutation Definitions
+
+* NULL: Any mutation that results in an amino acid substitution is considered a replacement (R) mutation.
+* CHARGE_MUTATIONS:  Only mutations that alter side chain charge are replacements.
+* HYDOPATHY_MUTATIONS: Only mutations that alter hydrophobicity class are replacements.
+* POLARITY_MUTATIONS: Only mutations that alter polarity are replacements.
+* VOLUME_MUTATIONS: Only mutations that alter volume class are replacements.
+
+Sequence Region Definitions
+
+* NULL: Full sequence
+* IMGT_V: V segment broken into combined CDRs and FWRs
+* IMGT_V_BY_REGIONS: V segment broken into individual CDRs and FWRs

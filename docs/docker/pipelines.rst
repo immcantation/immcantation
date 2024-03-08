@@ -202,7 +202,7 @@ or inside the container under ``/usr/local/share/protocols/Universal``.
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Assigns new annotations and infers clonal relationships to 10x Genomics
-single-cell V(D)J data output by Cell Ranger.
+single cell V(D)J data output by Cell Ranger.
 
 .. include:: ../_include/usage.rst
     :start-after: Start changeo-10x

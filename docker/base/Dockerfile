@@ -25,6 +25,8 @@ RUN dnf -y update && dnf install -y \
     biber \
     findutils \
     git \
+    glpk-devel \
+    gmp-devel \
     langpacks-en \
     lapack-devel \
     libcurl-devel \
@@ -32,6 +34,7 @@ RUN dnf -y update && dnf install -y \
     libidn \
     libidn1.34 \
     libnsl \
+    libsodium-devel \
     libssh2 \
     libuv \
     libxml2-devel \
@@ -41,6 +44,7 @@ RUN dnf -y update && dnf install -y \
     openssl-devel \
     pandoc \
     perl \
+    proj-devel \    
     python3 \
     python3-biopython \
     python3-GitPython \
@@ -56,6 +60,7 @@ RUN dnf -y update && dnf install -y \
     R-rgeos \
     R-ragg \
     R-textshaping \
+    redland-devel \    
     sudo \
     tar \
     texlive-titling \
@@ -68,17 +73,20 @@ RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 20
 
 # R build setup
 ARG R_REPO="http://lib.stat.cmu.edu/R/CRAN/"
-ARG R_DEPS="c('Rcpp', \
+ARG R_DEPS="c('BiocManager', \
               'devtools', \
-              'roxygen2', \
-              'testthat', \
-              'pkgbuild', \
-              'rmarkdown', \
               'knitr', \
+              'Matrix', \
               'optparse', \
-              'BiocManager')"
+              'pkgbuild', \
+              'Rcpp', \
+              'rmarkdown', \
+              'roxygen2', \
+              'testthat')"
 ARG R_BIOC_DEPS="c('Biostrings', \
+              'DECIPHER', \
               'GenomicAlignments', \
+              'ggmsa', \
               'ggtree', \
               'IRanges')"           
 RUN echo "options(repos='${R_REPO}')" >> /usr/lib64/R/library/base/R/Rprofile \

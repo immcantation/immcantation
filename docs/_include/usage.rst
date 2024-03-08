@@ -289,6 +289,9 @@ Usage: tigger-genotype [options]
 	-n NAME, --name=NAME
 		Sample name or run identifier which will be used as the output file prefix. 
 		Defaults to a truncated version of the input filename.
+	-u FIND-UNMUTATED, --find-unmutated=FIND-UNMUTATED
+		Whether to use '-r' to find which samples are unmutated. 
+		Defaults to TRUE.
 	-o OUTDIR, --outdir=OUTDIR
 		Output directory. Will be created if it does not exist. 
 		Defaults to the current working directory.
