@@ -13,7 +13,7 @@ package:
   prestor: null
   rabhit: null
   rdi: null
-  igphyml: 1.1.5
+  igphyml: 2.0.0
 dependency:
   airr-py:  1.5.0
   airr-r:   1.5.0
