@@ -64,7 +64,7 @@ RUN BLAST=$(versions get -n blast) \
 # Install IgBLAST executables
 RUN IGBLAST=$(versions get -n igblast) \
     && wget -q --show-progress --no-check-certificate \
-       ftp://ftp.ncbi.nih.gov/blast/executables/igblast/release/${IGBLAST}/ncbi-igblast-${IGBLAST}-x64-linux.tar.gz \
+       ftp://ftp.ncbi.nlm.nih.gov/blast/executables/igblast/release/${IGBLAST}/ncbi-igblast-${IGBLAST}-x64-linux.tar.gz \
     && tar -zxf ncbi-igblast-${IGBLAST}-x64-linux.tar.gz \
     && mv ncbi-igblast-${IGBLAST}/bin/* /usr/local/bin \
     && mkdir -p /usr/local/share/igblast \
@@ -117,7 +117,7 @@ RUN RAXMLNG=$(versions get -n raxml-ng) \
 # See its documentation at
 # https://ftp.ncbi.nih.gov/toolbox/ncbi_tools/converters/by_program/table2asn_GFF/DOCUMENTATION/table2asn_readme.txt
 RUN wget -q --show-progress --no-check-certificate \
-    ftp://ftp.ncbi.nih.gov/toolbox/ncbi_tools/converters/versions/2023-07-13/by_program/tbl2asn/linux64.tbl2asn.gz \
+    ftp://ftp.ncbi.nlm.nih.gov/toolbox/ncbi_tools/converters/versions/2023-07-13/by_program/tbl2asn/linux64.tbl2asn.gz \
     && gunzip linux64.tbl2asn.gz \
     && mv linux64.tbl2asn /usr/local/bin/tbl2asn \
     && chmod +x /usr/local/bin/tbl2asn
