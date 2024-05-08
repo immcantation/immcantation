@@ -1,4 +1,4 @@
-FROM fedora:38
+FROM fedora:40
 LABEL maintainer="Jason Anthony Vander Heiden [jason.vanderheiden@yale.edu], \
                   Susanna Marquez [susanna.marquez@yale.edu]" \
       description="Standard environment and dependencies for the Immcantation framework."
@@ -57,14 +57,13 @@ RUN dnf -y update && dnf install -y \
     python3-scipy \
     R-core \
     R-core-devel \
-    R-rgeos \
     R-ragg \
     R-textshaping \
     redland-devel \    
     sudo \
     tar \
     texlive-titling \
-    wget \
+    wget2 \
     && dnf clean all
 
 # System environment variables
@@ -92,7 +91,7 @@ ARG R_BIOC_DEPS="c('Biostrings', \
 RUN echo "options(repos='${R_REPO}')" >> /usr/lib64/R/library/base/R/Rprofile \
     && mkdir -p /usr/share/doc/R/html \
     && Rscript -e "install.packages(${R_DEPS}, clean=TRUE)" \
-    && Rscript -e "BiocManager::install(${R_BIOC_DEPS},update=F,ask=F,method='wget')"
+    && Rscript -e "BiocManager::install(${R_BIOC_DEPS},update=F,ask=F,method='wget2')"
 RUN touch /.Rprofile \
     && touch /.Renviron
 

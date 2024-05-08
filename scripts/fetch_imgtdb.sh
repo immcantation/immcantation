@@ -79,7 +79,7 @@ do
         FILE_NAME="${FILE_PATH}/${REPERTOIRE}_${KEY}_${CHAIN}.fasta"
         TMP_FILE="${FILE_NAME}.tmp"
         #echo $URL
-        wget $URL -O $TMP_FILE -q
+        wget2 $URL -O $TMP_FILE -q
         awk '/<pre>/{i++}/<\/pre>/{j++}{if(j==2){exit}}{if(i==2 && j==1 && $0!~"^<pre>"){print}}' $TMP_FILE > $FILE_NAME
         # Make sed command work also for mac, see: https://stackoverflow.com/a/44864004
         sed -i.bak "$REPLACE_VALUE" $FILE_NAME && rm $FILE_NAME.bak
@@ -93,7 +93,7 @@ do
         FILE_NAME="${FILE_PATH_LV}/${REPERTOIRE}_lv_${KEY}_${CHAIN}.fasta"
         TMP_FILE="${FILE_NAME}.tmp"
         #echo $URL
-        wget $URL -O $TMP_FILE -q
+        wget2 $URL -O $TMP_FILE -q
         awk '/<pre>/{i++}/<\/pre>/{j++}{if(j==2){exit}}{if(i==2 && j==1 && $0!~"^<pre>"){print}}' $TMP_FILE > $FILE_NAME
         # Make sed command work also for mac, see: https://stackoverflow.com/a/44864004
         sed -i.bak "$REPLACE_VALUE" $FILE_NAME && rm $FILE_NAME.bak
@@ -107,7 +107,7 @@ do
         FILE_NAME="${FILE_PATH_AA}/${REPERTOIRE}_aa_${KEY}_${CHAIN}.fasta"
         TMP_FILE="${FILE_NAME}.tmp"
         #echo $URL
-        wget $URL -O $TMP_FILE -q
+        wget2 $URL -O $TMP_FILE -q
         awk '/<pre>/{i++}/<\/pre>/{j++}{if(j==2){exit}}{if(i==2 && j==1 && $0!~"^<pre>"){print}}' $TMP_FILE > $FILE_NAME
         # Make sed command work also for mac, see: https://stackoverflow.com/a/44864004
         sed -i.bak "$REPLACE_VALUE" $FILE_NAME && rm $FILE_NAME.bak
@@ -122,7 +122,7 @@ do
         FILE_NAME="${FILE_PATH}/${REPERTOIRE}_${KEY}_${CHAIN}.fasta"
         TMP_FILE="${FILE_NAME}.tmp"
         #echo $URL
-        wget $URL -O $TMP_FILE -q
+        wget2 $URL -O $TMP_FILE -q
         awk '/<pre>/{i++}/<\/pre>/{j++}{if(j==2){exit}}{if(i==2 && j==1 && $0!~"^<pre>"){print}}' $TMP_FILE > $FILE_NAME
         sed -i.bak "$REPLACE_VALUE" $FILE_NAME && rm $FILE_NAME.bak
         rm $TMP_FILE
@@ -135,7 +135,7 @@ do
         FILE_NAME="${FILE_PATH_LV}/${REPERTOIRE}_lv_${KEY}_${CHAIN}.fasta"
         TMP_FILE="${FILE_NAME}.tmp"
         #echo $URL
-        wget $URL -O $TMP_FILE -q
+        wget2 $URL -O $TMP_FILE -q
         awk '/<pre>/{i++}/<\/pre>/{j++}{if(j==2){exit}}{if(i==2 && j==1 && $0!~"^<pre>"){print}}' $TMP_FILE > $FILE_NAME
         # Make sed command work also for mac, see: https://stackoverflow.com/a/44864004
         sed -i.bak "$REPLACE_VALUE" $FILE_NAME && rm $FILE_NAME.bak
@@ -149,7 +149,7 @@ do
         FILE_NAME="${FILE_PATH_AA}/${REPERTOIRE}_aa_${KEY}_${CHAIN}.fasta"
         TMP_FILE="${FILE_NAME}.tmp"
         #echo $URL
-        wget $URL -O $TMP_FILE -q
+        wget2 $URL -O $TMP_FILE -q
         awk '/<pre>/{i++}/<\/pre>/{j++}{if(j==2){exit}}{if(i==2 && j==1 && $0!~"^<pre>"){print}}' $TMP_FILE > $FILE_NAME
         sed -i.bak "$REPLACE_VALUE" $FILE_NAME && rm $FILE_NAME.bak
         rm $TMP_FILE
@@ -168,7 +168,7 @@ do
         FILE_NAME="${FILE_PATH}/${REPERTOIRE}_${KEY}_${CHAIN}L.fasta"
         TMP_FILE="${FILE_NAME}.tmp"
         #echo $URL
-        wget $URL -O $TMP_FILE -q
+        wget2 $URL -O $TMP_FILE -q
         awk '/<pre>/{i++}/<\/pre>/{j++}{if(j==2){exit}}{if(i==2 && j==1 && $0!~"^<pre>"){print}}' $TMP_FILE > $FILE_NAME
         sed -i.bak "$REPLACE_VALUE" $FILE_NAME && rm $FILE_NAME.bak
         rm $TMP_FILE
@@ -182,7 +182,7 @@ do
         FILE_NAME="${FILE_PATH}/${REPERTOIRE}_${KEY}_${CHAIN}L.fasta"
         TMP_FILE="${FILE_NAME}.tmp"
         #echo $URL
-        wget $URL -O $TMP_FILE -q
+        wget2 $URL -O $TMP_FILE -q
         awk '/<pre>/{i++}/<\/pre>/{j++}{if(j==2){exit}}{if(i==2 && j==1 && $0!~"^<pre>"){print}}' $TMP_FILE > $FILE_NAME
         sed -i.bak "$REPLACE_VALUE" $FILE_NAME && rm $FILE_NAME.bak
         rm $TMP_FILE
@@ -208,7 +208,7 @@ do
         FILE_NAME="${FILE_PATH}/${REPERTOIRE}_${KEY}_${CHAIN}.fasta"
         TMP_FILE="${FILE_NAME}.tmp"
         #echo $URL
-        wget $URL -O $TMP_FILE -q
+        wget2 $URL -O $TMP_FILE -q
         awk '/<pre>/{i++}/<\/pre>/{j++}{if(j==2){exit}}{if(i==2 && j==1 && $0!~"^<pre>"){print}}' $TMP_FILE > $FILE_NAME
         sed -i.bak "$REPLACE_VALUE" $FILE_NAME && rm $FILE_NAME.bak
         rm $TMP_FILE
@@ -222,7 +222,7 @@ do
         FILE_NAME="${FILE_PATH}/${REPERTOIRE}_${KEY}_${CHAIN}.fasta"
         TMP_FILE="${FILE_NAME}.tmp"
         #echo $URL
-        wget $URL -O $TMP_FILE -q
+        wget2 $URL -O $TMP_FILE -q
         awk '/<pre>/{i++}/<\/pre>/{j++}{if(j==2){exit}}{if(i==2 && j==1 && $0!~"^<pre>"){print}}' $TMP_FILE > $FILE_NAME
         sed -i.bak "$REPLACE_VALUE" $FILE_NAME && rm $FILE_NAME.bak
         rm $TMP_FILE

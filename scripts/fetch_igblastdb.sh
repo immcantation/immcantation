@@ -47,8 +47,8 @@ if $OUTDIR_SET && [ ! -d "${OUTDIR}" ]; then
 fi
 
 # Fetch database
-wget -q -r -nH --cut-dirs=5 --no-parent \
-    ftp://ftp.ncbi.nlm.nih.gov/blast/executables/igblast/release/database \
+wget2 -q -r -nH --cut-dirs=5 --no-parent \
+    https://ftp.ncbi.nlm.nih.gov/blast/executables/igblast/release/database \
     -P ${OUTDIR}/database
 
 # Extract
@@ -57,12 +57,12 @@ tar -C ${OUTDIR}/database -xf ${OUTDIR}/database/rhesus_monkey_VJ.tar
 
 if $DOWNLOAD_ALL; then
     # Fetch internal_data
-    wget -q -r -nH --cut-dirs=5 --no-parent \
-        ftp://ftp.ncbi.nlm.nih.gov/blast/executables/igblast/release/old_internal_data \
+    wget2 -q -r -nH --cut-dirs=5 --no-parent \
+        https://ftp.ncbi.nlm.nih.gov/blast/executables/igblast/release/old_internal_data \
         -P ${OUTDIR}/internal_data
 
     # Fetch optional_file
-    wget -q -r -nH --cut-dirs=5 --no-parent \
-        ftp://ftp.ncbi.nlm.nih.gov/blast/executables/igblast/release/old_optional_file  \
+    wget2 -q -r -nH --cut-dirs=5 --no-parent \
+        https://ftp.ncbi.nlm.nih.gov/blast/executables/igblast/release/old_optional_file  \
         -P ${OUTDIR}/optional_file
 fi

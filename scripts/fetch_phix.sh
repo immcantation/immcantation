@@ -40,7 +40,7 @@ done
 DATE=$(date +"%Y.%m.%d")
 
 # Download and unpack
-wget "ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/819/615/GCF_000819615.1_ViralProj14015/GCF_000819615.1_ViralProj14015_genomic.fna.gz" -P $OUTDIR
+wget2 "ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/819/615/GCF_000819615.1_ViralProj14015/GCF_000819615.1_ViralProj14015_genomic.fna.gz" -P $OUTDIR
 gunzip "${OUTDIR}/GCF_000819615.1_ViralProj14015_genomic.fna.gz"
 BLAST_DB="${OUTDIR}/GCF_000819615.1_ViralProj14015_genomic.fna"
 
