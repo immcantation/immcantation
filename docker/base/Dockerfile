@@ -91,7 +91,7 @@ ARG R_BIOC_DEPS="c('Biostrings', \
 RUN echo "options(repos='${R_REPO}')" >> /usr/lib64/R/library/base/R/Rprofile \
     && mkdir -p /usr/share/doc/R/html \
     && Rscript -e "install.packages(${R_DEPS}, clean=TRUE)" \
-    && Rscript -e "BiocManager::install(${R_BIOC_DEPS},update=F,ask=F,method='wget')"
+    && Rscript -e "BiocManager::install(${R_BIOC_DEPS},update=F,ask=F)"
 RUN touch /.Rprofile \
     && touch /.Renviron
 
