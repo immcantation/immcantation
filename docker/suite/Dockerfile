@@ -91,11 +91,13 @@ RUN IGBLAST=$(versions get -n igblast) \
 #     && rm /ncbi-igblast-1.19.0-fedora36-x64.zip
 
 # Install PHYLIP
+# Temporary fix for makebox, added following the patch for debian:
+# https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1066595
 RUN PHYLIP=$(versions get -n phylip) \
     && wget2 -q --force-progress --no-check-certificate \
        https://phylipweb.github.io/phylip/download/phylip-${PHYLIP}.tar.gz \
     && tar -zxf phylip-${PHYLIP}.tar.gz \
-    && (cd phylip-${PHYLIP}/src && make -f Makefile.unx install CFLAGS='-fcommon') \
+    && (cd phylip-${PHYLIP}/src && sed -i '/double computeAngle/a void makebox(char *, double *, double *, double *, long);' draw.h && make -f Makefile.unx install CFLAGS='-fcommon') \
     && mv phylip-${PHYLIP}/exe/* /usr/local/bin \
     && rm -r phylip-${PHYLIP}.tar.gz phylip-${PHYLIP}
 
@@ -117,15 +119,18 @@ RUN RAXMLNG=$(versions get -n raxml-ng) \
 # See its documentation at
 # https://ftp.ncbi.nih.gov/toolbox/ncbi_tools/converters/by_program/table2asn_GFF/DOCUMENTATION/table2asn_readme.txt
 RUN wget2 -q --force-progress --no-check-certificate \
-    ftp://ftp.ncbi.nlm.nih.gov/toolbox/ncbi_tools/converters/versions/2023-07-13/by_program/tbl2asn/linux64.tbl2asn.gz \
+    https://ftp.ncbi.nlm.nih.gov/toolbox/ncbi_tools/converters/versions/2023-07-13/by_program/tbl2asn/linux64.tbl2asn.gz \
     && gunzip linux64.tbl2asn.gz \
     && mv linux64.tbl2asn /usr/local/bin/tbl2asn \
     && chmod +x /usr/local/bin/tbl2asn
 
 # Install AIRR reference libraries
+# TODO: install from repo,
+# re-enable install from pypi when new airr-py version released
 RUN AIRR_PY=$(versions get -n airr-py) \
     && AIRR_R=$(versions get -n airr-r) \
-    && pip3 install airr==${AIRR_PY} \
+    # && pip3 install airr==${AIRR_PY} \
+    && pip3 install -e "git+https://github.com/airr-community/airr-standards.git@"${AIRR_PY}"#egg=airr&subdirectory=lang/python" \
     && Rscript -e "devtools::install_version('airr', '${AIRR_R}', quiet=FALSE, clean=TRUE)"
 
 # Install presto

@@ -4,6 +4,10 @@ Release Notes
 Version devel:  May 12, 2024
 ------------------------------------------------------------------------
 
+Image Changes:
+
++ Updated base image to Fedora 40.
+
 Version Updates:
 
 + seurat 5.0.3

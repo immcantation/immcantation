@@ -3,7 +3,7 @@
 Clean IMGT germline fasta files for IgBLAST database build
 """
 import Bio
-from pkg_resources import parse_version
+from packaging.version import Version
 from sys import argv
 from Bio import SeqIO
 from Bio.SeqRecord import SeqRecord
@@ -24,7 +24,7 @@ for rec in SeqIO.parse(in_file, 'fasta'):
 
 # Overwrite file
 with open(out_file, 'w') as out_handle:
-    if parse_version(Bio.__version__) >= parse_version('1.71'):
+    if Version(Bio.__version__) >= Version('1.71'):
         # Biopython >= v1.71
         SeqIO.write(seq_list, out_handle, format='fasta-2line')
     else:

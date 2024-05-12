@@ -40,7 +40,7 @@ done
 DATE=$(date +"%Y.%m.%d")
 
 # Download and unpack
-wget2 "ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/819/615/GCF_000819615.1_ViralProj14015/GCF_000819615.1_ViralProj14015_genomic.fna.gz" -P $OUTDIR
+wget2 "https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/819/615/GCF_000819615.1_ViralProj14015/GCF_000819615.1_ViralProj14015_genomic.fna.gz" -P $OUTDIR
 gunzip "${OUTDIR}/GCF_000819615.1_ViralProj14015_genomic.fna.gz"
 BLAST_DB="${OUTDIR}/GCF_000819615.1_ViralProj14015_genomic.fna"
 
@@ -49,5 +49,5 @@ makeblastdb -in ${BLAST_DB} -parse_seqids -dbtype nucl
 
 # Write download info
 INFO_FILE="${OUTDIR}/PhiX174.yaml"
-echo -e "source:  ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/819/615/GCF_000819615.1_ViralProj14015/GCF_000819615.1_ViralProj14015_genomic.fna.gz" > $INFO_FILE
+echo -e "source:  https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/819/615/GCF_000819615.1_ViralProj14015/GCF_000819615.1_ViralProj14015_genomic.fna.gz" > $INFO_FILE
 echo -e "date:    ${DATE}" >> $INFO_FILE
