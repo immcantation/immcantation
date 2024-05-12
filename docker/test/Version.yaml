@@ -15,9 +15,9 @@ package:
   rdi: null
   igphyml: 2.0.0
 dependency:
-  airr-py:  1.5.0
+  airr-py:  b3e4a69169200b2644cb7e0e534f1781b68829f10
   airr-r:   1.5.0
-  blast:    2.13.0
+  blast:    2.15.0
   cd-hit:   4.8.1
   igblast:  1.22.0
   muscle:   3.8.425
