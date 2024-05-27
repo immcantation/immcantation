@@ -63,6 +63,7 @@ RUN dnf -y update && dnf install -y \
     sudo \
     tar \
     texlive-titling \
+    wget \
     wget2 \
     && dnf clean all
 
