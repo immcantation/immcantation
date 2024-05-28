@@ -54,6 +54,17 @@ SPECIES_REPLACE=('human:s/Homo sapiens/Homo_sapiens/g'
                  'rabbit:s/Oryctolagus cuniculus/Oryctolagus_cuniculus/g'
                  'rhesus_monkey:s/Macaca mulatta/Macaca_mulatta/g')
 
+
+WGET="wget"
+if ! command -v wget &> /dev/null; then
+    if ! command -v wget2 &> /dev/null; then
+        echo "wget or wget2 not found."
+        exit 1
+    else
+        WGET=wget2
+    fi
+fi
+
 # Counter for loop iteration, used for getting the right values of SPECIES_REPLACE
 COUNT=0
 # For each species
@@ -79,8 +90,16 @@ do
         FILE_NAME="${FILE_PATH}/${REPERTOIRE}_${KEY}_${CHAIN}.fasta"
         TMP_FILE="${FILE_NAME}.tmp"
         #echo $URL
-        wget $URL -O $TMP_FILE -q
+        ${WGET} $URL -O $TMP_FILE -q
         awk '/<pre>/{i++}/<\/pre>/{j++}{if(j==2){exit}}{if(i==2 && j==1 && $0!~"^<pre>"){print}}' $TMP_FILE > $FILE_NAME
+
+        # Check file exists and is not empty
+        if [ ! -s "$FILE_NAME" ]
+        then
+            echo "IMGT Fasta file does not exist, or is empty. Is the IMGT server online?"
+            exit 1
+        fi
+
         # Make sed command work also for mac, see: https://stackoverflow.com/a/44864004
         sed -i.bak "$REPLACE_VALUE" $FILE_NAME && rm $FILE_NAME.bak
         rm $TMP_FILE
@@ -93,8 +112,16 @@ do
         FILE_NAME="${FILE_PATH_LV}/${REPERTOIRE}_lv_${KEY}_${CHAIN}.fasta"
         TMP_FILE="${FILE_NAME}.tmp"
         #echo $URL
-        wget $URL -O $TMP_FILE -q
+        ${WGET} $URL -O $TMP_FILE -q
         awk '/<pre>/{i++}/<\/pre>/{j++}{if(j==2){exit}}{if(i==2 && j==1 && $0!~"^<pre>"){print}}' $TMP_FILE > $FILE_NAME
+
+        # Check file exists and is not empty
+        if [ ! -s "$FILE_NAME" ]
+        then
+            echo "IMGT Fasta file does not exist, or is empty. Is the IMGT server online?"
+            exit 1
+        fi
+
         # Make sed command work also for mac, see: https://stackoverflow.com/a/44864004
         sed -i.bak "$REPLACE_VALUE" $FILE_NAME && rm $FILE_NAME.bak
         rm $TMP_FILE
@@ -107,8 +134,16 @@ do
         FILE_NAME="${FILE_PATH_AA}/${REPERTOIRE}_aa_${KEY}_${CHAIN}.fasta"
         TMP_FILE="${FILE_NAME}.tmp"
         #echo $URL
-        wget $URL -O $TMP_FILE -q
+        ${WGET} $URL -O $TMP_FILE -q
         awk '/<pre>/{i++}/<\/pre>/{j++}{if(j==2){exit}}{if(i==2 && j==1 && $0!~"^<pre>"){print}}' $TMP_FILE > $FILE_NAME
+
+        # Check file exists and is not empty
+        if [ ! -s "$FILE_NAME" ]
+        then
+            echo "IMGT Fasta file does not exist, or is empty. Is the IMGT server online?"
+            exit 1
+        fi
+
         # Make sed command work also for mac, see: https://stackoverflow.com/a/44864004
         sed -i.bak "$REPLACE_VALUE" $FILE_NAME && rm $FILE_NAME.bak
         rm $TMP_FILE
@@ -122,8 +157,16 @@ do
         FILE_NAME="${FILE_PATH}/${REPERTOIRE}_${KEY}_${CHAIN}.fasta"
         TMP_FILE="${FILE_NAME}.tmp"
         #echo $URL
-        wget $URL -O $TMP_FILE -q
+        ${WGET} $URL -O $TMP_FILE -q
         awk '/<pre>/{i++}/<\/pre>/{j++}{if(j==2){exit}}{if(i==2 && j==1 && $0!~"^<pre>"){print}}' $TMP_FILE > $FILE_NAME
+
+        # Check file exists and is not empty
+        if [ ! -s "$FILE_NAME" ]
+        then
+            echo "IMGT Fasta file does not exist, or is empty. Is the IMGT server online?"
+            exit 1
+        fi
+
         sed -i.bak "$REPLACE_VALUE" $FILE_NAME && rm $FILE_NAME.bak
         rm $TMP_FILE
     done
@@ -135,8 +178,16 @@ do
         FILE_NAME="${FILE_PATH_LV}/${REPERTOIRE}_lv_${KEY}_${CHAIN}.fasta"
         TMP_FILE="${FILE_NAME}.tmp"
         #echo $URL
-        wget $URL -O $TMP_FILE -q
+        ${WGET} $URL -O $TMP_FILE -q
         awk '/<pre>/{i++}/<\/pre>/{j++}{if(j==2){exit}}{if(i==2 && j==1 && $0!~"^<pre>"){print}}' $TMP_FILE > $FILE_NAME
+
+        # Check file exists and is not empty
+        if [ ! -s "$FILE_NAME" ]
+        then
+            echo "IMGT Fasta file does not exist, or is empty. Is the IMGT server online?"
+            exit 1
+        fi
+
         # Make sed command work also for mac, see: https://stackoverflow.com/a/44864004
         sed -i.bak "$REPLACE_VALUE" $FILE_NAME && rm $FILE_NAME.bak
         rm $TMP_FILE
@@ -149,8 +200,16 @@ do
         FILE_NAME="${FILE_PATH_AA}/${REPERTOIRE}_aa_${KEY}_${CHAIN}.fasta"
         TMP_FILE="${FILE_NAME}.tmp"
         #echo $URL
-        wget $URL -O $TMP_FILE -q
+        ${WGET} $URL -O $TMP_FILE -q
         awk '/<pre>/{i++}/<\/pre>/{j++}{if(j==2){exit}}{if(i==2 && j==1 && $0!~"^<pre>"){print}}' $TMP_FILE > $FILE_NAME
+
+        # Check file exists and is not empty
+        if [ ! -s "$FILE_NAME" ]
+        then
+            echo "IMGT Fasta file does not exist, or is empty. Is the IMGT server online?"
+            exit 1
+        fi
+
         sed -i.bak "$REPLACE_VALUE" $FILE_NAME && rm $FILE_NAME.bak
         rm $TMP_FILE
     done
@@ -168,8 +227,16 @@ do
         FILE_NAME="${FILE_PATH}/${REPERTOIRE}_${KEY}_${CHAIN}L.fasta"
         TMP_FILE="${FILE_NAME}.tmp"
         #echo $URL
-        wget $URL -O $TMP_FILE -q
+        ${WGET} $URL -O $TMP_FILE -q
         awk '/<pre>/{i++}/<\/pre>/{j++}{if(j==2){exit}}{if(i==2 && j==1 && $0!~"^<pre>"){print}}' $TMP_FILE > $FILE_NAME
+
+        # Check file exists and is not empty
+        if [ ! -s "$FILE_NAME" ]
+        then
+            echo "IMGT Fasta file does not exist, or is empty. Is the IMGT server online?"
+            exit 1
+        fi
+
         sed -i.bak "$REPLACE_VALUE" $FILE_NAME && rm $FILE_NAME.bak
         rm $TMP_FILE
     done
@@ -182,8 +249,16 @@ do
         FILE_NAME="${FILE_PATH}/${REPERTOIRE}_${KEY}_${CHAIN}L.fasta"
         TMP_FILE="${FILE_NAME}.tmp"
         #echo $URL
-        wget $URL -O $TMP_FILE -q
+        ${WGET} $URL -O $TMP_FILE -q
         awk '/<pre>/{i++}/<\/pre>/{j++}{if(j==2){exit}}{if(i==2 && j==1 && $0!~"^<pre>"){print}}' $TMP_FILE > $FILE_NAME
+
+        # Check file exists and is not empty
+        if [ ! -s "$FILE_NAME" ]
+        then
+            echo "IMGT Fasta file does not exist, or is empty. Is the IMGT server online?"
+            exit 1
+        fi
+
         sed -i.bak "$REPLACE_VALUE" $FILE_NAME && rm $FILE_NAME.bak
         rm $TMP_FILE
     done
@@ -208,8 +283,16 @@ do
         FILE_NAME="${FILE_PATH}/${REPERTOIRE}_${KEY}_${CHAIN}.fasta"
         TMP_FILE="${FILE_NAME}.tmp"
         #echo $URL
-        wget $URL -O $TMP_FILE -q
+        ${WGET} $URL -O $TMP_FILE -q
         awk '/<pre>/{i++}/<\/pre>/{j++}{if(j==2){exit}}{if(i==2 && j==1 && $0!~"^<pre>"){print}}' $TMP_FILE > $FILE_NAME
+
+        # Check file exists and is not empty
+        if [ ! -s "$FILE_NAME" ]
+        then
+            echo "IMGT Fasta file does not exist, or is empty. Is the IMGT server online?"
+            exit 1
+        fi
+
         sed -i.bak "$REPLACE_VALUE" $FILE_NAME && rm $FILE_NAME.bak
         rm $TMP_FILE
     done
@@ -222,8 +305,16 @@ do
         FILE_NAME="${FILE_PATH}/${REPERTOIRE}_${KEY}_${CHAIN}.fasta"
         TMP_FILE="${FILE_NAME}.tmp"
         #echo $URL
-        wget $URL -O $TMP_FILE -q
+        ${WGET} $URL -O $TMP_FILE -q
         awk '/<pre>/{i++}/<\/pre>/{j++}{if(j==2){exit}}{if(i==2 && j==1 && $0!~"^<pre>"){print}}' $TMP_FILE > $FILE_NAME
+
+        # Check file exists and is not empty
+        if [ ! -s "$FILE_NAME" ]
+        then
+            echo "IMGT Fasta file does not exist, or is empty. Is the IMGT server online?"
+            exit 1
+        fi
+
         sed -i.bak "$REPLACE_VALUE" $FILE_NAME && rm $FILE_NAME.bak
         rm $TMP_FILE
     done

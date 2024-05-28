@@ -1,6 +1,25 @@
 Release Notes
 ========================================================================
 
+Version devel:  May 12, 2024
+------------------------------------------------------------------------
+
+Image Changes:
+
++ Updated base image to Fedora 40. In FC40, wget has been replaced with 
+  wget2 (``release notes`` (https://fedoraproject.org/wiki/Releases/40/ChangeSet#Wget2_as_wget)).
+  The new wget has a few different options, and it doesn't support ftp. 
+  If you are using custom scripts that make calls to wget in the container, 
+  and they start failing due to wget issues, most likely you need to update
+  your script to use the right options.
+
+Version Updates:
+
++ seurat 5.0.3
++ airr_py  b3e4a69169200b2644cb7e0e534f1781b68829f1
++ blast 2.15.0
+
+
 Version 4.5.0:  January 25, 2024
 ------------------------------------------------------------------------
 

@@ -97,29 +97,15 @@ RUN PACKAGE="immcantation" \
 # Download Zenodo data
 # Intro
 RUN cd ${HOME}/data && \
-    wget -v -O zenodo.zip https://zenodo.org/api/records/10046916/files-archive && \
+    wget2 -v -O zenodo.zip https://zenodo.org/api/records/10046916/files-archive && \
     unzip -o zenodo.zip && \
     rm -rf zenodo.zip
 # 10x
 RUN cd ${HOME}/data && \
-    wget -v -O zenodo.zip https://zenodo.org/api/records/10028129/files-archive && \
+    wget2 -v -O zenodo.zip https://zenodo.org/api/records/10028129/files-archive && \
     unzip -o zenodo.zip && \
     rm -rf zenodo.zip
-    
-# Download BCR-Seurat tutorial data
-RUN wget -v -O /home/${NB_USER}/immcantation-BCR-Seurat-tutorial.zip -L https://yale.box.com/shared/static/6s8gzxxpfb3vmwx2izn9qur9teultzvu.zip && \
-    cd /home/${NB_USER}/ && \
-    unzip -o immcantation-BCR-Seurat-tutorial.zip && \
-    rm -rf immcantation-BCR-Seurat-tutorial.zip && \
-    mv BCR.data.rds GEX.data.rds /home/${NB_USER}/data/. && \
-    rm -rf immcantation-BCR-Seurat-tutorial
-# Download dowser tutorial data
-RUN wget -v -O /home/${NB_USER}/immcantation-bcr_phylo_tutorial.zip -L https://yale.box.com/shared/static/96y1rlu4ujerprxr53qxw87g7ybc1y99.zip && \
-    cd /home/${NB_USER}/ && \
-    unzip -o immcantation-bcr_phylo_tutorial.zip && \
-    rm -rf immcantation-bcr_phylo_tutorial.zip && \
-    mv bcr_phylo_tutorial /home/${NB_USER}/data/. && \
-    rm -rf __MACOSX
+
 
 RUN chown -R ${RS_USER}:${GID} ${HOME}/notebooks \
     && chown -R ${RS_USER}:${GID} ${HOME}/data \
@@ -134,3 +120,4 @@ VOLUME ${HOME}/results
 # WORKDIR ${HOME}/notebooks
 ENV PASSWORD rstudio
 CMD ["/usr/bin/run-rstudio.sh"]
+# TODO https://stackoverflow.com/questions/25281992/alternatives-to-ssh-x11-forwarding-for-docker-containers/25334301#25334301

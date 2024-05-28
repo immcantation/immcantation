@@ -6,7 +6,7 @@ Convert IMGT germline fastq files to cellranger-mkvdjref input
 import argparse
 import os
 import sys
-from pkg_resources import parse_version
+from packaging.version import Version
 import Bio
 from Bio import SeqIO
 from Bio.SeqRecord import SeqRecord
@@ -14,7 +14,7 @@ from presto.Annotation import convertIMGTHeader
 from changeo.Gene import getGene, getCGene, getAlleleNumber, getLocus
 
 # Check requirements
-if parse_version(Bio.__version__) < parse_version('1.71'):
+if Version(Bio.__version__) < Version('1.71'):
     sys.exit('biopython >= 1.71 is required. Installed version is %s' % Bio.__version__)
 
 

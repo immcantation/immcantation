@@ -10,7 +10,7 @@ RUN builds write -n date -v "$(date +'%Y-%m-%d %T %Z')"
 
 # # Install PHYLIP
 # RUN PHYLIP=$(versions get -n phylip) \
-#     && wget -q --show-progress --no-check-certificate \
+#     && wget2 -q --force-progress --no-check-certificate \
 #        http://evolution.gs.washington.edu/phylip/download/phylip-${PHYLIP}.tar.gz \
 #     && tar -zxf phylip-${PHYLIP}.tar.gz \
 #     && (cd phylip-${PHYLIP}/src && make -f Makefile.unx install CFLAGS='-fcommon') \
@@ -19,7 +19,7 @@ RUN builds write -n date -v "$(date +'%Y-%m-%d %T %Z')"
 
 # Install RAxML-NG
 RUN RAXMLNG=$(versions get -n raxml-ng) \
-    && wget -q --show-progress --no-check-certificate \
+    && wget2 -q --force-progress --no-check-certificate \
        https://github.com/amkozlov/raxml-ng/releases/download/1.2.0/raxml-ng_v${RAXMLNG}_linux_x86_64.zip \
     && unzip -q raxml-ng_v${RAXMLNG}_linux_x86_64.zip \
     && mv raxml-ng /usr/local/bin/raxml-ng \
@@ -34,17 +34,19 @@ RUN RAXMLNG=$(versions get -n raxml-ng) \
 # at https://ftp.ncbi.nlm.nih.gov/asn1-converters/by_program/table2asn/
 # See its documentation at
 # https://ftp.ncbi.nih.gov/toolbox/ncbi_tools/converters/by_program/table2asn_GFF/DOCUMENTATION/table2asn_readme.txt
-RUN wget -q --show-progress --no-check-certificate \
-    ftp://ftp.ncbi.nih.gov/toolbox/ncbi_tools/converters/versions/2023-07-13/by_program/tbl2asn/linux64.tbl2asn.gz \
+RUN wget2 -q --force-progress --no-check-certificate \
+    https://ftp.ncbi.nlm.nih.gov/toolbox/ncbi_tools/converters/versions/2023-07-13/by_program/tbl2asn/linux64.tbl2asn.gz \
     && gunzip linux64.tbl2asn.gz \
     && mv linux64.tbl2asn /usr/local/bin/tbl2asn \
     && chmod +x /usr/local/bin/tbl2asn
 
 # Install AIRR reference libraries
+# re-enable install from pypi when new airr-py version released
 RUN AIRR_PY=$(versions get -n airr-py) \
     && AIRR_R=$(versions get -n airr-r) \
-    && pip3 install airr==${AIRR_PY} \
-    && Rscript -e "devtools::install_version('airr', '${AIRR_R}', quiet=FALSE, clean=TRUE)"
+    # && pip3 install airr==${AIRR_PY} \
+    && pip3 install -e "git+https://github.com/airr-community/airr-standards.git@"${AIRR_PY}"#egg=airr&subdirectory=lang/python" \
+    && Rscript -e "devtools::install_version('airr', '${AIRR_R}', quiet=FALSE, clean=TRUE)"    
 
 # Install alakazam
 RUN ALAKAZAM_VER=$(versions get -n alakazam) \
@@ -69,7 +71,7 @@ RUN ENCHANTR_VER=$(versions get -n enchantr) \
 
 # Install IgPhyML
 RUN IGPHYML=$(versions get -n igphyml) \
-    && wget -q --show-progress --no-check-certificate \
+    && wget2 -q --force-progress --no-check-certificate \
        https://bitbucket.org/kleinstein/igphyml/get/${IGPHYML}.tar.gz -O igphyml-${IGPHYML}.tar.gz \
     && mkdir -p /usr/local/share/igphyml \
     && tar -zxf igphyml-${IGPHYML}.tar.gz -C /usr/local/share/igphyml --strip-components 1 \

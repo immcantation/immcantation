@@ -46,10 +46,33 @@ if $OUTDIR_SET && [ ! -d "${OUTDIR}" ]; then
     mkdir -p $OUTDIR
 fi
 
+WGET="wget"
+if ! command -v wget &> /dev/null; then
+    if ! command -v wget2 &> /dev/null; then
+        echo "wget or wget2 not found."
+        exit 1
+    else
+        WGET=wget2
+    fi
+fi
+WGET_MAJOR=$(${WGET} --version | grep "Wget[0-9]* [0-9.]*" | sed 's/^[^0-9]*\([0-9]*\).*$/\1/')
+if [ "$WGET_MAJOR" -lt 2 ]; then
+    ROBOTS=("--execute robots=off")
+else
+    ROBOTS="--no-robots"
+fi
+
 # Fetch database
-wget -q -r -nH --cut-dirs=5 --no-parent \
-    ftp://ftp.ncbi.nih.gov/blast/executables/igblast/release/database \
-    -P ${OUTDIR}/database
+${WGET} -q -r -nH --cut-dirs=5 --no-parent ${ROBOTS} \
+        https://ftp.ncbi.nlm.nih.gov/blast/executables/igblast/release/database/ \
+        -P ${OUTDIR}/database
+
+# Check one file to verify download worked 
+if [ ! -s "${OUTDIR}/database/mouse_gl_VDJ.tar" ]
+then
+    echo "${OUTDIR}/database/mouse_gl_VDJ.tar. Is ncbi.nlm.nih.gov server running?"
+    exit 1
+fi
 
 # Extract
 tar -C ${OUTDIR}/database -xf ${OUTDIR}/database/mouse_gl_VDJ.tar
@@ -57,12 +80,24 @@ tar -C ${OUTDIR}/database -xf ${OUTDIR}/database/rhesus_monkey_VJ.tar
 
 if $DOWNLOAD_ALL; then
     # Fetch internal_data
-    wget -q -r -nH --cut-dirs=5 --no-parent \
-        ftp://ftp.ncbi.nih.gov/blast/executables/igblast/release/old_internal_data \
+    ${WGET} -q -r -nH --cut-dirs=5 --no-parent ${ROBOTS} \
+        https://ftp.ncbi.nlm.nih.gov/blast/executables/igblast/release/old_internal_data/ \
         -P ${OUTDIR}/internal_data
+    # Check one file to verify download worked 
+    if [ ! -s "${OUTDIR}/internal_data/human/human_V.nhr" ]
+    then
+        echo "${OUTDIR}/internal_data/human/human_V.nhr not found. Is ncbi.nlm.nih.gov server running?"
+        exit 1
+    fi
 
     # Fetch optional_file
-    wget -q -r -nH --cut-dirs=5 --no-parent \
-        ftp://ftp.ncbi.nih.gov/blast/executables/igblast/release/old_optional_file  \
+    ${WGET} -q -r -nH --cut-dirs=5 --no-parent ${ROBOTS} \
+        https://ftp.ncbi.nlm.nih.gov/blast/executables/igblast/release/old_optional_file/ \
         -P ${OUTDIR}/optional_file
+    # Check one file to verify download worked 
+    if [ ! -s "${OUTDIR}/optional_file/human_gl.aux" ]
+    then
+        echo "${OUTDIR}/optional_file/human_gl.aux not found. Is ncbi.nlm.nih.gov server running?"
+        exit 1
+    fi        
 fi
