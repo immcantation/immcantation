@@ -39,8 +39,18 @@ done
 # Info
 DATE=$(date +"%Y.%m.%d")
 
+WGET="wget"
+if ! command -v wget &> /dev/null; then
+    if ! command -v wget2 &> /dev/null; then
+        echo "wget or wget2 not found."
+        exit 1
+    else
+        WGET=wget2
+    fi
+fi
+
 # Download and unpack
-wget2 "https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/819/615/GCF_000819615.1_ViralProj14015/GCF_000819615.1_ViralProj14015_genomic.fna.gz" -P $OUTDIR
+${WGET} "https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/819/615/GCF_000819615.1_ViralProj14015/GCF_000819615.1_ViralProj14015_genomic.fna.gz" -P $OUTDIR
 gunzip "${OUTDIR}/GCF_000819615.1_ViralProj14015_genomic.fna.gz"
 BLAST_DB="${OUTDIR}/GCF_000819615.1_ViralProj14015_genomic.fna"
 
