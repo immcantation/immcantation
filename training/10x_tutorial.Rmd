@@ -80,13 +80,18 @@ This step needs to be run in the command line after installing Change-O and igbl
 
 ```{bash, eval=params$eval_optional}
 # assign V, D, and J genes using IgBLAST
-AssignGenes.py igblast -s /home/magus/data/filtered_contig.fasta -b /usr/local/share/igblast \
-   --organism human --loci ig --format blast --outdir results --outname BCR_data_sequences
+AssignGenes.py igblast \
+   -s /home/magus/data/filtered_contig.fasta \
+   -b /usr/local/share/igblast \
+   --organism human --loci ig --format blast \
+   --outdir results --outname BCR_data_sequences
 ```
 
 ```{bash, eval=params$eval_optional}
 # convert IgBLAST output to AIRR format
-MakeDb.py igblast -i results/BCR_data_sequences_igblast.fmt7 -s /home/magus/data/filtered_contig.fasta \
+MakeDb.py igblast \
+   -i results/BCR_data_sequences_igblast.fmt7 \
+   -s /home/magus/data/filtered_contig.fasta \
    -r /usr/local/share/germlines/imgt/human/vdj/ \
    --10x /home/magus/data/filtered_contig_annotations.csv --extended
 ```
