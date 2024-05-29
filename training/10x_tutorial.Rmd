@@ -13,8 +13,10 @@ params:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo=TRUE, cache=params$cache,
-                      fig.path=file.path("10x_tutorial_files", "10x_tutorial_"))
+knitr::opts_chunk$set(
+  echo = TRUE, cache = params$cache,
+  fig.path = file.path("10x_tutorial_files", "10x_tutorial_")
+)
 ```
 
 # Single Cell V(D)J Analysis Tutorial
@@ -128,8 +130,9 @@ package.check <- lapply(
 # check for ggtree, a Bioconductor package
 packages <- "ggtree"
 if (!require(packages, character.only = TRUE)) {
-  if (!require("BiocManager", quietly = TRUE))
+  if (!require("BiocManager", quietly = TRUE)) {
     install.packages("BiocManager")
+  }
   BiocManager::install(packages)
 }
 ```
@@ -423,14 +426,19 @@ results <- hierarchicalClones(bcr_data,
 
 After calling clones, a clonal abundance distribution can be displayed. To estimate the clonal abundance, we will select only the heavy chains:
 
-```{r fig.width=8, fig.height=12}
+```{r fig.width=8, fig.height=5}
 # calculate and plot the rank-abundance curve
 abund <- estimateAbundance(dplyr::filter(results, locus == "IGH"),
                            group = "sample_id", nboot = 100)
 
-plot(abund) + facet_wrap("sample_id", ncol = 3)
+abund_plot <- plot(abund, silent=T)
+abund_plot
 ```
 
+```{r fig.width=8, fig.height=12}
+# plot by sample_id
+abund_plot + facet_wrap("sample_id", ncol = 3)
+```
 Most real datasets, will have most clones of size 1 (one sequence). In this tutorial, we processed data to remove most of singleton clone and we don't see the much higher peak at 1 that we would normally expect. 
 
 ```{r fig.height=12, fig.width=8}
@@ -685,9 +693,10 @@ plots_all[[1]]
 # save a pdf of all trees
 dir.create("results/dowser_tutorial/", recursive = TRUE)
 
-treesToPDF(plots_all, file = file.path("results", "dowser_tutorial",
-                                       "final_data_trees.pdf"),
-           nrow = 2, ncol = 2)
+treesToPDF(plots_all,
+           file = file.path("results", "dowser_tutorial","final_data_trees.pdf"),
+           nrow = 2, ncol = 2
+          )
 ```
 
 ### Making more informative tree plots
@@ -757,8 +766,8 @@ print(plots_time[[1]])
 
 ```{r}
 # save all trees to a pdf file
-treesToPDF(plots_time, file = file.path("results", "dowser_tutorial",
-                                        "time_data_trees.pdf"))
+treesToPDF(plots_time, 
+           file = file.path("results", "dowser_tutorial", "time_data_trees.pdf"))
 ```
 
 ## Analyze B cell migration, differentiation, and evolution over time
