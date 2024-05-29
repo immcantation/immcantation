@@ -138,11 +138,16 @@ the path to the igblast executable will need to be updated to the local
 installation path.
 
     # assign V, D, and J genes using IgBLAST
-    AssignGenes.py igblast -s /home/magus/data/filtered_contig.fasta -b /usr/local/share/igblast \
-       --organism human --loci ig --format blast --outdir results --outname BCR_data_sequences
+    AssignGenes.py igblast \
+       -s /home/magus/data/filtered_contig.fasta \
+       -b /usr/local/share/igblast \
+       --organism human --loci ig --format blast \
+       --outdir results --outname BCR_data_sequences
 
     # convert IgBLAST output to AIRR format
-    MakeDb.py igblast -i results/BCR_data_sequences_igblast.fmt7 -s /home/magus/data/filtered_contig.fasta \
+    MakeDb.py igblast \
+       -i results/BCR_data_sequences_igblast.fmt7 \
+       -s /home/magus/data/filtered_contig.fasta \
        -r /usr/local/share/germlines/imgt/human/vdj/ \
        --10x /home/magus/data/filtered_contig_annotations.csv --extended
 
@@ -195,11 +200,12 @@ are dependencies for some of the R-based Immcantation packages with
       }
     )
 
-    # check for ggtree, a bioconductor package
+    # check for ggtree, a Bioconductor package
     packages <- "ggtree"
-    if(!require(packages, character.only = TRUE)){
-      if (!require("BiocManager", quietly = TRUE))
+    if (!require(packages, character.only = TRUE)) {
+      if (!require("BiocManager", quietly = TRUE)) {
         install.packages("BiocManager")
+      }
       BiocManager::install(packages)
     }
 
@@ -237,11 +243,12 @@ has already been performed and the resulting table can be found under
     # read in the data
     # specify the data types of non AIRR-C standard fields
     # we assign integer type to the *_length fields
-    bcr_data <- airr::read_rearrangement(file.path("","home", "magus", "data", "BCR_data.tsv"),
-                                         aux_types=c("v_germline_length"="i",
-                                                     "d_germline_length"="i",
-                                                     "j_germline_length"="i",
-                                                     "day"="i"))
+    bcr_data <- airr::read_rearrangement(file.path("", "home", "magus", "data",
+                                                   "BCR_data.tsv"),
+                                         aux_types = c("v_germline_length" = "i",
+                                                       "d_germline_length" = "i",
+                                                       "j_germline_length" = "i",
+                                                       "day" = "i"))
 
 ### Remove non-productive sequences
 
@@ -259,11 +266,11 @@ You may wish to subset your data to only productive sequences:
     ## # A tibble: 5 x 66
     ##   sequence_id                 sequence  rev_comp productive v_call d_call j_call
     ##   <chr>                       <chr>     <lgl>    <lgl>      <chr>  <chr>  <chr> 
-    ## 1 GTGAAGGGTAGCTAAA-1_contig_1 AGAGCTCT~ FALSE    TRUE       IGKV3~ <NA>   IGKJ3~
-    ## 2 ACGCAGCGTAGTAGTA-1_contig_2 GGGAGAGG~ FALSE    TRUE       IGHV3~ IGHD2~ IGHJ6~
-    ## 3 CACATAGTCCGGCACA-1_contig_1 GAGCTACA~ FALSE    TRUE       IGKV4~ <NA>   IGKJ1~
-    ## 4 CATATTCCAGGTGCCT-1_contig_2 AGCATCAT~ FALSE    TRUE       IGHV1~ IGHD3~ IGHJ4~
-    ## 5 CAAGTTGAGAAGATTC-1_contig_1 AACGACGC~ FALSE    TRUE       IGLV2~ <NA>   IGLJ3~
+    ## 1 TGGTTCCAGAATCTCC-1_contig_2 AGGAGTCA~ FALSE    TRUE       IGKV1~ <NA>   IGKJ1~
+    ## 2 AACTCAGTCTTCGGTC-1_contig_2 TGGGGAGG~ FALSE    TRUE       IGKV1~ <NA>   IGKJ1~
+    ## 3 TGAGGGACAGTACACT-1_contig_2 TGGGGACC~ FALSE    TRUE       IGHV1~ IGHD1~ IGHJ4~
+    ## 4 CCTATTAAGACAGGCT-1_contig_1 GGGGAGGA~ FALSE    TRUE       IGKV3~ <NA>   IGKJ3~
+    ## 5 AACGTTGGTACCAGTT-1_contig_2 AACCACAT~ FALSE    TRUE       IGHV1~ <NA>   IGHJ3~
     ## # i 59 more variables: sequence_alignment <chr>, germline_alignment <chr>,
     ## #   junction <chr>, junction_aa <chr>, v_cigar <chr>, d_cigar <chr>,
     ## #   j_cigar <chr>, vj_in_frame <lgl>, stop_codon <lgl>, v_sequence_start <int>,
@@ -316,7 +323,8 @@ We load the gene expression data Seurat object that has already been
 pre-processed and the cell types (PBMCs) have been annotation following
 the standard Seurat workflow.
 
-    gex_db <- readRDS(file.path("", "home", "magus", "data", "GEX.data_08112023.rds"))
+    gex_db <- readRDS(file.path("", "home", "magus", "data",
+                                "GEX.data_08112023.rds"))
 
 Inspect the data:
 
@@ -401,6 +409,7 @@ BCR table:
       unlist(lapply(match.index, function(x) {
         ifelse(is.na(x), NA, cell.annotation[x])
       }))
+
     bcr_data$gex_annotation[1:5]
 
     ## [1] "RMB" NA    "GC"  "GC"  "RMB"
@@ -454,19 +463,20 @@ need to filter the dataset for the “IGH” locus. Clonal groups should be
 defined within one subject:
 
     dist_nearest <- distToNearest(dplyr::filter(bcr_data, locus == "IGH",
-                                                subject_id == "subject1"), )
+                                                subject_id == "subject1"))
 
     # generate Hamming distance histogram
-    p1 <- ggplot2::ggplot(subset(dist_nearest, !is.na(dist_nearest)),
+    p1 <- ggplot(subset(dist_nearest, !is.na(dist_nearest)),
                  aes(x = dist_nearest)) +
             geom_histogram(color = "white", binwidth = 0.02) +
             labs(x = "Hamming distance", y = "Count") +
             scale_x_continuous(breaks = seq(0, 1, 0.1)) +
             theme_bw() +
             theme(axis.title = element_text(size = 18))
+
     plot(p1)
 
-![](10x_tutorial_files/10x_tutorial_unnamed-chunk-19-1.png)
+![](10x_tutorial_files/10x_tutorial_unnamed-chunk-20-1.png)
 
 The resulting distribution is often bimodal, with the first mode
 representing sequences with clonal relatives in the dataset and the
@@ -508,8 +518,8 @@ based on the specificity of this background distribution.
 
     # find threshold for cloning automatically
     threshold_output <- shazam::findThreshold(dist_nearest$dist_nearest,
-                                      method = "gmm", model = "gamma-norm",
-                                      cutoff = "user", spc = 0.995)
+                                              method = "gmm", model = "gamma-norm",
+                                              cutoff = "user", spc = 0.995)
     threshold <- threshold_output@threshold
     threshold
 
@@ -518,7 +528,7 @@ based on the specificity of this background distribution.
     plot(threshold_output, binwidth = 0.02, silent = TRUE) +
       theme(axis.title = element_text(size = 18))
 
-![](10x_tutorial_files/10x_tutorial_unnamed-chunk-21-1.png)
+![](10x_tutorial_files/10x_tutorial_unnamed-chunk-22-1.png)
 
 The nearest-neighbor distance distribution is not always bimodal. In
 this case, if the data have multiple subjects, we can calculate the
@@ -545,20 +555,20 @@ calculate this do the following:
 
     # distance of inter (between) clones using cross subjects distribution of distance to nearest
     threshold_output <- shazam::findThreshold(dist_nearest$dist_nearest,
-                                      method = "gmm", model = "gamma-norm",
-                                      cross = dist_crossSubj$cross_dist_nearest,
-                                      cutoff = "user", spc = 0.995)
+                                              method = "gmm", model = "gamma-norm",
+                                              cross = dist_crossSubj$cross_dist_nearest,
+                                              cutoff = "user", spc = 0.995)
     threshold_withcross <- threshold_output@threshold
     threshold_withcross
 
-    ## [1] 0.2038149
+    ## [1] 0.2037778
 
     # plot the threshold along the density plot
     plot(threshold_output, binwidth = 0.02,
          cross = dist_crossSubj$cross_dist_nearest, silent = TRUE) +
       theme(axis.title = element_text(size = 18))
 
-![](10x_tutorial_files/10x_tutorial_unnamed-chunk-23-1.png)
+![](10x_tutorial_files/10x_tutorial_unnamed-chunk-24-1.png)
 
 In the plot above, the top plot is the nearest-neighbor distance
 distribution within Subj1, and the bottom plot is the nearest neighbor
@@ -590,7 +600,7 @@ call clones using single cell mode:
 region sequence similarity within partitions that share the same V gene,
 J gene, and junction length, thus allowing for ambiguous V or J gene
 annotations. By setting it up the `cell_id` parameter,
-`hierarchicalClones` will run in single-cell mode with paired-chain
+`hierarchicalClones` will run in single cell mode with paired-chain
 sequences. With `only_heavy = TRUE` and `split_light = TRUE`, grouping
 should be done by using IGH only and inferred clones should be split by
 the light/short chain (IGK and IGL) following heavy/long chain
@@ -605,13 +615,18 @@ To estimate the clonal abundance, we will select only the heavy chains:
     abund <- estimateAbundance(dplyr::filter(results, locus == "IGH"),
                                group = "sample_id", nboot = 100)
 
-    plot(abund) + facet_wrap("sample_id", ncol = 3)
+    abund_plot <- plot(abund, silent=T)
+    abund_plot
 
-![](10x_tutorial_files/10x_tutorial_unnamed-chunk-25-1.png)![](10x_tutorial_files/10x_tutorial_unnamed-chunk-25-2.png)
+![](10x_tutorial_files/10x_tutorial_unnamed-chunk-26-1.png)
 
-Most real datasets, will have most clones of size 1 (one sequence). In
-this tutorial, we processed data to remove most of singleton clone and
-we don’t see the much higher peak at 1 that we would normally expect.
+    # plot by sample_id
+    abund_plot + facet_wrap("sample_id", ncol = 3)
+
+![](10x_tutorial_files/10x_tutorial_unnamed-chunk-27-1.png) Most real
+datasets, will have most clones of size 1 (one sequence). In this
+tutorial, we processed data to remove most of singleton clone and we
+don’t see the much higher peak at 1 that we would normally expect.
 
     # get clone sizes using dplyr functions
     clone_sizes <- countClones(dplyr::filter(results, locus == "IGH"),
@@ -624,7 +639,7 @@ we don’t see the much higher peak at 1 that we would normally expect.
       labs(x = "Sequences per clone") +
       theme_bw()
 
-![](10x_tutorial_files/10x_tutorial_unnamed-chunk-26-1.png)
+![](10x_tutorial_files/10x_tutorial_unnamed-chunk-28-1.png)
 
 ### Visualize clonal diversity
 
@@ -634,9 +649,10 @@ diversity, we will also select only the heavy chains:
     # calculate and plot the rank-abundance curve
     div <- alphaDiversity(dplyr::filter(results, locus == "IGH"),
                           group = "sample_id", nboot = 100)
-    plot(div, silent=T) + facet_wrap("sample_id", ncol = 3)
 
-![](10x_tutorial_files/10x_tutorial_unnamed-chunk-27-1.png)
+    plot(div, silent = TRUE) + facet_wrap("sample_id", ncol = 3)
+
+![](10x_tutorial_files/10x_tutorial_unnamed-chunk-29-1.png)
 
 ## Create germlines
 
@@ -667,10 +683,11 @@ And passing `"human/vdj/"` to the `readIMGT` function.
     # read in IMGT files in the Docker container
     references <- readIMGT(dir = "/usr/local/share/germlines/imgt/human/vdj")
 
-    ## [1] "Read in 1178 from 17 fasta files"
+    ## [1] "Read in 1194 from 17 fasta files"
 
     # reconstruct germlines
-    results <- createGermlines(results, references, fields = "subject_id", nproc = 1)
+    results <- createGermlines(results, references, fields = "subject_id",
+                               nproc = 1)
 
 ## Calculate V gene SHM frequency
 
@@ -682,13 +699,14 @@ Basic mutational load calculations can be performed by the function
     results_heavy <- dplyr::filter(results, locus == "IGH")
 
     # calculate SHM frequency in the V gene
-    data_mut <- shazam::observedMutations(results_heavy,
-                                  sequenceColumn = "sequence_alignment",
-                                  germlineColumn = "germline_alignment_d_mask",
-                                  regionDefinition = IMGT_V,
-                                  frequency = TRUE,
-                                  combine = TRUE,
-                                  nproc = 1)
+    data_mut <-
+      shazam::observedMutations(results_heavy,
+                                sequenceColumn = "sequence_alignment",
+                                germlineColumn = "germline_alignment_d_mask",
+                                regionDefinition = IMGT_V,
+                                frequency = TRUE,
+                                combine = TRUE,
+                                nproc = 1)
 
 The plot below shows the distribution of median mutation frequency of
 clones:
@@ -702,7 +720,7 @@ clones:
       geom_histogram(binwidth = 0.005) +
       theme_bw() + theme(axis.title = element_text(size = 18))
 
-![](10x_tutorial_files/10x_tutorial_unnamed-chunk-31-1.png)
+![](10x_tutorial_files/10x_tutorial_unnamed-chunk-33-1.png)
 
 The plots below show the distribution of mutation frequency of cells by
 subject, isotype and cell type respectively:
@@ -714,25 +732,25 @@ subject, isotype and cell type respectively:
       labs(x = "", y = "Mutation frequency", fill = "subject_id") +
       theme(axis.text.x = element_blank())
 
-![](10x_tutorial_files/10x_tutorial_unnamed-chunk-32-1.png)
+![](10x_tutorial_files/10x_tutorial_unnamed-chunk-34-1.png)
 
     # plotting mu_freq by isotype
-    ggplot2::ggplot(data_mut, aes(y = mu_freq, x = c_gene, fill = c_gene)) +
+    ggplot(data_mut, aes(y = mu_freq, x = c_gene, fill = c_gene)) +
       geom_boxplot() +
       geom_jitter(width = 0.2, alpha = 0.3) +
       labs(x = "", y = "Mutation frequency", fill = "Isotype") +
       theme(axis.text.x = element_blank())
 
-![](10x_tutorial_files/10x_tutorial_unnamed-chunk-33-1.png)
+![](10x_tutorial_files/10x_tutorial_unnamed-chunk-35-1.png)
 
     # plotting mu_freq by cell type
-    ggplot2::ggplot(data_mut, aes(y = mu_freq, x = gex_annotation, fill = gex_annotation)) +
+    ggplot(data_mut, aes(y = mu_freq, x = gex_annotation, fill = gex_annotation)) +
       geom_boxplot() +
       geom_jitter(width = 0.2, alpha = 0.3) +
       labs(x = "", y = "Mutation frequency", fill = "Cell type") +
       theme(axis.text.x = element_blank())
 
-![](10x_tutorial_files/10x_tutorial_unnamed-chunk-34-1.png)
+![](10x_tutorial_files/10x_tutorial_unnamed-chunk-36-1.png)
 
 ## Build and visualize trees
 
@@ -760,9 +778,11 @@ uniqueness of the sequences, so they are not collapsed.
     # add up duplicate_count column for collapsed sequences
     # store day, gex_annotation
     # discard clones with < 5 distinct sequences
-    clones <- dowser::formatClones(results,
+    clones <-
+      dowser::formatClones(results,
                            traits = c("day", "gex_annotation"),
                            num_fields = c("duplicate_count"), minseq = 5, nproc = 1)
+
     head(clones)
 
     ## # A tibble: 6 x 4
@@ -783,11 +803,6 @@ light chain information, we will need to assign `clone_subgroups` using
 dowser’s function `resolveLightChains`. This group cells within a clone
 based on the light chain V and J gene and assign a subgroup to each
 sequence. Then, in the `formatClones` step, specify `chain="HL"`.
-
-    ## Warning in dowser::formatClones(comb, chain = "HL", traits = c("day",
-    ## "gex_annotation"), : There was 2 sequence(s) with an inframe stop codon and
-    ## were removed. If you want to keep these sequences use the option
-    ## filterstop=FALSE.
 
     ## # A tibble: 6 x 4
     ##   clone_id data       locus    seqs
@@ -832,7 +847,9 @@ phangorn:
 And the second uses dnapars (PHYLIP):
 
     # the executable path is the location of the executable in the Docker container
-    trees <- getTrees(clones, build = "dnapars", exec = "/usr/local/bin/dnapars", nproc = 1)
+    trees <- getTrees(clones, build = "dnapars",
+                      exec = "/usr/local/bin/dnapars", nproc = 1)
+
     head(trees)
 
     ## # A tibble: 6 x 5
@@ -897,11 +914,13 @@ will partition on the heavy chain and light chains separately.
 
     # RAxML
     trees <- getTrees(clones, build = "raxml",
-                      exec = "/usr/local/bin/raxml-ng", partition = "scaled", nproc = 1)
+                      exec = "/usr/local/bin/raxml-ng",
+                      partition = "scaled", nproc = 1)
 
     # IgPhML
     trees <- getTrees(clones, build = "igphyml",
-                      exec = "/usr/local/share/igphyml/src/igphyml", partition = "hl", nproc = 1)
+                      exec = "/usr/local/share/igphyml/src/igphyml",
+                      partition = "hl", nproc = 1)
 
 ### Plot trees with dowser and ggtree
 
@@ -919,7 +938,7 @@ Plot the largest tree:
 
     plots_all[[1]]
 
-![](10x_tutorial_files/10x_tutorial_unnamed-chunk-45-1.png)
+![](10x_tutorial_files/10x_tutorial_unnamed-chunk-47-1.png)
 
     # save a pdf of all trees
     dir.create("results/dowser_tutorial/", recursive = TRUE)
@@ -927,9 +946,10 @@ Plot the largest tree:
     ## Warning in dir.create("results/dowser_tutorial/", recursive = TRUE):
     ## 'results/dowser_tutorial' already exists
 
-    dowser::treesToPDF(plots_all,
-              file = file.path("results", "dowser_tutorial", "final_data_trees.pdf"),
-              nrow = 2, ncol = 2)
+    treesToPDF(plots_all,
+               file = file.path("results", "dowser_tutorial","final_data_trees.pdf"),
+               nrow = 2, ncol = 2
+              )
 
     ## png 
     ##   2
@@ -944,11 +964,12 @@ and labelled by isotype:
 
     # Make fancy tree plot of second largest tree
     plots_all <- plotTrees(trees, scale = 5)[[2]] +
-                  geom_tippoint(aes(color = gex_annotation, size = day)) +
-                  geom_tiplab(aes(label = day), offset = 0.002)
+                   geom_tippoint(aes(color = gex_annotation, size = day)) +
+                   geom_tiplab(aes(label = day), offset = 0.002)
+
     print(plots_all)
 
-![](10x_tutorial_files/10x_tutorial_unnamed-chunk-47-1.png)
+![](10x_tutorial_files/10x_tutorial_unnamed-chunk-49-1.png)
 
 ### Reconstruct intermediate sequences
 
@@ -963,13 +984,14 @@ second largest tree (dots represent IMGT gaps):
     # collapse nodes with identical sequences
     trees <- collapseNodes(trees)
 
-    # node_nums=TRUE labels each internal node
+    # node_nums = TRUE labels each internal node
     plots_all <- plotTrees(trees, node_nums = TRUE, labelsize = 6, scale = 5)[[2]] +
-                  geom_tippoint(aes(color = gex_annotation, size = day)) +
-                  geom_tiplab(aes(label = day), offset = 0.002)
+                   geom_tippoint(aes(color = gex_annotation, size = day)) +
+                   geom_tiplab(aes(label = day), offset = 0.002)
+
     print(plots_all)
 
-![](10x_tutorial_files/10x_tutorial_unnamed-chunk-48-1.png)
+![](10x_tutorial_files/10x_tutorial_unnamed-chunk-50-1.png)
 
     # get sequence at node 5 for the second clone_id in trees
     getNodeSeq(trees, clone = trees$clone_id[2], node = 5)
@@ -1004,25 +1026,25 @@ timepoints are more diverged from the germline:
     ## # A tibble: 31 x 4
     ##    clone_id  slope correlation      p
     ##    <chr>     <dbl>       <dbl>  <dbl>
-    ##  1 605      0.0453       0.711 0.0899
-    ##  2 741      0.120        0.877 0.186 
-    ##  3 541      0.277        0.827 0.196 
-    ##  4 1181     0.707        0.578 0.215 
-    ##  5 608      0.0829       0.328 0.231 
-    ##  6 208      0.307        0.770 0.261 
-    ##  7 221      0.0538       0.384 0.292 
-    ##  8 195      0.169        0.301 0.299 
-    ##  9 383      2.57         0.833 0.315 
-    ## 10 210      0.198        0.488 0.322 
+    ##  1 605      0.0453       0.711 0.0749
+    ##  2 741      0.120        0.877 0.136 
+    ##  3 541      0.277        0.827 0.195 
+    ##  4 1181     0.707        0.578 0.228 
+    ##  5 608      0.0828       0.328 0.229 
+    ##  6 208      0.307        0.770 0.278 
+    ##  7 195      0.169        0.301 0.279 
+    ##  8 221      0.0537       0.384 0.294 
+    ##  9 383      2.57         0.833 0.325 
+    ## 10 210      0.197        0.488 0.357 
     ## # i 21 more rows
 
     print(plots_time[[1]])
 
-![](10x_tutorial_files/10x_tutorial_unnamed-chunk-51-1.png)
+![](10x_tutorial_files/10x_tutorial_unnamed-chunk-53-1.png)
 
     # save all trees to a pdf file
-    treesToPDF(plots_time, file = file.path("results", "dowser_tutorial",
-                                            "time_data_trees.pdf"))
+    treesToPDF(plots_time, 
+               file = file.path("results", "dowser_tutorial", "time_data_trees.pdf"))
 
     ## png 
     ##   2
