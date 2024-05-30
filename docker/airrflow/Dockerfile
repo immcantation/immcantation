@@ -8,14 +8,9 @@ ARG BASE_TAG
 COPY Version.yaml /Version.yaml
 RUN builds write -n date -v "$(date +'%Y-%m-%d %T %Z')"
 
-# # Install PHYLIP
-# RUN PHYLIP=$(versions get -n phylip) \
-#     && wget2 -q --force-progress --no-check-certificate \
-#        http://evolution.gs.washington.edu/phylip/download/phylip-${PHYLIP}.tar.gz \
-#     && tar -zxf phylip-${PHYLIP}.tar.gz \
-#     && (cd phylip-${PHYLIP}/src && make -f Makefile.unx install CFLAGS='-fcommon') \
-#     && mv phylip-${PHYLIP}/exe/* /usr/local/bin \
-#     && rm -r phylip-${PHYLIP}.tar.gz phylip-${PHYLIP}
+# procps is needed by Nextflow
+RUN dnf -y update && dnf install -y \
+    procps
 
 # Install RAxML-NG
 RUN RAXMLNG=$(versions get -n raxml-ng) \
