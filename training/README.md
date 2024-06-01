@@ -2,6 +2,8 @@
 
 [TOC]
 
+Visit the section [Immcantation Tutorials](https://immcantation.readthedocs.io/en/stable/getting_started/getting-started.html) in the documentation site to learn more about these materials and how to use them.
+
 Target audience: Bioinformaticians, immunologists, biologist, scientists and students learning about immune repertoires.
 
 Prerequisite Skills and Knowledge Required: Familiarity with R, python and Linux.
