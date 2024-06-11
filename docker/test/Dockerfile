@@ -126,12 +126,9 @@ RUN IGPHYML=$(versions get -n igphyml) \
     && rm -r igphyml-${IGPHYML}.tar.gz
 
 # Install AIRR reference libraries
-# TODO: install from repo,
-# re-enable install from pypi when new airr-py version released
 RUN AIRR_PY=$(versions get -n airr-py) \
     && AIRR_R=$(versions get -n airr-r) \
-    # && pip3 install airr==${AIRR_PY} \
-    && pip3 install -e "git+https://github.com/airr-community/airr-standards.git@"${AIRR_PY}"#egg=airr&subdirectory=lang/python" \
+    && pip3 install airr==${AIRR_PY} \
     && Rscript -e "devtools::install_version('airr', '${AIRR_R}', quiet=FALSE, clean=TRUE)"
 
 # Download and build references databases

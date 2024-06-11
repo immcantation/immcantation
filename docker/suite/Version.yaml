@@ -17,7 +17,7 @@ package:
   igphyml:  2.0.0
   seurat:   5.0.3
 dependency:
-  airr-py:  b3e4a69169200b2644cb7e0e534f1781b68829f1
+  airr-py:  1.5.1
   airr-r:   1.5.0
   blast:    2.15.0
   cd-hit:   4.8.1
