@@ -44,6 +44,7 @@ RUN dnf -y update && dnf install -y \
     openssl-devel \
     pandoc \
     perl \
+    procps \
     proj-devel \    
     python3 \
     python3-biopython \
