@@ -52,6 +52,7 @@ RUN PASSWD=$(pwgen 16 1) \
     && echo "${RS_USER}:${PASSWD}" | chpasswd \
     && usermod -G ${GID} ${RS_USER} \
     && echo "setwd('~/notebooks')" > /home/${RS_USER}/.Rprofile \
+    && echo "rstudioapi::filesPaneNavigate(getwd()) " >> /home/${RS_USER}/.Rprofile \
     && touch /etc/rstudio/rsession.conf \
     && echo "session-default-working-dir=~/notebooks" >> /etc/rstudio/rsession.conf \
     && echo "session-default-new-project-dir=~/notebooks" >>  /etc/rstudio/rsession.conf
@@ -90,7 +91,7 @@ RUN mkdir ${HOME}/notebooks && \
 RUN PACKAGE="immcantation" \
     && rm -rf /tmp/${PACKAGE} \
     && git clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
-    && mv /tmp/${PACKAGE}/training/*.Rmd ${HOME}/notebooks/. \
+    && mv /tmp/${PACKAGE}/training/*.[Rr]md ${HOME}/notebooks/. \
     && mv /tmp/${PACKAGE}/training/assets ${HOME}/notebooks/ \
     && rm -rf /tmp/${PACKAGE}
 
