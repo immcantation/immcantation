@@ -2,7 +2,7 @@ We welcome contributions to all components of the Immcantation framework through
 pull request to the relevant Bitbucket repository:
 
 + [Docker container, pipelines and portal documentation](https://bitbucket.org/kleinstein/immcantation)
-+ [pRESTO](https://bitbucket.org/kleinstein/presto)
++ [pRESTO](https://github.com/immcantation/presto)
 + [Change-O](https://bitbucket.org/kleinstein/changeo)
 + [Alakazam](https://bitbucket.org/kleinstein/alakazam)
 + [SHazaM](https://bitbucket.org/kleinstein/shazam)
