@@ -1,7 +1,7 @@
 Release Notes
 ========================================================================
 
-Version devel:  May 12, 2024
+Version devel:  October 01, 2024
 ------------------------------------------------------------------------
 
 Image Changes:
@@ -12,11 +12,13 @@ Image Changes:
   If you are using custom scripts that make calls to wget in the container, 
   and they start failing due to wget issues, most likely you need to update
   your script to use the right options.
++ Immcantation is moving to GitHub. pRESTO is now installed 
+  from https://github.com/immcantation/presto.
 
 Version Updates:
 
 + seurat 5.0.3
-+ airr_py  b3e4a69169200b2644cb7e0e534f1781b68829f1
++ airr_py  1.5.1
 + blast 2.15.0
 
 
