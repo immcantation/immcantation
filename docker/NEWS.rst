@@ -12,13 +12,13 @@ Image Changes:
   If you are using custom scripts that make calls to wget in the container, 
   and they start failing due to wget issues, most likely you need to update
   your script to use the right options.
-+ Immcantation is moving to GitHub. pRESTO is now installed 
-  from https://github.com/immcantation/presto.
++ Immcantation is moving to GitHub. pRESTO and Change-O are now installed 
+  from https://github.com/immcantation/presto and https://github.com/immcantation/changeo.
 
 Version Updates:
 
 + seurat 5.0.3
-+ airr_py  1.5.1
++ airr_py 1.5.1
 + blast 2.15.0
 
 
