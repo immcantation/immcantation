@@ -65,7 +65,7 @@ RUN DOWSER_VER=$(versions get -n dowser) \
 
 # Install enchantr
 RUN ENCHANTR_VER=$(versions get -n enchantr) \
-    && Rscript -e "devtools::install_bitbucket('kleinstein/enchantr', '${ENCHANTR_VER}', quiet=FALSE, clean=TRUE)"
+    && Rscript -e "devtools::install_github('immcantation/enchantr', '${ENCHANTR_VER}', quiet=FALSE, clean=TRUE)"
 
 # Install IgPhyML
 RUN IGPHYML=$(versions get -n igphyml) \
