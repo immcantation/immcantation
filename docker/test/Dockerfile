@@ -49,7 +49,7 @@ ARG R_DEPS="c('ape', \
 #RUN Rscript -e "install.packages('devtools', clean=TRUE)" \
 #    && Rscript -e "devtools::install_version('Rcpp', '${R_RCPP}', quiet=FALSE, clean=TRUE)" \
 #    && Rscript -e "install.packages(${R_DEPS}, clean=TRUE)"
-RUN Rscript -e "install.packages(${R_DEPS}, clean=TRUE)"
+RUN Rscript -e "install.packages(${R_DEPS}, clean=TRUE); devtools::install_github('javh/markr')"
 
 # Install procotol data, utility scripts and pipelines
 RUN PACKAGE="immcantation" \
