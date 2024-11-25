@@ -94,7 +94,7 @@ Video Presentations
     :alt: Link to Immcantation's YouTube Channel
     :align: left
 
-You can watch presentations by Immcantation developers and users in `Immcantation's YouTube channel<https://www.youtube.com/@immcantation5856>`_.
+You can watch presentations by Immcantation developers and users in `Immcantation's YouTube channel <https://www.youtube.com/@immcantation5856>`_.
 
 
 Vignettes
