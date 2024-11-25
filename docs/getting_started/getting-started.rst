@@ -90,11 +90,11 @@ Video Presentations
 ===========================================================================================
 
 .. image:: ../_static/immcantation-yt.png
-    :target: https://www.youtube.com/channel/UCWQgFmSnv8B9Q5G_kunOabw/playlists
+    :target: https://www.youtube.com/@immcantation5856
     :alt: Link to Immcantation's YouTube Channel
     :align: left
 
-You can watch presentations by Immcantation developers and users in Immcantation's YouTube channel.
+You can watch presentations by Immcantation developers and users in `Immcantation's YouTube channel<https://www.youtube.com/@immcantation5856>`_.
 
 
 Vignettes
