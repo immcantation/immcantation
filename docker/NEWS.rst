@@ -1,7 +1,7 @@
 Release Notes
 ========================================================================
 
-Version devel:  October 01, 2024
+Version devel:  November 25, 2024
 ------------------------------------------------------------------------
 
 Image Changes:
@@ -17,7 +17,7 @@ Image Changes:
 
 Version Updates:
 
-+ seurat 5.0.3
++ dowser 2.3.0
 + airr_py 1.5.1
 + blast 2.15.0
 
