@@ -59,11 +59,6 @@ RUN SCOPER_VER=$(versions get -n scoper) \
 RUN DOWSER_VER=$(versions get -n dowser) \
     && Rscript -e "devtools::install_version('dowser', '${DOWSER_VER}', quiet=FALSE, clean=TRUE)"
 
-
-# Install enchantr
-RUN ENCHANTR_VER=$(versions get -n enchantr) \
-    && Rscript -e "devtools::install_bitbucket('kleinstein/enchantr', '${ENCHANTR_VER}', quiet=FALSE, clean=TRUE)"
-
 # Install IgPhyML
 RUN IGPHYML=$(versions get -n igphyml) \
     && wget2 -q --force-progress --no-check-certificate \
@@ -75,6 +70,10 @@ RUN IGPHYML=$(versions get -n igphyml) \
 
 # Setup environment
 ENV PATH="${PATH}:/usr/local/share/igphyml/src"
+
+# Install enchantr
+RUN ENCHANTR_VER=$(versions get -n enchantr) \
+    && Rscript -e "devtools::install_github('immcantation/enchantr', ref='${ENCHANTR_VER}', quiet=FALSE, clean=TRUE)"
 
 # Set commands
 CMD echo -e " Version information:\n"\
