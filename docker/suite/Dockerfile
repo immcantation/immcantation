@@ -207,7 +207,7 @@ RUN PACKAGE="enchantr" \
 # Archived on 2023-08-18
 RUN PACKAGE="prestor" \
     && rm -rf /tmp/${PACKAGE} \
-    && git clone https://bitbucket.org/kleinstein/prestor /tmp/${PACKAGE} \
+    && git clone https://github.com/immcantation/prestor /tmp/${PACKAGE} \
     && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} -d immcantation \
     && Rscript -e "devtools::install_github('adletaw/captioner')" \
     && rinstall -p /tmp/${PACKAGE} \

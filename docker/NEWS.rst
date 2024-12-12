@@ -12,8 +12,8 @@ Image Changes:
   If you are using custom scripts that make calls to wget in the container, 
   and they start failing due to wget issues, most likely you need to update
   your script to use the right options.
-+ Immcantation is moving to GitHub. pRESTO and Change-O are now installed 
-  from https://github.com/immcantation/presto and https://github.com/immcantation/changeo.
++ Immcantation is moving to GitHub. pRESTO, Change-O, and prestoR are now installed 
+  from https://github.com/immcantation.
 
 Version Updates:
 

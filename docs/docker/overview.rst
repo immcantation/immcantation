@@ -12,7 +12,7 @@ Immcantation Tools
 + `SCOPer <https://scoper.readthedocs.io>`__
 + `dowser <https://dowser.readthedocs.io>`__
 + `RDI <https://rdi.readthedocs.io>`__
-+ `prestoR <https://bitbucket.org/kleinstein/prestor>`__
++ `prestoR <https://github.comm/immcantation/prestor>`__
 
 Third Party Tools
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
