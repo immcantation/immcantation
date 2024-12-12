@@ -12,7 +12,7 @@ Download & Installation
 --------------------------------------------------------------------------------
 
 `prestor` is current not available from CRAN and must be installed from the
-bitbucket repo directly by first cloning the bitbucket repository:
+GitHub repo directly by first cloning the repository:
 
 `https://github.com/immcantation/prestor <https://github.com/immcantation/prestor>`_
 
@@ -24,7 +24,7 @@ Then build using the following R commands from the package root::
     document()
     install()
 
-Alternatively, you can install directly form the bitbucket repository, but this
+Alternatively, you can install directly form the GitHub repository, but this
 will not build the documentation::
 
     library(devtools)
