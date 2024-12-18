@@ -11,7 +11,7 @@ pull requests to the relevant Bitbucket repository:
 + `Change-O <https://github.com/immcantation/changeo>`__
 + `Alakazam <https://bitbucket.org/kleinstein/alakazam>`__
 + `SHazaM <https://bitbucket.org/kleinstein/shazam>`__
-+ `TIgGER <https://bitbucket.org/kleinstein/tigger>`__
++ `TIgGER <https://github.com/immcantation/tigger>`__
 + `SCOPer <https://bitbucket.org/kleinstein/scoper>`__
 + `dowser <https://bitbucket.org/kleinstein/dowser>`__
 

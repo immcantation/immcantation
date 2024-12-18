@@ -6,7 +6,7 @@ pull request to the relevant Bitbucket repository:
 + [Change-O](https://github.com/immcantation/changeo)
 + [Alakazam](https://bitbucket.org/kleinstein/alakazam)
 + [SHazaM](https://bitbucket.org/kleinstein/shazam)
-+ [TIgGER](https://bitbucket.org/kleinstein/tigger)
++ [TIgGER](https://github.com/immcantation/tigger)
 + [SCOPer](https://bitbucket.org/kleinstein/scoper)
 
 All Immcantation core software packages are under the free and open-source license
