@@ -1,7 +1,7 @@
 Release Notes
 ========================================================================
 
-Version devel:  November 25, 2024
+Version devel:  December 19, 2024
 ------------------------------------------------------------------------
 
 Image Changes:
@@ -12,8 +12,8 @@ Image Changes:
   If you are using custom scripts that make calls to wget in the container, 
   and they start failing due to wget issues, most likely you need to update
   your script to use the right options.
-+ Immcantation is moving to GitHub. pRESTO, Change-O, tigger, prestoR are 
-  now installed from https://github.com/immcantation.
++ Immcantation is moving to GitHub. pRESTO, Change-O, alakazam, tigger, 
+  prestoR are installed from https://github.com/immcantation.
 
 Version Updates:
 

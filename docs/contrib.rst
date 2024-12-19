@@ -9,7 +9,7 @@ pull requests to the relevant Bitbucket repository:
 + `Docker container, pipelines and portal documentation <https://bitbucket.org/kleinstein/immcantation>`__
 + `pRESTO <https://github.com/immcantation/presto>`__
 + `Change-O <https://github.com/immcantation/changeo>`__
-+ `Alakazam <https://bitbucket.org/kleinstein/alakazam>`__
++ `Alakazam <https://github.com/immcantation/alakazam>`__
 + `SHazaM <https://bitbucket.org/kleinstein/shazam>`__
 + `TIgGER <https://github.com/immcantation/tigger>`__
 + `SCOPer <https://bitbucket.org/kleinstein/scoper>`__
