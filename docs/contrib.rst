@@ -10,7 +10,7 @@ pull requests to the relevant Bitbucket repository:
 + `pRESTO <https://github.com/immcantation/presto>`__
 + `Change-O <https://github.com/immcantation/changeo>`__
 + `Alakazam <https://github.com/immcantation/alakazam>`__
-+ `SHazaM <https://bitbucket.org/kleinstein/shazam>`__
++ `SHazaM <https://github.com/immcantation/shazam>`__
 + `TIgGER <https://github.com/immcantation/tigger>`__
 + `SCOPer <https://bitbucket.org/kleinstein/scoper>`__
 + `dowser <https://bitbucket.org/kleinstein/dowser>`__

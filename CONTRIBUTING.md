@@ -5,7 +5,7 @@ pull request to the relevant Bitbucket repository:
 + [pRESTO](https://github.com/immcantation/presto)
 + [Change-O](https://github.com/immcantation/changeo)
 + [Alakazam](https://github.com/immcantation/alakazam)
-+ [SHazaM](https://bitbucket.org/kleinstein/shazam)
++ [SHazaM](https://github.com/immcantation/shazam)
 + [TIgGER](https://github.com/immcantation/tigger)
 + [SCOPer](https://bitbucket.org/kleinstein/scoper)
 
