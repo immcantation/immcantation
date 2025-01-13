@@ -4,7 +4,7 @@ Contributing
 ================================================================================
 
 We welcome contributions to all components of the Immcantation framework through
-pull requests to the relevant Bitbucket repository:
+pull requests to the relevant  Bitbucket/GitHub repository:
 
 + `Docker container, pipelines and portal documentation <https://bitbucket.org/kleinstein/immcantation>`__
 + `pRESTO <https://github.com/immcantation/presto>`__
@@ -12,8 +12,8 @@ pull requests to the relevant Bitbucket repository:
 + `Alakazam <https://github.com/immcantation/alakazam>`__
 + `SHazaM <https://github.com/immcantation/shazam>`__
 + `TIgGER <https://github.com/immcantation/tigger>`__
-+ `SCOPer <https://bitbucket.org/kleinstein/scoper>`__
-+ `dowser <https://bitbucket.org/kleinstein/dowser>`__
++ `SCOPer <https://github.com/immcantation/scoper>`__
++ `Dowser <https://bitbucket.org/kleinstein/dowser>`__
 
 All Immcantation core software packages are under the free and open-source license
 `AGPL-3 <https://www.gnu.org/licenses/agpl-3.0.html>`__. Other core elements, including,
