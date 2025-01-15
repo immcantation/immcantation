@@ -13,7 +13,7 @@ pull requests to the relevant  Bitbucket/GitHub repository:
 + `SHazaM <https://github.com/immcantation/shazam>`__
 + `TIgGER <https://github.com/immcantation/tigger>`__
 + `SCOPer <https://github.com/immcantation/scoper>`__
-+ `Dowser <https://bitbucket.org/kleinstein/dowser>`__
++ `Dowser <https://github.com/immcantation/dowser>`__
 
 All Immcantation core software packages are under the free and open-source license
 `AGPL-3 <https://www.gnu.org/licenses/agpl-3.0.html>`__. Other core elements, including,

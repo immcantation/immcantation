@@ -13,7 +13,7 @@ Image Changes:
   and they start failing due to wget issues, most likely you need to update
   your script to use the right options.
 + Immcantation is moving to GitHub. pRESTO, Change-O, Alakazam, SHazaM, TIgGER,
-  SCOPer and prestoR are installed from https://github.com/immcantation.
+  SCOPer, Dowser and prestoR are installed from https://github.com/immcantation.
 
 Version Updates:
 
