@@ -1,7 +1,7 @@
 Release Notes
 ========================================================================
 
-Version devel:  January 08, 2025
+Version devel:  January 22, 2025
 ------------------------------------------------------------------------
 
 Image Changes:
@@ -13,7 +13,7 @@ Image Changes:
   and they start failing due to wget issues, most likely you need to update
   your script to use the right options.
 + Immcantation is moving to GitHub. pRESTO, Change-O, Alakazam, SHazaM, TIgGER,
-  SCOPer, Dowser and prestoR are installed from https://github.com/immcantation.
+  SCOPer, Dowser, IgPhyML, and prestoR are installed from https://github.com/immcantation.
 
 Version Updates:
 
