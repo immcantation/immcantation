@@ -4,8 +4,8 @@ Immcantation Tutorials
 Each tool in the framework has its own documentation site, with detailed usage information
 and examples. A good starting point to familiarize yourself with the framework is to
 follow one the tutorials listed here. They are available as Notebooks under the
-folder `training <https://bitbucket.org/kleinstein/immcantation/src/master/training>`_
-in the Immcantation Bitbucket repository.
+folder `training <https://github.com/immcantation/immcantation/tree/master/training>`_
+in the Immcantation GitHub repository.
 
 The Immcantation lab container
 -------------------------------------------------------------------------------------------
@@ -29,7 +29,7 @@ For a detailed use example for each Immcantation tool follow the tutorial
 *Introduction to B cell repertoire analysis using the Immcantation
 framework*. This tutorial is based on our
 introductory webinar. It is also available as an R Notebook
-(`intro-lab.Rmd <https://bitbucket.org/kleinstein/immcantation/src/master/training>`_) in the Immcantation repository.
+(`intro-lab.Rmd <https://github.com/immcantation/immcantation/tree/master/training>`_) in the Immcantation repository.
 
 .. admonition:: Tutorial
 
@@ -54,7 +54,7 @@ Single cell analysis
 
 For information on how to process 10x Genomics VDJ data to be analyzed with Immcantation, we
 offer the introductory tutorial *10x Genomics V(D)J Sequence Analysis with Immcantation*. It is 
-available as an R Notebook (`10x_tutorial.Rmd <https://bitbucket.org/kleinstein/immcantation/src/master/training>`_) 
+available as an R Notebook (`10x_tutorial.Rmd <https://github.com/immcantation/immcantation/tree/master/training>`_) 
 in the Immcantation repository.
 
 .. admonition:: Tutorial
@@ -72,7 +72,7 @@ in the Immcantation repository.
     :align: left
 
 In *Integration of BCR and GEX data* we demonstrate an enhanced analysis by integrating 10x BCR and 10x GEX data. 
-The R Notebook (`BCR_Seurat_tutorial.Rmd <https://bitbucket.org/kleinstein/immcantation/src/master/training/>`_) 
+The R Notebook (`BCR_Seurat_tutorial.Rmd <https://github.com/immcantation/immcantation/tree/master/training/>`_) 
 is available in the Immcantation repository.
 
 .. admonition:: Tutorial

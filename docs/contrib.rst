@@ -4,9 +4,9 @@ Contributing
 ================================================================================
 
 We welcome contributions to all components of the Immcantation framework through
-pull requests to the relevant  Bitbucket/GitHub repository:
+pull requests to the relevant  GitHub repository:
 
-+ `Docker container, pipelines and portal documentation <https://bitbucket.org/kleinstein/immcantation>`__
++ `Docker container, pipelines and portal documentation <https://github.com/immcantation/immcantation>`__
 + `pRESTO <https://github.com/immcantation/presto>`__
 + `Change-O <https://github.com/immcantation/changeo>`__
 + `Alakazam <https://github.com/immcantation/alakazam>`__
@@ -22,5 +22,5 @@ under `CC BY-SA 4.0 <https://creativecommons.org/licenses/by-sa/4.0>`__. Contrib
 packages are subject to their licenses.
 
 For details on documentation, coding style, and other conventions see the
-`CONTRIBUTING.md <https://bitbucket.org/kleinstein/immcantation/src/master/CONTRIBUTING.md>`__ file on
-Bitbucket.
+`CONTRIBUTING.md <https://github.com/immcantation/immcantation/tree/master/CONTRIBUTING.md>`__ file on
+Github.

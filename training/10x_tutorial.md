@@ -50,7 +50,7 @@ tutorial before using them on your own data.
 You may also reference [this
 page](https://immcantation.readthedocs.io/en/stable/docker/pipelines.html)
 for an example pipeline script to process 10x data with Immcantation’s
-[changeo-10x](https://bitbucket.org/kleinstein/immcantation/src/master/pipelines/changeo-10x.sh)
+[changeo-10x](https://github.com/immcantation/immcantation/tree/master/pipelines/changeo-10x.sh)
 example script.
 
 Resources:
@@ -66,11 +66,11 @@ Resources:
     [SCOPer](https://scoper.readthedocs.io/en/stable/), and
     [dowser](https://dowser.readthedocs.io/en/stable/).
 -   Source code and bug reports:
-    <https://bitbucket.org/kleinstein/immcantation>
+    <https://github.com/immcantation/immcantation>
 -   Docker image for this tutorial:
     <https://hub.docker.com/r/immcantation/lab>
 -   Source code for Immcantation tutorials:
-    <https://bitbucket.org/kleinstein/immcantation/src/master/training/>
+    <https://github.com/immcantation/immcantation/tree/master/training/>
 
 ## Getting started
 
@@ -671,7 +671,7 @@ repository and running the script:
 
     # Retrieve reference genome with the script fetch_imgtdb.sh.
     # It will create directories where it is run
-    git clone https://bitbucket.org/kleinstein/immcantation.git
+    git clone https://github.com/immcantation/immcantation.git
     ./immcantation/scripts/fetch_imgtdb.sh 
 
 And passing `"human/vdj/"` to the `readIMGT` function.

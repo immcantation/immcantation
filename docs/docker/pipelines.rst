@@ -68,7 +68,7 @@ NEBNext / AbSeq immune sequencing kit preprocessing pipeline
 
 A start to finish pRESTO processing script for NEBNext / AbSeq immune sequencing data.
 An example for human BCR processing is shown below. Primer sequences are available from the
-Immcantation repository under `protocols/AbSeq <https://bitbucket.org/kleinstein/immcantation/src/master/protocols/AbSeq>`__
+Immcantation repository under `protocols/AbSeq <https://github.com/immcantation/immcantation/tree/master/protocols/AbSeq>`__
 or inside the container under ``/usr/local/share/protocols/AbSeq``. Mouse primers are not supplied.
 TCR V gene references can be specified with the flag
 ``-r /usr/local/share/igblast/fasta/imgt_human_tr_v.fasta``.
@@ -125,7 +125,7 @@ Takara Bio / Clontech SMARTer v1 immune sequencing kit preprocessing pipeline
 A start to finish pRESTO processing script for Takara Bio / Clontech SMARTer v1 immune
 sequencing kit data. C-regions are assigned using the universal C-region primer sequences are
 available from the Immcantation repository under
-`protocols/Universal <https://bitbucket.org/kleinstein/immcantation/src/master/protocols/Universal>`__
+`protocols/Universal <https://github.com/immcantation/immcantation/tree/master/protocols/Universal>`__
 or inside the container under ``/usr/local/share/protocols/Universal``.
 
 .. include:: ../_include/usage.rst
@@ -165,7 +165,7 @@ Takara Bio / Clontech SMARTer v2 (UMI) immune sequencing kit preprocessing pipel
 A start to finish pRESTO processing script for Takara Bio / Clontech SMARTer v2 immune
 sequencing kit data that includes UMIs. C-regions are assigned using the universal C-region
 primer sequences are available from the Immcantation repository under
-`protocols/Universal <https://bitbucket.org/kleinstein/immcantation/src/master/protocols/Universal>`__
+`protocols/Universal <https://github.com/immcantation/immcantation/tree/master/protocols/Universal>`__
 or inside the container under ``/usr/local/share/protocols/Universal``.
 
 .. include:: ../_include/usage.rst

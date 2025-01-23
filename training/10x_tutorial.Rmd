@@ -47,16 +47,16 @@ Knowledge of basic command line usage is assumed. Please check out the individua
   * You can read more details about how to get and use the Docker container [here](https://immcantation.readthedocs.io/en/latest/docker/intro.html), including how to run tutorials such as this one.
  * It is also possible to install the packages being used separately. Instructions are available in each package's documentation site. See Resources.
 
-You may also reference [this page](https://immcantation.readthedocs.io/en/stable/docker/pipelines.html) for an example pipeline script to process 10x data with Immcantation's [changeo-10x](https://bitbucket.org/kleinstein/immcantation/src/master/pipelines/changeo-10x.sh) example script.
+You may also reference [this page](https://immcantation.readthedocs.io/en/stable/docker/pipelines.html) for an example pipeline script to process 10x data with Immcantation's [changeo-10x](https://github.com/immcantation/immcantation/tree/master/pipelines/changeo-10x.sh) example script.
 
 Resources:
 
 * You can email [immcantation\@googlegroups.com](mailto:immcantation@googlegroups.com) with any questions or issues.
 * Documentation: <http://immcantation.org>
 * Package specific documentation: [pRESTO](https://presto.readthedocs.io/en/stable/), [Change-O](https://changeo.readthedocs.io/en/stable/), [Alakazam](https://alakazam.readthedocs.io/en/stable/), [SHazaM](https://shazam.readthedocs.io/en/stable/), [SCOPer](https://scoper.readthedocs.io/en/stable/), and [dowser](https://dowser.readthedocs.io/en/stable/).
-* Source code and bug reports: <https://bitbucket.org/kleinstein/immcantation>
+* Source code and bug reports: <https://github.com/immcantation/immcantation>
 * Docker image for this tutorial: <https://hub.docker.com/r/immcantation/lab>
-* Source code for Immcantation tutorials: <https://bitbucket.org/kleinstein/immcantation/src/master/training/>
+* Source code for Immcantation tutorials: <https://github.com/immcantation/immcantation/tree/master/training/>
 
 ## Getting started
 

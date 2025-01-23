@@ -23,7 +23,7 @@ The field of high-throughput adaptive immune receptor repertoire sequencing (AIR
 
 -   The tutorial is available as a R Markdown notebook in the
     Immcantation repository:
-    [intro-lab.Rmd](https://bitbucket.org/kleinstein/immcantation/src/master/training).
+    [intro-lab.Rmd](https://github.com/immcantation/immcantation/tree/master/training).
 
 **This tutorial covers:**
 
@@ -180,7 +180,7 @@ colnames(db) # show the column names in the database
 Bulk BCR data in general includes ambiguous nucleotides (Ns), and we will remove those low-quality sequences with many Ns
 ```{r, message = FALSE}
 # Source helper function also available here:
-# https://bitbucket.org/kleinstein/immcantation/src/master/training/assets/filterN.R
+# https://github.com/immcantation/immcantation/tree/master/training/assets/filterN.R
 source("assets/filterN.R")
 
 # Identify sequences with at least 20 Ns or continuous 15 Ns in the v_region

@@ -10,7 +10,7 @@ tutorial, we present an example pipeline for processing bulk BCR data.
 
 -   The tutorial is available as a R Markdown notebook in the
     Immcantation repository:
-    [intro-lab.Rmd](https://bitbucket.org/kleinstein/immcantation/src/master/training).
+    [intro-lab.Rmd](https://github.com/immcantation/immcantation/tree/master/training).
 
 **This tutorial covers:**
 
@@ -382,7 +382,7 @@ Bulk BCR data in general includes ambiguous nucleotides (Ns), and we
 will remove those low-quality sequences with many Ns
 
     # Source helper function also available here:
-    # https://bitbucket.org/kleinstein/immcantation/src/master/training/assets/filterN.R
+    # https://github.com/immcantation/immcantation/tree/master/training/assets/filterN.R
     source("assets/filterN.R")
 
     # Identify sequences with at least 20 Ns or continuous 15 Ns in the v_region
