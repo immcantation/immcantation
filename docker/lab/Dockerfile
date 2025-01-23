@@ -90,7 +90,7 @@ RUN mkdir ${HOME}/notebooks && \
 # Get notebooks from repo
 RUN PACKAGE="immcantation" \
     && rm -rf /tmp/${PACKAGE} \
-    && git clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
+    && git clone https://github.com/immcantation/${PACKAGE} /tmp/${PACKAGE} \
     && mv /tmp/${PACKAGE}/training/*.[Rr]md ${HOME}/notebooks/. \
     && mv /tmp/${PACKAGE}/training/assets ${HOME}/notebooks/ \
     && rm -rf /tmp/${PACKAGE}

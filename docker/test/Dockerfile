@@ -54,7 +54,7 @@ RUN Rscript -e "install.packages(${R_DEPS}, clean=TRUE); devtools::install_githu
 # Install procotol data, utility scripts and pipelines
 RUN PACKAGE="immcantation" \
     && rm -rf /tmp/${PACKAGE} \
-    && git clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
+    && git clone https://github.com/immcantation/${PACKAGE} /tmp/${PACKAGE} \
     && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} -d immcantation \
     && mv /tmp/${PACKAGE}/scripts/* /usr/local/bin/ \
     && mv /tmp/${PACKAGE}/protocols /usr/local/share/protocols \

@@ -12,7 +12,7 @@ RUN builds write -n date -v "$(date +'%Y-%m-%d %T %Z')"
 # Install procotol data, utility scripts and pipelines
 RUN PACKAGE="immcantation" \
     && rm -rf /tmp/${PACKAGE} \
-    && git clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
+    && git clone https://github.com/immcantation/${PACKAGE} /tmp/${PACKAGE} \
     && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} -d immcantation \
     && pipelines copy -s /tmp/${PACKAGE}/pipelines/ -t /usr/local/bin/ \
     && mv /tmp/${PACKAGE}/scripts/* /usr/local/bin/ \

@@ -1,7 +1,7 @@
 Release Notes
 ========================================================================
 
-Version devel:  January 22, 2025
+Version devel:  January 23, 2025
 ------------------------------------------------------------------------
 
 Image Changes:
@@ -12,14 +12,16 @@ Image Changes:
   If you are using custom scripts that make calls to wget in the container, 
   and they start failing due to wget issues, most likely you need to update
   your script to use the right options.
-+ Immcantation is moving to GitHub. pRESTO, Change-O, Alakazam, SHazaM, TIgGER,
-  SCOPer, Dowser, IgPhyML, and prestoR are installed from https://github.com/immcantation.
++ Immcantation has moved to GitHub. The source code repositories for pRESTO, 
+  Change-O, Alakazam, SHazaM, TIgGER, SCOPer, Dowser, IgPhyML, enchantR, prestoR and 
+  the Immcantation portal are now available under https://github.com/immcantation.
 
 Version Updates:
 
 + dowser 2.3.0
 + airr_py 1.5.1
 + blast 2.15.0
++ seurat 5.0.3
 
 
 Version 4.5.0:  January 25, 2024
