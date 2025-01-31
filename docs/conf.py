@@ -22,16 +22,7 @@ import shutil
 
 # Prolog
 docker_versions = yaml.load(open('../docker/suite/Version.yaml', 'r'), Loader=yaml.FullLoader)
-rst_prolog = '.. |docker-version| replace:: %s' % docker_versions['immcantation']['version'] + """
-.. important::
-    *Are you an Immcantation user and/or interested in adaptive immune receptor repertoire analysis?*
-    
-    Register now for the upcoming Immcantation Users Group Meeting!
-    It will be held virtually on **January 30th, 2025, from 10 to 1:30pm (ET)**.
-    All talks will be from user-submitted abstracts.
-
-    Full information here: https://immcantation.github.io/users-meeting/
-"""
+rst_prolog = '.. |docker-version| replace:: %s' % docker_versions['immcantation']['version']
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
