@@ -104,7 +104,7 @@ RUN PHYLIP=$(versions get -n phylip) \
 # Install RAxML-NG
 RUN RAXMLNG=$(versions get -n raxml-ng) \
     && wget2 -q --force-progress --no-check-certificate \
-       https://github.com/amkozlov/raxml-ng/releases/download/1.2.0/raxml-ng_v${RAXMLNG}_linux_x86_64.zip \
+       https://github.com/amkozlov/raxml-ng/releases/download/${RAXMLNG}/raxml-ng_v${RAXMLNG}_linux_x86_64.zip \
     && unzip -q raxml-ng_v${RAXMLNG}_linux_x86_64.zip \
     && mv raxml-ng /usr/local/bin/raxml-ng \
     && chmod +x /usr/local/bin/raxml-ng \
