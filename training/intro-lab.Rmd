@@ -161,7 +161,7 @@ ParseDb.py select -d results/changeo/data_p_parse-select.tsv \
 
 After loading the libraries needed, the process is started by using `read_rearrangement` to read the tabulated data generated in the previous step.
 
-```{r, message = FALSE}
+```{r libraries, message = FALSE}
 suppressPackageStartupMessages(library(airr))
 suppressPackageStartupMessages(library(alakazam))
 suppressPackageStartupMessages(library(dplyr))
@@ -178,7 +178,7 @@ colnames(db) # show the column names in the database
 ### Remove sequences with many Ns using filterN 
 
 Bulk BCR data in general includes ambiguous nucleotides (Ns), and we will remove those low-quality sequences with many Ns
-```{r, message = FALSE}
+```{r filtern, message = FALSE}
 # Source helper function also available here:
 # https://github.com/immcantation/immcantation/tree/master/training/assets/filterN.R
 source("assets/filterN.R")
@@ -204,7 +204,7 @@ V(D)J assignment is a key step in analyzing repertoires and is done by matching 
 
 `readIgFasta` loads the reference V germline genes that were used in the V(D)J assignment (in this case the sequences in the Immcantation container).
 
-```{r}
+```{r read-fasta}
 ighv <- readIgFasta(file.path("", "usr", "local", "share", "germlines",
                               "imgt_test_tigger", "human", "vdj",
                               "imgt_human_IGHV.fasta"))
@@ -217,7 +217,7 @@ For each V gene allele, `findNovelAlleles` analyzes the sequences that were assi
 
 In this example, TIgGER finds one novel V gene allele.
 
-```{r}
+```{r find-alleles}
 nv <- findNovelAlleles(db, germline_db = ighv, nproc = 8) # find novel alleles
 ```
 
@@ -241,7 +241,7 @@ The next step is to infer the subject’s genotype and use this to improve the V
 
 Immcantation also includes other methods for inferring subject-specific genotypes (`inferGenotypeBayesian`).
 
-```{r}
+```{r infer-genotype}
 gt <- inferGenotype(db, germline_db = ighv, novel = nv)
 
 # save genotype inf .fasta format to be used later with dowser::createGermlines
@@ -263,7 +263,7 @@ Some of the V gene calls may use genes that are not part of the subject-specific
 
 With `write_rearrangement` the updated data is saved as a tabulated file for use in the following steps.
 
-```{r}
+```{r reassign}
 db <- reassignAlleles(db, gtseq)
 
 # show some of the corrected gene calls
@@ -309,8 +309,7 @@ We first split sequences into groups that share the same V and J gene assignment
 
 `findThreshold` uses the distribution of distances calculated in the previous step to determine an appropriate threshold for the dataset. This can be done using either a `density` or `mixture` based method. The function `plot` can be used to visualize the distance-to-nearest distribution and the threshold.
 
-```{r}
-
+```{r dist-nearest}
 # get the distance to nearest neighbors
 suppressPackageStartupMessages(library(shazam))
 db <- distToNearest(db, model = "ham", normalize = "len",
@@ -369,7 +368,7 @@ git clone https://bitbucket.org/kleinstein/immcantation.git
 
 And passing `"human/vdj/"` to the `readIMGT` function.
 
-```{r, warning=FALSE, message=FALSE}
+```{r read-imgt, warning=FALSE, message=FALSE}
 # read in IMGT data if downloaded on your own (above)
 # and update `dir` to use the path to your `human/vdj` folder
 # references <- readIMGT(dir = "human/vdj/")
@@ -385,7 +384,7 @@ results@db <- dowser::createGermlines(results@db, references, nproc = 1)
 
 In the rearrangement table, each row corresponds to a sequence, and each column is information about that sequence. We will create a new data structure, where each row is a clonal cluster, and each column is information about that clonal cluster. The function `formatClones` performs this processing and has options that are relevant to determine how the trees can be built and visualized. For example, `traits` determines the columns from the rearrangement data that will be included in the `clones` object, and will also be used to determine the uniqueness of the sequences, so they are not collapsed.
 
-```{r, warning=FALSE}
+```{r format-clones, warning=FALSE}
 # make clone objects with aligned, processed sequences
 # collapse identical sequences unless differ by trait
 # add up duplicate_count column for collapsed sequences
@@ -400,7 +399,7 @@ head(clones)
 
 Dowser offers multiple ways to build B cell phylogenetic trees. These differ by the method used to estimate tree topology and branch lengths (e.g. maximum parsimony and maximum likelihood) and implementation (IgPhyML, PHYLIP, RAxML, or R packages `ape` and `phangorn`). Each method has pros and cons. In this tutorial we use PHYLIP to reconstruct lineages following a maximum parsimony technique. PHYLIP is already installed in the Immcantation container.
 
-```{r, warning=FALSE}
+```{r dnapars, warning=FALSE}
 # the executable path is the location of the executable in the Docker container
 trees <- dowser::getTrees(clones, 
                           build = "dnapars", exec = "/usr/local/bin/dnapars", 
@@ -413,7 +412,7 @@ Regardless of how you build trees, they are visualized in the same manner with t
 
 Plot all of the trees:
 
-```{r, warning=FALSE}
+```{r plot-trees, warning=FALSE}
 plots_all <- dowser::plotTrees(trees, tips = "isotype", tipsize = 2)
 ```
 
@@ -423,7 +422,7 @@ Plot the largest tree:
 plots_all[[1]]
 ```
 
-```{r}
+```{r save-trees}
 # save a pdf of all trees
 dowser::treesToPDF(plots_all,
                    file = file.path("intro-lab_files", "final_data_trees.pdf"),
@@ -440,7 +439,7 @@ Having identified the germline sequence (`germline_alignment_d_mask`) in previou
 
 Standard `ggplot` commands can be used to generate boxplots to visualize the distribution of mutation counts across sequences, which are found in the column `mu_count` that `observedMutations` added to `db`.
 
-```{r}
+```{r mutations}
 # Calculate total mutation count, R and S combined
 results@db <- observedMutations(results@db,
                                 sequenceColumn = "sequence_alignment", 
@@ -461,7 +460,7 @@ SHM is a stochastic process, but does not occur uniformly across the V(D)J seque
 ![](assets/5mer.png)
 The resulting model can be visualized as a hedgehog plot with `plotMutability`. In this visualization, 5-mers that belong to classically-defined SHM hot-spot motifs (e.g., WRC) are shown in red and green, cold-spot motifs in blue, and other motifs (i.e., neutral) in grey. The bars radiating outward are the relative mutabilities of each 5-mer. The middle circle is the central nucleotide being targeted for SHM, here shown by a green circle on the left plot (nucleotide A) and an orange circle on the right plot (nucleotide C). Moving from the center of the circle outward covers the 5-mer nucleotide motif (5' to 3'). As expected, higher relative mutation rates are observed at hot-spot motifs.
 
-```{r}
+```{r shm-models}
 # Build and plot SHM targeting model
 m <- createTargetingModel(results@db, vCallColumn = "v_call_genotyped")
 
@@ -484,7 +483,7 @@ negative Σ: Replacement frequency lower than expected
 The somatic hypermutations that are observed in clonally-related sequences are not independent events. In order to generate a set of independent SHM events, selection pressure analysis starts by collapsing each clone to one representative sequence (with its associated germline) using the function `collapseClones`. Next `calcBaseline` takes each representative sequences and calculates the selection pressure. The analysis can be focused on a particular region, the V region (`regionDefinition=IMGT_V`) in the example below. Because selection pressure may act differently across the BCR, we may also be interested to evaluate the selection strength for different regions such as the Complementary Determining Regions (CDR) or Framework Regions (FWR) separately. Selection strength can also be calculated separately for different isotopes or subjects. This can be done with `groupbaseline`, which convolves the PDFs from individual sequences into a single PDF representing the group of sequences (e.g., all IgG sequences). 
 These PDF can be visualized with `plot`. FWR are critical to maintenance the overall structure of the BCR and typically have a lower observed selection strength, because mutations that alter the amino acid sequence are often negatively selected. CDRs are the areas of the BCR that generally bind to the antigen and may be subject to increased selection strength, although this can depend on the point in affinity maturation when the sequence is observed. In the example, negative selection is observed in the FWR, and almost no selection is observed in the CDR. In both CDR and FWR, sequences annotated with IGHM isotype show more positive selection strength than sequences annotated with IGHG and IGHA.
 
-```{r}
+```{r clonal-consensus, cache.lazy = FALSE}
 # Calculate clonal consensus and selection using the BASELINe method
 z <- collapseClones(results@db)
 b <- calcBaseline(z, regionDefinition = IMGT_V)
