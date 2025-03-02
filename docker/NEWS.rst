@@ -1,12 +1,12 @@
 Release Notes
 ========================================================================
 
-Version devel:  January 23, 2025
+Version devel:  March 2, 2025
 ------------------------------------------------------------------------
 
 Image Changes:
 
-+ Updated base image to Fedora 40. In FC40, wget has been replaced with 
++ Updated base image to Fedora 41. In FC40, wget was replaced with 
   wget2 (``release notes`` (https://fedoraproject.org/wiki/Releases/40/ChangeSet#Wget2_as_wget)).
   The new wget has a few different options, and it doesn't support ftp. 
   If you are using custom scripts that make calls to wget in the container, 
@@ -20,8 +20,10 @@ Version Updates:
 
 + dowser 2.3.0
 + airr_py 1.5.1
-+ blast 2.15.0
-+ seurat 5.0.3
++ blast 2.16.0
++ raxml 1.2.2
++ seurat 5.2.1
++ vsearch 2.30.0
 
 
 Version 4.5.0:  January 25, 2024
