@@ -329,8 +329,10 @@ It is important to determine an appropriate threshold for trimming the hierarchi
 We define a clonal threshold only using the heavy chain locus, so we need to filter the dataset for the "IGH" locus. Clonal groups should be defined within one subject:
 
 ```{r}
-dist_nearest <- distToNearest(dplyr::filter(bcr_data, locus == "IGH",
-                                            subject_id == "subject1"))
+dist_nearest <- distToNearest(dplyr::filter(bcr_data,
+                                            locus == "IGH",
+                                            subject_id == "subject1"),
+                              cellIdColumn="cell_id")
 
 # generate Hamming distance histogram
 p1 <- ggplot(subset(dist_nearest, !is.na(dist_nearest)),
@@ -381,7 +383,8 @@ In the above data, there are two subjects. We will want to make make sure that t
 ```{r}
 # calculate cross subjects distribution of distance to nearest
 dist_crossSubj <- distToNearest(dplyr::filter(bcr_data, locus == "IGH"),
-                                nproc = 1, cross = "subject_id")
+                                nproc = 1, cross = "subject_id",
+                                cellIdColumn="cell_id")
 
 # find threshold for cloning automatically and initialize the Gaussian fit
 # parameters of the nearest-neighbor
@@ -415,7 +418,7 @@ The `hierarchicalClones` function in `SCOPer` package can be used to call clones
 results <- hierarchicalClones(bcr_data,
                               cell_id = "cell_id_unique",
                               threshold = threshold,
-                              only_heavy = TRUE, split_light = TRUE,
+                              only_heavy = TRUE, split_light = FALSE,
                               summarize_clones = FALSE,
                               fields = "subject_id")
 ```
@@ -574,8 +577,7 @@ In the rearrangement table, each row corresponds to a sequence, and each column 
 # add up duplicate_count column for collapsed sequences
 # store day, gex_annotation
 # discard clones with < 5 distinct sequences
-clones <-
-  dowser::formatClones(results,
+clones <- formatClones(results,
                        traits = c("day", "gex_annotation"),
                        num_fields = c("duplicate_count"), minseq = 5, nproc = 1)
 
@@ -588,8 +590,7 @@ There is an additional step that occurs before the `formatClones` step in this s
 ```{r, echo=FALSE}
 comb <- resolveLightChains(results, nproc = 1)
 
-clones <-
-  dowser::formatClones(comb,
+clones <- formatClones(comb,
                        chain = "HL", traits = c("day", "gex_annotation"),
                        num_fields = c("duplicate_count"), minseq = 5, nproc = 1)
 
