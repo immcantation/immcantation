@@ -1,3 +1,5 @@
+.PHONY: edit-notebooks stop-edit-notebooks immcantation-rstudio stop-immcantation-rstudio clean
+
 # Convenience commands to run Immcanatation Lab + RStudio to
 # work with the training notebooks
 # Use from path: immcatation/training
@@ -5,6 +7,12 @@
 IMMCANTATION_HOME=`realpath ..`
 IMMCANTATION_IMAGE=immcantation/lab:devel
 PASSWORD=immcantation
+
+
+#------------
+# Delete rendered tutorial, files and cache
+clean:
+	sudo rm -rf $(IMMCANTATION_HOME)/training/*_files $(IMMCANTATION_HOME)/training/*_cache
 
 #------------
 # Edit the local copies of the Rmd files
