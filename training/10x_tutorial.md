@@ -266,11 +266,11 @@ You may wish to subset your data to only productive sequences:
     ## # A tibble: 5 x 66
     ##   sequence_id                 sequence  rev_comp productive v_call d_call j_call
     ##   <chr>                       <chr>     <lgl>    <lgl>      <chr>  <chr>  <chr> 
-    ## 1 TGGTTCCAGAATCTCC-1_contig_2 AGGAGTCA~ FALSE    TRUE       IGKV1~ <NA>   IGKJ1~
-    ## 2 AACTCAGTCTTCGGTC-1_contig_2 TGGGGAGG~ FALSE    TRUE       IGKV1~ <NA>   IGKJ1~
-    ## 3 TGAGGGACAGTACACT-1_contig_2 TGGGGACC~ FALSE    TRUE       IGHV1~ IGHD1~ IGHJ4~
-    ## 4 CCTATTAAGACAGGCT-1_contig_1 GGGGAGGA~ FALSE    TRUE       IGKV3~ <NA>   IGKJ3~
-    ## 5 AACGTTGGTACCAGTT-1_contig_2 AACCACAT~ FALSE    TRUE       IGHV1~ <NA>   IGHJ3~
+    ## 1 GGTGAAGGTTCCACGG-1_contig_2 GGGGCTTT~ FALSE    TRUE       IGHV4~ <NA>   IGHJ4~
+    ## 2 CATGCCTGTGCAGACA-1_contig_1 TGGGGACC~ FALSE    TRUE       IGHV1~ IGHD6~ IGHJ4~
+    ## 3 TCATTACAGAAGGTGA-1_contig_2 AGCTGTGG~ FALSE    TRUE       IGLV3~ <NA>   IGLJ2~
+    ## 4 CTCATTATCAGCGATT-1_contig_1 GCTCTGCT~ FALSE    TRUE       IGLV1~ <NA>   IGLJ2~
+    ## 5 CCTTTCTAGGCAATTA-1_contig_1 GTCAGTCC~ FALSE    TRUE       IGKV1~ <NA>   IGKJ1~
     ## # i 59 more variables: sequence_alignment <chr>, germline_alignment <chr>,
     ## #   junction <chr>, junction_aa <chr>, v_cigar <chr>, d_cigar <chr>,
     ## #   j_cigar <chr>, vj_in_frame <lgl>, stop_codon <lgl>, v_sequence_start <int>,
@@ -462,8 +462,10 @@ We define a clonal threshold only using the heavy chain locus, so we
 need to filter the dataset for the “IGH” locus. Clonal groups should be
 defined within one subject:
 
-    dist_nearest <- distToNearest(dplyr::filter(bcr_data, locus == "IGH",
-                                                subject_id == "subject1"))
+    dist_nearest <- distToNearest(dplyr::filter(bcr_data,
+                                                locus == "IGH",
+                                                subject_id == "subject1"),
+                                  cellIdColumn="cell_id")
 
     # generate Hamming distance histogram
     p1 <- ggplot(subset(dist_nearest, !is.na(dist_nearest)),
@@ -523,7 +525,7 @@ based on the specificity of this background distribution.
     threshold <- threshold_output@threshold
     threshold
 
-    ## [1] 0.2037778
+    ## [1] 0.2038404
 
     plot(threshold_output, binwidth = 0.02, silent = TRUE) +
       theme(axis.title = element_text(size = 18))
@@ -548,7 +550,8 @@ calculate this do the following:
 
     # calculate cross subjects distribution of distance to nearest
     dist_crossSubj <- distToNearest(dplyr::filter(bcr_data, locus == "IGH"),
-                                    nproc = 1, cross = "subject_id")
+                                    nproc = 1, cross = "subject_id",
+                                    cellIdColumn="cell_id")
 
     # find threshold for cloning automatically and initialize the Gaussian fit
     # parameters of the nearest-neighbor
@@ -590,7 +593,7 @@ call clones using single cell mode:
     results <- hierarchicalClones(bcr_data,
                                   cell_id = "cell_id_unique",
                                   threshold = threshold,
-                                  only_heavy = TRUE, split_light = TRUE,
+                                  only_heavy = TRUE, split_light = FALSE,
                                   summarize_clones = FALSE,
                                   fields = "subject_id")
 
@@ -615,6 +618,8 @@ To estimate the clonal abundance, we will select only the heavy chains:
     abund <- estimateAbundance(dplyr::filter(results, locus == "IGH"),
                                group = "sample_id", nboot = 100)
 
+    ## Adding missing grouping variables: `subject_id`
+
     abund_plot <- plot(abund, silent=T)
     abund_plot
 
@@ -631,6 +636,8 @@ don’t see the much higher peak at 1 that we would normally expect.
     # get clone sizes using dplyr functions
     clone_sizes <- countClones(dplyr::filter(results, locus == "IGH"),
                                groups = "sample_id")
+
+    ## Adding missing grouping variables: `subject_id`
 
     # plot cells per clone
     ggplot(clone_sizes, aes(x = seq_count)) +
@@ -649,6 +656,8 @@ diversity, we will also select only the heavy chains:
     # calculate and plot the rank-abundance curve
     div <- alphaDiversity(dplyr::filter(results, locus == "IGH"),
                           group = "sample_id", nboot = 100)
+
+    ## Adding missing grouping variables: `subject_id`
 
     plot(div, silent = TRUE) + facet_wrap("sample_id", ncol = 3)
 
@@ -671,7 +680,7 @@ repository and running the script:
 
     # Retrieve reference genome with the script fetch_imgtdb.sh.
     # It will create directories where it is run
-    git clone https://github.com/immcantation/immcantation.git
+    git clone https://bitbucket.org/kleinstein/immcantation.git
     ./immcantation/scripts/fetch_imgtdb.sh 
 
 And passing `"human/vdj/"` to the `readIMGT` function.
@@ -683,7 +692,7 @@ And passing `"human/vdj/"` to the `readIMGT` function.
     # read in IMGT files in the Docker container
     references <- readIMGT(dir = "/usr/local/share/germlines/imgt/human/vdj")
 
-    ## [1] "Read in 1194 from 17 fasta files"
+    ## [1] "Read in 1198 from 17 fasta files"
 
     # reconstruct germlines
     results <- createGermlines(results, references, fields = "subject_id",
@@ -778,8 +787,7 @@ uniqueness of the sequences, so they are not collapsed.
     # add up duplicate_count column for collapsed sequences
     # store day, gex_annotation
     # discard clones with < 5 distinct sequences
-    clones <-
-      dowser::formatClones(results,
+    clones <- formatClones(results,
                            traits = c("day", "gex_annotation"),
                            num_fields = c("duplicate_count"), minseq = 5, nproc = 1)
 
@@ -788,12 +796,12 @@ uniqueness of the sequences, so they are not collapsed.
     ## # A tibble: 6 x 4
     ##   clone_id data       locus  seqs
     ##   <chr>    <list>     <chr> <int>
-    ## 1 208      <airrClon> IGH      14
-    ## 2 533      <airrClon> IGH      14
-    ## 3 693      <airrClon> IGH      14
-    ## 4 257      <airrClon> IGH      12
-    ## 5 603      <airrClon> IGH      12
-    ## 6 544      <airrClon> IGH      11
+    ## 1 196      <airrClon> IGH      14
+    ## 2 506      <airrClon> IGH      14
+    ## 3 656      <airrClon> IGH      14
+    ## 4 244      <airrClon> IGH      12
+    ## 5 515      <airrClon> IGH      12
+    ## 6 568      <airrClon> IGH      12
 
 Additionally, if there is paired heavy and light chain data, you can
 format the clones such that the paired data is used in building trees.
@@ -804,15 +812,19 @@ dowser’s function `resolveLightChains`. This group cells within a clone
 based on the light chain V and J gene and assign a subgroup to each
 sequence. Then, in the `formatClones` step, specify `chain="HL"`.
 
+    ## Warning in formatClones(comb, chain = "HL", traits = c("day",
+    ## "gex_annotation"), : 2 sequence(s) with an inframe stop codon were removed. If
+    ## you want to keep these sequences use the option filterstop=FALSE.
+
     ## # A tibble: 6 x 4
     ##   clone_id data       locus    seqs
     ##   <chr>    <list>     <chr>   <int>
-    ## 1 208      <airrClon> IGH,IGL    15
-    ## 2 533      <airrClon> IGH,IGK    14
-    ## 3 693      <airrClon> IGH,IGL    14
-    ## 4 257      <airrClon> IGH,IGK    12
-    ## 5 603      <airrClon> IGH,IGK    12
-    ## 6 215      <airrClon> IGH,IGK    11
+    ## 1 196      <airrClon> IGH,IGL    15
+    ## 2 506      <airrClon> IGH,IGK    14
+    ## 3 656      <airrClon> IGH,IGL    14
+    ## 4 244      <airrClon> IGH,IGK    12
+    ## 5 515      <airrClon> IGH,IGK    12
+    ## 6 568      <airrClon> IGH,IGK    12
 
 ### Build trees with dowser
 
@@ -837,12 +849,12 @@ phangorn:
     ## # A tibble: 6 x 5
     ##   clone_id data       locus    seqs trees  
     ##   <chr>    <list>     <chr>   <int> <list> 
-    ## 1 208      <airrClon> IGH,IGL    15 <phylo>
-    ## 2 533      <airrClon> IGH,IGK    14 <phylo>
-    ## 3 693      <airrClon> IGH,IGL    14 <phylo>
-    ## 4 257      <airrClon> IGH,IGK    12 <phylo>
-    ## 5 603      <airrClon> IGH,IGK    12 <phylo>
-    ## 6 215      <airrClon> IGH,IGK    11 <phylo>
+    ## 1 196      <airrClon> IGH,IGL    15 <phylo>
+    ## 2 506      <airrClon> IGH,IGK    14 <phylo>
+    ## 3 656      <airrClon> IGH,IGL    14 <phylo>
+    ## 4 244      <airrClon> IGH,IGK    12 <phylo>
+    ## 5 515      <airrClon> IGH,IGK    12 <phylo>
+    ## 6 568      <airrClon> IGH,IGK    12 <phylo>
 
 And the second uses dnapars (PHYLIP):
 
@@ -855,12 +867,12 @@ And the second uses dnapars (PHYLIP):
     ## # A tibble: 6 x 5
     ##   clone_id data       locus    seqs trees  
     ##   <chr>    <list>     <chr>   <int> <list> 
-    ## 1 208      <airrClon> IGH,IGL    15 <phylo>
-    ## 2 533      <airrClon> IGH,IGK    14 <phylo>
-    ## 3 693      <airrClon> IGH,IGL    14 <phylo>
-    ## 4 257      <airrClon> IGH,IGK    12 <phylo>
-    ## 5 603      <airrClon> IGH,IGK    12 <phylo>
-    ## 6 215      <airrClon> IGH,IGK    11 <phylo>
+    ## 1 196      <airrClon> IGH,IGL    15 <phylo>
+    ## 2 506      <airrClon> IGH,IGK    14 <phylo>
+    ## 3 656      <airrClon> IGH,IGL    14 <phylo>
+    ## 4 244      <airrClon> IGH,IGK    12 <phylo>
+    ## 5 515      <airrClon> IGH,IGK    12 <phylo>
+    ## 6 568      <airrClon> IGH,IGK    12 <phylo>
 
 #### Standard maximum likelihood trees
 
@@ -877,12 +889,12 @@ first uses pml (phangorn):
     ## # A tibble: 6 x 5
     ##   clone_id data       locus    seqs trees  
     ##   <chr>    <list>     <chr>   <int> <list> 
-    ## 1 208      <airrClon> IGH,IGL    15 <phylo>
-    ## 2 533      <airrClon> IGH,IGK    14 <phylo>
-    ## 3 693      <airrClon> IGH,IGL    14 <phylo>
-    ## 4 257      <airrClon> IGH,IGK    12 <phylo>
-    ## 5 603      <airrClon> IGH,IGK    12 <phylo>
-    ## 6 215      <airrClon> IGH,IGK    11 <phylo>
+    ## 1 196      <airrClon> IGH,IGL    15 <phylo>
+    ## 2 506      <airrClon> IGH,IGK    14 <phylo>
+    ## 3 656      <airrClon> IGH,IGL    14 <phylo>
+    ## 4 244      <airrClon> IGH,IGK    12 <phylo>
+    ## 5 515      <airrClon> IGH,IGK    12 <phylo>
+    ## 6 568      <airrClon> IGH,IGK    12 <phylo>
 
 The second uses dnaml (PHYLIP):
 
@@ -1023,20 +1035,20 @@ timepoints are more diverged from the germline:
 
     dplyr::select(trees, clone_id, slope, correlation, p)
 
-    ## # A tibble: 31 x 4
+    ## # A tibble: 35 x 4
     ##    clone_id  slope correlation      p
     ##    <chr>     <dbl>       <dbl>  <dbl>
-    ##  1 605      0.0453       0.711 0.0749
-    ##  2 741      0.120        0.877 0.136 
-    ##  3 541      0.277        0.827 0.195 
-    ##  4 1181     0.707        0.578 0.228 
-    ##  5 608      0.0828       0.328 0.229 
-    ##  6 208      0.307        0.770 0.278 
-    ##  7 195      0.169        0.301 0.279 
-    ##  8 221      0.0537       0.384 0.294 
-    ##  9 383      2.57         0.833 0.325 
-    ## 10 210      0.197        0.488 0.357 
-    ## # i 21 more rows
+    ##  1 570      0.0453       0.711 0.0789
+    ##  2 699      0.120        0.877 0.181 
+    ##  3 209      0.0630       0.468 0.207 
+    ##  4 513      0.277        0.827 0.222 
+    ##  5 1118     0.488        0.444 0.241 
+    ##  6 573      0.0830       0.329 0.255 
+    ##  7 1122     0.708        0.578 0.261 
+    ##  8 196      0.307        0.770 0.266 
+    ##  9 183      0.169        0.300 0.286 
+    ## 10 198      0.198        0.489 0.333 
+    ## # i 25 more rows
 
     print(plots_time[[1]])
 
