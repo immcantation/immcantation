@@ -26,7 +26,7 @@ vaccination.
     [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10028129.svg)](https://doi.org/10.5281/zenodo.10028129).
 -   We will use these files in particular for this tutorial:
     -   **BCR.data\_08112023.rds**: R dataframe object containing the
-        single-cell BCR sequencing data.
+        single cell BCR sequencing data.
     -   **GEX.data\_08112023.rds**: Gene expression data in the form of
         a Seurat object. *Processing and annotation steps are not
         covered in this tutorial.* You can learn more on these topics in
@@ -55,9 +55,9 @@ or [scverse](https://scverse.org/)).
         paste("Running under:", sessionInfo()$running),
         sep = "\n")
 
-    ## R version 4.3.2 (2023-10-31)
+    ## R version 4.4.2 (2024-10-31)
     ## Platform: x86_64-redhat-linux-gnu
-    ## Running under: Fedora Linux 38 (Container Image)
+    ## Running under: Fedora Linux 41 (Container Image)
 
     # cat("\n")
 
@@ -69,8 +69,8 @@ or [scverse](https://scverse.org/)).
     }
 
     ## dplyr: 1.1.4
-    ## ggplot2: 3.4.4
-    ## Seurat: 5.0.1
+    ## ggplot2: 3.5.1
+    ## Seurat: 5.2.1
 
     # set the data directory
     path_data <- file.path("", "home", "magus", "data") # change this to fit your own structure
@@ -319,7 +319,8 @@ percentages can be misleading). For example, as expected, 100% of the
                 color = "black", size = 3) +
       labels_standard
 
-    ## Warning: Removed 5 rows containing missing values (`geom_text()`).
+    ## Warning: Removed 5 rows containing missing values or values outside the scale range
+    ## (`geom_text()`).
 
 ![](BCR_Seurat_tutorial_files/BCR_Seurat_tutorial_gex-bcr-bar-cell-types-1.png)
 
@@ -397,9 +398,11 @@ integrated into BCR data.
       labels_standard +
       theme(axis.text.x = element_blank(), axis.ticks.x = element_blank())
 
-    ## Warning: Removed 2922 rows containing non-finite values (`stat_boxplot()`).
+    ## Warning: Removed 2922 rows containing non-finite outside the scale range
+    ## (`stat_boxplot()`).
 
-    ## Warning: Removed 2922 rows containing missing values (`geom_point()`).
+    ## Warning: Removed 2922 rows containing missing values or values outside the scale range
+    ## (`geom_point()`).
 
 ![](BCR_Seurat_tutorial_files/BCR_Seurat_tutorial_bcr-gex-mu-freq-cell-type-1.png)
 
