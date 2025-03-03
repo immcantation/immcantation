@@ -69,7 +69,7 @@ RUN dnf -y update && dnf install -y \
     && dnf clean all
 
 # Docker Scout upgrades
-pip install pyarrow --upgrade
+RUN pip install pyarrow --upgrade
 
 # System environment variables
 ENV LD_LIBRARY_PATH="/usr/lib64/R/lib:/usr/lib64/atlas"
