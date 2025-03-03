@@ -34,7 +34,7 @@ Use this command to list the software versions:
     versions report
 
     ## immcantation: devel
-    ## date: 2025.03.03
+    ## date: 2025.03.02
     ## 
     ## presto: 0.7.2
     ## changeo: 1.3.0
