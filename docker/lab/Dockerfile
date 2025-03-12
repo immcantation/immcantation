@@ -32,7 +32,7 @@ RUN dnf install -y \
             R-rstudioapi
 RUN wget https://download2.rstudio.org/server/rhel9/x86_64/rstudio-server-rhel-2024.12.1-563-x86_64.rpm \
     && dnf install -y rstudio-server-rhel-2024.12.1-563-x86_64.rpm
-ARG R_REPO="http://lib.stat.cmu.edu/R/CRAN/"
+ARG R_REPO="https://cloud.r-project.org/"
 ARG R_DEPS="c('readxl', \
               'shiny', \
               'rstudioapi')"
