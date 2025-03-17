@@ -86,6 +86,7 @@ ARG R_DEPS="c('BiocManager', \
               'Rcpp', \
               'rmarkdown', \
               'roxygen2', \
+              'R-png', \
               'testthat')"
 ARG R_BIOC_DEPS="c('Biostrings', \
               'DECIPHER', \
