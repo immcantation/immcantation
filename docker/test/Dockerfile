@@ -27,6 +27,7 @@ ARG R_DEPS="c('ape', \
               'KernSmooth', \
               'knitr', \
               'lazyeval', \
+              'lifecycle', \
               'markdown', \
               'MASS', \
               'openxlsx', \
