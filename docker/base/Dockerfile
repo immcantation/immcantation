@@ -58,7 +58,7 @@ RUN dnf -y update && dnf install -y \
     python3-scipy \
     R-core \
     R-core-devel \
-    R-png, \    
+    R-png \    
     R-ragg \
     R-textshaping \
     redland-devel \    
