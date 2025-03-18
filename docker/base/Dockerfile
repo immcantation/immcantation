@@ -89,6 +89,7 @@ ARG R_DEPS="c('BiocManager', \
               'R-png', \
               'testthat')"
 ARG R_BIOC_DEPS="c('Biostrings', \
+              'ComplexHeatmap', \
               'DECIPHER', \
               'GenomicAlignments', \
               'ggmsa', \
