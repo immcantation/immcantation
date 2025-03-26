@@ -26,7 +26,15 @@ for rec in SeqIO.parse(in_file, 'fasta'):
         seq_list_desc.append(seq_desc)
     else:
         # Report duplicated entries (by name) found. Keep the first one and skip the rest.
-        # 
+        # Issue found with constant region sequences, with the same name but different 
+        # terminal domains (see descriptions: CH-S vs M).
+        # Not relevant for current usage of immcantation, because we don't use sequencing data 
+        # from that region.
+        # Example:
+        # Duplicate sequence name found: IGHA1*01
+        # Description: J00220+M60193|IGHA1*01|Homo_sapiens|F|CH1+H+CH2+CH3+M|J00220:g,142..447+662..1021+1244..1575;M60193:g,226..437|1212 nt|1|+1| | | |1212+0=1212| | |
+        # Duplicate of sequence with name IGHA1*01 and description: J00220|IGHA1*01|Homo_sapiens|F|CH1+H+CH2+CH3+CH-S|g,142..447+662..1021+1244..1635|1059 nt|1|+1| | | |1059+0=1059| | |
+        # Skipping duplicate sequence.
         print(f"Duplicate sequence name found: {name}")
         print(f"Description: {rec.description}")
         print(f"Duplicate of sequence with name {name} and description: {[seq.description for seq in seq_list_desc if seq.name == name][0]}")
