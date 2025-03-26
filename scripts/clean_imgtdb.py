@@ -15,12 +15,22 @@ out_file = argv[2]
 # Load sequences into memory and process them
 name_set = set()
 seq_list = list()
+seq_list_desc = list()
 for rec in SeqIO.parse(in_file, 'fasta'):
     name = rec.description.split('|')[1]
     if name not in name_set:
         name_set.add(name)
         seq = SeqRecord(rec.seq.replace('.', '').upper(), id=name, name=name, description=name)
+        seq_desc = SeqRecord(rec.seq.replace('.', '').upper(), id=name, name=name, description=rec.description)
         seq_list.append(seq)
+        seq_list_desc.append(seq_desc)
+    else:
+        # Report duplicated entries (by name) found. Keep the first one and skip the rest.
+        # 
+        print(f"Duplicate sequence name found: {name}")
+        print(f"Description: {rec.description}")
+        print(f"Duplicate of sequence with name {name} and description: {[seq.description for seq in seq_list_desc if seq.name == name][0]}")
+        print("Skipping duplicate sequence.\n")
 
 # Overwrite file
 with open(out_file, 'w') as out_handle:
