@@ -1,7 +1,7 @@
 Release Notes
 ========================================================================
 
-Version devel:  March 10, 2025
+Version devel:  March 27, 2025
 ------------------------------------------------------------------------
 
 Image Changes:
@@ -19,6 +19,7 @@ Image Changes:
 Version Updates:
 
 + dowser 2.3.0
++ changeo 1.3.1
 + presto 0.7.4
 + airr_py 1.5.1
 + blast 2.16.0
