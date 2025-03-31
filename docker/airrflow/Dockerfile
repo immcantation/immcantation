@@ -75,6 +75,10 @@ ENV PATH="${PATH}:/usr/local/share/igphyml/src"
 RUN ENCHANTR_VER=$(versions get -n enchantr) \
     && Rscript -e "devtools::install_github('immcantation/enchantr', ref='${ENCHANTR_VER}', quiet=FALSE, clean=TRUE)"
 
+# Install amulety
+RUN AMULETY_VER=$(versions get -n amulety) \
+    && Rscript -e "devtools::install_github('immcantation/amulety', ref='${AMULETY_VER}', quiet=FALSE, clean=TRUE)"
+
 # Set commands
 CMD echo -e " Version information:\n"\
             "  versions report\n"\
