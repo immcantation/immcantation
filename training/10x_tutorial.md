@@ -215,16 +215,13 @@ are dependencies for some of the R-based Immcantation packages with
     # load libraries
     suppressPackageStartupMessages(library(airr))
     suppressPackageStartupMessages(library(alakazam))
-    suppressPackageStartupMessages(library(data.table))
     suppressPackageStartupMessages(library(dowser))
     suppressPackageStartupMessages(library(dplyr))
     suppressPackageStartupMessages(library(ggplot2))
+    suppressPackageStartupMessages(library(ggtree))
     suppressPackageStartupMessages(library(scoper))
     suppressPackageStartupMessages(library(Seurat))
     suppressPackageStartupMessages(library(shazam))
-
-    # Bioconductor package
-    suppressPackageStartupMessages(library(ggtree))
 
 ## Load in and reformat the data
 
@@ -267,11 +264,11 @@ You may wish to subset your data to only productive sequences:
     ## # A tibble: 5 x 66
     ##   sequence_id                 sequence  rev_comp productive v_call d_call j_call
     ##   <chr>                       <chr>     <lgl>    <lgl>      <chr>  <chr>  <chr> 
-    ## 1 GGTGAAGGTTCCACGG-1_contig_2 GGGGCTTT~ FALSE    TRUE       IGHV4~ <NA>   IGHJ4~
-    ## 2 CATGCCTGTGCAGACA-1_contig_1 TGGGGACC~ FALSE    TRUE       IGHV1~ IGHD6~ IGHJ4~
-    ## 3 TCATTACAGAAGGTGA-1_contig_2 AGCTGTGG~ FALSE    TRUE       IGLV3~ <NA>   IGLJ2~
-    ## 4 CTCATTATCAGCGATT-1_contig_1 GCTCTGCT~ FALSE    TRUE       IGLV1~ <NA>   IGLJ2~
-    ## 5 CCTTTCTAGGCAATTA-1_contig_1 GTCAGTCC~ FALSE    TRUE       IGKV1~ <NA>   IGKJ1~
+    ## 1 GCAGTTACACAGAGGT-1_contig_1 AGGAGTCA~ FALSE    TRUE       IGKV1~ <NA>   IGKJ1~
+    ## 2 ATAACGCAGGCTAGAC-1_contig_1 GATCAGGA~ FALSE    TRUE       IGKV2~ <NA>   IGKJ5~
+    ## 3 GAATGAACAGGATCGA-1_contig_2 TGGGGGCT~ FALSE    TRUE       IGHV4~ IGHD3~ IGHJ6~
+    ## 4 CAGTAACCATGCAACT-1_contig_2 GGACATCC~ FALSE    TRUE       IGHV1~ IGHD4~ IGHJ3~
+    ## 5 GCTTCCAGTTGGTTTG-1_contig_2 AGCTTCAG~ FALSE    TRUE       IGLV1~ <NA>   IGLJ3~
     ## # i 59 more variables: sequence_alignment <chr>, germline_alignment <chr>,
     ## #   junction <chr>, junction_aa <chr>, v_cigar <chr>, d_cigar <chr>,
     ## #   j_cigar <chr>, vj_in_frame <lgl>, stop_codon <lgl>, v_sequence_start <int>,
@@ -526,7 +523,7 @@ based on the specificity of this background distribution.
     threshold <- threshold_output@threshold
     threshold
 
-    ## [1] 0.2038404
+    ## [1] 0.2037778
 
     plot(threshold_output, binwidth = 0.02, silent = TRUE) +
       theme(axis.title = element_text(size = 18))
@@ -693,7 +690,7 @@ And passing `"human/vdj/"` to the `readIMGT` function.
     # read in IMGT files in the Docker container
     references <- readIMGT(dir = "/usr/local/share/germlines/imgt/human/vdj")
 
-    ## [1] "Read in 1198 from 17 fasta files"
+    ## [1] "Read in 1194 from 17 fasta files"
 
     # reconstruct germlines
     results <- createGermlines(results, references, fields = "subject_id",
@@ -1039,16 +1036,16 @@ timepoints are more diverged from the germline:
     ## # A tibble: 35 x 4
     ##    clone_id  slope correlation      p
     ##    <chr>     <dbl>       <dbl>  <dbl>
-    ##  1 570      0.0453       0.711 0.0789
-    ##  2 699      0.120        0.877 0.181 
-    ##  3 209      0.0630       0.468 0.207 
-    ##  4 513      0.277        0.827 0.222 
-    ##  5 1118     0.488        0.444 0.241 
-    ##  6 573      0.0830       0.329 0.255 
-    ##  7 1122     0.708        0.578 0.261 
-    ##  8 196      0.307        0.770 0.266 
-    ##  9 183      0.169        0.300 0.286 
-    ## 10 198      0.198        0.489 0.333 
+    ##  1 570      0.0453       0.711 0.0739
+    ##  2 699      0.120        0.877 0.184 
+    ##  3 513      0.277        0.827 0.201 
+    ##  4 1118     0.488        0.444 0.224 
+    ##  5 209      0.0630       0.468 0.227 
+    ##  6 196      0.307        0.770 0.238 
+    ##  7 573      0.0830       0.329 0.245 
+    ##  8 1122     0.708        0.578 0.268 
+    ##  9 183      0.169        0.300 0.290 
+    ## 10 198      0.198        0.489 0.332 
     ## # i 25 more rows
 
     print(plots_time[[1]])

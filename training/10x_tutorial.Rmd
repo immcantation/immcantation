@@ -41,7 +41,8 @@ This tutorial is a basic walk-through for defining B cell clonal families and bu
 
 Knowledge of basic command line usage is assumed. Please check out the individual documentation sites for the functions detailed in this tutorial before using them on your own data. 
 
-* For simplicity, this tutorial will use the container [Immcantation Lab](https://hub.docker.com/repository/Docker/immcantation/lab) which contains R Markdown notebooks and all necessary software to run this code.
+* For simplicity, this tutorial will use the [Immcantation Lab Docker
+    image](https://hub.docker.com/repository/Docker/immcantation/lab) which contains R Markdown notebooks and all necessary software to run this code.
   * You can download the current Docker image with `docker pull immcantation/lab:devel`
   * For some operating systems, it may be necessary to use super-user privileges (sudo), and/or to have [Docker Desktop](https://hub.docker.com/editions/community/docker-ce-desktop-windows) running before entering the previous command.
   * You can read more details about how to get and use the Docker container [here](https://immcantation.readthedocs.io/en/latest/docker/intro.html), including how to run tutorials such as this one.
@@ -144,16 +145,13 @@ if (!require(packages, character.only = TRUE)) {
 # load libraries
 suppressPackageStartupMessages(library(airr))
 suppressPackageStartupMessages(library(alakazam))
-suppressPackageStartupMessages(library(data.table))
 suppressPackageStartupMessages(library(dowser))
 suppressPackageStartupMessages(library(dplyr))
 suppressPackageStartupMessages(library(ggplot2))
+suppressPackageStartupMessages(library(ggtree))
 suppressPackageStartupMessages(library(scoper))
 suppressPackageStartupMessages(library(Seurat))
 suppressPackageStartupMessages(library(shazam))
-
-# Bioconductor package
-suppressPackageStartupMessages(library(ggtree))
 ```
 
 ## Load in and reformat the data
