@@ -191,6 +191,9 @@ Note that you might need to install several Bioconductor packages that
 are dependencies for some of the R-based Immcantation packages with
 `BiocManager`.
 
+    # check for ggtree, a Bioconductor package
+    packages <- "ggtree"
+
     package.check <- lapply(
       packages,
       FUN = function(x) {
@@ -200,8 +203,6 @@ are dependencies for some of the R-based Immcantation packages with
       }
     )
 
-    # check for ggtree, a Bioconductor package
-    packages <- "ggtree"
     if (!require(packages, character.only = TRUE)) {
       if (!require("BiocManager", quietly = TRUE)) {
         install.packages("BiocManager")
