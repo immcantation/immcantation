@@ -21,8 +21,10 @@ vaccination.
     -   These 3000 cells were randomly divided into two pseudo-subjects,
         ensuring that each subject has distinct clones while maintaining
         a similar clone size distribution.
--   The example data is already in the container (`/home/magus/data/`).
-    If you want to, you can download it from Zenodo
+-   The example data is already in the Docker container [Immcantation
+    Lab](https://hub.docker.com/repository/Docker/immcantation/lab)
+    (`/home/magus/data/`). If you want to, you can download it from
+    Zenodo
     [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10028129.svg)](https://doi.org/10.5281/zenodo.10028129).
 -   We will use these files in particular for this tutorial:
     -   **BCR.data\_08112023.rds**: R dataframe object containing the
@@ -55,7 +57,7 @@ or [scverse](https://scverse.org/)).
         paste("Running under:", sessionInfo()$running),
         sep = "\n")
 
-    ## R version 4.4.2 (2024-10-31)
+    ## R version 4.4.3 (2025-02-28)
     ## Platform: x86_64-redhat-linux-gnu
     ## Running under: Fedora Linux 41 (Container Image)
 

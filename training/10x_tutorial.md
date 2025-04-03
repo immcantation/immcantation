@@ -264,11 +264,11 @@ You may wish to subset your data to only productive sequences:
     ## # A tibble: 5 x 66
     ##   sequence_id                 sequence  rev_comp productive v_call d_call j_call
     ##   <chr>                       <chr>     <lgl>    <lgl>      <chr>  <chr>  <chr> 
-    ## 1 GCAGTTACACAGAGGT-1_contig_1 AGGAGTCA~ FALSE    TRUE       IGKV1~ <NA>   IGKJ1~
-    ## 2 ATAACGCAGGCTAGAC-1_contig_1 GATCAGGA~ FALSE    TRUE       IGKV2~ <NA>   IGKJ5~
-    ## 3 GAATGAACAGGATCGA-1_contig_2 TGGGGGCT~ FALSE    TRUE       IGHV4~ IGHD3~ IGHJ6~
-    ## 4 CAGTAACCATGCAACT-1_contig_2 GGACATCC~ FALSE    TRUE       IGHV1~ IGHD4~ IGHJ3~
-    ## 5 GCTTCCAGTTGGTTTG-1_contig_2 AGCTTCAG~ FALSE    TRUE       IGLV1~ <NA>   IGLJ3~
+    ## 1 GATCAGTCACTAGTAC-1_contig_2 GAGCTACA~ FALSE    TRUE       IGKV4~ <NA>   IGKJ1~
+    ## 2 CGCTGGATCAGGCCCA-1_contig_2 TAGATGGG~ FALSE    TRUE       IGLV2~ <NA>   IGLJ1~
+    ## 3 TTGAACGGTCAACATC-1_contig_1 AGAGCTCT~ FALSE    TRUE       IGKV3~ <NA>   IGKJ4~
+    ## 4 CCACCTACACATGACT-1_contig_1 GCTCTGCT~ FALSE    TRUE       IGLV1~ <NA>   IGLJ2~
+    ## 5 CGGAGTCTCACTCCTG-1_contig_2 TGAGCGCA~ FALSE    TRUE       IGLV1~ <NA>   IGLJ2~
     ## # i 59 more variables: sequence_alignment <chr>, germline_alignment <chr>,
     ## #   junction <chr>, junction_aa <chr>, v_cigar <chr>, d_cigar <chr>,
     ## #   j_cigar <chr>, vj_in_frame <lgl>, stop_codon <lgl>, v_sequence_start <int>,
@@ -616,8 +616,6 @@ To estimate the clonal abundance, we will select only the heavy chains:
     abund <- estimateAbundance(dplyr::filter(results, locus == "IGH"),
                                group = "sample_id", nboot = 100)
 
-    ## Adding missing grouping variables: `subject_id`
-
     abund_plot <- plot(abund, silent=T)
     abund_plot
 
@@ -634,8 +632,6 @@ don’t see the much higher peak at 1 that we would normally expect.
     # get clone sizes using dplyr functions
     clone_sizes <- countClones(dplyr::filter(results, locus == "IGH"),
                                groups = "sample_id")
-
-    ## Adding missing grouping variables: `subject_id`
 
     # plot cells per clone
     ggplot(clone_sizes, aes(x = seq_count)) +
@@ -654,8 +650,6 @@ diversity, we will also select only the heavy chains:
     # calculate and plot the rank-abundance curve
     div <- alphaDiversity(dplyr::filter(results, locus == "IGH"),
                           group = "sample_id", nboot = 100)
-
-    ## Adding missing grouping variables: `subject_id`
 
     plot(div, silent = TRUE) + facet_wrap("sample_id", ncol = 3)
 
@@ -690,7 +684,7 @@ And passing `"human/vdj/"` to the `readIMGT` function.
     # read in IMGT files in the Docker container
     references <- readIMGT(dir = "/usr/local/share/germlines/imgt/human/vdj")
 
-    ## [1] "Read in 1194 from 17 fasta files"
+    ## [1] "Read in 1197 from 17 fasta files"
 
     # reconstruct germlines
     results <- createGermlines(results, references, fields = "subject_id",
@@ -809,10 +803,6 @@ light chain information, we will need to assign `clone_subgroups` using
 dowser’s function `resolveLightChains`. This group cells within a clone
 based on the light chain V and J gene and assign a subgroup to each
 sequence. Then, in the `formatClones` step, specify `chain="HL"`.
-
-    ## Warning in formatClones(comb, chain = "HL", traits = c("day",
-    ## "gex_annotation"), : 2 sequence(s) with an inframe stop codon were removed. If
-    ## you want to keep these sequences use the option filterstop=FALSE.
 
     ## # A tibble: 6 x 4
     ##   clone_id data       locus    seqs
@@ -1036,16 +1026,16 @@ timepoints are more diverged from the germline:
     ## # A tibble: 35 x 4
     ##    clone_id  slope correlation      p
     ##    <chr>     <dbl>       <dbl>  <dbl>
-    ##  1 570      0.0453       0.711 0.0739
-    ##  2 699      0.120        0.877 0.184 
-    ##  3 513      0.277        0.827 0.201 
-    ##  4 1118     0.488        0.444 0.224 
-    ##  5 209      0.0630       0.468 0.227 
-    ##  6 196      0.307        0.770 0.238 
-    ##  7 573      0.0830       0.329 0.245 
-    ##  8 1122     0.708        0.578 0.268 
-    ##  9 183      0.169        0.300 0.290 
-    ## 10 198      0.198        0.489 0.332 
+    ##  1 570      0.0453       0.711 0.0729
+    ##  2 699      0.120        0.877 0.160 
+    ##  3 513      0.277        0.827 0.221 
+    ##  4 209      0.0630       0.468 0.230 
+    ##  5 573      0.0830       0.329 0.241 
+    ##  6 1122     0.708        0.578 0.242 
+    ##  7 1118     0.488        0.444 0.245 
+    ##  8 196      0.307        0.770 0.258 
+    ##  9 183      0.169        0.300 0.286 
+    ## 10 363      2.57         0.833 0.334 
     ## # i 25 more rows
 
     print(plots_time[[1]])

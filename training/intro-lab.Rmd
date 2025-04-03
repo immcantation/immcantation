@@ -10,6 +10,8 @@ output:
 params:
   eval_optional: FALSE
   cache: FALSE
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r setup, include=FALSE}

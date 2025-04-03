@@ -33,17 +33,17 @@ Use this command to list the software versions:
 
     versions report
 
-    ## immcantation: devel
-    ## date: 2025.03.02
+    ## immcantation: 4.6.0
+    ## date: 2025.04.01
     ## 
-    ## presto: 0.7.2
-    ## changeo: 1.3.0
-    ## alakazam: 1.3.1.999
-    ## shazam: 1.2.1.999
-    ## tigger: 1.1.1.999
-    ## scoper: 1.3.1.999
-    ## dowser: 2.3.0.999
-    ## enchantr: 0.1.19
+    ## presto: 0.7.4
+    ## changeo: 1.3.1
+    ## alakazam: 1.3.0
+    ## shazam: 1.2.0
+    ## tigger: 1.1.0
+    ## scoper: 1.3.0
+    ## dowser: 2.3
+    ## enchantr: 0.1.13
     ## prestor: 0.0.7
     ## piglet: 1.0.1
     ## rabhit: 0.2.5
@@ -68,23 +68,24 @@ build:
 
     builds report
 
-    ## date: 2025-03-02 16:53:16 UTC
-    ## immcantation: 4.4.0-334-g3eab984a5b4d+
-    ## presto: 0.7.2-34-g72b20963027a
-    ## changeo: 1.3.0-31-gbba3f84fa9fb
-    ## alakazam: 1.2.0-183-gffba6111b906
-    ## shazam: 1.1.2-86-g9497af0de23a+
-    ## tigger: de9732382123
-    ## rdi: d27b9067cab6+
-    ## scoper: 1.2.0-92-g9a5909537913
-    ## dowser: 2.0.0-70-gaf70886e4858+
-    ## prestor: 0.0.8-4-gb9d9b80ff752+
+    ## date: 2025-04-02 17:49:57 UTC
+    ## immcantation: 4.4.0-371-g6c5ad0b63335+
+    ## presto: 0.7.2-43-g9648f3fc2376
+    ## changeo: 1.3.0-46-ga6ac70eaac44
+    ## alakazam: 1.2.0-80-g15495eff377c+
+    ## shazam: 1.1.2-58-gf6c14c4d9f2c+
+    ## tigger: b0ad8b4f4fb9+
+    ## rdi: fe12005bd3c4+
+    ## scoper: 1.2.0-65-gd3ee771d2b28+
+    ## dowser: 2.0.0-57-gefb17e1a1340
+    ## prestor: 0.0.8+
 
 ### Example data used in the tutorial
 
 You can download the example data from Zenodo
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10046916.svg)](https://doi.org/10.5281/zenodo.10046916).
-It is alreday available in the container:
+It is alreday available in the container [Immcantation
+Lab](https://hub.docker.com/repository/Docker/immcantation/lab):
 `/home/magus/data/input.fasta`: Processed B cell receptor reads from one
 healthy donor (PGP1) 3 weeks after flu vaccination (*Laserson et
 al. (2014)*)
@@ -167,9 +168,9 @@ the V(D)J genes with `AssignGenes.py`.
     ##      FIELD> None
     ##     VALUES> None
     ## 
-    ## PROGRESS> 11:33:56 |Reading files            | 0.0 minPROGRESS> 11:33:56 |Done                     | 0.0 min
+    ## PROGRESS> 11:24:39 |Reading files            | 0.0 minPROGRESS> 11:24:39 |Done                     | 0.0 min
     ## 
-    ## PROGRESS> 11:33:56 |Sampling n=200           | 0.0 minPROGRESS> 11:33:56 |Done                     | 0.0 min
+    ## PROGRESS> 11:24:39 |Sampling n=200           | 0.0 minPROGRESS> 11:24:39 |Done                     | 0.0 min
     ## 
     ## MAX_COUNT> 200
     ##   SAMPLED> 200
@@ -195,8 +196,6 @@ the V(D)J genes with `AssignGenes.py`.
     -b /usr/local/share/igblast_test_tigger --organism human --loci ig \
     --format blast --outdir results/igblast --nproc 8
 
-    ## /usr/local/bin/AssignGenes.py:132: SyntaxWarning: invalid escape sequence '\d'
-    ##   num_seqs_match = re.search('(# BLAST processed )(\d+)( .*)', pass_info)
     ## /usr/local/bin/AssignGenes.py:14: DeprecationWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html
     ##   from pkg_resources import parse_version
     ##    START> AssignGenes
@@ -207,7 +206,7 @@ the V(D)J genes with `AssignGenes.py`.
     ##     LOCI> ig
     ##    NPROC> 8
     ## 
-    ## PROGRESS> 11:33:58 |Running IgBLAST          | 0.0 minPROGRESS> 11:34:01 |Done                     | 0.0 min
+    ## PROGRESS> 11:24:41 |Running IgBLAST          | 0.0 minPROGRESS> 11:24:43 |Done                     | 0.0 min
     ## 
     ##   PASS> 200
     ## OUTPUT> input_sample1-n200_igblast.fmt7
@@ -223,8 +222,6 @@ time to finish running.*
     -b /usr/local/share/igblast_test_tigger --organism human --loci ig \
     --format blast --outdir results/igblast --nproc 8
 
-    ## /usr/local/bin/AssignGenes.py:132: SyntaxWarning: invalid escape sequence '\d'
-    ##   num_seqs_match = re.search('(# BLAST processed )(\d+)( .*)', pass_info)
     ## /usr/local/bin/AssignGenes.py:14: DeprecationWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html
     ##   from pkg_resources import parse_version
     ##    START> AssignGenes
@@ -235,7 +232,7 @@ time to finish running.*
     ##     LOCI> ig
     ##    NPROC> 8
     ## 
-    ## PROGRESS> 11:34:02 |Running IgBLAST          | 0.0 minPROGRESS> 11:46:04 |Done                     | 12.0 min
+    ## PROGRESS> 11:24:44 |Running IgBLAST          | 0.0 minPROGRESS> 11:38:05 |Done                     | 13.3 min
     ## 
     ##   PASS> 91010
     ## OUTPUT> input_igblast.fmt7
@@ -273,10 +270,6 @@ AIRR format. The path to the reference germlines is provided by `-r`.
     -r /usr/local/share/germlines/imgt_test_tigger/human/vdj/ --outdir results/changeo \
     --outname data
 
-    ## /usr/local/bin/MakeDb.py:124: SyntaxWarning: invalid escape sequence '\s'
-    ##   id_key = re.sub('\s|\t', '_', rec.description[:imgt_id_len])
-    ## /usr/local/bin/MakeDb.py:126: SyntaxWarning: invalid escape sequence '\|'
-    ##   id_key = re.sub('\||\s|!|&|\*|<|>|\?', '_', rec.description[:imgt_id_len])
     ##          START> MakeDB
     ##        COMMAND> igblast
     ##   ALIGNER_FILE> input_igblast.fmt7
@@ -287,13 +280,13 @@ AIRR format. The path to the reference germlines is provided by `-r`.
     ##       EXTENDED> False
     ## INFER_JUNCTION> False
     ## 
-    ## PROGRESS> 11:46:04 |Loading files       | 0.0 minPROGRESS> 11:46:05 |Done                | 0.0 min
+    ## PROGRESS> 11:38:05 |Loading files       | 0.0 minPROGRESS> 11:38:06 |Done                | 0.0 min
     ## 
-    ## PROGRESS> 11:46:05 |                    |   0% (     0) 0.0 minPROGRESS> 11:46:07 |#                   |   5% ( 4,551) 0.0 minPROGRESS> 11:46:09 |##                  |  10% ( 9,102) 0.1 minPROGRESS> 11:46:10 |###                 |  15% (13,653) 0.1 minPROGRESS> 11:46:12 |####                |  20% (18,204) 0.1 minPROGRESS> 11:46:14 |#####               |  25% (22,755) 0.1 minPROGRESS> 11:46:15 |######              |  30% (27,306) 0.2 minPROGRESS> 11:46:17 |#######             |  35% (31,857) 0.2 minPROGRESS> 11:46:19 |########            |  40% (36,408) 0.2 minPROGRESS> 11:46:20 |#########           |  45% (40,959) 0.3 minPROGRESS> 11:46:22 |##########          |  50% (45,510) 0.3 minPROGRESS> 11:46:24 |###########         |  55% (50,061) 0.3 minPROGRESS> 11:46:26 |############        |  60% (54,612) 0.3 minPROGRESS> 11:46:27 |#############       |  65% (59,163) 0.4 minPROGRESS> 11:46:29 |##############      |  70% (63,714) 0.4 minPROGRESS> 11:46:31 |###############     |  75% (68,265) 0.4 minPROGRESS> 11:46:32 |################    |  80% (72,816) 0.5 minPROGRESS> 11:46:34 |#################   |  85% (77,367) 0.5 minPROGRESS> 11:46:36 |##################  |  90% (81,918) 0.5 minPROGRESS> 11:46:37 |################### |  95% (86,469) 0.5 minPROGRESS> 11:46:39 |####################| 100% (91,010) 0.6 min
+    ## PROGRESS> 11:38:06 |                    |   0% (     0) 0.0 minPROGRESS> 11:38:08 |#                   |   5% ( 4,551) 0.0 minPROGRESS> 11:38:10 |##                  |  10% ( 9,102) 0.1 minPROGRESS> 11:38:12 |###                 |  15% (13,653) 0.1 minPROGRESS> 11:38:14 |####                |  20% (18,204) 0.1 minPROGRESS> 11:38:16 |#####               |  25% (22,755) 0.2 minPROGRESS> 11:38:18 |######              |  30% (27,306) 0.2 minPROGRESS> 11:38:20 |#######             |  35% (31,857) 0.2 minPROGRESS> 11:38:22 |########            |  40% (36,408) 0.3 minPROGRESS> 11:38:24 |#########           |  45% (40,959) 0.3 minPROGRESS> 11:38:26 |##########          |  50% (45,510) 0.3 minPROGRESS> 11:38:28 |###########         |  55% (50,061) 0.4 minPROGRESS> 11:38:30 |############        |  60% (54,612) 0.4 minPROGRESS> 11:38:31 |#############       |  65% (59,163) 0.4 minPROGRESS> 11:38:33 |##############      |  70% (63,714) 0.4 minPROGRESS> 11:38:35 |###############     |  75% (68,265) 0.5 minPROGRESS> 11:38:36 |################    |  80% (72,816) 0.5 minPROGRESS> 11:38:38 |#################   |  85% (77,367) 0.5 minPROGRESS> 11:38:40 |##################  |  90% (81,918) 0.6 minPROGRESS> 11:38:41 |################### |  95% (86,469) 0.6 minPROGRESS> 11:38:43 |####################| 100% (91,010) 0.6 min
     ## 
     ## OUTPUT> data_db-pass.tsv
-    ##   PASS> 87632
-    ##   FAIL> 3378
+    ##   PASS> 87639
+    ##   FAIL> 3371
     ##    END> MakeDb
 
 ### Subset the data to include productive heavy chain sequences
@@ -311,12 +304,6 @@ output file (specified by `--outname`).
     ParseDb.py select -d results/changeo/data_db-pass.tsv \
     -f productive -u T --outname data_p
 
-    ## /usr/local/bin/ParseDb.py:81: SyntaxWarning: invalid escape sequence '\/'
-    ##   no_good = {'\/':'f','\\':'b','?':'q','\%':'p','*':'s',':':'c',
-    ## /usr/local/bin/ParseDb.py:81: SyntaxWarning: invalid escape sequence '\%'
-    ##   no_good = {'\/':'f','\\':'b','?':'q','\%':'p','*':'s',':':'c',
-    ## /usr/local/bin/ParseDb.py:82: SyntaxWarning: invalid escape sequence '\|'
-    ##   '\|':'pi','\"':'dq','\'':'sq','<':'gt','>':'lt',' ':'_'}
     ##   START> ParseDb
     ## COMMAND> select
     ##    FILE> data_db-pass.tsv
@@ -324,12 +311,12 @@ output file (specified by `--outname`).
     ##  VALUES> T
     ##   REGEX> False
     ## 
-    ## PROGRESS> 11:46:40 |                    |   0% (     0) 0.0 minPROGRESS> 11:46:40 |#                   |   5% ( 4,382) 0.0 minPROGRESS> 11:46:40 |##                  |  10% ( 8,764) 0.0 minPROGRESS> 11:46:40 |###                 |  15% (13,146) 0.0 minPROGRESS> 11:46:41 |####                |  20% (17,528) 0.0 minPROGRESS> 11:46:41 |#####               |  25% (21,910) 0.0 minPROGRESS> 11:46:41 |######              |  30% (26,292) 0.0 minPROGRESS> 11:46:41 |#######             |  35% (30,674) 0.0 minPROGRESS> 11:46:41 |########            |  40% (35,056) 0.0 minPROGRESS> 11:46:41 |#########           |  45% (39,438) 0.0 minPROGRESS> 11:46:41 |##########          |  50% (43,820) 0.0 minPROGRESS> 11:46:41 |###########         |  55% (48,202) 0.0 minPROGRESS> 11:46:41 |############        |  60% (52,584) 0.0 minPROGRESS> 11:46:41 |#############       |  65% (56,966) 0.0 minPROGRESS> 11:46:42 |##############      |  70% (61,348) 0.0 minPROGRESS> 11:46:42 |###############     |  75% (65,730) 0.0 minPROGRESS> 11:46:42 |################    |  80% (70,112) 0.0 minPROGRESS> 11:46:42 |#################   |  85% (74,494) 0.0 minPROGRESS> 11:46:42 |##################  |  90% (78,876) 0.0 minPROGRESS> 11:46:42 |################### |  95% (83,258) 0.0 minPROGRESS> 11:46:42 |####################| 100% (87,632) 0.0 min
+    ## PROGRESS> 11:38:44 |                    |   0% (     0) 0.0 minPROGRESS> 11:38:44 |#                   |   5% ( 4,382) 0.0 minPROGRESS> 11:38:44 |##                  |  10% ( 8,764) 0.0 minPROGRESS> 11:38:44 |###                 |  15% (13,146) 0.0 minPROGRESS> 11:38:44 |####                |  20% (17,528) 0.0 minPROGRESS> 11:38:45 |#####               |  25% (21,910) 0.0 minPROGRESS> 11:38:45 |######              |  30% (26,292) 0.0 minPROGRESS> 11:38:45 |#######             |  35% (30,674) 0.0 minPROGRESS> 11:38:45 |########            |  40% (35,056) 0.0 minPROGRESS> 11:38:45 |#########           |  45% (39,438) 0.0 minPROGRESS> 11:38:45 |##########          |  50% (43,820) 0.0 minPROGRESS> 11:38:45 |###########         |  55% (48,202) 0.0 minPROGRESS> 11:38:45 |############        |  60% (52,584) 0.0 minPROGRESS> 11:38:45 |#############       |  65% (56,966) 0.0 minPROGRESS> 11:38:45 |##############      |  70% (61,348) 0.0 minPROGRESS> 11:38:46 |###############     |  75% (65,730) 0.0 minPROGRESS> 11:38:46 |################    |  80% (70,112) 0.0 minPROGRESS> 11:38:46 |#################   |  85% (74,494) 0.0 minPROGRESS> 11:38:46 |##################  |  90% (78,876) 0.0 minPROGRESS> 11:38:46 |################### |  95% (83,258) 0.0 minPROGRESS> 11:38:46 |####################| 100% (87,639) 0.0 min
     ## 
     ##    OUTPUT> data_p_parse-select.tsv
-    ##   RECORDS> 87632
-    ##  SELECTED> 64852
-    ## DISCARDED> 22780
+    ##   RECORDS> 87639
+    ##  SELECTED> 64855
+    ## DISCARDED> 22784
     ##       END> ParseDb
 
 Next, we filter the data to include **only heavy chain** sequences.
@@ -345,12 +332,6 @@ data.
     ParseDb.py select -d results/changeo/data_p_parse-select.tsv \
     -f v_call -u IGHV --regex --outname data_ph
 
-    ## /usr/local/bin/ParseDb.py:81: SyntaxWarning: invalid escape sequence '\/'
-    ##   no_good = {'\/':'f','\\':'b','?':'q','\%':'p','*':'s',':':'c',
-    ## /usr/local/bin/ParseDb.py:81: SyntaxWarning: invalid escape sequence '\%'
-    ##   no_good = {'\/':'f','\\':'b','?':'q','\%':'p','*':'s',':':'c',
-    ## /usr/local/bin/ParseDb.py:82: SyntaxWarning: invalid escape sequence '\|'
-    ##   '\|':'pi','\"':'dq','\'':'sq','<':'gt','>':'lt',' ':'_'}
     ##   START> ParseDb
     ## COMMAND> select
     ##    FILE> data_p_parse-select.tsv
@@ -358,11 +339,11 @@ data.
     ##  VALUES> IGHV
     ##   REGEX> True
     ## 
-    ## PROGRESS> 11:46:43 |                    |   0% (     0) 0.0 minPROGRESS> 11:46:43 |#                   |   5% ( 3,243) 0.0 minPROGRESS> 11:46:43 |##                  |  10% ( 6,486) 0.0 minPROGRESS> 11:46:43 |###                 |  15% ( 9,729) 0.0 minPROGRESS> 11:46:43 |####                |  20% (12,972) 0.0 minPROGRESS> 11:46:43 |#####               |  25% (16,215) 0.0 minPROGRESS> 11:46:43 |######              |  30% (19,458) 0.0 minPROGRESS> 11:46:43 |#######             |  35% (22,701) 0.0 minPROGRESS> 11:46:44 |########            |  40% (25,944) 0.0 minPROGRESS> 11:46:44 |#########           |  45% (29,187) 0.0 minPROGRESS> 11:46:44 |##########          |  50% (32,430) 0.0 minPROGRESS> 11:46:44 |###########         |  55% (35,673) 0.0 minPROGRESS> 11:46:44 |############        |  60% (38,916) 0.0 minPROGRESS> 11:46:44 |#############       |  65% (42,159) 0.0 minPROGRESS> 11:46:44 |##############      |  70% (45,402) 0.0 minPROGRESS> 11:46:44 |###############     |  75% (48,645) 0.0 minPROGRESS> 11:46:44 |################    |  80% (51,888) 0.0 minPROGRESS> 11:46:44 |#################   |  85% (55,131) 0.0 minPROGRESS> 11:46:44 |##################  |  90% (58,374) 0.0 minPROGRESS> 11:46:44 |################### |  95% (61,617) 0.0 minPROGRESS> 11:46:45 |####################| 100% (64,852) 0.0 min
+    ## PROGRESS> 11:38:47 |                    |   0% (     0) 0.0 minPROGRESS> 11:38:47 |#                   |   5% ( 3,243) 0.0 minPROGRESS> 11:38:47 |##                  |  10% ( 6,486) 0.0 minPROGRESS> 11:38:47 |###                 |  15% ( 9,729) 0.0 minPROGRESS> 11:38:47 |####                |  20% (12,972) 0.0 minPROGRESS> 11:38:47 |#####               |  25% (16,215) 0.0 minPROGRESS> 11:38:47 |######              |  30% (19,458) 0.0 minPROGRESS> 11:38:47 |#######             |  35% (22,701) 0.0 minPROGRESS> 11:38:47 |########            |  40% (25,944) 0.0 minPROGRESS> 11:38:48 |#########           |  45% (29,187) 0.0 minPROGRESS> 11:38:48 |##########          |  50% (32,430) 0.0 minPROGRESS> 11:38:48 |###########         |  55% (35,673) 0.0 minPROGRESS> 11:38:48 |############        |  60% (38,916) 0.0 minPROGRESS> 11:38:48 |#############       |  65% (42,159) 0.0 minPROGRESS> 11:38:48 |##############      |  70% (45,402) 0.0 minPROGRESS> 11:38:48 |###############     |  75% (48,645) 0.0 minPROGRESS> 11:38:48 |################    |  80% (51,888) 0.0 minPROGRESS> 11:38:48 |#################   |  85% (55,131) 0.0 minPROGRESS> 11:38:48 |##################  |  90% (58,374) 0.0 minPROGRESS> 11:38:48 |################### |  95% (61,617) 0.0 minPROGRESS> 11:38:48 |####################| 100% (64,855) 0.0 min
     ## 
     ##    OUTPUT> data_ph_parse-select.tsv
-    ##   RECORDS> 64852
-    ##  SELECTED> 64852
+    ##   RECORDS> 64855
+    ##  SELECTED> 64855
     ## DISCARDED> 0
     ##       END> ParseDb
 
@@ -418,13 +399,13 @@ will remove those low-quality sequences with many Ns
     # number of sequences before filtering N
     dim(db)
 
-    ## [1] 64852    34
+    ## [1] 64855    34
 
     db = db[which(v_region_n_pass),]
     # number of sequences after filtering N
     dim(db)
 
-    ## [1] 64852    34
+    ## [1] 64855    34
 
 ## Genotyping and discovery of novel V gene alleles with TIgGER
 
@@ -565,11 +546,11 @@ for use in the following steps.
       select(v_call, v_call_genotyped)
 
     ## # A tibble: 3 x 2
-    ##   v_call                    v_call_genotyped
-    ##   <chr>                     <chr>           
-    ## 1 IGHV3-30*18,IGHV3-30-5*01 IGHV3-30*18     
-    ## 2 IGHV3-30*18,IGHV3-30-5*01 IGHV3-30*18     
-    ## 3 IGHV4-30-4*09,IGHV4-31*03 IGHV4-30-4*09
+    ##   v_call      v_call_genotyped
+    ##   <chr>       <chr>           
+    ## 1 IGHV3-33*03 IGHV3-33*01     
+    ## 2 IGHV3-74*03 IGHV3-74*01     
+    ## 3 IGHV3-9*03  IGHV3-9*01
 
     write_rearrangement(db, file.path("results", "tigger", "data_ph_genotyped.tsv"))
 
@@ -747,7 +728,7 @@ And passing `"human/vdj/"` to the `readIMGT` function.
     # read in IMGT files in the Docker container
     references <- dowser::readIMGT(dir = "/usr/local/share/germlines/imgt/human/vdj")
 
-    ## [1] "Read in 1198 from 17 fasta files"
+    ## [1] "Read in 1197 from 17 fasta files"
 
     # reconstruct germlines
     results@db <- dowser::createGermlines(results@db, references, nproc = 1)
@@ -776,12 +757,12 @@ uniqueness of the sequences, so they are not collapsed.
     ## # A tibble: 6 x 4
     ##   clone_id data       locus  seqs
     ##   <chr>    <list>     <chr> <int>
-    ## 1 18694    <airrClon> IGH      35
-    ## 2 16860    <airrClon> IGH      33
-    ## 3 21651    <airrClon> IGH      33
-    ## 4 7943     <airrClon> IGH      32
-    ## 5 23430    <airrClon> IGH      26
-    ## 6 30755    <airrClon> IGH      23
+    ## 1 15759    <airrClon> IGH      35
+    ## 2 13805    <airrClon> IGH      33
+    ## 3 19218    <airrClon> IGH      33
+    ## 4 5360     <airrClon> IGH      32
+    ## 5 20994    <airrClon> IGH      26
+    ## 6 27722    <airrClon> IGH      23
 
 ### Build trees with dowser
 
@@ -802,12 +783,12 @@ installed in the Immcantation container.
     ## # A tibble: 6 x 5
     ##   clone_id data       locus  seqs trees  
     ##   <chr>    <list>     <chr> <int> <list> 
-    ## 1 18694    <airrClon> IGH      35 <phylo>
-    ## 2 16860    <airrClon> IGH      33 <phylo>
-    ## 3 21651    <airrClon> IGH      33 <phylo>
-    ## 4 7943     <airrClon> IGH      32 <phylo>
-    ## 5 23430    <airrClon> IGH      26 <phylo>
-    ## 6 30755    <airrClon> IGH      23 <phylo>
+    ## 1 15759    <airrClon> IGH      35 <phylo>
+    ## 2 13805    <airrClon> IGH      33 <phylo>
+    ## 3 19218    <airrClon> IGH      33 <phylo>
+    ## 4 5360     <airrClon> IGH      32 <phylo>
+    ## 5 20994    <airrClon> IGH      26 <phylo>
+    ## 6 27722    <airrClon> IGH      23 <phylo>
 
 ### Plot trees with dowser and ggtree
 
@@ -993,6 +974,9 @@ positive selection strength than sequences annotated with IGHG and IGHA.
 
     # Plot probability densities for the selection pressure
     plot(g, "isotype", sigmaLimits = c(-1, 1), silent = F)
+
+    ## Warning: No shared levels found between `names(values)` of the manual scale and the
+    ## data's size values.
 
 ![](intro-lab_files/intro-lab_clonal-consensus-1.png)
 
