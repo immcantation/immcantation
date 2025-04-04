@@ -39,6 +39,7 @@ needs_sphinx = '1.8'
 # ones.
 extensions = ['sphinx.ext.intersphinx',
               'sphinx.ext.todo',
+              'sphinxcontrib.googleanalytics',
               'nbsphinx',
               'nbsphinx_link',              
               'sphinx_rtd_theme',
@@ -130,8 +131,11 @@ html_theme = "sphinx_rtd_theme"
 # further.  For a list of options available for each theme, see the
 # documentation.
 html_theme_options = {
-    'analytics_id': 'G-FVWRDRXC5H'
+#    'analytics_id': 'G-FVWRDRXC5H'
 }
+# Configure Google Analytics
+googleanalytics_id = 'G-FVWRDRXC5H'
+googleanalytics_enabled = True
 
 # Add any paths that contain custom themes here, relative to this directory.
 #html_theme_path = []
