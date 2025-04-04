@@ -943,9 +943,6 @@ Plot the largest tree:
     # save a pdf of all trees
     dir.create("results/dowser_tutorial/", recursive = TRUE)
 
-    ## Warning in dir.create("results/dowser_tutorial/", recursive = TRUE):
-    ## 'results/dowser_tutorial' already exists
-
     treesToPDF(plots_all,
                file = file.path("results", "dowser_tutorial","final_data_trees.pdf"),
                nrow = 2, ncol = 2
