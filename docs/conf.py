@@ -328,8 +328,13 @@ intersphinx_mapping = {'python': ('https://docs.python.org/3', None),
 
 # Path to notebooks folder
 src_dir = os.path.join("..","training")
+if not os.path.exists(src_dir):
+    raise FileNotFoundError(f"Source directory '{src_dir}' does not exist.")
+
 # Path to destination folder under docs/
 dest_dir = os.path.join("getting_started")
+if not os.path.exists(dest_dir):
+    os.makedirs(dest_dir)
 
 def copy_notebooks (app, exception):
     for training_file in os.listdir(src_dir):
@@ -355,7 +360,8 @@ def copy_notebooks (app, exception):
                 # f.close()
     assets_src_dir = os.path.join(src_dir,"assets")
     assets_dest_dir = os.path.join(dest_dir, "assets")
-    shutil.copytree(assets_src_dir, assets_dest_dir)
+    if os.path.exists(assets_src_dir):
+        shutil.copytree(assets_src_dir, assets_dest_dir)
 
 def remove_notebooks(app, exception):
     src_dir = os.path.join("getting_started")
