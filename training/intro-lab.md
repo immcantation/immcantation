@@ -168,9 +168,9 @@ the V(D)J genes with `AssignGenes.py`.
     ##      FIELD> None
     ##     VALUES> None
     ## 
-    ## PROGRESS> 11:24:39 |Reading files            | 0.0 minPROGRESS> 11:24:39 |Done                     | 0.0 min
+    ## PROGRESS> 15:00:11 |Reading files            | 0.0 minPROGRESS> 15:00:11 |Done                     | 0.0 min
     ## 
-    ## PROGRESS> 11:24:39 |Sampling n=200           | 0.0 minPROGRESS> 11:24:39 |Done                     | 0.0 min
+    ## PROGRESS> 15:00:11 |Sampling n=200           | 0.0 minPROGRESS> 15:00:11 |Done                     | 0.0 min
     ## 
     ## MAX_COUNT> 200
     ##   SAMPLED> 200
@@ -206,7 +206,7 @@ the V(D)J genes with `AssignGenes.py`.
     ##     LOCI> ig
     ##    NPROC> 8
     ## 
-    ## PROGRESS> 11:24:41 |Running IgBLAST          | 0.0 minPROGRESS> 11:24:43 |Done                     | 0.0 min
+    ## PROGRESS> 15:00:13 |Running IgBLAST          | 0.0 minPROGRESS> 15:00:16 |Done                     | 0.0 min
     ## 
     ##   PASS> 200
     ## OUTPUT> input_sample1-n200_igblast.fmt7
@@ -232,7 +232,7 @@ time to finish running.*
     ##     LOCI> ig
     ##    NPROC> 8
     ## 
-    ## PROGRESS> 11:24:44 |Running IgBLAST          | 0.0 minPROGRESS> 11:38:05 |Done                     | 13.3 min
+    ## PROGRESS> 15:00:17 |Running IgBLAST          | 0.0 minPROGRESS> 15:12:41 |Done                     | 12.4 min
     ## 
     ##   PASS> 91010
     ## OUTPUT> input_igblast.fmt7
@@ -280,9 +280,9 @@ AIRR format. The path to the reference germlines is provided by `-r`.
     ##       EXTENDED> False
     ## INFER_JUNCTION> False
     ## 
-    ## PROGRESS> 11:38:05 |Loading files       | 0.0 minPROGRESS> 11:38:06 |Done                | 0.0 min
+    ## PROGRESS> 15:12:41 |Loading files       | 0.0 minPROGRESS> 15:12:42 |Done                | 0.0 min
     ## 
-    ## PROGRESS> 11:38:06 |                    |   0% (     0) 0.0 minPROGRESS> 11:38:08 |#                   |   5% ( 4,551) 0.0 minPROGRESS> 11:38:10 |##                  |  10% ( 9,102) 0.1 minPROGRESS> 11:38:12 |###                 |  15% (13,653) 0.1 minPROGRESS> 11:38:14 |####                |  20% (18,204) 0.1 minPROGRESS> 11:38:16 |#####               |  25% (22,755) 0.2 minPROGRESS> 11:38:18 |######              |  30% (27,306) 0.2 minPROGRESS> 11:38:20 |#######             |  35% (31,857) 0.2 minPROGRESS> 11:38:22 |########            |  40% (36,408) 0.3 minPROGRESS> 11:38:24 |#########           |  45% (40,959) 0.3 minPROGRESS> 11:38:26 |##########          |  50% (45,510) 0.3 minPROGRESS> 11:38:28 |###########         |  55% (50,061) 0.4 minPROGRESS> 11:38:30 |############        |  60% (54,612) 0.4 minPROGRESS> 11:38:31 |#############       |  65% (59,163) 0.4 minPROGRESS> 11:38:33 |##############      |  70% (63,714) 0.4 minPROGRESS> 11:38:35 |###############     |  75% (68,265) 0.5 minPROGRESS> 11:38:36 |################    |  80% (72,816) 0.5 minPROGRESS> 11:38:38 |#################   |  85% (77,367) 0.5 minPROGRESS> 11:38:40 |##################  |  90% (81,918) 0.6 minPROGRESS> 11:38:41 |################### |  95% (86,469) 0.6 minPROGRESS> 11:38:43 |####################| 100% (91,010) 0.6 min
+    ## PROGRESS> 15:12:42 |                    |   0% (     0) 0.0 minPROGRESS> 15:12:44 |#                   |   5% ( 4,551) 0.0 minPROGRESS> 15:12:46 |##                  |  10% ( 9,102) 0.1 minPROGRESS> 15:12:48 |###                 |  15% (13,653) 0.1 minPROGRESS> 15:12:49 |####                |  20% (18,204) 0.1 minPROGRESS> 15:12:51 |#####               |  25% (22,755) 0.1 minPROGRESS> 15:12:53 |######              |  30% (27,306) 0.2 minPROGRESS> 15:12:55 |#######             |  35% (31,857) 0.2 minPROGRESS> 15:12:56 |########            |  40% (36,408) 0.2 minPROGRESS> 15:12:58 |#########           |  45% (40,959) 0.3 minPROGRESS> 15:13:00 |##########          |  50% (45,510) 0.3 minPROGRESS> 15:13:01 |###########         |  55% (50,061) 0.3 minPROGRESS> 15:13:03 |############        |  60% (54,612) 0.3 minPROGRESS> 15:13:05 |#############       |  65% (59,163) 0.4 minPROGRESS> 15:13:06 |##############      |  70% (63,714) 0.4 minPROGRESS> 15:13:08 |###############     |  75% (68,265) 0.4 minPROGRESS> 15:13:10 |################    |  80% (72,816) 0.5 minPROGRESS> 15:13:11 |#################   |  85% (77,367) 0.5 minPROGRESS> 15:13:13 |##################  |  90% (81,918) 0.5 minPROGRESS> 15:13:15 |################### |  95% (86,469) 0.5 minPROGRESS> 15:13:17 |####################| 100% (91,010) 0.6 min
     ## 
     ## OUTPUT> data_db-pass.tsv
     ##   PASS> 87639
@@ -311,7 +311,7 @@ output file (specified by `--outname`).
     ##  VALUES> T
     ##   REGEX> False
     ## 
-    ## PROGRESS> 11:38:44 |                    |   0% (     0) 0.0 minPROGRESS> 11:38:44 |#                   |   5% ( 4,382) 0.0 minPROGRESS> 11:38:44 |##                  |  10% ( 8,764) 0.0 minPROGRESS> 11:38:44 |###                 |  15% (13,146) 0.0 minPROGRESS> 11:38:44 |####                |  20% (17,528) 0.0 minPROGRESS> 11:38:45 |#####               |  25% (21,910) 0.0 minPROGRESS> 11:38:45 |######              |  30% (26,292) 0.0 minPROGRESS> 11:38:45 |#######             |  35% (30,674) 0.0 minPROGRESS> 11:38:45 |########            |  40% (35,056) 0.0 minPROGRESS> 11:38:45 |#########           |  45% (39,438) 0.0 minPROGRESS> 11:38:45 |##########          |  50% (43,820) 0.0 minPROGRESS> 11:38:45 |###########         |  55% (48,202) 0.0 minPROGRESS> 11:38:45 |############        |  60% (52,584) 0.0 minPROGRESS> 11:38:45 |#############       |  65% (56,966) 0.0 minPROGRESS> 11:38:45 |##############      |  70% (61,348) 0.0 minPROGRESS> 11:38:46 |###############     |  75% (65,730) 0.0 minPROGRESS> 11:38:46 |################    |  80% (70,112) 0.0 minPROGRESS> 11:38:46 |#################   |  85% (74,494) 0.0 minPROGRESS> 11:38:46 |##################  |  90% (78,876) 0.0 minPROGRESS> 11:38:46 |################### |  95% (83,258) 0.0 minPROGRESS> 11:38:46 |####################| 100% (87,639) 0.0 min
+    ## PROGRESS> 15:13:17 |                    |   0% (     0) 0.0 minPROGRESS> 15:13:18 |#                   |   5% ( 4,382) 0.0 minPROGRESS> 15:13:18 |##                  |  10% ( 8,764) 0.0 minPROGRESS> 15:13:18 |###                 |  15% (13,146) 0.0 minPROGRESS> 15:13:18 |####                |  20% (17,528) 0.0 minPROGRESS> 15:13:18 |#####               |  25% (21,910) 0.0 minPROGRESS> 15:13:18 |######              |  30% (26,292) 0.0 minPROGRESS> 15:13:18 |#######             |  35% (30,674) 0.0 minPROGRESS> 15:13:18 |########            |  40% (35,056) 0.0 minPROGRESS> 15:13:18 |#########           |  45% (39,438) 0.0 minPROGRESS> 15:13:18 |##########          |  50% (43,820) 0.0 minPROGRESS> 15:13:19 |###########         |  55% (48,202) 0.0 minPROGRESS> 15:13:19 |############        |  60% (52,584) 0.0 minPROGRESS> 15:13:19 |#############       |  65% (56,966) 0.0 minPROGRESS> 15:13:19 |##############      |  70% (61,348) 0.0 minPROGRESS> 15:13:19 |###############     |  75% (65,730) 0.0 minPROGRESS> 15:13:19 |################    |  80% (70,112) 0.0 minPROGRESS> 15:13:19 |#################   |  85% (74,494) 0.0 minPROGRESS> 15:13:19 |##################  |  90% (78,876) 0.0 minPROGRESS> 15:13:19 |################### |  95% (83,258) 0.0 minPROGRESS> 15:13:19 |####################| 100% (87,639) 0.0 min
     ## 
     ##    OUTPUT> data_p_parse-select.tsv
     ##   RECORDS> 87639
@@ -339,7 +339,7 @@ data.
     ##  VALUES> IGHV
     ##   REGEX> True
     ## 
-    ## PROGRESS> 11:38:47 |                    |   0% (     0) 0.0 minPROGRESS> 11:38:47 |#                   |   5% ( 3,243) 0.0 minPROGRESS> 11:38:47 |##                  |  10% ( 6,486) 0.0 minPROGRESS> 11:38:47 |###                 |  15% ( 9,729) 0.0 minPROGRESS> 11:38:47 |####                |  20% (12,972) 0.0 minPROGRESS> 11:38:47 |#####               |  25% (16,215) 0.0 minPROGRESS> 11:38:47 |######              |  30% (19,458) 0.0 minPROGRESS> 11:38:47 |#######             |  35% (22,701) 0.0 minPROGRESS> 11:38:47 |########            |  40% (25,944) 0.0 minPROGRESS> 11:38:48 |#########           |  45% (29,187) 0.0 minPROGRESS> 11:38:48 |##########          |  50% (32,430) 0.0 minPROGRESS> 11:38:48 |###########         |  55% (35,673) 0.0 minPROGRESS> 11:38:48 |############        |  60% (38,916) 0.0 minPROGRESS> 11:38:48 |#############       |  65% (42,159) 0.0 minPROGRESS> 11:38:48 |##############      |  70% (45,402) 0.0 minPROGRESS> 11:38:48 |###############     |  75% (48,645) 0.0 minPROGRESS> 11:38:48 |################    |  80% (51,888) 0.0 minPROGRESS> 11:38:48 |#################   |  85% (55,131) 0.0 minPROGRESS> 11:38:48 |##################  |  90% (58,374) 0.0 minPROGRESS> 11:38:48 |################### |  95% (61,617) 0.0 minPROGRESS> 11:38:48 |####################| 100% (64,855) 0.0 min
+    ## PROGRESS> 15:13:20 |                    |   0% (     0) 0.0 minPROGRESS> 15:13:20 |#                   |   5% ( 3,243) 0.0 minPROGRESS> 15:13:20 |##                  |  10% ( 6,486) 0.0 minPROGRESS> 15:13:20 |###                 |  15% ( 9,729) 0.0 minPROGRESS> 15:13:20 |####                |  20% (12,972) 0.0 minPROGRESS> 15:13:21 |#####               |  25% (16,215) 0.0 minPROGRESS> 15:13:21 |######              |  30% (19,458) 0.0 minPROGRESS> 15:13:21 |#######             |  35% (22,701) 0.0 minPROGRESS> 15:13:21 |########            |  40% (25,944) 0.0 minPROGRESS> 15:13:21 |#########           |  45% (29,187) 0.0 minPROGRESS> 15:13:21 |##########          |  50% (32,430) 0.0 minPROGRESS> 15:13:21 |###########         |  55% (35,673) 0.0 minPROGRESS> 15:13:21 |############        |  60% (38,916) 0.0 minPROGRESS> 15:13:21 |#############       |  65% (42,159) 0.0 minPROGRESS> 15:13:21 |##############      |  70% (45,402) 0.0 minPROGRESS> 15:13:21 |###############     |  75% (48,645) 0.0 minPROGRESS> 15:13:22 |################    |  80% (51,888) 0.0 minPROGRESS> 15:13:22 |#################   |  85% (55,131) 0.0 minPROGRESS> 15:13:22 |##################  |  90% (58,374) 0.0 minPROGRESS> 15:13:22 |################### |  95% (61,617) 0.0 minPROGRESS> 15:13:22 |####################| 100% (64,855) 0.0 min
     ## 
     ##    OUTPUT> data_ph_parse-select.tsv
     ##   RECORDS> 64855
@@ -546,11 +546,11 @@ for use in the following steps.
       select(v_call, v_call_genotyped)
 
     ## # A tibble: 3 x 2
-    ##   v_call      v_call_genotyped
-    ##   <chr>       <chr>           
-    ## 1 IGHV3-33*03 IGHV3-33*01     
-    ## 2 IGHV3-74*03 IGHV3-74*01     
-    ## 3 IGHV3-9*03  IGHV3-9*01
+    ##   v_call                      v_call_genotyped
+    ##   <chr>                       <chr>           
+    ## 1 IGHV2-70*04,IGHV2-70D*04    IGHV2-70*15     
+    ## 2 IGHV4-30-2*07,IGHV4-30-4*01 IGHV4-30-2*07   
+    ## 3 IGHV3-30*18,IGHV3-30-5*01   IGHV3-30*18
 
     write_rearrangement(db, file.path("results", "tigger", "data_ph_genotyped.tsv"))
 
@@ -569,10 +569,7 @@ sequence of the common ancestor, before mutations are introduced during
 clonal expansion and SMH. \* *Analyze clonal diversity:* number and size
 of clones? any expanded clones?
 
-<figure>
-<img src="assets/clonalexpansion.png" alt="clonalexpansion" />
-<figcaption aria-hidden="true">clonalexpansion</figcaption>
-</figure>
+![](assets/clonalexpansion.png)
 
 ### Clonal assignment using the CDR3 as a fingerprint
 
@@ -589,10 +586,7 @@ considered to be part of the same clone (i.e., clonally-related) whereas
 sequences which have distance above this threshold are considered to be
 part of independent clones (i.e., not clonally related).
 
-<figure>
-<img src="assets/hclust.png" alt="hclust" />
-<figcaption aria-hidden="true">hclust</figcaption>
-</figure>
+![](assets/hclust.png)
 
 `shazam` provides methods to calculate the distance between sequences
 and find an appropriate distance threshold for each dataset
@@ -612,10 +606,7 @@ manually determine a threshold as a value intermediate between the two
 modes. However, `findThreshold` can be used to automatically find the
 threshold.
 
-<figure>
-<img src="assets/distNearest.png" alt="distNearest" />
-<figcaption aria-hidden="true">distNearest</figcaption>
-</figure>
+![](assets/distNearest.png)
 
 ### Setting the clonal distance threshold with SHazaM
 
@@ -879,17 +870,17 @@ targeting models included in `shazam` which have been constructed based
 on experimental datasets. These include models for human and mouse, and
 for both light and heavy chains. In addition, `shazam` provides the
 `createTargetingModel` method to generate new SHM targeting models from
-user-supplied sequencing data. ![](assets/5mer.png) The resulting model
-can be visualized as a hedgehog plot with `plotMutability`. In this
-visualization, 5-mers that belong to classically-defined SHM hot-spot
-motifs (e.g., WRC) are shown in red and green, cold-spot motifs in blue,
-and other motifs (i.e., neutral) in grey. The bars radiating outward are
-the relative mutabilities of each 5-mer. The middle circle is the
-central nucleotide being targeted for SHM, here shown by a green circle
-on the left plot (nucleotide A) and an orange circle on the right plot
-(nucleotide C). Moving from the center of the circle outward covers the
-5-mer nucleotide motif (5’ to 3’). As expected, higher relative mutation
-rates are observed at hot-spot motifs.
+user-supplied sequencing data. ![5mer](assets/5mer.png) The resulting
+model can be visualized as a hedgehog plot with `plotMutability`. In
+this visualization, 5-mers that belong to classically-defined SHM
+hot-spot motifs (e.g., WRC) are shown in red and green, cold-spot motifs
+in blue, and other motifs (i.e., neutral) in grey. The bars radiating
+outward are the relative mutabilities of each 5-mer. The middle circle
+is the central nucleotide being targeted for SHM, here shown by a green
+circle on the left plot (nucleotide A) and an orange circle on the right
+plot (nucleotide C). Moving from the center of the circle outward covers
+the 5-mer nucleotide motif (5’ to 3’). As expected, higher relative
+mutation rates are observed at hot-spot motifs.
 
     # Build and plot SHM targeting model
     m <- createTargetingModel(results@db, vCallColumn = "v_call_genotyped")
@@ -923,10 +914,7 @@ mutations (∑ &gt; 0) suggests positive selection, and a decreased
 frequency of R mutations (∑ &lt; 0) points towards negative selection .
 <br><br>
 
-<figure>
-<img src="assets/selection-formula.svg" alt="Selection" />
-<figcaption aria-hidden="true">Selection</figcaption>
-</figure>
+![](assets/selection-formula.svg)
 
 positive Σ: Replacement frequency higher than expected
 
