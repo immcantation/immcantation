@@ -6,6 +6,7 @@
 .idea
 .Rhistory
 .Rproj.user
+.vscode
 *.Rproj
 *.pyc
 *.pyo
@@ -16,3 +17,6 @@ tests/data
 tests/run
 renv/
 renv.lock
+training/.local
+training/.vscode
+training/.config
