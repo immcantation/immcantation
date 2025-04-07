@@ -10,8 +10,14 @@ RUN_DIR="run/presto-${DATE}"
 NPROC=2
 OUTDIR=true
 FAILED=true
-GERMLINES="${HOME}/local/share/imgt/human/vdj"
-V_GERMLINES="${HOME}/local/share/igblast/fasta/imgt_human_ig_v.fasta"
+if [ "$EUID" -ne 0 ]
+    GERMLINES="${HOME}/local/share/imgt/human/vdj"
+    V_GERMLINES="${HOME}/local/share/igblast/fasta/imgt_human_ig_v.fasta"
+then
+    GERMLINES="/usr/local/share/imgt/human/vdj"
+    V_GERMLINES="/usr/local/share/igblast/fasta/imgt_human_ig_v.fasta"
+else
+fi
 CLUSTER="cd-hit-est"
 MEMORY="2000"
 ALIGNER="blastn"
