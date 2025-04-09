@@ -1,6 +1,6 @@
 immcantation:
-  version:  4.6.0
-  date:     2025.04.07
+  version:  devel
+  date:     2025.04.09
 package:
   presto:   0.7.4
   changeo:  1.3.1
