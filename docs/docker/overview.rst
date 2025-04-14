@@ -12,7 +12,7 @@ Immcantation Tools
 + `SCOPer <https://scoper.readthedocs.io>`__
 + `dowser <https://dowser.readthedocs.io>`__
 + `RDI <https://rdi.readthedocs.io>`__
-+ `prestoR <https://bitbucket.org/kleinstein/prestor>`__
++ `prestoR <https://github.comm/immcantation/prestor>`__
 
 Third Party Tools
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -22,7 +22,7 @@ Third Party Tools
 + `CD-HIT <http://weizhongli-lab.org/cd-hit>`__
 + `BLAST <https://blast.ncbi.nlm.nih.gov/Blast.cgi>`__
 + `IgBLAST <https://www.ncbi.nlm.nih.gov/igblast>`__
-+ `IgPhyML <https://bitbucket.org/kleinstein/igphyml>`__
++ `IgPhyML <https://github.com/immcantation/igphyml>`__
 + `PHYLIP <http://evolution.gs.washington.edu/phylip>`__
 + `tbl2asn <https://www.ncbi.nlm.nih.gov/genbank/tbl2asn2>`__
 

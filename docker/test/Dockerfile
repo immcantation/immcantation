@@ -27,6 +27,7 @@ ARG R_DEPS="c('ape', \
               'KernSmooth', \
               'knitr', \
               'lazyeval', \
+              'lifecycle', \
               'markdown', \
               'MASS', \
               'openxlsx', \
@@ -49,12 +50,12 @@ ARG R_DEPS="c('ape', \
 #RUN Rscript -e "install.packages('devtools', clean=TRUE)" \
 #    && Rscript -e "devtools::install_version('Rcpp', '${R_RCPP}', quiet=FALSE, clean=TRUE)" \
 #    && Rscript -e "install.packages(${R_DEPS}, clean=TRUE)"
-RUN Rscript -e "install.packages(${R_DEPS}, clean=TRUE)"
+RUN Rscript -e "install.packages(${R_DEPS}, clean=TRUE); devtools::install_github('javh/markr')"
 
 # Install procotol data, utility scripts and pipelines
 RUN PACKAGE="immcantation" \
     && rm -rf /tmp/${PACKAGE} \
-    && git clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
+    && git clone https://github.com/immcantation/${PACKAGE} /tmp/${PACKAGE} \
     && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} -d immcantation \
     && mv /tmp/${PACKAGE}/scripts/* /usr/local/bin/ \
     && mv /tmp/${PACKAGE}/protocols /usr/local/share/protocols \
@@ -119,19 +120,16 @@ RUN PHYLIP=$(versions get -n phylip) \
 # Install IgPhyML
 RUN IGPHYML=$(versions get -n igphyml) \
     && wget2 -q --force-progress --no-check-certificate \
-       https://bitbucket.org/kleinstein/igphyml/get/${IGPHYML}.tar.gz -O igphyml-${IGPHYML}.tar.gz \
+       https://github.com/immcantation/igphyml/archive/refs/tags/${IGPHYML}.tar.gz -O igphyml-${IGPHYML}.tar.gz \       
     && mkdir -p /usr/local/share/igphyml \
     && tar -zxf igphyml-${IGPHYML}.tar.gz -C /usr/local/share/igphyml --strip-components 1 \
     && (cd /usr/local/share/igphyml && ./make_phyml_blas_omp) \
     && rm -r igphyml-${IGPHYML}.tar.gz
 
 # Install AIRR reference libraries
-# TODO: install from repo,
-# re-enable install from pypi when new airr-py version released
 RUN AIRR_PY=$(versions get -n airr-py) \
     && AIRR_R=$(versions get -n airr-r) \
-    # && pip3 install airr==${AIRR_PY} \
-    && pip3 install -e "git+https://github.com/airr-community/airr-standards.git@"${AIRR_PY}"#egg=airr&subdirectory=lang/python" \
+    && pip3 install airr==${AIRR_PY} \
     && Rscript -e "devtools::install_version('airr', '${AIRR_R}', quiet=FALSE, clean=TRUE)"
 
 # Download and build references databases

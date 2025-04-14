@@ -1,23 +1,34 @@
 Release Notes
 ========================================================================
 
-Version devel:  May 12, 2024
+Version devel:  April 9, 2025
+------------------------------------------------------------------------
+
+Version 4.6.0:  April 7, 2025
 ------------------------------------------------------------------------
 
 Image Changes:
 
-+ Updated base image to Fedora 40. In FC40, wget has been replaced with 
++ Updated base image to Fedora 41. In FC40, wget was replaced with 
   wget2 (``release notes`` (https://fedoraproject.org/wiki/Releases/40/ChangeSet#Wget2_as_wget)).
   The new wget has a few different options, and it doesn't support ftp. 
   If you are using custom scripts that make calls to wget in the container, 
   and they start failing due to wget issues, most likely you need to update
   your script to use the right options.
++ Immcantation has moved to GitHub. The source code repositories for pRESTO, 
+  Change-O, Alakazam, SHazaM, TIgGER, SCOPer, Dowser, IgPhyML, enchantR, prestoR and 
+  the Immcantation portal are now available under https://github.com/immcantation.
 
 Version Updates:
 
-+ seurat 5.0.3
-+ airr_py  b3e4a69169200b2644cb7e0e534f1781b68829f1
-+ blast 2.15.0
++ dowser 2.3.0
++ changeo 1.3.1
++ presto 0.7.4
++ airr_py 1.5.1
++ blast 2.16.0
++ raxml 1.2.2
++ seurat 5.2.1
++ vsearch 2.30.0
 
 
 Version 4.5.0:  January 25, 2024

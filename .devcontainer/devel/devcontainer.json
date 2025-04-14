@@ -1,0 +1,17 @@
+{
+    "name": "immcantation/suite:devel",
+    "image": "immcantation/suite:devel",
+    "workspaceFolder": "/workspace",
+    "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind",
+    "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "python.defaultInterpreterPath": "/usr/bin/python3"
+    },
+    "extensions": [
+        "ms-python.python",
+        "ms-toolsai.jupyter",
+        "ms-vscode.cpptools",
+        "ms-azuretools.vscode-docker"
+    ],
+    "remoteUser": "root"
+}

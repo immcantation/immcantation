@@ -12,7 +12,7 @@ RUN builds write -n date -v "$(date +'%Y-%m-%d %T %Z')"
 # Install procotol data, utility scripts and pipelines
 RUN PACKAGE="immcantation" \
     && rm -rf /tmp/${PACKAGE} \
-    && git clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
+    && git clone https://github.com/immcantation/${PACKAGE} /tmp/${PACKAGE} \
     && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} -d immcantation \
     && pipelines copy -s /tmp/${PACKAGE}/pipelines/ -t /usr/local/bin/ \
     && mv /tmp/${PACKAGE}/scripts/* /usr/local/bin/ \
@@ -104,7 +104,7 @@ RUN PHYLIP=$(versions get -n phylip) \
 # Install RAxML-NG
 RUN RAXMLNG=$(versions get -n raxml-ng) \
     && wget2 -q --force-progress --no-check-certificate \
-       https://github.com/amkozlov/raxml-ng/releases/download/1.2.0/raxml-ng_v${RAXMLNG}_linux_x86_64.zip \
+       https://github.com/amkozlov/raxml-ng/releases/download/${RAXMLNG}/raxml-ng_v${RAXMLNG}_linux_x86_64.zip \
     && unzip -q raxml-ng_v${RAXMLNG}_linux_x86_64.zip \
     && mv raxml-ng /usr/local/bin/raxml-ng \
     && chmod +x /usr/local/bin/raxml-ng \
@@ -125,18 +125,16 @@ RUN wget2 -q --force-progress --no-check-certificate \
     && chmod +x /usr/local/bin/tbl2asn
 
 # Install AIRR reference libraries
-# TODO: install from repo,
-# re-enable install from pypi when new airr-py version released
 RUN AIRR_PY=$(versions get -n airr-py) \
     && AIRR_R=$(versions get -n airr-r) \
-    # && pip3 install airr==${AIRR_PY} \
-    && pip3 install -e "git+https://github.com/airr-community/airr-standards.git@"${AIRR_PY}"#egg=airr&subdirectory=lang/python" \
-    && Rscript -e "devtools::install_version('airr', '${AIRR_R}', quiet=FALSE, clean=TRUE)"
+    && pip3 install airr==${AIRR_PY} \
+    && Rscript -e "devtools::install_version('airr', '${AIRR_R}', quiet=FALSE, clean=TRUE)" \
+    && Rscript -e "library('airr', character.only = TRUE)"
 
 # Install presto
 RUN PACKAGE="presto" \
     && rm -rf /tmp/${PACKAGE} \
-    && git clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
+    && git clone https://github.com/immcantation/${PACKAGE} /tmp/${PACKAGE} \
     && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} -d immcantation \
     && pip3 install --no-cache-dir /tmp/${PACKAGE} \
     && (cd /tmp/${PACKAGE} && builds write -n ${PACKAGE} -v $(git describe --abbrev=12 --always --dirty=+)) \
@@ -145,7 +143,7 @@ RUN PACKAGE="presto" \
 # Install changeo
 RUN PACKAGE="changeo" \
     && rm -rf /tmp/${PACKAGE} \
-    && git clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
+    && git clone https://github.com/immcantation/${PACKAGE} /tmp/${PACKAGE} \
     && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} -d immcantation \
     && pip3 install --no-cache-dir /tmp/${PACKAGE} \
     && (cd /tmp/${PACKAGE} && builds write -n ${PACKAGE} -v $(git describe --abbrev=12 --always --dirty=+)) \
@@ -154,54 +152,60 @@ RUN PACKAGE="changeo" \
 # Install alakazam
 RUN PACKAGE="alakazam" \
     && rm -rf /tmp/${PACKAGE} \
-    && git clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
+    && git clone https://github.com/immcantation/${PACKAGE} /tmp/${PACKAGE} \
     && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} -d immcantation \
     && rinstall -p /tmp/${PACKAGE} \
+    && Rscript -e "library('${PACKAGE}', character.only = TRUE)" \
     && (cd /tmp/${PACKAGE} && builds write -n ${PACKAGE} -v $(git describe --abbrev=12 --always --dirty=+)) \
     && rm -r /tmp/${PACKAGE}
 
 # Install shazam
 RUN PACKAGE="shazam" \
     && rm -rf /tmp/${PACKAGE} \
-    && git clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
+    && git clone https://github.com/immcantation/${PACKAGE} /tmp/${PACKAGE} \
     && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} -d immcantation \
     && rinstall -p /tmp/${PACKAGE} \
+    && Rscript -e "library('${PACKAGE}', character.only = TRUE)" \
     && (cd /tmp/${PACKAGE} && builds write -n ${PACKAGE} -v $(git describe --abbrev=12 --always --dirty=+)) \
     && rm -r /tmp/${PACKAGE}
 
 # Install tigger
 RUN PACKAGE="tigger" \
     && rm -rf /tmp/${PACKAGE} \
-    && git clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
+    && git clone https://github.com/immcantation/${PACKAGE} /tmp/${PACKAGE} \
     && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} -d immcantation \
     && rinstall -p /tmp/${PACKAGE} \
+    && Rscript -e "library('${PACKAGE}', character.only = TRUE)" \
     && (cd /tmp/${PACKAGE} && builds write -n ${PACKAGE} -v $(git describe --abbrev=12 --always --dirty=+)) \
     && rm -r /tmp/${PACKAGE}
 
 # Install SCOPer
 RUN PACKAGE="scoper" \
     && rm -rf /tmp/${PACKAGE} \
-    && git clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
+    && git clone https://github.com/immcantation/${PACKAGE} /tmp/${PACKAGE} \
     && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} -d immcantation \
     && rinstall -p /tmp/${PACKAGE} \
+    && Rscript -e "library('${PACKAGE}', character.only = TRUE)" \
     && (cd /tmp/${PACKAGE} && builds write -n ${PACKAGE} -v $(git describe --abbrev=12 --always --dirty=+)) \
     && rm -r /tmp/${PACKAGE}
 
 # Install dowser
 RUN PACKAGE="dowser" \
     && rm -rf /tmp/${PACKAGE} \
-    && git clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
+    && git clone https://github.com/immcantation/${PACKAGE} /tmp/${PACKAGE} \
     && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} -d immcantation \
     && rinstall -p /tmp/${PACKAGE} -u never \
+    && Rscript -e "library('${PACKAGE}', character.only = TRUE)" \
     && (cd /tmp/${PACKAGE} && builds write -n ${PACKAGE} -v $(git describe --abbrev=12 --always --dirty=+)) \
     && rm -r /tmp/${PACKAGE}
 
 # Install enchantr
 RUN PACKAGE="enchantr" \
     && rm -rf /tmp/${PACKAGE} \
-    && git clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
+    && git clone https://github.com/immcantation/${PACKAGE} /tmp/${PACKAGE} \
     && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} -d immcantation \
     && rinstall -p /tmp/${PACKAGE} \
+    && Rscript -e "library('${PACKAGE}', character.only = TRUE)" \
     && (cd /tmp/${PACKAGE} && builds write -n ${PACKAGE} -v $(git describe --abbrev=12 --always --dirty=+)) \
     && rm -r /tmp/${PACKAGE}
 
@@ -210,17 +214,18 @@ RUN PACKAGE="enchantr" \
 # Archived on 2023-08-18
 RUN PACKAGE="prestor" \
     && rm -rf /tmp/${PACKAGE} \
-    && git clone https://bitbucket.org/kleinstein/prestor /tmp/${PACKAGE} \
+    && git clone https://github.com/immcantation/prestor /tmp/${PACKAGE} \
     && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} -d immcantation \
     && Rscript -e "devtools::install_github('adletaw/captioner')" \
     && rinstall -p /tmp/${PACKAGE} \
+    && Rscript -e "library('${PACKAGE}', character.only = TRUE)" \
     && (cd /tmp/${PACKAGE} && builds write -n ${PACKAGE} -v $(git describe --abbrev=12 --always --dirty=+)) \
     && rm -r /tmp/${PACKAGE}
 
 # Install IgPhyML
 RUN IGPHYML=$(versions get -n igphyml) \
     && wget2 -q --force-progress --no-check-certificate \
-       https://bitbucket.org/kleinstein/igphyml/get/${IGPHYML}.tar.gz -O igphyml-${IGPHYML}.tar.gz \
+       https://github.com/immcantation/igphyml/archive/refs/tags/${IGPHYML}.tar.gz -O igphyml-${IGPHYML}.tar.gz \
     && mkdir -p /usr/local/share/igphyml \
     && tar -zxf igphyml-${IGPHYML}.tar.gz -C /usr/local/share/igphyml --strip-components 1 \
     && (cd /usr/local/share/igphyml && ./make_phyml_blas_omp) \
@@ -232,20 +237,24 @@ RUN PACKAGE="rdi" \
     && git clone https://bitbucket.org/cbolen1/rdicore /tmp/${PACKAGE} \
     && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} -d immcantation \
     && rinstall -p /tmp/${PACKAGE} \
+    && Rscript -e "library('${PACKAGE}', character.only = TRUE)" \
     && (cd /tmp/${PACKAGE} && builds write -n ${PACKAGE} -v $(git describe --abbrev=12 --always --dirty=+)) \
     && rm -r /tmp/${PACKAGE}
 
 # Install RAbHIT
 RUN RABHIT=$(versions get -n rabhit) \
-    && Rscript -e "devtools::install_version('rabhit', '${RABHIT}', quiet=FALSE, clean=TRUE)"
+    && Rscript -e "devtools::install_version('rabhit', '${RABHIT}', quiet=FALSE, clean=TRUE)" \
+    && Rscript -e "library('rabhit', character.only = TRUE)" 
 
 # Install piglet
 RUN PIGLET=$(versions get -n piglet) \
-    && Rscript -e "devtools::install_version('piglet', '${PIGLET}', quiet=FALSE, clean=TRUE)"
+    && Rscript -e "devtools::install_version('piglet', '${PIGLET}', quiet=FALSE, clean=TRUE)" \
+    && Rscript -e "library('piglet', character.only = TRUE)"
 
 # Install Seurat
 RUN SEURAT=$(versions get -n seurat) \
-    && Rscript -e "devtools::install_version('Seurat', '${SEURAT}', quiet=FALSE, clean=TRUE, upgrade='never')"
+    && Rscript -e "devtools::install_version('Seurat', '${SEURAT}', quiet=FALSE, clean=TRUE, upgrade='never')" \
+    && Rscript -e "library('Seurat', character.only = TRUE)"
 
 # Download and build references databases
 RUN fetch_imgtdb.sh -o /usr/local/share/germlines/imgt \

@@ -1,13 +1,14 @@
 We welcome contributions to all components of the Immcantation framework through
-pull request to the relevant Bitbucket repository:
+pull request to the relevant GitHub repository:
 
-+ [Docker container, pipelines and portal documentation](https://bitbucket.org/kleinstein/immcantation)
-+ [pRESTO](https://bitbucket.org/kleinstein/presto)
-+ [Change-O](https://bitbucket.org/kleinstein/changeo)
-+ [Alakazam](https://bitbucket.org/kleinstein/alakazam)
-+ [SHazaM](https://bitbucket.org/kleinstein/shazam)
-+ [TIgGER](https://bitbucket.org/kleinstein/tigger)
-+ [SCOPer](https://bitbucket.org/kleinstein/scoper)
++ [Docker container, pipelines and portal documentation](https://github.com/immcantation/immcantation)
++ [pRESTO](https://github.com/immcantation/presto)
++ [Change-O](https://github.com/immcantation/changeo)
++ [Alakazam](https://github.com/immcantation/alakazam)
++ [SHazaM](https://github.com/immcantation/shazam)
++ [TIgGER](https://github.com/immcantation/tigger)
++ [SCOPer](https://github.com/immcantation/scoper)
++ [Dowser](https://github.com/immcantation/dowser)
 
 All Immcantation core software packages are under the free and open-source license
 [AGPL-3](https://www.gnu.org/licenses/agpl-3.0.html). Other core elements,
@@ -43,7 +44,7 @@ packages are subject to their licenses.
 + Build vignettes using [knitr](http://yihui.name/knitr).
 + Document functions, classes, methods and data with [Roxygen](http://r-pkgs.had.co.nz/man.html) tags which will
   automatically generate man pages from the function documentation.
-+ Use [markr](https://bitbucket.org/javh/markr) to convert the R man pages, vignettes, DESCRIPTION, README and
++ Use [markr](https://github.com/javh/markr) to convert the R man pages, vignettes, DESCRIPTION, README and
   CITATION files to Markdown to build the [MkDocs](http://www.mkdocs.org) documentation that is hosted on ReadTheDocs.
 
 ### Best practices for rebuilding R docs with markr for an existing package:

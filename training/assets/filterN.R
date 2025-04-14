@@ -49,7 +49,7 @@ filterN <- function(db, sequence="sequence_alignment", start=1, end=NULL,
     if (any(check != TRUE)) { stop(check)}
     
     if (length(color)>1) {
-        stop("The use of more than one variable to color the plot is not implemented. You can create a feature request in https://bitbucket.org/kleinstein/enchantr/issues. ")
+        stop("The use of more than one variable to color the plot is not implemented. You can create a feature request in https://github.com/immcantation/enchantr/issues. ")
     }
     
     if (is.character(start)) {

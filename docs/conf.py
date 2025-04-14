@@ -39,6 +39,7 @@ needs_sphinx = '1.8'
 # ones.
 extensions = ['sphinx.ext.intersphinx',
               'sphinx.ext.todo',
+              'sphinxcontrib.googleanalytics',
               'nbsphinx',
               'nbsphinx_link',              
               'sphinx_rtd_theme',
@@ -129,11 +130,16 @@ html_theme = "sphinx_rtd_theme"
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
 # documentation.
-#html_theme_options = {}
+html_theme_options = {
+#    'analytics_id': 'G-FVWRDRXC5H'
+}
+# Configure Google Analytics
+googleanalytics_id = 'G-FVWRDRXC5H'
+googleanalytics_enabled = True
 
 # Add any paths that contain custom themes here, relative to this directory.
 #html_theme_path = []
-html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
+# html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
@@ -157,6 +163,8 @@ html_favicon = "_static/immcantation.ico"
 html_static_path = ['_static']
 #html_context = {'css_files': ['_static/overrides.css']}
 html_css_files = ['overrides.css']
+
+html_js_files = ['js/custom.js']
 
 # Add any extra paths that contain custom files (such as robots.txt or
 # .htaccess) here, relative to this directory. These files are copied
@@ -320,8 +328,13 @@ intersphinx_mapping = {'python': ('https://docs.python.org/3', None),
 
 # Path to notebooks folder
 src_dir = os.path.join("..","training")
+if not os.path.exists(src_dir):
+    raise FileNotFoundError(f"Source directory '{src_dir}' does not exist.")
+
 # Path to destination folder under docs/
 dest_dir = os.path.join("getting_started")
+if not os.path.exists(dest_dir):
+    os.makedirs(dest_dir)
 
 def copy_notebooks (app, exception):
     for training_file in os.listdir(src_dir):
@@ -347,7 +360,8 @@ def copy_notebooks (app, exception):
                 # f.close()
     assets_src_dir = os.path.join(src_dir,"assets")
     assets_dest_dir = os.path.join(dest_dir, "assets")
-    shutil.copytree(assets_src_dir, assets_dest_dir)
+    if os.path.exists(assets_src_dir):
+        shutil.copytree(assets_src_dir, assets_dest_dir)
 
 def remove_notebooks(app, exception):
     src_dir = os.path.join("getting_started")

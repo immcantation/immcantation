@@ -19,6 +19,17 @@ population structure determination, and repertoire analysis.
 
 ### Repository
 
+**IMPORTANT!** 
+Immcantation has moved to https://github.com/immcantation/immcantation
+
+To update Git configuration settings use:
+
+```
+   git config user.email "your-gh-user@email.com"
+   git config user.name "your-gh-user-name"
+   git remote set-url origin git@github.com:immcantation/immcantation.git
+```
+
 This repository contains common documentation, accessory scripts,
 example pipelines, and docker build files for tools in the Immcantation
 framework.

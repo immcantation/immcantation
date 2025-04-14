@@ -10,9 +10,18 @@ RUN_DIR="run/changeo-airr-${DATE}"
 NPROC=2
 OUTDIR=true
 FAILED=true
-GERMLINES="${HOME}/local/share/germlines/human/vdj"
-V_GERMLINES="${HOME}/local/share/igblast/fasta/imgt_human_ig_v.fasta"
-IGBLAST_DATA="${HOME}/local/share/igblast"
+
+if [ "$EUID" -ne 0 ]
+then
+    GERMLINES="${HOME}/local/share/germlines/human/vdj"
+    V_GERMLINES="${HOME}/local/share/igblast/fasta/imgt_human_ig_v.fasta"
+    IGBLAST_DATA="${HOME}/local/share/igblast"
+else
+    GERMLINES="/usr/local/share/germlines/imgt/human/vdj"
+    V_GERMLINES="/usr/local/share/igblast/fasta/imgt_human_ig_v.fasta"
+    IGBLAST_DATA="/usr/local/share/igblast"
+fi
+
 FORMAT="airr"
 
 # Create output parent
