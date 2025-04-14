@@ -7,7 +7,6 @@ package:
   scoper:   1.3.0
   dowser:   2.3
   enchantr: 0.1.21
-  amulety:  1.0
   igphyml:  2.0.0
 dependency:
   airr-py:  b3e4a69169200b2644cb7e0e534f1781b68829f1
