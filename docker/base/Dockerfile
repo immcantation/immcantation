@@ -45,7 +45,7 @@ RUN dnf -y update && dnf install -y \
     pandoc \
     perl \
     procps \
-    proj-devel \    
+    proj-devel \
     python3 \
     python3-biopython \
     python3-GitPython \

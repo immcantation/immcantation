@@ -8,14 +8,24 @@ ARG BASE_TAG
 COPY Version.yaml /Version.yaml
 RUN builds write -n date -v "$(date +'%Y-%m-%d %T %Z')"
 
+# Install procotol data, utility scripts and pipelines
+RUN PACKAGE="immcantation" \
+    && rm -rf /tmp/${PACKAGE} \
+    && git clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
+    && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} -d immcantation \
+    && mv /tmp/${PACKAGE}/scripts/* /usr/local/bin/ \
+    && (cd /tmp/${PACKAGE} && builds write -n ${PACKAGE} -v $(git describe --abbrev=12 --always --dirty=+)) \
+    && rm -r /tmp/${PACKAGE}
+
 # procps is needed by Nextflow
 RUN dnf -y update && dnf install -y \
-    procps
+    procps \
+    libpng*
 
 # Install RAxML-NG
 RUN RAXMLNG=$(versions get -n raxml-ng) \
     && wget2 -q --force-progress --no-check-certificate \
-       https://github.com/amkozlov/raxml-ng/releases/download/1.2.0/raxml-ng_v${RAXMLNG}_linux_x86_64.zip \
+       https://github.com/amkozlov/raxml-ng/releases/download/${RAXMLNG}/raxml-ng_v${RAXMLNG}_linux_x86_64.zip \
     && unzip -q raxml-ng_v${RAXMLNG}_linux_x86_64.zip \
     && mv raxml-ng /usr/local/bin/raxml-ng \
     && chmod +x /usr/local/bin/raxml-ng \
@@ -57,11 +67,6 @@ RUN SCOPER_VER=$(versions get -n scoper) \
 RUN DOWSER_VER=$(versions get -n dowser) \
     && Rscript -e "devtools::install_version('dowser', '${DOWSER_VER}', quiet=FALSE, clean=TRUE)"
 
-
-# Install enchantr
-RUN ENCHANTR_VER=$(versions get -n enchantr) \
-    && Rscript -e "devtools::install_github('immcantation/enchantr', '${ENCHANTR_VER}', quiet=FALSE, clean=TRUE)"
-
 # Install IgPhyML
 RUN IGPHYML=$(versions get -n igphyml) \
     && wget2 -q --force-progress --no-check-certificate \
@@ -73,6 +78,11 @@ RUN IGPHYML=$(versions get -n igphyml) \
 
 # Setup environment
 ENV PATH="${PATH}:/usr/local/share/igphyml/src"
+
+# Install enchantr
+RUN ENCHANTR_VER=$(versions get -n enchantr) \
+    && Rscript -e "install.packages('lifecycle')" \
+    && Rscript -e "devtools::install_github('immcantation/enchantr', ref='${ENCHANTR_VER}', quiet=FALSE, clean=TRUE)"
 
 # Set commands
 CMD echo -e " Version information:\n"\
