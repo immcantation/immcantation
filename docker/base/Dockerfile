@@ -1,4 +1,4 @@
-FROM fedora:40
+FROM fedora:41
 LABEL maintainer="Jason Anthony Vander Heiden [jason.vanderheiden@yale.edu], \
                   Susanna Marquez [susanna.marquez@yale.edu]" \
       description="Standard environment and dependencies for the Immcantation framework."
@@ -58,6 +58,7 @@ RUN dnf -y update && dnf install -y \
     python3-scipy \
     R-core \
     R-core-devel \
+    R-png \    
     R-ragg \
     R-textshaping \
     redland-devel \    
@@ -68,12 +69,15 @@ RUN dnf -y update && dnf install -y \
     wget2 \
     && dnf clean all
 
+# Docker Scout upgrades
+RUN pip install pyarrow --upgrade
+
 # System environment variables
 ENV LD_LIBRARY_PATH="/usr/lib64/R/lib:/usr/lib64/atlas"
 RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 20
 
 # R build setup
-ARG R_REPO="http://lib.stat.cmu.edu/R/CRAN/"
+ARG R_REPO="https://cloud.r-project.org/"
 ARG R_DEPS="c('BiocManager', \
               'devtools', \
               'knitr', \
@@ -85,6 +89,7 @@ ARG R_DEPS="c('BiocManager', \
               'roxygen2', \
               'testthat')"
 ARG R_BIOC_DEPS="c('Biostrings', \
+              'ComplexHeatmap', \
               'DECIPHER', \
               'GenomicAlignments', \
               'ggmsa', \

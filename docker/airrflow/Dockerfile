@@ -46,11 +46,9 @@ RUN wget2 -q --force-progress --no-check-certificate \
     && chmod +x /usr/local/bin/tbl2asn
 
 # Install AIRR reference libraries
-# re-enable install from pypi when new airr-py version released
 RUN AIRR_PY=$(versions get -n airr-py) \
     && AIRR_R=$(versions get -n airr-r) \
-    # && pip3 install airr==${AIRR_PY} \
-    && pip3 install -e "git+https://github.com/airr-community/airr-standards.git@"${AIRR_PY}"#egg=airr&subdirectory=lang/python" \
+    && pip3 install airr==${AIRR_PY} \
     && Rscript -e "devtools::install_version('airr', '${AIRR_R}', quiet=FALSE, clean=TRUE)"    
 
 # Install alakazam
@@ -72,7 +70,7 @@ RUN DOWSER_VER=$(versions get -n dowser) \
 # Install IgPhyML
 RUN IGPHYML=$(versions get -n igphyml) \
     && wget2 -q --force-progress --no-check-certificate \
-       https://bitbucket.org/kleinstein/igphyml/get/${IGPHYML}.tar.gz -O igphyml-${IGPHYML}.tar.gz \
+       https://github.com/immcantation/igphyml/archive/refs/tags/${IGPHYML}.tar.gz -O igphyml-${IGPHYML}.tar.gz \
     && mkdir -p /usr/local/share/igphyml \
     && tar -zxf igphyml-${IGPHYML}.tar.gz -C /usr/local/share/igphyml --strip-components 1 \
     && (cd /usr/local/share/igphyml && ./make_phyml_blas_omp) \

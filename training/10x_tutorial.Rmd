@@ -41,22 +41,23 @@ This tutorial is a basic walk-through for defining B cell clonal families and bu
 
 Knowledge of basic command line usage is assumed. Please check out the individual documentation sites for the functions detailed in this tutorial before using them on your own data. 
 
-* For simplicity, this tutorial will use the [Immcantation Lab Docker image](https://hub.docker.com/repository/Docker/immcantation/lab) which contains R Markdown notebooks and all necessary software to run this code.
+* For simplicity, this tutorial will use the [Immcantation Lab Docker
+    image](https://hub.docker.com/repository/Docker/immcantation/lab) which contains R Markdown notebooks and all necessary software to run this code.
   * You can download the current Docker image with `docker pull immcantation/lab:devel`
   * For some operating systems, it may be necessary to use super-user privileges (sudo), and/or to have [Docker Desktop](https://hub.docker.com/editions/community/docker-ce-desktop-windows) running before entering the previous command.
   * You can read more details about how to get and use the Docker container [here](https://immcantation.readthedocs.io/en/latest/docker/intro.html), including how to run tutorials such as this one.
  * It is also possible to install the packages being used separately. Instructions are available in each package's documentation site. See Resources.
 
-You may also reference [this page](https://immcantation.readthedocs.io/en/stable/docker/pipelines.html) for an example pipeline script to process 10x data with Immcantation's [changeo-10x](https://bitbucket.org/kleinstein/immcantation/src/master/pipelines/changeo-10x.sh) example script.
+You may also reference [this page](https://immcantation.readthedocs.io/en/stable/docker/pipelines.html) for an example pipeline script to process 10x data with Immcantation's [changeo-10x](https://github.com/immcantation/immcantation/tree/master/pipelines/changeo-10x.sh) example script.
 
 Resources:
 
 * You can email [immcantation\@googlegroups.com](mailto:immcantation@googlegroups.com) with any questions or issues.
 * Documentation: <http://immcantation.org>
 * Package specific documentation: [pRESTO](https://presto.readthedocs.io/en/stable/), [Change-O](https://changeo.readthedocs.io/en/stable/), [Alakazam](https://alakazam.readthedocs.io/en/stable/), [SHazaM](https://shazam.readthedocs.io/en/stable/), [SCOPer](https://scoper.readthedocs.io/en/stable/), and [dowser](https://dowser.readthedocs.io/en/stable/).
-* Source code and bug reports: <https://bitbucket.org/kleinstein/immcantation>
+* Source code and bug reports: <https://github.com/immcantation/immcantation>
 * Docker image for this tutorial: <https://hub.docker.com/r/immcantation/lab>
-* Source code for Immcantation tutorials: <https://bitbucket.org/kleinstein/immcantation/src/master/training/>
+* Source code for Immcantation tutorials: <https://github.com/immcantation/immcantation/tree/master/training/>
 
 ## Getting started
 
@@ -118,6 +119,9 @@ Please note that:
 Note that you might need to install several Bioconductor packages that are dependencies for some of the R-based Immcantation packages with `BiocManager`.
 
 ```{r, eval=FALSE}
+# check for ggtree, a Bioconductor package
+packages <- "ggtree"
+
 package.check <- lapply(
   packages,
   FUN = function(x) {
@@ -127,8 +131,6 @@ package.check <- lapply(
   }
 )
 
-# check for ggtree, a Bioconductor package
-packages <- "ggtree"
 if (!require(packages, character.only = TRUE)) {
   if (!require("BiocManager", quietly = TRUE)) {
     install.packages("BiocManager")
@@ -143,16 +145,13 @@ if (!require(packages, character.only = TRUE)) {
 # load libraries
 suppressPackageStartupMessages(library(airr))
 suppressPackageStartupMessages(library(alakazam))
-suppressPackageStartupMessages(library(data.table))
 suppressPackageStartupMessages(library(dowser))
 suppressPackageStartupMessages(library(dplyr))
 suppressPackageStartupMessages(library(ggplot2))
+suppressPackageStartupMessages(library(ggtree))
 suppressPackageStartupMessages(library(scoper))
 suppressPackageStartupMessages(library(Seurat))
 suppressPackageStartupMessages(library(shazam))
-
-# Bioconductor package
-suppressPackageStartupMessages(library(ggtree))
 ```
 
 ## Load in and reformat the data
@@ -329,8 +328,10 @@ It is important to determine an appropriate threshold for trimming the hierarchi
 We define a clonal threshold only using the heavy chain locus, so we need to filter the dataset for the "IGH" locus. Clonal groups should be defined within one subject:
 
 ```{r}
-dist_nearest <- distToNearest(dplyr::filter(bcr_data, locus == "IGH",
-                                            subject_id == "subject1"))
+dist_nearest <- distToNearest(dplyr::filter(bcr_data,
+                                            locus == "IGH",
+                                            subject_id == "subject1"),
+                              cellIdColumn="cell_id")
 
 # generate Hamming distance histogram
 p1 <- ggplot(subset(dist_nearest, !is.na(dist_nearest)),
@@ -381,7 +382,8 @@ In the above data, there are two subjects. We will want to make make sure that t
 ```{r}
 # calculate cross subjects distribution of distance to nearest
 dist_crossSubj <- distToNearest(dplyr::filter(bcr_data, locus == "IGH"),
-                                nproc = 1, cross = "subject_id")
+                                nproc = 1, cross = "subject_id",
+                                cellIdColumn="cell_id")
 
 # find threshold for cloning automatically and initialize the Gaussian fit
 # parameters of the nearest-neighbor
@@ -415,7 +417,7 @@ The `hierarchicalClones` function in `SCOPer` package can be used to call clones
 results <- hierarchicalClones(bcr_data,
                               cell_id = "cell_id_unique",
                               threshold = threshold,
-                              only_heavy = TRUE, split_light = TRUE,
+                              only_heavy = TRUE, split_light = FALSE,
                               summarize_clones = FALSE,
                               fields = "subject_id")
 ```
@@ -574,8 +576,7 @@ In the rearrangement table, each row corresponds to a sequence, and each column 
 # add up duplicate_count column for collapsed sequences
 # store day, gex_annotation
 # discard clones with < 5 distinct sequences
-clones <-
-  dowser::formatClones(results,
+clones <- formatClones(results,
                        traits = c("day", "gex_annotation"),
                        num_fields = c("duplicate_count"), minseq = 5, nproc = 1)
 
@@ -588,8 +589,7 @@ There is an additional step that occurs before the `formatClones` step in this s
 ```{r, echo=FALSE}
 comb <- resolveLightChains(results, nproc = 1)
 
-clones <-
-  dowser::formatClones(comb,
+clones <- formatClones(comb,
                        chain = "HL", traits = c("day", "gex_annotation"),
                        num_fields = c("duplicate_count"), minseq = 5, nproc = 1)
 

@@ -50,7 +50,7 @@ tutorial before using them on your own data.
 You may also reference [this
 page](https://immcantation.readthedocs.io/en/stable/docker/pipelines.html)
 for an example pipeline script to process 10x data with Immcantation’s
-[changeo-10x](https://bitbucket.org/kleinstein/immcantation/src/master/pipelines/changeo-10x.sh)
+[changeo-10x](https://github.com/immcantation/immcantation/tree/master/pipelines/changeo-10x.sh)
 example script.
 
 Resources:
@@ -66,11 +66,11 @@ Resources:
     [SCOPer](https://scoper.readthedocs.io/en/stable/), and
     [dowser](https://dowser.readthedocs.io/en/stable/).
 -   Source code and bug reports:
-    <https://bitbucket.org/kleinstein/immcantation>
+    <https://github.com/immcantation/immcantation>
 -   Docker image for this tutorial:
     <https://hub.docker.com/r/immcantation/lab>
 -   Source code for Immcantation tutorials:
-    <https://bitbucket.org/kleinstein/immcantation/src/master/training/>
+    <https://github.com/immcantation/immcantation/tree/master/training/>
 
 ## Getting started
 
@@ -191,6 +191,9 @@ Note that you might need to install several Bioconductor packages that
 are dependencies for some of the R-based Immcantation packages with
 `BiocManager`.
 
+    # check for ggtree, a Bioconductor package
+    packages <- "ggtree"
+
     package.check <- lapply(
       packages,
       FUN = function(x) {
@@ -200,8 +203,6 @@ are dependencies for some of the R-based Immcantation packages with
       }
     )
 
-    # check for ggtree, a Bioconductor package
-    packages <- "ggtree"
     if (!require(packages, character.only = TRUE)) {
       if (!require("BiocManager", quietly = TRUE)) {
         install.packages("BiocManager")
@@ -214,16 +215,13 @@ are dependencies for some of the R-based Immcantation packages with
     # load libraries
     suppressPackageStartupMessages(library(airr))
     suppressPackageStartupMessages(library(alakazam))
-    suppressPackageStartupMessages(library(data.table))
     suppressPackageStartupMessages(library(dowser))
     suppressPackageStartupMessages(library(dplyr))
     suppressPackageStartupMessages(library(ggplot2))
+    suppressPackageStartupMessages(library(ggtree))
     suppressPackageStartupMessages(library(scoper))
     suppressPackageStartupMessages(library(Seurat))
     suppressPackageStartupMessages(library(shazam))
-
-    # Bioconductor package
-    suppressPackageStartupMessages(library(ggtree))
 
 ## Load in and reformat the data
 
@@ -266,11 +264,11 @@ You may wish to subset your data to only productive sequences:
     ## # A tibble: 5 x 66
     ##   sequence_id                 sequence  rev_comp productive v_call d_call j_call
     ##   <chr>                       <chr>     <lgl>    <lgl>      <chr>  <chr>  <chr> 
-    ## 1 TGGTTCCAGAATCTCC-1_contig_2 AGGAGTCA~ FALSE    TRUE       IGKV1~ <NA>   IGKJ1~
-    ## 2 AACTCAGTCTTCGGTC-1_contig_2 TGGGGAGG~ FALSE    TRUE       IGKV1~ <NA>   IGKJ1~
-    ## 3 TGAGGGACAGTACACT-1_contig_2 TGGGGACC~ FALSE    TRUE       IGHV1~ IGHD1~ IGHJ4~
-    ## 4 CCTATTAAGACAGGCT-1_contig_1 GGGGAGGA~ FALSE    TRUE       IGKV3~ <NA>   IGKJ3~
-    ## 5 AACGTTGGTACCAGTT-1_contig_2 AACCACAT~ FALSE    TRUE       IGHV1~ <NA>   IGHJ3~
+    ## 1 GATCAGTCACTAGTAC-1_contig_2 GAGCTACA~ FALSE    TRUE       IGKV4~ <NA>   IGKJ1~
+    ## 2 CGCTGGATCAGGCCCA-1_contig_2 TAGATGGG~ FALSE    TRUE       IGLV2~ <NA>   IGLJ1~
+    ## 3 TTGAACGGTCAACATC-1_contig_1 AGAGCTCT~ FALSE    TRUE       IGKV3~ <NA>   IGKJ4~
+    ## 4 CCACCTACACATGACT-1_contig_1 GCTCTGCT~ FALSE    TRUE       IGLV1~ <NA>   IGLJ2~
+    ## 5 CGGAGTCTCACTCCTG-1_contig_2 TGAGCGCA~ FALSE    TRUE       IGLV1~ <NA>   IGLJ2~
     ## # i 59 more variables: sequence_alignment <chr>, germline_alignment <chr>,
     ## #   junction <chr>, junction_aa <chr>, v_cigar <chr>, d_cigar <chr>,
     ## #   j_cigar <chr>, vj_in_frame <lgl>, stop_codon <lgl>, v_sequence_start <int>,
@@ -462,8 +460,10 @@ We define a clonal threshold only using the heavy chain locus, so we
 need to filter the dataset for the “IGH” locus. Clonal groups should be
 defined within one subject:
 
-    dist_nearest <- distToNearest(dplyr::filter(bcr_data, locus == "IGH",
-                                                subject_id == "subject1"))
+    dist_nearest <- distToNearest(dplyr::filter(bcr_data,
+                                                locus == "IGH",
+                                                subject_id == "subject1"),
+                                  cellIdColumn="cell_id")
 
     # generate Hamming distance histogram
     p1 <- ggplot(subset(dist_nearest, !is.na(dist_nearest)),
@@ -548,7 +548,8 @@ calculate this do the following:
 
     # calculate cross subjects distribution of distance to nearest
     dist_crossSubj <- distToNearest(dplyr::filter(bcr_data, locus == "IGH"),
-                                    nproc = 1, cross = "subject_id")
+                                    nproc = 1, cross = "subject_id",
+                                    cellIdColumn="cell_id")
 
     # find threshold for cloning automatically and initialize the Gaussian fit
     # parameters of the nearest-neighbor
@@ -590,7 +591,7 @@ call clones using single cell mode:
     results <- hierarchicalClones(bcr_data,
                                   cell_id = "cell_id_unique",
                                   threshold = threshold,
-                                  only_heavy = TRUE, split_light = TRUE,
+                                  only_heavy = TRUE, split_light = FALSE,
                                   summarize_clones = FALSE,
                                   fields = "subject_id")
 
@@ -683,7 +684,7 @@ And passing `"human/vdj/"` to the `readIMGT` function.
     # read in IMGT files in the Docker container
     references <- readIMGT(dir = "/usr/local/share/germlines/imgt/human/vdj")
 
-    ## [1] "Read in 1194 from 17 fasta files"
+    ## [1] "Read in 1197 from 17 fasta files"
 
     # reconstruct germlines
     results <- createGermlines(results, references, fields = "subject_id",
@@ -778,8 +779,7 @@ uniqueness of the sequences, so they are not collapsed.
     # add up duplicate_count column for collapsed sequences
     # store day, gex_annotation
     # discard clones with < 5 distinct sequences
-    clones <-
-      dowser::formatClones(results,
+    clones <- formatClones(results,
                            traits = c("day", "gex_annotation"),
                            num_fields = c("duplicate_count"), minseq = 5, nproc = 1)
 
@@ -788,12 +788,12 @@ uniqueness of the sequences, so they are not collapsed.
     ## # A tibble: 6 x 4
     ##   clone_id data       locus  seqs
     ##   <chr>    <list>     <chr> <int>
-    ## 1 208      <airrClon> IGH      14
-    ## 2 533      <airrClon> IGH      14
-    ## 3 693      <airrClon> IGH      14
-    ## 4 257      <airrClon> IGH      12
-    ## 5 603      <airrClon> IGH      12
-    ## 6 544      <airrClon> IGH      11
+    ## 1 196      <airrClon> IGH      14
+    ## 2 506      <airrClon> IGH      14
+    ## 3 656      <airrClon> IGH      14
+    ## 4 244      <airrClon> IGH      12
+    ## 5 515      <airrClon> IGH      12
+    ## 6 568      <airrClon> IGH      12
 
 Additionally, if there is paired heavy and light chain data, you can
 format the clones such that the paired data is used in building trees.
@@ -807,12 +807,12 @@ sequence. Then, in the `formatClones` step, specify `chain="HL"`.
     ## # A tibble: 6 x 4
     ##   clone_id data       locus    seqs
     ##   <chr>    <list>     <chr>   <int>
-    ## 1 208      <airrClon> IGH,IGL    15
-    ## 2 533      <airrClon> IGH,IGK    14
-    ## 3 693      <airrClon> IGH,IGL    14
-    ## 4 257      <airrClon> IGH,IGK    12
-    ## 5 603      <airrClon> IGH,IGK    12
-    ## 6 215      <airrClon> IGH,IGK    11
+    ## 1 196      <airrClon> IGH,IGL    15
+    ## 2 506      <airrClon> IGH,IGK    14
+    ## 3 656      <airrClon> IGH,IGL    14
+    ## 4 244      <airrClon> IGH,IGK    12
+    ## 5 515      <airrClon> IGH,IGK    12
+    ## 6 568      <airrClon> IGH,IGK    12
 
 ### Build trees with dowser
 
@@ -837,12 +837,12 @@ phangorn:
     ## # A tibble: 6 x 5
     ##   clone_id data       locus    seqs trees  
     ##   <chr>    <list>     <chr>   <int> <list> 
-    ## 1 208      <airrClon> IGH,IGL    15 <phylo>
-    ## 2 533      <airrClon> IGH,IGK    14 <phylo>
-    ## 3 693      <airrClon> IGH,IGL    14 <phylo>
-    ## 4 257      <airrClon> IGH,IGK    12 <phylo>
-    ## 5 603      <airrClon> IGH,IGK    12 <phylo>
-    ## 6 215      <airrClon> IGH,IGK    11 <phylo>
+    ## 1 196      <airrClon> IGH,IGL    15 <phylo>
+    ## 2 506      <airrClon> IGH,IGK    14 <phylo>
+    ## 3 656      <airrClon> IGH,IGL    14 <phylo>
+    ## 4 244      <airrClon> IGH,IGK    12 <phylo>
+    ## 5 515      <airrClon> IGH,IGK    12 <phylo>
+    ## 6 568      <airrClon> IGH,IGK    12 <phylo>
 
 And the second uses dnapars (PHYLIP):
 
@@ -855,12 +855,12 @@ And the second uses dnapars (PHYLIP):
     ## # A tibble: 6 x 5
     ##   clone_id data       locus    seqs trees  
     ##   <chr>    <list>     <chr>   <int> <list> 
-    ## 1 208      <airrClon> IGH,IGL    15 <phylo>
-    ## 2 533      <airrClon> IGH,IGK    14 <phylo>
-    ## 3 693      <airrClon> IGH,IGL    14 <phylo>
-    ## 4 257      <airrClon> IGH,IGK    12 <phylo>
-    ## 5 603      <airrClon> IGH,IGK    12 <phylo>
-    ## 6 215      <airrClon> IGH,IGK    11 <phylo>
+    ## 1 196      <airrClon> IGH,IGL    15 <phylo>
+    ## 2 506      <airrClon> IGH,IGK    14 <phylo>
+    ## 3 656      <airrClon> IGH,IGL    14 <phylo>
+    ## 4 244      <airrClon> IGH,IGK    12 <phylo>
+    ## 5 515      <airrClon> IGH,IGK    12 <phylo>
+    ## 6 568      <airrClon> IGH,IGK    12 <phylo>
 
 #### Standard maximum likelihood trees
 
@@ -877,12 +877,12 @@ first uses pml (phangorn):
     ## # A tibble: 6 x 5
     ##   clone_id data       locus    seqs trees  
     ##   <chr>    <list>     <chr>   <int> <list> 
-    ## 1 208      <airrClon> IGH,IGL    15 <phylo>
-    ## 2 533      <airrClon> IGH,IGK    14 <phylo>
-    ## 3 693      <airrClon> IGH,IGL    14 <phylo>
-    ## 4 257      <airrClon> IGH,IGK    12 <phylo>
-    ## 5 603      <airrClon> IGH,IGK    12 <phylo>
-    ## 6 215      <airrClon> IGH,IGK    11 <phylo>
+    ## 1 196      <airrClon> IGH,IGL    15 <phylo>
+    ## 2 506      <airrClon> IGH,IGK    14 <phylo>
+    ## 3 656      <airrClon> IGH,IGL    14 <phylo>
+    ## 4 244      <airrClon> IGH,IGK    12 <phylo>
+    ## 5 515      <airrClon> IGH,IGK    12 <phylo>
+    ## 6 568      <airrClon> IGH,IGK    12 <phylo>
 
 The second uses dnaml (PHYLIP):
 
@@ -942,9 +942,6 @@ Plot the largest tree:
 
     # save a pdf of all trees
     dir.create("results/dowser_tutorial/", recursive = TRUE)
-
-    ## Warning in dir.create("results/dowser_tutorial/", recursive = TRUE):
-    ## 'results/dowser_tutorial' already exists
 
     treesToPDF(plots_all,
                file = file.path("results", "dowser_tutorial","final_data_trees.pdf"),
@@ -1023,20 +1020,20 @@ timepoints are more diverged from the germline:
 
     dplyr::select(trees, clone_id, slope, correlation, p)
 
-    ## # A tibble: 31 x 4
+    ## # A tibble: 35 x 4
     ##    clone_id  slope correlation      p
     ##    <chr>     <dbl>       <dbl>  <dbl>
-    ##  1 605      0.0453       0.711 0.0749
-    ##  2 741      0.120        0.877 0.136 
-    ##  3 541      0.277        0.827 0.195 
-    ##  4 1181     0.707        0.578 0.228 
-    ##  5 608      0.0828       0.328 0.229 
-    ##  6 208      0.307        0.770 0.278 
-    ##  7 195      0.169        0.301 0.279 
-    ##  8 221      0.0537       0.384 0.294 
-    ##  9 383      2.57         0.833 0.325 
-    ## 10 210      0.197        0.488 0.357 
-    ## # i 21 more rows
+    ##  1 570      0.0453       0.711 0.0729
+    ##  2 699      0.120        0.877 0.160 
+    ##  3 513      0.277        0.827 0.221 
+    ##  4 209      0.0630       0.468 0.230 
+    ##  5 573      0.0830       0.329 0.241 
+    ##  6 1122     0.708        0.578 0.242 
+    ##  7 1118     0.488        0.444 0.245 
+    ##  8 196      0.307        0.770 0.258 
+    ##  9 183      0.169        0.300 0.286 
+    ## 10 363      2.57         0.833 0.334 
+    ## # i 25 more rows
 
     print(plots_time[[1]])
 

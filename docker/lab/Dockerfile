@@ -25,14 +25,17 @@ USER root
 # cannot be opened by the source editor"
 RUN echo "excludepkgs=packagename" /etc/dnf/dnf.conf
 RUN dnf install -y \
+            chkconfig \
             file \
             procps \
             pwgen \
-            rstudio-server
-            
-ARG R_REPO="http://lib.stat.cmu.edu/R/CRAN/"
+            R-rstudioapi
+RUN wget https://download2.rstudio.org/server/rhel9/x86_64/rstudio-server-rhel-2024.12.1-563-x86_64.rpm \
+    && dnf install -y rstudio-server-rhel-2024.12.1-563-x86_64.rpm
+ARG R_REPO="https://cloud.r-project.org/"
 ARG R_DEPS="c('readxl', \
-              'shiny')"
+              'shiny', \
+              'rstudioapi')"
 RUN echo "options(repos='${R_REPO}')" >> /usr/lib64/R/library/base/R/Rprofile \
     && mkdir -p /usr/share/doc/R/html \
     && Rscript -e "install.packages(${R_DEPS}, clean=TRUE)"
@@ -52,6 +55,7 @@ RUN PASSWD=$(pwgen 16 1) \
     && echo "${RS_USER}:${PASSWD}" | chpasswd \
     && usermod -G ${GID} ${RS_USER} \
     && echo "setwd('~/notebooks')" > /home/${RS_USER}/.Rprofile \
+    && echo "if (Sys.getenv('RSTUDIO_TERM') != '') { rstudioapi::filesPaneNavigate(getwd())}" >> /home/${RS_USER}/.Rprofile \
     && touch /etc/rstudio/rsession.conf \
     && echo "session-default-working-dir=~/notebooks" >> /etc/rstudio/rsession.conf \
     && echo "session-default-new-project-dir=~/notebooks" >>  /etc/rstudio/rsession.conf
@@ -89,8 +93,8 @@ RUN mkdir ${HOME}/notebooks && \
 # Get notebooks from repo
 RUN PACKAGE="immcantation" \
     && rm -rf /tmp/${PACKAGE} \
-    && git clone https://bitbucket.org/kleinstein/${PACKAGE} /tmp/${PACKAGE} \
-    && mv /tmp/${PACKAGE}/training/*.Rmd ${HOME}/notebooks/. \
+    && git clone https://github.com/immcantation/${PACKAGE} /tmp/${PACKAGE} \
+    && mv /tmp/${PACKAGE}/training/*.[Rr]md ${HOME}/notebooks/. \
     && mv /tmp/${PACKAGE}/training/assets ${HOME}/notebooks/ \
     && rm -rf /tmp/${PACKAGE}
 
@@ -113,7 +117,7 @@ RUN chown -R ${RS_USER}:${GID} ${HOME}/notebooks \
 
 ##### End Tutorials ########
 
-##### Sphix #######
+##### Sphinx #######
 RUN pip install sphinx sphinx_rtd_theme jupytext nbsphinx nbsphinx_link ipykernel
 
 VOLUME ${HOME}/results
