@@ -11,7 +11,7 @@ the adaptive immune receptor repertoire (AIRR) presents challenges
 for biologically meaningful analysis - requiring the development of
 specialized computational methods.
 
-The Immcantation framework provide a start-to-finish analytical
+The Immcantation framework provides a start-to-finish analytical
 ecosystem for high-throughput AIRR-seq datasets. Although Immcantation
 is focused on BCRs, methods are applicable to TCRs. Beginning from raw
 reads, Python and R packages are provided for pre-processing,
