@@ -231,13 +231,127 @@ src/*.dll
 
 ### Branches ###
 
-* The `default` branch acts as the main development branch. Try to avoid putting
-  non-working code in the `default` branch.
-* Used named branches for adding large features or for work that will distrupt the stability of
-  the `default` branch for more than a day or two.
-* If necessary, open a maintenance branch to update an old, backwards incompatible
-  version major version. For example, `v0.3_maintenance` to update code in v0.3 when default
-  has moved on to v0.4.
++   The `default` branch acts as the main development branch. Try to avoid putting non-working code in the `default` branch.
++   Used named branches for adding large features or for work that will distrupt the stability of the `default` branch for more than a day or two.
++   If necessary, open a maintenance branch to update an old, backwards incompatible version major version. For example, `v0.3_maintenance` to update code in v0.3 when default has moved on to v0.4.
+
+**How to Contribute Code to Immcantation Repositories**
+
+1.  Fork the Repository
+
+Go to the repository of interest and click the **Fork** button in the top right corner. This creates a copy of the repository in your own GitHub account.
+
+2.  Clone Your Fork
+
+Open your terminal and run:
+
+``` bash
+git clone https://github.com/<your-username>/<fork-name>.git
+cd <fork-name>
+```
+
+Replace `<your-username>` with your actual GitHub username, and `<fork-name>` with the name of your fork.
+
+3.  Add the Upstream Remote
+
+This allows you to keep your fork up-to-date with the main Immcantation repository.
+
+``` bash
+git remote add upstream https://github.com/immcantation/<repo-name>.git
+```
+
+Replace `<repo-name>` with the name of the original Immcantation repository (e.g., `alakazam`).
+
+You can verify the remotes by running:
+
+``` bash
+git remote -v
+``` 
+
+4.  Create an issue in the immcantation repositoy
+
+If needed, create an issue in the relevant immcantation repository to discuss your changes or 
+let others know what you are working on. This is a good way to coordinate with others and get feedback.
+
+Visit GitHub documentation for creating issues [here](https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues).
+
+5.  Create a Feature Branch Based on `dev`
+
+Fetch the latest changes and create your feature branch based on `dev`:
+
+``` bash
+git fetch upstream
+git checkout dev
+git pull upstream dev
+git checkout -b my-feature-branch
+```
+
+Replace `my-feature-branch` with a descriptive name for your work (e.g., `ìssue-123-add-cool-feature`).
+
+6.  Make Your Changes
+
+Edit, add, or delete code as needed. Use conventional commit messages, e.g.:
+
+``` bash
+git add path/to/changed_file
+git commit -m "added new analysis option to XYZ"
+```
+
+7.  Push Changes to Your Fork
+
+Push your branch to your GitHub fork:
+
+``` bash
+git push origin my-feature-branch
+```
+
+8.  Create a Pull Request (PR) to the `dev` Branch
+
+-   Go to your fork on GitHub.
+-   Click the "Compare & pull request" button.
+-   Set the base branch to `dev` on `immcantation/<repo-name>`.
+-   Set the compare branch to your feature branch.
+-   Add a clear title and description, referencing any related issues if applicable.
+-   Submit the pull request.
+
+Visit the GitHub documentation for details on linking a pull request to an issue [here](https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/linking-a-pull-request-to-an-issue).
+
+9.  Respond to Review
+
+Project maintainers may review your PR and request changes. Make further commits to your feature branch as needed. Push updates, and they’ll be added to your PR automatically.
+
+10. Syncing with Upstream (Optional but Recommended)
+
+To keep your branch up-to-date if the `dev` branch changes before your PR is merged:
+
+``` bash
+git fetch upstream
+git checkout dev
+git pull upstream dev
+git checkout my-feature-branch
+# git rebase dev
+# Resolve any conflicts, if needed
+git push -f origin my-feature-branch
+```
+
+11. Clean Up After Merging
+
+Once your PR is merged, you can delete your feature branch both locally and on GitHub:
+
+``` bash
+git checkout dev
+git branch -d my-feature-branch
+git push origin --delete my-feature-branch
+```
+12. Update Your Fork
+To keep your fork up-to-date with the main repository, periodically fetch and merge changes from the upstream `dev` branch:
+
+``` bash
+git checkout dev
+git fetch upstream
+git pull upstream dev
+git push origin dev
+```
 
 ### Version Numbers
 
