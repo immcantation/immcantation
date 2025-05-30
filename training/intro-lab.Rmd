@@ -519,3 +519,10 @@ Sequence Region Definitions
 * NULL: Full sequence
 * IMGT_V: V segment broken into combined CDRs and FWRs
 * IMGT_V_BY_REGIONS: V segment broken into individual CDRs and FWRs
+
+## Run a start-to-finish Immcantation workflow
+
+The most common BCR and TCR repertoire analysis steps are implemented in the nf-core/airrflow workflow.
+This workflow is particularly useful for analyzing a large amount of samples in parallel.
+To know more about the workflow, check out the [nf-core/airrflow documentation](https://nf-co.re/airrflow).
+The documentation includes a [bulk tutorial](https://nf-co.re/airrflow/usage/bulk_tutorial) that guides you through the steps of running the workflow for bulk datasets.

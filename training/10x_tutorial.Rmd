@@ -779,3 +779,10 @@ If you have data from **different tissues, B cell subtypes, and/or isotypes** an
 If you have data from **multiple timepoints** from the same subject and want to determine if B cell lineages are evolving over the sampled interval, check out the [measurable evolution vignette](https://dowser.readthedocs.io/en/latest/vignettes/Measurable-Evolution/).
 
 For more advanced tree **visualization**, check out the [plotting trees vignette](https://dowser.readthedocs.io/en/latest/vignettes/Plotting-Trees-Vignette/).
+
+## Run a start-to-finish Immcantation workflow
+
+The most common BCR and TCR repertoire analysis steps are implemented in the nf-core/airrflow workflow.
+This workflow is particularly useful for analyzing a large amount of samples in parallel.
+To know more about the workflow, check out the [nf-core/airrflow documentation](https://nf-co.re/airrflow).
+The documentation includes a [single-cell tutorial](https://nf-co.re/airrflow/usage/single_cell_tutorial) that guides you through the steps of running the workflow for single-cell datasets.
