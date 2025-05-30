@@ -13,9 +13,15 @@
 }
 
 .rst-content .admonition-tutorial .admonition-title .fa-info-circle:before{content:""} 
-
+.rst-content
 .fa-search-plus:before, .rst-content .admonition-tutorial .admonition-title:before, .wy-inline-validate.wy-inline-validate-info .wy-input-context:before, .wy-inline-validate.wy-inline-validate-warning .wy-input-context:before {
     content: "";
+}
+
+.rst-content .admonition-announcement .admonition-title .fa-info-circle:before{content:"\f0a1"} 
+.rst-content
+.fa-search-plus:before, .rst-content .admonition-announcement .admonition-title:before, .wy-inline-validate.wy-inline-validate-info .wy-input-context:before, .wy-inline-validate.wy-inline-validate-warning .wy-input-context:before {
+    content: "\f0a1";
 }
 
 
