@@ -40,6 +40,7 @@
     :hidden:
 
     Alakazam <https://alakazam.readthedocs.io>
+    Amulety <https://amulety.readthedocs.io>
     Change-O <https://changeo.readthedocs.io>
     Dowser <https://dowser.readthedocs.io/>
     pRESTO <https://presto.readthedocs.io>
@@ -57,6 +58,13 @@
     RAbHIT <https://yaarilab.bitbucket.io/RAbHIT/>
     RDI <https://rdi.readthedocs.io>
     sumrep <https://github.com/matsengrp/sumrep>
+
+.. toctree::
+    :maxdepth: 1
+    :caption: Workflows
+    :hidden:
+
+    nf-core/airrflow <https://nf-co.re/airrflow>
 
 .. toctree::
     :maxdepth: 1
@@ -96,6 +104,27 @@ Receptor Repertoire (AIRR) standard developed by the
 
 The different tools are available from PyPi, CRAN and GitHub. Versioned containers with
 all tools installed are hosted on `Docker Hub <https://hub.docker.com/r/immcantation/suite>`_.
+
+Start-to-finish Workflow
+------------------------------------------------------------------------------------------
+Run the Immcantation packages in a single workflow to analyze your
+repertoire sequencing data.
+
+**Click on the image below for more details.**
+
+.. list-table::
+    :widths: 40 60
+    :align: left
+
+
+
+    * - |airrflow-img|
+      
+      - **nf-core/airrflow**
+
+        + Nextflow workflow using Immcantation
+        + Bulk and single-cell BCR and TCR analysis
+        + Part of the `nf-core <https://nf-co.re/>`_ project
 
 
 Core Packages
@@ -190,6 +219,16 @@ Core Packages
         + Novel polymorphism detection
         + Genotyping
 
+    * - |amulety-img|
+      - .. image:: https://img.shields.io/pypi/dm/amulety
+            :target: https://pypi.org/project/amulety
+            :align: right
+            :alt: downloads
+
+        **Amulety**
+
+        + BCR and TCR sequence embedding
+
 
 Contributed Packages
 -----------------------------------------------------------------------------------------
@@ -229,6 +268,12 @@ Contributed Packages
         + Visualize and comparing repertoire summaries.
 
 .. Image substitutions
+
+.. |airrflow-img| image:: _static/airrflow_logo.png
+    :align: middle
+    :width: 200
+    :target: airrflow_
+    :alt: nf-core/airrflow
 
 .. |presto-img| image:: _static/presto.png
     :align: middle
@@ -311,9 +356,11 @@ Contributed Packages
 .. Doc links
 
 .. _Alakazam: https://alakazam.readthedocs.io
+.. _Amulety: https://amulety.readthedocs.io
 .. _Change-O: https://changeo.readthedocs.io
 .. _Dowser: https://dowser.readthedocs.io
 .. _IgPhyML: https://igphyml.readthedocs.io
+.. _airrflow: https://nf-co.re/airrflow
 .. _PIgLET: https://bitbucket.org/yaarilab/piglet
 .. _pRESTO: https://presto.readthedocs.io
 .. _prestoR: packages/prestor.html
