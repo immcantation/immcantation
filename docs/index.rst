@@ -40,7 +40,6 @@
     :hidden:
 
     Alakazam <https://alakazam.readthedocs.io>
-    Amulety <https://amulety.readthedocs.io>
     Change-O <https://changeo.readthedocs.io>
     Dowser <https://dowser.readthedocs.io/>
     pRESTO <https://presto.readthedocs.io>
@@ -219,16 +218,6 @@ Core Packages
         + Novel polymorphism detection
         + Genotyping
 
-    * - |amulety-img|
-      - .. image:: https://img.shields.io/pypi/dm/amulety
-            :target: https://pypi.org/project/amulety
-            :align: right
-            :alt: downloads
-
-        **Amulety**
-
-        + BCR and TCR sequence embedding
-
 
 Contributed Packages
 -----------------------------------------------------------------------------------------
@@ -356,7 +345,6 @@ Contributed Packages
 .. Doc links
 
 .. _Alakazam: https://alakazam.readthedocs.io
-.. _Amulety: https://amulety.readthedocs.io
 .. _Change-O: https://changeo.readthedocs.io
 .. _Dowser: https://dowser.readthedocs.io
 .. _IgPhyML: https://igphyml.readthedocs.io
