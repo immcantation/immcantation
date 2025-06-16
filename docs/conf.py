@@ -38,6 +38,7 @@ needs_sphinx = '1.8'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = ['sphinx.ext.intersphinx',
+              'sphinx.ext.autosectionlabel',
               'sphinx.ext.todo',
               'sphinxcontrib.googleanalytics',
               'nbsphinx',
