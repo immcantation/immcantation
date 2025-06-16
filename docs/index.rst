@@ -125,6 +125,9 @@ repertoire sequencing data.
         + Bulk and single-cell BCR and TCR analysis
         + Part of the `nf-core <https://nf-co.re/>`_ project
 
+.. raw:: html
+
+   <div style="clear: left;"></div>
 
 Core Packages
 -----------------------------------------------------------------------------------------
