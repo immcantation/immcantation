@@ -60,6 +60,13 @@
 
 .. toctree::
     :maxdepth: 1
+    :caption: Workflows
+    :hidden:
+
+    nf-core/airrflow <https://nf-co.re/airrflow>
+
+.. toctree::
+    :maxdepth: 1
     :caption: In Development
     :hidden:
 
@@ -96,6 +103,27 @@ Receptor Repertoire (AIRR) standard developed by the
 
 The different tools are available from PyPi, CRAN and GitHub. Versioned containers with
 all tools installed are hosted on `Docker Hub <https://hub.docker.com/r/immcantation/suite>`_.
+
+Start-to-finish Workflow
+------------------------------------------------------------------------------------------
+Run the Immcantation packages in a single workflow to analyze your
+repertoire sequencing data.
+
+**Click on the image below for more details.**
+
+.. list-table::
+    :widths: 40 60
+    :align: left
+
+
+
+    * - |airrflow-img|
+      
+      - **nf-core/airrflow**
+
+        + Nextflow workflow using Immcantation
+        + Bulk and single-cell BCR and TCR analysis
+        + Part of the `nf-core <https://nf-co.re/>`_ project
 
 
 Core Packages
@@ -230,6 +258,12 @@ Contributed Packages
 
 .. Image substitutions
 
+.. |airrflow-img| image:: _static/airrflow_logo.png
+    :align: middle
+    :width: 200
+    :target: airrflow_
+    :alt: nf-core/airrflow
+
 .. |presto-img| image:: _static/presto.png
     :align: middle
     :width: 200
@@ -314,6 +348,7 @@ Contributed Packages
 .. _Change-O: https://changeo.readthedocs.io
 .. _Dowser: https://dowser.readthedocs.io
 .. _IgPhyML: https://igphyml.readthedocs.io
+.. _airrflow: https://nf-co.re/airrflow
 .. _PIgLET: https://bitbucket.org/yaarilab/piglet
 .. _pRESTO: https://presto.readthedocs.io
 .. _prestoR: packages/prestor.html
