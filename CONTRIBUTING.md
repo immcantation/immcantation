@@ -231,9 +231,10 @@ src/*.dll
 
 ### Branches ###
 
-+   The `default` branch acts as the main development branch. Try to avoid putting non-working code in the `default` branch.
-+   Used named branches for adding large features or for work that will distrupt the stability of the `default` branch for more than a day or two.
-+   If necessary, open a maintenance branch to update an old, backwards incompatible version major version. For example, `v0.3_maintenance` to update code in v0.3 when default has moved on to v0.4.
++   The `master` branch contains the last stable release.
++   Development happens in forked repositories and is incorporated into Immcantation repositories through pull requests to the `dev` branch.
++   When changes in `dev` are ready for release, they are merged into `master`.
++   If necessary, open a maintenance branch to update an old, backwards incompatible major version. For example, `v0.3_maintenance` to update code in v0.3 when default has moved on to v0.4.
 
 **How to Contribute Code to Immcantation Repositories**
 
@@ -246,7 +247,7 @@ Go to the repository of interest and click the **Fork** button in the top right 
 Open your terminal and run:
 
 ``` bash
-git clone https://github.com/<your-username>/<fork-name>.git
+git clone git@github.com:<your-username>/<fork-name>.git
 cd <fork-name>
 ```
 
@@ -257,7 +258,7 @@ Replace `<your-username>` with your actual GitHub username, and `<fork-name>` wi
 This allows you to keep your fork up-to-date with the main Immcantation repository.
 
 ``` bash
-git remote add upstream https://github.com/immcantation/<repo-name>.git
+git remote add upstream git@github.com:immcantation/<repo-name>.git
 ```
 
 Replace `<repo-name>` with the name of the original Immcantation repository (e.g., `alakazam`).
@@ -268,7 +269,7 @@ You can verify the remotes by running:
 git remote -v
 ``` 
 
-4.  Create an issue in the immcantation repositoy
+4.  Create an issue in the immcantation repository
 
 If needed, create an issue in the relevant immcantation repository to discuss your changes or 
 let others know what you are working on. This is a good way to coordinate with others and get feedback.
@@ -329,7 +330,6 @@ git fetch upstream
 git checkout dev
 git pull upstream dev
 git checkout my-feature-branch
-# git rebase dev
 # Resolve any conflicts, if needed
 git push -f origin my-feature-branch
 ```
@@ -343,12 +343,12 @@ git checkout dev
 git branch -d my-feature-branch
 git push origin --delete my-feature-branch
 ```
+
 12. Update Your Fork
 To keep your fork up-to-date with the main repository, periodically fetch and merge changes from the upstream `dev` branch:
 
 ``` bash
 git checkout dev
-git fetch upstream
 git pull upstream dev
 git push origin dev
 ```
