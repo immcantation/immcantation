@@ -86,6 +86,34 @@ is available in the Immcantation repository.
     + Highlight other BCR features in UMAPs
 
 
+nf-core/airrflow: a start-to-finish workflow using Immcantation
+------------------------------------------------------------------
+
+`nf-core/airrflow <https://nf-co.re/airrflow>`_ is a Nextflow pipeline using the Immcantation framework 
+as well as other tools for a start-to-finish BCR and TCR analysis. Tutorials on how to use the workflow
+are available in the `nf-core/airrflow documentation site <https://nf-co.re/airrflow/docs/usage>`_.
+
+.. admonition:: Tutorial
+
+    :doc:`nf-core/airrflow single-cell AIRR-seq <https://nf-co.re/airrflow/docs/usage/single_cell_tutorial>`_ covers:
+
+    + Installing and running the pipeline
+    + single-cell AIRR-seq data analysis starting from AIRR rearrangement files
+    + single-cell AIRR-seq data analysis starting from raw reads
+    + Processing an example single-cell AIRR-seq dataset from 10x Genomics
+    + Understanding the results
+
+.. admonition:: Tutorial
+
+    :doc:`nf-core/airrflow bulk AIRR-seq <https://nf-co.re/airrflow/docs/usage/bulk_tutorial>`_ covers:
+
+    + Installing and running the pipeline
+    + Analyzing AIRR-seq data generated with common protocols
+    + Analyzing AIRR-seq data with custom protocols
+    + Processing an example bulk AIRR-seq dataset from SRA
+    + Understanding the results
+
+
 Video Presentations
 ===========================================================================================
 
