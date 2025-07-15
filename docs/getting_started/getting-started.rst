@@ -94,7 +94,7 @@ are available in the `nf-core/airrflow documentation site <https://nf-co.re/airr
 
 .. admonition:: Tutorial
 
-    :doc:`nf-core/airrflow single-cell AIRR-seq <https://nf-co.re/airrflow/docs/usage/single_cell_tutorial>`_ covers:
+    `nf-core/airrflow single-cell AIRR-seq <https://nf-co.re/airrflow/docs/usage/single_cell_tutorial>`_ covers:
 
     + Installing and running the pipeline
     + single-cell AIRR-seq data analysis starting from AIRR rearrangement files
@@ -104,7 +104,7 @@ are available in the `nf-core/airrflow documentation site <https://nf-co.re/airr
 
 .. admonition:: Tutorial
 
-    :doc:`nf-core/airrflow bulk AIRR-seq <https://nf-co.re/airrflow/docs/usage/bulk_tutorial>`_ covers:
+    `nf-core/airrflow bulk AIRR-seq <https://nf-co.re/airrflow/docs/usage/bulk_tutorial>`_ covers:
 
     + Installing and running the pipeline
     + Analyzing AIRR-seq data generated with common protocols
