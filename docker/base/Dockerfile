@@ -100,5 +100,5 @@ RUN echo "options(repos='${R_REPO}')" >> /usr/lib64/R/library/base/R/Rprofile \
     && Rscript -e "install.packages(${R_DEPS}, clean=TRUE)" \
     && Rscript -e "BiocManager::install(${R_BIOC_DEPS},update=F,ask=F)"
 RUN touch /.Rprofile \
-    && touch /.Renviron
-
+    && touch /.Renviron \
+    && Rscript -e "cat(paste0('R_LIBS_SITE=\'',paste(.libPaths(),collapse=':'),'\''), sep='\n')" >> /.Renviron
