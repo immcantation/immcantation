@@ -35,7 +35,6 @@ ARG R_DEPS="c('ape', \
               'progress', \
               'readr', \
               'rlang', \
-              'rmarkdown', \
               'rversions', \
               'scales', \
               'SDMTools', \
