@@ -228,6 +228,7 @@ RUN IGPHYML=$(versions get -n igphyml) \
        https://github.com/immcantation/igphyml/archive/refs/tags/${IGPHYML}.tar.gz -O igphyml-${IGPHYML}.tar.gz \
     && mkdir -p /usr/local/share/igphyml \
     && tar -zxf igphyml-${IGPHYML}.tar.gz -C /usr/local/share/igphyml --strip-components 1 \
+    && sed -i 's/t_tree \*Make_Tree();/t_tree *Make_Tree(int n_otu);/' /usr/local/share/igphyml/src/utilities.h \
     && (cd /usr/local/share/igphyml && ./make_phyml_blas_omp) \
     && rm -r igphyml-${IGPHYML}.tar.gz
 
