@@ -59,6 +59,7 @@ RUN dnf -y update && dnf install -y \
     R-core \
     R-core-devel \
     R-devtools \
+    R-httpuv \
     R-png \    
     R-ragg \
     R-textshaping \
