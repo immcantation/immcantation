@@ -18,7 +18,6 @@ ARG R_DEPS="c('ape', \
               'doParallel', \
               'dplyr', \
               'foreach', \
-              'ggplot2', \
               'gridExtra', \
               'gtools', \
               'hexbin', \

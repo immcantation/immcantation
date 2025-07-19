@@ -59,7 +59,6 @@ RUN dnf -y update && dnf install -y \
     R-core \
     R-core-devel \
     R-devtools \
-    R-ggplot2 \
     R-httpuv \
     R-png \    
     R-ragg \
@@ -79,7 +78,9 @@ RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 20
 # R build setup
 ARG R_REPO="https://cloud.r-project.org/"
 ARG R_DEPS="c('BiocManager', \
+              'ggplot2', \
               'knitr', \
+              'lifecycle', \
               'Matrix', \
               'optparse', \
               'pkgbuild', \
