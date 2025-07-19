@@ -78,6 +78,7 @@ RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 20
 # R build setup
 ARG R_REPO="https://cloud.r-project.org/"
 ARG R_DEPS="c('BiocManager', \
+              'ggplot2', \
               'knitr', \
               'Matrix', \
               'optparse', \
