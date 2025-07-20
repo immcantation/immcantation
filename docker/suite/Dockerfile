@@ -39,7 +39,7 @@ RUN MUSCLE=$(versions get -n muscle) \
 # Install vsearch
 RUN VSEARCH=$(versions get -n vsearch) \
     && wget2 -q --force-progress --no-check-certificate \
-       http://github.com/torognes/vsearch/releases/download/v${VSEARCH}/vsearch-${VSEARCH}-linux-x86_64.tar.gz \
+       https://github.com/torognes/vsearch/releases/download/v${VSEARCH}/vsearch-${VSEARCH}-linux-x86_64.tar.gz \
     && tar -zxf vsearch-${VSEARCH}-linux-x86_64.tar.gz \
     && mv vsearch-${VSEARCH}-linux-x86_64/bin/vsearch /usr/local/bin/vsearch \
     && ln -s /usr/local/bin/vsearch /usr/local/bin/usearch \
