@@ -263,9 +263,15 @@ RUN fetch_imgtdb.sh -o /usr/local/share/germlines/imgt \
     && fetch_phix.sh -o /usr/local/share/phix
 
 # Patch IgBLAST database
-#RUN wget2 -q --force-progress --no-check-certificate \
-#    ftp://ftp.ncbi.nih.gov/blast/executables/igblast/release/patch/optional_file/mouse_gl.aux \
-#    && mv -f mouse_gl.aux /usr/local/share/igblast/optional_file
+ARG IGBLAST_PATCH_URL="https://ftp.ncbi.nih.gov/blast/executables/igblast/release/patch"
+RUN mkdir -p /tmp/igblast_patch && \
+    wget2 -q --force-progress --no-check-certificate --no-robots --cut-dirs=5 -np -nH -r -l 2 --reject "index.html" ${IGBLAST_PATCH_URL} -P /tmp/igblast_patch/ && \
+    if [ -d /tmp/igblast_patch/internal_data ]; then \
+      cp -r /tmp/igblast_patch/internal_data/* /usr/local/share/igblast/internal_data/; \
+    fi; \
+    if [ -d /tmp/igblast_patch/optional_file ]; then \
+      cp -r /tmp/igblast_patch/optional_file/* /usr/local/share/igblast/optional_file/; \
+    fi
 
 # Setup environment
 ENV PATH="${PATH}:/usr/local/share/igphyml/src"
