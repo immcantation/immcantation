@@ -79,15 +79,18 @@ RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 20
 ARG R_REPO="https://cloud.r-project.org/"
 ARG R_DEPS="c('BiocManager', \
               'ggplot2', \
+              'httr', \
               'knitr', \
               'lifecycle', \
               'Matrix', \
               'optparse', \
               'pkgbuild', \
+              'R6', \
               'Rcpp', \
               'rmarkdown', \
               'roxygen2', \
-              'testthat')"
+              'testthat', \
+              'withr')"
 ARG R_BIOC_DEPS="c('Biostrings', \
               'ComplexHeatmap', \
               'DECIPHER', \
