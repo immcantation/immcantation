@@ -67,6 +67,7 @@ RUN dnf -y update && dnf install -y \
     sudo \
     tar \
     texlive-titling \
+    v8-devel \
     wget \
     wget2 \
     && dnf clean all
@@ -90,6 +91,7 @@ ARG R_DEPS="c('BiocManager', \
               'rmarkdown', \
               'roxygen2', \
               'testthat', \
+              'V8', \
               'withr')"
 ARG R_BIOC_DEPS="c('Biostrings', \
               'ComplexHeatmap', \
