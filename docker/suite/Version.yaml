@@ -1,6 +1,6 @@
 immcantation:
   version:  devel
-  date:     2025.05.14
+  date:     2025.07.21
 package:
   presto:   0.7.4
   changeo:  1.3.3
@@ -9,7 +9,7 @@ package:
   tigger:   1.1.0
   scoper:   1.3.0
   dowser:   2.3.0
-  enchantr: 0.1.13
+  enchantr: 0.1.21
   prestor:  0.0.8
   piglet:   1.0.1
   rabhit:   0.2.5
