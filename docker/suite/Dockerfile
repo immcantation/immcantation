@@ -24,9 +24,9 @@ RUN PACKAGE="immcantation" \
 RUN MUSCLE=$(versions get -n muscle) \
     && wget2 -q --force-progress --no-check-certificate \
        http://www.drive5.com/muscle/muscle${MUSCLE}_binaries.tar.gz \
-	&& tar -zxf muscle${MUSCLE}_binaries.tar.gz muscle${MUSCLE}_i86linux64 \
-	&& mv muscle${MUSCLE}_i86linux64 /usr/local/bin/muscle \
-	&& rm muscle${MUSCLE}_binaries.tar.gz
+    && tar -zxf muscle${MUSCLE}_binaries.tar.gz muscle${MUSCLE}_i86linux64 \
+    && mv muscle${MUSCLE}_i86linux64 /usr/local/bin/muscle \
+    && rm muscle${MUSCLE}_binaries.tar.gz
 
 # Install muscle5
 #RUN MUSCLE='5.1.0' \
@@ -285,9 +285,11 @@ RUN useradd magus -u 1000 -g users \
 # USER magus
 
 # Set commands
-CMD echo -e " Version information:\n"\
-            "  versions report\n"\
-            "Build stamps:\n"\
-            "  builds report\n"\
-            "Description of available pipelines:\n"\
-            "  pipelines report"
+CMD ["echo", \
+    "-e", \
+    " Version information:\n" \
+    "  versions report\n" \
+    "Build stamps:\n" \
+    "  builds report\n" \
+    "Description of available pipelines:\n" \
+    "  pipelines report"]
