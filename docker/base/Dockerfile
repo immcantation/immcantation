@@ -24,6 +24,7 @@ RUN dnf -y update && dnf install -y \
     atlas-devel \
     biber \
     findutils \
+    fontconfig-devel \
     git \
     glpk-devel \
     gmp-devel \
