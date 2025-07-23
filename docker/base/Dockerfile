@@ -90,6 +90,7 @@ ARG R_DEPS="c('BiocManager', \
               'Rcpp', \
               'rmarkdown', \
               'roxygen2', \
+              'stringr', \
               'testthat', \
               'V8', \
               'withr')"
