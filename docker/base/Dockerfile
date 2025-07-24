@@ -85,6 +85,7 @@ ARG R_DEPS="c('BiocManager', \
               'knitr', \
               'lifecycle', \
               'Matrix', \
+              'memoise', \
               'optparse', \
               'pkgbuild', \
               'R6', \
