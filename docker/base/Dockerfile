@@ -67,6 +67,7 @@ RUN dnf -y update && dnf install -y \
     redland-devel \    
     sudo \
     tar \
+    texlive-pdfcrop \
     texlive-titling \
     v8-devel \
     wget \
