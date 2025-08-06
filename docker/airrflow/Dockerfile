@@ -81,7 +81,6 @@ ENV PATH="${PATH}:/usr/local/share/igphyml/src"
 
 # Install enchantr
 RUN ENCHANTR_VER=$(versions get -n enchantr) \
-    && Rscript -e "install.packages('lifecycle')" \
     && Rscript -e "devtools::install_github('immcantation/enchantr', ref='${ENCHANTR_VER}', quiet=FALSE, clean=TRUE)"
 
 # Set commands

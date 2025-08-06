@@ -1,4 +1,4 @@
-FROM fedora:41
+FROM fedora:42
 LABEL maintainer="Jason Anthony Vander Heiden [jason.vanderheiden@yale.edu], \
                   Susanna Marquez [susanna.marquez@yale.edu]" \
       description="Standard environment and dependencies for the Immcantation framework."
@@ -24,6 +24,7 @@ RUN dnf -y update && dnf install -y \
     atlas-devel \
     biber \
     findutils \
+    fontconfig-devel \
     git \
     glpk-devel \
     gmp-devel \
@@ -58,6 +59,8 @@ RUN dnf -y update && dnf install -y \
     python3-scipy \
     R-core \
     R-core-devel \
+    R-devtools \
+    R-httpuv \
     R-png \    
     R-ragg \
     R-textshaping \
@@ -65,12 +68,10 @@ RUN dnf -y update && dnf install -y \
     sudo \
     tar \
     texlive-titling \
+    v8-devel \
     wget \
     wget2 \
     && dnf clean all
-
-# Docker Scout upgrades
-RUN pip install pyarrow --upgrade
 
 # System environment variables
 ENV LD_LIBRARY_PATH="/usr/lib64/R/lib:/usr/lib64/atlas"
@@ -79,15 +80,22 @@ RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 20
 # R build setup
 ARG R_REPO="https://cloud.r-project.org/"
 ARG R_DEPS="c('BiocManager', \
-              'devtools', \
+              'ggplot2', \
+              'httr', \
               'knitr', \
+              'lifecycle', \
               'Matrix', \
+              'memoise', \
               'optparse', \
               'pkgbuild', \
+              'R6', \
               'Rcpp', \
               'rmarkdown', \
               'roxygen2', \
-              'testthat')"
+              'stringr', \
+              'testthat', \
+              'V8', \
+              'withr')"
 ARG R_BIOC_DEPS="c('Biostrings', \
               'ComplexHeatmap', \
               'DECIPHER', \
@@ -98,7 +106,7 @@ ARG R_BIOC_DEPS="c('Biostrings', \
 RUN echo "options(repos='${R_REPO}')" >> /usr/lib64/R/library/base/R/Rprofile \
     && mkdir -p /usr/share/doc/R/html \
     && Rscript -e "install.packages(${R_DEPS}, clean=TRUE)" \
-    && Rscript -e "BiocManager::install(${R_BIOC_DEPS},update=F,ask=F)"
+    && Rscript -e "BiocManager::install(${R_BIOC_DEPS}, update=F, ask=F)"
 RUN touch /.Rprofile \
-    && touch /.Renviron
-
+    && touch /.Renviron \
+    && Rscript -e "cat(paste0('R_LIBS_SITE=\'',paste(.libPaths(),collapse=':'),'\''), sep='\n')" >> /.Renviron

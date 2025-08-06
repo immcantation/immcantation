@@ -57,9 +57,9 @@ or [scverse](https://scverse.org/)).
         paste("Running under:", sessionInfo()$running),
         sep = "\n")
 
-    ## R version 4.4.3 (2025-02-28)
+    ## R version 4.5.1 (2025-06-13)
     ## Platform: x86_64-redhat-linux-gnu
-    ## Running under: Fedora Linux 41 (Container Image)
+    ## Running under: Fedora Linux 42 (Container Image)
 
     # cat("\n")
 
@@ -71,7 +71,7 @@ or [scverse](https://scverse.org/)).
     }
 
     ## dplyr: 1.1.4
-    ## ggplot2: 3.5.1
+    ## ggplot2: 3.5.2
     ## Seurat: 5.2.1
 
     # set the data directory

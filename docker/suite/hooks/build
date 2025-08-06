@@ -1,3 +1,4 @@
 #!/bin/bash
+# https://docs.docker.com/docker-hub/repos/manage/builds/advanced
 
 docker build --build-arg BASE_TAG=${DOCKER_TAG} -f ${DOCKERFILE_PATH} -t ${IMAGE_NAME} . 

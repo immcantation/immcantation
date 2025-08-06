@@ -24,9 +24,9 @@ RUN PACKAGE="immcantation" \
 RUN MUSCLE=$(versions get -n muscle) \
     && wget2 -q --force-progress --no-check-certificate \
        http://www.drive5.com/muscle/muscle${MUSCLE}_binaries.tar.gz \
-	&& tar -zxf muscle${MUSCLE}_binaries.tar.gz muscle${MUSCLE}_i86linux64 \
-	&& mv muscle${MUSCLE}_i86linux64 /usr/local/bin/muscle \
-	&& rm muscle${MUSCLE}_binaries.tar.gz
+    && tar -zxf muscle${MUSCLE}_binaries.tar.gz muscle${MUSCLE}_i86linux64 \
+    && mv muscle${MUSCLE}_i86linux64 /usr/local/bin/muscle \
+    && rm muscle${MUSCLE}_binaries.tar.gz
 
 # Install muscle5
 #RUN MUSCLE='5.1.0' \
@@ -39,7 +39,7 @@ RUN MUSCLE=$(versions get -n muscle) \
 # Install vsearch
 RUN VSEARCH=$(versions get -n vsearch) \
     && wget2 -q --force-progress --no-check-certificate \
-       http://github.com/torognes/vsearch/releases/download/v${VSEARCH}/vsearch-${VSEARCH}-linux-x86_64.tar.gz \
+       https://github.com/torognes/vsearch/releases/download/v${VSEARCH}/vsearch-${VSEARCH}-linux-x86_64.tar.gz \
     && tar -zxf vsearch-${VSEARCH}-linux-x86_64.tar.gz \
     && mv vsearch-${VSEARCH}-linux-x86_64/bin/vsearch /usr/local/bin/vsearch \
     && ln -s /usr/local/bin/vsearch /usr/local/bin/usearch \
@@ -228,6 +228,7 @@ RUN IGPHYML=$(versions get -n igphyml) \
        https://github.com/immcantation/igphyml/archive/refs/tags/${IGPHYML}.tar.gz -O igphyml-${IGPHYML}.tar.gz \
     && mkdir -p /usr/local/share/igphyml \
     && tar -zxf igphyml-${IGPHYML}.tar.gz -C /usr/local/share/igphyml --strip-components 1 \
+    && sed -i 's/t_tree \*Make_Tree();/t_tree *Make_Tree(int n_otu);/' /usr/local/share/igphyml/src/utilities.h \
     && (cd /usr/local/share/igphyml && ./make_phyml_blas_omp) \
     && rm -r igphyml-${IGPHYML}.tar.gz
 
@@ -262,9 +263,15 @@ RUN fetch_imgtdb.sh -o /usr/local/share/germlines/imgt \
     && fetch_phix.sh -o /usr/local/share/phix
 
 # Patch IgBLAST database
-#RUN wget2 -q --force-progress --no-check-certificate \
-#    ftp://ftp.ncbi.nih.gov/blast/executables/igblast/release/patch/optional_file/mouse_gl.aux \
-#    && mv -f mouse_gl.aux /usr/local/share/igblast/optional_file
+ARG IGBLAST_PATCH_URL="https://ftp.ncbi.nih.gov/blast/executables/igblast/release/patch"
+RUN mkdir -p /tmp/igblast_patch && \
+    wget2 -q --force-progress --no-check-certificate --no-robots --cut-dirs=5 -np -nH -r -l 2 --reject "index.html" ${IGBLAST_PATCH_URL} -P /tmp/igblast_patch/ && \
+    if [ -d /tmp/igblast_patch/internal_data ]; then \
+      cp -r /tmp/igblast_patch/internal_data/* /usr/local/share/igblast/internal_data/; \
+    fi; \
+    if [ -d /tmp/igblast_patch/optional_file ]; then \
+      cp -r /tmp/igblast_patch/optional_file/* /usr/local/share/igblast/optional_file/; \
+    fi
 
 # Setup environment
 ENV PATH="${PATH}:/usr/local/share/igphyml/src"
@@ -278,9 +285,11 @@ RUN useradd magus -u 1000 -g users \
 # USER magus
 
 # Set commands
-CMD echo -e " Version information:\n"\
-            "  versions report\n"\
-            "Build stamps:\n"\
-            "  builds report\n"\
-            "Description of available pipelines:\n"\
-            "  pipelines report"
+CMD ["echo", \
+    "-e", \
+    " Version information:\n" \
+    "  versions report\n" \
+    "Build stamps:\n" \
+    "  builds report\n" \
+    "Description of available pipelines:\n" \
+    "  pipelines report"]

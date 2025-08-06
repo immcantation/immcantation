@@ -264,11 +264,11 @@ You may wish to subset your data to only productive sequences:
     ## # A tibble: 5 x 66
     ##   sequence_id                 sequence  rev_comp productive v_call d_call j_call
     ##   <chr>                       <chr>     <lgl>    <lgl>      <chr>  <chr>  <chr> 
-    ## 1 GATCAGTCACTAGTAC-1_contig_2 GAGCTACA~ FALSE    TRUE       IGKV4~ <NA>   IGKJ1~
-    ## 2 CGCTGGATCAGGCCCA-1_contig_2 TAGATGGG~ FALSE    TRUE       IGLV2~ <NA>   IGLJ1~
-    ## 3 TTGAACGGTCAACATC-1_contig_1 AGAGCTCT~ FALSE    TRUE       IGKV3~ <NA>   IGKJ4~
-    ## 4 CCACCTACACATGACT-1_contig_1 GCTCTGCT~ FALSE    TRUE       IGLV1~ <NA>   IGLJ2~
-    ## 5 CGGAGTCTCACTCCTG-1_contig_2 TGAGCGCA~ FALSE    TRUE       IGLV1~ <NA>   IGLJ2~
+    ## 1 TAGTTGGCATTATCTC-1_contig_1 GGGATCAC~ FALSE    TRUE       IGHV1~ IGHD5~ IGHJ4~
+    ## 2 CATGACAGTCGAACAG-1_contig_2 TGAGCGCA~ FALSE    TRUE       IGLV1~ <NA>   IGLJ1~
+    ## 3 CTCGTCACAATAACGA-1_contig_1 GGGGGAGA~ FALSE    TRUE       IGKV3~ <NA>   IGKJ1~
+    ## 4 GCTGCGAGTGTGTGCC-1_contig_2 AGAGCTCT~ FALSE    TRUE       IGKV3~ <NA>   IGKJ2~
+    ## 5 CACAAACGTGCCTGGT-1_contig_2 TGGGGATG~ FALSE    TRUE       IGHV4~ IGHD3~ IGHJ3~
     ## # i 59 more variables: sequence_alignment <chr>, germline_alignment <chr>,
     ## #   junction <chr>, junction_aa <chr>, v_cigar <chr>, d_cigar <chr>,
     ## #   j_cigar <chr>, vj_in_frame <lgl>, stop_codon <lgl>, v_sequence_start <int>,
@@ -616,6 +616,8 @@ To estimate the clonal abundance, we will select only the heavy chains:
     abund <- estimateAbundance(dplyr::filter(results, locus == "IGH"),
                                group = "sample_id", nboot = 100)
 
+    ## Adding missing grouping variables: `subject_id`
+
     abund_plot <- plot(abund, silent=T)
     abund_plot
 
@@ -632,6 +634,8 @@ don’t see the much higher peak at 1 that we would normally expect.
     # get clone sizes using dplyr functions
     clone_sizes <- countClones(dplyr::filter(results, locus == "IGH"),
                                groups = "sample_id")
+
+    ## Adding missing grouping variables: `subject_id`
 
     # plot cells per clone
     ggplot(clone_sizes, aes(x = seq_count)) +
@@ -650,6 +654,8 @@ diversity, we will also select only the heavy chains:
     # calculate and plot the rank-abundance curve
     div <- alphaDiversity(dplyr::filter(results, locus == "IGH"),
                           group = "sample_id", nboot = 100)
+
+    ## Adding missing grouping variables: `subject_id`
 
     plot(div, silent = TRUE) + facet_wrap("sample_id", ncol = 3)
 
@@ -684,7 +690,7 @@ And passing `"human/vdj/"` to the `readIMGT` function.
     # read in IMGT files in the Docker container
     references <- readIMGT(dir = "/usr/local/share/germlines/imgt/human/vdj")
 
-    ## [1] "Read in 1197 from 17 fasta files"
+    ## [1] "Read in 1205 from 17 fasta files"
 
     # reconstruct germlines
     results <- createGermlines(results, references, fields = "subject_id",
@@ -803,6 +809,10 @@ light chain information, we will need to assign `clone_subgroups` using
 dowser’s function `resolveLightChains`. This group cells within a clone
 based on the light chain V and J gene and assign a subgroup to each
 sequence. Then, in the `formatClones` step, specify `chain="HL"`.
+
+    ## Warning in formatClones(comb, chain = "HL", traits = c("day",
+    ## "gex_annotation"), : 2 sequence(s) with an inframe stop codon were removed. If
+    ## you want to keep these sequences use the option filterstop=FALSE.
 
     ## # A tibble: 6 x 4
     ##   clone_id data       locus    seqs
@@ -943,6 +953,9 @@ Plot the largest tree:
     # save a pdf of all trees
     dir.create("results/dowser_tutorial/", recursive = TRUE)
 
+    ## Warning in dir.create("results/dowser_tutorial/", recursive = TRUE):
+    ## 'results/dowser_tutorial' already exists
+
     treesToPDF(plots_all,
                file = file.path("results", "dowser_tutorial","final_data_trees.pdf"),
                nrow = 2, ncol = 2
@@ -1023,16 +1036,16 @@ timepoints are more diverged from the germline:
     ## # A tibble: 35 x 4
     ##    clone_id  slope correlation      p
     ##    <chr>     <dbl>       <dbl>  <dbl>
-    ##  1 570      0.0453       0.711 0.0729
-    ##  2 699      0.120        0.877 0.160 
-    ##  3 513      0.277        0.827 0.221 
-    ##  4 209      0.0630       0.468 0.230 
-    ##  5 573      0.0830       0.329 0.241 
-    ##  6 1122     0.708        0.578 0.242 
-    ##  7 1118     0.488        0.444 0.245 
-    ##  8 196      0.307        0.770 0.258 
-    ##  9 183      0.169        0.300 0.286 
-    ## 10 363      2.57         0.833 0.334 
+    ##  1 570      0.0453       0.711 0.0829
+    ##  2 196      0.305        0.769 0.105 
+    ##  3 699      0.120        0.877 0.172 
+    ##  4 513      0.277        0.827 0.182 
+    ##  5 209      0.0630       0.468 0.224 
+    ##  6 1118     0.488        0.444 0.231 
+    ##  7 573      0.0831       0.329 0.233 
+    ##  8 1122     0.708        0.578 0.267 
+    ##  9 183      0.169        0.300 0.280 
+    ## 10 460      0.0460       0.132 0.325 
     ## # i 25 more rows
 
     print(plots_time[[1]])
@@ -1066,3 +1079,15 @@ vignette](https://dowser.readthedocs.io/en/latest/vignettes/Measurable-Evolution
 
 For more advanced tree **visualization**, check out the [plotting trees
 vignette](https://dowser.readthedocs.io/en/latest/vignettes/Plotting-Trees-Vignette/).
+
+## Run a start-to-finish Immcantation workflow
+
+The most common BCR and TCR repertoire analysis steps are implemented in
+the nf-core/airrflow workflow. This workflow is particularly useful for
+analyzing a large amount of samples in parallel. To know more about the
+workflow, check out the [nf-core/airrflow
+documentation](https://nf-co.re/airrflow). The documentation includes a
+[single-cell
+tutorial](https://nf-co.re/airrflow/usage/single_cell_tutorial) that
+guides you through the steps of running the workflow for single-cell
+datasets.

@@ -33,17 +33,17 @@ Use this command to list the software versions:
 
     versions report
 
-    ## immcantation: 4.6.0
-    ## date: 2025.04.01
+    ## immcantation: devel
+    ## date: 2025.05.14
     ## 
-    ## presto: 0.7.4
-    ## changeo: 1.3.1
-    ## alakazam: 1.3.0
-    ## shazam: 1.2.0
-    ## tigger: 1.1.0
-    ## scoper: 1.3.0
-    ## dowser: 2.3
-    ## enchantr: 0.1.13
+    ## presto: 0.7.5dev
+    ## changeo: 1.3.4dev
+    ## alakazam: 1.3.1.999
+    ## shazam: 1.2.1.999
+    ## tigger: 1.1.1.999
+    ## scoper: 1.3.1.999
+    ## dowser: 2.3.2.999
+    ## enchantr: 0.1.21
     ## prestor: 0.0.7
     ## piglet: 1.0.1
     ## rabhit: 0.2.5
@@ -68,17 +68,17 @@ build:
 
     builds report
 
-    ## date: 2025-04-02 17:49:57 UTC
-    ## immcantation: 4.4.0-371-g6c5ad0b63335+
-    ## presto: 0.7.2-43-g9648f3fc2376
-    ## changeo: 1.3.0-46-ga6ac70eaac44
-    ## alakazam: 1.2.0-80-g15495eff377c+
-    ## shazam: 1.1.2-58-gf6c14c4d9f2c+
-    ## tigger: b0ad8b4f4fb9+
-    ## rdi: fe12005bd3c4+
-    ## scoper: 1.2.0-65-gd3ee771d2b28+
-    ## dowser: 2.0.0-57-gefb17e1a1340
-    ## prestor: 0.0.8+
+    ## date: 2025-07-18 09:04:36 UTC
+    ## immcantation: 4.4.0-424-g9d08fdad4da7+
+    ## presto: 0.7.2-54-g76d83905fc5f
+    ## changeo: 1.3.0-93-g4dcb92ca0e01
+    ## alakazam: 1.2.0-216-ga7d141a142d3
+    ## shazam: 1.1.2-109-g0e29609ca144+
+    ## tigger: 659cadd0b3a7
+    ## rdi: d27b9067cab6+
+    ## scoper: 1.2.0-104-gcd25986ae4b8
+    ## dowser: 2.0.0-133-gf241a4936000
+    ## prestor: 0.0.8-4-gb9d9b80ff752+
 
 ### Example data used in the tutorial
 
@@ -168,9 +168,9 @@ the V(D)J genes with `AssignGenes.py`.
     ##      FIELD> None
     ##     VALUES> None
     ## 
-    ## PROGRESS> 15:00:11 |Reading files            | 0.0 minPROGRESS> 15:00:11 |Done                     | 0.0 min
+    ## PROGRESS> 12:51:04 |Reading files            | 0.0 minPROGRESS> 12:51:04 |Done                     | 0.0 min
     ## 
-    ## PROGRESS> 15:00:11 |Sampling n=200           | 0.0 minPROGRESS> 15:00:11 |Done                     | 0.0 min
+    ## PROGRESS> 12:51:04 |Sampling n=200           | 0.0 minPROGRESS> 12:51:04 |Done                     | 0.0 min
     ## 
     ## MAX_COUNT> 200
     ##   SAMPLED> 200
@@ -196,8 +196,6 @@ the V(D)J genes with `AssignGenes.py`.
     -b /usr/local/share/igblast_test_tigger --organism human --loci ig \
     --format blast --outdir results/igblast --nproc 8
 
-    ## /usr/local/bin/AssignGenes.py:14: DeprecationWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html
-    ##   from pkg_resources import parse_version
     ##    START> AssignGenes
     ##  COMMAND> igblast
     ##  VERSION> 1.22.0
@@ -206,7 +204,7 @@ the V(D)J genes with `AssignGenes.py`.
     ##     LOCI> ig
     ##    NPROC> 8
     ## 
-    ## PROGRESS> 15:00:13 |Running IgBLAST          | 0.0 minPROGRESS> 15:00:16 |Done                     | 0.0 min
+    ## PROGRESS> 12:51:05 |Running IgBLAST          | 0.0 minPROGRESS> 12:51:08 |Done                     | 0.0 min
     ## 
     ##   PASS> 200
     ## OUTPUT> input_sample1-n200_igblast.fmt7
@@ -222,8 +220,6 @@ time to finish running.*
     -b /usr/local/share/igblast_test_tigger --organism human --loci ig \
     --format blast --outdir results/igblast --nproc 8
 
-    ## /usr/local/bin/AssignGenes.py:14: DeprecationWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html
-    ##   from pkg_resources import parse_version
     ##    START> AssignGenes
     ##  COMMAND> igblast
     ##  VERSION> 1.22.0
@@ -232,7 +228,7 @@ time to finish running.*
     ##     LOCI> ig
     ##    NPROC> 8
     ## 
-    ## PROGRESS> 15:00:17 |Running IgBLAST          | 0.0 minPROGRESS> 15:12:41 |Done                     | 12.4 min
+    ## PROGRESS> 12:51:09 |Running IgBLAST          | 0.0 minPROGRESS> 13:06:38 |Done                     | 15.5 min
     ## 
     ##   PASS> 91010
     ## OUTPUT> input_igblast.fmt7
@@ -280,9 +276,9 @@ AIRR format. The path to the reference germlines is provided by `-r`.
     ##       EXTENDED> False
     ## INFER_JUNCTION> False
     ## 
-    ## PROGRESS> 15:12:41 |Loading files       | 0.0 minPROGRESS> 15:12:42 |Done                | 0.0 min
+    ## PROGRESS> 13:06:39 |Loading files       | 0.0 minPROGRESS> 13:06:39 |Done                | 0.0 min
     ## 
-    ## PROGRESS> 15:12:42 |                    |   0% (     0) 0.0 minPROGRESS> 15:12:44 |#                   |   5% ( 4,551) 0.0 minPROGRESS> 15:12:46 |##                  |  10% ( 9,102) 0.1 minPROGRESS> 15:12:48 |###                 |  15% (13,653) 0.1 minPROGRESS> 15:12:49 |####                |  20% (18,204) 0.1 minPROGRESS> 15:12:51 |#####               |  25% (22,755) 0.1 minPROGRESS> 15:12:53 |######              |  30% (27,306) 0.2 minPROGRESS> 15:12:55 |#######             |  35% (31,857) 0.2 minPROGRESS> 15:12:56 |########            |  40% (36,408) 0.2 minPROGRESS> 15:12:58 |#########           |  45% (40,959) 0.3 minPROGRESS> 15:13:00 |##########          |  50% (45,510) 0.3 minPROGRESS> 15:13:01 |###########         |  55% (50,061) 0.3 minPROGRESS> 15:13:03 |############        |  60% (54,612) 0.3 minPROGRESS> 15:13:05 |#############       |  65% (59,163) 0.4 minPROGRESS> 15:13:06 |##############      |  70% (63,714) 0.4 minPROGRESS> 15:13:08 |###############     |  75% (68,265) 0.4 minPROGRESS> 15:13:10 |################    |  80% (72,816) 0.5 minPROGRESS> 15:13:11 |#################   |  85% (77,367) 0.5 minPROGRESS> 15:13:13 |##################  |  90% (81,918) 0.5 minPROGRESS> 15:13:15 |################### |  95% (86,469) 0.5 minPROGRESS> 15:13:17 |####################| 100% (91,010) 0.6 min
+    ## PROGRESS> 13:06:39 |                    |   0% (     0) 0.0 minPROGRESS> 13:06:41 |#                   |   5% ( 4,551) 0.0 minPROGRESS> 13:06:43 |##                  |  10% ( 9,102) 0.1 minPROGRESS> 13:06:45 |###                 |  15% (13,653) 0.1 minPROGRESS> 13:06:46 |####                |  20% (18,204) 0.1 minPROGRESS> 13:06:48 |#####               |  25% (22,755) 0.1 minPROGRESS> 13:06:49 |######              |  30% (27,306) 0.2 minPROGRESS> 13:06:51 |#######             |  35% (31,857) 0.2 minPROGRESS> 13:06:53 |########            |  40% (36,408) 0.2 minPROGRESS> 13:06:54 |#########           |  45% (40,959) 0.2 minPROGRESS> 13:06:56 |##########          |  50% (45,510) 0.3 minPROGRESS> 13:06:58 |###########         |  55% (50,061) 0.3 minPROGRESS> 13:06:59 |############        |  60% (54,612) 0.3 minPROGRESS> 13:07:01 |#############       |  65% (59,163) 0.4 minPROGRESS> 13:07:02 |##############      |  70% (63,714) 0.4 minPROGRESS> 13:07:04 |###############     |  75% (68,265) 0.4 minPROGRESS> 13:07:06 |################    |  80% (72,816) 0.4 minPROGRESS> 13:07:07 |#################   |  85% (77,367) 0.5 minPROGRESS> 13:07:09 |##################  |  90% (81,918) 0.5 minPROGRESS> 13:07:11 |################### |  95% (86,469) 0.5 minPROGRESS> 13:07:12 |####################| 100% (91,010) 0.5 min
     ## 
     ## OUTPUT> data_db-pass.tsv
     ##   PASS> 87639
@@ -311,7 +307,7 @@ output file (specified by `--outname`).
     ##  VALUES> T
     ##   REGEX> False
     ## 
-    ## PROGRESS> 15:13:17 |                    |   0% (     0) 0.0 minPROGRESS> 15:13:18 |#                   |   5% ( 4,382) 0.0 minPROGRESS> 15:13:18 |##                  |  10% ( 8,764) 0.0 minPROGRESS> 15:13:18 |###                 |  15% (13,146) 0.0 minPROGRESS> 15:13:18 |####                |  20% (17,528) 0.0 minPROGRESS> 15:13:18 |#####               |  25% (21,910) 0.0 minPROGRESS> 15:13:18 |######              |  30% (26,292) 0.0 minPROGRESS> 15:13:18 |#######             |  35% (30,674) 0.0 minPROGRESS> 15:13:18 |########            |  40% (35,056) 0.0 minPROGRESS> 15:13:18 |#########           |  45% (39,438) 0.0 minPROGRESS> 15:13:18 |##########          |  50% (43,820) 0.0 minPROGRESS> 15:13:19 |###########         |  55% (48,202) 0.0 minPROGRESS> 15:13:19 |############        |  60% (52,584) 0.0 minPROGRESS> 15:13:19 |#############       |  65% (56,966) 0.0 minPROGRESS> 15:13:19 |##############      |  70% (61,348) 0.0 minPROGRESS> 15:13:19 |###############     |  75% (65,730) 0.0 minPROGRESS> 15:13:19 |################    |  80% (70,112) 0.0 minPROGRESS> 15:13:19 |#################   |  85% (74,494) 0.0 minPROGRESS> 15:13:19 |##################  |  90% (78,876) 0.0 minPROGRESS> 15:13:19 |################### |  95% (83,258) 0.0 minPROGRESS> 15:13:19 |####################| 100% (87,639) 0.0 min
+    ## PROGRESS> 13:07:13 |                    |   0% (     0) 0.0 minPROGRESS> 13:07:13 |#                   |   5% ( 4,382) 0.0 minPROGRESS> 13:07:13 |##                  |  10% ( 8,764) 0.0 minPROGRESS> 13:07:13 |###                 |  15% (13,146) 0.0 minPROGRESS> 13:07:14 |####                |  20% (17,528) 0.0 minPROGRESS> 13:07:14 |#####               |  25% (21,910) 0.0 minPROGRESS> 13:07:14 |######              |  30% (26,292) 0.0 minPROGRESS> 13:07:14 |#######             |  35% (30,674) 0.0 minPROGRESS> 13:07:14 |########            |  40% (35,056) 0.0 minPROGRESS> 13:07:14 |#########           |  45% (39,438) 0.0 minPROGRESS> 13:07:14 |##########          |  50% (43,820) 0.0 minPROGRESS> 13:07:14 |###########         |  55% (48,202) 0.0 minPROGRESS> 13:07:14 |############        |  60% (52,584) 0.0 minPROGRESS> 13:07:14 |#############       |  65% (56,966) 0.0 minPROGRESS> 13:07:14 |##############      |  70% (61,348) 0.0 minPROGRESS> 13:07:15 |###############     |  75% (65,730) 0.0 minPROGRESS> 13:07:15 |################    |  80% (70,112) 0.0 minPROGRESS> 13:07:15 |#################   |  85% (74,494) 0.0 minPROGRESS> 13:07:15 |##################  |  90% (78,876) 0.0 minPROGRESS> 13:07:15 |################### |  95% (83,258) 0.0 minPROGRESS> 13:07:15 |####################| 100% (87,639) 0.0 min
     ## 
     ##    OUTPUT> data_p_parse-select.tsv
     ##   RECORDS> 87639
@@ -339,7 +335,7 @@ data.
     ##  VALUES> IGHV
     ##   REGEX> True
     ## 
-    ## PROGRESS> 15:13:20 |                    |   0% (     0) 0.0 minPROGRESS> 15:13:20 |#                   |   5% ( 3,243) 0.0 minPROGRESS> 15:13:20 |##                  |  10% ( 6,486) 0.0 minPROGRESS> 15:13:20 |###                 |  15% ( 9,729) 0.0 minPROGRESS> 15:13:20 |####                |  20% (12,972) 0.0 minPROGRESS> 15:13:21 |#####               |  25% (16,215) 0.0 minPROGRESS> 15:13:21 |######              |  30% (19,458) 0.0 minPROGRESS> 15:13:21 |#######             |  35% (22,701) 0.0 minPROGRESS> 15:13:21 |########            |  40% (25,944) 0.0 minPROGRESS> 15:13:21 |#########           |  45% (29,187) 0.0 minPROGRESS> 15:13:21 |##########          |  50% (32,430) 0.0 minPROGRESS> 15:13:21 |###########         |  55% (35,673) 0.0 minPROGRESS> 15:13:21 |############        |  60% (38,916) 0.0 minPROGRESS> 15:13:21 |#############       |  65% (42,159) 0.0 minPROGRESS> 15:13:21 |##############      |  70% (45,402) 0.0 minPROGRESS> 15:13:21 |###############     |  75% (48,645) 0.0 minPROGRESS> 15:13:22 |################    |  80% (51,888) 0.0 minPROGRESS> 15:13:22 |#################   |  85% (55,131) 0.0 minPROGRESS> 15:13:22 |##################  |  90% (58,374) 0.0 minPROGRESS> 15:13:22 |################### |  95% (61,617) 0.0 minPROGRESS> 15:13:22 |####################| 100% (64,855) 0.0 min
+    ## PROGRESS> 13:07:16 |                    |   0% (     0) 0.0 minPROGRESS> 13:07:16 |#                   |   5% ( 3,243) 0.0 minPROGRESS> 13:07:16 |##                  |  10% ( 6,486) 0.0 minPROGRESS> 13:07:16 |###                 |  15% ( 9,729) 0.0 minPROGRESS> 13:07:16 |####                |  20% (12,972) 0.0 minPROGRESS> 13:07:16 |#####               |  25% (16,215) 0.0 minPROGRESS> 13:07:16 |######              |  30% (19,458) 0.0 minPROGRESS> 13:07:16 |#######             |  35% (22,701) 0.0 minPROGRESS> 13:07:16 |########            |  40% (25,944) 0.0 minPROGRESS> 13:07:17 |#########           |  45% (29,187) 0.0 minPROGRESS> 13:07:17 |##########          |  50% (32,430) 0.0 minPROGRESS> 13:07:17 |###########         |  55% (35,673) 0.0 minPROGRESS> 13:07:17 |############        |  60% (38,916) 0.0 minPROGRESS> 13:07:17 |#############       |  65% (42,159) 0.0 minPROGRESS> 13:07:17 |##############      |  70% (45,402) 0.0 minPROGRESS> 13:07:17 |###############     |  75% (48,645) 0.0 minPROGRESS> 13:07:17 |################    |  80% (51,888) 0.0 minPROGRESS> 13:07:17 |#################   |  85% (55,131) 0.0 minPROGRESS> 13:07:17 |##################  |  90% (58,374) 0.0 minPROGRESS> 13:07:17 |################### |  95% (61,617) 0.0 minPROGRESS> 13:07:17 |####################| 100% (64,855) 0.0 min
     ## 
     ##    OUTPUT> data_ph_parse-select.tsv
     ##   RECORDS> 64855
@@ -546,11 +542,11 @@ for use in the following steps.
       select(v_call, v_call_genotyped)
 
     ## # A tibble: 3 x 2
-    ##   v_call                      v_call_genotyped
-    ##   <chr>                       <chr>           
-    ## 1 IGHV2-70*04,IGHV2-70D*04    IGHV2-70*15     
-    ## 2 IGHV4-30-2*07,IGHV4-30-4*01 IGHV4-30-2*07   
-    ## 3 IGHV3-30*18,IGHV3-30-5*01   IGHV3-30*18
+    ##   v_call                               v_call_genotyped        
+    ##   <chr>                                <chr>                   
+    ## 1 IGHV3-23*01,IGHV3-23*02,IGHV3-23D*01 IGHV3-23*01,IGHV3-23D*01
+    ## 2 IGHV4-34*02                          IGHV4-34*01             
+    ## 3 IGHV3-66*04                          IGHV3-66*01
 
     write_rearrangement(db, file.path("results", "tigger", "data_ph_genotyped.tsv"))
 
@@ -719,7 +715,7 @@ And passing `"human/vdj/"` to the `readIMGT` function.
     # read in IMGT files in the Docker container
     references <- dowser::readIMGT(dir = "/usr/local/share/germlines/imgt/human/vdj")
 
-    ## [1] "Read in 1197 from 17 fasta files"
+    ## [1] "Read in 1205 from 17 fasta files"
 
     # reconstruct germlines
     results@db <- dowser::createGermlines(results@db, references, nproc = 1)
@@ -963,9 +959,6 @@ positive selection strength than sequences annotated with IGHG and IGHA.
     # Plot probability densities for the selection pressure
     plot(g, "isotype", sigmaLimits = c(-1, 1), silent = F)
 
-    ## Warning: No shared levels found between `names(values)` of the manual scale and the
-    ## data's size values.
-
 ![](intro-lab_files/intro-lab_clonal-consensus-1.png)
 
 ## SHazaM: Built in mutation models
@@ -1004,3 +997,13 @@ Sequence Region Definitions
 -   NULL: Full sequence
 -   IMGT\_V: V segment broken into combined CDRs and FWRs
 -   IMGT\_V\_BY\_REGIONS: V segment broken into individual CDRs and FWRs
+
+## Run a start-to-finish Immcantation workflow
+
+The most common BCR and TCR repertoire analysis steps are implemented in
+the nf-core/airrflow workflow. This workflow is particularly useful for
+analyzing a large amount of samples in parallel. To know more about the
+workflow, check out the [nf-core/airrflow
+documentation](https://nf-co.re/airrflow). The documentation includes a
+[bulk tutorial](https://nf-co.re/airrflow/usage/bulk_tutorial) that
+guides you through the steps of running the workflow for bulk datasets.
