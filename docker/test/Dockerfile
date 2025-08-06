@@ -17,6 +17,7 @@ ARG R_DEPS="c('ape', \
               'diptest', \
               'doParallel', \
               'dplyr', \
+              'fastcluster', \
               'foreach', \
               'ggplot2', \
               'gridExtra', \
