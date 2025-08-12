@@ -1,12 +1,12 @@
-.PHONY: presto changeo stop
+.PHONY: presto changeo pipelines stop
 
 # Convenience commands to test Immcantation release
 
 IMMCANTATION_HOME=`realpath ..`
-IMMCANTATION_IMAGE=immcantation/suite:4.6.0
+IMMCANTATION_IMAGE=immcantation/suite:devel
 
 #------------
-all: presto changeo
+all: clean presto changeo pipelines
 
 clean:
 	rm -rf run/*
@@ -20,7 +20,8 @@ presto:
 	-v $(IMMCANTATION_HOME)/tests:/data:z \
 	--workdir /data \
 	--rm $(IMMCANTATION_IMAGE) /bin/bash -c "\
-	dnf install -y bats && ./test_presto.sh"
+	dnf install -y bats \
+	&& ./test_presto.sh"
 
 #------------
 # test_changeo-airr.sh
@@ -34,7 +35,12 @@ changeo:
 	--rm $(IMMCANTATION_IMAGE) /bin/bash -c "\
 	dnf install -y bats && ./test_changeo-airr.sh"
 
+#------------
+# test docker container and pipelines
+#------------
+pipelines:
+	IMAGE="$(IMMCANTATION_IMAGE)" bats test_pipelines.sh
 
-# stop the immcantation-rstudio container
+# stop the prerelease-tests container
 stop:
 	docker ps | grep prerelease-tests | awk '{print $$NF}'| xargs docker stop
