@@ -225,6 +225,11 @@ Core Packages
 Contributed Packages
 -----------------------------------------------------------------------------------------
 
+Contributed packages in the Immcantation ecosystem are immunoinformatics software packages 
+developed, shared, and maintained by the community. These packages integrate with the 
+Immcantation data standards and workflows and complement Immcantation by providing 
+specialized functionality for AIRR analysis.
+
 **Click on the images below for more details.**
 
 .. list-table::
