@@ -15,7 +15,6 @@ ENV RS_USER=$RS_USER
 USER magus
 
 RUN Rscript -e "dir.create(path = Sys.getenv('R_LIBS_USER'), showWarnings = FALSE, recursive = TRUE)"
-RUN Rscript -e "devtools::install_github('rstudio/bookdown')"
 
 ###### RStudio #######
 USER root
@@ -30,8 +29,9 @@ RUN dnf install -y \
             procps \
             pwgen \
             R-rstudioapi
-RUN wget https://download2.rstudio.org/server/rhel9/x86_64/rstudio-server-rhel-2024.12.1-563-x86_64.rpm \
-    && dnf install -y rstudio-server-rhel-2024.12.1-563-x86_64.rpm
+RUN wget https://download2.rstudio.org/server/rhel9/x86_64/rstudio-server-rhel-2025.05.1-513-x86_64.rpm \
+    && dnf install -y rstudio-server-rhel-2025.05.1-513-x86_64.rpm \
+    && rm rstudio-server-rhel-2025.05.1-513-x86_64.rpm
 ARG R_REPO="https://cloud.r-project.org/"
 ARG R_DEPS="c('readxl', \
               'shiny', \
@@ -83,8 +83,8 @@ RUN cp -r /usr/local/share/germlines/imgt /usr/local/share/germlines/imgt_test_t
     sed -i -e '/IGHV3-20\*04/{N;d;}' /usr/local/share/germlines/imgt_test_tigger/human/vdj/imgt_human_IGHV.fasta && \
     imgt2igblast.sh -i /usr/local/share/germlines/imgt_test_tigger -o /usr/local/share/igblast_test_tigger
 
-ENV HOME /home/${RS_USER}
-ENV NB_USER ${RS_USER}
+ENV HOME=/home/${RS_USER}
+ENV NB_USER=${RS_USER}
  
 RUN mkdir ${HOME}/notebooks && \
     mkdir ${HOME}/data && \
