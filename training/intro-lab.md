@@ -506,7 +506,7 @@ genotypes (`inferGenotypeBayesian`).
     gtseq <- genotypeFasta(gt, ighv, nv)
     writeFasta(gtseq, file.path("results", "tigger", "v_genotype.fasta"))
 
-    gt %>% arrange(total) %>% slice(1:3) # show the first 3 rows
+    gt %>% arrange(total) %>% dplyr::slice(1:3) # show the first 3 rows
 
     ##       gene alleles counts total note
     ## 1  IGHV2-5   02,01  58,48   109     

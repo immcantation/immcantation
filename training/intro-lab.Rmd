@@ -248,7 +248,7 @@ gt <- inferGenotype(db, germline_db = ighv, novel = nv)
 gtseq <- genotypeFasta(gt, ighv, nv)
 writeFasta(gtseq, file.path("results", "tigger", "v_genotype.fasta"))
 
-gt %>% arrange(total) %>% slice(1:3) # show the first 3 rows
+gt %>% arrange(total) %>% dplyr::slice(1:3) # show the first 3 rows
 ```
 
 The individual's genotype can be visualized with `plotGenotype`. Each row is a gene, with colored cells indicating each of the alleles for that gene that are included in the inferred genotype.
