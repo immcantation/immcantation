@@ -132,6 +132,10 @@ repertoire sequencing data.
 Core Packages
 -----------------------------------------------------------------------------------------
 
+Core packages are the software tools developed and maintained by the Immcantation team. 
+These packages provide essential functionality for processing, analyzing, and visualizing 
+AIRR-seq data.
+
 **Click on the images below for more details.**
 
 .. list-table::
