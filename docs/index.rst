@@ -156,6 +156,10 @@ AIRR-seq data.
         + V(D)J gene usage
         + Physicochemical property analysis
 
+        .. raw:: html
+
+           <div style="text-align: right;"><a href="https://medicine.yale.edu/lab/kleinstein/">Kleinstein Lab</a></div>
+
     * - |changeo-img|
       - .. image:: https://img.shields.io/pypi/dm/changeo
             :target: https://pypi.org/project/changeo
@@ -165,6 +169,10 @@ AIRR-seq data.
         **Change-O**
 
         + V(D)J alignment with IgBLAST and IMGT
+
+        .. raw:: html
+
+           <div style="text-align: right;"><a href="https://medicine.yale.edu/lab/kleinstein/">Kleinstein Lab</a></div>
 
     * - |dowser-img|
       - .. image:: https://cranlogs.r-pkg.org/badges/dowser
@@ -178,6 +186,9 @@ AIRR-seq data.
         + Migration and differentiation analysis
         + Detect ongoing evolution over time
 
+        .. raw:: html
+
+           <div style="text-align: right;"><a href="https://sites.dartmouth.edu/hoehn/">Hoehn lab</a></div>
 
     * - |presto-img|
       - .. image:: https://img.shields.io/pypi/dm/presto
@@ -191,6 +202,10 @@ AIRR-seq data.
         + Read assembly and QC
         + UMI processing
 
+        .. raw:: html
+
+           <div style="text-align: right;"><a href="https://medicine.yale.edu/lab/kleinstein/">Kleinstein Lab</a></div>
+
     * - |scoper-img|
       - .. image:: https://cranlogs.r-pkg.org/badges/scoper
             :target: https://www.r-pkg.org/pkg/scoper
@@ -200,6 +215,10 @@ AIRR-seq data.
         **SCOPer**
 
         + Identify clonal relationships
+
+        .. raw:: html
+
+           <div style="text-align: right;"><a href="https://medicine.yale.edu/lab/kleinstein/">Kleinstein Lab</a></div>
 
     * - |shazam-img|
       - .. image:: https://cranlogs.r-pkg.org/badges/shazam
@@ -214,6 +233,10 @@ AIRR-seq data.
         + Selection pressure quantification
         + Empirical SHM models
 
+        .. raw:: html
+
+           <div style="text-align: right;"><a href="https://medicine.yale.edu/lab/kleinstein/">Kleinstein Lab</a></div>
+
     * - |tigger-img|
       - .. image:: https://cranlogs.r-pkg.org/badges/tigger
             :target: https://www.r-pkg.org/pkg/tigger
@@ -225,6 +248,9 @@ AIRR-seq data.
         + Novel polymorphism detection
         + Genotyping
 
+        .. raw:: html
+
+           <div style="text-align: right;"><a href="https://medicine.yale.edu/lab/kleinstein/">Kleinstein Lab</a></div>
 
 Contributed Packages
 -----------------------------------------------------------------------------------------
@@ -247,26 +273,46 @@ specialized functionality for AIRR analysis.
         + Mutation/selection hypothesis testing
         + Best used via `Dowser`_ package
 
+        .. raw:: html
+
+           <div style="text-align: right;"><a href="https://sites.dartmouth.edu/hoehn/">Hoehn Lab</a></div>
+
     * - |rabhit-img|
       - **RAbHIT**
 
         + Determination of V-D-J haplotypes
+
+        .. raw:: html
+
+           <div style="text-align: right;"><a href="https://medicine.yale.edu/profile/gur-yaari/">Yaari Lab</a></div>
 
     * - |piglet-img|
       - **PIgLET**
 
         + Tools to improve genotype inference      
 
+        .. raw:: html
+
+           <div style="text-align: right;"><a href="https://medicine.yale.edu/profile/gur-yaari/">Yaari Lab</a></div>
+
     * - |rdi-img|
       - **RDI**
 
         + Repertoire Dissimilarity Index
+
+        .. raw:: html
+
+           <div style="text-align: right;"><a href="https://medicine.yale.edu/lab/kleinstein/">Kleinstein Lab</a></div>
 
     * - |sumrep-img|
       - **sumrep**
 
         + Generate repertoire summary statistics.
         + Visualize and comparing repertoire summaries.
+
+        .. raw:: html
+
+           <div style="text-align: right;"><a href="https://matsen.fhcrc.org/">Matsen Group</a></div>
 
 .. Image substitutions
 
@@ -366,6 +412,10 @@ specialized functionality for AIRR analysis.
 .. _prestoR: packages/prestor.html
 .. _RAbHIT: https://yaarilab.bitbucket.io/RAbHIT/
 .. _RDI: https://rdi.readthedocs.io
+.. _SCOPer: https://scoper.readthedocs.io
+.. _SHazaM: https://shazam.readthedocs.io
+.. _sumrep: https://github.com/matsengrp/sumrep
+.. _TIgGER: https://tigger.readthedocs.io
 .. _SCOPer: https://scoper.readthedocs.io
 .. _SHazaM: https://shazam.readthedocs.io
 .. _sumrep: https://github.com/matsengrp/sumrep
