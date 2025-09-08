@@ -132,6 +132,10 @@ repertoire sequencing data.
 Core Packages
 -----------------------------------------------------------------------------------------
 
+Core packages are the software tools maintained by the Immcantation team. 
+These packages provide essential functionality for processing, analyzing, and visualizing 
+AIRR-seq data.
+
 **Click on the images below for more details.**
 
 .. list-table::
@@ -152,6 +156,10 @@ Core Packages
         + V(D)J gene usage
         + Physicochemical property analysis
 
+        .. raw:: html
+
+           <div style="text-align: right;"><a href="https://medicine.yale.edu/lab/kleinstein/">Kleinstein Lab</a></div>
+
     * - |changeo-img|
       - .. image:: https://img.shields.io/pypi/dm/changeo
             :target: https://pypi.org/project/changeo
@@ -161,6 +169,10 @@ Core Packages
         **Change-O**
 
         + V(D)J alignment with IgBLAST and IMGT
+
+        .. raw:: html
+
+           <div style="text-align: right;"><a href="https://medicine.yale.edu/lab/kleinstein/">Kleinstein Lab</a></div>
 
     * - |dowser-img|
       - .. image:: https://cranlogs.r-pkg.org/badges/dowser
@@ -174,6 +186,9 @@ Core Packages
         + Migration and differentiation analysis
         + Detect ongoing evolution over time
 
+        .. raw:: html
+
+           <div style="text-align: right;"><a href="https://sites.dartmouth.edu/hoehn/">Hoehn lab</a></div>
 
     * - |presto-img|
       - .. image:: https://img.shields.io/pypi/dm/presto
@@ -187,6 +202,10 @@ Core Packages
         + Read assembly and QC
         + UMI processing
 
+        .. raw:: html
+
+           <div style="text-align: right;"><a href="https://medicine.yale.edu/lab/kleinstein/">Kleinstein Lab</a></div>
+
     * - |scoper-img|
       - .. image:: https://cranlogs.r-pkg.org/badges/scoper
             :target: https://www.r-pkg.org/pkg/scoper
@@ -196,6 +215,10 @@ Core Packages
         **SCOPer**
 
         + Identify clonal relationships
+
+        .. raw:: html
+
+           <div style="text-align: right;"><a href="https://medicine.yale.edu/lab/kleinstein/">Kleinstein Lab</a></div>
 
     * - |shazam-img|
       - .. image:: https://cranlogs.r-pkg.org/badges/shazam
@@ -210,6 +233,10 @@ Core Packages
         + Selection pressure quantification
         + Empirical SHM models
 
+        .. raw:: html
+
+           <div style="text-align: right;"><a href="https://medicine.yale.edu/lab/kleinstein/">Kleinstein Lab</a></div>
+
     * - |tigger-img|
       - .. image:: https://cranlogs.r-pkg.org/badges/tigger
             :target: https://www.r-pkg.org/pkg/tigger
@@ -221,9 +248,17 @@ Core Packages
         + Novel polymorphism detection
         + Genotyping
 
+        .. raw:: html
+
+           <div style="text-align: right;"><a href="https://medicine.yale.edu/lab/kleinstein/">Kleinstein Lab</a></div>
 
 Contributed Packages
 -----------------------------------------------------------------------------------------
+
+Contributed packages in the Immcantation ecosystem are immunoinformatics software packages 
+developed, shared, and maintained by the community. These packages interoperate with the 
+Immcantation framework through the [AIRR Community Standard](https://docs.airr-community.org/en/stable/datarep/rearrangements.html) and complement Immcantation by providing 
+specialized functionality for AIRR analysis.
 
 **Click on the images below for more details.**
 
@@ -238,26 +273,46 @@ Contributed Packages
         + Mutation/selection hypothesis testing
         + Best used via `Dowser`_ package
 
+        .. raw:: html
+
+           <div style="text-align: right;"><a href="https://sites.dartmouth.edu/hoehn/">Hoehn Lab</a></div>
+
     * - |rabhit-img|
       - **RAbHIT**
 
         + Determination of V-D-J haplotypes
+
+        .. raw:: html
+
+           <div style="text-align: right;"><a href="https://medicine.yale.edu/profile/gur-yaari/">Yaari Lab</a></div>
 
     * - |piglet-img|
       - **PIgLET**
 
         + Tools to improve genotype inference      
 
+        .. raw:: html
+
+           <div style="text-align: right;"><a href="https://medicine.yale.edu/profile/gur-yaari/">Yaari Lab</a></div>
+
     * - |rdi-img|
       - **RDI**
 
         + Repertoire Dissimilarity Index
+
+        .. raw:: html
+
+           <div style="text-align: right;"><a href="https://medicine.yale.edu/lab/kleinstein/">Kleinstein Lab</a></div>
 
     * - |sumrep-img|
       - **sumrep**
 
         + Generate repertoire summary statistics.
         + Visualize and comparing repertoire summaries.
+
+        .. raw:: html
+
+           <div style="text-align: right;"><a href="https://matsen.fhcrc.org/">Matsen Group</a></div>
 
 .. Image substitutions
 
@@ -347,11 +402,11 @@ Contributed Packages
 
 .. Doc links
 
+.. _airrflow: https://nf-co.re/airrflow
 .. _Alakazam: https://alakazam.readthedocs.io
 .. _Change-O: https://changeo.readthedocs.io
 .. _Dowser: https://dowser.readthedocs.io
 .. _IgPhyML: https://igphyml.readthedocs.io
-.. _airrflow: https://nf-co.re/airrflow
 .. _PIgLET: https://bitbucket.org/yaarilab/piglet
 .. _pRESTO: https://presto.readthedocs.io
 .. _prestoR: packages/prestor.html
