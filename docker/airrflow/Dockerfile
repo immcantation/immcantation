@@ -49,30 +49,31 @@ RUN wget2 -q --force-progress --no-check-certificate \
 RUN AIRR_PY=$(versions get -n airr-py) \
     && AIRR_R=$(versions get -n airr-r) \
     && pip3 install airr==${AIRR_PY} \
-    && Rscript -e "devtools::install_version('airr', '${AIRR_R}', quiet=FALSE, clean=TRUE)"    
+    && Rscript -e "devtools::install_version('airr', '${AIRR_R}', quiet=FALSE)"    
 
 # Install alakazam
 RUN ALAKAZAM_VER=$(versions get -n alakazam) \
-    && Rscript -e "devtools::install_version('alakazam', '${ALAKAZAM_VER}', quiet=FALSE, clean=TRUE)"
+    && Rscript -e "devtools::install_github('immcantation/alakazam', ref='${ALAKAZAM_VER}', quiet=FALSE)"
 
 # Install shazam
 RUN SHAZAM_VER=$(versions get -n shazam) \
-    && Rscript -e "devtools::install_version('shazam', '${SHAZAM_VER}', quiet=FALSE, clean=TRUE)"
+    && Rscript -e "devtools::install_github('immcantation/shazam', ref='${SHAZAM_VER}', quiet=FALSE)"
 
 # Install SCOPer
 RUN SCOPER_VER=$(versions get -n scoper) \
-    && Rscript -e "devtools::install_version('scoper', '${SCOPER_VER}', quiet=FALSE, clean=TRUE)"
+    && Rscript -e "devtools::install_github('immcantation/scoper', ref='${SCOPER_VER}', quiet=FALSE)"
 
 # Install dowser
 RUN DOWSER_VER=$(versions get -n dowser) \
-    && Rscript -e "devtools::install_version('dowser', '${DOWSER_VER}', quiet=FALSE, clean=TRUE)"
+    && Rscript -e "devtools::install_github('immcantation/dowser', ref='${DOWSER_VER}', quiet=FALSE)"
 
 # Install IgPhyML
 RUN IGPHYML=$(versions get -n igphyml) \
     && wget2 -q --force-progress --no-check-certificate \
-       https://github.com/immcantation/igphyml/archive/refs/tags/${IGPHYML}.tar.gz -O igphyml-${IGPHYML}.tar.gz \
+       https://github.com/immcantation/igphyml/archive/refs/tags/${IGPHYML}.tar.gz -O igphyml-${IGPHYML}.tar.gz \       
     && mkdir -p /usr/local/share/igphyml \
     && tar -zxf igphyml-${IGPHYML}.tar.gz -C /usr/local/share/igphyml --strip-components 1 \
+    && sed -i 's/t_tree \*Make_Tree();/t_tree *Make_Tree(int n_otu);/' /usr/local/share/igphyml/src/utilities.h \
     && (cd /usr/local/share/igphyml && ./make_phyml_blas_omp) \
     && rm -r igphyml-${IGPHYML}.tar.gz
 
@@ -81,7 +82,7 @@ ENV PATH="${PATH}:/usr/local/share/igphyml/src"
 
 # Install enchantr
 RUN ENCHANTR_VER=$(versions get -n enchantr) \
-    && Rscript -e "devtools::install_github('immcantation/enchantr', ref='${ENCHANTR_VER}', quiet=FALSE, clean=TRUE)"
+    && Rscript -e "devtools::install_github('immcantation/enchantr', ref='${ENCHANTR_VER}', quiet=FALSE)"
 
 # Set commands
 CMD echo -e " Version information:\n"\
