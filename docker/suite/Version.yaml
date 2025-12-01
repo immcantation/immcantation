@@ -15,7 +15,7 @@ package:
   rabhit:   0.2.5
   rdi:      1.0.0
   igphyml:  2.0.0
-  seurat:   5.2.1
+  seurat:   5.3.1
 dependency:
   airr-py:  1.5.1
   airr-r:   1.5.0
