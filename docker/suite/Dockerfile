@@ -200,7 +200,9 @@ RUN PACKAGE="dowser" \
     && rm -r /tmp/${PACKAGE}
 
 # Install enchantr
+# Temporary fix: ggplot2 version locked to 3.5.2 due to compatibility issues
 RUN PACKAGE="enchantr" \
+    && Rscript -e "devtools::install_version('ggplot2', version='3.5.2')" \
     && rm -rf /tmp/${PACKAGE} \
     && git clone https://github.com/immcantation/${PACKAGE} /tmp/${PACKAGE} \
     && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} -d immcantation \
