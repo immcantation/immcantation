@@ -227,8 +227,8 @@ def inspectVersions(version_file=default_version_file):
 
     # receptor-utils library
     try:
-        import receptor-utils
-        versions.packages['receptor-utils'] = receptor-utils.__version__
+        import receptor_utils
+        versions.packages['receptor-utils'] = receptor_utils.__version__
     except ImportError:
         versions.packages['receptor-utils'] = None
         
