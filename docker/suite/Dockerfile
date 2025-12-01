@@ -261,6 +261,10 @@ RUN SEURAT=$(versions get -n seurat) \
     && Rscript -e "devtools::install_version('Seurat', '${SEURAT}', quiet=FALSE, clean=TRUE, upgrade='never')" \
     && Rscript -e "library('Seurat', character.only = TRUE)"
 
+# Install receptor-utils
+RUN RECEPTOR_UTILS=$(versions get -n receptor-utils) \
+    && pip3 install receptor-utils==${RECEPTOR_UTILS}
+
 # Download and build references databases
 RUN fetch_imgtdb.sh -o /usr/local/share/germlines/imgt \
     && imgt2igblast.sh -i /usr/local/share/germlines/imgt -o /usr/local/share/igblast \

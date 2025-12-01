@@ -25,4 +25,5 @@ dependency:
   muscle:   3.8.425
   phylip:   3.697
   raxml-ng: 1.2.2
+  receptor-utils: 0.0.61
   vsearch:  2.30.0
