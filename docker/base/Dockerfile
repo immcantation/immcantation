@@ -81,7 +81,7 @@ RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 20
 # R build setup
 ARG R_REPO="https://cloud.r-project.org/"
 ARG R_DEPS="c('BiocManager', \
-#              'ggplot2', \
+              'ggplot2', \
               'httr', \
               'knitr', \
               'lifecycle', \
@@ -107,8 +107,7 @@ ARG R_BIOC_DEPS="c('Biostrings', \
 RUN echo "options(repos='${R_REPO}')" >> /usr/lib64/R/library/base/R/Rprofile \
     && mkdir -p /usr/share/doc/R/html \
     && Rscript -e "install.packages(${R_DEPS}, clean=TRUE)" \
-    && Rscript -e "BiocManager::install(${R_BIOC_DEPS}, update=F, ask=F)" \
-    && Rscript -e "devtools::install_version('ggplot2', version='3.5.2')"
+    && Rscript -e "BiocManager::install(${R_BIOC_DEPS}, update=F, ask=F)"
 RUN touch /.Rprofile \
     && touch /.Renviron \
     && Rscript -e "cat(paste0('R_LIBS_SITE=\'',paste(.libPaths(),collapse=':'),'\''), sep='\n')" >> /.Renviron
