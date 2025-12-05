@@ -225,6 +225,13 @@ def inspectVersions(version_file=default_version_file):
     except (CalledProcessError, AttributeError):
         versions.packages['igphyml'] = None
 
+    # receptor-utils library
+    try:
+        import receptor_utils
+        versions.packages['receptor-utils'] = receptor_utils.__version__
+    except ImportError:
+        versions.packages['receptor-utils'] = None
+        
     # AIRR Python library
     try:
         import airr

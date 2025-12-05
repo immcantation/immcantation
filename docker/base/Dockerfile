@@ -25,6 +25,7 @@ RUN dnf -y update && dnf install -y \
     biber \
     findutils \
     fontconfig-devel \
+    fribidi-devel \
     git \
     glpk-devel \
     gmp-devel \
@@ -60,10 +61,6 @@ RUN dnf -y update && dnf install -y \
     R-core \
     R-core-devel \
     R-devtools \
-    R-httpuv \
-    R-png \    
-    R-ragg \
-    R-textshaping \
     redland-devel \    
     sudo \
     tar \
@@ -81,16 +78,17 @@ RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 20
 # R build setup
 ARG R_REPO="https://cloud.r-project.org/"
 ARG R_DEPS="c('BiocManager', \
-              'ggplot2', \
+              'httpuv', \
               'httr', \
               'knitr', \
               'lifecycle', \
               'Matrix', \
               'memoise', \
               'optparse', \
+              'png', \
               'pkgbuild', \
               'R6', \
-              'Rcpp', \
+              'ragg', \
               'rmarkdown', \
               'roxygen2', \
               'stringr', \
@@ -103,11 +101,24 @@ ARG R_BIOC_DEPS="c('Biostrings', \
               'GenomicAlignments', \
               'ggmsa', \
               'ggtree', \
-              'IRanges')"           
+              'IRanges')"
+# Install R packages
+# - Force install of Rcpp from CRAN first to avoid dependency issues
+# - Temporary fix due to compatibility issues with enchantr:
+#   - Lock ggplot2 version 3.5.2
+#   - Need ggiraph version to 0.9.0 to be compatible with ggplot2 3.5.2
+#   - Using Bioconductor 3.21 (3.22 upgrades ggplot2)
 RUN echo "options(repos='${R_REPO}')" >> /usr/lib64/R/library/base/R/Rprofile \
     && mkdir -p /usr/share/doc/R/html \
-    && Rscript -e "install.packages(${R_DEPS}, clean=TRUE)" \
-    && Rscript -e "BiocManager::install(${R_BIOC_DEPS}, update=F, ask=F)"
+    && Rscript -e "devtools::install_cran('Rcpp', upgrade=F, dependencies=T, force=T)" \
+    && Rscript -e "devtools::install_version('ggplot2', version='3.5.2');library('ggplot2')" \
+    && Rscript -e "devtools::install_version('ggiraph', version='0.9.0', upgrade='never');library('ggiraph')"
+RUN Rscript -e "devtools::install_cran(${R_DEPS}, upgrade='never', dependencies=T)"
+RUN Rscript -e " \
+    BiocManager::install(version='3.21', ask=FALSE, update=FALSE); \
+    BiocManager::install(${R_BIOC_DEPS}, update=FALSE, ask=FALSE, force=FALSE); \
+    for (p in c(${R_DEPS}, ${R_BIOC_DEPS})) {library(p,character.only=T)}; \
+    "
 RUN touch /.Rprofile \
     && touch /.Renviron \
     && Rscript -e "cat(paste0('R_LIBS_SITE=\'',paste(.libPaths(),collapse=':'),'\''), sep='\n')" >> /.Renviron

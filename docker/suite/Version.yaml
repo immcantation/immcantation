@@ -15,14 +15,15 @@ package:
   rabhit:   0.2.5
   rdi:      1.0.0
   igphyml:  2.0.0
-  seurat:   5.2.1
+  seurat:   5.3.1
 dependency:
-  airr-py:  1.5.1
-  airr-r:   1.5.0
+  airr-py:  1.6.0
+  airr-r:   1.6.0
   blast:    2.16.0
   cd-hit:   4.8.1
   igblast:  1.22.0
   muscle:   3.8.425
   phylip:   3.697
   raxml-ng: 1.2.2
+  receptor-utils: 0.0.61
   vsearch:  2.30.0

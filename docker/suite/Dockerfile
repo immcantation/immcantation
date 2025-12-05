@@ -156,7 +156,7 @@ RUN PACKAGE="alakazam" \
     && rm -rf /tmp/${PACKAGE} \
     && git clone https://github.com/immcantation/${PACKAGE} /tmp/${PACKAGE} \
     && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} -d immcantation \
-    && rinstall -p /tmp/${PACKAGE} \
+    && rinstall -p /tmp/${PACKAGE} -u never \
     && Rscript -e "library('${PACKAGE}', character.only = TRUE)" \
     && (cd /tmp/${PACKAGE} && builds write -n ${PACKAGE} -v $(git describe --abbrev=12 --always --dirty=+)) \
     && rm -r /tmp/${PACKAGE}
@@ -166,7 +166,7 @@ RUN PACKAGE="shazam" \
     && rm -rf /tmp/${PACKAGE} \
     && git clone https://github.com/immcantation/${PACKAGE} /tmp/${PACKAGE} \
     && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} -d immcantation \
-    && rinstall -p /tmp/${PACKAGE} \
+    && rinstall -p /tmp/${PACKAGE} -u never \
     && Rscript -e "library('${PACKAGE}', character.only = TRUE)" \
     && (cd /tmp/${PACKAGE} && builds write -n ${PACKAGE} -v $(git describe --abbrev=12 --always --dirty=+)) \
     && rm -r /tmp/${PACKAGE}
@@ -176,7 +176,7 @@ RUN PACKAGE="tigger" \
     && rm -rf /tmp/${PACKAGE} \
     && git clone https://github.com/immcantation/${PACKAGE} /tmp/${PACKAGE} \
     && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} -d immcantation \
-    && rinstall -p /tmp/${PACKAGE} \
+    && rinstall -p /tmp/${PACKAGE} -u never \
     && Rscript -e "library('${PACKAGE}', character.only = TRUE)" \
     && (cd /tmp/${PACKAGE} && builds write -n ${PACKAGE} -v $(git describe --abbrev=12 --always --dirty=+)) \
     && rm -r /tmp/${PACKAGE}
@@ -186,7 +186,7 @@ RUN PACKAGE="scoper" \
     && rm -rf /tmp/${PACKAGE} \
     && git clone https://github.com/immcantation/${PACKAGE} /tmp/${PACKAGE} \
     && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} -d immcantation \
-    && rinstall -p /tmp/${PACKAGE} \
+    && rinstall -p /tmp/${PACKAGE} -u never \
     && Rscript -e "library('${PACKAGE}', character.only = TRUE)" \
     && (cd /tmp/${PACKAGE} && builds write -n ${PACKAGE} -v $(git describe --abbrev=12 --always --dirty=+)) \
     && rm -r /tmp/${PACKAGE}
@@ -206,7 +206,7 @@ RUN PACKAGE="enchantr" \
     && rm -rf /tmp/${PACKAGE} \
     && git clone https://github.com/immcantation/${PACKAGE} /tmp/${PACKAGE} \
     && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} -d immcantation \
-    && rinstall -p /tmp/${PACKAGE} \
+    && rinstall -p /tmp/${PACKAGE} -u never \
     && Rscript -e "library('${PACKAGE}', character.only = TRUE)" \
     && (cd /tmp/${PACKAGE} && builds write -n ${PACKAGE} -v $(git describe --abbrev=12 --always --dirty=+)) \
     && rm -r /tmp/${PACKAGE}
@@ -219,7 +219,7 @@ RUN PACKAGE="prestor" \
     && git clone https://github.com/immcantation/prestor /tmp/${PACKAGE} \
     && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} -d immcantation \
     && Rscript -e "devtools::install_github('adletaw/captioner')" \
-    && rinstall -p /tmp/${PACKAGE} \
+    && rinstall -p /tmp/${PACKAGE} -u never \
     && Rscript -e "library('${PACKAGE}', character.only = TRUE)" \
     && (cd /tmp/${PACKAGE} && builds write -n ${PACKAGE} -v $(git describe --abbrev=12 --always --dirty=+)) \
     && rm -r /tmp/${PACKAGE}
@@ -239,25 +239,29 @@ RUN PACKAGE="rdi" \
     && rm -rf /tmp/${PACKAGE} \
     && git clone https://bitbucket.org/cbolen1/rdicore /tmp/${PACKAGE} \
     && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} -d immcantation \
-    && rinstall -p /tmp/${PACKAGE} \
+    && rinstall -p /tmp/${PACKAGE} -u never \
     && Rscript -e "library('${PACKAGE}', character.only = TRUE)" \
     && (cd /tmp/${PACKAGE} && builds write -n ${PACKAGE} -v $(git describe --abbrev=12 --always --dirty=+)) \
     && rm -r /tmp/${PACKAGE}
 
 # Install RAbHIT
 RUN RABHIT=$(versions get -n rabhit) \
-    && Rscript -e "devtools::install_version('rabhit', '${RABHIT}', quiet=FALSE, clean=TRUE)" \
+    && Rscript -e "devtools::install_version('rabhit', '${RABHIT}', quiet=FALSE, clean=TRUE, upgrade = 'never')" \
     && Rscript -e "library('rabhit', character.only = TRUE)" 
 
 # Install piglet
 RUN PIGLET=$(versions get -n piglet) \
-    && Rscript -e "devtools::install_version('piglet', '${PIGLET}', quiet=FALSE, clean=TRUE)" \
+    && Rscript -e "devtools::install_version('piglet', '${PIGLET}', quiet=FALSE, clean=TRUE, upgrade='never')" \
     && Rscript -e "library('piglet', character.only = TRUE)"
 
 # Install Seurat
 RUN SEURAT=$(versions get -n seurat) \
     && Rscript -e "devtools::install_version('Seurat', '${SEURAT}', quiet=FALSE, clean=TRUE, upgrade='never')" \
     && Rscript -e "library('Seurat', character.only = TRUE)"
+
+# Install receptor-utils
+RUN RECEPTOR_UTILS=$(versions get -n receptor-utils) \
+    && pip3 install receptor-utils==${RECEPTOR_UTILS}
 
 # Download and build references databases
 RUN fetch_imgtdb.sh -o /usr/local/share/germlines/imgt \
