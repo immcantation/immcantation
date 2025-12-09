@@ -9,46 +9,27 @@ RUN builds write -n date -v "$(date +'%Y-%m-%d %T %Z')"
 
 # Define R package installation parameters
 # ARG R_RCPP="0.12.16"
-ARG R_DEPS="c('ape', \
-              'bibtex', \
+ARG R_DEPS="c('bibtex', \
               'captioner', \
-              'data.table', \
               'diagram', \
               'diptest', \
-              'doParallel', \
-              'dplyr', \
               'fastcluster', \
               'foreach', \
               'gridExtra', \
               'gtools', \
               'hexbin', \
-              'igraph', \
-              'iterators', \
-              'KernSmooth', \
-              'knitr', \
-              'lazyeval', \
-              'markdown', \
-              'MASS', \
               'openxlsx', \
               'phangorn', \
               'phylotate', \
-              'progress', \
-              'readr', \
-              'rlang', \
-              'rversions', \
-              'scales', \
               'SDMTools', \
               'seqinr', \
-              'stringi', \
-              'tidyr', \
-              'versions', \
-              'yaml')"
+              'versions')"
 
 # Setup R environment
 #RUN Rscript -e "install.packages('devtools', clean=TRUE)" \
 #    && Rscript -e "devtools::install_version('Rcpp', '${R_RCPP}', quiet=FALSE, clean=TRUE)" \
 #    && Rscript -e "install.packages(${R_DEPS}, clean=TRUE)"
-RUN Rscript -e "install.packages(${R_DEPS}, clean=TRUE); devtools::install_github('javh/markr')"
+RUN Rscript -e "devtools::install_cran(${R_DEPS}, upgrade='never', dependencies= T); devtools::install_github('javh/markr')"
 
 # Install procotol data, utility scripts and pipelines
 RUN PACKAGE="immcantation" \
