@@ -110,8 +110,8 @@ ARG R_BIOC_DEPS="c('Biostrings', \
 #   - Using Bioconductor 3.21 (3.22 upgrades ggplot2)
 RUN echo "options(repos='${R_REPO}')" >> /usr/lib64/R/library/base/R/Rprofile \
     && mkdir -p /usr/share/doc/R/html \
-    && Rscript -e "devtools::install_cran('Rcpp', upgrade=F, dependencies=T, force=T)" \
-    && Rscript -e "devtools::install_version('ggplot2', version='3.5.2');library('ggplot2')" \
+    && Rscript -e "devtools::install_cran('Rcpp', upgrade='never', dependencies=T, force=T)" \
+    && Rscript -e "devtools::install_version('ggplot2', upgrade='never', dependencies=T, version='3.5.2');library('ggplot2')" \
     && Rscript -e "devtools::install_version('ggiraph', version='0.9.0', upgrade='never');library('ggiraph')"
 RUN Rscript -e "devtools::install_cran(${R_DEPS}, upgrade='never', dependencies=T)"
 RUN Rscript -e " \

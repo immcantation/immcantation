@@ -29,7 +29,7 @@ ARG R_DEPS="c('bibtex', \
 #RUN Rscript -e "install.packages('devtools', clean=TRUE)" \
 #    && Rscript -e "devtools::install_version('Rcpp', '${R_RCPP}', quiet=FALSE, clean=TRUE)" \
 #    && Rscript -e "install.packages(${R_DEPS}, clean=TRUE)"
-RUN Rscript -e "devtools::install_cran(${R_DEPS}, upgrade='never', dependencies= T); devtools::install_github('javh/markr')"
+RUN Rscript -e "devtools::install_cran(${R_DEPS}, upgrade='never', dependencies= T); devtools::install_github('javh/markr', upgrade='never')"
 
 # Install procotol data, utility scripts and pipelines
 RUN PACKAGE="immcantation" \
