@@ -179,7 +179,7 @@ bcr_data <- airr::read_rearrangement(file.path("", "home", "magus", "data",
 ```{r}
 # Filter out inconsistent sequences
 bcr_data <- bcr_data %>%
-  filter(
+  dplyr::filter(
     (grepl("^IGHV", v_call) & grepl("^IGHJ", j_call) & grepl("^IGH[MGADE]", c_call)) |
     (grepl("^IGKV", v_call) & grepl("^IGKJ", j_call) & grepl("^IGKC", c_call)) |
     (grepl("^IGLV", v_call) & grepl("^IGLJ", j_call) & grepl("^IGLC", c_call))
