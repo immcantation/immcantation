@@ -172,6 +172,22 @@ bcr_data <- airr::read_rearrangement(file.path("", "home", "magus", "data",
                                                    "day" = "i"))
 ```
 
+### Check V/D/J gene call consistency
+
+10x Genomics data can sometimes contain inconsistent gene calls where V, J, and C genes are assigned from different immunoglobulin loci (IGH, IGK, or IGL). This can occur particularly in cells with `chain == "Multi"`, but also in other cases. Usually the number of sequences with these inconsistencies is very small. However, it is important to remove these inconsistencies before downstream analysis.
+
+```{r}
+# Filter out inconsistent sequences
+bcr_data <- bcr_data %>%
+  filter(
+    (grepl("^IGHV", v_call) & grepl("^IGHJ", j_call) & grepl("^IGH[MGADE]", c_call)) |
+    (grepl("^IGKV", v_call) & grepl("^IGKJ", j_call) & grepl("^IGKC", c_call)) |
+    (grepl("^IGLV", v_call) & grepl("^IGLJ", j_call) & grepl("^IGLC", c_call))
+  )
+cat(paste("There are", nrow(bcr_data), 
+          "rows in the data after filtering V/J/C calls inconsistent with the respective locus.\n"))
+```
+
 ### Remove non-productive sequences
 
 You may wish to subset your data to only productive sequences:
