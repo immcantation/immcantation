@@ -5,6 +5,7 @@ Versioning helper script
 # Imports
 import git
 import hglib
+import importlib.metadata
 import re
 import sys
 import yaml
@@ -227,15 +228,14 @@ def inspectVersions(version_file=default_version_file):
 
     # receptor-utils library
     try:
-        import receptor_utils
-        versions.packages['receptor-utils'] = receptor_utils.__version__
+        versions.packages['receptor-utils'] = importlib.metadata.version('receptor_utils')
     except ImportError:
         versions.packages['receptor-utils'] = None
         
     # AIRR Python library
     try:
         import airr
-        versions.packages['airr-py'] = airr.__version__
+        versions.packages['airr-py'] = importlib.metadata.version('airr')
     except ImportError:
         versions.packages['airr-py'] = None
 

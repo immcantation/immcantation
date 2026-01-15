@@ -29,7 +29,10 @@ ARG R_DEPS="c('bibtex', \
 #RUN Rscript -e "install.packages('devtools', clean=TRUE)" \
 #    && Rscript -e "devtools::install_version('Rcpp', '${R_RCPP}', quiet=FALSE, clean=TRUE)" \
 #    && Rscript -e "install.packages(${R_DEPS}, clean=TRUE)"
-RUN Rscript -e "devtools::install_cran(${R_DEPS}, upgrade='never', dependencies= T); devtools::install_github('javh/markr', upgrade='never')"
+#RUN Rscript -e "for (lib in .libPaths()) { installed_in_lib <- rownames(installed.packages(lib.loc=lib)); to_remove <- intersect('rcmdcheck', installed_in_lib); if (length(to_remove) > 0) { remove.packages(to_remove, lib=lib) } }"
+RUN Rscript -e "\
+    devtools::install_cran(${R_DEPS}, upgrade='never', dependencies= T);\
+    devtools::install_github('javh/markr', upgrade='never')"
 
 # Install procotol data, utility scripts and pipelines
 RUN PACKAGE="immcantation" \
@@ -118,8 +121,8 @@ RUN AIRR_PY=$(versions get -n airr-py) \
 
 # Download and build references databases
 RUN fetch_imgtdb.sh -o /usr/local/share/germlines/imgt \
-    && imgt2igblast.sh -i /usr/local/share/germlines/imgt -o /usr/local/share/igblast \
-    && fetch_phix.sh -o /usr/local/share/phix
+   && imgt2igblast.sh -i /usr/local/share/germlines/imgt -o /usr/local/share/igblast \
+   && fetch_phix.sh -o /usr/local/share/phix
 
 # Patch IgBLAST database
 #RUN wget2 -q --force-progress --no-check-certificate \
