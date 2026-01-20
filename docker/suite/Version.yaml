@@ -1,25 +1,25 @@
 immcantation:
   version:  devel
-  date:     2025.10.22
+  date:     2026.01.20
 package:
-  presto:   0.7.6
+  presto:   0.7.7
   changeo:  1.3.4
-  alakazam: 1.4.1
-  shazam:   1.3.0
+  alakazam: 1.4.2
+  shazam:   1.3.1
   tigger:   1.1.0
-  scoper:   1.3.0
-  dowser:   2.3.0
-  enchantr: 0.1.21
+  scoper:   1.4.0
+  dowser:   2.4.1
+  enchantr: 0.1.24
   prestor:  0.0.8
   piglet:   1.0.1
   rabhit:   0.2.5
   rdi:      1.0.0
   igphyml:  2.0.0
-  seurat:   5.3.1
+  seurat:   5.4.0
 dependency:
   airr-py:  1.6.0
   airr-r:   1.6.0
-  blast:    2.16.0
+  blast:    2.17.0
   cd-hit:   4.8.1
   igblast:  1.22.0
   muscle:   3.8.425
