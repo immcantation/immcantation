@@ -40,7 +40,7 @@ build:
 	  " base "|" suite "|" lab "|" test "|" airrflow ") ;; \
 	  *) echo "Error: IMAGE must be one of: base, suite, lab, test, airrflow"; exit 1 ;; \
 	esac
-	@docker build $(IMAGE)/. -t immcantation/$(IMAGE):$(TAG) $(NO_CACHE_ARG) --network=host $(BUILD_OPTS) --progress=plain -f $(IMAGE)/Dockerfile 2>&1 | tee $(IMAGE)-$(TAG).log
+	@docker build $(IMAGE)/. -t immcantation/$(IMAGE):$(TAG) $(NO_CACHE_ARG) --network=host $(BUILD_OPTS) --build-arg BASE_TAG=$(TAG) --progress=plain -f $(IMAGE)/Dockerfile 2>&1 | tee $(IMAGE)-$(TAG).log
 
 release:
 	$(foreach img,base suite lab test airrflow,$(MAKE) build IMAGE=$(img);)
