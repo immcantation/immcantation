@@ -14,14 +14,18 @@ help:
 	@echo "  - a clean target to delete the log files"
 	@echo ""
 	@echo "Usage: make build IMAGE=<image> [TAG=<tag>] [NO_CACHE=1]"
+	@echo "       make release [TAG=<tag>] [NO_CACHE=1]"
 	@echo "Default values: TAG=devel, NO_CACHE=0 (build uses cache by default)"
 	@echo "Possible IMAGE values: base, suite, lab, test, airrflow"
 	@echo ""
 	@echo "Examples:"
 	@echo "  make build IMAGE=base TAG=devel NO_CACHE=1"
+	@echo "  make release                    # builds all images with TAG=devel"
+	@echo "  make release TAG=latest         # builds all images with TAG=latest"
 	@echo "  make clean"
 
 TAG ?= devel
+BUILD_OPTS ?=
 NO_CACHE_ARG =
 ifeq ($(NO_CACHE),1)
   NO_CACHE_ARG = --no-cache
@@ -36,7 +40,7 @@ build:
 	  " base "|" suite "|" lab "|" test "|" airrflow ") ;; \
 	  *) echo "Error: IMAGE must be one of: base, suite, lab, test, airrflow"; exit 1 ;; \
 	esac
-	@docker build $(IMAGE)/. -t immcantation/$(IMAGE):$(TAG) $(NO_CACHE_ARG) --progress=plain -f $(IMAGE)/Dockerfile 2>&1 | tee $(IMAGE)-$(TAG).log
+	@docker build $(IMAGE)/. -t immcantation/$(IMAGE):$(TAG) $(NO_CACHE_ARG) --network=host $(BUILD_OPTS) --progress=plain -f $(IMAGE)/Dockerfile 2>&1 | tee $(IMAGE)-$(TAG).log
 
 release:
 	$(foreach img,base suite lab test airrflow,$(MAKE) build IMAGE=$(img);)
