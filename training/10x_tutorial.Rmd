@@ -170,6 +170,8 @@ bcr_data <- airr::read_rearrangement(file.path("", "home", "magus", "data",
                                                    "d_germline_length" = "i",
                                                    "j_germline_length" = "i",
                                                    "day" = "i"))
+cat(paste("There are", nrow(bcr_data), 
+          "rows in `bcr_data`.\n"))
 ```
 
 ### Check V/D/J gene call consistency
@@ -179,6 +181,7 @@ bcr_data <- airr::read_rearrangement(file.path("", "home", "magus", "data",
 ```{r}
 # Filter out inconsistent sequences
 bcr_data <- bcr_data %>%
+  dplyr::mutate(c_call=c_gene) %>%
   dplyr::filter(
     (grepl("^IGHV", v_call) & grepl("^IGHJ", j_call) & grepl("^IGH[MGADE]", c_call)) |
     (grepl("^IGKV", v_call) & grepl("^IGKJ", j_call) & grepl("^IGKC", c_call)) |
