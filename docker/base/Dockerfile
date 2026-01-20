@@ -128,6 +128,8 @@ RUN Rscript -e "for (lib in .libPaths()) { \
                 }"
 RUN Rscript -e "install.packages(${R_DEPS_REINSTALL}, clean=TRUE)"
 RUN Rscript -e "devtools::install_cran('Rcpp', upgrade='never', dependencies=T, force=T)"
+RUN Rscript -e "devtools::install_version('xfun', version='0.55', upgrade='never');library('xfun')"
+RUN Rscript -e "devtools::install_cran(c('rmarkdown'), upgrade='never', dependencies=T, force=T)"
 RUN Rscript -e "devtools::install_version('ggplot2', upgrade='never', dependencies=c('Depends', 'Imports', 'LinkingTo'), version='3.5.2');library('ggplot2')"
 RUN Rscript -e "devtools::install_version('ggiraph', version='0.9.0', upgrade='never');library('ggiraph')"
 RUN Rscript -e "devtools::install_cran(${R_DEPS}, upgrade='never', dependencies=c('Depends', 'Imports', 'LinkingTo'))"
