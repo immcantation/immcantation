@@ -57,7 +57,7 @@ or [scverse](https://scverse.org/)).
         paste("Running under:", sessionInfo()$running),
         sep = "\n")
 
-    ## R version 4.5.1 (2025-06-13)
+    ## R version 4.5.2 (2025-10-31)
     ## Platform: x86_64-redhat-linux-gnu
     ## Running under: Fedora Linux 42 (Container Image)
 
@@ -72,7 +72,7 @@ or [scverse](https://scverse.org/)).
 
     ## dplyr: 1.1.4
     ## ggplot2: 3.5.2
-    ## Seurat: 5.2.1
+    ## Seurat: 5.4.0
 
     # set the data directory
     path_data <- file.path("", "home", "magus", "data") # change this to fit your own structure
