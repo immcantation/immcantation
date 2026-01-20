@@ -33,32 +33,33 @@ Use this command to list the software versions:
 
     versions report
 
-    ## immcantation: devel
-    ## date: 2025.05.14
+    ## immcantation: 4.7.0
+    ## date: 2026.01.20
     ## 
-    ## presto: 0.7.5dev
-    ## changeo: 1.3.4dev
-    ## alakazam: 1.3.1.999
-    ## shazam: 1.2.1.999
-    ## tigger: 1.1.1.999
-    ## scoper: 1.3.1.999
-    ## dowser: 2.3.2.999
-    ## enchantr: 0.1.21
+    ## presto: 0.7.7
+    ## changeo: 1.3.4
+    ## alakazam: 1.4.2
+    ## shazam: 1.3.1
+    ## tigger: 1.1.0
+    ## scoper: 1.4.0
+    ## dowser: 2.4.0.999
+    ## enchantr: 0.1.24
     ## prestor: 0.0.7
     ## piglet: 1.0.1
     ## rabhit: 0.2.5
     ## rdi: 1.0.0
     ## igphyml: 2.0.0
-    ## seurat: 5.2.1
+    ## seurat: 5.4.0
     ## 
-    ## airr-py: 1.5.1
-    ## airr-r: 1.5.0
-    ## blast: 2.16.0
+    ## airr-py: 1.6.0
+    ## airr-r: 1.6.0
+    ## blast: 2.17.0
     ## cd-hit: 4.8.1
     ## igblast: 1.22.0
     ## muscle: 3.8.425
     ## phylip: 3.697
     ## raxml-ng: 1.2.2
+    ## receptor-utils: 0.0.63
     ## vsearch: 2.30.0
 
 ### Build versions
@@ -68,17 +69,17 @@ build:
 
     builds report
 
-    ## date: 2025-07-18 09:04:36 UTC
-    ## immcantation: 4.4.0-424-g9d08fdad4da7+
-    ## presto: 0.7.2-54-g76d83905fc5f
-    ## changeo: 1.3.0-93-g4dcb92ca0e01
-    ## alakazam: 1.2.0-216-ga7d141a142d3
-    ## shazam: 1.1.2-109-g0e29609ca144+
-    ## tigger: 659cadd0b3a7
-    ## rdi: d27b9067cab6+
-    ## scoper: 1.2.0-104-gcd25986ae4b8
-    ## dowser: 2.0.0-133-gf241a4936000
-    ## prestor: 0.0.8-4-gb9d9b80ff752+
+    ## date: 2026-01-20 12:56:31 UTC
+    ## immcantation: 4.4.0-496-g378a6760df47+
+    ## presto: 0.7.2-89-g0cf93717bf46
+    ## changeo: 1.3.0-102-g89bf6a6b8b76
+    ## alakazam: 1.2.0-298-g2e9b09433307
+    ## shazam: 1.1.2-164-ga47fc690f8c0
+    ## tigger: b0ad8b4f4fb9+
+    ## rdi: fe12005bd3c4+
+    ## scoper: 1.2.0-174-g3b523e19505d
+    ## dowser: 2.4.0-11-g23ecb65b0dc2
+    ## prestor: 0.0.8+
 
 ### Example data used in the tutorial
 
@@ -168,9 +169,9 @@ the V(D)J genes with `AssignGenes.py`.
     ##      FIELD> None
     ##     VALUES> None
     ## 
-    ## PROGRESS> 12:51:04 |Reading files            | 0.0 minPROGRESS> 12:51:04 |Done                     | 0.0 min
+    ## PROGRESS> 14:10:12 |Reading files            | 0.0 minPROGRESS> 14:10:12 |Done                     | 0.0 min
     ## 
-    ## PROGRESS> 12:51:04 |Sampling n=200           | 0.0 minPROGRESS> 12:51:04 |Done                     | 0.0 min
+    ## PROGRESS> 14:10:12 |Sampling n=200           | 0.0 minPROGRESS> 14:10:12 |Done                     | 0.0 min
     ## 
     ## MAX_COUNT> 200
     ##   SAMPLED> 200
@@ -204,7 +205,7 @@ the V(D)J genes with `AssignGenes.py`.
     ##     LOCI> ig
     ##    NPROC> 8
     ## 
-    ## PROGRESS> 12:51:05 |Running IgBLAST          | 0.0 minPROGRESS> 12:51:08 |Done                     | 0.0 min
+    ## PROGRESS> 14:10:13 |Running IgBLAST          | 0.0 minPROGRESS> 14:10:16 |Done                     | 0.0 min
     ## 
     ##   PASS> 200
     ## OUTPUT> input_sample1-n200_igblast.fmt7
@@ -228,7 +229,7 @@ time to finish running.*
     ##     LOCI> ig
     ##    NPROC> 8
     ## 
-    ## PROGRESS> 12:51:09 |Running IgBLAST          | 0.0 minPROGRESS> 13:06:38 |Done                     | 15.5 min
+    ## PROGRESS> 14:10:17 |Running IgBLAST          | 0.0 minPROGRESS> 14:25:20 |Done                     | 15.0 min
     ## 
     ##   PASS> 91010
     ## OUTPUT> input_igblast.fmt7
@@ -270,19 +271,20 @@ AIRR format. The path to the reference germlines is provided by `-r`.
     ##        COMMAND> igblast
     ##   ALIGNER_FILE> input_igblast.fmt7
     ##       SEQ_FILE> input.fasta
+    ##          NPROC> 16
     ##        ASIS_ID> False
     ##     ASIS_CALLS> False
     ##       VALIDATE> strict
     ##       EXTENDED> False
     ## INFER_JUNCTION> False
     ## 
-    ## PROGRESS> 13:06:39 |Loading files       | 0.0 minPROGRESS> 13:06:39 |Done                | 0.0 min
+    ## PROGRESS> 14:25:20 |Loading files       | 0.0 minPROGRESS> 14:25:21 |Done                | 0.0 min
     ## 
-    ## PROGRESS> 13:06:39 |                    |   0% (     0) 0.0 minPROGRESS> 13:06:41 |#                   |   5% ( 4,551) 0.0 minPROGRESS> 13:06:43 |##                  |  10% ( 9,102) 0.1 minPROGRESS> 13:06:45 |###                 |  15% (13,653) 0.1 minPROGRESS> 13:06:46 |####                |  20% (18,204) 0.1 minPROGRESS> 13:06:48 |#####               |  25% (22,755) 0.1 minPROGRESS> 13:06:49 |######              |  30% (27,306) 0.2 minPROGRESS> 13:06:51 |#######             |  35% (31,857) 0.2 minPROGRESS> 13:06:53 |########            |  40% (36,408) 0.2 minPROGRESS> 13:06:54 |#########           |  45% (40,959) 0.2 minPROGRESS> 13:06:56 |##########          |  50% (45,510) 0.3 minPROGRESS> 13:06:58 |###########         |  55% (50,061) 0.3 minPROGRESS> 13:06:59 |############        |  60% (54,612) 0.3 minPROGRESS> 13:07:01 |#############       |  65% (59,163) 0.4 minPROGRESS> 13:07:02 |##############      |  70% (63,714) 0.4 minPROGRESS> 13:07:04 |###############     |  75% (68,265) 0.4 minPROGRESS> 13:07:06 |################    |  80% (72,816) 0.4 minPROGRESS> 13:07:07 |#################   |  85% (77,367) 0.5 minPROGRESS> 13:07:09 |##################  |  90% (81,918) 0.5 minPROGRESS> 13:07:11 |################### |  95% (86,469) 0.5 minPROGRESS> 13:07:12 |####################| 100% (91,010) 0.5 min
+    ## PROGRESS> 14:25:21 |                    |   0% (     0) 0.0 minPROGRESS> 14:25:24 |#                   |   5% ( 4,551) 0.1 minPROGRESS> 14:25:28 |##                  |  10% ( 9,102) 0.1 minPROGRESS> 14:25:31 |###                 |  15% (13,653) 0.2 minPROGRESS> 14:25:34 |####                |  20% (18,204) 0.2 minPROGRESS> 14:25:37 |#####               |  25% (22,755) 0.3 minPROGRESS> 14:25:39 |######              |  30% (27,306) 0.3 minPROGRESS> 14:25:42 |#######             |  35% (31,857) 0.3 minPROGRESS> 14:25:44 |########            |  40% (36,408) 0.4 minPROGRESS> 14:25:46 |#########           |  45% (40,959) 0.4 minPROGRESS> 14:25:49 |##########          |  50% (45,510) 0.5 minPROGRESS> 14:25:52 |###########         |  55% (50,061) 0.5 minPROGRESS> 14:25:55 |############        |  60% (54,612) 0.6 minPROGRESS> 14:25:57 |#############       |  65% (59,163) 0.6 minPROGRESS> 14:25:59 |##############      |  70% (63,714) 0.6 minPROGRESS> 14:26:01 |###############     |  75% (68,265) 0.7 minPROGRESS> 14:26:02 |################    |  80% (72,816) 0.7 minPROGRESS> 14:26:04 |#################   |  85% (77,367) 0.7 minPROGRESS> 14:26:06 |##################  |  90% (81,918) 0.8 minPROGRESS> 14:26:07 |################### |  95% (86,469) 0.8 minPROGRESS> 14:26:09 |####################| 100% (91,010) 0.8 min
     ## 
     ## OUTPUT> data_db-pass.tsv
-    ##   PASS> 87639
-    ##   FAIL> 3371
+    ##   PASS> 87640
+    ##   FAIL> 3370
     ##    END> MakeDb
 
 ### Subset the data to include productive heavy chain sequences
@@ -307,12 +309,12 @@ output file (specified by `--outname`).
     ##  VALUES> T
     ##   REGEX> False
     ## 
-    ## PROGRESS> 13:07:13 |                    |   0% (     0) 0.0 minPROGRESS> 13:07:13 |#                   |   5% ( 4,382) 0.0 minPROGRESS> 13:07:13 |##                  |  10% ( 8,764) 0.0 minPROGRESS> 13:07:13 |###                 |  15% (13,146) 0.0 minPROGRESS> 13:07:14 |####                |  20% (17,528) 0.0 minPROGRESS> 13:07:14 |#####               |  25% (21,910) 0.0 minPROGRESS> 13:07:14 |######              |  30% (26,292) 0.0 minPROGRESS> 13:07:14 |#######             |  35% (30,674) 0.0 minPROGRESS> 13:07:14 |########            |  40% (35,056) 0.0 minPROGRESS> 13:07:14 |#########           |  45% (39,438) 0.0 minPROGRESS> 13:07:14 |##########          |  50% (43,820) 0.0 minPROGRESS> 13:07:14 |###########         |  55% (48,202) 0.0 minPROGRESS> 13:07:14 |############        |  60% (52,584) 0.0 minPROGRESS> 13:07:14 |#############       |  65% (56,966) 0.0 minPROGRESS> 13:07:14 |##############      |  70% (61,348) 0.0 minPROGRESS> 13:07:15 |###############     |  75% (65,730) 0.0 minPROGRESS> 13:07:15 |################    |  80% (70,112) 0.0 minPROGRESS> 13:07:15 |#################   |  85% (74,494) 0.0 minPROGRESS> 13:07:15 |##################  |  90% (78,876) 0.0 minPROGRESS> 13:07:15 |################### |  95% (83,258) 0.0 minPROGRESS> 13:07:15 |####################| 100% (87,639) 0.0 min
+    ## PROGRESS> 14:26:10 |                    |   0% (     0) 0.0 minPROGRESS> 14:26:10 |#                   |   5% ( 4,382) 0.0 minPROGRESS> 14:26:10 |##                  |  10% ( 8,764) 0.0 minPROGRESS> 14:26:10 |###                 |  15% (13,146) 0.0 minPROGRESS> 14:26:10 |####                |  20% (17,528) 0.0 minPROGRESS> 14:26:10 |#####               |  25% (21,910) 0.0 minPROGRESS> 14:26:10 |######              |  30% (26,292) 0.0 minPROGRESS> 14:26:11 |#######             |  35% (30,674) 0.0 minPROGRESS> 14:26:11 |########            |  40% (35,056) 0.0 minPROGRESS> 14:26:11 |#########           |  45% (39,438) 0.0 minPROGRESS> 14:26:11 |##########          |  50% (43,820) 0.0 minPROGRESS> 14:26:11 |###########         |  55% (48,202) 0.0 minPROGRESS> 14:26:11 |############        |  60% (52,584) 0.0 minPROGRESS> 14:26:11 |#############       |  65% (56,966) 0.0 minPROGRESS> 14:26:11 |##############      |  70% (61,348) 0.0 minPROGRESS> 14:26:11 |###############     |  75% (65,730) 0.0 minPROGRESS> 14:26:11 |################    |  80% (70,112) 0.0 minPROGRESS> 14:26:12 |#################   |  85% (74,494) 0.0 minPROGRESS> 14:26:12 |##################  |  90% (78,876) 0.0 minPROGRESS> 14:26:12 |################### |  95% (83,258) 0.0 minPROGRESS> 14:26:12 |####################| 100% (87,640) 0.0 min
     ## 
     ##    OUTPUT> data_p_parse-select.tsv
-    ##   RECORDS> 87639
+    ##   RECORDS> 87640
     ##  SELECTED> 64855
-    ## DISCARDED> 22784
+    ## DISCARDED> 22785
     ##       END> ParseDb
 
 Next, we filter the data to include **only heavy chain** sequences.
@@ -335,7 +337,7 @@ data.
     ##  VALUES> IGHV
     ##   REGEX> True
     ## 
-    ## PROGRESS> 13:07:16 |                    |   0% (     0) 0.0 minPROGRESS> 13:07:16 |#                   |   5% ( 3,243) 0.0 minPROGRESS> 13:07:16 |##                  |  10% ( 6,486) 0.0 minPROGRESS> 13:07:16 |###                 |  15% ( 9,729) 0.0 minPROGRESS> 13:07:16 |####                |  20% (12,972) 0.0 minPROGRESS> 13:07:16 |#####               |  25% (16,215) 0.0 minPROGRESS> 13:07:16 |######              |  30% (19,458) 0.0 minPROGRESS> 13:07:16 |#######             |  35% (22,701) 0.0 minPROGRESS> 13:07:16 |########            |  40% (25,944) 0.0 minPROGRESS> 13:07:17 |#########           |  45% (29,187) 0.0 minPROGRESS> 13:07:17 |##########          |  50% (32,430) 0.0 minPROGRESS> 13:07:17 |###########         |  55% (35,673) 0.0 minPROGRESS> 13:07:17 |############        |  60% (38,916) 0.0 minPROGRESS> 13:07:17 |#############       |  65% (42,159) 0.0 minPROGRESS> 13:07:17 |##############      |  70% (45,402) 0.0 minPROGRESS> 13:07:17 |###############     |  75% (48,645) 0.0 minPROGRESS> 13:07:17 |################    |  80% (51,888) 0.0 minPROGRESS> 13:07:17 |#################   |  85% (55,131) 0.0 minPROGRESS> 13:07:17 |##################  |  90% (58,374) 0.0 minPROGRESS> 13:07:17 |################### |  95% (61,617) 0.0 minPROGRESS> 13:07:17 |####################| 100% (64,855) 0.0 min
+    ## PROGRESS> 14:26:12 |                    |   0% (     0) 0.0 minPROGRESS> 14:26:13 |#                   |   5% ( 3,243) 0.0 minPROGRESS> 14:26:13 |##                  |  10% ( 6,486) 0.0 minPROGRESS> 14:26:13 |###                 |  15% ( 9,729) 0.0 minPROGRESS> 14:26:13 |####                |  20% (12,972) 0.0 minPROGRESS> 14:26:13 |#####               |  25% (16,215) 0.0 minPROGRESS> 14:26:13 |######              |  30% (19,458) 0.0 minPROGRESS> 14:26:13 |#######             |  35% (22,701) 0.0 minPROGRESS> 14:26:13 |########            |  40% (25,944) 0.0 minPROGRESS> 14:26:13 |#########           |  45% (29,187) 0.0 minPROGRESS> 14:26:13 |##########          |  50% (32,430) 0.0 minPROGRESS> 14:26:13 |###########         |  55% (35,673) 0.0 minPROGRESS> 14:26:14 |############        |  60% (38,916) 0.0 minPROGRESS> 14:26:14 |#############       |  65% (42,159) 0.0 minPROGRESS> 14:26:14 |##############      |  70% (45,402) 0.0 minPROGRESS> 14:26:14 |###############     |  75% (48,645) 0.0 minPROGRESS> 14:26:14 |################    |  80% (51,888) 0.0 minPROGRESS> 14:26:14 |#################   |  85% (55,131) 0.0 minPROGRESS> 14:26:14 |##################  |  90% (58,374) 0.0 minPROGRESS> 14:26:14 |################### |  95% (61,617) 0.0 minPROGRESS> 14:26:14 |####################| 100% (64,855) 0.0 min
     ## 
     ##    OUTPUT> data_ph_parse-select.tsv
     ##   RECORDS> 64855
@@ -356,9 +358,6 @@ previous step.
     suppressPackageStartupMessages(library(tigger))
 
     dir.create(file.path("results", "tigger"))
-
-    ## Warning in dir.create(file.path("results", "tigger")): 'results/tigger' already
-    ## exists
 
     db <- read_rearrangement(file.path("results", "changeo",
                                        "data_ph_parse-select.tsv"))
@@ -438,11 +437,16 @@ In this example, TIgGER finds one novel V gene allele.
 
     nv <- findNovelAlleles(db, germline_db = ighv, nproc = 8) # find novel alleles
 
+    ## Duplicated polymorphism(s) found!. See the field 'note' in your results for more details.
+
     selectNovel(nv) # show novel alleles
 
-    ##   germline_call                note polymorphism_call nt_substitutions
-    ## 1   IGHV3-20*01 Novel allele found! IGHV3-20*01_C307T           307C>T
-    ## 2   IGHV3-20*03 Novel allele found!  IGHV3-20*03_T68G            68T>G
+    ##   germline_call                                            note
+    ## 1   IGHV3-20*01 Novel allele found!. Same as: IGHV3-20*05_G104A
+    ## 2   IGHV3-20*03                             Novel allele found!
+    ##   polymorphism_call nt_substitutions
+    ## 1 IGHV3-20*01_C307T           307C>T
+    ## 2  IGHV3-20*03_T68G            68T>G
     ##                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             novel_imgt
     ## 1                                                                                                                                                                                                                                                                     GAGGTGCAGCTGGTGGAGTCTGGGGGA...GGTGTGGTACGGCCTGGGGGGTCCCTGAGACTCTCCTGTGCAGCCTCTGGATTCACCTTT............GATGATTATGGCATGAGCTGGGTCCGCCAAGCTCCAGGGAAGGGGCTGGAGTGGGTCTCTGGTATTAATTGGAAT......GGTGGTAGCACAGGTTATGCAGACTCTGTGAAG...GGCCGATTCACCATCTCCAGAGACAACGCCAAGAACTCCCTGTATCTGCAAATGAACAGTCTGAGAGCCGAGGACACGGCCTTGTATTACTGTGCGAGAGA
     ## 2 GAGGTGCAGCTGGTGGAGTCTGGGGGA...GGTGTGGTACGGCCTGGGGGGTCCCTGAGACTCTCCTGTGCAGCCTCTGGATTCACCTTT............GATGATTATGGCATGAGCTGGGTCCGCCAAGCTCCAGGGAAGGGGCTGGAGTGGGTCTCTGGTATTAATTGGAAT......GGTGGTAGCACAGGTTATGCAGACTCTGTGAAG...GGCCGATTCACCATCTCCAGAGACAACGCCAAGAACTCCCTGTATCTGCAAATGAACAGTCTGAGAGCCGAGGACACGGCCTTGTATTACTGTGCGAGAGACTCTCCTGTGCAGCCTCTGGATTCACCTTT............GATGATTATGGCATGAGCTGGGTCCGCCAAGCTCCAGGGAAGGGGCTGGAGTGGGTCTCTGGTATTAATTGGAAT......GGTGGTAGCACAGGTTATGCAGACTCTGTGAAG...GGCCGATTCACCATCTCCAGAGACAACGCCAAGAACTCCCTGTATCTGCAAATGAACAGTCTGAGAGCCGAGGACACGGCCTTGTATTACTGTGCGAGAGA
@@ -450,20 +454,20 @@ In this example, TIgGER finds one novel V gene allele.
     ## 1              161                   6                    145
     ## 2              161                   6                    145
     ##   perfect_match_count perfect_match_freq germline_call_count germline_call_freq
-    ## 1                 144          0.4784053                 301              0.005
-    ## 2                 167          0.5901060                 283              0.004
+    ## 1                 144          0.4982699                 289              0.004
+    ## 2                 167          0.6162362                 271              0.004
     ##   mut_min mut_max mut_pass_count
-    ## 1       1      10            202
-    ## 2       1      10            222
+    ## 1       1      10            200
+    ## 2       1      10            220
     ##                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          germline_imgt
     ## 1                                                                                                                                                                                                                                                                     GAGGTGCAGCTGGTGGAGTCTGGGGGA...GGTGTGGTACGGCCTGGGGGGTCCCTGAGACTCTCCTGTGCAGCCTCTGGATTCACCTTT............GATGATTATGGCATGAGCTGGGTCCGCCAAGCTCCAGGGAAGGGGCTGGAGTGGGTCTCTGGTATTAATTGGAAT......GGTGGTAGCACAGGTTATGCAGACTCTGTGAAG...GGCCGATTCACCATCTCCAGAGACAACGCCAAGAACTCCCTGTATCTGCAAATGAACAGTCTGAGAGCCGAGGACACGGCCTTGTATCACTGTGCGAGAGA
     ## 2 GAGGTGCAGCTGGTGGAGTCTGGGGGA...GGTGTGGTACGGCCTGGGGGGTCCCTGAGACTCTCCTTTGCAGCCTCTGGATTCACCTTT............GATGATTATGGCATGAGCTGGGTCCGCCAAGCTCCAGGGAAGGGGCTGGAGTGGGTCTCTGGTATTAATTGGAAT......GGTGGTAGCACAGGTTATGCAGACTCTGTGAAG...GGCCGATTCACCATCTCCAGAGACAACGCCAAGAACTCCCTGTATCTGCAAATGAACAGTCTGAGAGCCGAGGACACGGCCTTGTATTACTGTGCGAGAGACTCTCCTGTGCAGCCTCTGGATTCACCTTT............GATGATTATGGCATGAGCTGGGTCCGCCAAGCTCCAGGGAAGGGGCTGGAGTGGGTCTCTGGTATTAATTGGAAT......GGTGGTAGCACAGGTTATGCAGACTCTGTGAAG...GGCCGATTCACCATCTCCAGAGACAACGCCAAGAACTCCCTGTATCTGCAAATGAACAGTCTGAGAGCCGAGGACACGGCCTTGTATTACTGTGCGAGAGA
     ##   germline_imgt_count pos_min pos_max y_intercept y_intercept_pass snp_pass
-    ## 1                  44       1     312       0.125                1      196
-    ## 2                   0       1     312       0.125                1      222
+    ## 1                  44       1     312       0.125                1      194
+    ## 2                   0       1     312       0.125                1      220
     ##   unmutated_count unmutated_freq unmutated_snp_j_gene_length_count
-    ## 1             144      0.4784053                                52
-    ## 2             167      0.5901060                                54
+    ## 1             144      0.4982699                                52
+    ## 2             167      0.6162362                                54
     ##   snp_min_seqs_j_max_pass alpha min_seqs j_max min_frac
     ## 1                       1  0.05       50  0.15     0.75
     ## 2                       1  0.05       50  0.15     0.75
@@ -542,11 +546,11 @@ for use in the following steps.
       select(v_call, v_call_genotyped)
 
     ## # A tibble: 3 x 2
-    ##   v_call                               v_call_genotyped        
-    ##   <chr>                                <chr>                   
-    ## 1 IGHV3-23*01,IGHV3-23*02,IGHV3-23D*01 IGHV3-23*01,IGHV3-23D*01
-    ## 2 IGHV4-34*02                          IGHV4-34*01             
-    ## 3 IGHV3-66*04                          IGHV3-66*01
+    ##   v_call                      v_call_genotyped
+    ##   <chr>                       <chr>           
+    ## 1 IGHV4-30-2*07,IGHV4-30-4*01 IGHV4-30-2*07   
+    ## 2 IGHV3-30*18,IGHV3-30-5*01   IGHV3-30*18     
+    ## 3 IGHV3-30*18,IGHV3-30-5*01   IGHV3-30*18
 
     write_rearrangement(db, file.path("results", "tigger", "data_ph_genotyped.tsv"))
 
@@ -627,6 +631,8 @@ distribution and the threshold.
     db <- distToNearest(db, model = "ham", normalize = "len",
                         vCallColumn = "v_call_genotyped", nproc = 4)
 
+    ## Running in non-single-cell mode.
+
     # determine the threshold
     threshold <- findThreshold(db$dist_nearest, method = "density")
     thr <- round(threshold@threshold, 2)
@@ -664,7 +670,10 @@ the dataset used to carry out the clonal assignments.*
 
     suppressPackageStartupMessages(library(scoper))
     # Clonal assignment using hierarchical clustering
-    results <- hierarchicalClones(db, threshold=thr, v_call="v_call_genotyped")
+    results <- hierarchicalClones(db, threshold=thr, v_call="v_call_genotyped", summarize_clones=TRUE)
+
+    ## Warning in prepare_db(db = db, junction = junction, v_call = v_call, j_call =
+    ## j_call, : Removed 52 sequences with non ATCG charachters.
 
     # Plot a histogram of inter and intra clonal distances
     plot(results, binwidth=0.02)
@@ -715,7 +724,7 @@ And passing `"human/vdj/"` to the `readIMGT` function.
     # read in IMGT files in the Docker container
     references <- dowser::readIMGT(dir = "/usr/local/share/germlines/imgt/human/vdj")
 
-    ## [1] "Read in 1205 from 17 fasta files"
+    ## [1] "Read in 1243 from 17 fasta files"
 
     # reconstruct germlines
     results@db <- dowser::createGermlines(results@db, references, nproc = 1)
