@@ -341,7 +341,7 @@ At the end of this step, the output file will have an additional column (`clone_
 ```{r intra-inter-clonal-d, message = FALSE}
 suppressPackageStartupMessages(library(scoper))
 # Clonal assignment using hierarchical clustering
-results <- hierarchicalClones(db, threshold=thr, v_call="v_call_genotyped")
+results <- hierarchicalClones(db, threshold=thr, v_call="v_call_genotyped", summarize_clones=TRUE)
 
 # Plot a histogram of inter and intra clonal distances
 plot(results, binwidth=0.02)
