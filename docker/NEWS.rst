@@ -1,13 +1,28 @@
 Release Notes
 ========================================================================
 
-Version devel:  October 22, 2025
+Version 4.7.0:  January 21, 2026
 ------------------------------------------------------------------------
+
+Image Changes:
++ Updated base image to Fedora 42
++ Pinned ggplot2 version to 3.4.2 and xfun version to 0.55 to meet requirments
+  from enchantR.
++ Installed the python package receptor-utils 0.0.63
 
 Version Updates:
 
-+ alakazam 1.4.1
-+ shazam 1.3.0
+
++ airr 1.6.0
++ alakazam 1.4.2
++ blast 2.17.0
++ changeo 1.3.4
++ dowser 2.4.1
++ enchantr 0.1.24
++ presto 0.7.7
++ seurat 5.4.0
++ shazam 1.3.1
++ scoper 1.4.0
 
 
 Version 4.6.0:  April 7, 2025
