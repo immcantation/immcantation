@@ -263,11 +263,10 @@ important to remove these inconsistencies before downstream analysis.
 
     # Filter out inconsistent sequences
     bcr_data <- bcr_data %>%
-      dplyr::mutate(c_call=c_gene) %>%
       dplyr::filter(
-        (grepl("^IGHV", v_call) & grepl("^IGHJ", j_call) & grepl("^IGH[MGADE]", c_call)) |
-        (grepl("^IGKV", v_call) & grepl("^IGKJ", j_call) & grepl("^IGKC", c_call)) |
-        (grepl("^IGLV", v_call) & grepl("^IGLJ", j_call) & grepl("^IGLC", c_call))
+        (grepl("^IGHV", v_call) & grepl("^IGHJ", j_call) & grepl("^IGH[MGADE]", c_gene)) |
+        (grepl("^IGKV", v_call) & grepl("^IGKJ", j_call) & grepl("^IGKC", c_gene)) |
+        (grepl("^IGLV", v_call) & grepl("^IGLJ", j_call) & grepl("^IGLC", c_gene))
       )
     cat(paste("There are", nrow(bcr_data), 
               "rows in the data after filtering V/J/C calls inconsistent with the respective locus.\n"))
@@ -287,15 +286,15 @@ You may wish to subset your data to only productive sequences:
 
     bcr_data %>% slice_sample(n = 5) # random examples
 
-    ## # A tibble: 5 x 67
+    ## # A tibble: 5 x 66
     ##   sequence_id                 sequence  rev_comp productive v_call d_call j_call
     ##   <chr>                       <chr>     <lgl>    <lgl>      <chr>  <chr>  <chr> 
-    ## 1 ACCCACTGTGATAAGT-1_contig_1 AGAGCTCT~ FALSE    TRUE       IGKV3~ <NA>   IGKJ2~
-    ## 2 GAAGCAGGTTGAGGTG-1_contig_2 GAGCTCTG~ FALSE    TRUE       IGHV3~ IGHD1~ IGHJ4~
-    ## 3 TAGAGCTAGGACAGAA-1_contig_1 AGGAATCA~ FALSE    TRUE       IGKV1~ <NA>   IGKJ4~
-    ## 4 GTAACTGAGAGATGAG-1_contig_1 GATCAGGA~ FALSE    TRUE       IGKV2~ <NA>   IGKJ2~
-    ## 5 ATGCGATTCAACTCTT-1_contig_1 GGGAGAGC~ FALSE    TRUE       IGKV3~ <NA>   IGKJ3~
-    ## # i 60 more variables: sequence_alignment <chr>, germline_alignment <chr>,
+    ## 1 ACGCCGAGTATAATGG-1_contig_1 GAAATACT~ FALSE    TRUE       IGHV4~ IGHD2~ IGHJ3~
+    ## 2 ACCAGTAAGCTCCTTC-1_contig_1 TGGGGGAG~ FALSE    TRUE       IGKV1~ <NA>   IGKJ2~
+    ## 3 GCGGGTTGTGCGGTAA-1_contig_2 GAGCTACA~ FALSE    TRUE       IGKV4~ <NA>   IGKJ4~
+    ## 4 CCTATTAGTGTGGCTC-1_contig_2 AGGAGTCA~ FALSE    TRUE       IGKV1~ <NA>   IGKJ1~
+    ## 5 TCTGAGACACAGAGGT-1_contig_2 GATGCTTT~ FALSE    TRUE       IGHV4~ IGHD3~ IGHJ3~
+    ## # i 59 more variables: sequence_alignment <chr>, germline_alignment <chr>,
     ## #   junction <chr>, junction_aa <chr>, v_cigar <chr>, d_cigar <chr>,
     ## #   j_cigar <chr>, vj_in_frame <lgl>, stop_codon <lgl>, v_sequence_start <int>,
     ## #   v_sequence_end <int>, v_germline_start <int>, v_germline_end <int>,
@@ -1066,16 +1065,16 @@ timepoints are more diverged from the germline:
     ## # A tibble: 35 x 4
     ##    clone_id  slope correlation      p
     ##    <chr>     <dbl>       <dbl>  <dbl>
-    ##  1 570      0.0453       0.711 0.0759
-    ##  2 699      0.120        0.877 0.164 
-    ##  3 513      0.277        0.827 0.190 
-    ##  4 1118     0.488        0.444 0.216 
-    ##  5 209      0.0630       0.468 0.229 
-    ##  6 573      0.0830       0.329 0.244 
-    ##  7 196      0.307        0.770 0.245 
-    ##  8 1122     0.708        0.578 0.259 
-    ##  9 183      0.169        0.300 0.306 
-    ## 10 198      0.198        0.489 0.329 
+    ##  1 570      0.0453       0.711 0.0749
+    ##  2 699      0.120        0.877 0.165 
+    ##  3 209      0.0630       0.468 0.204 
+    ##  4 513      0.277        0.827 0.214 
+    ##  5 1118     0.488        0.444 0.222 
+    ##  6 573      0.0830       0.329 0.239 
+    ##  7 196      0.307        0.770 0.244 
+    ##  8 1122     0.708        0.578 0.247 
+    ##  9 183      0.169        0.300 0.281 
+    ## 10 198      0.198        0.489 0.324 
     ## # i 25 more rows
 
     print(plots_time[[1]])
