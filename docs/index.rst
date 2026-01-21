@@ -257,8 +257,8 @@ Contributed Packages
 
 Contributed packages in the Immcantation ecosystem are immunoinformatics software packages 
 developed, shared, and maintained by the community. These packages interoperate with the 
-Immcantation framework through the [AIRR Community Standard](https://docs.airr-community.org/en/stable/datarep/rearrangements.html) and complement Immcantation by providing 
-specialized functionality for AIRR analysis.
+Immcantation framework through the `AIRR Community Standard <https://docs.airr-community.org/en/stable/datarep/rearrangements.html>`__ 
+and complement Immcantation by providing specialized functionality for AIRR analysis.
 
 **Click on the images below for more details.**
 
