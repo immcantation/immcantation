@@ -358,8 +358,8 @@ and complement Immcantation by providing specialized functionality for AIRR anal
 .. |amulety-img| image:: _static/amulety.png
     :align: middle
     :width: 200
-    :target: Alakazam_
-    :alt: alakazam
+    :target: Amulety_
+    :alt: amulety
 
 .. |shazam-img| image:: _static/shazam.png
     :align: middle
@@ -425,6 +425,7 @@ and complement Immcantation by providing specialized functionality for AIRR anal
 
 .. _airrflow: https://nf-co.re/airrflow
 .. _Alakazam: https://alakazam.readthedocs.io
+.. _Amulety: https://amulety.readthedocs.io
 .. _Change-O: https://changeo.readthedocs.io
 .. _Dowser: https://dowser.readthedocs.io
 .. _IgPhyML: https://igphyml.readthedocs.io
