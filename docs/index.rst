@@ -160,6 +160,21 @@ AIRR-seq data.
 
            <div style="text-align: right;"><a href="https://medicine.yale.edu/lab/kleinstein/">Kleinstein Lab</a></div>
 
+    * - |amulety-img|
+      - .. image:: https://img.shields.io/pypi/dm/amulety
+            :target: https://pypi.org/project/amulety
+            :align: right
+            :alt: downloads
+
+        **Amulety**
+
+        + BCR and TCR embeddings
+        + Multiple embedding models supported
+
+        .. raw:: html
+
+           <div style="text-align: right;"><a href="https://medicine.yale.edu/lab/kleinstein/">Kleinstein Lab</a></div>
+
     * - |changeo-img|
       - .. image:: https://img.shields.io/pypi/dm/changeo
             :target: https://pypi.org/project/changeo
@@ -335,6 +350,12 @@ and complement Immcantation by providing specialized functionality for AIRR anal
     :alt: Change-O
 
 .. |alakazam-img| image:: _static/alakazam.png
+    :align: middle
+    :width: 200
+    :target: Alakazam_
+    :alt: alakazam
+
+.. |amulety-img| image:: _static/amulety.png
     :align: middle
     :width: 200
     :target: Alakazam_
