@@ -5,13 +5,13 @@ Version 4.7.0:  January 21, 2026
 ------------------------------------------------------------------------
 
 Image Changes:
+
 + Updated base image to Fedora 42
-+ Pinned ggplot2 version to 3.4.2 and xfun version to 0.55 to meet requirments
-  from enchantR.
++ Pinned ggplot2 version to 3.4.2 and xfun version to 0.55 to meet r
+  requirements from enchantR.
 + Installed the python package receptor-utils 0.0.63
 
 Version Updates:
-
 
 + airr 1.6.0
 + alakazam 1.4.2
