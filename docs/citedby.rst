@@ -1,4 +1,4 @@
-.. _citations:
+.. _citedby:
 
 Cited by
 ========

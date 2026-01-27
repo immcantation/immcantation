@@ -18,7 +18,7 @@ def create_rst_output(df, output_file, download_date):
     total_citations = len(df)
     
     with open(output_file, 'w', encoding='utf-8') as f:
-        f.write(".. _citations:\n\n")
+        f.write(".. _citedby:\n\n")
         f.write("Cited by\n")
         f.write("========\n\n")
         
@@ -26,9 +26,9 @@ def create_rst_output(df, output_file, download_date):
         f.write(f".. image:: https://img.shields.io/badge/Citations-{total_citations}-blue\n")
         f.write("   :alt: Total Citations\n\n")
         
-        f.write("This page lists scientific publications that have cited the Immcantation framework in their research. ")
-        f.write("Citations are collected from PubMed and updated regularly to track the impact and usage of Immcantation tools ")
-        f.write("in adaptive immune receptor repertoire analysis.\n\n")
+        f.write("This page lists scientific publications that have cited core publications of the \n")
+        f.write("Immcantation framework in their research. Citations are collected from PubMed \n")
+        f.write("and updated regularly.\n\n")
         f.write(f"**Total papers:** {total_citations} | **Last updated:** {download_date}\n\n")
         
         for idx, row in df.iterrows():
