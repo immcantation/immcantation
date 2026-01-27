@@ -16,6 +16,7 @@
     Data Standards <datastandards>
     Contact & Cite <about>
     Contributing <contrib>
+    Cited by <citedby>
 
 .. toctree::
     :maxdepth: 1
