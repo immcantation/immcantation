@@ -2123,37 +2123,37 @@ multiple Immcantation core publications.
 
 The following Immcantation core publications were used to identify citing papers:
 
-- Gabernet G et al. nf-core/airrflow: An adaptive immune receptor repertoire analysis workflow employing the Immcantation framework. *PLoS Comput Biol.*. 2024. `PMID:39058741 <https://pubmed.ncbi.nlm.nih.gov/39058741/>`_
+- Gabernet G et al. nf-core/airrflow: An adaptive immune receptor repertoire analysis workflow employing the Immcantation framework. *PLoS Comput Biol*. 2024. `PMID:39058741 <https://pubmed.ncbi.nlm.nih.gov/39058741/>`_
 
-- Hoehn KB et al. Phylogenetic analysis of migration, differentiation, and class switching in B cells. *PLoS Comput Biol.*. 2022. `PMID:35468128 <https://pubmed.ncbi.nlm.nih.gov/35468128/>`_
+- Hoehn KB et al. Phylogenetic analysis of migration, differentiation, and class switching in B cells. *PLoS Comput Biol*. 2022. `PMID:35468128 <https://pubmed.ncbi.nlm.nih.gov/35468128/>`_
 
 - Hoehn KB et al. Human B cell lineages associated with germinal centers following influenza vaccination are measurably evolving. *Elife*. 2021. `PMID:34787567 <https://pubmed.ncbi.nlm.nih.gov/34787567/>`_
 
-- Nouri N et al. Somatic hypermutation analysis for improved identification of B cell clonal families from next-generation sequencing data. *PLoS Comput Biol.*. 2020. `PMID:32574157 <https://pubmed.ncbi.nlm.nih.gov/32574157/>`_
+- Nouri N et al. Somatic hypermutation analysis for improved identification of B cell clonal families from next-generation sequencing data. *PLoS Comput Biol*. 2020. `PMID:32574157 <https://pubmed.ncbi.nlm.nih.gov/32574157/>`_
 
-- Hoehn KB et al. Repertoire-wide phylogenetic models of B cell molecular evolution reveal evolutionary signatures of aging and vaccination. *Proc Natl Acad Sci U S A.*. 2019. `PMID:31636219 <https://pubmed.ncbi.nlm.nih.gov/31636219/>`_
+- Hoehn KB et al. Repertoire-wide phylogenetic models of B cell molecular evolution reveal evolutionary signatures of aging and vaccination. *Proc Natl Acad Sci U S A*. 2019. `PMID:31636219 <https://pubmed.ncbi.nlm.nih.gov/31636219/>`_
 
-- Gadala-Maria D et al. Identification of Subject-Specific Immunoglobulin Alleles From Expressed Repertoire Sequencing Data. *Front Immunol.*. 2019. `PMID:30814994 <https://pubmed.ncbi.nlm.nih.gov/30814994/>`_
+- Gadala-Maria D et al. Identification of Subject-Specific Immunoglobulin Alleles From Expressed Repertoire Sequencing Data. *Front Immunol*. 2019. `PMID:30814994 <https://pubmed.ncbi.nlm.nih.gov/30814994/>`_
 
-- Nouri N et al. Optimized Threshold Inference for Partitioning of Clones From High-Throughput B Cell Repertoire Sequencing Data. *Front Immunol.*. 2018. `PMID:30093903 <https://pubmed.ncbi.nlm.nih.gov/30093903/>`_
+- Nouri N et al. Optimized Threshold Inference for Partitioning of Clones From High-Throughput B Cell Repertoire Sequencing Data. *Front Immunol*. 2018. `PMID:30093903 <https://pubmed.ncbi.nlm.nih.gov/30093903/>`_
 
 - Nouri N et al. A spectral clustering-based method for identifying clones from high-throughput B cell repertoire sequencing data. *Bioinformatics*. 2018. `PMID:29949968 <https://pubmed.ncbi.nlm.nih.gov/29949968/>`_
 
-- Hoehn KB et al. A Phylogenetic Codon Substitution Model for Antibody Lineages. * Genetics*. 2017. `PMID:28315836 <https://pubmed.ncbi.nlm.nih.gov/28315836/>`_
+- Hoehn KB et al. A Phylogenetic Codon Substitution Model for Antibody Lineages. *Genetics*. 2017. `PMID:28315836 <https://pubmed.ncbi.nlm.nih.gov/28315836/>`_
 
-- Gupta NT et al. Hierarchical clustering can identify B cell clones with high confidence in Ig repertoire sequencing data. *J Immunol.*. 2017. `PMID:28179494 <https://pubmed.ncbi.nlm.nih.gov/28179494/>`_
+- Gupta NT et al. Hierarchical clustering can identify B cell clones with high confidence in Ig repertoire sequencing data. *J Immunol*. 2017. `PMID:28179494 <https://pubmed.ncbi.nlm.nih.gov/28179494/>`_
 
-- Cui A et al. A Model of Somatic Hypermutation Targeting in Mice Based on High-Throughput Ig Sequencing Data. *J Immunol.*. 2016. `PMID:27707999 <https://pubmed.ncbi.nlm.nih.gov/27707999/>`_
+- Cui A et al. A Model of Somatic Hypermutation Targeting in Mice Based on High-Throughput Ig Sequencing Data. *J Immunol*. 2016. `PMID:27707999 <https://pubmed.ncbi.nlm.nih.gov/27707999/>`_
 
 - Gupta NT et al. Change-O: a toolkit for analyzing large-scale B cell immunoglobulin repertoire sequencing data. *Bioinformatics*. 2015. `PMID:26069265 <https://pubmed.ncbi.nlm.nih.gov/26069265/>`_
 
-- Gadala-Maria D et al. Automated analysis of high-throughput B-cell sequencing data reveals a high frequency of novel immunoglobulin V gene segment alleles. *Proc Natl Acad Sci U S A.*. 2015. `PMID:25675496 <https://pubmed.ncbi.nlm.nih.gov/25675496/>`_
+- Gadala-Maria D et al. Automated analysis of high-throughput B-cell sequencing data reveals a high frequency of novel immunoglobulin V gene segment alleles. *Proc Natl Acad Sci U S A*. 2015. `PMID:25675496 <https://pubmed.ncbi.nlm.nih.gov/25675496/>`_
 
-- Stern JN et al. B cells populating the multiple sclerosis brain mature in the draining cervical lymph nodes. *Sci Transl Med.*. 2014. `PMID:25100741 <https://pubmed.ncbi.nlm.nih.gov/25100741/>`_
+- Stern JN et al. B cells populating the multiple sclerosis brain mature in the draining cervical lymph nodes. *Sci Transl Med*. 2014. `PMID:25100741 <https://pubmed.ncbi.nlm.nih.gov/25100741/>`_
 
 - Vander Heiden JA et al. pRESTO: a toolkit for processing high-throughput sequencing raw reads of lymphocyte receptor repertoires. *Bioinformatics*. 2014. `PMID:24618469 <https://pubmed.ncbi.nlm.nih.gov/24618469/>`_
 
-- Yaari G et al. Models of somatic hypermutation targeting and substitution based on synonymous mutations from high-throughput immunoglobulin sequencing data. *Front Immunol.*. 2013. `PMID:24298272 <https://pubmed.ncbi.nlm.nih.gov/24298272/>`_
+- Yaari G et al. Models of somatic hypermutation targeting and substitution based on synonymous mutations from high-throughput immunoglobulin sequencing data. *Front Immunol*. 2013. `PMID:24298272 <https://pubmed.ncbi.nlm.nih.gov/24298272/>`_
 
-- Yaari G et al. Quantifying selection in high-throughput Immunoglobulin sequencing data sets. *Nucleic Acids Res.*. 2012. `PMID:22641856 <https://pubmed.ncbi.nlm.nih.gov/22641856/>`_
+- Yaari G et al. Quantifying selection in high-throughput Immunoglobulin sequencing data sets. *Nucleic Acids Res*. 2012. `PMID:22641856 <https://pubmed.ncbi.nlm.nih.gov/22641856/>`_
 

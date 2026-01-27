@@ -143,7 +143,8 @@ def create_rst_output(df, output_file, download_date, core_publications_file, in
                 # Journal and year
                 journal_year = []
                 if journal:
-                    journal_year.append(f"*{journal}*")
+                    # Strip trailing period from journal to avoid double periods
+                    journal_year.append(f"*{journal.rstrip('.')}*")
                 if year:
                     journal_year.append(year)
                 if journal_year:
