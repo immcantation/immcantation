@@ -13,8 +13,16 @@ import argparse
 from pathlib import Path
 from datetime import datetime
 
-def create_rst_output(df, output_file, download_date, core_publications_file):
-    """Create an RST file with formatted citations and clickable PubMed ID links."""
+def create_rst_output(df, output_file, download_date, core_publications_file, include_doi=False):
+    """Create an RST file with formatted citations and clickable PubMed ID links.
+    
+    Args:
+        df: DataFrame with citations
+        output_file: Path to output RST file
+        download_date: Date string for last update
+        core_publications_file: Path to core publications TSV
+        include_doi: Whether to include DOI links (default: False)
+    """
     total_citations = len(df)
     
     # Read core publications
@@ -57,40 +65,41 @@ def create_rst_output(df, output_file, download_date, core_publications_file):
             pub_date = row.get('publication_date', '').strip() if pd.notna(row.get('publication_date')) else ''
             doi = row.get('doi', '').strip() if pd.notna(row.get('doi')) else ''
             
-            # Build one-line citation
+            # Build AMA-style citation
             parts = []
             
-            # Title with link
-            if citing_pmid:
-                parts.append(f"`{title} <https://pubmed.ncbi.nlm.nih.gov/{citing_pmid}/>`_")
-            else:
-                parts.append(f"**{title}**")
-            
-            # First author only
+            # Authors (first author et al.)
             if authors:
                 first_author = authors.split(',')[0].strip()
                 parts.append(f"{first_author} et al.")
             
-            # Journal
-            if journal:
-                parts.append(f"*{journal}*")
+            # Title (no link)
+            parts.append(title)
             
-            # Year
+            # Journal and year
+            journal_year = []
+            if journal:
+                journal_year.append(f"*{journal}*")
             if pub_date:
                 year = pub_date.split('-')[0]
-                parts.append(f"({year})")
+                journal_year.append(year)
+            if journal_year:
+                parts.append(". ".join(journal_year))
             
-            # Links
+            # Links (PMID and optionally DOI)
             links = []
             if citing_pmid:
                 links.append(f"`PMID:{citing_pmid} <https://pubmed.ncbi.nlm.nih.gov/{citing_pmid}/>`_")
-            if doi:
-                links.append(f"`DOI <https://doi.org/{doi}>`_")
+            if include_doi and doi:
+                links.append(f"`DOI:{doi} <https://doi.org/{doi}>`_")
             if links:
                 parts.append(" | ".join(links))
             
-            # Write single line with bullet
-            f.write(f"- {' - '.join(parts)}\n\n")
+            # Remove trailing periods from all parts to avoid double periods
+            parts = [p.rstrip('.') for p in parts]
+            
+            # Write citation with bullet
+            f.write(f"- {'. '.join(parts)}\n\n")
         
         # Add core publications section at the end
         if core_pubs:
@@ -110,25 +119,29 @@ def create_rst_output(df, output_file, download_date, core_publications_file):
                 if published:
                     year = published.split('-')[0]
                 
-                # Build citation line
+                # Build AMA-style citation
                 parts = []
-                if pmid:
-                    parts.append(f"`{title} <https://pubmed.ncbi.nlm.nih.gov/{pmid}/>`_")
-                else:
-                    parts.append(f"**{title}**")
                 
+                # Title (no link)
+                parts.append(title)
+                
+                # Year
                 if year:
-                    parts.append(f"({year})")
+                    parts.append(year)
                 
+                # Links (PMID and optionally DOI)
                 links = []
                 if pmid:
                     links.append(f"`PMID:{pmid} <https://pubmed.ncbi.nlm.nih.gov/{pmid}/>`_")
-                if doi:
+                if include_doi and doi:
                     links.append(f"`DOI <https://doi.org/{doi}>`_")
                 if links:
                     parts.append(" | ".join(links))
                 
-                f.write(f"- {' - '.join(parts)}\n\n")
+                # Remove trailing periods from all parts to avoid double periods
+                parts = [p.rstrip('.') for p in parts]
+                
+                f.write(f"- {'. '.join(parts)}\n\n")
 
 def main():
     # Parse command-line arguments
@@ -152,6 +165,11 @@ def main():
         type=str,
         default=None,
         help="Core publications TSV file path (default: <script_dir>/immcantation-publications.tsv)"
+    )
+    parser.add_argument(
+        "--doi",
+        action="store_true",
+        help="Include DOI links in citations (default: False)"
     )
     
     args = parser.parse_args()
@@ -328,7 +346,8 @@ def main():
         print(f"Creating RST file: {output_file_rst}")
         print(f"Total unique citations (after deduplication): {len(df_sorted)}")
         print(f"Download date: {download_date}")
-        create_rst_output(df_sorted, output_file_rst, download_date, core_publications_file)
+        print(f"Include DOI links: {args.doi}")
+        create_rst_output(df_sorted, output_file_rst, download_date, core_publications_file, include_doi=args.doi)
         print(f"RST output saved to: {output_file_rst}")
         print("Successfully created citations.rst file!")
         
