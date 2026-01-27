@@ -166,31 +166,49 @@ def main():
         print("Selecting specified columns...")
         df_subset = df[columns].copy()
         
+        # Add original_pmid column if needed for tracking
+        if 'original_pmid' in df.columns:
+            df_subset['original_pmid'] = df['original_pmid']
+        
         # Remove duplicates based on DOI and PMID
         print("Removing duplicates based on DOI and PMID...")
         original_count = len(df_subset)
         
-        # Track removed duplicates
+        # Track removed duplicates with detailed information
         removed_entries = []
         
         # First remove DOI duplicates
+        # Group by DOI to find which Immcantation papers each citing paper references
+        doi_groups = df_subset.groupby('doi')['original_pmid'].apply(list).to_dict()
+        
         doi_duplicates = df_subset[df_subset.duplicated(subset=["doi"], keep="first")]
         for _, row in doi_duplicates.iterrows():
+            doi = row.get('doi', '')
+            immcantation_papers = doi_groups.get(doi, [])
             removed_entries.append({
                 'title': row.get('title', ''),
                 'citing_pmid': row.get('citing_pmid', ''),
-                'doi': row.get('doi', ''),
+                'doi': doi,
+                'original_pmids': immcantation_papers,
+                'count': len(immcantation_papers),
                 'reason': 'Duplicate DOI'
             })
         df_deduplicated = df_subset.drop_duplicates(subset=["doi"], keep="first")
         
         # Then remove PMID duplicates
+        # Group by PMID to find which Immcantation papers each citing paper references
+        pmid_groups = df_deduplicated.groupby('citing_pmid')['original_pmid'].apply(list).to_dict()
+        
         pmid_duplicates = df_deduplicated[df_deduplicated.duplicated(subset=["citing_pmid"], keep="first")]
         for _, row in pmid_duplicates.iterrows():
+            citing_pmid = row.get('citing_pmid', '')
+            immcantation_papers = pmid_groups.get(citing_pmid, [])
             removed_entries.append({
                 'title': row.get('title', ''),
-                'citing_pmid': row.get('citing_pmid', ''),
+                'citing_pmid': citing_pmid,
                 'doi': row.get('doi', ''),
+                'original_pmids': immcantation_papers,
+                'count': len(immcantation_papers),
                 'reason': 'Duplicate PMID'
             })
         df_deduplicated = df_deduplicated.drop_duplicates(subset=["citing_pmid"], keep="first")
@@ -206,11 +224,22 @@ def main():
                 f.write(f"Removed Entries Log\n")
                 f.write(f"{'='*80}\n")
                 f.write(f"Total removed: {len(removed_entries)}\n\n")
+                
+                # Count multi-citation entries
+                multi_citation_count = sum(1 for entry in removed_entries if entry['count'] > 1)
+                if multi_citation_count > 0:
+                    f.write(f"Entries citing multiple Immcantation papers: {multi_citation_count}\n\n")
+                
                 for entry in removed_entries:
                     f.write(f"Reason: {entry['reason']}\n")
                     f.write(f"  Title: {entry['title']}\n")
-                    f.write(f"  PMID: {entry['citing_pmid']}\n")
+                    f.write(f"  Citing PMID: {entry['citing_pmid']}\n")
                     f.write(f"  DOI: {entry['doi']}\n")
+                    
+                    # Report which Immcantation papers were cited
+                    if entry['count'] > 1:
+                        f.write(f"  ** Cites {entry['count']} different Immcantation papers **\n")
+                    f.write(f"  Immcantation papers cited (PMID): {', '.join(map(str, entry['original_pmids']))}\n")
                     f.write(f"{'-'*80}\n")
         
         # Convert publication_date to datetime for proper sorting
