@@ -15,6 +15,8 @@ multiple Immcantation core publications.
 
 **Total papers:** 1050 | **Last updated:** January 27, 2026
 
+- Mathews Joseph et al. Computing the inducibility of broadly neutralizing antibodies under a context-dependent model of affinity maturation: applications to sequential vaccine design. *Journal of immunology (Baltimore, Md. : 1950)*. 2026. `PMID:40971634 <https://pubmed.ncbi.nlm.nih.gov/40971634/>`_
+
 - Al-Khatib Hebah A et al. Dynamics of B-cell response in MERS-CoV patients and survivors with hybrid immunity. *mBio*. 2026. `PMID:41400350 <https://pubmed.ncbi.nlm.nih.gov/41400350/>`_
 
 - Lees William D et al. The current landscape of adaptive immune receptor genomic and repertoire data: OGRDB and VDJbase. *Nucleic acids research*. 2026. `PMID:41206474 <https://pubmed.ncbi.nlm.nih.gov/41206474/>`_
@@ -86,8 +88,6 @@ multiple Immcantation core publications.
 - Inamo Jun et al. Comparative single-cell and spatial profiling of anti-SSA-positive and anti-centromere-positive Sjögren's disease reveals common and distinct immune activation and fibroblast-mediated inflammation. *Nature communications*. 2025. `PMID:40983612 <https://pubmed.ncbi.nlm.nih.gov/40983612/>`_
 
 - Knox James J et al. B-Cell Subset Representation Predicts SARS-CoV-2 Vaccine Response in Solid Organ Transplant Recipients. *The Journal of infectious diseases*. 2025. `PMID:40459569 <https://pubmed.ncbi.nlm.nih.gov/40459569/>`_
-
-- Mathews Joseph et al. Computing the inducibility of broadly neutralizing antibodies under a context-dependent model of affinity maturation: applications to sequential vaccine design. *Journal of immunology (Baltimore, Md. : 1950)*. 2025. `PMID:40971634 <https://pubmed.ncbi.nlm.nih.gov/40971634/>`_
 
 - Manthiram Kalpana et al. SARS-CoV-2 infection and vaccination elicit distinct pharyngeal mucosal B cell responses in children. *Research square*. 2025. `PMID:40964019 <https://pubmed.ncbi.nlm.nih.gov/40964019/>`_
 
@@ -2124,6 +2124,8 @@ multiple Immcantation core publications.
 The following Immcantation core publications were used to identify citing papers:
 
 - Gabernet G et al. nf-core/airrflow: An adaptive immune receptor repertoire analysis workflow employing the Immcantation framework. *PLoS Comput Biol*. 2024. `PMID:39058741 <https://pubmed.ncbi.nlm.nih.gov/39058741/>`_
+
+- Jensen CG et al. Inferring B Cell Phylogenies from Paired H and L Chain BCR Sequences with Dowser. *J Immunol*. 2024. `PMID:38557795 <https://pubmed.ncbi.nlm.nih.gov/38557795/>`_
 
 - Hoehn KB et al. Phylogenetic analysis of migration, differentiation, and class switching in B cells. *PLoS Comput Biol*. 2022. `PMID:35468128 <https://pubmed.ncbi.nlm.nih.gov/35468128/>`_
 
