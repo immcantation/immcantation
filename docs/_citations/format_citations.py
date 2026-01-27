@@ -29,12 +29,20 @@ def create_rst_output(df, output_file, download_date, core_publications_file, in
     core_pubs = []
     if core_publications_file.exists():
         core_df = pd.read_csv(core_publications_file, sep="\t", dtype=str)
+        # Sort by published date (most recent first)
+        core_df['published'] = pd.to_datetime(core_df['published'], errors='coerce')
+        core_df = core_df.sort_values(by='published', ascending=False)
+        core_df['published'] = core_df['published'].dt.strftime('%Y-%m-%d')
+        core_df['published'] = core_df['published'].fillna('')
+        
         for _, row in core_df.iterrows():
             core_pubs.append({
                 'pmid': row.get('PMID', ''),
                 'title': row.get('title', ''),
                 'doi': row.get('doi', ''),
-                'published': row.get('published', '')
+                'published': row.get('published', ''),
+                'authors': row.get('authors', ''),
+                'journal': row.get('journal', '')
             })
     
     with open(output_file, 'w', encoding='utf-8') as f:
@@ -113,28 +121,40 @@ def create_rst_output(df, output_file, download_date, core_publications_file, in
                 title = pub['title']
                 doi = pub['doi']
                 published = pub['published']
+                authors = pub['authors']
+                journal = pub['journal']
                 
                 # Extract year from published date
                 year = ''
                 if published:
                     year = published.split('-')[0]
                 
-                # Build AMA-style citation
+                # Build AMA-style citation (same format as citing publications)
                 parts = []
+                
+                # Authors (first author et al.)
+                if authors:
+                    first_author = authors.split(',')[0].strip()
+                    parts.append(f"{first_author} et al.")
                 
                 # Title (no link)
                 parts.append(title)
                 
-                # Year
+                # Journal and year
+                journal_year = []
+                if journal:
+                    journal_year.append(f"*{journal}*")
                 if year:
-                    parts.append(year)
+                    journal_year.append(year)
+                if journal_year:
+                    parts.append(". ".join(journal_year))
                 
                 # Links (PMID and optionally DOI)
                 links = []
                 if pmid:
                     links.append(f"`PMID:{pmid} <https://pubmed.ncbi.nlm.nih.gov/{pmid}/>`_")
                 if include_doi and doi:
-                    links.append(f"`DOI <https://doi.org/{doi}>`_")
+                    links.append(f"`DOI:{doi} <https://doi.org/{doi}>`_")
                 if links:
                     parts.append(" | ".join(links))
                 
