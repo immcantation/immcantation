@@ -6,7 +6,9 @@ Cited by
 .. image:: https://img.shields.io/badge/Citations-1050-blue
    :alt: Total Citations
 
-This page lists scientific publications that have cited the Immcantation framework in their research. Citations are collected from PubMed and updated regularly to track the impact and usage of Immcantation tools in adaptive immune receptor repertoire analysis.
+This page lists scientific publications that have cited core publications of the 
+Immcantation framework in their research. Citations are collected from PubMed 
+and updated regularly.
 
 **Total papers:** 1050 | **Last updated:** January 27, 2026
 
