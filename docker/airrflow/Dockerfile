@@ -81,6 +81,11 @@ RUN IGPHYML=$(versions get -n igphyml) \
 # Setup environment
 ENV PATH="${PATH}:/usr/local/share/igphyml/src"
 
+# Install tigger
+RUN TIGGER_VER=$(versions get -n tigger) \
+    && Rscript -e "devtools::install_github('immcantation/tigger', ref='${TIGGER_VER}', quiet=FALSE, upgrade='never')"
+
+
 # Install ggplot2 (pin exact version and prevent upgrades)
 RUN Rscript -e "devtools::install_version('ggplot2', version='3.5.2', repos='https://cloud.r-project.org', upgrade='never', force=TRUE, quiet=FALSE)" \
     && Rscript -e "v <- as.character(utils::packageVersion('ggplot2')); message('ggplot2 version: ', v); if (v != '3.5.2') quit(status = 1)"

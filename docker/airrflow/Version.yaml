@@ -5,8 +5,9 @@ package:
   alakazam: 1.3.1
   shazam:   1.2.1
   scoper:   1.3.1
-  dowser:   2.3.2
-  enchantr: 0.1.22
+  dowser:   2.4.0
+  tigger:   1.1.2
+  enchantr: novel-allele-and-genotype
   igphyml:  2.0.0
 dependency:
   airr-py:  1.5.1
