@@ -46,26 +46,27 @@ RUN wget2 -q --force-progress --no-check-certificate \
     && chmod +x /usr/local/bin/tbl2asn
 
 # Install AIRR reference libraries
+ENV R_REMOTES_UPGRADE=never
 RUN AIRR_PY=$(versions get -n airr-py) \
     && AIRR_R=$(versions get -n airr-r) \
     && pip3 install airr==${AIRR_PY} \
-    && Rscript -e "devtools::install_version('airr', '${AIRR_R}', quiet=FALSE)"    
+    && Rscript -e "devtools::install_version('airr', '${AIRR_R}', quiet=FALSE)"
 
 # Install alakazam
 RUN ALAKAZAM_VER=$(versions get -n alakazam) \
-    && Rscript -e "devtools::install_github('immcantation/alakazam', ref='${ALAKAZAM_VER}', quiet=FALSE)"
+    && Rscript -e "devtools::install_github('immcantation/alakazam', ref='${ALAKAZAM_VER}', quiet=FALSE, upgrade='never')"
 
 # Install shazam
 RUN SHAZAM_VER=$(versions get -n shazam) \
-    && Rscript -e "devtools::install_github('immcantation/shazam', ref='${SHAZAM_VER}', quiet=FALSE)"
+    && Rscript -e "devtools::install_github('immcantation/shazam', ref='${SHAZAM_VER}', quiet=FALSE, upgrade='never')"
 
 # Install SCOPer
 RUN SCOPER_VER=$(versions get -n scoper) \
-    && Rscript -e "devtools::install_github('immcantation/scoper', ref='${SCOPER_VER}', quiet=FALSE)"
+    && Rscript -e "devtools::install_github('immcantation/scoper', ref='${SCOPER_VER}', quiet=FALSE, upgrade='never')"
 
 # Install dowser
 RUN DOWSER_VER=$(versions get -n dowser) \
-    && Rscript -e "devtools::install_github('immcantation/dowser', ref='${DOWSER_VER}', quiet=FALSE)"
+    && Rscript -e "devtools::install_github('immcantation/dowser', ref='${DOWSER_VER}', quiet=FALSE, upgrade='never')"
 
 # Install IgPhyML
 RUN IGPHYML=$(versions get -n igphyml) \
@@ -80,9 +81,13 @@ RUN IGPHYML=$(versions get -n igphyml) \
 # Setup environment
 ENV PATH="${PATH}:/usr/local/share/igphyml/src"
 
+# Install ggplot2 (pin exact version and prevent upgrades)
+RUN Rscript -e "devtools::install_version('ggplot2', version='3.5.2', repos='https://cloud.r-project.org', upgrade='never', force=TRUE, quiet=FALSE)" \
+    && Rscript -e "v <- as.character(utils::packageVersion('ggplot2')); message('ggplot2 version: ', v); if (v != '3.5.2') quit(status = 1)"
+
 # Install enchantr
 RUN ENCHANTR_VER=$(versions get -n enchantr) \
-    && Rscript -e "devtools::install_github('immcantation/enchantr', ref='${ENCHANTR_VER}', quiet=FALSE)"
+    && Rscript -e "devtools::install_github('immcantation/enchantr', ref='${ENCHANTR_VER}', quiet=FALSE, upgrade='never')"
 
 # Set commands
 CMD echo -e " Version information:\n"\
