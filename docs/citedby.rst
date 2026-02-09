@@ -13,2107 +13,2107 @@ Immcantation framework in their research. Citations are collected from PubMed
 and updated regularly. Citing papers are counted only once, even if they cite 
 multiple Immcantation core publications.
 
-**Total papers:** 1050 | **Last updated:** January 27, 2026
+**Total papers:** 1050 | **Last updated:** February 09, 2026
 
-- Mathews Joseph et al. Computing the inducibility of broadly neutralizing antibodies under a context-dependent model of affinity maturation: applications to sequential vaccine design. *Journal of immunology (Baltimore, Md. : 1950)*. 2026. `PMID:40971634 <https://pubmed.ncbi.nlm.nih.gov/40971634/>`_
+- Mathews Joseph et al. **Computing the inducibility of broadly neutralizing antibodies under a context-dependent model of affinity maturation: applications to sequential vaccine design.**. *Journal of immunology (Baltimore, Md. : 1950)*. 2026. `PMID:40971634 <https://pubmed.ncbi.nlm.nih.gov/40971634/>`_
 
-- Al-Khatib Hebah A et al. Dynamics of B-cell response in MERS-CoV patients and survivors with hybrid immunity. *mBio*. 2026. `PMID:41400350 <https://pubmed.ncbi.nlm.nih.gov/41400350/>`_
+- Al-Khatib Hebah A et al. **Dynamics of B-cell response in MERS-CoV patients and survivors with hybrid immunity.**. *mBio*. 2026. `PMID:41400350 <https://pubmed.ncbi.nlm.nih.gov/41400350/>`_
 
-- Lees William D et al. The current landscape of adaptive immune receptor genomic and repertoire data: OGRDB and VDJbase. *Nucleic acids research*. 2026. `PMID:41206474 <https://pubmed.ncbi.nlm.nih.gov/41206474/>`_
+- Lees William D et al. **The current landscape of adaptive immune receptor genomic and repertoire data: OGRDB and VDJbase.**. *Nucleic acids research*. 2026. `PMID:41206474 <https://pubmed.ncbi.nlm.nih.gov/41206474/>`_
 
-- Wiatr Marie et al. Memory B cell development in response to mRNA SARS-CoV-2 and nanoparticle immunization in mice. *Proceedings of the National Academy of Sciences of the United States of America*. 2026. `PMID:41481458 <https://pubmed.ncbi.nlm.nih.gov/41481458/>`_
+- Wiatr Marie et al. **Memory B cell development in response to mRNA SARS-CoV-2 and nanoparticle immunization in mice.**. *Proceedings of the National Academy of Sciences of the United States of America*. 2026. `PMID:41481458 <https://pubmed.ncbi.nlm.nih.gov/41481458/>`_
 
-- Wetzel Nora Sandrine et al. Patient-Derived Monoclonal Myelin Oligodendrocyte Glycoprotein Autoantibodies Mediate Cytotoxicity. *Neurology(R) neuroimmunology & neuroinflammation*. 2026. `PMID:41406408 <https://pubmed.ncbi.nlm.nih.gov/41406408/>`_
+- Wetzel Nora Sandrine et al. **Patient-Derived Monoclonal Myelin Oligodendrocyte Glycoprotein Autoantibodies Mediate Cytotoxicity.**. *Neurology(R) neuroimmunology & neuroinflammation*. 2026. `PMID:41406408 <https://pubmed.ncbi.nlm.nih.gov/41406408/>`_
 
-- Miglierina Emma et al. DIS3 licenses B cells for plasma cell differentiation in humans. *Cellular & molecular immunology*. 2026. `PMID:41286079 <https://pubmed.ncbi.nlm.nih.gov/41286079/>`_
+- Miglierina Emma et al. **DIS3 licenses B cells for plasma cell differentiation in humans.**. *Cellular & molecular immunology*. 2026. `PMID:41286079 <https://pubmed.ncbi.nlm.nih.gov/41286079/>`_
 
-- Gridley John et al. iHALT unlocks liver functionality as a surrogate secondary lymphoid organ. *Nature*. 2026. `PMID:41299178 <https://pubmed.ncbi.nlm.nih.gov/41299178/>`_
+- Gridley John et al. **iHALT unlocks liver functionality as a surrogate secondary lymphoid organ.**. *Nature*. 2026. `PMID:41299178 <https://pubmed.ncbi.nlm.nih.gov/41299178/>`_
 
-- Guo Dongjun et al. ImmunoMatch learns and predicts cognate pairing of heavy and light immunoglobulin chains. *Nature methods*. 2026. `PMID:41254366 <https://pubmed.ncbi.nlm.nih.gov/41254366/>`_
+- Guo Dongjun et al. **ImmunoMatch learns and predicts cognate pairing of heavy and light immunoglobulin chains.**. *Nature methods*. 2026. `PMID:41254366 <https://pubmed.ncbi.nlm.nih.gov/41254366/>`_
 
-- Naouar Ikbel et al. Lymphotoxin-dependent elevated meningeal CXCL13:BAFF ratios drive gray matter injury. *Nature immunology*. 2026. `PMID:41482555 <https://pubmed.ncbi.nlm.nih.gov/41482555/>`_
+- Naouar Ikbel et al. **Lymphotoxin-dependent elevated meningeal CXCL13:BAFF ratios drive gray matter injury.**. *Nature immunology*. 2026. `PMID:41482555 <https://pubmed.ncbi.nlm.nih.gov/41482555/>`_
 
-- Li Qi et al. B cell targeted CAR-T therapy for autoimmune diseases. *Frontiers of medicine*. 2025. `PMID:41452401 <https://pubmed.ncbi.nlm.nih.gov/41452401/>`_
+- Li Qi et al. **B cell targeted CAR-T therapy for autoimmune diseases.**. *Frontiers of medicine*. 2025. `PMID:41452401 <https://pubmed.ncbi.nlm.nih.gov/41452401/>`_
 
-- Zhang Lei et al. Distinct immune cell dynamics associated with immune-related adverse events during combined chemoradiation and immune checkpoint inhibitor therapy. *Nature communications*. 2025. `PMID:41430079 <https://pubmed.ncbi.nlm.nih.gov/41430079/>`_
+- Zhang Lei et al. **Distinct immune cell dynamics associated with immune-related adverse events during combined chemoradiation and immune checkpoint inhibitor therapy.**. *Nature communications*. 2025. `PMID:41430079 <https://pubmed.ncbi.nlm.nih.gov/41430079/>`_
 
-- Reers Ashley B et al. Immunoglobulin germline reference sequences enable investigations and reveal insights into bat-specific immunity. *iScience*. 2025. `PMID:41321632 <https://pubmed.ncbi.nlm.nih.gov/41321632/>`_
+- Reers Ashley B et al. **Immunoglobulin germline reference sequences enable investigations and reveal insights into bat-specific immunity.**. *iScience*. 2025. `PMID:41321632 <https://pubmed.ncbi.nlm.nih.gov/41321632/>`_
 
-- Yasumizu Yoshiaki et al. Host Genetic Architecture between Epstein-Barr Virus Activity and Multiple Sclerosis Reveals Shared Pathways. *medRxiv : the preprint server for health sciences*. 2025. `PMID:41445616 <https://pubmed.ncbi.nlm.nih.gov/41445616/>`_
+- Yasumizu Yoshiaki et al. **Host Genetic Architecture between Epstein-Barr Virus Activity and Multiple Sclerosis Reveals Shared Pathways.**. *medRxiv : the preprint server for health sciences*. 2025. `PMID:41445616 <https://pubmed.ncbi.nlm.nih.gov/41445616/>`_
 
-- Marina-Zárate Ester et al. Highly functional and prolonged germinal center T follicular helper cell responses are associated with enhanced neutralizing antibody development. *Immunity*. 2025. `PMID:41205611 <https://pubmed.ncbi.nlm.nih.gov/41205611/>`_
+- Marina-Zárate Ester et al. **Highly functional and prolonged germinal center T follicular helper cell responses are associated with enhanced neutralizing antibody development.**. *Immunity*. 2025. `PMID:41205611 <https://pubmed.ncbi.nlm.nih.gov/41205611/>`_
 
-- Kim Jeong Yeon et al. B cell-reactive neoantigens boost antitumor immunity. *Science advances*. 2025. `PMID:41337574 <https://pubmed.ncbi.nlm.nih.gov/41337574/>`_
+- Kim Jeong Yeon et al. **B cell-reactive neoantigens boost antitumor immunity.**. *Science advances*. 2025. `PMID:41337574 <https://pubmed.ncbi.nlm.nih.gov/41337574/>`_
 
-- Li Haibo et al. Reading of human acute immune dynamics in omicron SARS-CoV-2 breakthrough infection. *Emerging microbes & infections*. 2025. `PMID:40231451 <https://pubmed.ncbi.nlm.nih.gov/40231451/>`_
+- Li Haibo et al. **Reading of human acute immune dynamics in omicron SARS-CoV-2 breakthrough infection.**. *Emerging microbes & infections*. 2025. `PMID:40231451 <https://pubmed.ncbi.nlm.nih.gov/40231451/>`_
 
-- Johnson Mackenzie M et al. Nucleotide context models outperform protein language models for predicting antibody affinity maturation. *PLoS computational biology*. 2025. `PMID:41325480 <https://pubmed.ncbi.nlm.nih.gov/41325480/>`_
+- Johnson Mackenzie M et al. **Nucleotide context models outperform protein language models for predicting antibody affinity maturation.**. *PLoS computational biology*. 2025. `PMID:41325480 <https://pubmed.ncbi.nlm.nih.gov/41325480/>`_
 
-- Engelbrecht Eric et al. Germline polymorphisms in the immunoglobulin kappa and lambda loci underpinning antibody light chain repertoire variability. *Nature communications*. 2025. `PMID:41315391 <https://pubmed.ncbi.nlm.nih.gov/41315391/>`_
+- Engelbrecht Eric et al. **Germline polymorphisms in the immunoglobulin kappa and lambda loci underpinning antibody light chain repertoire variability.**. *Nature communications*. 2025. `PMID:41315391 <https://pubmed.ncbi.nlm.nih.gov/41315391/>`_
 
-- Chen Xiaomei et al. Challenges and strategies in clinical applications of CAR-T therapy for autoimmune diseases. *Journal of hematology & oncology*. 2025. `PMID:41316450 <https://pubmed.ncbi.nlm.nih.gov/41316450/>`_
+- Chen Xiaomei et al. **Challenges and strategies in clinical applications of CAR-T therapy for autoimmune diseases.**. *Journal of hematology & oncology*. 2025. `PMID:41316450 <https://pubmed.ncbi.nlm.nih.gov/41316450/>`_
 
-- Lin Xinqing et al. Uncovering the immune mechanisms underlying the emergence of immunotherapy-induced pneumonitis in lung cancer patients. *Nature communications*. 2025. `PMID:41298513 <https://pubmed.ncbi.nlm.nih.gov/41298513/>`_
+- Lin Xinqing et al. **Uncovering the immune mechanisms underlying the emergence of immunotherapy-induced pneumonitis in lung cancer patients.**. *Nature communications*. 2025. `PMID:41298513 <https://pubmed.ncbi.nlm.nih.gov/41298513/>`_
 
-- Sigorskikh A I et al. Fastq-dupaway: a fast and memory-efficient tool for deduplication of single- and paired-end NGS data. *Scientific reports*. 2025. `PMID:41290940 <https://pubmed.ncbi.nlm.nih.gov/41290940/>`_
+- Sigorskikh A I et al. **Fastq-dupaway: a fast and memory-efficient tool for deduplication of single- and paired-end NGS data.**. *Scientific reports*. 2025. `PMID:41290940 <https://pubmed.ncbi.nlm.nih.gov/41290940/>`_
 
-- Johnson Mackenzie M et al. Nucleotide context models outperform protein language models for predicting antibody affinity maturation. *bioRxiv : the preprint server for biology*. 2025. `PMID:40666976 <https://pubmed.ncbi.nlm.nih.gov/40666976/>`_
+- Johnson Mackenzie M et al. **Nucleotide context models outperform protein language models for predicting antibody affinity maturation.**. *bioRxiv : the preprint server for biology*. 2025. `PMID:40666976 <https://pubmed.ncbi.nlm.nih.gov/40666976/>`_
 
-- Çakan Elif et al. CTLA-4 blockade shifts the B cell repertoire toward autoimmunity. *The Journal of clinical investigation*. 2025. `PMID:41026527 <https://pubmed.ncbi.nlm.nih.gov/41026527/>`_
+- Çakan Elif et al. **CTLA-4 blockade shifts the B cell repertoire toward autoimmunity.**. *The Journal of clinical investigation*. 2025. `PMID:41026527 <https://pubmed.ncbi.nlm.nih.gov/41026527/>`_
 
-- Younis Shady et al. Epstein-Barr virus reprograms autoreactive B cells as antigen-presenting cells in systemic lupus erythematosus. *Science translational medicine*. 2025. `PMID:41223250 <https://pubmed.ncbi.nlm.nih.gov/41223250/>`_
+- Younis Shady et al. **Epstein-Barr virus reprograms autoreactive B cells as antigen-presenting cells in systemic lupus erythematosus.**. *Science translational medicine*. 2025. `PMID:41223250 <https://pubmed.ncbi.nlm.nih.gov/41223250/>`_
 
-- Wei Yulong et al. Transcription factor BACH2 shapes tissue-resident memory T cell programs to promote HIV-1 persistence. *Immunity*. 2025. `PMID:40845842 <https://pubmed.ncbi.nlm.nih.gov/40845842/>`_
+- Wei Yulong et al. **Transcription factor BACH2 shapes tissue-resident memory T cell programs to promote HIV-1 persistence.**. *Immunity*. 2025. `PMID:40845842 <https://pubmed.ncbi.nlm.nih.gov/40845842/>`_
 
-- Dang Van Duc et al. Distinct autoreactive CD19- plasma cell subsets accumulate in lupus-prone mice. *Nature communications*. 2025. `PMID:41213970 <https://pubmed.ncbi.nlm.nih.gov/41213970/>`_
+- Dang Van Duc et al. **Distinct autoreactive CD19- plasma cell subsets accumulate in lupus-prone mice.**. *Nature communications*. 2025. `PMID:41213970 <https://pubmed.ncbi.nlm.nih.gov/41213970/>`_
 
-- McEnany John et al. Dynamics of local B cell migration during affinity maturation in the human tonsil. *bioRxiv : the preprint server for biology*. 2025. `PMID:41279088 <https://pubmed.ncbi.nlm.nih.gov/41279088/>`_
+- McEnany John et al. **Dynamics of local B cell migration during affinity maturation in the human tonsil.**. *bioRxiv : the preprint server for biology*. 2025. `PMID:41279088 <https://pubmed.ncbi.nlm.nih.gov/41279088/>`_
 
-- Chernyshev Mark et al. Detection of PCR chimeras in adaptive immune receptor repertoire sequences. *Bioinformatics (Oxford, England)*. 2025. `PMID:41124049 <https://pubmed.ncbi.nlm.nih.gov/41124049/>`_
+- Chernyshev Mark et al. **Detection of PCR chimeras in adaptive immune receptor repertoire sequences.**. *Bioinformatics (Oxford, England)*. 2025. `PMID:41124049 <https://pubmed.ncbi.nlm.nih.gov/41124049/>`_
 
-- Kwon Taeyong et al. Pigs lacking Natural Killer T cells have altered cellular responses to influenza. *bioRxiv : the preprint server for biology*. 2025. `PMID:41279250 <https://pubmed.ncbi.nlm.nih.gov/41279250/>`_
+- Kwon Taeyong et al. **Pigs lacking Natural Killer T cells have altered cellular responses to influenza.**. *bioRxiv : the preprint server for biology*. 2025. `PMID:41279250 <https://pubmed.ncbi.nlm.nih.gov/41279250/>`_
 
-- Matsen Frederick A et al. Separating selection from mutation in antibody language models. *bioRxiv : the preprint server for biology*. 2025. `PMID:41279420 <https://pubmed.ncbi.nlm.nih.gov/41279420/>`_
+- Matsen Frederick A et al. **Separating selection from mutation in antibody language models.**. *bioRxiv : the preprint server for biology*. 2025. `PMID:41279420 <https://pubmed.ncbi.nlm.nih.gov/41279420/>`_
 
-- Grabauskas Titas et al. CMV-specific clonal expansion of Th1, GZMK+ CD8+, and TEMRA T cells revealed by human PBMC single cell profiling. *bioRxiv : the preprint server for biology*. 2025. `PMID:40666903 <https://pubmed.ncbi.nlm.nih.gov/40666903/>`_
+- Grabauskas Titas et al. **CMV-specific clonal expansion of Th1, GZMK+ CD8+, and TEMRA T cells revealed by human PBMC single cell profiling.**. *bioRxiv : the preprint server for biology*. 2025. `PMID:40666903 <https://pubmed.ncbi.nlm.nih.gov/40666903/>`_
 
-- Sutton Henry J et al. Simultaneous induction of multiple classes of broadly neutralizing antibody precursors by combination germline-targeting immunization in nonhuman primates. *Science immunology*. 2025. `PMID:41105754 <https://pubmed.ncbi.nlm.nih.gov/41105754/>`_
+- Sutton Henry J et al. **Simultaneous induction of multiple classes of broadly neutralizing antibody precursors by combination germline-targeting immunization in nonhuman primates.**. *Science immunology*. 2025. `PMID:41105754 <https://pubmed.ncbi.nlm.nih.gov/41105754/>`_
 
-- Sarkkinen Joona et al. Intranodal expansion of follicular T helper cells in patients with multiple sclerosis. *JCI insight*. 2025. `PMID:41059568 <https://pubmed.ncbi.nlm.nih.gov/41059568/>`_
+- Sarkkinen Joona et al. **Intranodal expansion of follicular T helper cells in patients with multiple sclerosis.**. *JCI insight*. 2025. `PMID:41059568 <https://pubmed.ncbi.nlm.nih.gov/41059568/>`_
 
-- van Ginneken Daphne et al. Delineating inter- and intra-antibody repertoire evolution with AntibodyForests. *Bioinformatics (Oxford, England)*. 2025. `PMID:41065461 <https://pubmed.ncbi.nlm.nih.gov/41065461/>`_
+- van Ginneken Daphne et al. **Delineating inter- and intra-antibody repertoire evolution with AntibodyForests.**. *Bioinformatics (Oxford, England)*. 2025. `PMID:41065461 <https://pubmed.ncbi.nlm.nih.gov/41065461/>`_
 
-- Cheung Michelle W et al. Reduced vaccine-induced germinal center outputs in patients with inflammatory bowel disease treated with anti-TNF biologics. *The Journal of clinical investigation*. 2025. `PMID:40728886 <https://pubmed.ncbi.nlm.nih.gov/40728886/>`_
+- Cheung Michelle W et al. **Reduced vaccine-induced germinal center outputs in patients with inflammatory bowel disease treated with anti-TNF biologics.**. *The Journal of clinical investigation*. 2025. `PMID:40728886 <https://pubmed.ncbi.nlm.nih.gov/40728886/>`_
 
-- Inamo Jun et al. Comparative single-cell and spatial profiling of anti-SSA-positive and anti-centromere-positive Sjögren's disease reveals common and distinct immune activation and fibroblast-mediated inflammation. *Nature communications*. 2025. `PMID:40983612 <https://pubmed.ncbi.nlm.nih.gov/40983612/>`_
+- Inamo Jun et al. **Comparative single-cell and spatial profiling of anti-SSA-positive and anti-centromere-positive Sjögren's disease reveals common and distinct immune activation and fibroblast-mediated inflammation.**. *Nature communications*. 2025. `PMID:40983612 <https://pubmed.ncbi.nlm.nih.gov/40983612/>`_
 
-- Knox James J et al. B-Cell Subset Representation Predicts SARS-CoV-2 Vaccine Response in Solid Organ Transplant Recipients. *The Journal of infectious diseases*. 2025. `PMID:40459569 <https://pubmed.ncbi.nlm.nih.gov/40459569/>`_
+- Knox James J et al. **B-Cell Subset Representation Predicts SARS-CoV-2 Vaccine Response in Solid Organ Transplant Recipients.**. *The Journal of infectious diseases*. 2025. `PMID:40459569 <https://pubmed.ncbi.nlm.nih.gov/40459569/>`_
 
-- Manthiram Kalpana et al. SARS-CoV-2 infection and vaccination elicit distinct pharyngeal mucosal B cell responses in children. *Research square*. 2025. `PMID:40964019 <https://pubmed.ncbi.nlm.nih.gov/40964019/>`_
+- Manthiram Kalpana et al. **SARS-CoV-2 infection and vaccination elicit distinct pharyngeal mucosal B cell responses in children.**. *Research square*. 2025. `PMID:40964019 <https://pubmed.ncbi.nlm.nih.gov/40964019/>`_
 
-- Montiel-Armendariz Andrea et al. B cell αv integrin regulates tissue specialization and clonal expansion of lung germinal center and memory B cells after viral infection. *bioRxiv : the preprint server for biology*. 2025. `PMID:39386536 <https://pubmed.ncbi.nlm.nih.gov/39386536/>`_
+- Montiel-Armendariz Andrea et al. **B cell αv integrin regulates tissue specialization and clonal expansion of lung germinal center and memory B cells after viral infection.**. *bioRxiv : the preprint server for biology*. 2025. `PMID:39386536 <https://pubmed.ncbi.nlm.nih.gov/39386536/>`_
 
-- Jung Jaeyong et al. Commensal Bacteria Drive B-cell Lymphomagenesis in the Setting of Innate Immunodeficiency. *Blood cancer discovery*. 2025. `PMID:40608826 <https://pubmed.ncbi.nlm.nih.gov/40608826/>`_
+- Jung Jaeyong et al. **Commensal Bacteria Drive B-cell Lymphomagenesis in the Setting of Innate Immunodeficiency.**. *Blood cancer discovery*. 2025. `PMID:40608826 <https://pubmed.ncbi.nlm.nih.gov/40608826/>`_
 
-- Ford Michael K B et al. Genotyping of selected germline adaptive immune system loci using short-read sequencing data. *Genome research*. 2025. `PMID:40764056 <https://pubmed.ncbi.nlm.nih.gov/40764056/>`_
+- Ford Michael K B et al. **Genotyping of selected germline adaptive immune system loci using short-read sequencing data.**. *Genome research*. 2025. `PMID:40764056 <https://pubmed.ncbi.nlm.nih.gov/40764056/>`_
 
-- MohammadiPeyhani Homa et al. deepNGS navigator: exploring antibody NGS datasets using deep contrastive learning. *Bioinformatics (Oxford, England)*. 2025. `PMID:40796135 <https://pubmed.ncbi.nlm.nih.gov/40796135/>`_
+- MohammadiPeyhani Homa et al. **deepNGS navigator: exploring antibody NGS datasets using deep contrastive learning.**. *Bioinformatics (Oxford, England)*. 2025. `PMID:40796135 <https://pubmed.ncbi.nlm.nih.gov/40796135/>`_
 
-- Wells Steven B et al. Multimodal profiling reveals tissue-directed signatures of human immune cells altered with age. *Nature immunology*. 2025. `PMID:40804529 <https://pubmed.ncbi.nlm.nih.gov/40804529/>`_
+- Wells Steven B et al. **Multimodal profiling reveals tissue-directed signatures of human immune cells altered with age.**. *Nature immunology*. 2025. `PMID:40804529 <https://pubmed.ncbi.nlm.nih.gov/40804529/>`_
 
-- Golabi Sahar et al. Omega-3 Fatty Acids Supplementation and Neuroprotection, Inflammation, Fatigue, and Physical Activity in Multiple Sclerosis: A Randomized Controlled Trial. *Food science & nutrition*. 2025. `PMID:40905016 <https://pubmed.ncbi.nlm.nih.gov/40905016/>`_
+- Golabi Sahar et al. **Omega-3 Fatty Acids Supplementation and Neuroprotection, Inflammation, Fatigue, and Physical Activity in Multiple Sclerosis: A Randomized Controlled Trial.**. *Food science & nutrition*. 2025. `PMID:40905016 <https://pubmed.ncbi.nlm.nih.gov/40905016/>`_
 
-- Richardson Eve et al. Is the vaccination-induced B cell receptor repertoire predictable?. *Immunoinformatics (Amsterdam, Netherlands)*. 2025. `PMID:41311460 <https://pubmed.ncbi.nlm.nih.gov/41311460/>`_
+- Richardson Eve et al. **Is the vaccination-induced B cell receptor repertoire predictable?**. *Immunoinformatics (Amsterdam, Netherlands)*. 2025. `PMID:41311460 <https://pubmed.ncbi.nlm.nih.gov/41311460/>`_
 
-- Iyer Lakshmi Rani et al. Current insight into HIV-1 persistence from single-cell transcriptome profiling in acutely treated cohorts of infection. *Current opinion in HIV and AIDS*. 2025. `PMID:40638066 <https://pubmed.ncbi.nlm.nih.gov/40638066/>`_
+- Iyer Lakshmi Rani et al. **Current insight into HIV-1 persistence from single-cell transcriptome profiling in acutely treated cohorts of infection.**. *Current opinion in HIV and AIDS*. 2025. `PMID:40638066 <https://pubmed.ncbi.nlm.nih.gov/40638066/>`_
 
-- Sung Kevin et al. Thrifty wide-context models of B cell receptor somatic hypermutation. *eLife*. 2025. `PMID:40879331 <https://pubmed.ncbi.nlm.nih.gov/40879331/>`_
+- Sung Kevin et al. **Thrifty wide-context models of B cell receptor somatic hypermutation.**. *eLife*. 2025. `PMID:40879331 <https://pubmed.ncbi.nlm.nih.gov/40879331/>`_
 
-- Rao Vishal N et al. Clonotype-enriched somatic hypermutations drive affinity maturation of a public human antibody targeting an occluded sarbecovirus epitope. *Cell reports*. 2025. `PMID:40803328 <https://pubmed.ncbi.nlm.nih.gov/40803328/>`_
+- Rao Vishal N et al. **Clonotype-enriched somatic hypermutations drive affinity maturation of a public human antibody targeting an occluded sarbecovirus epitope.**. *Cell reports*. 2025. `PMID:40803328 <https://pubmed.ncbi.nlm.nih.gov/40803328/>`_
 
-- Schneider-Hohendorf Tilman et al. B- and T cell receptor sequencing elucidates characteristics of lymphocyte depletion by ocrelizumab. *iScience*. 2025. `PMID:40727939 <https://pubmed.ncbi.nlm.nih.gov/40727939/>`_
+- Schneider-Hohendorf Tilman et al. **B- and T cell receptor sequencing elucidates characteristics of lymphocyte depletion by ocrelizumab.**. *iScience*. 2025. `PMID:40727939 <https://pubmed.ncbi.nlm.nih.gov/40727939/>`_
 
-- Ralph Duncan K et al. Inference of germinal center evolutionary dynamics via simulation-based deep learning. *ArXiv*. 2025. `PMID:40832049 <https://pubmed.ncbi.nlm.nih.gov/40832049/>`_
+- Ralph Duncan K et al. **Inference of germinal center evolutionary dynamics via simulation-based deep learning.**. *ArXiv*. 2025. `PMID:40832049 <https://pubmed.ncbi.nlm.nih.gov/40832049/>`_
 
-- Brodsky Nina N et al. Early-life human CD8+ T cells exhibit rapid, short-lived effector responses and a unique transcription factor landscape. *Proceedings of the National Academy of Sciences of the United States of America*. 2025. `PMID:40720649 <https://pubmed.ncbi.nlm.nih.gov/40720649/>`_
+- Brodsky Nina N et al. **Early-life human CD8+ T cells exhibit rapid, short-lived effector responses and a unique transcription factor landscape.**. *Proceedings of the National Academy of Sciences of the United States of America*. 2025. `PMID:40720649 <https://pubmed.ncbi.nlm.nih.gov/40720649/>`_
 
-- Lv Kexin et al. Broad neuraminidase antibodies confer protection against seasonal and avian influenza viruses. *Nature communications*. 2025. `PMID:40753167 <https://pubmed.ncbi.nlm.nih.gov/40753167/>`_
+- Lv Kexin et al. **Broad neuraminidase antibodies confer protection against seasonal and avian influenza viruses.**. *Nature communications*. 2025. `PMID:40753167 <https://pubmed.ncbi.nlm.nih.gov/40753167/>`_
 
-- Vit Filippo et al. Measurement of Immunoglobulin Intraclonal diversification refines the clinical impact of IGHV mutational status in chronic lymphocytic leukemia. *Leukemia*. 2025. `PMID:40533497 <https://pubmed.ncbi.nlm.nih.gov/40533497/>`_
+- Vit Filippo et al. **Measurement of Immunoglobulin Intraclonal diversification refines the clinical impact of IGHV mutational status in chronic lymphocytic leukemia.**. *Leukemia*. 2025. `PMID:40533497 <https://pubmed.ncbi.nlm.nih.gov/40533497/>`_
 
-- Bagnara Davide et al. Chronic lymphocytic leukemia often arises by a multiclonal selection process. *Haematologica*. 2025. `PMID:39973373 <https://pubmed.ncbi.nlm.nih.gov/39973373/>`_
+- Bagnara Davide et al. **Chronic lymphocytic leukemia often arises by a multiclonal selection process.**. *Haematologica*. 2025. `PMID:39973373 <https://pubmed.ncbi.nlm.nih.gov/39973373/>`_
 
-- Edahiro Ryuya et al. Deciphering state-dependent immune features from multi-layer omics data at single-cell resolution. *Nature genetics*. 2025. `PMID:40721531 <https://pubmed.ncbi.nlm.nih.gov/40721531/>`_
+- Edahiro Ryuya et al. **Deciphering state-dependent immune features from multi-layer omics data at single-cell resolution.**. *Nature genetics*. 2025. `PMID:40721531 <https://pubmed.ncbi.nlm.nih.gov/40721531/>`_
 
-- Caniels Tom G et al. Precise targeting of HIV broadly neutralizing antibody precursors in humans. *Science (New York, N.Y.)*. 2025. `PMID:40373114 <https://pubmed.ncbi.nlm.nih.gov/40373114/>`_
+- Caniels Tom G et al. **Precise targeting of HIV broadly neutralizing antibody precursors in humans.**. *Science (New York, N.Y.)*. 2025. `PMID:40373114 <https://pubmed.ncbi.nlm.nih.gov/40373114/>`_
 
-- Matsen Frederick A et al. A Sitewise Model of Natural Selection on Individual Antibodies via a Transformer-Encoder. *Molecular biology and evolution*. 2025. `PMID:40794593 <https://pubmed.ncbi.nlm.nih.gov/40794593/>`_
+- Matsen Frederick A et al. **A Sitewise Model of Natural Selection on Individual Antibodies via a Transformer-Encoder.**. *Molecular biology and evolution*. 2025. `PMID:40794593 <https://pubmed.ncbi.nlm.nih.gov/40794593/>`_
 
-- Ramezani-Rad Parham et al. Vaccination with an mRNA-encoded membrane-bound HIV envelope trimer induces neutralizing antibodies in animal models. *Science translational medicine*. 2025. `PMID:40737430 <https://pubmed.ncbi.nlm.nih.gov/40737430/>`_
+- Ramezani-Rad Parham et al. **Vaccination with an mRNA-encoded membrane-bound HIV envelope trimer induces neutralizing antibodies in animal models.**. *Science translational medicine*. 2025. `PMID:40737430 <https://pubmed.ncbi.nlm.nih.gov/40737430/>`_
 
-- Parks K Rachael et al. Vaccination with mRNA-encoded membrane-anchored HIV envelope trimers elicited tier 2 neutralizing antibodies in a phase 1 clinical trial. *Science translational medicine*. 2025. `PMID:40737434 <https://pubmed.ncbi.nlm.nih.gov/40737434/>`_
+- Parks K Rachael et al. **Vaccination with mRNA-encoded membrane-anchored HIV envelope trimers elicited tier 2 neutralizing antibodies in a phase 1 clinical trial.**. *Science translational medicine*. 2025. `PMID:40737434 <https://pubmed.ncbi.nlm.nih.gov/40737434/>`_
 
-- Conter Laura et al. BLIMP1 controls GC B cell expansion and exit through regulating cell cycle progression and key transcription factors BCL6 and IRF4. *Cell reports*. 2025. `PMID:40650910 <https://pubmed.ncbi.nlm.nih.gov/40650910/>`_
+- Conter Laura et al. **BLIMP1 controls GC B cell expansion and exit through regulating cell cycle progression and key transcription factors BCL6 and IRF4.**. *Cell reports*. 2025. `PMID:40650910 <https://pubmed.ncbi.nlm.nih.gov/40650910/>`_
 
-- Bukhari Ameera M et al. IgM+IgD- B cells in human gut-associated lymphoid tissue have memory features and give rise to IgM+ and IgA+ antibody-secreting cells. *Scientific reports*. 2025. `PMID:40695977 <https://pubmed.ncbi.nlm.nih.gov/40695977/>`_
+- Bukhari Ameera M et al. **IgM+IgD- B cells in human gut-associated lymphoid tissue have memory features and give rise to IgM+ and IgA+ antibody-secreting cells.**. *Scientific reports*. 2025. `PMID:40695977 <https://pubmed.ncbi.nlm.nih.gov/40695977/>`_
 
-- Engelbrecht Eric et al. Germline polymorphisms in the immunoglobulin kappa and lambda loci explain variation in the expressed light chain antibody repertoire. *Research square*. 2025. `PMID:40709274 <https://pubmed.ncbi.nlm.nih.gov/40709274/>`_
+- Engelbrecht Eric et al. **Germline polymorphisms in the immunoglobulin kappa and lambda loci explain variation in the expressed light chain antibody repertoire.**. *Research square*. 2025. `PMID:40709274 <https://pubmed.ncbi.nlm.nih.gov/40709274/>`_
 
-- Kos Justin T et al. Characterization of extensive diversity in immunoglobulin light chain variable germline genes across biomedically important mouse strains. *ImmunoHorizons*. 2025. `PMID:40682361 <https://pubmed.ncbi.nlm.nih.gov/40682361/>`_
+- Kos Justin T et al. **Characterization of extensive diversity in immunoglobulin light chain variable germline genes across biomedically important mouse strains.**. *ImmunoHorizons*. 2025. `PMID:40682361 <https://pubmed.ncbi.nlm.nih.gov/40682361/>`_
 
-- Engelbrecht Eric et al. Germline polymorphisms in the immunoglobulin kappa and lambda loci explain variation in the expressed light chain antibody repertoire. *bioRxiv : the preprint server for biology*. 2025. `PMID:40501977 <https://pubmed.ncbi.nlm.nih.gov/40501977/>`_
+- Engelbrecht Eric et al. **Germline polymorphisms in the immunoglobulin kappa and lambda loci explain variation in the expressed light chain antibody repertoire.**. *bioRxiv : the preprint server for biology*. 2025. `PMID:40501977 <https://pubmed.ncbi.nlm.nih.gov/40501977/>`_
 
-- Risley Christopher A et al. Transcription factor T-bet regulates the maintenance and differentiation potential of lymph node and lung effector memory B cell subsets. *Immunity*. 2025. `PMID:40543512 <https://pubmed.ncbi.nlm.nih.gov/40543512/>`_
+- Risley Christopher A et al. **Transcription factor T-bet regulates the maintenance and differentiation potential of lymph node and lung effector memory B cell subsets.**. *Immunity*. 2025. `PMID:40543512 <https://pubmed.ncbi.nlm.nih.gov/40543512/>`_
 
-- Konstantinovsky Thomas et al. Enhancing sequence alignment of adaptive immune receptors through multi-task deep learning. *Nucleic acids research*. 2025. `PMID:40650972 <https://pubmed.ncbi.nlm.nih.gov/40650972/>`_
+- Konstantinovsky Thomas et al. **Enhancing sequence alignment of adaptive immune receptors through multi-task deep learning.**. *Nucleic acids research*. 2025. `PMID:40650972 <https://pubmed.ncbi.nlm.nih.gov/40650972/>`_
 
-- van Ginneken Daphne et al. Protein language model pseudolikelihoods capture features of in vivo B cell selection and evolution. *Briefings in bioinformatics*. 2025. `PMID:40825239 <https://pubmed.ncbi.nlm.nih.gov/40825239/>`_
+- van Ginneken Daphne et al. **Protein language model pseudolikelihoods capture features of in vivo B cell selection and evolution.**. *Briefings in bioinformatics*. 2025. `PMID:40825239 <https://pubmed.ncbi.nlm.nih.gov/40825239/>`_
 
-- Martins Christina A et al. Profile of the B cell receptor repertoire and antibody responses upon 17DD-YF vaccine boosting. *bioRxiv : the preprint server for biology*. 2025. `PMID:40631227 <https://pubmed.ncbi.nlm.nih.gov/40631227/>`_
+- Martins Christina A et al. **Profile of the B cell receptor repertoire and antibody responses upon 17DD-YF vaccine boosting.**. *bioRxiv : the preprint server for biology*. 2025. `PMID:40631227 <https://pubmed.ncbi.nlm.nih.gov/40631227/>`_
 
-- Luo Jiaqi et al. AffMB: affinity maturation analysis with SHM-guided B-cell lineage trees. *Bioinformatics (Oxford, England)*. 2025. `PMID:40674579 <https://pubmed.ncbi.nlm.nih.gov/40674579/>`_
+- Luo Jiaqi et al. **AffMB: affinity maturation analysis with SHM-guided B-cell lineage trees.**. *Bioinformatics (Oxford, England)*. 2025. `PMID:40674579 <https://pubmed.ncbi.nlm.nih.gov/40674579/>`_
 
-- Ventura Lucas Haniel A et al. Immunosenescence Profile Is Associated With Increased Susceptibility to Severe COVID-19. *Aging cell*. 2025. `PMID:40388115 <https://pubmed.ncbi.nlm.nih.gov/40388115/>`_
+- Ventura Lucas Haniel A et al. **Immunosenescence Profile Is Associated With Increased Susceptibility to Severe COVID-19.**. *Aging cell*. 2025. `PMID:40388115 <https://pubmed.ncbi.nlm.nih.gov/40388115/>`_
 
-- Varano Gabriele et al. B-cell Receptor Silencing Reveals the Origin and Dependencies of High-Grade B-cell Lymphomas with MYC and BCL2 Rearrangements. *Blood cancer discovery*. 2025. `PMID:40402557 <https://pubmed.ncbi.nlm.nih.gov/40402557/>`_
+- Varano Gabriele et al. **B-cell Receptor Silencing Reveals the Origin and Dependencies of High-Grade B-cell Lymphomas with MYC and BCL2 Rearrangements.**. *Blood cancer discovery*. 2025. `PMID:40402557 <https://pubmed.ncbi.nlm.nih.gov/40402557/>`_
 
-- Da Vià Matteo Claudio et al. Aberrant single-cell phenotype and clinical implications of genotypically defined polyclonal plasma cells in myeloma. *Blood*. 2025. `PMID:40009503 <https://pubmed.ncbi.nlm.nih.gov/40009503/>`_
+- Da Vià Matteo Claudio et al. **Aberrant single-cell phenotype and clinical implications of genotypically defined polyclonal plasma cells in myeloma.**. *Blood*. 2025. `PMID:40009503 <https://pubmed.ncbi.nlm.nih.gov/40009503/>`_
 
-- Rodrigues Kristen A et al. Vaccines combining slow release and follicle targeting of antigens increase germinal center B cell diversity and clonal expansion. *Science translational medicine*. 2025. `PMID:40531969 <https://pubmed.ncbi.nlm.nih.gov/40531969/>`_
+- Rodrigues Kristen A et al. **Vaccines combining slow release and follicle targeting of antigens increase germinal center B cell diversity and clonal expansion.**. *Science translational medicine*. 2025. `PMID:40531969 <https://pubmed.ncbi.nlm.nih.gov/40531969/>`_
 
-- Aron Edel et al. Single cell immunophenotyping identifies CD8+ GZMK+ IFNG+ T cells as a key immune population in cutaneous Lyme disease. *bioRxiv : the preprint server for biology*. 2025. `PMID:40661371 <https://pubmed.ncbi.nlm.nih.gov/40661371/>`_
+- Aron Edel et al. **Single cell immunophenotyping identifies CD8+ GZMK+ IFNG+ T cells as a key immune population in cutaneous Lyme disease.**. *bioRxiv : the preprint server for biology*. 2025. `PMID:40661371 <https://pubmed.ncbi.nlm.nih.gov/40661371/>`_
 
-- Zuo Teng et al. Somatic hypermutation generates antibody specificities beyond the primary repertoire. *Immunity*. 2025. `PMID:40339575 <https://pubmed.ncbi.nlm.nih.gov/40339575/>`_
+- Zuo Teng et al. **Somatic hypermutation generates antibody specificities beyond the primary repertoire.**. *Immunity*. 2025. `PMID:40339575 <https://pubmed.ncbi.nlm.nih.gov/40339575/>`_
 
-- DeWitt William S et al. Replaying germinal center evolution on a quantified affinity landscape. *bioRxiv : the preprint server for biology*. 2025. `PMID:40661619 <https://pubmed.ncbi.nlm.nih.gov/40661619/>`_
+- DeWitt William S et al. **Replaying germinal center evolution on a quantified affinity landscape.**. *bioRxiv : the preprint server for biology*. 2025. `PMID:40661619 <https://pubmed.ncbi.nlm.nih.gov/40661619/>`_
 
-- Madsen Anders et al. Identification of a seasonal influenza vaccine-induced broadly protective neuraminidase antibody. *The Journal of experimental medicine*. 2025. `PMID:40178595 <https://pubmed.ncbi.nlm.nih.gov/40178595/>`_
+- Madsen Anders et al. **Identification of a seasonal influenza vaccine-induced broadly protective neuraminidase antibody.**. *The Journal of experimental medicine*. 2025. `PMID:40178595 <https://pubmed.ncbi.nlm.nih.gov/40178595/>`_
 
-- Morgan Gareth J et al. An updated AL-base reveals ranked enrichment of immunoglobulin light chain variable genes in AL amyloidosis. *Amyloid : the international journal of experimental and clinical investigation : the official journal of the International Society of Amyloidosis*. 2025. `PMID:39641756 <https://pubmed.ncbi.nlm.nih.gov/39641756/>`_
+- Morgan Gareth J et al. **An updated AL-base reveals ranked enrichment of immunoglobulin light chain variable genes in AL amyloidosis.**. *Amyloid : the international journal of experimental and clinical investigation : the official journal of the International Society of Amyloidosis*. 2025. `PMID:39641756 <https://pubmed.ncbi.nlm.nih.gov/39641756/>`_
 
-- Rodriguez Oscar L et al. Human genetic variation shapes the antibody repertoire across B cell development. *bioRxiv : the preprint server for biology*. 2025. `PMID:40475565 <https://pubmed.ncbi.nlm.nih.gov/40475565/>`_
+- Rodriguez Oscar L et al. **Human genetic variation shapes the antibody repertoire across B cell development.**. *bioRxiv : the preprint server for biology*. 2025. `PMID:40475565 <https://pubmed.ncbi.nlm.nih.gov/40475565/>`_
 
-- Mizumaki Hiroki et al. In depth transcriptomic profiling defines a landscape of dysfunctional immune responses in patients with VEXAS syndrome. *Nature communications*. 2025. `PMID:40394087 <https://pubmed.ncbi.nlm.nih.gov/40394087/>`_
+- Mizumaki Hiroki et al. **In depth transcriptomic profiling defines a landscape of dysfunctional immune responses in patients with VEXAS syndrome.**. *Nature communications*. 2025. `PMID:40394087 <https://pubmed.ncbi.nlm.nih.gov/40394087/>`_
 
-- Sung Kevin et al. Thrifty wide-context models of B cell receptor somatic hypermutation. *bioRxiv : the preprint server for biology*. 2025. `PMID:39651125 <https://pubmed.ncbi.nlm.nih.gov/39651125/>`_
+- Sung Kevin et al. **Thrifty wide-context models of B cell receptor somatic hypermutation.**. *bioRxiv : the preprint server for biology*. 2025. `PMID:39651125 <https://pubmed.ncbi.nlm.nih.gov/39651125/>`_
 
-- Dizon Brian L P et al. Human naïve B cells show evidence of anergy and clonal redemption following vaccination. *NPJ vaccines*. 2025. `PMID:40368926 <https://pubmed.ncbi.nlm.nih.gov/40368926/>`_
+- Dizon Brian L P et al. **Human naïve B cells show evidence of anergy and clonal redemption following vaccination.**. *NPJ vaccines*. 2025. `PMID:40368926 <https://pubmed.ncbi.nlm.nih.gov/40368926/>`_
 
-- Yang Evan et al. In situ profiling of plasma cell clonality with image-based single-cell transcriptomics. *bioRxiv : the preprint server for biology*. 2025. `PMID:40463110 <https://pubmed.ncbi.nlm.nih.gov/40463110/>`_
+- Yang Evan et al. **In situ profiling of plasma cell clonality with image-based single-cell transcriptomics.**. *bioRxiv : the preprint server for biology*. 2025. `PMID:40463110 <https://pubmed.ncbi.nlm.nih.gov/40463110/>`_
 
-- Rahimi Rod A et al. Distinct phenotypes and repertoires of bronchoalveolar and airway mucosal T cells in health and allergic asthma. *bioRxiv : the preprint server for biology*. 2025. `PMID:40462898 <https://pubmed.ncbi.nlm.nih.gov/40462898/>`_
+- Rahimi Rod A et al. **Distinct phenotypes and repertoires of bronchoalveolar and airway mucosal T cells in health and allergic asthma.**. *bioRxiv : the preprint server for biology*. 2025. `PMID:40462898 <https://pubmed.ncbi.nlm.nih.gov/40462898/>`_
 
-- Li Hao et al. Mature tertiary lymphoid structures evoke intra-tumoral T and B cell responses via progenitor exhausted CD4+ T cells in head and neck cancer. *Nature communications*. 2025. `PMID:40335494 <https://pubmed.ncbi.nlm.nih.gov/40335494/>`_
+- Li Hao et al. **Mature tertiary lymphoid structures evoke intra-tumoral T and B cell responses via progenitor exhausted CD4+ T cells in head and neck cancer.**. *Nature communications*. 2025. `PMID:40335494 <https://pubmed.ncbi.nlm.nih.gov/40335494/>`_
 
-- Mantus Grace E et al. Distinct binding modes drive the broad neutralization profile of two persistent influenza hemagglutinin stem-specific antibody lineages. *Structure (London, England : 1993)*. 2025. `PMID:40112805 <https://pubmed.ncbi.nlm.nih.gov/40112805/>`_
+- Mantus Grace E et al. **Distinct binding modes drive the broad neutralization profile of two persistent influenza hemagglutinin stem-specific antibody lineages.**. *Structure (London, England : 1993)*. 2025. `PMID:40112805 <https://pubmed.ncbi.nlm.nih.gov/40112805/>`_
 
-- Terroba-Navajas Paula et al. Single-Cell Transcriptomics Identifies a Prominent Role for the MIF-CD74 Axis in Myasthenia Gravis Thymus. *Neurology(R) neuroimmunology & neuroinflammation*. 2025. `PMID:40117520 <https://pubmed.ncbi.nlm.nih.gov/40117520/>`_
+- Terroba-Navajas Paula et al. **Single-Cell Transcriptomics Identifies a Prominent Role for the MIF-CD74 Axis in Myasthenia Gravis Thymus.**. *Neurology(R) neuroimmunology & neuroinflammation*. 2025. `PMID:40117520 <https://pubmed.ncbi.nlm.nih.gov/40117520/>`_
 
-- Waury Katharina et al. Comparison of sequence- and structure-based antibody clustering approaches on simulated repertoire sequencing data. *PLoS computational biology*. 2025. `PMID:40445971 <https://pubmed.ncbi.nlm.nih.gov/40445971/>`_
+- Waury Katharina et al. **Comparison of sequence- and structure-based antibody clustering approaches on simulated repertoire sequencing data.**. *PLoS computational biology*. 2025. `PMID:40445971 <https://pubmed.ncbi.nlm.nih.gov/40445971/>`_
 
-- Calôba Carolina et al. Systemic 4-1BB stimulation augments extrafollicular memory B cell formation and recall responses during Plasmodium infection. *Cell reports*. 2025. `PMID:40215168 <https://pubmed.ncbi.nlm.nih.gov/40215168/>`_
+- Calôba Carolina et al. **Systemic 4-1BB stimulation augments extrafollicular memory B cell formation and recall responses during Plasmodium infection.**. *Cell reports*. 2025. `PMID:40215168 <https://pubmed.ncbi.nlm.nih.gov/40215168/>`_
 
-- Perugino Cory A et al. Two distinct durable human class-switched memory B cell populations are induced by vaccination and infection. *Cell reports*. 2025. `PMID:40173042 <https://pubmed.ncbi.nlm.nih.gov/40173042/>`_
+- Perugino Cory A et al. **Two distinct durable human class-switched memory B cell populations are induced by vaccination and infection.**. *Cell reports*. 2025. `PMID:40173042 <https://pubmed.ncbi.nlm.nih.gov/40173042/>`_
 
-- Nicholas Catherine A et al. Activated polyreactive B cells are clonally expanded in autoantibody positive and patients with recent-onset type 1 diabetes. *Cell reports*. 2025. `PMID:40117290 <https://pubmed.ncbi.nlm.nih.gov/40117290/>`_
+- Nicholas Catherine A et al. **Activated polyreactive B cells are clonally expanded in autoantibody positive and patients with recent-onset type 1 diabetes.**. *Cell reports*. 2025. `PMID:40117290 <https://pubmed.ncbi.nlm.nih.gov/40117290/>`_
 
-- Kotagiri Prasanti et al. Disease-specific B cell clones are shared between patients with Crohn's disease. *Nature communications*. 2025. `PMID:40246842 <https://pubmed.ncbi.nlm.nih.gov/40246842/>`_
+- Kotagiri Prasanti et al. **Disease-specific B cell clones are shared between patients with Crohn's disease.**. *Nature communications*. 2025. `PMID:40246842 <https://pubmed.ncbi.nlm.nih.gov/40246842/>`_
 
-- Ramezani-Rad Parham et al. The saponin monophosphoryl lipid A nanoparticle adjuvant induces dose-dependent HIV vaccine responses in nonhuman primates. *The Journal of clinical investigation*. 2025. `PMID:40036068 <https://pubmed.ncbi.nlm.nih.gov/40036068/>`_
+- Ramezani-Rad Parham et al. **The saponin monophosphoryl lipid A nanoparticle adjuvant induces dose-dependent HIV vaccine responses in nonhuman primates.**. *The Journal of clinical investigation*. 2025. `PMID:40036068 <https://pubmed.ncbi.nlm.nih.gov/40036068/>`_
 
-- Beaulaurier John et al. De novo antibody identification in human blood from full-length single B cell transcriptomics and matching haplotype-resolved germline assemblies. *Genome research*. 2025. `PMID:40118521 <https://pubmed.ncbi.nlm.nih.gov/40118521/>`_
+- Beaulaurier John et al. **De novo antibody identification in human blood from full-length single B cell transcriptomics and matching haplotype-resolved germline assemblies.**. *Genome research*. 2025. `PMID:40118521 <https://pubmed.ncbi.nlm.nih.gov/40118521/>`_
 
-- França Renato Kaylan Alves de Oliveira et al. Naive and Memory B Cell BCR Repertoires in Individuals Immunized with an Inactivated SARS-CoV-2 Vaccine. *Vaccines*. 2025. `PMID:40333337 <https://pubmed.ncbi.nlm.nih.gov/40333337/>`_
+- França Renato Kaylan Alves de Oliveira et al. **Naive and Memory B Cell BCR Repertoires in Individuals Immunized with an Inactivated SARS-CoV-2 Vaccine.**. *Vaccines*. 2025. `PMID:40333337 <https://pubmed.ncbi.nlm.nih.gov/40333337/>`_
 
-- Madden Patrick J et al. Diverse priming outcomes under conditions of very rare precursor B cells. *Immunity*. 2025. `PMID:40168992 <https://pubmed.ncbi.nlm.nih.gov/40168992/>`_
+- Madden Patrick J et al. **Diverse priming outcomes under conditions of very rare precursor B cells.**. *Immunity*. 2025. `PMID:40168992 <https://pubmed.ncbi.nlm.nih.gov/40168992/>`_
 
-- Guillaume Stephane M et al. Lung B cells in ectopic germinal centers undergo affinity maturation. *Proceedings of the National Academy of Sciences of the United States of America*. 2025. `PMID:40168127 <https://pubmed.ncbi.nlm.nih.gov/40168127/>`_
+- Guillaume Stephane M et al. **Lung B cells in ectopic germinal centers undergo affinity maturation.**. *Proceedings of the National Academy of Sciences of the United States of America*. 2025. `PMID:40168127 <https://pubmed.ncbi.nlm.nih.gov/40168127/>`_
 
-- Nelson Alexander J et al. Lung-resident memory B cells maintain allergic IgE responses in the respiratory tract. *Immunity*. 2025. `PMID:40139187 <https://pubmed.ncbi.nlm.nih.gov/40139187/>`_
+- Nelson Alexander J et al. **Lung-resident memory B cells maintain allergic IgE responses in the respiratory tract.**. *Immunity*. 2025. `PMID:40139187 <https://pubmed.ncbi.nlm.nih.gov/40139187/>`_
 
-- Lai Cong et al. Myeloid-Driven Immune Suppression Subverts Neutralizing Antibodies and T Cell Immunity in Severe COVID-19. *Journal of medical virology*. 2025. `PMID:40183283 <https://pubmed.ncbi.nlm.nih.gov/40183283/>`_
+- Lai Cong et al. **Myeloid-Driven Immune Suppression Subverts Neutralizing Antibodies and T Cell Immunity in Severe COVID-19.**. *Journal of medical virology*. 2025. `PMID:40183283 <https://pubmed.ncbi.nlm.nih.gov/40183283/>`_
 
-- Lee Adrian Ys et al. Self-reactive B cells are increased in all major stages of peripheral development in Sjögren's disease. *Immunology and cell biology*. 2025. `PMID:39957579 <https://pubmed.ncbi.nlm.nih.gov/39957579/>`_
+- Lee Adrian Ys et al. **Self-reactive B cells are increased in all major stages of peripheral development in Sjögren's disease.**. *Immunology and cell biology*. 2025. `PMID:39957579 <https://pubmed.ncbi.nlm.nih.gov/39957579/>`_
 
-- Gailleton Romain et al. Ectopic germinal centers in the nasal turbinates contribute to B cell immunity to intranasal viral infection and vaccination. *Proceedings of the National Academy of Sciences of the United States of America*. 2025. `PMID:40112112 <https://pubmed.ncbi.nlm.nih.gov/40112112/>`_
+- Gailleton Romain et al. **Ectopic germinal centers in the nasal turbinates contribute to B cell immunity to intranasal viral infection and vaccination.**. *Proceedings of the National Academy of Sciences of the United States of America*. 2025. `PMID:40112112 <https://pubmed.ncbi.nlm.nih.gov/40112112/>`_
 
-- Okoye G Donald et al. Single-cell map of innate-like lymphocyte response to Francisella tularensis infection reveals interleukin-17-dependent protection by MAIT cells. *iScience*. 2025. `PMID:40160424 <https://pubmed.ncbi.nlm.nih.gov/40160424/>`_
+- Okoye G Donald et al. **Single-cell map of innate-like lymphocyte response to Francisella tularensis infection reveals interleukin-17-dependent protection by MAIT cells.**. *iScience*. 2025. `PMID:40160424 <https://pubmed.ncbi.nlm.nih.gov/40160424/>`_
 
-- Abdullah Leena et al. The endogenous antigen-specific CD8+ T cell repertoire is composed of unbiased and biased clonotypes with differential fate commitments. *Immunity*. 2025. `PMID:40020673 <https://pubmed.ncbi.nlm.nih.gov/40020673/>`_
+- Abdullah Leena et al. **The endogenous antigen-specific CD8+ T cell repertoire is composed of unbiased and biased clonotypes with differential fate commitments.**. *Immunity*. 2025. `PMID:40020673 <https://pubmed.ncbi.nlm.nih.gov/40020673/>`_
 
-- Spangler Abby et al. Early influenza virus exposure shapes the B cell response to influenza vaccination in individuals 50 years later. *Immunity*. 2025. `PMID:40023164 <https://pubmed.ncbi.nlm.nih.gov/40023164/>`_
+- Spangler Abby et al. **Early influenza virus exposure shapes the B cell response to influenza vaccination in individuals 50 years later.**. *Immunity*. 2025. `PMID:40023164 <https://pubmed.ncbi.nlm.nih.gov/40023164/>`_
 
-- Rao Vishal et al. Convergent and clonotype-enriched mutations in the light chain drive affinity maturation of a public antibody. *bioRxiv : the preprint server for biology*. 2025. `PMID:40161664 <https://pubmed.ncbi.nlm.nih.gov/40161664/>`_
+- Rao Vishal et al. **Convergent and clonotype-enriched mutations in the light chain drive affinity maturation of a public antibody.**. *bioRxiv : the preprint server for biology*. 2025. `PMID:40161664 <https://pubmed.ncbi.nlm.nih.gov/40161664/>`_
 
-- Fujio Keishi et al. The role of polyreactive memory B cells in systemic lupus erythematosus. *International immunology*. 2025. `PMID:39514642 <https://pubmed.ncbi.nlm.nih.gov/39514642/>`_
+- Fujio Keishi et al. **The role of polyreactive memory B cells in systemic lupus erythematosus.**. *International immunology*. 2025. `PMID:39514642 <https://pubmed.ncbi.nlm.nih.gov/39514642/>`_
 
-- Wang Meng et al. Supervised fine-tuning of pre-trained antibody language models improves antigen specificity prediction. *PLoS computational biology*. 2025. `PMID:40163503 <https://pubmed.ncbi.nlm.nih.gov/40163503/>`_
+- Wang Meng et al. **Supervised fine-tuning of pre-trained antibody language models improves antigen specificity prediction.**. *PLoS computational biology*. 2025. `PMID:40163503 <https://pubmed.ncbi.nlm.nih.gov/40163503/>`_
 
-- van Lieverloo G G A et al. Unique Nerve Tissue-Restricted T-Cell Clones in Chronic Inflammatory Demyelinating Polyneuropathy. *Journal of the peripheral nervous system : JPNS*. 2025. `PMID:39967321 <https://pubmed.ncbi.nlm.nih.gov/39967321/>`_
+- van Lieverloo G G A et al. **Unique Nerve Tissue-Restricted T-Cell Clones in Chronic Inflammatory Demyelinating Polyneuropathy.**. *Journal of the peripheral nervous system : JPNS*. 2025. `PMID:39967321 <https://pubmed.ncbi.nlm.nih.gov/39967321/>`_
 
-- Zhu Airu et al. Robust mucosal SARS-CoV-2-specific T cells effectively combat COVID-19 and establish polyfunctional resident memory in patient lungs. *Nature immunology*. 2025. `PMID:39875584 <https://pubmed.ncbi.nlm.nih.gov/39875584/>`_
+- Zhu Airu et al. **Robust mucosal SARS-CoV-2-specific T cells effectively combat COVID-19 and establish polyfunctional resident memory in patient lungs.**. *Nature immunology*. 2025. `PMID:39875584 <https://pubmed.ncbi.nlm.nih.gov/39875584/>`_
 
-- Bréart Béatrice et al. IL-27 elicits a cytotoxic CD8+ T cell program to enforce tumour control. *Nature*. 2025. `PMID:39910298 <https://pubmed.ncbi.nlm.nih.gov/39910298/>`_
+- Bréart Béatrice et al. **IL-27 elicits a cytotoxic CD8+ T cell program to enforce tumour control.**. *Nature*. 2025. `PMID:39910298 <https://pubmed.ncbi.nlm.nih.gov/39910298/>`_
 
-- Chernyshev Mark et al. Detection of PCR chimeras in adaptive immune receptor repertoire sequencing using hidden Markov models. *bioRxiv : the preprint server for biology*. 2025. `PMID:40060431 <https://pubmed.ncbi.nlm.nih.gov/40060431/>`_
+- Chernyshev Mark et al. **Detection of PCR chimeras in adaptive immune receptor repertoire sequencing using hidden Markov models.**. *bioRxiv : the preprint server for biology*. 2025. `PMID:40060431 <https://pubmed.ncbi.nlm.nih.gov/40060431/>`_
 
-- Seo Kayoung et al. Comprehensive Analysis of TCR and BCR Repertoires: Insights into Methodologies, Challenges, and Applications. *Genomics & informatics*. 2025. `PMID:39994831 <https://pubmed.ncbi.nlm.nih.gov/39994831/>`_
+- Seo Kayoung et al. **Comprehensive Analysis of TCR and BCR Repertoires: Insights into Methodologies, Challenges, and Applications.**. *Genomics & informatics*. 2025. `PMID:39994831 <https://pubmed.ncbi.nlm.nih.gov/39994831/>`_
 
-- Zhou Yun et al. Biomarker expression level changes within rectal gut-associated lymphoid tissues in spinal cord-injured rats. *ImmunoHorizons*. 2025. `PMID:40048710 <https://pubmed.ncbi.nlm.nih.gov/40048710/>`_
+- Zhou Yun et al. **Biomarker expression level changes within rectal gut-associated lymphoid tissues in spinal cord-injured rats.**. *ImmunoHorizons*. 2025. `PMID:40048710 <https://pubmed.ncbi.nlm.nih.gov/40048710/>`_
 
-- Dumm Will et al. Leveraging DAGs to improve context-sensitive and abundance-aware tree estimation. *Philosophical transactions of the Royal Society of London. Series B, Biological sciences*. 2025. `PMID:39976415 <https://pubmed.ncbi.nlm.nih.gov/39976415/>`_
+- Dumm Will et al. **Leveraging DAGs to improve context-sensitive and abundance-aware tree estimation.**. *Philosophical transactions of the Royal Society of London. Series B, Biological sciences*. 2025. `PMID:39976415 <https://pubmed.ncbi.nlm.nih.gov/39976415/>`_
 
-- Ma Yao et al. Impact of influenza immune imprinting on immune responses to subsequent vaccinations in mice. *Vaccine*. 2025. `PMID:39731808 <https://pubmed.ncbi.nlm.nih.gov/39731808/>`_
+- Ma Yao et al. **Impact of influenza immune imprinting on immune responses to subsequent vaccinations in mice.**. *Vaccine*. 2025. `PMID:39731808 <https://pubmed.ncbi.nlm.nih.gov/39731808/>`_
 
-- Jiang Shaowen et al. A Temporal and Spatial Atlas of Adaptive Immune Responses in the Lymph Node Following Viral Infection. *bioRxiv : the preprint server for biology*. 2025. `PMID:39975238 <https://pubmed.ncbi.nlm.nih.gov/39975238/>`_
+- Jiang Shaowen et al. **A Temporal and Spatial Atlas of Adaptive Immune Responses in the Lymph Node Following Viral Infection.**. *bioRxiv : the preprint server for biology*. 2025. `PMID:39975238 <https://pubmed.ncbi.nlm.nih.gov/39975238/>`_
 
-- Zhu Wen et al. Prothrombotic antibodies targeting the spike protein's receptor-binding domain in severe COVID-19. *Blood*. 2025. `PMID:39576992 <https://pubmed.ncbi.nlm.nih.gov/39576992/>`_
+- Zhu Wen et al. **Prothrombotic antibodies targeting the spike protein's receptor-binding domain in severe COVID-19.**. *Blood*. 2025. `PMID:39576992 <https://pubmed.ncbi.nlm.nih.gov/39576992/>`_
 
-- Rosenfeld Ronit et al. Efficient Identification of Monoclonal Antibodies Against Rift Valley Fever Virus Using High-Throughput Single Lymphocyte Transcriptomics of Immunized Mice. *Antibodies (Basel, Switzerland)*. 2025. `PMID:39982227 <https://pubmed.ncbi.nlm.nih.gov/39982227/>`_
+- Rosenfeld Ronit et al. **Efficient Identification of Monoclonal Antibodies Against Rift Valley Fever Virus Using High-Throughput Single Lymphocyte Transcriptomics of Immunized Mice.**. *Antibodies (Basel, Switzerland)*. 2025. `PMID:39982227 <https://pubmed.ncbi.nlm.nih.gov/39982227/>`_
 
-- Wilbrink Rick et al. B Cell Receptor Repertoire Analysis of the CD21lo B Cell Compartment in Healthy Individuals, Patients With Sjögren's Disease, and Patients With Radiographic Axial Spondyloarthritis. *European journal of immunology*. 2025. `PMID:39707660 <https://pubmed.ncbi.nlm.nih.gov/39707660/>`_
+- Wilbrink Rick et al. **B Cell Receptor Repertoire Analysis of the CD21lo B Cell Compartment in Healthy Individuals, Patients With Sjögren's Disease, and Patients With Radiographic Axial Spondyloarthritis.**. *European journal of immunology*. 2025. `PMID:39707660 <https://pubmed.ncbi.nlm.nih.gov/39707660/>`_
 
-- Amisaki Masataka et al. IL-33-activated ILC2s induce tertiary lymphoid structures in pancreatic cancer. *Nature*. 2025. `PMID:39814891 <https://pubmed.ncbi.nlm.nih.gov/39814891/>`_
+- Amisaki Masataka et al. **IL-33-activated ILC2s induce tertiary lymphoid structures in pancreatic cancer.**. *Nature*. 2025. `PMID:39814891 <https://pubmed.ncbi.nlm.nih.gov/39814891/>`_
 
-- Zuckerbrot-Schuldenfrei Miriam et al. The compositional behavior of the human T cell receptor repertoire in ovarian cancer compared to healthy donors. *Scientific data*. 2025. `PMID:39880820 <https://pubmed.ncbi.nlm.nih.gov/39880820/>`_
+- Zuckerbrot-Schuldenfrei Miriam et al. **The compositional behavior of the human T cell receptor repertoire in ovarian cancer compared to healthy donors.**. *Scientific data*. 2025. `PMID:39880820 <https://pubmed.ncbi.nlm.nih.gov/39880820/>`_
 
-- Ramezani-Rad Parham et al. Vaccination with mRNA-encoded membrane-bound HIV Envelope trimer induces neutralizing antibodies in animal models. *bioRxiv : the preprint server for biology*. 2025. `PMID:39896562 <https://pubmed.ncbi.nlm.nih.gov/39896562/>`_
+- Ramezani-Rad Parham et al. **Vaccination with mRNA-encoded membrane-bound HIV Envelope trimer induces neutralizing antibodies in animal models.**. *bioRxiv : the preprint server for biology*. 2025. `PMID:39896562 <https://pubmed.ncbi.nlm.nih.gov/39896562/>`_
 
-- Chernigovskaya Maria et al. Simulation of adaptive immune receptors and repertoires with complex immune information to guide the development and benchmarking of AIRR machine learning. *Nucleic acids research*. 2025. `PMID:39873270 <https://pubmed.ncbi.nlm.nih.gov/39873270/>`_
+- Chernigovskaya Maria et al. **Simulation of adaptive immune receptors and repertoires with complex immune information to guide the development and benchmarking of AIRR machine learning.**. *Nucleic acids research*. 2025. `PMID:39873270 <https://pubmed.ncbi.nlm.nih.gov/39873270/>`_
 
-- Jacobs Benjamin M et al. Single-cell analysis of cerebrospinal fluid reveals common features of neuroinflammation. *Cell reports. Medicine*. 2025. `PMID:39708811 <https://pubmed.ncbi.nlm.nih.gov/39708811/>`_
+- Jacobs Benjamin M et al. **Single-cell analysis of cerebrospinal fluid reveals common features of neuroinflammation.**. *Cell reports. Medicine*. 2025. `PMID:39708811 <https://pubmed.ncbi.nlm.nih.gov/39708811/>`_
 
-- Krasik Sofia V et al. Systematic evaluation of intratumoral and peripheral BCR repertoires in three cancers. *eLife*. 2025. `PMID:39831798 <https://pubmed.ncbi.nlm.nih.gov/39831798/>`_
+- Krasik Sofia V et al. **Systematic evaluation of intratumoral and peripheral BCR repertoires in three cancers.**. *eLife*. 2025. `PMID:39831798 <https://pubmed.ncbi.nlm.nih.gov/39831798/>`_
 
-- McGrath Joshua J C et al. Mutability and hypermutation antagonize immunoglobulin codon optimality. *Molecular cell*. 2025. `PMID:39708804 <https://pubmed.ncbi.nlm.nih.gov/39708804/>`_
+- McGrath Joshua J C et al. **Mutability and hypermutation antagonize immunoglobulin codon optimality.**. *Molecular cell*. 2025. `PMID:39708804 <https://pubmed.ncbi.nlm.nih.gov/39708804/>`_
 
-- Thouvenel Christopher D et al. Hypomorphic RAG2 Deficiency Promotes Selection of Self-Reactive B Cells. *Journal of clinical immunology*. 2025. `PMID:39812873 <https://pubmed.ncbi.nlm.nih.gov/39812873/>`_
+- Thouvenel Christopher D et al. **Hypomorphic RAG2 Deficiency Promotes Selection of Self-Reactive B Cells.**. *Journal of clinical immunology*. 2025. `PMID:39812873 <https://pubmed.ncbi.nlm.nih.gov/39812873/>`_
 
-- Kliushnikova Dariia et al. Intrathecal Immunoglobulin A Synthesis in Multiple Sclerosis: From Biological Aspects to Clinical Relevance. *Biomolecules*. 2025. `PMID:39858502 <https://pubmed.ncbi.nlm.nih.gov/39858502/>`_
+- Kliushnikova Dariia et al. **Intrathecal Immunoglobulin A Synthesis in Multiple Sclerosis: From Biological Aspects to Clinical Relevance.**. *Biomolecules*. 2025. `PMID:39858502 <https://pubmed.ncbi.nlm.nih.gov/39858502/>`_
 
-- Holmes Antony B et al. Single-Cell Transcriptomic Analysis of Normal and Malignant B Cells. *Methods in molecular biology (Clifton, N.J.)*. 2025. `PMID:39424732 <https://pubmed.ncbi.nlm.nih.gov/39424732/>`_
+- Holmes Antony B et al. **Single-Cell Transcriptomic Analysis of Normal and Malignant B Cells.**. *Methods in molecular biology (Clifton, N.J.)*. 2025. `PMID:39424732 <https://pubmed.ncbi.nlm.nih.gov/39424732/>`_
 
-- Hanna Stephanie J et al. The Type 1 Diabetes T Cell Receptor and B Cell Receptor Repository in the AIRR Data Commons: a practical guide for access, use and contributions through the Type 1 Diabetes AIRR Consortium. *Diabetologia*. 2025. `PMID:39467874 <https://pubmed.ncbi.nlm.nih.gov/39467874/>`_
+- Hanna Stephanie J et al. **The Type 1 Diabetes T Cell Receptor and B Cell Receptor Repository in the AIRR Data Commons: a practical guide for access, use and contributions through the Type 1 Diabetes AIRR Consortium.**. *Diabetologia*. 2025. `PMID:39467874 <https://pubmed.ncbi.nlm.nih.gov/39467874/>`_
 
-- Rao Kaihua et al. YiQiWenShen formula ameliorates myasthenia gravis through T follicular helper cells/T follicular regulatory cells immune rebalancing. *American journal of translational research*. 2025. `PMID:40950289 <https://pubmed.ncbi.nlm.nih.gov/40950289/>`_
+- Rao Kaihua et al. **YiQiWenShen formula ameliorates myasthenia gravis through T follicular helper cells/T follicular regulatory cells immune rebalancing.**. *American journal of translational research*. 2025. `PMID:40950289 <https://pubmed.ncbi.nlm.nih.gov/40950289/>`_
 
-- Quan Moyuan et al. Neutrophils, NETs and multiple sclerosis: a mini review. *Frontiers in immunology*. 2025. `PMID:39935468 <https://pubmed.ncbi.nlm.nih.gov/39935468/>`_
+- Quan Moyuan et al. **Neutrophils, NETs and multiple sclerosis: a mini review.**. *Frontiers in immunology*. 2025. `PMID:39935468 <https://pubmed.ncbi.nlm.nih.gov/39935468/>`_
 
-- Nakarin Fahsai et al. A paradigm shift in simulating affinity maturation to elicit broadly neutralizing antibodies. *Frontiers in immunology*. 2025. `PMID:40666529 <https://pubmed.ncbi.nlm.nih.gov/40666529/>`_
+- Nakarin Fahsai et al. **A paradigm shift in simulating affinity maturation to elicit broadly neutralizing antibodies.**. *Frontiers in immunology*. 2025. `PMID:40666529 <https://pubmed.ncbi.nlm.nih.gov/40666529/>`_
 
-- Peres Ayelet et al. Towards a sustainable, comprehensive and community-accepted nomenclature and naming standard of antibody and T cell receptor germline genes and alleles. *Frontiers in immunology*. 2025. `PMID:41368638 <https://pubmed.ncbi.nlm.nih.gov/41368638/>`_
+- Peres Ayelet et al. **Towards a sustainable, comprehensive and community-accepted nomenclature and naming standard of antibody and T cell receptor germline genes and alleles.**. *Frontiers in immunology*. 2025. `PMID:41368638 <https://pubmed.ncbi.nlm.nih.gov/41368638/>`_
 
-- Lele Nikhil et al. Deep cervical lymph node volume decreases following B-cell depletion therapy. *Multiple sclerosis journal - experimental, translational and clinical*. 2025. `PMID:40873659 <https://pubmed.ncbi.nlm.nih.gov/40873659/>`_
+- Lele Nikhil et al. **Deep cervical lymph node volume decreases following B-cell depletion therapy.**. *Multiple sclerosis journal - experimental, translational and clinical*. 2025. `PMID:40873659 <https://pubmed.ncbi.nlm.nih.gov/40873659/>`_
 
-- Jian Fanchong et al. Evolving antibody response to SARS-CoV-2 antigenic shift from XBB to JN.1. *Nature*. 2025. `PMID:39510125 <https://pubmed.ncbi.nlm.nih.gov/39510125/>`_
+- Jian Fanchong et al. **Evolving antibody response to SARS-CoV-2 antigenic shift from XBB to JN.1.**. *Nature*. 2025. `PMID:39510125 <https://pubmed.ncbi.nlm.nih.gov/39510125/>`_
 
-- Konopka Emily N et al. Nucleic acid vaccines: innovations, efficacy, and applications in at-risk populations. *Frontiers in immunology*. 2025. `PMID:40438110 <https://pubmed.ncbi.nlm.nih.gov/40438110/>`_
+- Konopka Emily N et al. **Nucleic acid vaccines: innovations, efficacy, and applications in at-risk populations.**. *Frontiers in immunology*. 2025. `PMID:40438110 <https://pubmed.ncbi.nlm.nih.gov/40438110/>`_
 
-- Coffey David G et al. Machine learning reveals distinct T-cell receptor clusters in plasma cell dyscrasias compared to healthy controls. *PloS one*. 2025. `PMID:41144424 <https://pubmed.ncbi.nlm.nih.gov/41144424/>`_
+- Coffey David G et al. **Machine learning reveals distinct T-cell receptor clusters in plasma cell dyscrasias compared to healthy controls.**. *PloS one*. 2025. `PMID:41144424 <https://pubmed.ncbi.nlm.nih.gov/41144424/>`_
 
-- Kim Hyo Jae et al. B cell receptor repertoire reconstitution in patients with neuromyelitis optica spectrum disorder receiving B-cell depletion therapy. *Frontiers in immunology*. 2025. `PMID:41246297 <https://pubmed.ncbi.nlm.nih.gov/41246297/>`_
+- Kim Hyo Jae et al. **B cell receptor repertoire reconstitution in patients with neuromyelitis optica spectrum disorder receiving B-cell depletion therapy.**. *Frontiers in immunology*. 2025. `PMID:41246297 <https://pubmed.ncbi.nlm.nih.gov/41246297/>`_
 
-- Jeon Bong Chan et al. Dynamic O-GlcNAcylation governs long-range chromatin interactions in V(D)J recombination during early B-cell development. *Cellular & molecular immunology*. 2025. `PMID:39627609 <https://pubmed.ncbi.nlm.nih.gov/39627609/>`_
+- Jeon Bong Chan et al. **Dynamic O-GlcNAcylation governs long-range chromatin interactions in V(D)J recombination during early B-cell development.**. *Cellular & molecular immunology*. 2025. `PMID:39627609 <https://pubmed.ncbi.nlm.nih.gov/39627609/>`_
 
-- Gutierrez Andres H et al. Regulatory T cell epitope content in human antibodies decreases during maturation. *Frontiers in immunology*. 2025. `PMID:40313951 <https://pubmed.ncbi.nlm.nih.gov/40313951/>`_
+- Gutierrez Andres H et al. **Regulatory T cell epitope content in human antibodies decreases during maturation.**. *Frontiers in immunology*. 2025. `PMID:40313951 <https://pubmed.ncbi.nlm.nih.gov/40313951/>`_
 
-- Ryback Audrey A et al. Deep sequencing of BCR heavy chain repertoires in myalgic encephalomyelitis/chronic fatigue syndrome. *Frontiers in immunology*. 2025. `PMID:40034707 <https://pubmed.ncbi.nlm.nih.gov/40034707/>`_
+- Ryback Audrey A et al. **Deep sequencing of BCR heavy chain repertoires in myalgic encephalomyelitis/chronic fatigue syndrome.**. *Frontiers in immunology*. 2025. `PMID:40034707 <https://pubmed.ncbi.nlm.nih.gov/40034707/>`_
 
-- Tran Hoc et al. Evaluating machine learning approaches for host prediction using H3 influenza genomic data. *PloS one*. 2025. `PMID:41191716 <https://pubmed.ncbi.nlm.nih.gov/41191716/>`_
+- Tran Hoc et al. **Evaluating machine learning approaches for host prediction using H3 influenza genomic data.**. *PloS one*. 2025. `PMID:41191716 <https://pubmed.ncbi.nlm.nih.gov/41191716/>`_
 
-- Dehghannasiri Roozbeh et al. sc-SPLASH provides ultra-efficient reference-free discovery in barcoded single-cell sequencing. *bioRxiv : the preprint server for biology*. 2024. `PMID:39763839 <https://pubmed.ncbi.nlm.nih.gov/39763839/>`_
+- Dehghannasiri Roozbeh et al. **sc-SPLASH provides ultra-efficient reference-free discovery in barcoded single-cell sequencing.**. *bioRxiv : the preprint server for biology*. 2024. `PMID:39763839 <https://pubmed.ncbi.nlm.nih.gov/39763839/>`_
 
-- Mikelov Artem et al. Ultrasensitive allele inference from immune repertoire sequencing data with MiXCR. *Genome research*. 2024. `PMID:39433438 <https://pubmed.ncbi.nlm.nih.gov/39433438/>`_
+- Mikelov Artem et al. **Ultrasensitive allele inference from immune repertoire sequencing data with MiXCR.**. *Genome research*. 2024. `PMID:39433438 <https://pubmed.ncbi.nlm.nih.gov/39433438/>`_
 
-- Csepregi Lucia et al. The physiological landscape and specificity of antibody repertoires are consolidated by multiple immunizations. *eLife*. 2024. `PMID:39693231 <https://pubmed.ncbi.nlm.nih.gov/39693231/>`_
+- Csepregi Lucia et al. **The physiological landscape and specificity of antibody repertoires are consolidated by multiple immunizations.**. *eLife*. 2024. `PMID:39693231 <https://pubmed.ncbi.nlm.nih.gov/39693231/>`_
 
-- Tsai Chih-Ming et al. Pathobiont-driven antibody sialylation through IL-10 undermines vaccination. *The Journal of clinical investigation*. 2024. `PMID:39680460 <https://pubmed.ncbi.nlm.nih.gov/39680460/>`_
+- Tsai Chih-Ming et al. **Pathobiont-driven antibody sialylation through IL-10 undermines vaccination.**. *The Journal of clinical investigation*. 2024. `PMID:39680460 <https://pubmed.ncbi.nlm.nih.gov/39680460/>`_
 
-- Terhaar Hanna et al. Immune Repertoires in Various Dermatologic and Autoimmune Diseases. *Genes*. 2024. `PMID:39766858 <https://pubmed.ncbi.nlm.nih.gov/39766858/>`_
+- Terhaar Hanna et al. **Immune Repertoires in Various Dermatologic and Autoimmune Diseases.**. *Genes*. 2024. `PMID:39766858 <https://pubmed.ncbi.nlm.nih.gov/39766858/>`_
 
-- Ogishi Masato et al. Impaired development of memory B cells and antibody responses in humans and mice deficient in PD-1 signaling. *Immunity*. 2024. `PMID:39603236 <https://pubmed.ncbi.nlm.nih.gov/39603236/>`_
+- Ogishi Masato et al. **Impaired development of memory B cells and antibody responses in humans and mice deficient in PD-1 signaling.**. *Immunity*. 2024. `PMID:39603236 <https://pubmed.ncbi.nlm.nih.gov/39603236/>`_
 
-- Malladi Sameer Kumar et al. Defining a highly conserved B cell epitope in the receptor binding motif of SARS-CoV-2 spike glycoprotein. *bioRxiv : the preprint server for biology*. 2024. `PMID:39713327 <https://pubmed.ncbi.nlm.nih.gov/39713327/>`_
+- Malladi Sameer Kumar et al. **Defining a highly conserved B cell epitope in the receptor binding motif of SARS-CoV-2 spike glycoprotein.**. *bioRxiv : the preprint server for biology*. 2024. `PMID:39713327 <https://pubmed.ncbi.nlm.nih.gov/39713327/>`_
 
-- Troch Karoline F et al. Group 2 innate lymphoid cells are a non-redundant source of interleukin-5 required for development and function of murine B1 cells. *Nature communications*. 2024. `PMID:39632879 <https://pubmed.ncbi.nlm.nih.gov/39632879/>`_
+- Troch Karoline F et al. **Group 2 innate lymphoid cells are a non-redundant source of interleukin-5 required for development and function of murine B1 cells.**. *Nature communications*. 2024. `PMID:39632879 <https://pubmed.ncbi.nlm.nih.gov/39632879/>`_
 
-- Tejedor Vaquero Sonia et al. Immunomolecular and reactivity landscapes of gut IgA subclasses in homeostasis and inflammatory bowel disease. *The Journal of experimental medicine*. 2024. `PMID:39560666 <https://pubmed.ncbi.nlm.nih.gov/39560666/>`_
+- Tejedor Vaquero Sonia et al. **Immunomolecular and reactivity landscapes of gut IgA subclasses in homeostasis and inflammatory bowel disease.**. *The Journal of experimental medicine*. 2024. `PMID:39560666 <https://pubmed.ncbi.nlm.nih.gov/39560666/>`_
 
-- Niu Xiao et al. Omicron-specific ultra-potent SARS-CoV-2 neutralizing antibodies targeting the N1/N2 loop of Spike N-terminal domain. *Emerging microbes & infections*. 2024. `PMID:39361729 <https://pubmed.ncbi.nlm.nih.gov/39361729/>`_
+- Niu Xiao et al. **Omicron-specific ultra-potent SARS-CoV-2 neutralizing antibodies targeting the N1/N2 loop of Spike N-terminal domain.**. *Emerging microbes & infections*. 2024. `PMID:39361729 <https://pubmed.ncbi.nlm.nih.gov/39361729/>`_
 
-- Blum Steven M et al. Immune responses in checkpoint myocarditis across heart, blood and tumour. *Nature*. 2024. `PMID:39506125 <https://pubmed.ncbi.nlm.nih.gov/39506125/>`_
+- Blum Steven M et al. **Immune responses in checkpoint myocarditis across heart, blood and tumour.**. *Nature*. 2024. `PMID:39506125 <https://pubmed.ncbi.nlm.nih.gov/39506125/>`_
 
-- Sakakibara Shuhei et al. Clonal landscape of autoantibody-secreting plasmablasts in COVID-19 patients. *Life science alliance*. 2024. `PMID:39288992 <https://pubmed.ncbi.nlm.nih.gov/39288992/>`_
+- Sakakibara Shuhei et al. **Clonal landscape of autoantibody-secreting plasmablasts in COVID-19 patients.**. *Life science alliance*. 2024. `PMID:39288992 <https://pubmed.ncbi.nlm.nih.gov/39288992/>`_
 
-- Raju Nagarajan et al. Multiplexed Antibody Sequencing and Profiling of the Human Hemagglutinin-specific Memory B Cell Response following Influenza Vaccination. *Journal of immunology (Baltimore, Md. : 1950)*. 2024. `PMID:39441352 <https://pubmed.ncbi.nlm.nih.gov/39441352/>`_
+- Raju Nagarajan et al. **Multiplexed Antibody Sequencing and Profiling of the Human Hemagglutinin-specific Memory B Cell Response following Influenza Vaccination.**. *Journal of immunology (Baltimore, Md. : 1950)*. 2024. `PMID:39441352 <https://pubmed.ncbi.nlm.nih.gov/39441352/>`_
 
-- Oh Dong Sun et al. SARS-CoV-2 infection elucidates features of pregnancy-specific immunity. *Cell reports*. 2024. `PMID:39504241 <https://pubmed.ncbi.nlm.nih.gov/39504241/>`_
+- Oh Dong Sun et al. **SARS-CoV-2 infection elucidates features of pregnancy-specific immunity.**. *Cell reports*. 2024. `PMID:39504241 <https://pubmed.ncbi.nlm.nih.gov/39504241/>`_
 
-- Sanchez Gina M et al. Aberrant zonal recycling of germinal center B cells impairs appropriate selection in lupus. *Cell reports*. 2024. `PMID:39527476 <https://pubmed.ncbi.nlm.nih.gov/39527476/>`_
+- Sanchez Gina M et al. **Aberrant zonal recycling of germinal center B cells impairs appropriate selection in lupus.**. *Cell reports*. 2024. `PMID:39527476 <https://pubmed.ncbi.nlm.nih.gov/39527476/>`_
 
-- Madden Patrick J et al. Diverse priming outcomes under conditions of very rare precursor B cells. *bioRxiv : the preprint server for biology*. 2024. `PMID:39651117 <https://pubmed.ncbi.nlm.nih.gov/39651117/>`_
+- Madden Patrick J et al. **Diverse priming outcomes under conditions of very rare precursor B cells.**. *bioRxiv : the preprint server for biology*. 2024. `PMID:39651117 <https://pubmed.ncbi.nlm.nih.gov/39651117/>`_
 
-- Licht Philipp et al. Multi-Omic Data Integration Suggests Putative Microbial Drivers of Aetiopathogenesis in Mycosis Fungoides. *Cancers*. 2024. `PMID:39682136 <https://pubmed.ncbi.nlm.nih.gov/39682136/>`_
+- Licht Philipp et al. **Multi-Omic Data Integration Suggests Putative Microbial Drivers of Aetiopathogenesis in Mycosis Fungoides.**. *Cancers*. 2024. `PMID:39682136 <https://pubmed.ncbi.nlm.nih.gov/39682136/>`_
 
-- Dudzic Paweł et al. RIOT-Rapid Immunoglobulin Overview Tool-annotation of nucleotide and amino acid immunoglobulin sequences using an open germline database. *Briefings in bioinformatics*. 2024. `PMID:39656773 <https://pubmed.ncbi.nlm.nih.gov/39656773/>`_
+- Dudzic Paweł et al. **RIOT-Rapid Immunoglobulin Overview Tool-annotation of nucleotide and amino acid immunoglobulin sequences using an open germline database.**. *Briefings in bioinformatics*. 2024. `PMID:39656773 <https://pubmed.ncbi.nlm.nih.gov/39656773/>`_
 
-- Dieudonné Yannick et al. Defective germinal center selection results in persistence of self-reactive B cells from the primary to the secondary repertoire in Primary Antiphospholipid Syndrome. *Nature communications*. 2024. `PMID:39548093 <https://pubmed.ncbi.nlm.nih.gov/39548093/>`_
+- Dieudonné Yannick et al. **Defective germinal center selection results in persistence of self-reactive B cells from the primary to the secondary repertoire in Primary Antiphospholipid Syndrome.**. *Nature communications*. 2024. `PMID:39548093 <https://pubmed.ncbi.nlm.nih.gov/39548093/>`_
 
-- Yang Yexin et al. A B cell screen against endogenous retroviruses identifies glycan-reactive IgM that recognizes a broad array of enveloped viruses. *Science immunology*. 2024. `PMID:39514636 <https://pubmed.ncbi.nlm.nih.gov/39514636/>`_
+- Yang Yexin et al. **A B cell screen against endogenous retroviruses identifies glycan-reactive IgM that recognizes a broad array of enveloped viruses.**. *Science immunology*. 2024. `PMID:39514636 <https://pubmed.ncbi.nlm.nih.gov/39514636/>`_
 
-- Johnson Nicole V et al. Discovery and characterization of a pan-betacoronavirus S2-binding antibody. *Structure (London, England : 1993)*. 2024. `PMID:39326419 <https://pubmed.ncbi.nlm.nih.gov/39326419/>`_
+- Johnson Nicole V et al. **Discovery and characterization of a pan-betacoronavirus S2-binding antibody.**. *Structure (London, England : 1993)*. 2024. `PMID:39326419 <https://pubmed.ncbi.nlm.nih.gov/39326419/>`_
 
-- Wang Xin et al. CD8+ T cells exacerbate AD-like symptoms in mouse model of amyloidosis. *Brain, behavior, and immunity*. 2024. `PMID:39191349 <https://pubmed.ncbi.nlm.nih.gov/39191349/>`_
+- Wang Xin et al. **CD8+ T cells exacerbate AD-like symptoms in mouse model of amyloidosis.**. *Brain, behavior, and immunity*. 2024. `PMID:39191349 <https://pubmed.ncbi.nlm.nih.gov/39191349/>`_
 
-- Cobey Sarah et al. Vaccination against rapidly evolving pathogens and the entanglements of memory. *Nature immunology*. 2024. `PMID:39384979 <https://pubmed.ncbi.nlm.nih.gov/39384979/>`_
+- Cobey Sarah et al. **Vaccination against rapidly evolving pathogens and the entanglements of memory.**. *Nature immunology*. 2024. `PMID:39384979 <https://pubmed.ncbi.nlm.nih.gov/39384979/>`_
 
-- Jagota Milind et al. Learning antibody sequence constraints from allelic inclusion. *bioRxiv : the preprint server for biology*. 2024. `PMID:39484623 <https://pubmed.ncbi.nlm.nih.gov/39484623/>`_
+- Jagota Milind et al. **Learning antibody sequence constraints from allelic inclusion.**. *bioRxiv : the preprint server for biology*. 2024. `PMID:39484623 <https://pubmed.ncbi.nlm.nih.gov/39484623/>`_
 
-- Mittl Kristen et al. Antigen specificity of clonally-enriched CD8+ T cells in multiple sclerosis. *bioRxiv : the preprint server for biology*. 2024. `PMID:39282370 <https://pubmed.ncbi.nlm.nih.gov/39282370/>`_
+- Mittl Kristen et al. **Antigen specificity of clonally-enriched CD8+ T cells in multiple sclerosis.**. *bioRxiv : the preprint server for biology*. 2024. `PMID:39282370 <https://pubmed.ncbi.nlm.nih.gov/39282370/>`_
 
-- Matz Hanover C et al. mRNA-based influenza vaccine expands breadth of B cell response in humans. *bioRxiv : the preprint server for biology*. 2024. `PMID:39416092 <https://pubmed.ncbi.nlm.nih.gov/39416092/>`_
+- Matz Hanover C et al. **mRNA-based influenza vaccine expands breadth of B cell response in humans.**. *bioRxiv : the preprint server for biology*. 2024. `PMID:39416092 <https://pubmed.ncbi.nlm.nih.gov/39416092/>`_
 
-- Hahn William O et al. Use of 3M-052-AF with Alum adjuvant in HIV trimer vaccine induces human autologous neutralizing antibodies. *The Journal of experimental medicine*. 2024. `PMID:39235529 <https://pubmed.ncbi.nlm.nih.gov/39235529/>`_
+- Hahn William O et al. **Use of 3M-052-AF with Alum adjuvant in HIV trimer vaccine induces human autologous neutralizing antibodies.**. *The Journal of experimental medicine*. 2024. `PMID:39235529 <https://pubmed.ncbi.nlm.nih.gov/39235529/>`_
 
-- Farnia Mahsa et al. New generalized metric based on branch length distance to compare B cell lineage trees. *Algorithms for molecular biology : AMB*. 2024. `PMID:39369262 <https://pubmed.ncbi.nlm.nih.gov/39369262/>`_
+- Farnia Mahsa et al. **New generalized metric based on branch length distance to compare B cell lineage trees.**. *Algorithms for molecular biology : AMB*. 2024. `PMID:39369262 <https://pubmed.ncbi.nlm.nih.gov/39369262/>`_
 
-- Li Fengjuan et al. Discovery, recognized antigenic structures, and evolution of cross-serotype broadly neutralizing antibodies from porcine B-cell repertoires against foot-and-mouth disease virus. *PLoS pathogens*. 2024. `PMID:39405339 <https://pubmed.ncbi.nlm.nih.gov/39405339/>`_
+- Li Fengjuan et al. **Discovery, recognized antigenic structures, and evolution of cross-serotype broadly neutralizing antibodies from porcine B-cell repertoires against foot-and-mouth disease virus.**. *PLoS pathogens*. 2024. `PMID:39405339 <https://pubmed.ncbi.nlm.nih.gov/39405339/>`_
 
-- Morgan Duncan M et al. Full-length single-cell BCR sequencing paired with RNA sequencing reveals convergent responses to pneumococcal vaccination. *Communications biology*. 2024. `PMID:39341987 <https://pubmed.ncbi.nlm.nih.gov/39341987/>`_
+- Morgan Duncan M et al. **Full-length single-cell BCR sequencing paired with RNA sequencing reveals convergent responses to pneumococcal vaccination.**. *Communications biology*. 2024. `PMID:39341987 <https://pubmed.ncbi.nlm.nih.gov/39341987/>`_
 
-- Konstantinovsky Thomas et al. An unbiased comparison of immunoglobulin sequence aligners. *Briefings in bioinformatics*. 2024. `PMID:39489605 <https://pubmed.ncbi.nlm.nih.gov/39489605/>`_
+- Konstantinovsky Thomas et al. **An unbiased comparison of immunoglobulin sequence aligners.**. *Briefings in bioinformatics*. 2024. `PMID:39489605 <https://pubmed.ncbi.nlm.nih.gov/39489605/>`_
 
-- Morgan Gareth et al. An updated AL-Base reveals ranked enrichment of immunoglobulin light chain variable genes in AL amyloidosis. *bioRxiv : the preprint server for biology*. 2024. `PMID:39314448 <https://pubmed.ncbi.nlm.nih.gov/39314448/>`_
+- Morgan Gareth et al. **An updated AL-Base reveals ranked enrichment of immunoglobulin light chain variable genes in AL amyloidosis.**. *bioRxiv : the preprint server for biology*. 2024. `PMID:39314448 <https://pubmed.ncbi.nlm.nih.gov/39314448/>`_
 
-- Morgan Duncan M et al. Expansion of tumor-reactive CD8+ T cell clonotypes occurs in the spleen in response to immune checkpoint blockade. *Science immunology*. 2024. `PMID:39270006 <https://pubmed.ncbi.nlm.nih.gov/39270006/>`_
+- Morgan Duncan M et al. **Expansion of tumor-reactive CD8+ T cell clonotypes occurs in the spleen in response to immune checkpoint blockade.**. *Science immunology*. 2024. `PMID:39270006 <https://pubmed.ncbi.nlm.nih.gov/39270006/>`_
 
-- Weber Leah L et al. Isotype-aware inference of B cell clonal lineage trees from single-cell sequencing data. *Cell genomics*. 2024. `PMID:39208795 <https://pubmed.ncbi.nlm.nih.gov/39208795/>`_
+- Weber Leah L et al. **Isotype-aware inference of B cell clonal lineage trees from single-cell sequencing data.**. *Cell genomics*. 2024. `PMID:39208795 <https://pubmed.ncbi.nlm.nih.gov/39208795/>`_
 
-- Wang Lawrence T et al. Natural malaria infection elicits rare but potent neutralizing antibodies to the blood-stage antigen RH5. *Cell*. 2024. `PMID:39059381 <https://pubmed.ncbi.nlm.nih.gov/39059381/>`_
+- Wang Lawrence T et al. **Natural malaria infection elicits rare but potent neutralizing antibodies to the blood-stage antigen RH5.**. *Cell*. 2024. `PMID:39059381 <https://pubmed.ncbi.nlm.nih.gov/39059381/>`_
 
-- Liu Yang et al. Single-cell and spatial transcriptome analyses reveal tertiary lymphoid structures linked to tumour progression and immunotherapy response in nasopharyngeal carcinoma. *Nature communications*. 2024. `PMID:39231979 <https://pubmed.ncbi.nlm.nih.gov/39231979/>`_
+- Liu Yang et al. **Single-cell and spatial transcriptome analyses reveal tertiary lymphoid structures linked to tumour progression and immunotherapy response in nasopharyngeal carcinoma.**. *Nature communications*. 2024. `PMID:39231979 <https://pubmed.ncbi.nlm.nih.gov/39231979/>`_
 
-- Schlegel Brent T et al. bcRflow: a Nextflow pipeline for characterizing B cell receptor repertoires from non-targeted transcriptomic data. *NAR genomics and bioinformatics*. 2024. `PMID:39411512 <https://pubmed.ncbi.nlm.nih.gov/39411512/>`_
+- Schlegel Brent T et al. **bcRflow: a Nextflow pipeline for characterizing B cell receptor repertoires from non-targeted transcriptomic data.**. *NAR genomics and bioinformatics*. 2024. `PMID:39411512 <https://pubmed.ncbi.nlm.nih.gov/39411512/>`_
 
-- Crowley Daniel E et al. Bats generate lower affinity but higher diversity antibody responses than those of mice, but pathogen-binding capacity increases if protein is restricted in their diet. *PLoS biology*. 2024. `PMID:39316608 <https://pubmed.ncbi.nlm.nih.gov/39316608/>`_
+- Crowley Daniel E et al. **Bats generate lower affinity but higher diversity antibody responses than those of mice, but pathogen-binding capacity increases if protein is restricted in their diet.**. *PLoS biology*. 2024. `PMID:39316608 <https://pubmed.ncbi.nlm.nih.gov/39316608/>`_
 
-- Deng Dori Z Q et al. R2C2 + UMI: Combining concatemeric and unique molecular identifier-based consensus sequencing enables ultra-accurate sequencing of amplicons on Oxford Nanopore Technologies sequencers. *PNAS nexus*. 2024. `PMID:39238604 <https://pubmed.ncbi.nlm.nih.gov/39238604/>`_
+- Deng Dori Z Q et al. **R2C2 + UMI: Combining concatemeric and unique molecular identifier-based consensus sequencing enables ultra-accurate sequencing of amplicons on Oxford Nanopore Technologies sequencers.**. *PNAS nexus*. 2024. `PMID:39238604 <https://pubmed.ncbi.nlm.nih.gov/39238604/>`_
 
-- Caniels Tom G et al. Germline-targeting HIV vaccination induces neutralizing antibodies to the CD4 binding site. *Science immunology*. 2024. `PMID:39213338 <https://pubmed.ncbi.nlm.nih.gov/39213338/>`_
+- Caniels Tom G et al. **Germline-targeting HIV vaccination induces neutralizing antibodies to the CD4 binding site.**. *Science immunology*. 2024. `PMID:39213338 <https://pubmed.ncbi.nlm.nih.gov/39213338/>`_
 
-- Licht Philipp et al. The skin microbiome stratifies patients with cutaneous T cell lymphoma and determines event-free survival. *NPJ biofilms and microbiomes*. 2024. `PMID:39198450 <https://pubmed.ncbi.nlm.nih.gov/39198450/>`_
+- Licht Philipp et al. **The skin microbiome stratifies patients with cutaneous T cell lymphoma and determines event-free survival.**. *NPJ biofilms and microbiomes*. 2024. `PMID:39198450 <https://pubmed.ncbi.nlm.nih.gov/39198450/>`_
 
-- Abbate Maria Francesca et al. Computational detection of antigen-specific B cell receptors following immunization. *Proceedings of the National Academy of Sciences of the United States of America*. 2024. `PMID:39163333 <https://pubmed.ncbi.nlm.nih.gov/39163333/>`_
+- Abbate Maria Francesca et al. **Computational detection of antigen-specific B cell receptors following immunization.**. *Proceedings of the National Academy of Sciences of the United States of America*. 2024. `PMID:39163333 <https://pubmed.ncbi.nlm.nih.gov/39163333/>`_
 
-- Rodrigues Kristen A et al. Vaccines combining slow delivery and follicle targeting of antigens increase germinal center B cell clonal diversity and clonal expansion. *bioRxiv : the preprint server for biology*. 2024. `PMID:39229011 <https://pubmed.ncbi.nlm.nih.gov/39229011/>`_
+- Rodrigues Kristen A et al. **Vaccines combining slow delivery and follicle targeting of antigens increase germinal center B cell clonal diversity and clonal expansion.**. *bioRxiv : the preprint server for biology*. 2024. `PMID:39229011 <https://pubmed.ncbi.nlm.nih.gov/39229011/>`_
 
-- Priest David G et al. Atypical and non-classical CD45RBlo memory B cells are the majority of circulating SARS-CoV-2 specific B cells following mRNA vaccination or COVID-19. *Nature communications*. 2024. `PMID:39122676 <https://pubmed.ncbi.nlm.nih.gov/39122676/>`_
+- Priest David G et al. **Atypical and non-classical CD45RBlo memory B cells are the majority of circulating SARS-CoV-2 specific B cells following mRNA vaccination or COVID-19.**. *Nature communications*. 2024. `PMID:39122676 <https://pubmed.ncbi.nlm.nih.gov/39122676/>`_
 
-- Spisak Natanael et al. Combining mutation and recombination statistics to infer clonal families in antibody repertoires. *eLife*. 2024. `PMID:39120133 <https://pubmed.ncbi.nlm.nih.gov/39120133/>`_
+- Spisak Natanael et al. **Combining mutation and recombination statistics to infer clonal families in antibody repertoires.**. *eLife*. 2024. `PMID:39120133 <https://pubmed.ncbi.nlm.nih.gov/39120133/>`_
 
-- McIntire Katherine M et al. Maturation of germinal center B cells after influenza virus vaccination in humans. *The Journal of experimental medicine*. 2024. `PMID:38935072 <https://pubmed.ncbi.nlm.nih.gov/38935072/>`_
+- McIntire Katherine M et al. **Maturation of germinal center B cells after influenza virus vaccination in humans.**. *The Journal of experimental medicine*. 2024. `PMID:38935072 <https://pubmed.ncbi.nlm.nih.gov/38935072/>`_
 
-- Lanahan Stephen M et al. PI3Kγ in B cells promotes antibody responses and generation of antibody-secreting cells. *Nature immunology*. 2024. `PMID:38961274 <https://pubmed.ncbi.nlm.nih.gov/38961274/>`_
+- Lanahan Stephen M et al. **PI3Kγ in B cells promotes antibody responses and generation of antibody-secreting cells.**. *Nature immunology*. 2024. `PMID:38961274 <https://pubmed.ncbi.nlm.nih.gov/38961274/>`_
 
-- Engelbrecht Eric et al. Resolving haplotype variation and complex genetic architecture in the human immunoglobulin kappa chain locus in individuals of diverse ancestry. *Genes and immunity*. 2024. `PMID:38844673 <https://pubmed.ncbi.nlm.nih.gov/38844673/>`_
+- Engelbrecht Eric et al. **Resolving haplotype variation and complex genetic architecture in the human immunoglobulin kappa chain locus in individuals of diverse ancestry.**. *Genes and immunity*. 2024. `PMID:38844673 <https://pubmed.ncbi.nlm.nih.gov/38844673/>`_
 
-- Ramirez Sydney I et al. Immunological memory diversity in the human upper airway. *Nature*. 2024. `PMID:39085605 <https://pubmed.ncbi.nlm.nih.gov/39085605/>`_
+- Ramirez Sydney I et al. **Immunological memory diversity in the human upper airway.**. *Nature*. 2024. `PMID:39085605 <https://pubmed.ncbi.nlm.nih.gov/39085605/>`_
 
-- Fantin Raianna F et al. Dissecting human monoclonal antibody responses from mRNA- and protein-based XBB.1.5 COVID-19 monovalent vaccines. *bioRxiv : the preprint server for biology*. 2024. `PMID:39071292 <https://pubmed.ncbi.nlm.nih.gov/39071292/>`_
+- Fantin Raianna F et al. **Dissecting human monoclonal antibody responses from mRNA- and protein-based XBB.1.5 COVID-19 monovalent vaccines.**. *bioRxiv : the preprint server for biology*. 2024. `PMID:39071292 <https://pubmed.ncbi.nlm.nih.gov/39071292/>`_
 
-- Kassardjian Audrey et al. Humanization of Pan-HLA-DR mAb 44H10 Hinges on Critical Residues in the Antibody Framework. *Antibodies (Basel, Switzerland)*. 2024. `PMID:39051333 <https://pubmed.ncbi.nlm.nih.gov/39051333/>`_
+- Kassardjian Audrey et al. **Humanization of Pan-HLA-DR mAb 44H10 Hinges on Critical Residues in the Antibody Framework.**. *Antibodies (Basel, Switzerland)*. 2024. `PMID:39051333 <https://pubmed.ncbi.nlm.nih.gov/39051333/>`_
 
-- Gabernet Gisela et al. nf-core/airrflow: An adaptive immune receptor repertoire analysis workflow employing the Immcantation framework. *PLoS computational biology*. 2024. `PMID:39058741 <https://pubmed.ncbi.nlm.nih.gov/39058741/>`_
+- Gabernet Gisela et al. **nf-core/airrflow: An adaptive immune receptor repertoire analysis workflow employing the Immcantation framework.**. *PLoS computational biology*. 2024. `PMID:39058741 <https://pubmed.ncbi.nlm.nih.gov/39058741/>`_
 
-- Nguyen Ai et al. Modulation of biophysical properties of nucleocapsid protein in the mutant spectrum of SARS-CoV-2. *eLife*. 2024. `PMID:38941236 <https://pubmed.ncbi.nlm.nih.gov/38941236/>`_
+- Nguyen Ai et al. **Modulation of biophysical properties of nucleocapsid protein in the mutant spectrum of SARS-CoV-2.**. *eLife*. 2024. `PMID:38941236 <https://pubmed.ncbi.nlm.nih.gov/38941236/>`_
 
-- Nicholas Catherine A et al. Islet-antigen reactive B cells display a unique phenotype and BCR repertoire in autoantibody positive and recent-onset type 1 diabetes patients. *bioRxiv : the preprint server for biology*. 2024. `PMID:38979376 <https://pubmed.ncbi.nlm.nih.gov/38979376/>`_
+- Nicholas Catherine A et al. **Islet-antigen reactive B cells display a unique phenotype and BCR repertoire in autoantibody positive and recent-onset type 1 diabetes patients.**. *bioRxiv : the preprint server for biology*. 2024. `PMID:38979376 <https://pubmed.ncbi.nlm.nih.gov/38979376/>`_
 
-- Foglierini Mathilde et al. RAIN: machine learning-based identification for HIV-1 bNAbs. *Nature communications*. 2024. `PMID:38914562 <https://pubmed.ncbi.nlm.nih.gov/38914562/>`_
+- Foglierini Mathilde et al. **RAIN: machine learning-based identification for HIV-1 bNAbs.**. *Nature communications*. 2024. `PMID:38914562 <https://pubmed.ncbi.nlm.nih.gov/38914562/>`_
 
-- Wang Kaixuan et al. Protocol for fast clonal family inference and analysis from large-scale B cell receptor repertoire sequencing data. *STAR protocols*. 2024. `PMID:38502687 <https://pubmed.ncbi.nlm.nih.gov/38502687/>`_
+- Wang Kaixuan et al. **Protocol for fast clonal family inference and analysis from large-scale B cell receptor repertoire sequencing data.**. *STAR protocols*. 2024. `PMID:38502687 <https://pubmed.ncbi.nlm.nih.gov/38502687/>`_
 
-- Dunlap Garrett et al. Clonal associations between lymphocyte subsets and functional states in rheumatoid arthritis synovium. *Nature communications*. 2024. `PMID:38862501 <https://pubmed.ncbi.nlm.nih.gov/38862501/>`_
+- Dunlap Garrett et al. **Clonal associations between lymphocyte subsets and functional states in rheumatoid arthritis synovium.**. *Nature communications*. 2024. `PMID:38862501 <https://pubmed.ncbi.nlm.nih.gov/38862501/>`_
 
-- Verma Sheenam et al. Antigen-level resolution of commensal-specific B cell responses can be enabled by phage display screening coupled with B cell tetramers. *Immunity*. 2024. `PMID:38723638 <https://pubmed.ncbi.nlm.nih.gov/38723638/>`_
+- Verma Sheenam et al. **Antigen-level resolution of commensal-specific B cell responses can be enabled by phage display screening coupled with B cell tetramers.**. *Immunity*. 2024. `PMID:38723638 <https://pubmed.ncbi.nlm.nih.gov/38723638/>`_
 
-- Johnson Matthew B et al. Human inherited PD-L1 deficiency is clinically and immunologically less severe than PD-1 deficiency. *The Journal of experimental medicine*. 2024. `PMID:38634869 <https://pubmed.ncbi.nlm.nih.gov/38634869/>`_
+- Johnson Matthew B et al. **Human inherited PD-L1 deficiency is clinically and immunologically less severe than PD-1 deficiency.**. *The Journal of experimental medicine*. 2024. `PMID:38634869 <https://pubmed.ncbi.nlm.nih.gov/38634869/>`_
 
-- Voss Katalin et al. Evaluating methods for B-cell clonal family assignment. *bioRxiv : the preprint server for biology*. 2024. `PMID:38853833 <https://pubmed.ncbi.nlm.nih.gov/38853833/>`_
+- Voss Katalin et al. **Evaluating methods for B-cell clonal family assignment.**. *bioRxiv : the preprint server for biology*. 2024. `PMID:38853833 <https://pubmed.ncbi.nlm.nih.gov/38853833/>`_
 
-- Schiffner Torben et al. Vaccination induces broadly neutralizing antibody precursors to HIV gp41. *Nature immunology*. 2024. `PMID:38816615 <https://pubmed.ncbi.nlm.nih.gov/38816615/>`_
+- Schiffner Torben et al. **Vaccination induces broadly neutralizing antibody precursors to HIV gp41.**. *Nature immunology*. 2024. `PMID:38816615 <https://pubmed.ncbi.nlm.nih.gov/38816615/>`_
 
-- Steichen Jon M et al. Vaccine priming of rare HIV broadly neutralizing antibody precursors in nonhuman primates. *Science (New York, N.Y.)*. 2024. `PMID:38753769 <https://pubmed.ncbi.nlm.nih.gov/38753769/>`_
+- Steichen Jon M et al. **Vaccine priming of rare HIV broadly neutralizing antibody precursors in nonhuman primates.**. *Science (New York, N.Y.)*. 2024. `PMID:38753769 <https://pubmed.ncbi.nlm.nih.gov/38753769/>`_
 
-- Jensen Cole G et al. Inferring B Cell Phylogenies from Paired H and L Chain BCR Sequences with Dowser. *Journal of immunology (Baltimore, Md. : 1950)*. 2024. `PMID:38557795 <https://pubmed.ncbi.nlm.nih.gov/38557795/>`_
+- Jensen Cole G et al. **Inferring B Cell Phylogenies from Paired H and L Chain BCR Sequences with Dowser.**. *Journal of immunology (Baltimore, Md. : 1950)*. 2024. `PMID:38557795 <https://pubmed.ncbi.nlm.nih.gov/38557795/>`_
 
-- Dzanibe Sonwabile et al. Premature skewing of T cell receptor clonality and delayed memory expansion in HIV-exposed infants. *Nature communications*. 2024. `PMID:38744812 <https://pubmed.ncbi.nlm.nih.gov/38744812/>`_
+- Dzanibe Sonwabile et al. **Premature skewing of T cell receptor clonality and delayed memory expansion in HIV-exposed infants.**. *Nature communications*. 2024. `PMID:38744812 <https://pubmed.ncbi.nlm.nih.gov/38744812/>`_
 
-- Wang Meng et al. Supervised fine-tuning of pre-trained antibody language models improves antigen specificity prediction. *bioRxiv : the preprint server for biology*. 2024. `PMID:38798340 <https://pubmed.ncbi.nlm.nih.gov/38798340/>`_
+- Wang Meng et al. **Supervised fine-tuning of pre-trained antibody language models improves antigen specificity prediction.**. *bioRxiv : the preprint server for biology*. 2024. `PMID:38798340 <https://pubmed.ncbi.nlm.nih.gov/38798340/>`_
 
-- Cornejo Alejandro et al. Humoral Immunity across the SARS-CoV-2 Spike after Sputnik V (Gam-COVID-Vac) Vaccination. *Antibodies (Basel, Switzerland)*. 2024. `PMID:38804309 <https://pubmed.ncbi.nlm.nih.gov/38804309/>`_
+- Cornejo Alejandro et al. **Humoral Immunity across the SARS-CoV-2 Spike after Sputnik V (Gam-COVID-Vac) Vaccination.**. *Antibodies (Basel, Switzerland)*. 2024. `PMID:38804309 <https://pubmed.ncbi.nlm.nih.gov/38804309/>`_
 
-- Pacheco Gaspar A et al. Origins and diversity of pan-isotype human bone marrow plasma cells. *bioRxiv : the preprint server for biology*. 2024. `PMID:38766053 <https://pubmed.ncbi.nlm.nih.gov/38766053/>`_
+- Pacheco Gaspar A et al. **Origins and diversity of pan-isotype human bone marrow plasma cells.**. *bioRxiv : the preprint server for biology*. 2024. `PMID:38766053 <https://pubmed.ncbi.nlm.nih.gov/38766053/>`_
 
-- Thomas Molly Fisher et al. Single-cell transcriptomic analyses reveal distinct immune cell contributions to epithelial barrier dysfunction in checkpoint inhibitor colitis. *Nature medicine*. 2024. `PMID:38724705 <https://pubmed.ncbi.nlm.nih.gov/38724705/>`_
+- Thomas Molly Fisher et al. **Single-cell transcriptomic analyses reveal distinct immune cell contributions to epithelial barrier dysfunction in checkpoint inhibitor colitis.**. *Nature medicine*. 2024. `PMID:38724705 <https://pubmed.ncbi.nlm.nih.gov/38724705/>`_
 
-- Sammut Stephen-John et al. Predictability of B cell clonal persistence and immunosurveillance in breast cancer. *Nature immunology*. 2024. `PMID:38698238 <https://pubmed.ncbi.nlm.nih.gov/38698238/>`_
+- Sammut Stephen-John et al. **Predictability of B cell clonal persistence and immunosurveillance in breast cancer.**. *Nature immunology*. 2024. `PMID:38698238 <https://pubmed.ncbi.nlm.nih.gov/38698238/>`_
 
-- Irac Sergio E et al. Single-cell immune repertoire analysis. *Nature methods*. 2024. `PMID:38637691 <https://pubmed.ncbi.nlm.nih.gov/38637691/>`_
+- Irac Sergio E et al. **Single-cell immune repertoire analysis.**. *Nature methods*. 2024. `PMID:38637691 <https://pubmed.ncbi.nlm.nih.gov/38637691/>`_
 
-- Park Seoryeong et al. An ancestral SARS-CoV-2 vaccine induces anti-Omicron variants antibodies by hypermutation. *Nature communications*. 2024. `PMID:38643233 <https://pubmed.ncbi.nlm.nih.gov/38643233/>`_
+- Park Seoryeong et al. **An ancestral SARS-CoV-2 vaccine induces anti-Omicron variants antibodies by hypermutation.**. *Nature communications*. 2024. `PMID:38643233 <https://pubmed.ncbi.nlm.nih.gov/38643233/>`_
 
-- Thomas Peter et al. High affinity mAb infusion can enhance maximum affinity maturation during HIV Env immunization. *iScience*. 2024. `PMID:38550978 <https://pubmed.ncbi.nlm.nih.gov/38550978/>`_
+- Thomas Peter et al. **High affinity mAb infusion can enhance maximum affinity maturation during HIV Env immunization.**. *iScience*. 2024. `PMID:38550978 <https://pubmed.ncbi.nlm.nih.gov/38550978/>`_
 
-- Hu Jianqiao et al. TrieDedup: a fast trie-based deduplication algorithm to handle ambiguous bases in high-throughput sequencing. *BMC bioinformatics*. 2024. `PMID:38637756 <https://pubmed.ncbi.nlm.nih.gov/38637756/>`_
+- Hu Jianqiao et al. **TrieDedup: a fast trie-based deduplication algorithm to handle ambiguous bases in high-throughput sequencing.**. *BMC bioinformatics*. 2024. `PMID:38637756 <https://pubmed.ncbi.nlm.nih.gov/38637756/>`_
 
-- Shehata Laila et al. Interleukin-4 downregulates transcription factor BCL6 to promote memory B cell selection in germinal centers. *Immunity*. 2024. `PMID:38513666 <https://pubmed.ncbi.nlm.nih.gov/38513666/>`_
+- Shehata Laila et al. **Interleukin-4 downregulates transcription factor BCL6 to promote memory B cell selection in germinal centers.**. *Immunity*. 2024. `PMID:38513666 <https://pubmed.ncbi.nlm.nih.gov/38513666/>`_
 
-- Grigoryan Lilit et al. AS03 adjuvant enhances the magnitude, persistence, and clonal breadth of memory B cell responses to a plant-based COVID-19 vaccine in humans. *Science immunology*. 2024. `PMID:38579013 <https://pubmed.ncbi.nlm.nih.gov/38579013/>`_
+- Grigoryan Lilit et al. **AS03 adjuvant enhances the magnitude, persistence, and clonal breadth of memory B cell responses to a plant-based COVID-19 vaccine in humans.**. *Science immunology*. 2024. `PMID:38579013 <https://pubmed.ncbi.nlm.nih.gov/38579013/>`_
 
-- Fitzpatrick Zachary et al. Venous-plexus-associated lymphoid hubs support meningeal humoral immunity. *Nature*. 2024. `PMID:38509366 <https://pubmed.ncbi.nlm.nih.gov/38509366/>`_
+- Fitzpatrick Zachary et al. **Venous-plexus-associated lymphoid hubs support meningeal humoral immunity.**. *Nature*. 2024. `PMID:38509366 <https://pubmed.ncbi.nlm.nih.gov/38509366/>`_
 
-- Peres Ayelet et al. Guidelines for reproducible analysis of adaptive immune receptor repertoire sequencing data. *Briefings in bioinformatics*. 2024. `PMID:38752856 <https://pubmed.ncbi.nlm.nih.gov/38752856/>`_
+- Peres Ayelet et al. **Guidelines for reproducible analysis of adaptive immune receptor repertoire sequencing data.**. *Briefings in bioinformatics*. 2024. `PMID:38752856 <https://pubmed.ncbi.nlm.nih.gov/38752856/>`_
 
-- Abdullah Leena et al. Hierarchal single-cell lineage tracing reveals differential fate commitment of CD8 T-cell clones in response to acute infection. *bioRxiv : the preprint server for biology*. 2024. `PMID:38585810 <https://pubmed.ncbi.nlm.nih.gov/38585810/>`_
+- Abdullah Leena et al. **Hierarchal single-cell lineage tracing reveals differential fate commitment of CD8 T-cell clones in response to acute infection.**. *bioRxiv : the preprint server for biology*. 2024. `PMID:38585810 <https://pubmed.ncbi.nlm.nih.gov/38585810/>`_
 
-- Nguyen Ai et al. Modulation of Biophysical Properties of Nucleocapsid Protein in the Mutant Spectrum of SARS-CoV-2. *bioRxiv : the preprint server for biology*. 2024. `PMID:38045241 <https://pubmed.ncbi.nlm.nih.gov/38045241/>`_
+- Nguyen Ai et al. **Modulation of Biophysical Properties of Nucleocapsid Protein in the Mutant Spectrum of SARS-CoV-2.**. *bioRxiv : the preprint server for biology*. 2024. `PMID:38045241 <https://pubmed.ncbi.nlm.nih.gov/38045241/>`_
 
-- Pollastro Sabrina et al. Sensitive B-cell receptor repertoire analysis shows repopulation correlates with clinical response to rituximab in rheumatoid arthritis. *Arthritis research & therapy*. 2024. `PMID:38493208 <https://pubmed.ncbi.nlm.nih.gov/38493208/>`_
+- Pollastro Sabrina et al. **Sensitive B-cell receptor repertoire analysis shows repopulation correlates with clinical response to rituximab in rheumatoid arthritis.**. *Arthritis research & therapy*. 2024. `PMID:38493208 <https://pubmed.ncbi.nlm.nih.gov/38493208/>`_
 
-- Perez Laurent et al. RAIN: a Machine Learning-based identification for HIV-1 bNAbs. *Research square*. 2024. `PMID:38903123 <https://pubmed.ncbi.nlm.nih.gov/38903123/>`_
+- Perez Laurent et al. **RAIN: a Machine Learning-based identification for HIV-1 bNAbs.**. *Research square*. 2024. `PMID:38903123 <https://pubmed.ncbi.nlm.nih.gov/38903123/>`_
 
-- Callahan Derrick et al. Memory B cell subsets have divergent developmental origins that are coupled to distinct imprinted epigenetic states. *Nature immunology*. 2024. `PMID:38200277 <https://pubmed.ncbi.nlm.nih.gov/38200277/>`_
+- Callahan Derrick et al. **Memory B cell subsets have divergent developmental origins that are coupled to distinct imprinted epigenetic states.**. *Nature immunology*. 2024. `PMID:38200277 <https://pubmed.ncbi.nlm.nih.gov/38200277/>`_
 
-- Guo Shengnan et al. Paired single-B-cell transcriptomics and receptor sequencing reveal activation states and clonal signatures that characterize B cells in acute myeloid leukemia. *Journal for immunotherapy of cancer*. 2024. `PMID:38418394 <https://pubmed.ncbi.nlm.nih.gov/38418394/>`_
+- Guo Shengnan et al. **Paired single-B-cell transcriptomics and receptor sequencing reveal activation states and clonal signatures that characterize B cells in acute myeloid leukemia.**. *Journal for immunotherapy of cancer*. 2024. `PMID:38418394 <https://pubmed.ncbi.nlm.nih.gov/38418394/>`_
 
-- Della Mina Erika et al. A Novel Heterozygous Variant in AICDA Impairs Ig Class Switching and Somatic Hypermutation in Human B Cells and is Associated with Autosomal Dominant HIGM2 Syndrome. *Journal of clinical immunology*. 2024. `PMID:38363477 <https://pubmed.ncbi.nlm.nih.gov/38363477/>`_
+- Della Mina Erika et al. **A Novel Heterozygous Variant in AICDA Impairs Ig Class Switching and Somatic Hypermutation in Human B Cells and is Associated with Autosomal Dominant HIGM2 Syndrome.**. *Journal of clinical immunology*. 2024. `PMID:38363477 <https://pubmed.ncbi.nlm.nih.gov/38363477/>`_
 
-- Sutton Henry J et al. Lack of affinity signature for germinal center cells that have initiated plasma cell differentiation. *Immunity*. 2024. `PMID:38228150 <https://pubmed.ncbi.nlm.nih.gov/38228150/>`_
+- Sutton Henry J et al. **Lack of affinity signature for germinal center cells that have initiated plasma cell differentiation.**. *Immunity*. 2024. `PMID:38228150 <https://pubmed.ncbi.nlm.nih.gov/38228150/>`_
 
-- Theorell Jakob et al. Ultrahigh frequencies of peripherally matured LGI1- and CASPR2-reactive B cells characterize the cerebrospinal fluid in autoimmune encephalitis. *Proceedings of the National Academy of Sciences of the United States of America*. 2024. `PMID:38319973 <https://pubmed.ncbi.nlm.nih.gov/38319973/>`_
+- Theorell Jakob et al. **Ultrahigh frequencies of peripherally matured LGI1- and CASPR2-reactive B cells characterize the cerebrospinal fluid in autoimmune encephalitis.**. *Proceedings of the National Academy of Sciences of the United States of America*. 2024. `PMID:38319973 <https://pubmed.ncbi.nlm.nih.gov/38319973/>`_
 
-- Balashova Daria et al. Systematic evaluation of B-cell clonal family inference approaches. *BMC immunology*. 2024. `PMID:38331731 <https://pubmed.ncbi.nlm.nih.gov/38331731/>`_
+- Balashova Daria et al. **Systematic evaluation of B-cell clonal family inference approaches.**. *BMC immunology*. 2024. `PMID:38331731 <https://pubmed.ncbi.nlm.nih.gov/38331731/>`_
 
-- Ota Miyo et al. CD23+IgG1+ memory B cells are poised to switch to pathogenic IgE production in food allergy. *Science translational medicine*. 2024. `PMID:38324641 <https://pubmed.ncbi.nlm.nih.gov/38324641/>`_
+- Ota Miyo et al. **CD23+IgG1+ memory B cells are poised to switch to pathogenic IgE production in food allergy.**. *Science translational medicine*. 2024. `PMID:38324641 <https://pubmed.ncbi.nlm.nih.gov/38324641/>`_
 
-- Wang Qian et al. B-Cell Receptor Repertoire: Recent Advances in Autoimmune Diseases. *Clinical reviews in allergy & immunology*. 2024. `PMID:38459209 <https://pubmed.ncbi.nlm.nih.gov/38459209/>`_
+- Wang Qian et al. **B-Cell Receptor Repertoire: Recent Advances in Autoimmune Diseases.**. *Clinical reviews in allergy & immunology*. 2024. `PMID:38459209 <https://pubmed.ncbi.nlm.nih.gov/38459209/>`_
 
-- Zhu Yan et al. The multilevel extensive diversity across the cynomolgus macaque captured by ultra-deep adaptive immune receptor repertoire sequencing. *Science advances*. 2024. `PMID:38266093 <https://pubmed.ncbi.nlm.nih.gov/38266093/>`_
+- Zhu Yan et al. **The multilevel extensive diversity across the cynomolgus macaque captured by ultra-deep adaptive immune receptor repertoire sequencing.**. *Science advances*. 2024. `PMID:38266093 <https://pubmed.ncbi.nlm.nih.gov/38266093/>`_
 
-- Wang Meng et al. Language model-based B cell receptor sequence embeddings can effectively encode receptor specificity. *Nucleic acids research*. 2024. `PMID:38109302 <https://pubmed.ncbi.nlm.nih.gov/38109302/>`_
+- Wang Meng et al. **Language model-based B cell receptor sequence embeddings can effectively encode receptor specificity.**. *Nucleic acids research*. 2024. `PMID:38109302 <https://pubmed.ncbi.nlm.nih.gov/38109302/>`_
 
-- Chang Haiyang et al. Anchor Clustering for million-scale immune repertoire sequencing data. *BMC bioinformatics*. 2024. `PMID:38273275 <https://pubmed.ncbi.nlm.nih.gov/38273275/>`_
+- Chang Haiyang et al. **Anchor Clustering for million-scale immune repertoire sequencing data.**. *BMC bioinformatics*. 2024. `PMID:38273275 <https://pubmed.ncbi.nlm.nih.gov/38273275/>`_
 
-- Feng Feng et al. Characterizing adjuvants' effects at murine immunoglobulin repertoire level. *iScience*. 2024. `PMID:38269092 <https://pubmed.ncbi.nlm.nih.gov/38269092/>`_
+- Feng Feng et al. **Characterizing adjuvants' effects at murine immunoglobulin repertoire level.**. *iScience*. 2024. `PMID:38269092 <https://pubmed.ncbi.nlm.nih.gov/38269092/>`_
 
-- Johnson Nicole V et al. Discovery and Characterization of a Pan-betacoronavirus S2-binding antibody. *bioRxiv : the preprint server for biology*. 2024. `PMID:38293237 <https://pubmed.ncbi.nlm.nih.gov/38293237/>`_
+- Johnson Nicole V et al. **Discovery and Characterization of a Pan-betacoronavirus S2-binding antibody.**. *bioRxiv : the preprint server for biology*. 2024. `PMID:38293237 <https://pubmed.ncbi.nlm.nih.gov/38293237/>`_
 
-- Zhu Danni Yi-Dan et al. Lupus-associated innate receptors drive extrafollicular evolution of autoreactive B cells. *bioRxiv : the preprint server for biology*. 2024. `PMID:38260501 <https://pubmed.ncbi.nlm.nih.gov/38260501/>`_
+- Zhu Danni Yi-Dan et al. **Lupus-associated innate receptors drive extrafollicular evolution of autoreactive B cells.**. *bioRxiv : the preprint server for biology*. 2024. `PMID:38260501 <https://pubmed.ncbi.nlm.nih.gov/38260501/>`_
 
-- Suo Chenqu et al. Dandelion uses the single-cell adaptive immune receptor repertoire to explore lymphocyte developmental origins. *Nature biotechnology*. 2024. `PMID:37055623 <https://pubmed.ncbi.nlm.nih.gov/37055623/>`_
+- Suo Chenqu et al. **Dandelion uses the single-cell adaptive immune receptor repertoire to explore lymphocyte developmental origins.**. *Nature biotechnology*. 2024. `PMID:37055623 <https://pubmed.ncbi.nlm.nih.gov/37055623/>`_
 
-- Lee Hyunho et al. Identification of B cell subsets based on antigen receptor sequences using deep learning. *Frontiers in immunology*. 2024. `PMID:38576618 <https://pubmed.ncbi.nlm.nih.gov/38576618/>`_
+- Lee Hyunho et al. **Identification of B cell subsets based on antigen receptor sequences using deep learning.**. *Frontiers in immunology*. 2024. `PMID:38576618 <https://pubmed.ncbi.nlm.nih.gov/38576618/>`_
 
-- Fu Jianing et al. Dynamic establishment and maintenance of the human intestinal B cell population and repertoire following transplantation in a pediatric-dominated cohort. *Frontiers in immunology*. 2024. `PMID:39007142 <https://pubmed.ncbi.nlm.nih.gov/39007142/>`_
+- Fu Jianing et al. **Dynamic establishment and maintenance of the human intestinal B cell population and repertoire following transplantation in a pediatric-dominated cohort.**. *Frontiers in immunology*. 2024. `PMID:39007142 <https://pubmed.ncbi.nlm.nih.gov/39007142/>`_
 
-- Richardson Eve et al. Computational mining of B cell receptor repertoires reveals antigen-specific and convergent responses to Ebola vaccination. *Frontiers in immunology*. 2024. `PMID:39040106 <https://pubmed.ncbi.nlm.nih.gov/39040106/>`_
+- Richardson Eve et al. **Computational mining of B cell receptor repertoires reveals antigen-specific and convergent responses to Ebola vaccination.**. *Frontiers in immunology*. 2024. `PMID:39040106 <https://pubmed.ncbi.nlm.nih.gov/39040106/>`_
 
-- Wang Longlong et al. IGH repertoire analysis at scale: deciphering the complexity of B cell infiltration and migration in esophageal squamous cell carcinoma. *Cancer gene therapy*. 2024. `PMID:37985722 <https://pubmed.ncbi.nlm.nih.gov/37985722/>`_
+- Wang Longlong et al. **IGH repertoire analysis at scale: deciphering the complexity of B cell infiltration and migration in esophageal squamous cell carcinoma.**. *Cancer gene therapy*. 2024. `PMID:37985722 <https://pubmed.ncbi.nlm.nih.gov/37985722/>`_
 
-- Zia Amin et al. High throughput long-read sequencing of circulating lymphocytes of the evolutionarily distant sea lamprey reveals diversity and common elements of the variable lymphocyte receptor B (VLRB) repertoire. *Frontiers in immunology*. 2024. `PMID:39170622 <https://pubmed.ncbi.nlm.nih.gov/39170622/>`_
+- Zia Amin et al. **High throughput long-read sequencing of circulating lymphocytes of the evolutionarily distant sea lamprey reveals diversity and common elements of the variable lymphocyte receptor B (VLRB) repertoire.**. *Frontiers in immunology*. 2024. `PMID:39170622 <https://pubmed.ncbi.nlm.nih.gov/39170622/>`_
 
-- Beilinson Helen A et al. The endogenous Mtv8 locus and the immunoglobulin repertoire. *Frontiers in immunology*. 2024. `PMID:38504980 <https://pubmed.ncbi.nlm.nih.gov/38504980/>`_
+- Beilinson Helen A et al. **The endogenous Mtv8 locus and the immunoglobulin repertoire.**. *Frontiers in immunology*. 2024. `PMID:38504980 <https://pubmed.ncbi.nlm.nih.gov/38504980/>`_
 
-- Hoehn Kenneth B et al. B cell phylogenetics in the single cell era. *Trends in immunology*. 2024. `PMID:38151443 <https://pubmed.ncbi.nlm.nih.gov/38151443/>`_
+- Hoehn Kenneth B et al. **B cell phylogenetics in the single cell era.**. *Trends in immunology*. 2024. `PMID:38151443 <https://pubmed.ncbi.nlm.nih.gov/38151443/>`_
 
-- Kumar Sanjeev et al. B cell repertoire sequencing of HIV-1 pediatric elite-neutralizers identifies multiple broadly neutralizing antibody clonotypes. *Frontiers in immunology*. 2024. `PMID:38433846 <https://pubmed.ncbi.nlm.nih.gov/38433846/>`_
+- Kumar Sanjeev et al. **B cell repertoire sequencing of HIV-1 pediatric elite-neutralizers identifies multiple broadly neutralizing antibody clonotypes.**. *Frontiers in immunology*. 2024. `PMID:38433846 <https://pubmed.ncbi.nlm.nih.gov/38433846/>`_
 
-- Tambe Abhik et al. Interpretable deep learning reveals the role of an E-box motif in suppressing somatic hypermutation of AGCT motifs within human immunoglobulin variable regions. *Frontiers in immunology*. 2024. `PMID:38863710 <https://pubmed.ncbi.nlm.nih.gov/38863710/>`_
+- Tambe Abhik et al. **Interpretable deep learning reveals the role of an E-box motif in suppressing somatic hypermutation of AGCT motifs within human immunoglobulin variable regions.**. *Frontiers in immunology*. 2024. `PMID:38863710 <https://pubmed.ncbi.nlm.nih.gov/38863710/>`_
 
-- Yuuki Hayato et al. B cell receptor repertoire abnormalities in autoimmune disease. *Frontiers in immunology*. 2024. `PMID:38361948 <https://pubmed.ncbi.nlm.nih.gov/38361948/>`_
+- Yuuki Hayato et al. **B cell receptor repertoire abnormalities in autoimmune disease.**. *Frontiers in immunology*. 2024. `PMID:38361948 <https://pubmed.ncbi.nlm.nih.gov/38361948/>`_
 
-- Tieck M P et al. Peripheral memory B cells in multiple sclerosis vs. double negative B cells in neuromyelitis optica spectrum disorder: disease driving B cell subsets during CNS inflammation. *Frontiers in cellular neuroscience*. 2024. `PMID:38385147 <https://pubmed.ncbi.nlm.nih.gov/38385147/>`_
+- Tieck M P et al. **Peripheral memory B cells in multiple sclerosis vs. double negative B cells in neuromyelitis optica spectrum disorder: disease driving B cell subsets during CNS inflammation.**. *Frontiers in cellular neuroscience*. 2024. `PMID:38385147 <https://pubmed.ncbi.nlm.nih.gov/38385147/>`_
 
-- Dudzic Pawel et al. Large-scale data mining of four billion human antibody variable regions reveals convergence between therapeutic and natural antibodies that constrains search space for biologics drug discovery. *mAbs*. 2024. `PMID:38844871 <https://pubmed.ncbi.nlm.nih.gov/38844871/>`_
+- Dudzic Pawel et al. **Large-scale data mining of four billion human antibody variable regions reveals convergence between therapeutic and natural antibodies that constrains search space for biologics drug discovery.**. *mAbs*. 2024. `PMID:38844871 <https://pubmed.ncbi.nlm.nih.gov/38844871/>`_
 
-- Harrison Daniel M et al. The use of 7T MRI in multiple sclerosis: review and consensus statement from the North American Imaging in Multiple Sclerosis Cooperative. *Brain communications*. 2024. `PMID:39445084 <https://pubmed.ncbi.nlm.nih.gov/39445084/>`_
+- Harrison Daniel M et al. **The use of 7T MRI in multiple sclerosis: review and consensus statement from the North American Imaging in Multiple Sclerosis Cooperative.**. *Brain communications*. 2024. `PMID:39445084 <https://pubmed.ncbi.nlm.nih.gov/39445084/>`_
 
-- Voss Katalin et al. Applying phylogenetic methods for species delimitation to distinguish B-cell clonal families. *Frontiers in immunology*. 2024. `PMID:39687606 <https://pubmed.ncbi.nlm.nih.gov/39687606/>`_
+- Voss Katalin et al. **Applying phylogenetic methods for species delimitation to distinguish B-cell clonal families.**. *Frontiers in immunology*. 2024. `PMID:39687606 <https://pubmed.ncbi.nlm.nih.gov/39687606/>`_
 
-- Haebe Sarah et al. Follicular lymphoma evolves with a surmountable dependency on acquired glycosylation motifs in the B-cell receptor. *Blood*. 2023. `PMID:37683139 <https://pubmed.ncbi.nlm.nih.gov/37683139/>`_
+- Haebe Sarah et al. **Follicular lymphoma evolves with a surmountable dependency on acquired glycosylation motifs in the B-cell receptor.**. *Blood*. 2023. `PMID:37683139 <https://pubmed.ncbi.nlm.nih.gov/37683139/>`_
 
-- Sidiropoulos Dimitrios N et al. Systems immunology spanning tumors, lymph nodes, and periphery. *Cell reports methods*. 2023. `PMID:38086385 <https://pubmed.ncbi.nlm.nih.gov/38086385/>`_
+- Sidiropoulos Dimitrios N et al. **Systems immunology spanning tumors, lymph nodes, and periphery.**. *Cell reports methods*. 2023. `PMID:38086385 <https://pubmed.ncbi.nlm.nih.gov/38086385/>`_
 
-- Reyes Raphael A et al. Atypical B cells consist of subsets with distinct functional profiles. *iScience*. 2023. `PMID:38098745 <https://pubmed.ncbi.nlm.nih.gov/38098745/>`_
+- Reyes Raphael A et al. **Atypical B cells consist of subsets with distinct functional profiles.**. *iScience*. 2023. `PMID:38098745 <https://pubmed.ncbi.nlm.nih.gov/38098745/>`_
 
-- van Noort Johannes M et al. The pathogenesis of multiple sclerosis: a series of unfortunate events. *Clinical and experimental immunology*. 2023. `PMID:37410892 <https://pubmed.ncbi.nlm.nih.gov/37410892/>`_
+- van Noort Johannes M et al. **The pathogenesis of multiple sclerosis: a series of unfortunate events.**. *Clinical and experimental immunology*. 2023. `PMID:37410892 <https://pubmed.ncbi.nlm.nih.gov/37410892/>`_
 
-- Conceição-Neto Nádia et al. Sustained Liver HBsAg Loss and Clonal T- and B-Cell Expansion upon Therapeutic DNA Vaccination Require Low HBsAg Levels. *Vaccines*. 2023. `PMID:38140229 <https://pubmed.ncbi.nlm.nih.gov/38140229/>`_
+- Conceição-Neto Nádia et al. **Sustained Liver HBsAg Loss and Clonal T- and B-Cell Expansion upon Therapeutic DNA Vaccination Require Low HBsAg Levels.**. *Vaccines*. 2023. `PMID:38140229 <https://pubmed.ncbi.nlm.nih.gov/38140229/>`_
 
-- Han Alvin X et al. Co-evolution of immunity and seasonal influenza viruses. *Nature reviews. Microbiology*. 2023. `PMID:37532870 <https://pubmed.ncbi.nlm.nih.gov/37532870/>`_
+- Han Alvin X et al. **Co-evolution of immunity and seasonal influenza viruses.**. *Nature reviews. Microbiology*. 2023. `PMID:37532870 <https://pubmed.ncbi.nlm.nih.gov/37532870/>`_
 
-- Blum Steven M et al. Immune Responses in Checkpoint Myocarditis Across Heart, Blood, and Tumor. *bioRxiv : the preprint server for biology*. 2023. `PMID:37790460 <https://pubmed.ncbi.nlm.nih.gov/37790460/>`_
+- Blum Steven M et al. **Immune Responses in Checkpoint Myocarditis Across Heart, Blood, and Tumor.**. *bioRxiv : the preprint server for biology*. 2023. `PMID:37790460 <https://pubmed.ncbi.nlm.nih.gov/37790460/>`_
 
-- Weber Leah L et al. TRIBAL: Tree Inference of B cell Clonal Lineages. *bioRxiv : the preprint server for biology*. 2023. `PMID:38076836 <https://pubmed.ncbi.nlm.nih.gov/38076836/>`_
+- Weber Leah L et al. **TRIBAL: Tree Inference of B cell Clonal Lineages.**. *bioRxiv : the preprint server for biology*. 2023. `PMID:38076836 <https://pubmed.ncbi.nlm.nih.gov/38076836/>`_
 
-- Wall Steven C et al. SARS-CoV-2 antibodies from children exhibit broad neutralization and belong to adult public clonotypes. *Cell reports. Medicine*. 2023. `PMID:37935199 <https://pubmed.ncbi.nlm.nih.gov/37935199/>`_
+- Wall Steven C et al. **SARS-CoV-2 antibodies from children exhibit broad neutralization and belong to adult public clonotypes.**. *Cell reports. Medicine*. 2023. `PMID:37935199 <https://pubmed.ncbi.nlm.nih.gov/37935199/>`_
 
-- Fu Jianing et al. Dynamic establishment and maintenance of the human intestinal B cell population and repertoire following transplantation. *medRxiv : the preprint server for health sciences*. 2023. `PMID:38014202 <https://pubmed.ncbi.nlm.nih.gov/38014202/>`_
+- Fu Jianing et al. **Dynamic establishment and maintenance of the human intestinal B cell population and repertoire following transplantation.**. *medRxiv : the preprint server for health sciences*. 2023. `PMID:38014202 <https://pubmed.ncbi.nlm.nih.gov/38014202/>`_
 
-- Yao Min et al. Plasma cells in human pancreatic ductal adenocarcinoma secrete antibodies against self-antigens. *JCI insight*. 2023. `PMID:37751306 <https://pubmed.ncbi.nlm.nih.gov/37751306/>`_
+- Yao Min et al. **Plasma cells in human pancreatic ductal adenocarcinoma secrete antibodies against self-antigens.**. *JCI insight*. 2023. `PMID:37751306 <https://pubmed.ncbi.nlm.nih.gov/37751306/>`_
 
-- Kreer Christoph et al. Probabilities of developing HIV-1 bNAb sequence features in uninfected and chronically infected individuals. *Nature communications*. 2023. `PMID:37932288 <https://pubmed.ncbi.nlm.nih.gov/37932288/>`_
+- Kreer Christoph et al. **Probabilities of developing HIV-1 bNAb sequence features in uninfected and chronically infected individuals.**. *Nature communications*. 2023. `PMID:37932288 <https://pubmed.ncbi.nlm.nih.gov/37932288/>`_
 
-- Suchanek Ondrej et al. Tissue-resident B cells orchestrate macrophage polarisation and function. *Nature communications*. 2023. `PMID:37925420 <https://pubmed.ncbi.nlm.nih.gov/37925420/>`_
+- Suchanek Ondrej et al. **Tissue-resident B cells orchestrate macrophage polarisation and function.**. *Nature communications*. 2023. `PMID:37925420 <https://pubmed.ncbi.nlm.nih.gov/37925420/>`_
 
-- Phung Ivy et al. A combined adjuvant approach primes robust germinal center responses and humoral immunity in non-human primates. *Nature communications*. 2023. `PMID:37925510 <https://pubmed.ncbi.nlm.nih.gov/37925510/>`_
+- Phung Ivy et al. **A combined adjuvant approach primes robust germinal center responses and humoral immunity in non-human primates.**. *Nature communications*. 2023. `PMID:37925510 <https://pubmed.ncbi.nlm.nih.gov/37925510/>`_
 
-- Monson Nancy et al. VH2+ Antigen-Experienced B Cells in the Cerebrospinal Fluid Are Expanded and Enriched in Pediatric Anti-NMDA Receptor Encephalitis. *Journal of immunology (Baltimore, Md. : 1950)*. 2023. `PMID:37712756 <https://pubmed.ncbi.nlm.nih.gov/37712756/>`_
+- Monson Nancy et al. **VH2+ Antigen-Experienced B Cells in the Cerebrospinal Fluid Are Expanded and Enriched in Pediatric Anti-NMDA Receptor Encephalitis.**. *Journal of immunology (Baltimore, Md. : 1950)*. 2023. `PMID:37712756 <https://pubmed.ncbi.nlm.nih.gov/37712756/>`_
 
-- Pelissier Aurelien et al. Convergent evolution and B-cell recirculation in germinal centers in a human lymph node. *Life science alliance*. 2023. `PMID:37640448 <https://pubmed.ncbi.nlm.nih.gov/37640448/>`_
+- Pelissier Aurelien et al. **Convergent evolution and B-cell recirculation in germinal centers in a human lymph node.**. *Life science alliance*. 2023. `PMID:37640448 <https://pubmed.ncbi.nlm.nih.gov/37640448/>`_
 
-- Shu Daniel H et al. Immune landscape of tertiary lymphoid structures in hepatocellular carcinoma (HCC) treated with neoadjuvant immune checkpoint blockade. *bioRxiv : the preprint server for biology*. 2023. `PMID:37904980 <https://pubmed.ncbi.nlm.nih.gov/37904980/>`_
+- Shu Daniel H et al. **Immune landscape of tertiary lymphoid structures in hepatocellular carcinoma (HCC) treated with neoadjuvant immune checkpoint blockade.**. *bioRxiv : the preprint server for biology*. 2023. `PMID:37904980 <https://pubmed.ncbi.nlm.nih.gov/37904980/>`_
 
-- Wang Kaixuan et al. Fast clonal family inference from large-scale B cell repertoire sequencing data. *Cell reports methods*. 2023. `PMID:37788671 <https://pubmed.ncbi.nlm.nih.gov/37788671/>`_
+- Wang Kaixuan et al. **Fast clonal family inference from large-scale B cell repertoire sequencing data.**. *Cell reports methods*. 2023. `PMID:37788671 <https://pubmed.ncbi.nlm.nih.gov/37788671/>`_
 
-- Mathews Joseph et al. Computing the inducibility of B cell lineages under a context-dependent model of affinity maturation: Applications to sequential vaccine design. *bioRxiv : the preprint server for biology*. 2023. `PMID:37905016 <https://pubmed.ncbi.nlm.nih.gov/37905016/>`_
+- Mathews Joseph et al. **Computing the inducibility of B cell lineages under a context-dependent model of affinity maturation: Applications to sequential vaccine design.**. *bioRxiv : the preprint server for biology*. 2023. `PMID:37905016 <https://pubmed.ncbi.nlm.nih.gov/37905016/>`_
 
-- Wimmers Florian et al. Multi-omics analysis of mucosal and systemic immunity to SARS-CoV-2 after birth. *Cell*. 2023. `PMID:37776858 <https://pubmed.ncbi.nlm.nih.gov/37776858/>`_
+- Wimmers Florian et al. **Multi-omics analysis of mucosal and systemic immunity to SARS-CoV-2 after birth.**. *Cell*. 2023. `PMID:37776858 <https://pubmed.ncbi.nlm.nih.gov/37776858/>`_
 
-- Kim Hyo Jae et al. Distinct features of B cell receptors in neuromyelitis optica spectrum disorder among CNS inflammatory demyelinating diseases. *Journal of neuroinflammation*. 2023. `PMID:37794409 <https://pubmed.ncbi.nlm.nih.gov/37794409/>`_
+- Kim Hyo Jae et al. **Distinct features of B cell receptors in neuromyelitis optica spectrum disorder among CNS inflammatory demyelinating diseases.**. *Journal of neuroinflammation*. 2023. `PMID:37794409 <https://pubmed.ncbi.nlm.nih.gov/37794409/>`_
 
-- Jensen Cole G et al. Inferring B cell phylogenies from paired heavy and light chain BCR sequences with Dowser. *bioRxiv : the preprint server for biology*. 2023. `PMID:37873135 <https://pubmed.ncbi.nlm.nih.gov/37873135/>`_
+- Jensen Cole G et al. **Inferring B cell phylogenies from paired heavy and light chain BCR sequences with Dowser.**. *bioRxiv : the preprint server for biology*. 2023. `PMID:37873135 <https://pubmed.ncbi.nlm.nih.gov/37873135/>`_
 
-- Zhang Wei et al. Neuronal binding by antibodies can be influenced by low pH stress during the isolation procedure. *Journal of immunological methods*. 2023. `PMID:37558123 <https://pubmed.ncbi.nlm.nih.gov/37558123/>`_
+- Zhang Wei et al. **Neuronal binding by antibodies can be influenced by low pH stress during the isolation procedure.**. *Journal of immunological methods*. 2023. `PMID:37558123 <https://pubmed.ncbi.nlm.nih.gov/37558123/>`_
 
-- Mopuri Rohini et al. High throughput analysis of B cell dynamics and neutralizing antibody development during immunization with a novel clade C HIV-1 envelope. *PLoS pathogens*. 2023. `PMID:37878666 <https://pubmed.ncbi.nlm.nih.gov/37878666/>`_
+- Mopuri Rohini et al. **High throughput analysis of B cell dynamics and neutralizing antibody development during immunization with a novel clade C HIV-1 envelope.**. *PLoS pathogens*. 2023. `PMID:37878666 <https://pubmed.ncbi.nlm.nih.gov/37878666/>`_
 
-- Maliqi Liridona et al. Assessing immunogenicity barriers of the HIV-1 envelope trimer. *NPJ vaccines*. 2023. `PMID:37777519 <https://pubmed.ncbi.nlm.nih.gov/37777519/>`_
+- Maliqi Liridona et al. **Assessing immunogenicity barriers of the HIV-1 envelope trimer.**. *NPJ vaccines*. 2023. `PMID:37777519 <https://pubmed.ncbi.nlm.nih.gov/37777519/>`_
 
-- Thomson Ashlee J et al. Reproducible Bioinformatics Analysis Workflows for Detecting IGH Gene Fusions in B-Cell Acute Lymphoblastic Leukaemia Patients. *Cancers*. 2023. `PMID:37835427 <https://pubmed.ncbi.nlm.nih.gov/37835427/>`_
+- Thomson Ashlee J et al. **Reproducible Bioinformatics Analysis Workflows for Detecting IGH Gene Fusions in B-Cell Acute Lymphoblastic Leukaemia Patients.**. *Cancers*. 2023. `PMID:37835427 <https://pubmed.ncbi.nlm.nih.gov/37835427/>`_
 
-- Kumar Sanjeev et al. Recognition determinants of improved HIV-1 neutralization by a heavy chain matured pediatric antibody. *iScience*. 2023. `PMID:37649696 <https://pubmed.ncbi.nlm.nih.gov/37649696/>`_
+- Kumar Sanjeev et al. **Recognition determinants of improved HIV-1 neutralization by a heavy chain matured pediatric antibody.**. *iScience*. 2023. `PMID:37649696 <https://pubmed.ncbi.nlm.nih.gov/37649696/>`_
 
-- Peres Ayelet et al. IGHV allele similarity clustering improves genotype inference from adaptive immune receptor repertoire sequencing data. *Nucleic acids research*. 2023. `PMID:37548401 <https://pubmed.ncbi.nlm.nih.gov/37548401/>`_
+- Peres Ayelet et al. **IGHV allele similarity clustering improves genotype inference from adaptive immune receptor repertoire sequencing data.**. *Nucleic acids research*. 2023. `PMID:37548401 <https://pubmed.ncbi.nlm.nih.gov/37548401/>`_
 
-- Wang Zijun et al. Memory B cell development elicited by mRNA booster vaccinations in the elderly. *The Journal of experimental medicine*. 2023. `PMID:37368240 <https://pubmed.ncbi.nlm.nih.gov/37368240/>`_
+- Wang Zijun et al. **Memory B cell development elicited by mRNA booster vaccinations in the elderly.**. *The Journal of experimental medicine*. 2023. `PMID:37368240 <https://pubmed.ncbi.nlm.nih.gov/37368240/>`_
 
-- Rosenberg Miriam I et al. Polyclonal lymphoid expansion drives paraneoplastic autoimmunity in neuroblastoma. *Cell reports*. 2023. `PMID:37537844 <https://pubmed.ncbi.nlm.nih.gov/37537844/>`_
+- Rosenberg Miriam I et al. **Polyclonal lymphoid expansion drives paraneoplastic autoimmunity in neuroblastoma.**. *Cell reports*. 2023. `PMID:37537844 <https://pubmed.ncbi.nlm.nih.gov/37537844/>`_
 
-- Kastenschmidt Jenna M et al. Influenza vaccine format mediates distinct cellular and antibody responses in human immune organoids. *Immunity*. 2023. `PMID:37478854 <https://pubmed.ncbi.nlm.nih.gov/37478854/>`_
+- Kastenschmidt Jenna M et al. **Influenza vaccine format mediates distinct cellular and antibody responses in human immune organoids.**. *Immunity*. 2023. `PMID:37478854 <https://pubmed.ncbi.nlm.nih.gov/37478854/>`_
 
-- Rybkina Ksenia et al. SARS-CoV-2 infection and recovery in children: Distinct T cell responses in MIS-C compared to COVID-19. *The Journal of experimental medicine*. 2023. `PMID:37133746 <https://pubmed.ncbi.nlm.nih.gov/37133746/>`_
+- Rybkina Ksenia et al. **SARS-CoV-2 infection and recovery in children: Distinct T cell responses in MIS-C compared to COVID-19.**. *The Journal of experimental medicine*. 2023. `PMID:37133746 <https://pubmed.ncbi.nlm.nih.gov/37133746/>`_
 
-- Castiglioni Alessandra et al. Combined PD-L1/TGFβ blockade allows expansion and differentiation of stem cell-like CD8 T cells in immune excluded tumors. *Nature communications*. 2023. `PMID:37543621 <https://pubmed.ncbi.nlm.nih.gov/37543621/>`_
+- Castiglioni Alessandra et al. **Combined PD-L1/TGFβ blockade allows expansion and differentiation of stem cell-like CD8 T cells in immune excluded tumors.**. *Nature communications*. 2023. `PMID:37543621 <https://pubmed.ncbi.nlm.nih.gov/37543621/>`_
 
-- Vieira Marcos C et al. Germline-encoded specificities and the predictability of the B cell response. *PLoS pathogens*. 2023. `PMID:37624867 <https://pubmed.ncbi.nlm.nih.gov/37624867/>`_
+- Vieira Marcos C et al. **Germline-encoded specificities and the predictability of the B cell response.**. *PLoS pathogens*. 2023. `PMID:37624867 <https://pubmed.ncbi.nlm.nih.gov/37624867/>`_
 
-- Duan Meixue et al. Understanding heterogeneity of human bone marrow plasma cell maturation and survival pathways by single-cell analyses. *Cell reports*. 2023. `PMID:37355988 <https://pubmed.ncbi.nlm.nih.gov/37355988/>`_
+- Duan Meixue et al. **Understanding heterogeneity of human bone marrow plasma cell maturation and survival pathways by single-cell analyses.**. *Cell reports*. 2023. `PMID:37355988 <https://pubmed.ncbi.nlm.nih.gov/37355988/>`_
 
-- Lopes de Assis Felipe et al. Tracking B cell responses to the SARS-CoV-2 mRNA-1273 vaccine. *Cell reports*. 2023. `PMID:37440409 <https://pubmed.ncbi.nlm.nih.gov/37440409/>`_
+- Lopes de Assis Felipe et al. **Tracking B cell responses to the SARS-CoV-2 mRNA-1273 vaccine.**. *Cell reports*. 2023. `PMID:37440409 <https://pubmed.ncbi.nlm.nih.gov/37440409/>`_
 
-- Sagan Sharon A et al. T cell deletional tolerance restricts AQP4 but not MOG CNS autoimmunity. *Proceedings of the National Academy of Sciences of the United States of America*. 2023. `PMID:37463205 <https://pubmed.ncbi.nlm.nih.gov/37463205/>`_
+- Sagan Sharon A et al. **T cell deletional tolerance restricts AQP4 but not MOG CNS autoimmunity.**. *Proceedings of the National Academy of Sciences of the United States of America*. 2023. `PMID:37463205 <https://pubmed.ncbi.nlm.nih.gov/37463205/>`_
 
-- Monzó Carolina et al. Dietary restriction mitigates the age-associated decline in mouse B cell receptor repertoire diversity. *Cell reports*. 2023. `PMID:37384530 <https://pubmed.ncbi.nlm.nih.gov/37384530/>`_
+- Monzó Carolina et al. **Dietary restriction mitigates the age-associated decline in mouse B cell receptor repertoire diversity.**. *Cell reports*. 2023. `PMID:37384530 <https://pubmed.ncbi.nlm.nih.gov/37384530/>`_
 
-- Rodriguez Oscar L et al. Genetic variation in the immunoglobulin heavy chain locus shapes the human antibody repertoire. *Nature communications*. 2023. `PMID:37479682 <https://pubmed.ncbi.nlm.nih.gov/37479682/>`_
+- Rodriguez Oscar L et al. **Genetic variation in the immunoglobulin heavy chain locus shapes the human antibody repertoire.**. *Nature communications*. 2023. `PMID:37479682 <https://pubmed.ncbi.nlm.nih.gov/37479682/>`_
 
-- Grimsholm Ola et al. CD27 on human memory B cells-more than just a surface marker. *Clinical and experimental immunology*. 2023. `PMID:36508329 <https://pubmed.ncbi.nlm.nih.gov/36508329/>`_
+- Grimsholm Ola et al. **CD27 on human memory B cells-more than just a surface marker.**. *Clinical and experimental immunology*. 2023. `PMID:36508329 <https://pubmed.ncbi.nlm.nih.gov/36508329/>`_
 
-- Ma Leyuan et al. Vaccine-boosted CAR T crosstalk with host immunity to reject tumors with antigen heterogeneity. *Cell*. 2023. `PMID:37413990 <https://pubmed.ncbi.nlm.nih.gov/37413990/>`_
+- Ma Leyuan et al. **Vaccine-boosted CAR T crosstalk with host immunity to reject tumors with antigen heterogeneity.**. *Cell*. 2023. `PMID:37413990 <https://pubmed.ncbi.nlm.nih.gov/37413990/>`_
 
-- Olsen Tobias H et al. KA-Search, a method for rapid and exhaustive sequence identity search of known antibodies. *Scientific reports*. 2023. `PMID:37463925 <https://pubmed.ncbi.nlm.nih.gov/37463925/>`_
+- Olsen Tobias H et al. **KA-Search, a method for rapid and exhaustive sequence identity search of known antibodies.**. *Scientific reports*. 2023. `PMID:37463925 <https://pubmed.ncbi.nlm.nih.gov/37463925/>`_
 
-- Martin Beem Joshua S et al. ARMADiLLO: a web server for analyzing antibody mutation probabilities. *Nucleic acids research*. 2023. `PMID:37260077 <https://pubmed.ncbi.nlm.nih.gov/37260077/>`_
+- Martin Beem Joshua S et al. **ARMADiLLO: a web server for analyzing antibody mutation probabilities.**. *Nucleic acids research*. 2023. `PMID:37260077 <https://pubmed.ncbi.nlm.nih.gov/37260077/>`_
 
-- Zong Fanjie et al. Abalign: a comprehensive multiple sequence alignment platform for B-cell receptor immune repertoires. *Nucleic acids research*. 2023. `PMID:37207341 <https://pubmed.ncbi.nlm.nih.gov/37207341/>`_
+- Zong Fanjie et al. **Abalign: a comprehensive multiple sequence alignment platform for B-cell receptor immune repertoires.**. *Nucleic acids research*. 2023. `PMID:37207341 <https://pubmed.ncbi.nlm.nih.gov/37207341/>`_
 
-- Anang Dornatien C et al. B-cell receptor profiling before and after IVIG monotherapy in newly diagnosed idiopathic inflammatory myopathies. *Rheumatology (Oxford, England)*. 2023. `PMID:36321862 <https://pubmed.ncbi.nlm.nih.gov/36321862/>`_
+- Anang Dornatien C et al. **B-cell receptor profiling before and after IVIG monotherapy in newly diagnosed idiopathic inflammatory myopathies.**. *Rheumatology (Oxford, England)*. 2023. `PMID:36321862 <https://pubmed.ncbi.nlm.nih.gov/36321862/>`_
 
-- Bod Lloyd et al. B-cell-specific checkpoint molecules that regulate anti-tumour immunity. *Nature*. 2023. `PMID:37344597 <https://pubmed.ncbi.nlm.nih.gov/37344597/>`_
+- Bod Lloyd et al. **B-cell-specific checkpoint molecules that regulate anti-tumour immunity.**. *Nature*. 2023. `PMID:37344597 <https://pubmed.ncbi.nlm.nih.gov/37344597/>`_
 
-- Yam-Puc Juan Carlos et al. Age-associated B cells predict impaired humoral immunity after COVID-19 vaccination in patients receiving immune checkpoint blockade. *Nature communications*. 2023. `PMID:37369658 <https://pubmed.ncbi.nlm.nih.gov/37369658/>`_
+- Yam-Puc Juan Carlos et al. **Age-associated B cells predict impaired humoral immunity after COVID-19 vaccination in patients receiving immune checkpoint blockade.**. *Nature communications*. 2023. `PMID:37369658 <https://pubmed.ncbi.nlm.nih.gov/37369658/>`_
 
-- Wang Meng et al. High-throughput single-cell profiling of B cell responses following inactivated influenza vaccination in young and older adults. *Aging*. 2023. `PMID:37367734 <https://pubmed.ncbi.nlm.nih.gov/37367734/>`_
+- Wang Meng et al. **High-throughput single-cell profiling of B cell responses following inactivated influenza vaccination in young and older adults.**. *Aging*. 2023. `PMID:37367734 <https://pubmed.ncbi.nlm.nih.gov/37367734/>`_
 
-- Onodera Taishi et al. CD62L expression marks SARS-CoV-2 memory B cell subset with preference for neutralizing epitopes. *Science advances*. 2023. `PMID:37315144 <https://pubmed.ncbi.nlm.nih.gov/37315144/>`_
+- Onodera Taishi et al. **CD62L expression marks SARS-CoV-2 memory B cell subset with preference for neutralizing epitopes.**. *Science advances*. 2023. `PMID:37315144 <https://pubmed.ncbi.nlm.nih.gov/37315144/>`_
 
-- Oludada Opeyemi Ernest et al. Molecular and functional properties of human Plasmodium falciparum CSP C-terminus antibodies. *EMBO molecular medicine*. 2023. `PMID:37082831 <https://pubmed.ncbi.nlm.nih.gov/37082831/>`_
+- Oludada Opeyemi Ernest et al. **Molecular and functional properties of human Plasmodium falciparum CSP C-terminus antibodies.**. *EMBO molecular medicine*. 2023. `PMID:37082831 <https://pubmed.ncbi.nlm.nih.gov/37082831/>`_
 
-- Shaw Dustin G et al. Antigen-driven colonic inflammation is associated with development of dysplasia in primary sclerosing cholangitis. *Nature medicine*. 2023. `PMID:37322120 <https://pubmed.ncbi.nlm.nih.gov/37322120/>`_
+- Shaw Dustin G et al. **Antigen-driven colonic inflammation is associated with development of dysplasia in primary sclerosing cholangitis.**. *Nature medicine*. 2023. `PMID:37322120 <https://pubmed.ncbi.nlm.nih.gov/37322120/>`_
 
-- Lv Jiawei et al. The tumor immune microenvironment of nasopharyngeal carcinoma after gemcitabine plus cisplatin treatment. *Nature medicine*. 2023. `PMID:37280275 <https://pubmed.ncbi.nlm.nih.gov/37280275/>`_
+- Lv Jiawei et al. **The tumor immune microenvironment of nasopharyngeal carcinoma after gemcitabine plus cisplatin treatment.**. *Nature medicine*. 2023. `PMID:37280275 <https://pubmed.ncbi.nlm.nih.gov/37280275/>`_
 
-- Zurbuchen Yves et al. Human memory B cells show plasticity and adopt multiple fates upon recall response to SARS-CoV-2. *Nature immunology*. 2023. `PMID:37106039 <https://pubmed.ncbi.nlm.nih.gov/37106039/>`_
+- Zurbuchen Yves et al. **Human memory B cells show plasticity and adopt multiple fates upon recall response to SARS-CoV-2.**. *Nature immunology*. 2023. `PMID:37106039 <https://pubmed.ncbi.nlm.nih.gov/37106039/>`_
 
-- Jeusset Lucile et al. ViCloD, an interactive web tool for visualizing B cell repertoires and analyzing intraclonal diversities: application to human B-cell tumors. *NAR genomics and bioinformatics*. 2023. `PMID:37388820 <https://pubmed.ncbi.nlm.nih.gov/37388820/>`_
+- Jeusset Lucile et al. **ViCloD, an interactive web tool for visualizing B cell repertoires and analyzing intraclonal diversities: application to human B-cell tumors.**. *NAR genomics and bioinformatics*. 2023. `PMID:37388820 <https://pubmed.ncbi.nlm.nih.gov/37388820/>`_
 
-- Ramonell Richard P et al. Single-cell analysis of human nasal mucosal IgE antibody secreting cells reveals a newly minted phenotype. *Mucosal immunology*. 2023. `PMID:36931600 <https://pubmed.ncbi.nlm.nih.gov/36931600/>`_
+- Ramonell Richard P et al. **Single-cell analysis of human nasal mucosal IgE antibody secreting cells reveals a newly minted phenotype.**. *Mucosal immunology*. 2023. `PMID:36931600 <https://pubmed.ncbi.nlm.nih.gov/36931600/>`_
 
-- Lees William D et al. AIRR community curation and standardised representation for immunoglobulin and T cell receptor germline sets. *Immunoinformatics (Amsterdam, Netherlands)*. 2023. `PMID:37388275 <https://pubmed.ncbi.nlm.nih.gov/37388275/>`_
+- Lees William D et al. **AIRR community curation and standardised representation for immunoglobulin and T cell receptor germline sets.**. *Immunoinformatics (Amsterdam, Netherlands)*. 2023. `PMID:37388275 <https://pubmed.ncbi.nlm.nih.gov/37388275/>`_
 
-- Sutherland Catherine et al. AIRRSHIP: simulating human B cell receptor repertoire sequences. *Bioinformatics (Oxford, England)*. 2023. `PMID:37279738 <https://pubmed.ncbi.nlm.nih.gov/37279738/>`_
+- Sutherland Catherine et al. **AIRRSHIP: simulating human B cell receptor repertoire sequences.**. *Bioinformatics (Oxford, England)*. 2023. `PMID:37279738 <https://pubmed.ncbi.nlm.nih.gov/37279738/>`_
 
-- Fike Adam J et al. STAT3 signaling in B cells controls germinal center zone organization and recycling. *Cell reports*. 2023. `PMID:37200190 <https://pubmed.ncbi.nlm.nih.gov/37200190/>`_
+- Fike Adam J et al. **STAT3 signaling in B cells controls germinal center zone organization and recycling.**. *Cell reports*. 2023. `PMID:37200190 <https://pubmed.ncbi.nlm.nih.gov/37200190/>`_
 
-- Russell Magdalena L et al. Statistical inference reveals the role of length, GC content, and local sequence in V(D)J nucleotide trimming. *eLife*. 2023. `PMID:37227256 <https://pubmed.ncbi.nlm.nih.gov/37227256/>`_
+- Russell Magdalena L et al. **Statistical inference reveals the role of length, GC content, and local sequence in V(D)J nucleotide trimming.**. *eLife*. 2023. `PMID:37227256 <https://pubmed.ncbi.nlm.nih.gov/37227256/>`_
 
-- Dzanibe Sonwabile et al. Disrupted memory T cell expansion in HIV-exposed uninfected infants is preceded by premature skewing of T cell receptor clonality. *bioRxiv : the preprint server for biology*. 2023. `PMID:37292866 <https://pubmed.ncbi.nlm.nih.gov/37292866/>`_
+- Dzanibe Sonwabile et al. **Disrupted memory T cell expansion in HIV-exposed uninfected infants is preceded by premature skewing of T cell receptor clonality.**. *bioRxiv : the preprint server for biology*. 2023. `PMID:37292866 <https://pubmed.ncbi.nlm.nih.gov/37292866/>`_
 
-- Mazzolini Andrea et al. Inspecting the interaction between human immunodeficiency virus and the immune system through genetic turnover. *Philosophical transactions of the Royal Society of London. Series B, Biological sciences*. 2023. `PMID:37004725 <https://pubmed.ncbi.nlm.nih.gov/37004725/>`_
+- Mazzolini Andrea et al. **Inspecting the interaction between human immunodeficiency virus and the immune system through genetic turnover.**. *Philosophical transactions of the Royal Society of London. Series B, Biological sciences*. 2023. `PMID:37004725 <https://pubmed.ncbi.nlm.nih.gov/37004725/>`_
 
-- Ford Easton E et al. FLAIRR-Seq: A Method for Single-Molecule Resolution of Near Full-Length Antibody H Chain Repertoires. *Journal of immunology (Baltimore, Md. : 1950)*. 2023. `PMID:37027017 <https://pubmed.ncbi.nlm.nih.gov/37027017/>`_
+- Ford Easton E et al. **FLAIRR-Seq: A Method for Single-Molecule Resolution of Near Full-Length Antibody H Chain Repertoires.**. *Journal of immunology (Baltimore, Md. : 1950)*. 2023. `PMID:37027017 <https://pubmed.ncbi.nlm.nih.gov/37027017/>`_
 
-- Barmada Anis et al. Cytokinopathy with aberrant cytotoxic lymphocytes and profibrotic myeloid response in SARS-CoV-2 mRNA vaccine-associated myocarditis. *Science immunology*. 2023. `PMID:37146127 <https://pubmed.ncbi.nlm.nih.gov/37146127/>`_
+- Barmada Anis et al. **Cytokinopathy with aberrant cytotoxic lymphocytes and profibrotic myeloid response in SARS-CoV-2 mRNA vaccine-associated myocarditis.**. *Science immunology*. 2023. `PMID:37146127 <https://pubmed.ncbi.nlm.nih.gov/37146127/>`_
 
-- Alsoussi Wafaa B et al. SARS-CoV-2 Omicron boosting induces de novo B cell response in humans. *Nature*. 2023. `PMID:37011668 <https://pubmed.ncbi.nlm.nih.gov/37011668/>`_
+- Alsoussi Wafaa B et al. **SARS-CoV-2 Omicron boosting induces de novo B cell response in humans.**. *Nature*. 2023. `PMID:37011668 <https://pubmed.ncbi.nlm.nih.gov/37011668/>`_
 
-- Jiang Roy et al. The Plasma Cell Infiltrate Populating the Muscle Tissue of Patients with Inclusion Body Myositis Features Distinct B Cell Receptor Repertoire Properties. *ImmunoHorizons*. 2023. `PMID:37171806 <https://pubmed.ncbi.nlm.nih.gov/37171806/>`_
+- Jiang Roy et al. **The Plasma Cell Infiltrate Populating the Muscle Tissue of Patients with Inclusion Body Myositis Features Distinct B Cell Receptor Repertoire Properties.**. *ImmunoHorizons*. 2023. `PMID:37171806 <https://pubmed.ncbi.nlm.nih.gov/37171806/>`_
 
-- Nickerson Kevin M et al. Age-associated B cells are heterogeneous and dynamic drivers of autoimmunity in mice. *The Journal of experimental medicine*. 2023. `PMID:36828389 <https://pubmed.ncbi.nlm.nih.gov/36828389/>`_
+- Nickerson Kevin M et al. **Age-associated B cells are heterogeneous and dynamic drivers of autoimmunity in mice.**. *The Journal of experimental medicine*. 2023. `PMID:36828389 <https://pubmed.ncbi.nlm.nih.gov/36828389/>`_
 
-- Moulana Alief et al. Genotype-phenotype landscapes for immune-pathogen coevolution. *Trends in immunology*. 2023. `PMID:37024340 <https://pubmed.ncbi.nlm.nih.gov/37024340/>`_
+- Moulana Alief et al. **Genotype-phenotype landscapes for immune-pathogen coevolution.**. *Trends in immunology*. 2023. `PMID:37024340 <https://pubmed.ncbi.nlm.nih.gov/37024340/>`_
 
-- Chernyshev Mark et al. Vaccination of SARS-CoV-2-infected individuals expands a broad range of clonally diverse affinity-matured B cell lineages. *Nature communications*. 2023. `PMID:37076511 <https://pubmed.ncbi.nlm.nih.gov/37076511/>`_
+- Chernyshev Mark et al. **Vaccination of SARS-CoV-2-infected individuals expands a broad range of clonally diverse affinity-matured B cell lineages.**. *Nature communications*. 2023. `PMID:37076511 <https://pubmed.ncbi.nlm.nih.gov/37076511/>`_
 
-- Caniels Tom G et al. Germline-targeting HIV-1 Env vaccination induces VRC01-class antibodies with rare insertions. *Cell reports. Medicine*. 2023. `PMID:37044090 <https://pubmed.ncbi.nlm.nih.gov/37044090/>`_
+- Caniels Tom G et al. **Germline-targeting HIV-1 Env vaccination induces VRC01-class antibodies with rare insertions.**. *Cell reports. Medicine*. 2023. `PMID:37044090 <https://pubmed.ncbi.nlm.nih.gov/37044090/>`_
 
-- Ortega-Hernandez Oscar-Danilo et al. Epstein-Barr Virus and Multiple Sclerosis: A Convoluted Interaction and the Opportunity to Unravel Predictive Biomarkers. *International journal of molecular sciences*. 2023. `PMID:37108566 <https://pubmed.ncbi.nlm.nih.gov/37108566/>`_
+- Ortega-Hernandez Oscar-Danilo et al. **Epstein-Barr Virus and Multiple Sclerosis: A Convoluted Interaction and the Opportunity to Unravel Predictive Biomarkers.**. *International journal of molecular sciences*. 2023. `PMID:37108566 <https://pubmed.ncbi.nlm.nih.gov/37108566/>`_
 
-- Scheid Johannes F et al. Remodeling of colon plasma cell repertoire within ulcerative colitis patients. *The Journal of experimental medicine*. 2023. `PMID:36752797 <https://pubmed.ncbi.nlm.nih.gov/36752797/>`_
+- Scheid Johannes F et al. **Remodeling of colon plasma cell repertoire within ulcerative colitis patients.**. *The Journal of experimental medicine*. 2023. `PMID:36752797 <https://pubmed.ncbi.nlm.nih.gov/36752797/>`_
 
-- Muri Jonathan et al. Autoantibodies against chemokines post-SARS-CoV-2 infection correlate with disease course. *Nature immunology*. 2023. `PMID:36879067 <https://pubmed.ncbi.nlm.nih.gov/36879067/>`_
+- Muri Jonathan et al. **Autoantibodies against chemokines post-SARS-CoV-2 infection correlate with disease course.**. *Nature immunology*. 2023. `PMID:36879067 <https://pubmed.ncbi.nlm.nih.gov/36879067/>`_
 
-- Geladaris Anastasia et al. IL-10-providing B cells govern pro-inflammatory activity of macrophages and microglia in CNS autoimmunity. *Acta neuropathologica*. 2023. `PMID:36854993 <https://pubmed.ncbi.nlm.nih.gov/36854993/>`_
+- Geladaris Anastasia et al. **IL-10-providing B cells govern pro-inflammatory activity of macrophages and microglia in CNS autoimmunity.**. *Acta neuropathologica*. 2023. `PMID:36854993 <https://pubmed.ncbi.nlm.nih.gov/36854993/>`_
 
-- Montagne Janelle M et al. Multiomics Empowers Predictive Pancreatic Cancer Immunotherapy. *Journal of immunology (Baltimore, Md. : 1950)*. 2023. `PMID:36947820 <https://pubmed.ncbi.nlm.nih.gov/36947820/>`_
+- Montagne Janelle M et al. **Multiomics Empowers Predictive Pancreatic Cancer Immunotherapy.**. *Journal of immunology (Baltimore, Md. : 1950)*. 2023. `PMID:36947820 <https://pubmed.ncbi.nlm.nih.gov/36947820/>`_
 
-- Richardson Eve et al. Characterisation of the immune repertoire of a humanised transgenic mouse through immunophenotyping and high-throughput sequencing. *eLife*. 2023. `PMID:36971345 <https://pubmed.ncbi.nlm.nih.gov/36971345/>`_
+- Richardson Eve et al. **Characterisation of the immune repertoire of a humanised transgenic mouse through immunophenotyping and high-throughput sequencing.**. *eLife*. 2023. `PMID:36971345 <https://pubmed.ncbi.nlm.nih.gov/36971345/>`_
 
-- Pascal Virginie et al. Demultiplexing Ig repertoires by parallel mRNA/DNA sequencing shows major differential alterations in severe COVID-19. *iScience*. 2023. `PMID:36845033 <https://pubmed.ncbi.nlm.nih.gov/36845033/>`_
+- Pascal Virginie et al. **Demultiplexing Ig repertoires by parallel mRNA/DNA sequencing shows major differential alterations in severe COVID-19.**. *iScience*. 2023. `PMID:36845033 <https://pubmed.ncbi.nlm.nih.gov/36845033/>`_
 
-- Stoler-Barak Liat et al. B cell class switch recombination is regulated by DYRK1A through MSH6 phosphorylation. *Nature communications*. 2023. `PMID:36927854 <https://pubmed.ncbi.nlm.nih.gov/36927854/>`_
+- Stoler-Barak Liat et al. **B cell class switch recombination is regulated by DYRK1A through MSH6 phosphorylation.**. *Nature communications*. 2023. `PMID:36927854 <https://pubmed.ncbi.nlm.nih.gov/36927854/>`_
 
-- García-Valiente Rodrigo et al. Understanding repertoire sequencing data through a multiscale computational model of the germinal center. *NPJ systems biology and applications*. 2023. `PMID:36927990 <https://pubmed.ncbi.nlm.nih.gov/36927990/>`_
+- García-Valiente Rodrigo et al. **Understanding repertoire sequencing data through a multiscale computational model of the germinal center.**. *NPJ systems biology and applications*. 2023. `PMID:36927990 <https://pubmed.ncbi.nlm.nih.gov/36927990/>`_
 
-- Sun Ye et al. Glia Connect Inflammation and Neurodegeneration in Multiple Sclerosis. *Neuroscience bulletin*. 2023. `PMID:36853544 <https://pubmed.ncbi.nlm.nih.gov/36853544/>`_
+- Sun Ye et al. **Glia Connect Inflammation and Neurodegeneration in Multiple Sclerosis.**. *Neuroscience bulletin*. 2023. `PMID:36853544 <https://pubmed.ncbi.nlm.nih.gov/36853544/>`_
 
-- Swift Michael et al. Lineage tracing reveals fate bias and transcriptional memory in human B cells. *Life science alliance*. 2023. `PMID:36639222 <https://pubmed.ncbi.nlm.nih.gov/36639222/>`_
+- Swift Michael et al. **Lineage tracing reveals fate bias and transcriptional memory in human B cells.**. *Life science alliance*. 2023. `PMID:36639222 <https://pubmed.ncbi.nlm.nih.gov/36639222/>`_
 
-- Abdollahi Nika et al. Reconstructing B cell lineage trees with minimum spanning tree and genotype abundances. *BMC bioinformatics*. 2023. `PMID:36849917 <https://pubmed.ncbi.nlm.nih.gov/36849917/>`_
+- Abdollahi Nika et al. **Reconstructing B cell lineage trees with minimum spanning tree and genotype abundances.**. *BMC bioinformatics*. 2023. `PMID:36849917 <https://pubmed.ncbi.nlm.nih.gov/36849917/>`_
 
-- Snir Tom et al. The temporal behavior of the murine T cell receptor repertoire following Immunotherapy. *Scientific data*. 2023. `PMID:36823176 <https://pubmed.ncbi.nlm.nih.gov/36823176/>`_
+- Snir Tom et al. **The temporal behavior of the murine T cell receptor repertoire following Immunotherapy.**. *Scientific data*. 2023. `PMID:36823176 <https://pubmed.ncbi.nlm.nih.gov/36823176/>`_
 
-- Zagorulya Maria et al. Tissue-specific abundance of interferon-gamma drives regulatory T cells to restrain DC1-mediated priming of cytotoxic T cells against lung cancer. *Immunity*. 2023. `PMID:36736322 <https://pubmed.ncbi.nlm.nih.gov/36736322/>`_
+- Zagorulya Maria et al. **Tissue-specific abundance of interferon-gamma drives regulatory T cells to restrain DC1-mediated priming of cytotoxic T cells against lung cancer.**. *Immunity*. 2023. `PMID:36736322 <https://pubmed.ncbi.nlm.nih.gov/36736322/>`_
 
-- Inoue Takeshi et al. Antibody feedback contributes to facilitating the development of Omicron-reactive memory B cells in SARS-CoV-2 mRNA vaccinees. *The Journal of experimental medicine*. 2023. `PMID:36512034 <https://pubmed.ncbi.nlm.nih.gov/36512034/>`_
+- Inoue Takeshi et al. **Antibody feedback contributes to facilitating the development of Omicron-reactive memory B cells in SARS-CoV-2 mRNA vaccinees.**. *The Journal of experimental medicine*. 2023. `PMID:36512034 <https://pubmed.ncbi.nlm.nih.gov/36512034/>`_
 
-- Gupta Money et al. High activation levels maintained in receptor-binding domain-specific memory B cells in people with severe coronavirus disease 2019. *Immunology and cell biology*. 2023. `PMID:36353774 <https://pubmed.ncbi.nlm.nih.gov/36353774/>`_
+- Gupta Money et al. **High activation levels maintained in receptor-binding domain-specific memory B cells in people with severe coronavirus disease 2019.**. *Immunology and cell biology*. 2023. `PMID:36353774 <https://pubmed.ncbi.nlm.nih.gov/36353774/>`_
 
-- Ruiz Ortega María et al. Modeling and predicting the overlap of B- and T-cell receptor repertoires in healthy and SARS-CoV-2 infected individuals. *PLoS genetics*. 2023. `PMID:36827454 <https://pubmed.ncbi.nlm.nih.gov/36827454/>`_
+- Ruiz Ortega María et al. **Modeling and predicting the overlap of B- and T-cell receptor repertoires in healthy and SARS-CoV-2 infected individuals.**. *PLoS genetics*. 2023. `PMID:36827454 <https://pubmed.ncbi.nlm.nih.gov/36827454/>`_
 
-- Cao Yunlong et al. Imprinted SARS-CoV-2 humoral immunity induces convergent Omicron RBD evolution. *Nature*. 2023. `PMID:36535326 <https://pubmed.ncbi.nlm.nih.gov/36535326/>`_
+- Cao Yunlong et al. **Imprinted SARS-CoV-2 humoral immunity induces convergent Omicron RBD evolution.**. *Nature*. 2023. `PMID:36535326 <https://pubmed.ncbi.nlm.nih.gov/36535326/>`_
 
-- Gibson William S et al. Characterization of the immunoglobulin lambda chain locus from diverse populations reveals extensive genetic variation. *Genes and immunity*. 2023. `PMID:36539592 <https://pubmed.ncbi.nlm.nih.gov/36539592/>`_
+- Gibson William S et al. **Characterization of the immunoglobulin lambda chain locus from diverse populations reveals extensive genetic variation.**. *Genes and immunity*. 2023. `PMID:36539592 <https://pubmed.ncbi.nlm.nih.gov/36539592/>`_
 
-- Wimmers Florian et al. Systems biological assessment of the temporal dynamics of immunity to a viral infection in the first weeks and months of life. *medRxiv : the preprint server for health sciences*. 2023. `PMID:36778389 <https://pubmed.ncbi.nlm.nih.gov/36778389/>`_
+- Wimmers Florian et al. **Systems biological assessment of the temporal dynamics of immunity to a viral infection in the first weeks and months of life.**. *medRxiv : the preprint server for health sciences*. 2023. `PMID:36778389 <https://pubmed.ncbi.nlm.nih.gov/36778389/>`_
 
-- Asashima Hiromitsu et al. PD-1highCXCR5-CD4+ peripheral helper T cells promote CXCR3+ plasmablasts in human acute viral infection. *Cell reports*. 2023. `PMID:36596303 <https://pubmed.ncbi.nlm.nih.gov/36596303/>`_
+- Asashima Hiromitsu et al. **PD-1highCXCR5-CD4+ peripheral helper T cells promote CXCR3+ plasmablasts in human acute viral infection.**. *Cell reports*. 2023. `PMID:36596303 <https://pubmed.ncbi.nlm.nih.gov/36596303/>`_
 
-- Andrade Dhiego Souto et al. GENTLE: a novel bioinformatics tool for generating features and building classifiers from T cell repertoire cancer data. *BMC bioinformatics*. 2023. `PMID:36717789 <https://pubmed.ncbi.nlm.nih.gov/36717789/>`_
+- Andrade Dhiego Souto et al. **GENTLE: a novel bioinformatics tool for generating features and building classifiers from T cell repertoire cancer data.**. *BMC bioinformatics*. 2023. `PMID:36717789 <https://pubmed.ncbi.nlm.nih.gov/36717789/>`_
 
-- Weller Sandra et al. T-independent responses to polysaccharides in humans mobilize marginal zone B cells prediversified against gut bacterial antigens. *Science immunology*. 2023. `PMID:36706172 <https://pubmed.ncbi.nlm.nih.gov/36706172/>`_
+- Weller Sandra et al. **T-independent responses to polysaccharides in humans mobilize marginal zone B cells prediversified against gut bacterial antigens.**. *Science immunology*. 2023. `PMID:36706172 <https://pubmed.ncbi.nlm.nih.gov/36706172/>`_
 
-- King Samantha M et al. First Impressions Matter: Immune Imprinting and Antibody Cross-Reactivity in Influenza and SARS-CoV-2. *Pathogens (Basel, Switzerland)*. 2023. `PMID:36839441 <https://pubmed.ncbi.nlm.nih.gov/36839441/>`_
+- King Samantha M et al. **First Impressions Matter: Immune Imprinting and Antibody Cross-Reactivity in Influenza and SARS-CoV-2.**. *Pathogens (Basel, Switzerland)*. 2023. `PMID:36839441 <https://pubmed.ncbi.nlm.nih.gov/36839441/>`_
 
-- Mlynarczyk Coraline et al. BTG1 mutation yields supercompetitive B cells primed for malignant transformation. *Science (New York, N.Y.)*. 2023. `PMID:36656933 <https://pubmed.ncbi.nlm.nih.gov/36656933/>`_
+- Mlynarczyk Coraline et al. **BTG1 mutation yields supercompetitive B cells primed for malignant transformation.**. *Science (New York, N.Y.)*. 2023. `PMID:36656933 <https://pubmed.ncbi.nlm.nih.gov/36656933/>`_
 
-- Scharf Lydia et al. Longitudinal single-cell analysis of SARS-CoV-2-reactive B cells uncovers persistence of early-formed, antigen-specific clones. *JCI insight*. 2023. `PMID:36445762 <https://pubmed.ncbi.nlm.nih.gov/36445762/>`_
+- Scharf Lydia et al. **Longitudinal single-cell analysis of SARS-CoV-2-reactive B cells uncovers persistence of early-formed, antigen-specific clones.**. *JCI insight*. 2023. `PMID:36445762 <https://pubmed.ncbi.nlm.nih.gov/36445762/>`_
 
-- Flümann Ruth et al. Distinct Genetically Determined Origins of Myd88/BCL2-Driven Aggressive Lymphoma Rationalize Targeted Therapeutic Intervention Strategies. *Blood cancer discovery*. 2023. `PMID:36346827 <https://pubmed.ncbi.nlm.nih.gov/36346827/>`_
+- Flümann Ruth et al. **Distinct Genetically Determined Origins of Myd88/BCL2-Driven Aggressive Lymphoma Rationalize Targeted Therapeutic Intervention Strategies.**. *Blood cancer discovery*. 2023. `PMID:36346827 <https://pubmed.ncbi.nlm.nih.gov/36346827/>`_
 
-- Sokal Aurélien et al. Human type I IFN deficiency does not impair B cell response to SARS-CoV-2 mRNA vaccination. *The Journal of experimental medicine*. 2023. `PMID:36342455 <https://pubmed.ncbi.nlm.nih.gov/36342455/>`_
+- Sokal Aurélien et al. **Human type I IFN deficiency does not impair B cell response to SARS-CoV-2 mRNA vaccination.**. *The Journal of experimental medicine*. 2023. `PMID:36342455 <https://pubmed.ncbi.nlm.nih.gov/36342455/>`_
 
-- Hu Zicheng et al. The immunogenicity of human-origin therapeutic antibodies are associated with V gene usage. *Frontiers in immunology*. 2023. `PMID:37720227 <https://pubmed.ncbi.nlm.nih.gov/37720227/>`_
+- Hu Zicheng et al. **The immunogenicity of human-origin therapeutic antibodies are associated with V gene usage.**. *Frontiers in immunology*. 2023. `PMID:37720227 <https://pubmed.ncbi.nlm.nih.gov/37720227/>`_
 
-- Thomas Olivia G et al. Epstein-Barr virus and multiple sclerosis: moving from questions of association to questions of mechanism. *Clinical & translational immunology*. 2023. `PMID:37206956 <https://pubmed.ncbi.nlm.nih.gov/37206956/>`_
+- Thomas Olivia G et al. **Epstein-Barr virus and multiple sclerosis: moving from questions of association to questions of mechanism.**. *Clinical & translational immunology*. 2023. `PMID:37206956 <https://pubmed.ncbi.nlm.nih.gov/37206956/>`_
 
-- Groß-Albenhausen Elina et al. Immune monitoring of SARS-CoV-2-specific T cell and B cell responses in patients with multiple sclerosis treated with ocrelizumab. *Frontiers in immunology*. 2023. `PMID:37841269 <https://pubmed.ncbi.nlm.nih.gov/37841269/>`_
+- Groß-Albenhausen Elina et al. **Immune monitoring of SARS-CoV-2-specific T cell and B cell responses in patients with multiple sclerosis treated with ocrelizumab.**. *Frontiers in immunology*. 2023. `PMID:37841269 <https://pubmed.ncbi.nlm.nih.gov/37841269/>`_
 
-- Ding Lizhong et al. Antigen presentation by clonally diverse CXCR5+ B cells to CD4 and CD8 T cells is associated with durable response to immune checkpoint inhibitors. *Frontiers in immunology*. 2023. `PMID:37435085 <https://pubmed.ncbi.nlm.nih.gov/37435085/>`_
+- Ding Lizhong et al. **Antigen presentation by clonally diverse CXCR5+ B cells to CD4 and CD8 T cells is associated with durable response to immune checkpoint inhibitors.**. *Frontiers in immunology*. 2023. `PMID:37435085 <https://pubmed.ncbi.nlm.nih.gov/37435085/>`_
 
-- Hadjeras Lydia et al. Revealing the small proteome of Haloferax volcanii by combining ribosome profiling and small-protein optimized mass spectrometry. *microLife*. 2023. `PMID:37223747 <https://pubmed.ncbi.nlm.nih.gov/37223747/>`_
+- Hadjeras Lydia et al. **Revealing the small proteome of Haloferax volcanii by combining ribosome profiling and small-protein optimized mass spectrometry.**. *microLife*. 2023. `PMID:37223747 <https://pubmed.ncbi.nlm.nih.gov/37223747/>`_
 
-- Calonga-Solís Verónica et al. The landscape of the immunoglobulin repertoire in endemic pemphigus foliaceus. *Frontiers in immunology*. 2023. `PMID:37575223 <https://pubmed.ncbi.nlm.nih.gov/37575223/>`_
+- Calonga-Solís Verónica et al. **The landscape of the immunoglobulin repertoire in endemic pemphigus foliaceus.**. *Frontiers in immunology*. 2023. `PMID:37575223 <https://pubmed.ncbi.nlm.nih.gov/37575223/>`_
 
-- Vakrakou Aigli G et al. Specific myeloid signatures in peripheral blood differentiate active and rare clinical phenotypes of multiple sclerosis. *Frontiers in immunology*. 2023. `PMID:36761741 <https://pubmed.ncbi.nlm.nih.gov/36761741/>`_
+- Vakrakou Aigli G et al. **Specific myeloid signatures in peripheral blood differentiate active and rare clinical phenotypes of multiple sclerosis.**. *Frontiers in immunology*. 2023. `PMID:36761741 <https://pubmed.ncbi.nlm.nih.gov/36761741/>`_
 
-- Narang Sanjana et al. Adaptive immune receptor genotyping using the corecount program. *Frontiers in immunology*. 2023. `PMID:37114042 <https://pubmed.ncbi.nlm.nih.gov/37114042/>`_
+- Narang Sanjana et al. **Adaptive immune receptor genotyping using the corecount program.**. *Frontiers in immunology*. 2023. `PMID:37114042 <https://pubmed.ncbi.nlm.nih.gov/37114042/>`_
 
-- Wing Elinor et al. Double-negative-2 B cells are the major synovial plasma cell precursor in rheumatoid arthritis. *Frontiers in immunology*. 2023. `PMID:37638026 <https://pubmed.ncbi.nlm.nih.gov/37638026/>`_
+- Wing Elinor et al. **Double-negative-2 B cells are the major synovial plasma cell precursor in rheumatoid arthritis.**. *Frontiers in immunology*. 2023. `PMID:37638026 <https://pubmed.ncbi.nlm.nih.gov/37638026/>`_
 
-- Gupta Manoj Kumar et al. Next-generation development and application of codon model in evolution. *Frontiers in genetics*. 2023. `PMID:36777719 <https://pubmed.ncbi.nlm.nih.gov/36777719/>`_
+- Gupta Manoj Kumar et al. **Next-generation development and application of codon model in evolution.**. *Frontiers in genetics*. 2023. `PMID:36777719 <https://pubmed.ncbi.nlm.nih.gov/36777719/>`_
 
-- Collins Andrew M et al. AIRR-C IG Reference Sets: curated sets of immunoglobulin heavy and light chain germline genes. *Frontiers in immunology*. 2023. `PMID:38406579 <https://pubmed.ncbi.nlm.nih.gov/38406579/>`_
+- Collins Andrew M et al. **AIRR-C IG Reference Sets: curated sets of immunoglobulin heavy and light chain germline genes.**. *Frontiers in immunology*. 2023. `PMID:38406579 <https://pubmed.ncbi.nlm.nih.gov/38406579/>`_
 
-- Hardt Uta et al. Analysis of IGH allele content in a sample group of rheumatoid arthritis patients demonstrates unrevealed population heterogeneity. *Frontiers in immunology*. 2023. `PMID:36798124 <https://pubmed.ncbi.nlm.nih.gov/36798124/>`_
+- Hardt Uta et al. **Analysis of IGH allele content in a sample group of rheumatoid arthritis patients demonstrates unrevealed population heterogeneity.**. *Frontiers in immunology*. 2023. `PMID:36798124 <https://pubmed.ncbi.nlm.nih.gov/36798124/>`_
 
-- Laaker Collin et al. Immune cells as messengers from the CNS to the periphery: the role of the meningeal lymphatic system in immune cell migration from the CNS. *Frontiers in immunology*. 2023. `PMID:37662908 <https://pubmed.ncbi.nlm.nih.gov/37662908/>`_
+- Laaker Collin et al. **Immune cells as messengers from the CNS to the periphery: the role of the meningeal lymphatic system in immune cell migration from the CNS.**. *Frontiers in immunology*. 2023. `PMID:37662908 <https://pubmed.ncbi.nlm.nih.gov/37662908/>`_
 
-- Pelissier Aurelien et al. Exploring the impact of clonal definition on B-cell diversity: implications for the analysis of immune repertoires. *Frontiers in immunology*. 2023. `PMID:37138881 <https://pubmed.ncbi.nlm.nih.gov/37138881/>`_
+- Pelissier Aurelien et al. **Exploring the impact of clonal definition on B-cell diversity: implications for the analysis of immune repertoires.**. *Frontiers in immunology*. 2023. `PMID:37138881 <https://pubmed.ncbi.nlm.nih.gov/37138881/>`_
 
-- Aspden James W et al. Intruders or protectors - the multifaceted role of B cells in CNS disorders. *Frontiers in cellular neuroscience*. 2023. `PMID:38269112 <https://pubmed.ncbi.nlm.nih.gov/38269112/>`_
+- Aspden James W et al. **Intruders or protectors - the multifaceted role of B cells in CNS disorders.**. *Frontiers in cellular neuroscience*. 2023. `PMID:38269112 <https://pubmed.ncbi.nlm.nih.gov/38269112/>`_
 
-- Vergani Stefano et al. CLL stereotyped B-cell receptor immunoglobulin sequences are recurrent in the B-cell repertoire of healthy individuals: Apparent lack of central and early peripheral tolerance censoring. *Frontiers in oncology*. 2023. `PMID:37007084 <https://pubmed.ncbi.nlm.nih.gov/37007084/>`_
+- Vergani Stefano et al. **CLL stereotyped B-cell receptor immunoglobulin sequences are recurrent in the B-cell repertoire of healthy individuals: Apparent lack of central and early peripheral tolerance censoring.**. *Frontiers in oncology*. 2023. `PMID:37007084 <https://pubmed.ncbi.nlm.nih.gov/37007084/>`_
 
-- Xu Qin et al. Adaptive immune responses to SARS-CoV-2 persist in the pharyngeal lymphoid tissue of children. *Nature immunology*. 2023. `PMID:36536106 <https://pubmed.ncbi.nlm.nih.gov/36536106/>`_
+- Xu Qin et al. **Adaptive immune responses to SARS-CoV-2 persist in the pharyngeal lymphoid tissue of children.**. *Nature immunology*. 2023. `PMID:36536106 <https://pubmed.ncbi.nlm.nih.gov/36536106/>`_
 
-- Hayashi Shuto et al. Analyzing Antibody Repertoire Using Next-Generation Sequencing and Machine Learning. *Methods in molecular biology (Clifton, N.J.)*. 2023. `PMID:36346609 <https://pubmed.ncbi.nlm.nih.gov/36346609/>`_
+- Hayashi Shuto et al. **Analyzing Antibody Repertoire Using Next-Generation Sequencing and Machine Learning.**. *Methods in molecular biology (Clifton, N.J.)*. 2023. `PMID:36346609 <https://pubmed.ncbi.nlm.nih.gov/36346609/>`_
 
-- Dirks Johannes et al. IgD shapes the pre-immune naïve B cell compartment in humans. *Frontiers in immunology*. 2023. `PMID:36776874 <https://pubmed.ncbi.nlm.nih.gov/36776874/>`_
+- Dirks Johannes et al. **IgD shapes the pre-immune naïve B cell compartment in humans.**. *Frontiers in immunology*. 2023. `PMID:36776874 <https://pubmed.ncbi.nlm.nih.gov/36776874/>`_
 
-- Katoh Hiroto et al. Immune repertoire profiling for disease pathobiology. *Pathology international*. 2023. `PMID:36342353 <https://pubmed.ncbi.nlm.nih.gov/36342353/>`_
+- Katoh Hiroto et al. **Immune repertoire profiling for disease pathobiology.**. *Pathology international*. 2023. `PMID:36342353 <https://pubmed.ncbi.nlm.nih.gov/36342353/>`_
 
-- Lusiany Tina et al. Structural Modeling of Adaptive Immune Responses to Infection. *Methods in molecular biology (Clifton, N.J.)*. 2023. `PMID:36346598 <https://pubmed.ncbi.nlm.nih.gov/36346598/>`_
+- Lusiany Tina et al. **Structural Modeling of Adaptive Immune Responses to Infection.**. *Methods in molecular biology (Clifton, N.J.)*. 2023. `PMID:36346598 <https://pubmed.ncbi.nlm.nih.gov/36346598/>`_
 
-- Fahad Ahmed S et al. Bioinformatic Analysis of Natively Paired VH:VL Antibody Repertoires for Antibody Discovery. *Methods in molecular biology (Clifton, N.J.)*. 2023. `PMID:36346608 <https://pubmed.ncbi.nlm.nih.gov/36346608/>`_
+- Fahad Ahmed S et al. **Bioinformatic Analysis of Natively Paired VH:VL Antibody Repertoires for Antibody Discovery.**. *Methods in molecular biology (Clifton, N.J.)*. 2023. `PMID:36346608 <https://pubmed.ncbi.nlm.nih.gov/36346608/>`_
 
-- Safra Modi et al. A somatic hypermutation-based machine learning model stratifies individuals with Crohn's disease and controls. *Genome research*. 2023. `PMID:36526432 <https://pubmed.ncbi.nlm.nih.gov/36526432/>`_
+- Safra Modi et al. **A somatic hypermutation-based machine learning model stratifies individuals with Crohn's disease and controls.**. *Genome research*. 2023. `PMID:36526432 <https://pubmed.ncbi.nlm.nih.gov/36526432/>`_
 
-- Peng Xiyu et al. Accurate estimation of molecular counts from amplicon sequence data with unique molecular identifiers. *Bioinformatics (Oxford, England)*. 2023. `PMID:36610988 <https://pubmed.ncbi.nlm.nih.gov/36610988/>`_
+- Peng Xiyu et al. **Accurate estimation of molecular counts from amplicon sequence data with unique molecular identifiers.**. *Bioinformatics (Oxford, England)*. 2023. `PMID:36610988 <https://pubmed.ncbi.nlm.nih.gov/36610988/>`_
 
-- Ruschil Christoph et al. Cladribine treatment specifically affects peripheral blood memory B cell clones and clonal expansion in multiple sclerosis patients. *Frontiers in immunology*. 2023. `PMID:36960053 <https://pubmed.ncbi.nlm.nih.gov/36960053/>`_
+- Ruschil Christoph et al. **Cladribine treatment specifically affects peripheral blood memory B cell clones and clonal expansion in multiple sclerosis patients.**. *Frontiers in immunology*. 2023. `PMID:36960053 <https://pubmed.ncbi.nlm.nih.gov/36960053/>`_
 
-- Safra Modi et al. Altered somatic hypermutation patterns in COVID-19 patients classifies disease severity. *Frontiers in immunology*. 2023. `PMID:37153628 <https://pubmed.ncbi.nlm.nih.gov/37153628/>`_
+- Safra Modi et al. **Altered somatic hypermutation patterns in COVID-19 patients classifies disease severity.**. *Frontiers in immunology*. 2023. `PMID:37153628 <https://pubmed.ncbi.nlm.nih.gov/37153628/>`_
 
-- Aranburu Alaitz et al. Clonal relationships of memory B cell subsets in autoimmune mice. *Frontiers in immunology*. 2023. `PMID:36936947 <https://pubmed.ncbi.nlm.nih.gov/36936947/>`_
+- Aranburu Alaitz et al. **Clonal relationships of memory B cell subsets in autoimmune mice.**. *Frontiers in immunology*. 2023. `PMID:36936947 <https://pubmed.ncbi.nlm.nih.gov/36936947/>`_
 
-- Neuman Hadas et al. B cell M-CLL clones retain selection against replacement mutations in their immunoglobulin gene framework regions. *Frontiers in oncology*. 2023. `PMID:37007112 <https://pubmed.ncbi.nlm.nih.gov/37007112/>`_
+- Neuman Hadas et al. **B cell M-CLL clones retain selection against replacement mutations in their immunoglobulin gene framework regions.**. *Frontiers in oncology*. 2023. `PMID:37007112 <https://pubmed.ncbi.nlm.nih.gov/37007112/>`_
 
-- Polak Justyna et al. Single-cell transcriptomics combined with proteomics of intrathecal IgG reveal transcriptional heterogeneity of oligoclonal IgG-secreting cells in multiple sclerosis. *Frontiers in cellular neuroscience*. 2023. `PMID:37362001 <https://pubmed.ncbi.nlm.nih.gov/37362001/>`_
+- Polak Justyna et al. **Single-cell transcriptomics combined with proteomics of intrathecal IgG reveal transcriptional heterogeneity of oligoclonal IgG-secreting cells in multiple sclerosis.**. *Frontiers in cellular neuroscience*. 2023. `PMID:37362001 <https://pubmed.ncbi.nlm.nih.gov/37362001/>`_
 
-- Anang Dornatien C et al. TCRβ clones in muscle tissue share structural features in patients with idiopathic inflammatory myopathy and are associated with disease activity. *Frontiers in immunology*. 2023. `PMID:38268914 <https://pubmed.ncbi.nlm.nih.gov/38268914/>`_
+- Anang Dornatien C et al. **TCRβ clones in muscle tissue share structural features in patients with idiopathic inflammatory myopathy and are associated with disease activity.**. *Frontiers in immunology*. 2023. `PMID:38268914 <https://pubmed.ncbi.nlm.nih.gov/38268914/>`_
 
-- Høye Eirik et al. T cell receptor repertoire sequencing reveals chemotherapy-driven clonal expansion in colorectal liver metastases. *GigaScience*. 2022. `PMID:37161965 <https://pubmed.ncbi.nlm.nih.gov/37161965/>`_
+- Høye Eirik et al. **T cell receptor repertoire sequencing reveals chemotherapy-driven clonal expansion in colorectal liver metastases.**. *GigaScience*. 2022. `PMID:37161965 <https://pubmed.ncbi.nlm.nih.gov/37161965/>`_
 
-- Blazso Peter et al. Lineage Reconstruction of In Vitro Identified Antigen-Specific Autoreactive B Cells from Adaptive Immune Receptor Repertoires. *International journal of molecular sciences*. 2022. `PMID:36613668 <https://pubmed.ncbi.nlm.nih.gov/36613668/>`_
+- Blazso Peter et al. **Lineage Reconstruction of In Vitro Identified Antigen-Specific Autoreactive B Cells from Adaptive Immune Receptor Repertoires.**. *International journal of molecular sciences*. 2022. `PMID:36613668 <https://pubmed.ncbi.nlm.nih.gov/36613668/>`_
 
-- Porciello Nicla et al. T-cell repertoire diversity: friend or foe for protective antitumor response?. *Journal of experimental & clinical cancer research : CR*. 2022. `PMID:36550555 <https://pubmed.ncbi.nlm.nih.gov/36550555/>`_
+- Porciello Nicla et al. **T-cell repertoire diversity: friend or foe for protective antitumor response?**. *Journal of experimental & clinical cancer research : CR*. 2022. `PMID:36550555 <https://pubmed.ncbi.nlm.nih.gov/36550555/>`_
 
-- He Peng et al. A human fetal lung cell atlas uncovers proximal-distal gradients of differentiation and key regulators of epithelial fates. *Cell*. 2022. `PMID:36493756 <https://pubmed.ncbi.nlm.nih.gov/36493756/>`_
+- He Peng et al. **A human fetal lung cell atlas uncovers proximal-distal gradients of differentiation and key regulators of epithelial fates.**. *Cell*. 2022. `PMID:36493756 <https://pubmed.ncbi.nlm.nih.gov/36493756/>`_
 
-- Singh Tulika et al. A Zika virus-specific IgM elicited in pregnancy exhibits ultrapotent neutralization. *Cell*. 2022. `PMID:36402135 <https://pubmed.ncbi.nlm.nih.gov/36402135/>`_
+- Singh Tulika et al. **A Zika virus-specific IgM elicited in pregnancy exhibits ultrapotent neutralization.**. *Cell*. 2022. `PMID:36402135 <https://pubmed.ncbi.nlm.nih.gov/36402135/>`_
 
-- Gómez-Escolar Carmen et al. Single cell clonal analysis identifies an AID-dependent pathway of plasma cell differentiation. *EMBO reports*. 2022. `PMID:36205653 <https://pubmed.ncbi.nlm.nih.gov/36205653/>`_
+- Gómez-Escolar Carmen et al. **Single cell clonal analysis identifies an AID-dependent pathway of plasma cell differentiation.**. *EMBO reports*. 2022. `PMID:36205653 <https://pubmed.ncbi.nlm.nih.gov/36205653/>`_
 
-- Wang Zijun et al. Memory B cell responses to Omicron subvariants after SARS-CoV-2 mRNA breakthrough infection in humans. *The Journal of experimental medicine*. 2022. `PMID:36149398 <https://pubmed.ncbi.nlm.nih.gov/36149398/>`_
+- Wang Zijun et al. **Memory B cell responses to Omicron subvariants after SARS-CoV-2 mRNA breakthrough infection in humans.**. *The Journal of experimental medicine*. 2022. `PMID:36149398 <https://pubmed.ncbi.nlm.nih.gov/36149398/>`_
 
-- Attfield Kathrine E et al. The immunology of multiple sclerosis. *Nature reviews. Immunology*. 2022. `PMID:35508809 <https://pubmed.ncbi.nlm.nih.gov/35508809/>`_
+- Attfield Kathrine E et al. **The immunology of multiple sclerosis.**. *Nature reviews. Immunology*. 2022. `PMID:35508809 <https://pubmed.ncbi.nlm.nih.gov/35508809/>`_
 
-- Olson Branden J et al. Comparing T cell receptor repertoires using optimal transport. *PLoS computational biology*. 2022. `PMID:36476997 <https://pubmed.ncbi.nlm.nih.gov/36476997/>`_
+- Olson Branden J et al. **Comparing T cell receptor repertoires using optimal transport.**. *PLoS computational biology*. 2022. `PMID:36476997 <https://pubmed.ncbi.nlm.nih.gov/36476997/>`_
 
-- Tian Xiaolong et al. The prominent role of a CDR1 somatic hypermutation for convergent IGHV3-53/3-66 antibodies in binding to SARS-CoV-2. *Emerging microbes & infections*. 2022. `PMID:35380101 <https://pubmed.ncbi.nlm.nih.gov/35380101/>`_
+- Tian Xiaolong et al. **The prominent role of a CDR1 somatic hypermutation for convergent IGHV3-53/3-66 antibodies in binding to SARS-CoV-2.**. *Emerging microbes & infections*. 2022. `PMID:35380101 <https://pubmed.ncbi.nlm.nih.gov/35380101/>`_
 
-- Muri Jonathan et al. Anti-chemokine antibodies after SARS-CoV-2 infection correlate with favorable disease course. *bioRxiv : the preprint server for biology*. 2022. `PMID:35664993 <https://pubmed.ncbi.nlm.nih.gov/35664993/>`_
+- Muri Jonathan et al. **Anti-chemokine antibodies after SARS-CoV-2 infection correlate with favorable disease course.**. *bioRxiv : the preprint server for biology*. 2022. `PMID:35664993 <https://pubmed.ncbi.nlm.nih.gov/35664993/>`_
 
-- Burton Alice R et al. The memory B cell response to influenza vaccination is impaired in older persons. *Cell reports*. 2022. `PMID:36351385 <https://pubmed.ncbi.nlm.nih.gov/36351385/>`_
+- Burton Alice R et al. **The memory B cell response to influenza vaccination is impaired in older persons.**. *Cell reports*. 2022. `PMID:36351385 <https://pubmed.ncbi.nlm.nih.gov/36351385/>`_
 
-- Hao Dapeng et al. The Single-Cell Immunogenomic Landscape of B and Plasma Cells in Early-Stage Lung Adenocarcinoma. *Cancer discovery*. 2022. `PMID:36098652 <https://pubmed.ncbi.nlm.nih.gov/36098652/>`_
+- Hao Dapeng et al. **The Single-Cell Immunogenomic Landscape of B and Plasma Cells in Early-Stage Lung Adenocarcinoma.**. *Cancer discovery*. 2022. `PMID:36098652 <https://pubmed.ncbi.nlm.nih.gov/36098652/>`_
 
-- Ralph Duncan K et al. Inference of B cell clonal families using heavy/light chain pairing information. *PLoS computational biology*. 2022. `PMID:36441808 <https://pubmed.ncbi.nlm.nih.gov/36441808/>`_
+- Ralph Duncan K et al. **Inference of B cell clonal families using heavy/light chain pairing information.**. *PLoS computational biology*. 2022. `PMID:36441808 <https://pubmed.ncbi.nlm.nih.gov/36441808/>`_
 
-- von Niederhäusern Valentin et al. B-Cell Reconstitution After Autologous Hematopoietic Stem Cell Transplantation in Multiple Sclerosis. *Neurology(R) neuroimmunology & neuroinflammation*. 2022. `PMID:36229189 <https://pubmed.ncbi.nlm.nih.gov/36229189/>`_
+- von Niederhäusern Valentin et al. **B-Cell Reconstitution After Autologous Hematopoietic Stem Cell Transplantation in Multiple Sclerosis.**. *Neurology(R) neuroimmunology & neuroinflammation*. 2022. `PMID:36229189 <https://pubmed.ncbi.nlm.nih.gov/36229189/>`_
 
-- Arneth Borros et al. Experimental laboratory biomarkers in multiple sclerosis. *Wiener medizinische Wochenschrift (1946)*. 2022. `PMID:35254566 <https://pubmed.ncbi.nlm.nih.gov/35254566/>`_
+- Arneth Borros et al. **Experimental laboratory biomarkers in multiple sclerosis.**. *Wiener medizinische Wochenschrift (1946)*. 2022. `PMID:35254566 <https://pubmed.ncbi.nlm.nih.gov/35254566/>`_
 
-- Woodruff Matthew C et al. Dysregulated naive B cells and de novo autoreactivity in severe COVID-19. *Nature*. 2022. `PMID:36044993 <https://pubmed.ncbi.nlm.nih.gov/36044993/>`_
+- Woodruff Matthew C et al. **Dysregulated naive B cells and de novo autoreactivity in severe COVID-19.**. *Nature*. 2022. `PMID:36044993 <https://pubmed.ncbi.nlm.nih.gov/36044993/>`_
 
-- Ye Yan et al. Single-cell profiling reveals distinct adaptive immune hallmarks in MDA5+ dermatomyositis with therapeutic implications. *Nature communications*. 2022. `PMID:36309526 <https://pubmed.ncbi.nlm.nih.gov/36309526/>`_
+- Ye Yan et al. **Single-cell profiling reveals distinct adaptive immune hallmarks in MDA5+ dermatomyositis with therapeutic implications.**. *Nature communications*. 2022. `PMID:36309526 <https://pubmed.ncbi.nlm.nih.gov/36309526/>`_
 
-- Fichtner Miriam L et al. Reemergence of pathogenic, autoantibody-producing B cell clones in myasthenia gravis following B cell depletion therapy. *Acta neuropathologica communications*. 2022. `PMID:36307868 <https://pubmed.ncbi.nlm.nih.gov/36307868/>`_
+- Fichtner Miriam L et al. **Reemergence of pathogenic, autoantibody-producing B cell clones in myasthenia gravis following B cell depletion therapy.**. *Acta neuropathologica communications*. 2022. `PMID:36307868 <https://pubmed.ncbi.nlm.nih.gov/36307868/>`_
 
-- Zheng Bohao et al. B-cell receptor repertoire sequencing: Deeper digging into the mechanisms and clinical aspects of immune-mediated diseases. *iScience*. 2022. `PMID:36157582 <https://pubmed.ncbi.nlm.nih.gov/36157582/>`_
+- Zheng Bohao et al. **B-cell receptor repertoire sequencing: Deeper digging into the mechanisms and clinical aspects of immune-mediated diseases.**. *iScience*. 2022. `PMID:36157582 <https://pubmed.ncbi.nlm.nih.gov/36157582/>`_
 
-- Ford Michael K B et al. ImmunoTyper-SR: A computational approach for genotyping immunoglobulin heavy chain variable genes using short-read data. *Cell systems*. 2022. `PMID:36265467 <https://pubmed.ncbi.nlm.nih.gov/36265467/>`_
+- Ford Michael K B et al. **ImmunoTyper-SR: A computational approach for genotyping immunoglobulin heavy chain variable genes using short-read data.**. *Cell systems*. 2022. `PMID:36265467 <https://pubmed.ncbi.nlm.nih.gov/36265467/>`_
 
-- Nakken Ola et al. Strong tuberculin response after BCG vaccination is associated with low multiple sclerosis risk: a population-based cohort study. *International journal of epidemiology*. 2022. `PMID:35278068 <https://pubmed.ncbi.nlm.nih.gov/35278068/>`_
+- Nakken Ola et al. **Strong tuberculin response after BCG vaccination is associated with low multiple sclerosis risk: a population-based cohort study.**. *International journal of epidemiology*. 2022. `PMID:35278068 <https://pubmed.ncbi.nlm.nih.gov/35278068/>`_
 
-- Chappert Pascal et al. Human anti-smallpox long-lived memory B cells are defined by dynamic interactions in the splenic niche and long-lasting germinal center imprinting. *Immunity*. 2022. `PMID:36130603 <https://pubmed.ncbi.nlm.nih.gov/36130603/>`_
+- Chappert Pascal et al. **Human anti-smallpox long-lived memory B cells are defined by dynamic interactions in the splenic niche and long-lasting germinal center imprinting.**. *Immunity*. 2022. `PMID:36130603 <https://pubmed.ncbi.nlm.nih.gov/36130603/>`_
 
-- Wang Zijun et al. Humoral immunity to SARS-CoV-2 elicited by combination COVID-19 vaccination regimens. *The Journal of experimental medicine*. 2022. `PMID:36006380 <https://pubmed.ncbi.nlm.nih.gov/36006380/>`_
+- Wang Zijun et al. **Humoral immunity to SARS-CoV-2 elicited by combination COVID-19 vaccination regimens.**. *The Journal of experimental medicine*. 2022. `PMID:36006380 <https://pubmed.ncbi.nlm.nih.gov/36006380/>`_
 
-- Geladaris Anastasia et al. Bruton's Tyrosine Kinase Inhibitors in Multiple Sclerosis: Pioneering the Path Towards Treatment of Progression?. *CNS drugs*. 2022. `PMID:36178589 <https://pubmed.ncbi.nlm.nih.gov/36178589/>`_
+- Geladaris Anastasia et al. **Bruton's Tyrosine Kinase Inhibitors in Multiple Sclerosis: Pioneering the Path Towards Treatment of Progression?**. *CNS drugs*. 2022. `PMID:36178589 <https://pubmed.ncbi.nlm.nih.gov/36178589/>`_
 
-- Coelho Camila H et al. B cell clonal expansion and mutation in the immunoglobulin heavy chain variable domain in response to Pfs230 and Pfs25 malaria vaccines. *International journal for parasitology*. 2022. `PMID:34896314 <https://pubmed.ncbi.nlm.nih.gov/34896314/>`_
+- Coelho Camila H et al. **B cell clonal expansion and mutation in the immunoglobulin heavy chain variable domain in response to Pfs230 and Pfs25 malaria vaccines.**. *International journal for parasitology*. 2022. `PMID:34896314 <https://pubmed.ncbi.nlm.nih.gov/34896314/>`_
 
-- Alsoussi Wafaa B et al. SARS-CoV-2 Omicron boosting induces de novo B cell response in humans. *bioRxiv : the preprint server for biology*. 2022. `PMID:36172127 <https://pubmed.ncbi.nlm.nih.gov/36172127/>`_
+- Alsoussi Wafaa B et al. **SARS-CoV-2 Omicron boosting induces de novo B cell response in humans.**. *bioRxiv : the preprint server for biology*. 2022. `PMID:36172127 <https://pubmed.ncbi.nlm.nih.gov/36172127/>`_
 
-- Zaragoza-Infante Laura et al. IgIDivA: immunoglobulin intraclonal diversification analysis. *Briefings in bioinformatics*. 2022. `PMID:36044248 <https://pubmed.ncbi.nlm.nih.gov/36044248/>`_
+- Zaragoza-Infante Laura et al. **IgIDivA: immunoglobulin intraclonal diversification analysis.**. *Briefings in bioinformatics*. 2022. `PMID:36044248 <https://pubmed.ncbi.nlm.nih.gov/36044248/>`_
 
-- Mikelov Artem et al. Memory persistence and differentiation into antibody-secreting cells accompanied by positive selection in longitudinal BCR repertoires. *eLife*. 2022. `PMID:36107479 <https://pubmed.ncbi.nlm.nih.gov/36107479/>`_
+- Mikelov Artem et al. **Memory persistence and differentiation into antibody-secreting cells accompanied by positive selection in longitudinal BCR repertoires.**. *eLife*. 2022. `PMID:36107479 <https://pubmed.ncbi.nlm.nih.gov/36107479/>`_
 
-- Fraley Elizabeth R et al. Effects of Prior Infection with SARS-CoV-2 on B Cell Receptor Repertoire Response during Vaccination. *Vaccines*. 2022. `PMID:36146555 <https://pubmed.ncbi.nlm.nih.gov/36146555/>`_
+- Fraley Elizabeth R et al. **Effects of Prior Infection with SARS-CoV-2 on B Cell Receptor Repertoire Response during Vaccination.**. *Vaccines*. 2022. `PMID:36146555 <https://pubmed.ncbi.nlm.nih.gov/36146555/>`_
 
-- Han Guangchun et al. Follicular Lymphoma Microenvironment Characteristics Associated with Tumor Cell Mutations and MHC Class II Expression. *Blood cancer discovery*. 2022. `PMID:35687817 <https://pubmed.ncbi.nlm.nih.gov/35687817/>`_
+- Han Guangchun et al. **Follicular Lymphoma Microenvironment Characteristics Associated with Tumor Cell Mutations and MHC Class II Expression.**. *Blood cancer discovery*. 2022. `PMID:35687817 <https://pubmed.ncbi.nlm.nih.gov/35687817/>`_
 
-- Rognes Torbjørn et al. CompAIRR: ultra-fast comparison of adaptive immune receptor repertoires by exact and approximate sequence matching. *Bioinformatics (Oxford, England)*. 2022. `PMID:35852318 <https://pubmed.ncbi.nlm.nih.gov/35852318/>`_
+- Rognes Torbjørn et al. **CompAIRR: ultra-fast comparison of adaptive immune receptor repertoires by exact and approximate sequence matching.**. *Bioinformatics (Oxford, England)*. 2022. `PMID:35852318 <https://pubmed.ncbi.nlm.nih.gov/35852318/>`_
 
-- Andreani Tommaso et al. Benchmarking computational methods for B-cell receptor reconstruction from single-cell RNA-seq data. *NAR genomics and bioinformatics*. 2022. `PMID:35855325 <https://pubmed.ncbi.nlm.nih.gov/35855325/>`_
+- Andreani Tommaso et al. **Benchmarking computational methods for B-cell receptor reconstruction from single-cell RNA-seq data.**. *NAR genomics and bioinformatics*. 2022. `PMID:35855325 <https://pubmed.ncbi.nlm.nih.gov/35855325/>`_
 
-- Scheepers Cathrine et al. Dependence on a variable residue limits the breadth of an HIV MPER neutralizing antibody, despite convergent evolution with broadly neutralizing antibodies. *PLoS pathogens*. 2022. `PMID:36054228 <https://pubmed.ncbi.nlm.nih.gov/36054228/>`_
+- Scheepers Cathrine et al. **Dependence on a variable residue limits the breadth of an HIV MPER neutralizing antibody, despite convergent evolution with broadly neutralizing antibodies.**. *PLoS pathogens*. 2022. `PMID:36054228 <https://pubmed.ncbi.nlm.nih.gov/36054228/>`_
 
-- Yoshida Tomomi M et al. Basic principles of neuroimmunology. *Seminars in immunopathology*. 2022. `PMID:35732977 <https://pubmed.ncbi.nlm.nih.gov/35732977/>`_
+- Yoshida Tomomi M et al. **Basic principles of neuroimmunology.**. *Seminars in immunopathology*. 2022. `PMID:35732977 <https://pubmed.ncbi.nlm.nih.gov/35732977/>`_
 
-- Waltari Eric et al. AIRRscape: An interactive tool for exploring B-cell receptor repertoires and antibody responses. *PLoS computational biology*. 2022. `PMID:36126074 <https://pubmed.ncbi.nlm.nih.gov/36126074/>`_
+- Waltari Eric et al. **AIRRscape: An interactive tool for exploring B-cell receptor repertoires and antibody responses.**. *PLoS computational biology*. 2022. `PMID:36126074 <https://pubmed.ncbi.nlm.nih.gov/36126074/>`_
 
-- Weber Cédric R et al. Reference-based comparison of adaptive immune receptor repertoires. *Cell reports methods*. 2022. `PMID:36046619 <https://pubmed.ncbi.nlm.nih.gov/36046619/>`_
+- Weber Cédric R et al. **Reference-based comparison of adaptive immune receptor repertoires.**. *Cell reports methods*. 2022. `PMID:36046619 <https://pubmed.ncbi.nlm.nih.gov/36046619/>`_
 
-- Low Jun Siong et al. ACE2-binding exposes the SARS-CoV-2 fusion peptide to broadly neutralizing coronavirus antibodies. *Science (New York, N.Y.)*. 2022. `PMID:35857703 <https://pubmed.ncbi.nlm.nih.gov/35857703/>`_
+- Low Jun Siong et al. **ACE2-binding exposes the SARS-CoV-2 fusion peptide to broadly neutralizing coronavirus antibodies.**. *Science (New York, N.Y.)*. 2022. `PMID:35857703 <https://pubmed.ncbi.nlm.nih.gov/35857703/>`_
 
-- Cho Alice et al. Antibody evolution to SARS-CoV-2 after single-dose Ad26.COV2.S vaccine in humans. *The Journal of experimental medicine*. 2022. `PMID:35776090 <https://pubmed.ncbi.nlm.nih.gov/35776090/>`_
+- Cho Alice et al. **Antibody evolution to SARS-CoV-2 after single-dose Ad26.COV2.S vaccine in humans.**. *The Journal of experimental medicine*. 2022. `PMID:35776090 <https://pubmed.ncbi.nlm.nih.gov/35776090/>`_
 
-- Collins Andrew M et al. Immunoglobulin genes, reproductive isolation and vertebrate speciation. *Immunology and cell biology*. 2022. `PMID:35781330 <https://pubmed.ncbi.nlm.nih.gov/35781330/>`_
+- Collins Andrew M et al. **Immunoglobulin genes, reproductive isolation and vertebrate speciation.**. *Immunology and cell biology*. 2022. `PMID:35781330 <https://pubmed.ncbi.nlm.nih.gov/35781330/>`_
 
-- Bierhansl Laura et al. Thinking outside the box: non-canonical targets in multiple sclerosis. *Nature reviews. Drug discovery*. 2022. `PMID:35668103 <https://pubmed.ncbi.nlm.nih.gov/35668103/>`_
+- Bierhansl Laura et al. **Thinking outside the box: non-canonical targets in multiple sclerosis.**. *Nature reviews. Drug discovery*. 2022. `PMID:35668103 <https://pubmed.ncbi.nlm.nih.gov/35668103/>`_
 
-- Rybkina Ksenia et al. Tissue immunity to SARS-CoV-2: Role in protection and immunopathology. *Immunological reviews*. 2022. `PMID:35752871 <https://pubmed.ncbi.nlm.nih.gov/35752871/>`_
+- Rybkina Ksenia et al. **Tissue immunity to SARS-CoV-2: Role in protection and immunopathology.**. *Immunological reviews*. 2022. `PMID:35752871 <https://pubmed.ncbi.nlm.nih.gov/35752871/>`_
 
-- Matsen Frederick A et al. Enabling Inference for Context-Dependent Models of Mutation by Bounding the Propagation of Dependency. *Journal of computational biology : a journal of computational molecular cell biology*. 2022. `PMID:35776513 <https://pubmed.ncbi.nlm.nih.gov/35776513/>`_
+- Matsen Frederick A et al. **Enabling Inference for Context-Dependent Models of Mutation by Bounding the Propagation of Dependency.**. *Journal of computational biology : a journal of computational molecular cell biology*. 2022. `PMID:35776513 <https://pubmed.ncbi.nlm.nih.gov/35776513/>`_
 
-- Csomos Krisztian et al. Partial RAG deficiency in humans induces dysregulated peripheral lymphocyte development and humoral tolerance defect with accumulation of T-bet+ B cells. *Nature immunology*. 2022. `PMID:35902638 <https://pubmed.ncbi.nlm.nih.gov/35902638/>`_
+- Csomos Krisztian et al. **Partial RAG deficiency in humans induces dysregulated peripheral lymphocyte development and humoral tolerance defect with accumulation of T-bet+ B cells.**. *Nature immunology*. 2022. `PMID:35902638 <https://pubmed.ncbi.nlm.nih.gov/35902638/>`_
 
-- Abdollahi Nika et al. A multi-objective based clustering for inferring BCR clonal lineages from high-throughput B cell repertoire data. *PLoS computational biology*. 2022. `PMID:36037250 <https://pubmed.ncbi.nlm.nih.gov/36037250/>`_
+- Abdollahi Nika et al. **A multi-objective based clustering for inferring BCR clonal lineages from high-throughput B cell repertoire data.**. *PLoS computational biology*. 2022. `PMID:36037250 <https://pubmed.ncbi.nlm.nih.gov/36037250/>`_
 
-- Massacesi Luca et al. Relevance of Pathogenetic Mechanisms to Clinical Effectiveness of B-Cell-Depleting Monoclonal Antibodies in Multiple Sclerosis. *Journal of clinical medicine*. 2022. `PMID:35893382 <https://pubmed.ncbi.nlm.nih.gov/35893382/>`_
+- Massacesi Luca et al. **Relevance of Pathogenetic Mechanisms to Clinical Effectiveness of B-Cell-Depleting Monoclonal Antibodies in Multiple Sclerosis.**. *Journal of clinical medicine*. 2022. `PMID:35893382 <https://pubmed.ncbi.nlm.nih.gov/35893382/>`_
 
-- Yang Rui et al. Human T-bet governs the generation of a distinct subset of CD11chighCD21low B cells. *Science immunology*. 2022. `PMID:35867801 <https://pubmed.ncbi.nlm.nih.gov/35867801/>`_
+- Yang Rui et al. **Human T-bet governs the generation of a distinct subset of CD11chighCD21low B cells.**. *Science immunology*. 2022. `PMID:35867801 <https://pubmed.ncbi.nlm.nih.gov/35867801/>`_
 
-- Ainciburu Marina et al. WAT3R: recovery of T-cell receptor variable regions from 3' single-cell RNA-sequencing. *Bioinformatics (Oxford, England)*. 2022. `PMID:35674381 <https://pubmed.ncbi.nlm.nih.gov/35674381/>`_
+- Ainciburu Marina et al. **WAT3R: recovery of T-cell receptor variable regions from 3' single-cell RNA-sequencing.**. *Bioinformatics (Oxford, England)*. 2022. `PMID:35674381 <https://pubmed.ncbi.nlm.nih.gov/35674381/>`_
 
-- Leem Jinwoo et al. Deciphering the language of antibodies using self-supervised learning. *Patterns (New York, N.Y.)*. 2022. `PMID:35845836 <https://pubmed.ncbi.nlm.nih.gov/35845836/>`_
+- Leem Jinwoo et al. **Deciphering the language of antibodies using self-supervised learning.**. *Patterns (New York, N.Y.)*. 2022. `PMID:35845836 <https://pubmed.ncbi.nlm.nih.gov/35845836/>`_
 
-- Muecksch Frauke et al. Increased memory B cell potency and breadth after a SARS-CoV-2 mRNA boost. *Nature*. 2022. `PMID:35447027 <https://pubmed.ncbi.nlm.nih.gov/35447027/>`_
+- Muecksch Frauke et al. **Increased memory B cell potency and breadth after a SARS-CoV-2 mRNA boost.**. *Nature*. 2022. `PMID:35447027 <https://pubmed.ncbi.nlm.nih.gov/35447027/>`_
 
-- Phad Ganesh E et al. Clonal structure, stability and dynamics of human memory B cells and circulating plasmablasts. *Nature immunology*. 2022. `PMID:35761085 <https://pubmed.ncbi.nlm.nih.gov/35761085/>`_
+- Phad Ganesh E et al. **Clonal structure, stability and dynamics of human memory B cells and circulating plasmablasts.**. *Nature immunology*. 2022. `PMID:35761085 <https://pubmed.ncbi.nlm.nih.gov/35761085/>`_
 
-- Choudhury Joydhriti et al. An Analysis of Different Distance-Linkage Methods for Clustering Gene Expression Data and Observing Pleiotropy: Empirical Study. *JMIR bioinformatics and biotechnology*. 2022. `PMID:38935966 <https://pubmed.ncbi.nlm.nih.gov/38935966/>`_
+- Choudhury Joydhriti et al. **An Analysis of Different Distance-Linkage Methods for Clustering Gene Expression Data and Observing Pleiotropy: Empirical Study.**. *JMIR bioinformatics and biotechnology*. 2022. `PMID:38935966 <https://pubmed.ncbi.nlm.nih.gov/38935966/>`_
 
-- Werner Anja et al. Determining immunoglobulin-specific B cell receptor repertoire of murine splenocytes by next-generation sequencing. *STAR protocols*. 2022. `PMID:35434659 <https://pubmed.ncbi.nlm.nih.gov/35434659/>`_
+- Werner Anja et al. **Determining immunoglobulin-specific B cell receptor repertoire of murine splenocytes by next-generation sequencing.**. *STAR protocols*. 2022. `PMID:35434659 <https://pubmed.ncbi.nlm.nih.gov/35434659/>`_
 
-- Boziki Marina et al. Ocrelizumab in Patients with Active Primary Progressive Multiple Sclerosis: Clinical Outcomes and Immune Markers of Treatment Response. *Cells*. 2022. `PMID:35741088 <https://pubmed.ncbi.nlm.nih.gov/35741088/>`_
+- Boziki Marina et al. **Ocrelizumab in Patients with Active Primary Progressive Multiple Sclerosis: Clinical Outcomes and Immune Markers of Treatment Response.**. *Cells*. 2022. `PMID:35741088 <https://pubmed.ncbi.nlm.nih.gov/35741088/>`_
 
-- Kramer Kevin J et al. Single-cell profiling of the antigen-specific response to BNT162b2 SARS-CoV-2 RNA vaccine. *Nature communications*. 2022. `PMID:35710908 <https://pubmed.ncbi.nlm.nih.gov/35710908/>`_
+- Kramer Kevin J et al. **Single-cell profiling of the antigen-specific response to BNT162b2 SARS-CoV-2 RNA vaccine.**. *Nature communications*. 2022. `PMID:35710908 <https://pubmed.ncbi.nlm.nih.gov/35710908/>`_
 
-- Worth Alexandra N et al. Receptor editing constrains development of phosphatidyl choline-specific B cells in VH12-transgenic mice. *Cell reports*. 2022. `PMID:35705027 <https://pubmed.ncbi.nlm.nih.gov/35705027/>`_
+- Worth Alexandra N et al. **Receptor editing constrains development of phosphatidyl choline-specific B cells in VH12-transgenic mice.**. *Cell reports*. 2022. `PMID:35705027 <https://pubmed.ncbi.nlm.nih.gov/35705027/>`_
 
-- Wang Zijun et al. Analysis of memory B cells identifies conserved neutralizing epitopes on the N-terminal domain of variant SARS-Cov-2 spike proteins. *Immunity*. 2022. `PMID:35447092 <https://pubmed.ncbi.nlm.nih.gov/35447092/>`_
+- Wang Zijun et al. **Analysis of memory B cells identifies conserved neutralizing epitopes on the N-terminal domain of variant SARS-Cov-2 spike proteins.**. *Immunity*. 2022. `PMID:35447092 <https://pubmed.ncbi.nlm.nih.gov/35447092/>`_
 
-- Sokal Aurélien et al. Analysis of mRNA vaccination-elicited RBD-specific memory B cells reveals strong but incomplete immune escape of the SARS-CoV-2 Omicron variant. *Immunity*. 2022. `PMID:35483354 <https://pubmed.ncbi.nlm.nih.gov/35483354/>`_
+- Sokal Aurélien et al. **Analysis of mRNA vaccination-elicited RBD-specific memory B cells reveals strong but incomplete immune escape of the SARS-CoV-2 Omicron variant.**. *Immunity*. 2022. `PMID:35483354 <https://pubmed.ncbi.nlm.nih.gov/35483354/>`_
 
-- Collora Jack A et al. Single-cell multiomics reveals persistence of HIV-1 in expanded cytotoxic T cell clones. *Immunity*. 2022. `PMID:35320704 <https://pubmed.ncbi.nlm.nih.gov/35320704/>`_
+- Collora Jack A et al. **Single-cell multiomics reveals persistence of HIV-1 in expanded cytotoxic T cell clones.**. *Immunity*. 2022. `PMID:35320704 <https://pubmed.ncbi.nlm.nih.gov/35320704/>`_
 
-- Rodriguez-Mogeda Carla et al. Breaching Brain Barriers: B Cell Migration in Multiple Sclerosis. *Biomolecules*. 2022. `PMID:35740925 <https://pubmed.ncbi.nlm.nih.gov/35740925/>`_
+- Rodriguez-Mogeda Carla et al. **Breaching Brain Barriers: B Cell Migration in Multiple Sclerosis.**. *Biomolecules*. 2022. `PMID:35740925 <https://pubmed.ncbi.nlm.nih.gov/35740925/>`_
 
-- Thomas Aline M et al. CEST MRI and MALDI imaging reveal metabolic alterations in the cervical lymph nodes of EAE mice. *Journal of neuroinflammation*. 2022. `PMID:35659311 <https://pubmed.ncbi.nlm.nih.gov/35659311/>`_
+- Thomas Aline M et al. **CEST MRI and MALDI imaging reveal metabolic alterations in the cervical lymph nodes of EAE mice.**. *Journal of neuroinflammation*. 2022. `PMID:35659311 <https://pubmed.ncbi.nlm.nih.gov/35659311/>`_
 
-- Suo Chenqu et al. Mapping the developing human immune system across organs. *Science (New York, N.Y.)*. 2022. `PMID:35549310 <https://pubmed.ncbi.nlm.nih.gov/35549310/>`_
+- Suo Chenqu et al. **Mapping the developing human immune system across organs.**. *Science (New York, N.Y.)*. 2022. `PMID:35549310 <https://pubmed.ncbi.nlm.nih.gov/35549310/>`_
 
-- Rickert Carolin A et al. Machine learning approaches for biomolecular, biophysical, and biomaterials research. *Biophysics reviews*. 2022. `PMID:38505413 <https://pubmed.ncbi.nlm.nih.gov/38505413/>`_
+- Rickert Carolin A et al. **Machine learning approaches for biomolecular, biophysical, and biomaterials research.**. *Biophysics reviews*. 2022. `PMID:38505413 <https://pubmed.ncbi.nlm.nih.gov/38505413/>`_
 
-- Lupo Cosimo et al. Learning the statistics and landscape of somatic mutation-induced insertions and deletions in antibodies. *PLoS computational biology*. 2022. `PMID:35653375 <https://pubmed.ncbi.nlm.nih.gov/35653375/>`_
+- Lupo Cosimo et al. **Learning the statistics and landscape of somatic mutation-induced insertions and deletions in antibodies.**. *PLoS computational biology*. 2022. `PMID:35653375 <https://pubmed.ncbi.nlm.nih.gov/35653375/>`_
 
-- Zhang Senxin et al. Antibody repertoire sequencing analysis. *Acta biochimica et biophysica Sinica*. 2022. `PMID:35713313 <https://pubmed.ncbi.nlm.nih.gov/35713313/>`_
+- Zhang Senxin et al. **Antibody repertoire sequencing analysis.**. *Acta biochimica et biophysica Sinica*. 2022. `PMID:35713313 <https://pubmed.ncbi.nlm.nih.gov/35713313/>`_
 
-- Sacks David et al. Complementary Roles of Antibody Heavy and Light Chain Somatic Hypermutation in Conferring Breadth and Potency to the HIV-1-Specific CAP256-VRC26 bNAb Lineage. *Journal of virology*. 2022. `PMID:35510865 <https://pubmed.ncbi.nlm.nih.gov/35510865/>`_
+- Sacks David et al. **Complementary Roles of Antibody Heavy and Light Chain Somatic Hypermutation in Conferring Breadth and Potency to the HIV-1-Specific CAP256-VRC26 bNAb Lineage.**. *Journal of virology*. 2022. `PMID:35510865 <https://pubmed.ncbi.nlm.nih.gov/35510865/>`_
 
-- Akama-Garren Elliot H et al. Lupus Susceptibility Loci Predispose Mice to Clonal Lymphocytic Responses and Myeloid Expansion. *Journal of immunology (Baltimore, Md. : 1950)*. 2022. `PMID:35477687 <https://pubmed.ncbi.nlm.nih.gov/35477687/>`_
+- Akama-Garren Elliot H et al. **Lupus Susceptibility Loci Predispose Mice to Clonal Lymphocytic Responses and Myeloid Expansion.**. *Journal of immunology (Baltimore, Md. : 1950)*. 2022. `PMID:35477687 <https://pubmed.ncbi.nlm.nih.gov/35477687/>`_
 
-- Xiao Xiao et al. Profiling of hMPV F-specific antibodies isolated from human memory B cells. *Nature communications*. 2022. `PMID:35538099 <https://pubmed.ncbi.nlm.nih.gov/35538099/>`_
+- Xiao Xiao et al. **Profiling of hMPV F-specific antibodies isolated from human memory B cells.**. *Nature communications*. 2022. `PMID:35538099 <https://pubmed.ncbi.nlm.nih.gov/35538099/>`_
 
-- Dale Gordon A et al. Somatic Diversification of Rearranged Antibody Gene Segments by Intra- and Interchromosomal Templated Mutagenesis. *Journal of immunology (Baltimore, Md. : 1950)*. 2022. `PMID:35418472 <https://pubmed.ncbi.nlm.nih.gov/35418472/>`_
+- Dale Gordon A et al. **Somatic Diversification of Rearranged Antibody Gene Segments by Intra- and Interchromosomal Templated Mutagenesis.**. *Journal of immunology (Baltimore, Md. : 1950)*. 2022. `PMID:35418472 <https://pubmed.ncbi.nlm.nih.gov/35418472/>`_
 
-- Chang Arthur J et al. Clonal expansion and markers of directed mutation of IGHV4-34 B cells in plasmablasts during Kawasaki disease. *Molecular immunology*. 2022. `PMID:35303530 <https://pubmed.ncbi.nlm.nih.gov/35303530/>`_
+- Chang Arthur J et al. **Clonal expansion and markers of directed mutation of IGHV4-34 B cells in plasmablasts during Kawasaki disease.**. *Molecular immunology*. 2022. `PMID:35303530 <https://pubmed.ncbi.nlm.nih.gov/35303530/>`_
 
-- Sacco Keith et al. Immunopathological signatures in multisystem inflammatory syndrome in children and pediatric COVID-19. *Nature medicine*. 2022. `PMID:35177862 <https://pubmed.ncbi.nlm.nih.gov/35177862/>`_
+- Sacco Keith et al. **Immunopathological signatures in multisystem inflammatory syndrome in children and pediatric COVID-19.**. *Nature medicine*. 2022. `PMID:35177862 <https://pubmed.ncbi.nlm.nih.gov/35177862/>`_
 
-- Welbourn Sarah et al. A neutralizing antibody target in early HIV-1 infection was recapitulated in rhesus macaques immunized with the transmitted/founder envelope sequence. *PLoS pathogens*. 2022. `PMID:35503780 <https://pubmed.ncbi.nlm.nih.gov/35503780/>`_
+- Welbourn Sarah et al. **A neutralizing antibody target in early HIV-1 infection was recapitulated in rhesus macaques immunized with the transmitted/founder envelope sequence.**. *PLoS pathogens*. 2022. `PMID:35503780 <https://pubmed.ncbi.nlm.nih.gov/35503780/>`_
 
-- Chi Xiangyang et al. Broadly neutralizing antibodies against Omicron-included SARS-CoV-2 variants induced by vaccination. *Signal transduction and targeted therapy*. 2022. `PMID:35478188 <https://pubmed.ncbi.nlm.nih.gov/35478188/>`_
+- Chi Xiangyang et al. **Broadly neutralizing antibodies against Omicron-included SARS-CoV-2 variants induced by vaccination.**. *Signal transduction and targeted therapy*. 2022. `PMID:35478188 <https://pubmed.ncbi.nlm.nih.gov/35478188/>`_
 
-- Hoehn Kenneth B et al. Phylogenetic analysis of migration, differentiation, and class switching in B cells. *PLoS computational biology*. 2022. `PMID:35468128 <https://pubmed.ncbi.nlm.nih.gov/35468128/>`_
+- Hoehn Kenneth B et al. **Phylogenetic analysis of migration, differentiation, and class switching in B cells.**. *PLoS computational biology*. 2022. `PMID:35468128 <https://pubmed.ncbi.nlm.nih.gov/35468128/>`_
 
-- Safonova Yana et al. Variations in antibody repertoires correlate with vaccine responses. *Genome research*. 2022. `PMID:35361626 <https://pubmed.ncbi.nlm.nih.gov/35361626/>`_
+- Safonova Yana et al. **Variations in antibody repertoires correlate with vaccine responses.**. *Genome research*. 2022. `PMID:35361626 <https://pubmed.ncbi.nlm.nih.gov/35361626/>`_
 
-- Conti Simone et al. Multiscale affinity maturation simulations to elicit broadly neutralizing antibodies against HIV. *PLoS computational biology*. 2022. `PMID:35442968 <https://pubmed.ncbi.nlm.nih.gov/35442968/>`_
+- Conti Simone et al. **Multiscale affinity maturation simulations to elicit broadly neutralizing antibodies against HIV.**. *PLoS computational biology*. 2022. `PMID:35442968 <https://pubmed.ncbi.nlm.nih.gov/35442968/>`_
 
-- Kim Wooseob et al. Germinal centre-driven maturation of B cell response to mRNA vaccination. *Nature*. 2022. `PMID:35168246 <https://pubmed.ncbi.nlm.nih.gov/35168246/>`_
+- Kim Wooseob et al. **Germinal centre-driven maturation of B cell response to mRNA vaccination.**. *Nature*. 2022. `PMID:35168246 <https://pubmed.ncbi.nlm.nih.gov/35168246/>`_
 
-- Husain-Krautter Sehba et al. Skewing of the antibody repertoire in cerebrospinal fluid B cells from healthy controls and patients with schizophrenia. *Behavioural brain research*. 2022. `PMID:35007628 <https://pubmed.ncbi.nlm.nih.gov/35007628/>`_
+- Husain-Krautter Sehba et al. **Skewing of the antibody repertoire in cerebrospinal fluid B cells from healthy controls and patients with schizophrenia.**. *Behavioural brain research*. 2022. `PMID:35007628 <https://pubmed.ncbi.nlm.nih.gov/35007628/>`_
 
-- Xu Qin et al. Robust, persistent adaptive immune responses to SARS-CoV-2 in the oropharyngeal lymphoid tissue of children. *Research square*. 2022. `PMID:35350206 <https://pubmed.ncbi.nlm.nih.gov/35350206/>`_
+- Xu Qin et al. **Robust, persistent adaptive immune responses to SARS-CoV-2 in the oropharyngeal lymphoid tissue of children.**. *Research square*. 2022. `PMID:35350206 <https://pubmed.ncbi.nlm.nih.gov/35350206/>`_
 
-- Kwon Dong-Il et al. Homeostatic serum IgE is secreted by plasma cells in the thymus and enhances mast cell survival. *Nature communications*. 2022. `PMID:35301301 <https://pubmed.ncbi.nlm.nih.gov/35301301/>`_
+- Kwon Dong-Il et al. **Homeostatic serum IgE is secreted by plasma cells in the thymus and enhances mast cell survival.**. *Nature communications*. 2022. `PMID:35301301 <https://pubmed.ncbi.nlm.nih.gov/35301301/>`_
 
-- Ahmed Shanzeh M et al. Accumulation of meningeal lymphocytes correlates with white matter lesion activity in progressive multiple sclerosis. *JCI insight*. 2022. `PMID:35104246 <https://pubmed.ncbi.nlm.nih.gov/35104246/>`_
+- Ahmed Shanzeh M et al. **Accumulation of meningeal lymphocytes correlates with white matter lesion activity in progressive multiple sclerosis.**. *JCI insight*. 2022. `PMID:35104246 <https://pubmed.ncbi.nlm.nih.gov/35104246/>`_
 
-- Pauken Kristen E et al. TCR-sequencing in cancer and autoimmunity: barcodes and beyond. *Trends in immunology*. 2022. `PMID:35090787 <https://pubmed.ncbi.nlm.nih.gov/35090787/>`_
+- Pauken Kristen E et al. **TCR-sequencing in cancer and autoimmunity: barcodes and beyond.**. *Trends in immunology*. 2022. `PMID:35090787 <https://pubmed.ncbi.nlm.nih.gov/35090787/>`_
 
-- Kotagiri Prasanti et al. B cell receptor repertoire kinetics after SARS-CoV-2 infection and vaccination. *Cell reports*. 2022. `PMID:35143756 <https://pubmed.ncbi.nlm.nih.gov/35143756/>`_
+- Kotagiri Prasanti et al. **B cell receptor repertoire kinetics after SARS-CoV-2 infection and vaccination.**. *Cell reports*. 2022. `PMID:35143756 <https://pubmed.ncbi.nlm.nih.gov/35143756/>`_
 
-- Weber Timm et al. Analysis of antibodies from HCV elite neutralizers identifies genetic determinants of broad neutralization. *Immunity*. 2022. `PMID:34990590 <https://pubmed.ncbi.nlm.nih.gov/34990590/>`_
+- Weber Timm et al. **Analysis of antibodies from HCV elite neutralizers identifies genetic determinants of broad neutralization.**. *Immunity*. 2022. `PMID:34990590 <https://pubmed.ncbi.nlm.nih.gov/34990590/>`_
 
-- Song Wenzhi et al. Development of Tbet- and CD11c-expressing B cells in a viral infection requires T follicular helper cells outside of germinal centers. *Immunity*. 2022. `PMID:35090581 <https://pubmed.ncbi.nlm.nih.gov/35090581/>`_
+- Song Wenzhi et al. **Development of Tbet- and CD11c-expressing B cells in a viral infection requires T follicular helper cells outside of germinal centers.**. *Immunity*. 2022. `PMID:35090581 <https://pubmed.ncbi.nlm.nih.gov/35090581/>`_
 
-- Bradshaw William John et al. Extensive age-dependent loss of antibody diversity in naturally short-lived turquoise killifish. *eLife*. 2022. `PMID:35129436 <https://pubmed.ncbi.nlm.nih.gov/35129436/>`_
+- Bradshaw William John et al. **Extensive age-dependent loss of antibody diversity in naturally short-lived turquoise killifish.**. *eLife*. 2022. `PMID:35129436 <https://pubmed.ncbi.nlm.nih.gov/35129436/>`_
 
-- Chen Jennifer S et al. High-affinity, neutralizing antibodies to SARS-CoV-2 can be made without T follicular helper cells. *Science immunology*. 2022. `PMID:34914544 <https://pubmed.ncbi.nlm.nih.gov/34914544/>`_
+- Chen Jennifer S et al. **High-affinity, neutralizing antibodies to SARS-CoV-2 can be made without T follicular helper cells.**. *Science immunology*. 2022. `PMID:34914544 <https://pubmed.ncbi.nlm.nih.gov/34914544/>`_
 
-- Wang Zijun et al. Conserved Neutralizing Epitopes on the N-Terminal Domain of Variant SARS-CoV-2 Spike Proteins. *bioRxiv : the preprint server for biology*. 2022. `PMID:35132412 <https://pubmed.ncbi.nlm.nih.gov/35132412/>`_
+- Wang Zijun et al. **Conserved Neutralizing Epitopes on the N-Terminal Domain of Variant SARS-CoV-2 Spike Proteins.**. *bioRxiv : the preprint server for biology*. 2022. `PMID:35132412 <https://pubmed.ncbi.nlm.nih.gov/35132412/>`_
 
-- Andrews Sarah F et al. A single residue in influenza virus H2 hemagglutinin enhances the breadth of the B cell response elicited by H2 vaccination. *Nature medicine*. 2022. `PMID:35115707 <https://pubmed.ncbi.nlm.nih.gov/35115707/>`_
+- Andrews Sarah F et al. **A single residue in influenza virus H2 hemagglutinin enhances the breadth of the B cell response elicited by H2 vaccination.**. *Nature medicine*. 2022. `PMID:35115707 <https://pubmed.ncbi.nlm.nih.gov/35115707/>`_
 
-- Tang Catherine et al. Deep learning model of somatic hypermutation reveals importance of sequence context beyond hotspot targeting. *iScience*. 2022. `PMID:35036866 <https://pubmed.ncbi.nlm.nih.gov/35036866/>`_
+- Tang Catherine et al. **Deep learning model of somatic hypermutation reveals importance of sequence context beyond hotspot targeting.**. *iScience*. 2022. `PMID:35036866 <https://pubmed.ncbi.nlm.nih.gov/35036866/>`_
 
-- Unterman Avraham et al. Single-cell multi-omics reveals dyssynchrony of the innate and adaptive immune system in progressive COVID-19. *Nature communications*. 2022. `PMID:35064122 <https://pubmed.ncbi.nlm.nih.gov/35064122/>`_
+- Unterman Avraham et al. **Single-cell multi-omics reveals dyssynchrony of the innate and adaptive immune system in progressive COVID-19.**. *Nature communications*. 2022. `PMID:35064122 <https://pubmed.ncbi.nlm.nih.gov/35064122/>`_
 
-- Antanasijevic Aleksandar et al. From structure to sequence: Antibody discovery using cryoEM. *Science advances*. 2022. `PMID:35044813 <https://pubmed.ncbi.nlm.nih.gov/35044813/>`_
+- Antanasijevic Aleksandar et al. **From structure to sequence: Antibody discovery using cryoEM.**. *Science advances*. 2022. `PMID:35044813 <https://pubmed.ncbi.nlm.nih.gov/35044813/>`_
 
-- Murji Amyn A et al. Sequence and functional characterization of a public HIV-specific antibody clonotype. *iScience*. 2022. `PMID:34984325 <https://pubmed.ncbi.nlm.nih.gov/34984325/>`_
+- Murji Amyn A et al. **Sequence and functional characterization of a public HIV-specific antibody clonotype.**. *iScience*. 2022. `PMID:34984325 <https://pubmed.ncbi.nlm.nih.gov/34984325/>`_
 
-- Ehling Roy A et al. SARS-CoV-2 reactive and neutralizing antibodies discovered by single-cell sequencing of plasma cells and mammalian display. *Cell reports*. 2022. `PMID:34998467 <https://pubmed.ncbi.nlm.nih.gov/34998467/>`_
+- Ehling Roy A et al. **SARS-CoV-2 reactive and neutralizing antibodies discovered by single-cell sequencing of plasma cells and mammalian display.**. *Cell reports*. 2022. `PMID:34998467 <https://pubmed.ncbi.nlm.nih.gov/34998467/>`_
 
-- Omer Aviv et al. T cell receptor beta germline variability is revealed by inference from repertoire data. *Genome medicine*. 2022. `PMID:34991709 <https://pubmed.ncbi.nlm.nih.gov/34991709/>`_
+- Omer Aviv et al. **T cell receptor beta germline variability is revealed by inference from repertoire data.**. *Genome medicine*. 2022. `PMID:34991709 <https://pubmed.ncbi.nlm.nih.gov/34991709/>`_
 
-- Vetter Julia et al. ImmunoDataAnalyzer: a bioinformatics pipeline for processing barcoded and UMI tagged immunological NGS data. *BMC bioinformatics*. 2022. `PMID:34991455 <https://pubmed.ncbi.nlm.nih.gov/34991455/>`_
+- Vetter Julia et al. **ImmunoDataAnalyzer: a bioinformatics pipeline for processing barcoded and UMI tagged immunological NGS data.**. *BMC bioinformatics*. 2022. `PMID:34991455 <https://pubmed.ncbi.nlm.nih.gov/34991455/>`_
 
-- Zheng Zihan et al. Insights Gained and Future Outlook From scRNAseq Studies in Autoimmune Rheumatic Diseases. *Frontiers in immunology*. 2022. `PMID:35251048 <https://pubmed.ncbi.nlm.nih.gov/35251048/>`_
+- Zheng Zihan et al. **Insights Gained and Future Outlook From scRNAseq Studies in Autoimmune Rheumatic Diseases.**. *Frontiers in immunology*. 2022. `PMID:35251048 <https://pubmed.ncbi.nlm.nih.gov/35251048/>`_
 
-- Di Pietro Andrea et al. Targeting BMI-1 in B cells restores effective humoral immune responses and controls chronic viral infection. *Nature immunology*. 2022. `PMID:34845392 <https://pubmed.ncbi.nlm.nih.gov/34845392/>`_
+- Di Pietro Andrea et al. **Targeting BMI-1 in B cells restores effective humoral immune responses and controls chronic viral infection.**. *Nature immunology*. 2022. `PMID:34845392 <https://pubmed.ncbi.nlm.nih.gov/34845392/>`_
 
-- Zhang Chao et al. A scalable model for simulating multi-round antibody evolution and benchmarking of clonal tree reconstruction methods. *Frontiers in immunology*. 2022. `PMID:36618367 <https://pubmed.ncbi.nlm.nih.gov/36618367/>`_
+- Zhang Chao et al. **A scalable model for simulating multi-round antibody evolution and benchmarking of clonal tree reconstruction methods.**. *Frontiers in immunology*. 2022. `PMID:36618367 <https://pubmed.ncbi.nlm.nih.gov/36618367/>`_
 
-- Waly Doaa et al. Immunoglobulin VDJ repertoires reveal hallmarks of germinal centers in unique cell clusters isolated from zebrafish (Danio rerio) lymphoid tissues. *Frontiers in immunology*. 2022. `PMID:36569890 <https://pubmed.ncbi.nlm.nih.gov/36569890/>`_
+- Waly Doaa et al. **Immunoglobulin VDJ repertoires reveal hallmarks of germinal centers in unique cell clusters isolated from zebrafish (Danio rerio) lymphoid tissues.**. *Frontiers in immunology*. 2022. `PMID:36569890 <https://pubmed.ncbi.nlm.nih.gov/36569890/>`_
 
-- Phetsouphanh Chansavath et al. High titre neutralizing antibodies in response to SARS-CoV-2 infection require RBD-specific CD4 T cells that include proliferative memory cells. *Frontiers in immunology*. 2022. `PMID:36544780 <https://pubmed.ncbi.nlm.nih.gov/36544780/>`_
+- Phetsouphanh Chansavath et al. **High titre neutralizing antibodies in response to SARS-CoV-2 infection require RBD-specific CD4 T cells that include proliferative memory cells.**. *Frontiers in immunology*. 2022. `PMID:36544780 <https://pubmed.ncbi.nlm.nih.gov/36544780/>`_
 
-- Neuman Hadas et al. IgTreeZ, A Toolkit for Immunoglobulin Gene Lineage Tree-Based Analysis, Reveals CDR3s Are Crucial for Selection Analysis. *Frontiers in immunology*. 2022. `PMID:36389731 <https://pubmed.ncbi.nlm.nih.gov/36389731/>`_
+- Neuman Hadas et al. **IgTreeZ, A Toolkit for Immunoglobulin Gene Lineage Tree-Based Analysis, Reveals CDR3s Are Crucial for Selection Analysis.**. *Frontiers in immunology*. 2022. `PMID:36389731 <https://pubmed.ncbi.nlm.nih.gov/36389731/>`_
 
-- Xu Zichang et al. Advances in antibody discovery from human BCR repertoires. *Frontiers in bioinformatics*. 2022. `PMID:36338807 <https://pubmed.ncbi.nlm.nih.gov/36338807/>`_
+- Xu Zichang et al. **Advances in antibody discovery from human BCR repertoires.**. *Frontiers in bioinformatics*. 2022. `PMID:36338807 <https://pubmed.ncbi.nlm.nih.gov/36338807/>`_
 
-- James Charlotte A et al. Durable Expansion of TCR-δ Meta-Clonotypes After BCG Revaccination in Humans. *Frontiers in immunology*. 2022. `PMID:35432299 <https://pubmed.ncbi.nlm.nih.gov/35432299/>`_
+- James Charlotte A et al. **Durable Expansion of TCR-δ Meta-Clonotypes After BCG Revaccination in Humans.**. *Frontiers in immunology*. 2022. `PMID:35432299 <https://pubmed.ncbi.nlm.nih.gov/35432299/>`_
 
-- Apert Cécile et al. IL-2 and IL-15 drive intrathymic development of distinct periphery-seeding CD4+Foxp3+ regulatory T lymphocytes. *Frontiers in immunology*. 2022. `PMID:36159793 <https://pubmed.ncbi.nlm.nih.gov/36159793/>`_
+- Apert Cécile et al. **IL-2 and IL-15 drive intrathymic development of distinct periphery-seeding CD4+Foxp3+ regulatory T lymphocytes.**. *Frontiers in immunology*. 2022. `PMID:36159793 <https://pubmed.ncbi.nlm.nih.gov/36159793/>`_
 
-- Cortegano Isabel et al. Age-dependent nasal immune responses in non-hospitalized bronchiolitis children. *Frontiers in immunology*. 2022. `PMID:36561744 <https://pubmed.ncbi.nlm.nih.gov/36561744/>`_
+- Cortegano Isabel et al. **Age-dependent nasal immune responses in non-hospitalized bronchiolitis children.**. *Frontiers in immunology*. 2022. `PMID:36561744 <https://pubmed.ncbi.nlm.nih.gov/36561744/>`_
 
-- Bagnara Davide et al. Characterizing Features of Human Circulating B Cells Carrying CLL-Like Stereotyped Immunoglobulin Rearrangements. *Frontiers in oncology*. 2022. `PMID:35837088 <https://pubmed.ncbi.nlm.nih.gov/35837088/>`_
+- Bagnara Davide et al. **Characterizing Features of Human Circulating B Cells Carrying CLL-Like Stereotyped Immunoglobulin Rearrangements.**. *Frontiers in oncology*. 2022. `PMID:35837088 <https://pubmed.ncbi.nlm.nih.gov/35837088/>`_
 
-- Wang Pingping et al. Global Characterization of Peripheral B Cells in Parkinson's Disease by Single-Cell RNA and BCR Sequencing. *Frontiers in immunology*. 2022. `PMID:35250991 <https://pubmed.ncbi.nlm.nih.gov/35250991/>`_
+- Wang Pingping et al. **Global Characterization of Peripheral B Cells in Parkinson's Disease by Single-Cell RNA and BCR Sequencing.**. *Frontiers in immunology*. 2022. `PMID:35250991 <https://pubmed.ncbi.nlm.nih.gov/35250991/>`_
 
-- Jackson Katherine J L et al. A BALB/c IGHV Reference Set, Defined by Haplotype Analysis of Long-Read VDJ-C Sequences From F1 (BALB/c x C57BL/6) Mice. *Frontiers in immunology*. 2022. `PMID:35720344 <https://pubmed.ncbi.nlm.nih.gov/35720344/>`_
+- Jackson Katherine J L et al. **A BALB/c IGHV Reference Set, Defined by Haplotype Analysis of Long-Read VDJ-C Sequences From F1 (BALB/c x C57BL/6) Mice.**. *Frontiers in immunology*. 2022. `PMID:35720344 <https://pubmed.ncbi.nlm.nih.gov/35720344/>`_
 
-- Christley Scott et al. Immune Repertoire Analysis on High-Performance Computing Using VDJServer V1: A Method by the AIRR Community. *Methods in molecular biology (Clifton, N.J.)*. 2022. `PMID:35622338 <https://pubmed.ncbi.nlm.nih.gov/35622338/>`_
+- Christley Scott et al. **Immune Repertoire Analysis on High-Performance Computing Using VDJServer V1: A Method by the AIRR Community.**. *Methods in molecular biology (Clifton, N.J.)*. 2022. `PMID:35622338 <https://pubmed.ncbi.nlm.nih.gov/35622338/>`_
 
-- Gupta Nidhi et al. Bulk Sequencing from mRNA with UMI for Evaluation of B-Cell Isotype and Clonal Evolution: A Method by the AIRR Community. *Methods in molecular biology (Clifton, N.J.)*. 2022. `PMID:35622335 <https://pubmed.ncbi.nlm.nih.gov/35622335/>`_
+- Gupta Nidhi et al. **Bulk Sequencing from mRNA with UMI for Evaluation of B-Cell Isotype and Clonal Evolution: A Method by the AIRR Community.**. *Methods in molecular biology (Clifton, N.J.)*. 2022. `PMID:35622335 <https://pubmed.ncbi.nlm.nih.gov/35622335/>`_
 
-- Rosenfeld Aaron M et al. Bulk gDNA Sequencing of Antibody Heavy-Chain Gene Rearrangements for Detection and Analysis of B-Cell Clone Distribution: A Method by the AIRR Community. *Methods in molecular biology (Clifton, N.J.)*. 2022. `PMID:35622334 <https://pubmed.ncbi.nlm.nih.gov/35622334/>`_
+- Rosenfeld Aaron M et al. **Bulk gDNA Sequencing of Antibody Heavy-Chain Gene Rearrangements for Detection and Analysis of B-Cell Clone Distribution: A Method by the AIRR Community.**. *Methods in molecular biology (Clifton, N.J.)*. 2022. `PMID:35622334 <https://pubmed.ncbi.nlm.nih.gov/35622334/>`_
 
-- Babrak Lmar et al. Adaptive Immune Receptor Repertoire (AIRR) Community Guide to TR and IG Gene Annotation. *Methods in molecular biology (Clifton, N.J.)*. 2022. `PMID:35622332 <https://pubmed.ncbi.nlm.nih.gov/35622332/>`_
+- Babrak Lmar et al. **Adaptive Immune Receptor Repertoire (AIRR) Community Guide to TR and IG Gene Annotation.**. *Methods in molecular biology (Clifton, N.J.)*. 2022. `PMID:35622332 <https://pubmed.ncbi.nlm.nih.gov/35622332/>`_
 
-- Vaidehi Narayanan Haripriya et al. From Antibody Repertoires to Cell-Cell Interactions to Molecular Networks: Bridging Scales in the Germinal Center. *Frontiers in immunology*. 2022. `PMID:35603162 <https://pubmed.ncbi.nlm.nih.gov/35603162/>`_
+- Vaidehi Narayanan Haripriya et al. **From Antibody Repertoires to Cell-Cell Interactions to Molecular Networks: Bridging Scales in the Germinal Center.**. *Frontiers in immunology*. 2022. `PMID:35603162 <https://pubmed.ncbi.nlm.nih.gov/35603162/>`_
 
-- Koers Jana et al. CD45RB Glycosylation and Ig Isotype Define Maturation of Functionally Distinct B Cell Subsets in Human Peripheral Blood. *Frontiers in immunology*. 2022. `PMID:35572548 <https://pubmed.ncbi.nlm.nih.gov/35572548/>`_
+- Koers Jana et al. **CD45RB Glycosylation and Ig Isotype Define Maturation of Functionally Distinct B Cell Subsets in Human Peripheral Blood.**. *Frontiers in immunology*. 2022. `PMID:35572548 <https://pubmed.ncbi.nlm.nih.gov/35572548/>`_
 
-- Rosenfeld Ronit et al. Centaur antibodies: Engineered chimeric equine-human recombinant antibodies. *Frontiers in immunology*. 2022. `PMID:36059507 <https://pubmed.ncbi.nlm.nih.gov/36059507/>`_
+- Rosenfeld Ronit et al. **Centaur antibodies: Engineered chimeric equine-human recombinant antibodies.**. *Frontiers in immunology*. 2022. `PMID:36059507 <https://pubmed.ncbi.nlm.nih.gov/36059507/>`_
 
-- van Schouwenburg Pauline A et al. NGS-Based B-Cell Receptor Repertoire AnalysisRepertoire analyses in the Context of Inborn Errors of Immunity. *Methods in molecular biology (Clifton, N.J.)*. 2022. `PMID:35622327 <https://pubmed.ncbi.nlm.nih.gov/35622327/>`_
+- van Schouwenburg Pauline A et al. **NGS-Based B-Cell Receptor Repertoire AnalysisRepertoire analyses in the Context of Inborn Errors of Immunity.**. *Methods in molecular biology (Clifton, N.J.)*. 2022. `PMID:35622327 <https://pubmed.ncbi.nlm.nih.gov/35622327/>`_
 
-- Marquez Susanna et al. Adaptive Immune Receptor Repertoire (AIRR) Community Guide to Repertoire Analysis. *Methods in molecular biology (Clifton, N.J.)*. 2022. `PMID:35622333 <https://pubmed.ncbi.nlm.nih.gov/35622333/>`_
+- Marquez Susanna et al. **Adaptive Immune Receptor Repertoire (AIRR) Community Guide to Repertoire Analysis.**. *Methods in molecular biology (Clifton, N.J.)*. 2022. `PMID:35622333 <https://pubmed.ncbi.nlm.nih.gov/35622333/>`_
 
-- Wang Xiujiao et al. Brain-Reactive Antibodies are Potential Biomarkers for Evaluating Therapeutic Efficacy in NPSLE Patients. *Neuropsychiatric disease and treatment*. 2022. `PMID:35813610 <https://pubmed.ncbi.nlm.nih.gov/35813610/>`_
+- Wang Xiujiao et al. **Brain-Reactive Antibodies are Potential Biomarkers for Evaluating Therapeutic Efficacy in NPSLE Patients.**. *Neuropsychiatric disease and treatment*. 2022. `PMID:35813610 <https://pubmed.ncbi.nlm.nih.gov/35813610/>`_
 
-- Kaduk Mateusz et al. Addressing IGHV Gene Structural Diversity Enhances Immunoglobulin Repertoire Analysis: Lessons From Rhesus Macaque. *Frontiers in immunology*. 2022. `PMID:35419009 <https://pubmed.ncbi.nlm.nih.gov/35419009/>`_
+- Kaduk Mateusz et al. **Addressing IGHV Gene Structural Diversity Enhances Immunoglobulin Repertoire Analysis: Lessons From Rhesus Macaque.**. *Frontiers in immunology*. 2022. `PMID:35419009 <https://pubmed.ncbi.nlm.nih.gov/35419009/>`_
 
-- Lin Mao-Jan et al. Profiling genes encoding the adaptive immune receptor repertoire with gAIRR Suite. *Frontiers in immunology*. 2022. `PMID:36159868 <https://pubmed.ncbi.nlm.nih.gov/36159868/>`_
+- Lin Mao-Jan et al. **Profiling genes encoding the adaptive immune receptor repertoire with gAIRR Suite.**. *Frontiers in immunology*. 2022. `PMID:36159868 <https://pubmed.ncbi.nlm.nih.gov/36159868/>`_
 
-- Michaeli Miri et al. Mutational patterns along different evolution paths of follicular lymphoma. *Frontiers in oncology*. 2022. `PMID:36439408 <https://pubmed.ncbi.nlm.nih.gov/36439408/>`_
+- Michaeli Miri et al. **Mutational patterns along different evolution paths of follicular lymphoma.**. *Frontiers in oncology*. 2022. `PMID:36439408 <https://pubmed.ncbi.nlm.nih.gov/36439408/>`_
 
-- Linnik Janina et al. Model-based inference of neutralizing antibody avidities against influenza virus. *PLoS pathogens*. 2022. `PMID:35100312 <https://pubmed.ncbi.nlm.nih.gov/35100312/>`_
+- Linnik Janina et al. **Model-based inference of neutralizing antibody avidities against influenza virus.**. *PLoS pathogens*. 2022. `PMID:35100312 <https://pubmed.ncbi.nlm.nih.gov/35100312/>`_
 
-- Laidlaw Brian J et al. The germinal centre B cell response to SARS-CoV-2. *Nature reviews. Immunology*. 2022. `PMID:34873279 <https://pubmed.ncbi.nlm.nih.gov/34873279/>`_
+- Laidlaw Brian J et al. **The germinal centre B cell response to SARS-CoV-2.**. *Nature reviews. Immunology*. 2022. `PMID:34873279 <https://pubmed.ncbi.nlm.nih.gov/34873279/>`_
 
-- Lindeman Ida et al. Single-cell approaches to dissect adaptive immune responses involved in autoimmunity: the case of celiac disease. *Mucosal immunology*. 2022. `PMID:34531547 <https://pubmed.ncbi.nlm.nih.gov/34531547/>`_
+- Lindeman Ida et al. **Single-cell approaches to dissect adaptive immune responses involved in autoimmunity: the case of celiac disease.**. *Mucosal immunology*. 2022. `PMID:34531547 <https://pubmed.ncbi.nlm.nih.gov/34531547/>`_
 
-- Salvador Florent et al. A Spontaneous Model of Experimental Autoimmune Encephalomyelitis Provides Evidence of MOG-Specific B Cell Recruitment and Clonal Expansion. *Frontiers in immunology*. 2022. `PMID:35185870 <https://pubmed.ncbi.nlm.nih.gov/35185870/>`_
+- Salvador Florent et al. **A Spontaneous Model of Experimental Autoimmune Encephalomyelitis Provides Evidence of MOG-Specific B Cell Recruitment and Clonal Expansion.**. *Frontiers in immunology*. 2022. `PMID:35185870 <https://pubmed.ncbi.nlm.nih.gov/35185870/>`_
 
-- Stewart Alexander et al. Pandemic, Epidemic, Endemic: B Cell Repertoire Analysis Reveals Unique Anti-Viral Responses to SARS-CoV-2, Ebola and Respiratory Syncytial Virus. *Frontiers in immunology*. 2022. `PMID:35592326 <https://pubmed.ncbi.nlm.nih.gov/35592326/>`_
+- Stewart Alexander et al. **Pandemic, Epidemic, Endemic: B Cell Repertoire Analysis Reveals Unique Anti-Viral Responses to SARS-CoV-2, Ebola and Respiratory Syncytial Virus.**. *Frontiers in immunology*. 2022. `PMID:35592326 <https://pubmed.ncbi.nlm.nih.gov/35592326/>`_
 
-- Seals Malik R et al. Contribution of Dysregulated B-Cells and IgE Antibody Responses to Multiple Sclerosis. *Frontiers in immunology*. 2022. `PMID:35784370 <https://pubmed.ncbi.nlm.nih.gov/35784370/>`_
+- Seals Malik R et al. **Contribution of Dysregulated B-Cells and IgE Antibody Responses to Multiple Sclerosis.**. *Frontiers in immunology*. 2022. `PMID:35784370 <https://pubmed.ncbi.nlm.nih.gov/35784370/>`_
 
-- Lee Taeseob et al. Acute Surge of Atypical Memory and Plasma B-Cell Subsets Driven by an Extrafollicular Response in Severe COVID-19. *Frontiers in cellular and infection microbiology*. 2022. `PMID:35899045 <https://pubmed.ncbi.nlm.nih.gov/35899045/>`_
+- Lee Taeseob et al. **Acute Surge of Atypical Memory and Plasma B-Cell Subsets Driven by an Extrafollicular Response in Severe COVID-19.**. *Frontiers in cellular and infection microbiology*. 2022. `PMID:35899045 <https://pubmed.ncbi.nlm.nih.gov/35899045/>`_
 
-- Liu Xin-Yu et al. Kidney microbiota dysbiosis contributes to the development of hypertension. *Gut microbes*. 2022. `PMID:36369946 <https://pubmed.ncbi.nlm.nih.gov/36369946/>`_
+- Liu Xin-Yu et al. **Kidney microbiota dysbiosis contributes to the development of hypertension.**. *Gut microbes*. 2022. `PMID:36369946 <https://pubmed.ncbi.nlm.nih.gov/36369946/>`_
 
-- Cullen Jonah N et al. Development and application of a next-generation sequencing protocol and bioinformatics pipeline for the comprehensive analysis of the canine immunoglobulin repertoire. *PloS one*. 2022. `PMID:35802654 <https://pubmed.ncbi.nlm.nih.gov/35802654/>`_
+- Cullen Jonah N et al. **Development and application of a next-generation sequencing protocol and bioinformatics pipeline for the comprehensive analysis of the canine immunoglobulin repertoire.**. *PloS one*. 2022. `PMID:35802654 <https://pubmed.ncbi.nlm.nih.gov/35802654/>`_
 
-- Joshi Chaitanya et al. CSF-Derived CD4+ T-Cell Diversity Is Reduced in Patients With Alzheimer Clinical Syndrome. *Neurology(R) neuroimmunology & neuroinflammation*. 2022. `PMID:34848502 <https://pubmed.ncbi.nlm.nih.gov/34848502/>`_
+- Joshi Chaitanya et al. **CSF-Derived CD4+ T-Cell Diversity Is Reduced in Patients With Alzheimer Clinical Syndrome.**. *Neurology(R) neuroimmunology & neuroinflammation*. 2022. `PMID:34848502 <https://pubmed.ncbi.nlm.nih.gov/34848502/>`_
 
-- Han Jiami et al. Echidna: integrated simulations of single-cell immune receptor repertoires and transcriptomes. *Bioinformatics advances*. 2022. `PMID:36699357 <https://pubmed.ncbi.nlm.nih.gov/36699357/>`_
+- Han Jiami et al. **Echidna: integrated simulations of single-cell immune receptor repertoires and transcriptomes.**. *Bioinformatics advances*. 2022. `PMID:36699357 <https://pubmed.ncbi.nlm.nih.gov/36699357/>`_
 
-- Otto Ferdinand et al. Role and Relevance of Cerebrospinal Fluid Cells in Diagnostics and Research: State-of-the-Art and Underutilized Opportunities. *Diagnostics (Basel, Switzerland)*. 2021. `PMID:35054246 <https://pubmed.ncbi.nlm.nih.gov/35054246/>`_
+- Otto Ferdinand et al. **Role and Relevance of Cerebrospinal Fluid Cells in Diagnostics and Research: State-of-the-Art and Underutilized Opportunities.**. *Diagnostics (Basel, Switzerland)*. 2021. `PMID:35054246 <https://pubmed.ncbi.nlm.nih.gov/35054246/>`_
 
-- Arunkumar Mahima et al. T-Cell Receptor Repertoire Analysis with Computational Tools-An Immunologist's Perspective. *Cells*. 2021. `PMID:34944090 <https://pubmed.ncbi.nlm.nih.gov/34944090/>`_
+- Arunkumar Mahima et al. **T-Cell Receptor Repertoire Analysis with Computational Tools-An Immunologist's Perspective.**. *Cells*. 2021. `PMID:34944090 <https://pubmed.ncbi.nlm.nih.gov/34944090/>`_
 
-- Sokal Aurélien et al. mRNA vaccination of naive and COVID-19-recovered individuals elicits potent memory B cells that recognize SARS-CoV-2 variants. *Immunity*. 2021. `PMID:34614412 <https://pubmed.ncbi.nlm.nih.gov/34614412/>`_
+- Sokal Aurélien et al. **mRNA vaccination of naive and COVID-19-recovered individuals elicits potent memory B cells that recognize SARS-CoV-2 variants.**. *Immunity*. 2021. `PMID:34614412 <https://pubmed.ncbi.nlm.nih.gov/34614412/>`_
 
-- Leich Ellen et al. Follicular lymphoma subgroups with and without t(14;18) differ in their N-glycosylation pattern and IGHV usage. *Blood advances*. 2021. `PMID:34614504 <https://pubmed.ncbi.nlm.nih.gov/34614504/>`_
+- Leich Ellen et al. **Follicular lymphoma subgroups with and without t(14;18) differ in their N-glycosylation pattern and IGHV usage.**. *Blood advances*. 2021. `PMID:34614504 <https://pubmed.ncbi.nlm.nih.gov/34614504/>`_
 
-- Burnett Deborah L et al. Immunizations with diverse sarbecovirus receptor-binding domains elicit SARS-CoV-2 neutralizing antibodies against a conserved site of vulnerability. *Immunity*. 2021. `PMID:34788600 <https://pubmed.ncbi.nlm.nih.gov/34788600/>`_
+- Burnett Deborah L et al. **Immunizations with diverse sarbecovirus receptor-binding domains elicit SARS-CoV-2 neutralizing antibodies against a conserved site of vulnerability.**. *Immunity*. 2021. `PMID:34788600 <https://pubmed.ncbi.nlm.nih.gov/34788600/>`_
 
-- Alameh Mohamad-Gabriel et al. Lipid nanoparticles enhance the efficacy of mRNA and protein subunit vaccines by inducing robust T follicular helper cell and humoral responses. *Immunity*. 2021. `PMID:34852217 <https://pubmed.ncbi.nlm.nih.gov/34852217/>`_
+- Alameh Mohamad-Gabriel et al. **Lipid nanoparticles enhance the efficacy of mRNA and protein subunit vaccines by inducing robust T follicular helper cell and humoral responses.**. *Immunity*. 2021. `PMID:34852217 <https://pubmed.ncbi.nlm.nih.gov/34852217/>`_
 
-- Shinnakasu Ryo et al. Glycan engineering of the SARS-CoV-2 receptor-binding domain elicits cross-neutralizing antibodies for SARS-related viruses. *The Journal of experimental medicine*. 2021. `PMID:34623376 <https://pubmed.ncbi.nlm.nih.gov/34623376/>`_
+- Shinnakasu Ryo et al. **Glycan engineering of the SARS-CoV-2 receptor-binding domain elicits cross-neutralizing antibodies for SARS-related viruses.**. *The Journal of experimental medicine*. 2021. `PMID:34623376 <https://pubmed.ncbi.nlm.nih.gov/34623376/>`_
 
-- Goel Rishi R et al. mRNA vaccines induce durable immune memory to SARS-CoV-2 and variants of concern. *Science (New York, N.Y.)*. 2021. `PMID:34648302 <https://pubmed.ncbi.nlm.nih.gov/34648302/>`_
+- Goel Rishi R et al. **mRNA vaccines induce durable immune memory to SARS-CoV-2 and variants of concern.**. *Science (New York, N.Y.)*. 2021. `PMID:34648302 <https://pubmed.ncbi.nlm.nih.gov/34648302/>`_
 
-- Dhande Isha S et al. Emerging Insights Into Chronic Renal Disease Pathogenesis in Hypertension From Human and Animal Genomic Studies. *Hypertension (Dallas, Tex. : 1979)*. 2021. `PMID:34757770 <https://pubmed.ncbi.nlm.nih.gov/34757770/>`_
+- Dhande Isha S et al. **Emerging Insights Into Chronic Renal Disease Pathogenesis in Hypertension From Human and Animal Genomic Studies.**. *Hypertension (Dallas, Tex. : 1979)*. 2021. `PMID:34757770 <https://pubmed.ncbi.nlm.nih.gov/34757770/>`_
 
-- Collins Andrew M et al. Commentary on Population matched (pm) germline allelic variants of immunoglobulin (IG) loci: relevance in infectious diseases and vaccination studies in human populations. *Genes and immunity*. 2021. `PMID:34667305 <https://pubmed.ncbi.nlm.nih.gov/34667305/>`_
+- Collins Andrew M et al. **Commentary on Population matched (pm) germline allelic variants of immunoglobulin (IG) loci: relevance in infectious diseases and vaccination studies in human populations.**. *Genes and immunity*. 2021. `PMID:34667305 <https://pubmed.ncbi.nlm.nih.gov/34667305/>`_
 
-- Morales-Núñez José Javier et al. Overview of Neutralizing Antibodies and Their Potential in COVID-19. *Vaccines*. 2021. `PMID:34960121 <https://pubmed.ncbi.nlm.nih.gov/34960121/>`_
+- Morales-Núñez José Javier et al. **Overview of Neutralizing Antibodies and Their Potential in COVID-19.**. *Vaccines*. 2021. `PMID:34960121 <https://pubmed.ncbi.nlm.nih.gov/34960121/>`_
 
-- Huang Suihong et al. Attention to time-of-day variability improves the reproducibility of gene expression patterns in multiple sclerosis. *iScience*. 2021. `PMID:34746708 <https://pubmed.ncbi.nlm.nih.gov/34746708/>`_
+- Huang Suihong et al. **Attention to time-of-day variability improves the reproducibility of gene expression patterns in multiple sclerosis.**. *iScience*. 2021. `PMID:34746708 <https://pubmed.ncbi.nlm.nih.gov/34746708/>`_
 
-- Khatri Indu et al. Longitudinal Dynamics of Human B-Cell Response at the Single-Cell Level in Response to Tdap Vaccination. *Vaccines*. 2021. `PMID:34835283 <https://pubmed.ncbi.nlm.nih.gov/34835283/>`_
+- Khatri Indu et al. **Longitudinal Dynamics of Human B-Cell Response at the Single-Cell Level in Response to Tdap Vaccination.**. *Vaccines*. 2021. `PMID:34835283 <https://pubmed.ncbi.nlm.nih.gov/34835283/>`_
 
-- Hoehn Kenneth B et al. Human B cell lineages associated with germinal centers following influenza vaccination are measurably evolving. *eLife*. 2021. `PMID:34787567 <https://pubmed.ncbi.nlm.nih.gov/34787567/>`_
+- Hoehn Kenneth B et al. **Human B cell lineages associated with germinal centers following influenza vaccination are measurably evolving.**. *eLife*. 2021. `PMID:34787567 <https://pubmed.ncbi.nlm.nih.gov/34787567/>`_
 
-- Yewdell William T et al. Temporal dynamics of persistent germinal centers and memory B cell differentiation following respiratory virus infection. *Cell reports*. 2021. `PMID:34758310 <https://pubmed.ncbi.nlm.nih.gov/34758310/>`_
+- Yewdell William T et al. **Temporal dynamics of persistent germinal centers and memory B cell differentiation following respiratory virus infection.**. *Cell reports*. 2021. `PMID:34758310 <https://pubmed.ncbi.nlm.nih.gov/34758310/>`_
 
-- Dos Santos Schmidt Thassya C et al. First thorough assessment of de novo oocyte recruitment in a teleost serial spawner, the Northeast Atlantic mackerel (Scomber scombrus) case. *Scientific reports*. 2021. `PMID:34750400 <https://pubmed.ncbi.nlm.nih.gov/34750400/>`_
+- Dos Santos Schmidt Thassya C et al. **First thorough assessment of de novo oocyte recruitment in a teleost serial spawner, the Northeast Atlantic mackerel (Scomber scombrus) case.**. *Scientific reports*. 2021. `PMID:34750400 <https://pubmed.ncbi.nlm.nih.gov/34750400/>`_
 
-- Stephens W Zac et al. Epithelial-myeloid exchange of MHC class II constrains immunity and microbiota composition. *Cell reports*. 2021. `PMID:34731608 <https://pubmed.ncbi.nlm.nih.gov/34731608/>`_
+- Stephens W Zac et al. **Epithelial-myeloid exchange of MHC class II constrains immunity and microbiota composition.**. *Cell reports*. 2021. `PMID:34731608 <https://pubmed.ncbi.nlm.nih.gov/34731608/>`_
 
-- Kim Wooseob et al. Germinal centre-driven maturation of B cell response to SARS-CoV-2 vaccination. *bioRxiv : the preprint server for biology*. 2021. `PMID:34751268 <https://pubmed.ncbi.nlm.nih.gov/34751268/>`_
+- Kim Wooseob et al. **Germinal centre-driven maturation of B cell response to SARS-CoV-2 vaccination.**. *bioRxiv : the preprint server for biology*. 2021. `PMID:34751268 <https://pubmed.ncbi.nlm.nih.gov/34751268/>`_
 
-- Halper-Stromberg Eitan et al. CloneRetriever: An Automated Algorithm to Identify Clonal B and T Cell Gene Rearrangements by Next-Generation Sequencing for the Diagnosis of Lymphoid Malignancies. *Clinical chemistry*. 2021. `PMID:34491318 <https://pubmed.ncbi.nlm.nih.gov/34491318/>`_
+- Halper-Stromberg Eitan et al. **CloneRetriever: An Automated Algorithm to Identify Clonal B and T Cell Gene Rearrangements by Next-Generation Sequencing for the Diagnosis of Lymphoid Malignancies.**. *Clinical chemistry*. 2021. `PMID:34491318 <https://pubmed.ncbi.nlm.nih.gov/34491318/>`_
 
-- Oyola Samuel O et al. Access to ultra-long IgG CDRH3 bovine antibody sequences using short read sequencing technology. *Molecular immunology*. 2021. `PMID:34464839 <https://pubmed.ncbi.nlm.nih.gov/34464839/>`_
+- Oyola Samuel O et al. **Access to ultra-long IgG CDRH3 bovine antibody sequences using short read sequencing technology.**. *Molecular immunology*. 2021. `PMID:34464839 <https://pubmed.ncbi.nlm.nih.gov/34464839/>`_
 
-- Zhang Chao et al. B-Cell Compartmental Features and Molecular Basis for Therapy in Autoimmune Disease. *Neurology(R) neuroimmunology & neuroinflammation*. 2021. `PMID:34465614 <https://pubmed.ncbi.nlm.nih.gov/34465614/>`_
+- Zhang Chao et al. **B-Cell Compartmental Features and Molecular Basis for Therapy in Autoimmune Disease.**. *Neurology(R) neuroimmunology & neuroinflammation*. 2021. `PMID:34465614 <https://pubmed.ncbi.nlm.nih.gov/34465614/>`_
 
-- Pavlović Milena et al. The immuneML ecosystem for machine learning analysis of adaptive immune receptor repertoires. *Nature machine intelligence*. 2021. `PMID:37396030 <https://pubmed.ncbi.nlm.nih.gov/37396030/>`_
+- Pavlović Milena et al. **The immuneML ecosystem for machine learning analysis of adaptive immune receptor repertoires.**. *Nature machine intelligence*. 2021. `PMID:37396030 <https://pubmed.ncbi.nlm.nih.gov/37396030/>`_
 
-- Horton Brendan L et al. Lack of CD8+ T cell effector differentiation during priming mediates checkpoint blockade resistance in non-small cell lung cancer. *Science immunology*. 2021. `PMID:34714687 <https://pubmed.ncbi.nlm.nih.gov/34714687/>`_
+- Horton Brendan L et al. **Lack of CD8+ T cell effector differentiation during priming mediates checkpoint blockade resistance in non-small cell lung cancer.**. *Science immunology*. 2021. `PMID:34714687 <https://pubmed.ncbi.nlm.nih.gov/34714687/>`_
 
-- Braddom Ashley E et al. B Cell Receptor Repertoire Analysis in Malaria-Naive and Malaria-Experienced Individuals Reveals Unique Characteristics of Atypical Memory B Cells. *mSphere*. 2021. `PMID:34523978 <https://pubmed.ncbi.nlm.nih.gov/34523978/>`_
+- Braddom Ashley E et al. **B Cell Receptor Repertoire Analysis in Malaria-Naive and Malaria-Experienced Individuals Reveals Unique Characteristics of Atypical Memory B Cells.**. *mSphere*. 2021. `PMID:34523978 <https://pubmed.ncbi.nlm.nih.gov/34523978/>`_
 
-- Mikocziova Ivana et al. Germline polymorphisms and alternative splicing of human immunoglobulin light chain genes. *iScience*. 2021. `PMID:34693229 <https://pubmed.ncbi.nlm.nih.gov/34693229/>`_
+- Mikocziova Ivana et al. **Germline polymorphisms and alternative splicing of human immunoglobulin light chain genes.**. *iScience*. 2021. `PMID:34693229 <https://pubmed.ncbi.nlm.nih.gov/34693229/>`_
 
-- Ghraichy Marie et al. Different B cell subpopulations show distinct patterns in their IgH repertoire metrics. *eLife*. 2021. `PMID:34661527 <https://pubmed.ncbi.nlm.nih.gov/34661527/>`_
+- Ghraichy Marie et al. **Different B cell subpopulations show distinct patterns in their IgH repertoire metrics.**. *eLife*. 2021. `PMID:34661527 <https://pubmed.ncbi.nlm.nih.gov/34661527/>`_
 
-- Mandel-Brehm Caleigh et al. Elevated N-Linked Glycosylation of IgG V Regions in Myasthenia Gravis Disease Subtypes. *Journal of immunology (Baltimore, Md. : 1950)*. 2021. `PMID:34544801 <https://pubmed.ncbi.nlm.nih.gov/34544801/>`_
+- Mandel-Brehm Caleigh et al. **Elevated N-Linked Glycosylation of IgG V Regions in Myasthenia Gravis Disease Subtypes.**. *Journal of immunology (Baltimore, Md. : 1950)*. 2021. `PMID:34544801 <https://pubmed.ncbi.nlm.nih.gov/34544801/>`_
 
-- Tabang Dylan Nicholas et al. Analysis of pancreatic extracellular matrix protein post-translational modifications via electrostatic repulsion-hydrophilic interaction chromatography coupled with mass spectrometry. *Molecular omics*. 2021. `PMID:34318855 <https://pubmed.ncbi.nlm.nih.gov/34318855/>`_
+- Tabang Dylan Nicholas et al. **Analysis of pancreatic extracellular matrix protein post-translational modifications via electrostatic repulsion-hydrophilic interaction chromatography coupled with mass spectrometry.**. *Molecular omics*. 2021. `PMID:34318855 <https://pubmed.ncbi.nlm.nih.gov/34318855/>`_
 
-- Ruschil Christoph et al. Next Generation Sequencing of Cerebrospinal Fluid B Cell Repertoires in Multiple Sclerosis and Other Neuro-Inflammatory Diseases-A Comprehensive Review. *Diagnostics (Basel, Switzerland)*. 2021. `PMID:34679570 <https://pubmed.ncbi.nlm.nih.gov/34679570/>`_
+- Ruschil Christoph et al. **Next Generation Sequencing of Cerebrospinal Fluid B Cell Repertoires in Multiple Sclerosis and Other Neuro-Inflammatory Diseases-A Comprehensive Review.**. *Diagnostics (Basel, Switzerland)*. 2021. `PMID:34679570 <https://pubmed.ncbi.nlm.nih.gov/34679570/>`_
 
-- Kramer Kevin J et al. Potent neutralization of SARS-CoV-2 variants of concern by an antibody with an uncommon genetic signature and structural mode of spike recognition. *Cell reports*. 2021. `PMID:34592170 <https://pubmed.ncbi.nlm.nih.gov/34592170/>`_
+- Kramer Kevin J et al. **Potent neutralization of SARS-CoV-2 variants of concern by an antibody with an uncommon genetic signature and structural mode of spike recognition.**. *Cell reports*. 2021. `PMID:34592170 <https://pubmed.ncbi.nlm.nih.gov/34592170/>`_
 
-- Haniuda Kei et al. The microbiome and IgA nephropathy. *Seminars in immunopathology*. 2021. `PMID:34664087 <https://pubmed.ncbi.nlm.nih.gov/34664087/>`_
+- Haniuda Kei et al. **The microbiome and IgA nephropathy.**. *Seminars in immunopathology*. 2021. `PMID:34664087 <https://pubmed.ncbi.nlm.nih.gov/34664087/>`_
 
-- Zhou Mingqian et al. Integrin CD11b Negatively Regulates B Cell Receptor Signaling to Shape Humoral Response during Immunization and Autoimmunity. *Journal of immunology (Baltimore, Md. : 1950)*. 2021. `PMID:34470858 <https://pubmed.ncbi.nlm.nih.gov/34470858/>`_
+- Zhou Mingqian et al. **Integrin CD11b Negatively Regulates B Cell Receptor Signaling to Shape Humoral Response during Immunization and Autoimmunity.**. *Journal of immunology (Baltimore, Md. : 1950)*. 2021. `PMID:34470858 <https://pubmed.ncbi.nlm.nih.gov/34470858/>`_
 
-- Ye Haocheng et al. SCIGA: Software for large-scale, single-cell immunoglobulin repertoire analysis. *GigaScience*. 2021. `PMID:34585238 <https://pubmed.ncbi.nlm.nih.gov/34585238/>`_
+- Ye Haocheng et al. **SCIGA: Software for large-scale, single-cell immunoglobulin repertoire analysis.**. *GigaScience*. 2021. `PMID:34585238 <https://pubmed.ncbi.nlm.nih.gov/34585238/>`_
 
-- Zhao Xiang-Na et al. Single-cell immune profiling reveals distinct immune response in asymptomatic COVID-19 patients. *Signal transduction and targeted therapy*. 2021. `PMID:34531370 <https://pubmed.ncbi.nlm.nih.gov/34531370/>`_
+- Zhao Xiang-Na et al. **Single-cell immune profiling reveals distinct immune response in asymptomatic COVID-19 patients.**. *Signal transduction and targeted therapy*. 2021. `PMID:34531370 <https://pubmed.ncbi.nlm.nih.gov/34531370/>`_
 
-- Schmitz Aaron J et al. A vaccine-induced public antibody protects against SARS-CoV-2 and emerging variants. *Immunity*. 2021. `PMID:34464596 <https://pubmed.ncbi.nlm.nih.gov/34464596/>`_
+- Schmitz Aaron J et al. **A vaccine-induced public antibody protects against SARS-CoV-2 and emerging variants.**. *Immunity*. 2021. `PMID:34464596 <https://pubmed.ncbi.nlm.nih.gov/34464596/>`_
 
-- De Luca Giuseppa et al. The Opportunities and Challenges of Molecular Tagging Next-Generation Sequencing in Liquid Biopsy. *Molecular diagnosis & therapy*. 2021. `PMID:34224097 <https://pubmed.ncbi.nlm.nih.gov/34224097/>`_
+- De Luca Giuseppa et al. **The Opportunities and Challenges of Molecular Tagging Next-Generation Sequencing in Liquid Biopsy.**. *Molecular diagnosis & therapy*. 2021. `PMID:34224097 <https://pubmed.ncbi.nlm.nih.gov/34224097/>`_
 
-- McGrath Joshua J C et al. Cigarette smoke exposure attenuates the induction of antigen-specific IgA in the murine upper respiratory tract. *Mucosal immunology*. 2021. `PMID:34108594 <https://pubmed.ncbi.nlm.nih.gov/34108594/>`_
+- McGrath Joshua J C et al. **Cigarette smoke exposure attenuates the induction of antigen-specific IgA in the murine upper respiratory tract.**. *Mucosal immunology*. 2021. `PMID:34108594 <https://pubmed.ncbi.nlm.nih.gov/34108594/>`_
 
-- Yu Guojun et al. A Bayesian model based computational analysis of the relationship between bisulfite accessible single-stranded DNA in chromatin and somatic hypermutation of immunoglobulin genes. *PLoS computational biology*. 2021. `PMID:34491985 <https://pubmed.ncbi.nlm.nih.gov/34491985/>`_
+- Yu Guojun et al. **A Bayesian model based computational analysis of the relationship between bisulfite accessible single-stranded DNA in chromatin and somatic hypermutation of immunoglobulin genes.**. *PLoS computational biology*. 2021. `PMID:34491985 <https://pubmed.ncbi.nlm.nih.gov/34491985/>`_
 
-- Elmentaite Rasa et al. Cells of the human intestinal tract mapped across space and time. *Nature*. 2021. `PMID:34497389 <https://pubmed.ncbi.nlm.nih.gov/34497389/>`_
+- Elmentaite Rasa et al. **Cells of the human intestinal tract mapped across space and time.**. *Nature*. 2021. `PMID:34497389 <https://pubmed.ncbi.nlm.nih.gov/34497389/>`_
 
-- Harrer Christine et al. The CXCL13/CXCR5-chemokine axis in neuroinflammation: evidence of CXCR5+CD4 T cell recruitment to CSF. *Fluids and barriers of the CNS*. 2021. `PMID:34446066 <https://pubmed.ncbi.nlm.nih.gov/34446066/>`_
+- Harrer Christine et al. **The CXCL13/CXCR5-chemokine axis in neuroinflammation: evidence of CXCR5+CD4 T cell recruitment to CSF.**. *Fluids and barriers of the CNS*. 2021. `PMID:34446066 <https://pubmed.ncbi.nlm.nih.gov/34446066/>`_
 
-- Goel Rishi R et al. mRNA Vaccination Induces Durable Immune Memory to SARS-CoV-2 with Continued Evolution to Variants of Concern. *bioRxiv : the preprint server for biology*. 2021. `PMID:34462751 <https://pubmed.ncbi.nlm.nih.gov/34462751/>`_
+- Goel Rishi R et al. **mRNA Vaccination Induces Durable Immune Memory to SARS-CoV-2 with Continued Evolution to Variants of Concern.**. *bioRxiv : the preprint server for biology*. 2021. `PMID:34462751 <https://pubmed.ncbi.nlm.nih.gov/34462751/>`_
 
-- Swanson Olivia et al. Rapid selection of HIV envelopes that bind to neutralizing antibody B cell lineage members with functional improbable mutations. *Cell reports*. 2021. `PMID:34407396 <https://pubmed.ncbi.nlm.nih.gov/34407396/>`_
+- Swanson Olivia et al. **Rapid selection of HIV envelopes that bind to neutralizing antibody B cell lineage members with functional improbable mutations.**. *Cell reports*. 2021. `PMID:34407396 <https://pubmed.ncbi.nlm.nih.gov/34407396/>`_
 
-- Harris Robert J et al. Tumor-Infiltrating B Lymphocyte Profiling Identifies IgG-Biased, Clonally Expanded Prognostic Phenotypes in Triple-Negative Breast Cancer. *Cancer research*. 2021. `PMID:34224371 <https://pubmed.ncbi.nlm.nih.gov/34224371/>`_
+- Harris Robert J et al. **Tumor-Infiltrating B Lymphocyte Profiling Identifies IgG-Biased, Clonally Expanded Prognostic Phenotypes in Triple-Negative Breast Cancer.**. *Cancer research*. 2021. `PMID:34224371 <https://pubmed.ncbi.nlm.nih.gov/34224371/>`_
 
-- Ricker Edd et al. Altered function and differentiation of age-associated B cells contribute to the female bias in lupus mice. *Nature communications*. 2021. `PMID:34376664 <https://pubmed.ncbi.nlm.nih.gov/34376664/>`_
+- Ricker Edd et al. **Altered function and differentiation of age-associated B cells contribute to the female bias in lupus mice.**. *Nature communications*. 2021. `PMID:34376664 <https://pubmed.ncbi.nlm.nih.gov/34376664/>`_
 
-- Turner Jackson S et al. SARS-CoV-2 mRNA vaccines induce persistent human germinal centre responses. *Nature*. 2021. `PMID:34182569 <https://pubmed.ncbi.nlm.nih.gov/34182569/>`_
+- Turner Jackson S et al. **SARS-CoV-2 mRNA vaccines induce persistent human germinal centre responses.**. *Nature*. 2021. `PMID:34182569 <https://pubmed.ncbi.nlm.nih.gov/34182569/>`_
 
-- Mikocziova Ivana et al. Immunoglobulin germline gene variation and its impact on human disease. *Genes and immunity*. 2021. `PMID:34175903 <https://pubmed.ncbi.nlm.nih.gov/34175903/>`_
+- Mikocziova Ivana et al. **Immunoglobulin germline gene variation and its impact on human disease.**. *Genes and immunity*. 2021. `PMID:34175903 <https://pubmed.ncbi.nlm.nih.gov/34175903/>`_
 
-- Klompus Shelley et al. Cross-reactive antibodies against human coronaviruses and the animal coronavirome suggest diagnostics for future zoonotic spillovers. *Science immunology*. 2021. `PMID:34326184 <https://pubmed.ncbi.nlm.nih.gov/34326184/>`_
+- Klompus Shelley et al. **Cross-reactive antibodies against human coronaviruses and the animal coronavirome suggest diagnostics for future zoonotic spillovers.**. *Science immunology*. 2021. `PMID:34326184 <https://pubmed.ncbi.nlm.nih.gov/34326184/>`_
 
-- Brioschi Simone et al. Heterogeneity of meningeal B cells reveals a lymphopoietic niche at the CNS borders. *Science (New York, N.Y.)*. 2021. `PMID:34083450 <https://pubmed.ncbi.nlm.nih.gov/34083450/>`_
+- Brioschi Simone et al. **Heterogeneity of meningeal B cells reveals a lymphopoietic niche at the CNS borders.**. *Science (New York, N.Y.)*. 2021. `PMID:34083450 <https://pubmed.ncbi.nlm.nih.gov/34083450/>`_
 
-- Amanat Fatima et al. SARS-CoV-2 mRNA vaccination induces functionally diverse antibodies to NTD, RBD, and S2. *Cell*. 2021. `PMID:34192529 <https://pubmed.ncbi.nlm.nih.gov/34192529/>`_
+- Amanat Fatima et al. **SARS-CoV-2 mRNA vaccination induces functionally diverse antibodies to NTD, RBD, and S2.**. *Cell*. 2021. `PMID:34192529 <https://pubmed.ncbi.nlm.nih.gov/34192529/>`_
 
-- Fiorentino Giuseppe et al. MOUSSE: Multi-Omics Using Subject-Specific SignaturEs. *Cancers*. 2021. `PMID:34298641 <https://pubmed.ncbi.nlm.nih.gov/34298641/>`_
+- Fiorentino Giuseppe et al. **MOUSSE: Multi-Omics Using Subject-Specific SignaturEs.**. *Cancers*. 2021. `PMID:34298641 <https://pubmed.ncbi.nlm.nih.gov/34298641/>`_
 
-- Smith Neal P et al. Identification of antigen-specific TCR sequences based on biological and statistical enrichment in unselected individuals. *JCI insight*. 2021. `PMID:34032640 <https://pubmed.ncbi.nlm.nih.gov/34032640/>`_
+- Smith Neal P et al. **Identification of antigen-specific TCR sequences based on biological and statistical enrichment in unselected individuals.**. *JCI insight*. 2021. `PMID:34032640 <https://pubmed.ncbi.nlm.nih.gov/34032640/>`_
 
-- Zhan Qiao et al. Human immune repertoire in hepatitis B virus infection. *World journal of gastroenterology*. 2021. `PMID:34321844 <https://pubmed.ncbi.nlm.nih.gov/34321844/>`_
+- Zhan Qiao et al. **Human immune repertoire in hepatitis B virus infection.**. *World journal of gastroenterology*. 2021. `PMID:34321844 <https://pubmed.ncbi.nlm.nih.gov/34321844/>`_
 
-- Jung Jiwon et al. Influenza vaccination in the elderly boosts antibodies against conserved viral proteins and egg-produced glycans. *The Journal of clinical investigation*. 2021. `PMID:34196304 <https://pubmed.ncbi.nlm.nih.gov/34196304/>`_
+- Jung Jiwon et al. **Influenza vaccination in the elderly boosts antibodies against conserved viral proteins and egg-produced glycans.**. *The Journal of clinical investigation*. 2021. `PMID:34196304 <https://pubmed.ncbi.nlm.nih.gov/34196304/>`_
 
-- Khatri Indu et al. Population matched (pm) germline allelic variants of immunoglobulin (IG) loci: Relevance in infectious diseases and vaccination studies in human populations. *Genes and immunity*. 2021. `PMID:34120151 <https://pubmed.ncbi.nlm.nih.gov/34120151/>`_
+- Khatri Indu et al. **Population matched (pm) germline allelic variants of immunoglobulin (IG) loci: Relevance in infectious diseases and vaccination studies in human populations.**. *Genes and immunity*. 2021. `PMID:34120151 <https://pubmed.ncbi.nlm.nih.gov/34120151/>`_
 
-- Wang Zijun et al. Naturally enhanced neutralizing breadth against SARS-CoV-2 one year after infection. *Nature*. 2021. `PMID:34126625 <https://pubmed.ncbi.nlm.nih.gov/34126625/>`_
+- Wang Zijun et al. **Naturally enhanced neutralizing breadth against SARS-CoV-2 one year after infection.**. *Nature*. 2021. `PMID:34126625 <https://pubmed.ncbi.nlm.nih.gov/34126625/>`_
 
-- Ahn Julie J et al. B Cells in Neuroinflammation: New Perspectives and Mechanistic Insights. *Cells*. 2021. `PMID:34206848 <https://pubmed.ncbi.nlm.nih.gov/34206848/>`_
+- Ahn Julie J et al. **B Cells in Neuroinflammation: New Perspectives and Mechanistic Insights.**. *Cells*. 2021. `PMID:34206848 <https://pubmed.ncbi.nlm.nih.gov/34206848/>`_
 
-- Jiang Ruoyi et al. Single-cell immunophenotyping of the skin lesion erythema migrans identifies IgM memory B cells. *JCI insight*. 2021. `PMID:34061047 <https://pubmed.ncbi.nlm.nih.gov/34061047/>`_
+- Jiang Ruoyi et al. **Single-cell immunophenotyping of the skin lesion erythema migrans identifies IgM memory B cells.**. *JCI insight*. 2021. `PMID:34061047 <https://pubmed.ncbi.nlm.nih.gov/34061047/>`_
 
-- Mathew Nimitha R et al. Single-cell BCR and transcriptome analysis after influenza infection reveals spatiotemporal dynamics of antigen-specific B cells. *Cell reports*. 2021. `PMID:34161770 <https://pubmed.ncbi.nlm.nih.gov/34161770/>`_
+- Mathew Nimitha R et al. **Single-cell BCR and transcriptome analysis after influenza infection reveals spatiotemporal dynamics of antigen-specific B cells.**. *Cell reports*. 2021. `PMID:34161770 <https://pubmed.ncbi.nlm.nih.gov/34161770/>`_
 
-- Shiakolas Andrea R et al. Cross-reactive coronavirus antibodies with diverse epitope specificities and Fc effector functions. *Cell reports. Medicine*. 2021. `PMID:34056628 <https://pubmed.ncbi.nlm.nih.gov/34056628/>`_
+- Shiakolas Andrea R et al. **Cross-reactive coronavirus antibodies with diverse epitope specificities and Fc effector functions.**. *Cell reports. Medicine*. 2021. `PMID:34056628 <https://pubmed.ncbi.nlm.nih.gov/34056628/>`_
 
-- Hoehn Kenneth B et al. Cutting Edge: Distinct B Cell Repertoires Characterize Patients with Mild and Severe COVID-19. *Journal of immunology (Baltimore, Md. : 1950)*. 2021. `PMID:34049971 <https://pubmed.ncbi.nlm.nih.gov/34049971/>`_
+- Hoehn Kenneth B et al. **Cutting Edge: Distinct B Cell Repertoires Characterize Patients with Mild and Severe COVID-19.**. *Journal of immunology (Baltimore, Md. : 1950)*. 2021. `PMID:34049971 <https://pubmed.ncbi.nlm.nih.gov/34049971/>`_
 
-- Miron Michelle et al. Maintenance of the human memory T cell repertoire by subset and tissue site. *Genome medicine*. 2021. `PMID:34127056 <https://pubmed.ncbi.nlm.nih.gov/34127056/>`_
+- Miron Michelle et al. **Maintenance of the human memory T cell repertoire by subset and tissue site.**. *Genome medicine*. 2021. `PMID:34127056 <https://pubmed.ncbi.nlm.nih.gov/34127056/>`_
 
-- Scheid Johannes F et al. B cell genomics behind cross-neutralization of SARS-CoV-2 variants and SARS-CoV. *Cell*. 2021. `PMID:34015271 <https://pubmed.ncbi.nlm.nih.gov/34015271/>`_
+- Scheid Johannes F et al. **B cell genomics behind cross-neutralization of SARS-CoV-2 variants and SARS-CoV.**. *Cell*. 2021. `PMID:34015271 <https://pubmed.ncbi.nlm.nih.gov/34015271/>`_
 
-- Bhardwaj Vinnu et al. Trace Reconstruction Problems in Computational Biology. *IEEE transactions on information theory*. 2021. `PMID:34176957 <https://pubmed.ncbi.nlm.nih.gov/34176957/>`_
+- Bhardwaj Vinnu et al. **Trace Reconstruction Problems in Computational Biology.**. *IEEE transactions on information theory*. 2021. `PMID:34176957 <https://pubmed.ncbi.nlm.nih.gov/34176957/>`_
 
-- Soldan Samantha S et al. Epigenetic Plasticity Enables CNS-Trafficking of EBV-infected B Lymphocytes. *PLoS pathogens*. 2021. `PMID:34106998 <https://pubmed.ncbi.nlm.nih.gov/34106998/>`_
+- Soldan Samantha S et al. **Epigenetic Plasticity Enables CNS-Trafficking of EBV-infected B Lymphocytes.**. *PLoS pathogens*. 2021. `PMID:34106998 <https://pubmed.ncbi.nlm.nih.gov/34106998/>`_
 
-- Haebe Sarah et al. Single-cell analysis can define distinct evolution of tumor sites in follicular lymphoma. *Blood*. 2021. `PMID:33728464 <https://pubmed.ncbi.nlm.nih.gov/33728464/>`_
+- Haebe Sarah et al. **Single-cell analysis can define distinct evolution of tumor sites in follicular lymphoma.**. *Blood*. 2021. `PMID:33728464 <https://pubmed.ncbi.nlm.nih.gov/33728464/>`_
 
-- Trück Johannes et al. Biological controls for standardization and interpretation of adaptive immune receptor repertoire profiling. *eLife*. 2021. `PMID:34037521 <https://pubmed.ncbi.nlm.nih.gov/34037521/>`_
+- Trück Johannes et al. **Biological controls for standardization and interpretation of adaptive immune receptor repertoire profiling.**. *eLife*. 2021. `PMID:34037521 <https://pubmed.ncbi.nlm.nih.gov/34037521/>`_
 
-- Montague Zachary et al. Dynamics of B cell repertoires and emergence of cross-reactive responses in patients with different severities of COVID-19. *Cell reports*. 2021. `PMID:33991510 <https://pubmed.ncbi.nlm.nih.gov/33991510/>`_
+- Montague Zachary et al. **Dynamics of B cell repertoires and emergence of cross-reactive responses in patients with different severities of COVID-19.**. *Cell reports*. 2021. `PMID:33991510 <https://pubmed.ncbi.nlm.nih.gov/33991510/>`_
 
-- Rossignol Evan D et al. Mining HIV controllers for broad and functional antibodies to recognize and eliminate HIV-infected cells. *Cell reports*. 2021. `PMID:34038720 <https://pubmed.ncbi.nlm.nih.gov/34038720/>`_
+- Rossignol Evan D et al. **Mining HIV controllers for broad and functional antibodies to recognize and eliminate HIV-infected cells.**. *Cell reports*. 2021. `PMID:34038720 <https://pubmed.ncbi.nlm.nih.gov/34038720/>`_
 
-- Ramaswamy Anjali et al. Immune dysregulation and autoreactivity correlate with disease severity in SARS-CoV-2-associated multisystem inflammatory syndrome in children. *Immunity*. 2021. `PMID:33891889 <https://pubmed.ncbi.nlm.nih.gov/33891889/>`_
+- Ramaswamy Anjali et al. **Immune dysregulation and autoreactivity correlate with disease severity in SARS-CoV-2-associated multisystem inflammatory syndrome in children.**. *Immunity*. 2021. `PMID:33891889 <https://pubmed.ncbi.nlm.nih.gov/33891889/>`_
 
-- Agudelo Marianna et al. Broad and potent neutralizing human antibodies to tick-borne flaviviruses protect mice from disease. *The Journal of experimental medicine*. 2021. `PMID:33831141 <https://pubmed.ncbi.nlm.nih.gov/33831141/>`_
+- Agudelo Marianna et al. **Broad and potent neutralizing human antibodies to tick-borne flaviviruses protect mice from disease.**. *The Journal of experimental medicine*. 2021. `PMID:33831141 <https://pubmed.ncbi.nlm.nih.gov/33831141/>`_
 
-- Stephenson Emily et al. Single-cell multi-omics analysis of the immune response in COVID-19. *Nature medicine*. 2021. `PMID:33879890 <https://pubmed.ncbi.nlm.nih.gov/33879890/>`_
+- Stephenson Emily et al. **Single-cell multi-omics analysis of the immune response in COVID-19.**. *Nature medicine*. 2021. `PMID:33879890 <https://pubmed.ncbi.nlm.nih.gov/33879890/>`_
 
-- Amanat Fatima et al. The plasmablast response to SARS-CoV-2 mRNA vaccination is dominated by non-neutralizing antibodies and targets both the NTD and the RBD. *medRxiv : the preprint server for health sciences*. 2021. `PMID:33758878 <https://pubmed.ncbi.nlm.nih.gov/33758878/>`_
+- Amanat Fatima et al. **The plasmablast response to SARS-CoV-2 mRNA vaccination is dominated by non-neutralizing antibodies and targets both the NTD and the RBD.**. *medRxiv : the preprint server for health sciences*. 2021. `PMID:33758878 <https://pubmed.ncbi.nlm.nih.gov/33758878/>`_
 
-- Goel Rishi R et al. Distinct antibody and memory B cell responses in SARS-CoV-2 naïve and recovered individuals following mRNA vaccination. *Science immunology*. 2021. `PMID:33858945 <https://pubmed.ncbi.nlm.nih.gov/33858945/>`_
+- Goel Rishi R et al. **Distinct antibody and memory B cell responses in SARS-CoV-2 naïve and recovered individuals following mRNA vaccination.**. *Science immunology*. 2021. `PMID:33858945 <https://pubmed.ncbi.nlm.nih.gov/33858945/>`_
 
-- Crickx Etienne et al. Rituximab-resistant splenic memory B cells and newly engaged naive B cells fuel relapses in patients with immune thrombocytopenia. *Science translational medicine*. 2021. `PMID:33853929 <https://pubmed.ncbi.nlm.nih.gov/33853929/>`_
+- Crickx Etienne et al. **Rituximab-resistant splenic memory B cells and newly engaged naive B cells fuel relapses in patients with immune thrombocytopenia.**. *Science translational medicine*. 2021. `PMID:33853929 <https://pubmed.ncbi.nlm.nih.gov/33853929/>`_
 
-- Townsley Samantha M et al. B cell engagement with HIV-1 founder virus envelope predicts development of broadly neutralizing antibodies. *Cell host & microbe*. 2021. `PMID:33662277 <https://pubmed.ncbi.nlm.nih.gov/33662277/>`_
+- Townsley Samantha M et al. **B cell engagement with HIV-1 founder virus envelope predicts development of broadly neutralizing antibodies.**. *Cell host & microbe*. 2021. `PMID:33662277 <https://pubmed.ncbi.nlm.nih.gov/33662277/>`_
 
-- Hu Qingtao et al. Atlas of breast cancer infiltrated B-lymphocytes revealed by paired single-cell RNA-sequencing and antigen receptor profiling. *Nature communications*. 2021. `PMID:33846305 <https://pubmed.ncbi.nlm.nih.gov/33846305/>`_
+- Hu Qingtao et al. **Atlas of breast cancer infiltrated B-lymphocytes revealed by paired single-cell RNA-sequencing and antigen receptor profiling.**. *Nature communications*. 2021. `PMID:33846305 <https://pubmed.ncbi.nlm.nih.gov/33846305/>`_
 
-- Cizmeci Deniz et al. Distinct clonal evolution of B-cells in HIV controllers with neutralizing antibody breadth. *eLife*. 2021. `PMID:33843586 <https://pubmed.ncbi.nlm.nih.gov/33843586/>`_
+- Cizmeci Deniz et al. **Distinct clonal evolution of B-cells in HIV controllers with neutralizing antibody breadth.**. *eLife*. 2021. `PMID:33843586 <https://pubmed.ncbi.nlm.nih.gov/33843586/>`_
 
-- Yoshitake Kazutoshi et al. Estimation of tuna population by the improved analytical pipeline of unique molecular identifier-assisted HaCeD-Seq (haplotype count from eDNA). *Scientific reports*. 2021. `PMID:33846364 <https://pubmed.ncbi.nlm.nih.gov/33846364/>`_
+- Yoshitake Kazutoshi et al. **Estimation of tuna population by the improved analytical pipeline of unique molecular identifier-assisted HaCeD-Seq (haplotype count from eDNA).**. *Scientific reports*. 2021. `PMID:33846364 <https://pubmed.ncbi.nlm.nih.gov/33846364/>`_
 
-- Montague Zachary et al. Dynamics of B-cell repertoires and emergence of cross-reactive responses in COVID-19 patients with different disease severity. *medRxiv : the preprint server for health sciences*. 2021. `PMID:32699862 <https://pubmed.ncbi.nlm.nih.gov/32699862/>`_
+- Montague Zachary et al. **Dynamics of B-cell repertoires and emergence of cross-reactive responses in COVID-19 patients with different disease severity.**. *medRxiv : the preprint server for health sciences*. 2021. `PMID:32699862 <https://pubmed.ncbi.nlm.nih.gov/32699862/>`_
 
-- Wang Huimin et al. Antibody heavy chain CDR3 length-dependent usage of human IGHJ4 and IGHJ6 germline genes. *Antibody therapeutics*. 2021. `PMID:34195544 <https://pubmed.ncbi.nlm.nih.gov/34195544/>`_
+- Wang Huimin et al. **Antibody heavy chain CDR3 length-dependent usage of human IGHJ4 and IGHJ6 germline genes.**. *Antibody therapeutics*. 2021. `PMID:34195544 <https://pubmed.ncbi.nlm.nih.gov/34195544/>`_
 
-- Wang Zijun et al. mRNA vaccine-elicited antibodies to SARS-CoV-2 and circulating variants. *Nature*. 2021. `PMID:33567448 <https://pubmed.ncbi.nlm.nih.gov/33567448/>`_
+- Wang Zijun et al. **mRNA vaccine-elicited antibodies to SARS-CoV-2 and circulating variants.**. *Nature*. 2021. `PMID:33567448 <https://pubmed.ncbi.nlm.nih.gov/33567448/>`_
 
-- Mentis Alexios-Fotios A et al. Apolipoprotein E4 and meningeal lymphatics in Alzheimer disease: a conceptual framework. *Molecular psychiatry*. 2021. `PMID:32355332 <https://pubmed.ncbi.nlm.nih.gov/32355332/>`_
+- Mentis Alexios-Fotios A et al. **Apolipoprotein E4 and meningeal lymphatics in Alzheimer disease: a conceptual framework.**. *Molecular psychiatry*. 2021. `PMID:32355332 <https://pubmed.ncbi.nlm.nih.gov/32355332/>`_
 
-- Jiang Wenhua et al. Establishment of a typing model for diffuse large B-cell lymphoma based on B-cell receptor repertoire sequencing. *BMC cancer*. 2021. `PMID:33752626 <https://pubmed.ncbi.nlm.nih.gov/33752626/>`_
+- Jiang Wenhua et al. **Establishment of a typing model for diffuse large B-cell lymphoma based on B-cell receptor repertoire sequencing.**. *BMC cancer*. 2021. `PMID:33752626 <https://pubmed.ncbi.nlm.nih.gov/33752626/>`_
 
-- Coelho Camila H et al. A human monoclonal antibody blocks malaria transmission and defines a highly conserved neutralizing epitope on gametes. *Nature communications*. 2021. `PMID:33741942 <https://pubmed.ncbi.nlm.nih.gov/33741942/>`_
+- Coelho Camila H et al. **A human monoclonal antibody blocks malaria transmission and defines a highly conserved neutralizing epitope on gametes.**. *Nature communications*. 2021. `PMID:33741942 <https://pubmed.ncbi.nlm.nih.gov/33741942/>`_
 
-- Sokal Aurélien et al. Maturation and persistence of the anti-SARS-CoV-2 memory B cell response. *Cell*. 2021. `PMID:33571429 <https://pubmed.ncbi.nlm.nih.gov/33571429/>`_
+- Sokal Aurélien et al. **Maturation and persistence of the anti-SARS-CoV-2 memory B cell response.**. *Cell*. 2021. `PMID:33571429 <https://pubmed.ncbi.nlm.nih.gov/33571429/>`_
 
-- Lu Yisi et al. CD4+ follicular regulatory T cells optimize the influenza virus-specific B cell response. *The Journal of experimental medicine*. 2021. `PMID:33326020 <https://pubmed.ncbi.nlm.nih.gov/33326020/>`_
+- Lu Yisi et al. **CD4+ follicular regulatory T cells optimize the influenza virus-specific B cell response.**. *The Journal of experimental medicine*. 2021. `PMID:33326020 <https://pubmed.ncbi.nlm.nih.gov/33326020/>`_
 
-- Gaebler Christian et al. Evolution of antibody immunity to SARS-CoV-2. *Nature*. 2021. `PMID:33461210 <https://pubmed.ncbi.nlm.nih.gov/33461210/>`_
+- Gaebler Christian et al. **Evolution of antibody immunity to SARS-CoV-2.**. *Nature*. 2021. `PMID:33461210 <https://pubmed.ncbi.nlm.nih.gov/33461210/>`_
 
-- Raybould Matthew I J et al. Public Baseline and shared response structures support the theory of antibody repertoire functional commonality. *PLoS computational biology*. 2021. `PMID:33647011 <https://pubmed.ncbi.nlm.nih.gov/33647011/>`_
+- Raybould Matthew I J et al. **Public Baseline and shared response structures support the theory of antibody repertoire functional commonality.**. *PLoS computational biology*. 2021. `PMID:33647011 <https://pubmed.ncbi.nlm.nih.gov/33647011/>`_
 
-- Lee Dennis S W et al. B cell depletion therapies in autoimmune disease: advances and mechanistic insights. *Nature reviews. Drug discovery*. 2021. `PMID:33324003 <https://pubmed.ncbi.nlm.nih.gov/33324003/>`_
+- Lee Dennis S W et al. **B cell depletion therapies in autoimmune disease: advances and mechanistic insights.**. *Nature reviews. Drug discovery*. 2021. `PMID:33324003 <https://pubmed.ncbi.nlm.nih.gov/33324003/>`_
 
-- Lindenbaum Ofir et al. Alignment free identification of clones in B cell receptor repertoires. *Nucleic acids research*. 2021. `PMID:33330933 <https://pubmed.ncbi.nlm.nih.gov/33330933/>`_
+- Lindenbaum Ofir et al. **Alignment free identification of clones in B cell receptor repertoires.**. *Nucleic acids research*. 2021. `PMID:33330933 <https://pubmed.ncbi.nlm.nih.gov/33330933/>`_
 
-- Japp Alberto Sada et al. TCR+/BCR+ dual-expressing cells and their associated public BCR clonotype are not enriched in type 1 diabetes. *Cell*. 2021. `PMID:33545036 <https://pubmed.ncbi.nlm.nih.gov/33545036/>`_
+- Japp Alberto Sada et al. **TCR+/BCR+ dual-expressing cells and their associated public BCR clonotype are not enriched in type 1 diabetes.**. *Cell*. 2021. `PMID:33545036 <https://pubmed.ncbi.nlm.nih.gov/33545036/>`_
 
-- Bakhuraysah Maha M et al. B-cells expressing NgR1 and NgR3 are localized to EAE-induced inflammatory infiltrates and are stimulated by BAFF. *Scientific reports*. 2021. `PMID:33536561 <https://pubmed.ncbi.nlm.nih.gov/33536561/>`_
+- Bakhuraysah Maha M et al. **B-cells expressing NgR1 and NgR3 are localized to EAE-induced inflammatory infiltrates and are stimulated by BAFF.**. *Scientific reports*. 2021. `PMID:33536561 <https://pubmed.ncbi.nlm.nih.gov/33536561/>`_
 
-- Ye Xiaofei et al. Genome-wide mutational signatures revealed distinct developmental paths for human B cell lymphomas. *The Journal of experimental medicine*. 2021. `PMID:33136155 <https://pubmed.ncbi.nlm.nih.gov/33136155/>`_
+- Ye Xiaofei et al. **Genome-wide mutational signatures revealed distinct developmental paths for human B cell lymphomas.**. *The Journal of experimental medicine*. 2021. `PMID:33136155 <https://pubmed.ncbi.nlm.nih.gov/33136155/>`_
 
-- Mor Michael et al. Multi-clonal SARS-CoV-2 neutralization by antibodies isolated from severe COVID-19 convalescent donors. *PLoS pathogens*. 2021. `PMID:33571304 <https://pubmed.ncbi.nlm.nih.gov/33571304/>`_
+- Mor Michael et al. **Multi-clonal SARS-CoV-2 neutralization by antibodies isolated from severe COVID-19 convalescent donors.**. *PLoS pathogens*. 2021. `PMID:33571304 <https://pubmed.ncbi.nlm.nih.gov/33571304/>`_
 
-- Kim Sang Il et al. Stereotypic neutralizing VH antibodies against SARS-CoV-2 spike protein receptor binding domain in patients with COVID-19 and healthy individuals. *Science translational medicine*. 2021. `PMID:33397677 <https://pubmed.ncbi.nlm.nih.gov/33397677/>`_
+- Kim Sang Il et al. **Stereotypic neutralizing VH antibodies against SARS-CoV-2 spike protein receptor binding domain in patients with COVID-19 and healthy individuals.**. *Science translational medicine*. 2021. `PMID:33397677 <https://pubmed.ncbi.nlm.nih.gov/33397677/>`_
 
-- Wang Zijun et al. Enhanced SARS-CoV-2 neutralization by dimeric IgA. *Science translational medicine*. 2021. `PMID:33288661 <https://pubmed.ncbi.nlm.nih.gov/33288661/>`_
+- Wang Zijun et al. **Enhanced SARS-CoV-2 neutralization by dimeric IgA.**. *Science translational medicine*. 2021. `PMID:33288661 <https://pubmed.ncbi.nlm.nih.gov/33288661/>`_
 
-- Comi Giancarlo et al. Role of B Cells in Multiple Sclerosis and Related Disorders. *Annals of neurology*. 2021. `PMID:33091175 <https://pubmed.ncbi.nlm.nih.gov/33091175/>`_
+- Comi Giancarlo et al. **Role of B Cells in Multiple Sclerosis and Related Disorders.**. *Annals of neurology*. 2021. `PMID:33091175 <https://pubmed.ncbi.nlm.nih.gov/33091175/>`_
 
-- Smets Ide et al. Treatment-Induced BAFF Expression and B Cell Biology in Multiple Sclerosis. *Frontiers in immunology*. 2021. `PMID:34122439 <https://pubmed.ncbi.nlm.nih.gov/34122439/>`_
+- Smets Ide et al. **Treatment-Induced BAFF Expression and B Cell Biology in Multiple Sclerosis.**. *Frontiers in immunology*. 2021. `PMID:34122439 <https://pubmed.ncbi.nlm.nih.gov/34122439/>`_
 
-- Wilmore Joel R et al. IgA Plasma Cells Are Long-Lived Residents of Gut and Bone Marrow That Express Isotype- and Tissue-Specific Gene Expression Patterns. *Frontiers in immunology*. 2021. `PMID:35003110 <https://pubmed.ncbi.nlm.nih.gov/35003110/>`_
+- Wilmore Joel R et al. **IgA Plasma Cells Are Long-Lived Residents of Gut and Bone Marrow That Express Isotype- and Tissue-Specific Gene Expression Patterns.**. *Frontiers in immunology*. 2021. `PMID:35003110 <https://pubmed.ncbi.nlm.nih.gov/35003110/>`_
 
-- Natali Eriberto N et al. Prospective Artificial Intelligence to Dissect the Dengue Immune Response and Discover Therapeutics. *Frontiers in immunology*. 2021. `PMID:34211454 <https://pubmed.ncbi.nlm.nih.gov/34211454/>`_
+- Natali Eriberto N et al. **Prospective Artificial Intelligence to Dissect the Dengue Immune Response and Discover Therapeutics.**. *Frontiers in immunology*. 2021. `PMID:34211454 <https://pubmed.ncbi.nlm.nih.gov/34211454/>`_
 
-- Raybould Matthew I J et al. Current strategies for detecting functional convergence across B-cell receptor repertoires. *mAbs*. 2021. `PMID:34781829 <https://pubmed.ncbi.nlm.nih.gov/34781829/>`_
+- Raybould Matthew I J et al. **Current strategies for detecting functional convergence across B-cell receptor repertoires.**. *mAbs*. 2021. `PMID:34781829 <https://pubmed.ncbi.nlm.nih.gov/34781829/>`_
 
-- DiSano Krista D et al. Memory B Cells in Multiple Sclerosis: Emerging Players in Disease Pathogenesis. *Frontiers in immunology*. 2021. `PMID:34168647 <https://pubmed.ncbi.nlm.nih.gov/34168647/>`_
+- DiSano Krista D et al. **Memory B Cells in Multiple Sclerosis: Emerging Players in Disease Pathogenesis.**. *Frontiers in immunology*. 2021. `PMID:34168647 <https://pubmed.ncbi.nlm.nih.gov/34168647/>`_
 
-- Mitchell Dana et al. Neuroinflammation in Autoimmune Disease and Primary Brain Tumors: The Quest for Striking the Right Balance. *Frontiers in cellular neuroscience*. 2021. `PMID:34483843 <https://pubmed.ncbi.nlm.nih.gov/34483843/>`_
+- Mitchell Dana et al. **Neuroinflammation in Autoimmune Disease and Primary Brain Tumors: The Quest for Striking the Right Balance.**. *Frontiers in cellular neuroscience*. 2021. `PMID:34483843 <https://pubmed.ncbi.nlm.nih.gov/34483843/>`_
 
-- Ohm-Laursen Line et al. B Cell Mobilization, Dissemination, Fine Tuning of Local Antigen Specificity and Isotype Selection in Asthma. *Frontiers in immunology*. 2021. `PMID:34721376 <https://pubmed.ncbi.nlm.nih.gov/34721376/>`_
+- Ohm-Laursen Line et al. **B Cell Mobilization, Dissemination, Fine Tuning of Local Antigen Specificity and Isotype Selection in Asthma.**. *Frontiers in immunology*. 2021. `PMID:34721376 <https://pubmed.ncbi.nlm.nih.gov/34721376/>`_
 
-- Gordin Miri et al. Breast cancer is marked by specific, Public T-cell receptor CDR3 regions shared by mice and humans. *PLoS computational biology*. 2021. `PMID:33465095 <https://pubmed.ncbi.nlm.nih.gov/33465095/>`_
+- Gordin Miri et al. **Breast cancer is marked by specific, Public T-cell receptor CDR3 regions shared by mice and humans.**. *PLoS computational biology*. 2021. `PMID:33465095 <https://pubmed.ncbi.nlm.nih.gov/33465095/>`_
 
-- Huang Yixun et al. Computational Inference, Validation, and Analysis of 5'UTR-Leader Sequences of Alleles of Immunoglobulin Heavy Chain Variable Genes. *Frontiers in immunology*. 2021. `PMID:34671351 <https://pubmed.ncbi.nlm.nih.gov/34671351/>`_
+- Huang Yixun et al. **Computational Inference, Validation, and Analysis of 5'UTR-Leader Sequences of Alleles of Immunoglobulin Heavy Chain Variable Genes.**. *Frontiers in immunology*. 2021. `PMID:34671351 <https://pubmed.ncbi.nlm.nih.gov/34671351/>`_
 
-- Shemesh Or et al. Machine Learning Analysis of Naïve B-Cell Receptor Repertoires Stratifies Celiac Disease Patients and Controls. *Frontiers in immunology*. 2021. `PMID:33790900 <https://pubmed.ncbi.nlm.nih.gov/33790900/>`_
+- Shemesh Or et al. **Machine Learning Analysis of Naïve B-Cell Receptor Repertoires Stratifies Celiac Disease Patients and Controls.**. *Frontiers in immunology*. 2021. `PMID:33790900 <https://pubmed.ncbi.nlm.nih.gov/33790900/>`_
 
-- Cui Ang et al. Sex-Biased Aging Effects on Ig Somatic Hypermutation Targeting. *Journal of immunology (Baltimore, Md. : 1950)*. 2021. `PMID:33288546 <https://pubmed.ncbi.nlm.nih.gov/33288546/>`_
+- Cui Ang et al. **Sex-Biased Aging Effects on Ig Somatic Hypermutation Targeting.**. *Journal of immunology (Baltimore, Md. : 1950)*. 2021. `PMID:33288546 <https://pubmed.ncbi.nlm.nih.gov/33288546/>`_
 
-- Liu Hongmei et al. The methods and advances of adaptive immune receptors repertoire sequencing. *Theranostics*. 2021. `PMID:34522220 <https://pubmed.ncbi.nlm.nih.gov/34522220/>`_
+- Liu Hongmei et al. **The methods and advances of adaptive immune receptors repertoire sequencing.**. *Theranostics*. 2021. `PMID:34522220 <https://pubmed.ncbi.nlm.nih.gov/34522220/>`_
 
-- Richardson Eve et al. A computational method for immune repertoire mining that identifies novel binders from different clonotypes, demonstrated by identifying anti-pertussis toxoid antibodies. *mAbs*. 2021. `PMID:33427589 <https://pubmed.ncbi.nlm.nih.gov/33427589/>`_
+- Richardson Eve et al. **A computational method for immune repertoire mining that identifies novel binders from different clonotypes, demonstrated by identifying anti-pertussis toxoid antibodies.**. *mAbs*. 2021. `PMID:33427589 <https://pubmed.ncbi.nlm.nih.gov/33427589/>`_
 
-- Tsagiopoulou Maria et al. UMIc: A Preprocessing Method for UMI Deduplication and Reads Correction. *Frontiers in genetics*. 2021. `PMID:34122513 <https://pubmed.ncbi.nlm.nih.gov/34122513/>`_
+- Tsagiopoulou Maria et al. **UMIc: A Preprocessing Method for UMI Deduplication and Reads Correction.**. *Frontiers in genetics*. 2021. `PMID:34122513 <https://pubmed.ncbi.nlm.nih.gov/34122513/>`_
 
-- Bagnara Davide et al. Post-Transformation IGHV-IGHD-IGHJ Mutations in Chronic Lymphocytic Leukemia B Cells: Implications for Mutational Mechanisms and Impact on Clinical Course. *Frontiers in oncology*. 2021. `PMID:34113563 <https://pubmed.ncbi.nlm.nih.gov/34113563/>`_
+- Bagnara Davide et al. **Post-Transformation IGHV-IGHD-IGHJ Mutations in Chronic Lymphocytic Leukemia B Cells: Implications for Mutational Mechanisms and Impact on Clinical Course.**. *Frontiers in oncology*. 2021. `PMID:34113563 <https://pubmed.ncbi.nlm.nih.gov/34113563/>`_
 
-- Meier Ute-Christiane et al. Cumulative Roles for Epstein-Barr Virus, Human Endogenous Retroviruses, and Human Herpes Virus-6 in Driving an Inflammatory Cascade Underlying MS Pathogenesis. *Frontiers in immunology*. 2021. `PMID:34790199 <https://pubmed.ncbi.nlm.nih.gov/34790199/>`_
+- Meier Ute-Christiane et al. **Cumulative Roles for Epstein-Barr Virus, Human Endogenous Retroviruses, and Human Herpes Virus-6 in Driving an Inflammatory Cascade Underlying MS Pathogenesis.**. *Frontiers in immunology*. 2021. `PMID:34790199 <https://pubmed.ncbi.nlm.nih.gov/34790199/>`_
 
-- Mancinelli Chiara Rosa et al. Ocrelizumab for the Treatment of Multiple Sclerosis: Safety, Efficacy, and Pharmacology. *Therapeutics and clinical risk management*. 2021. `PMID:34354358 <https://pubmed.ncbi.nlm.nih.gov/34354358/>`_
+- Mancinelli Chiara Rosa et al. **Ocrelizumab for the Treatment of Multiple Sclerosis: Safety, Efficacy, and Pharmacology.**. *Therapeutics and clinical risk management*. 2021. `PMID:34354358 <https://pubmed.ncbi.nlm.nih.gov/34354358/>`_
 
-- Veroni Caterina et al. The CD8 T Cell-Epstein-Barr Virus-B Cell Trialogue: A Central Issue in Multiple Sclerosis Pathogenesis. *Frontiers in immunology*. 2021. `PMID:34305896 <https://pubmed.ncbi.nlm.nih.gov/34305896/>`_
+- Veroni Caterina et al. **The CD8 T Cell-Epstein-Barr Virus-B Cell Trialogue: A Central Issue in Multiple Sclerosis Pathogenesis.**. *Frontiers in immunology*. 2021. `PMID:34305896 <https://pubmed.ncbi.nlm.nih.gov/34305896/>`_
 
-- Wang Jingwei et al. LUBAC Suppresses IL-21-Induced Apoptosis in CD40-Activated Murine B Cells and Promotes Germinal Center B Cell Survival and the T-Dependent Antibody Response. *Frontiers in immunology*. 2021. `PMID:33953720 <https://pubmed.ncbi.nlm.nih.gov/33953720/>`_
+- Wang Jingwei et al. **LUBAC Suppresses IL-21-Induced Apoptosis in CD40-Activated Murine B Cells and Promotes Germinal Center B Cell Survival and the T-Dependent Antibody Response.**. *Frontiers in immunology*. 2021. `PMID:33953720 <https://pubmed.ncbi.nlm.nih.gov/33953720/>`_
 
-- Feng Jingjing et al. Comprehensive B-Cell Immune Repertoire Analysis of Anti-NMDAR Encephalitis and Anti-LGI1 Encephalitis. *Frontiers in immunology*. 2021. `PMID:34691026 <https://pubmed.ncbi.nlm.nih.gov/34691026/>`_
+- Feng Jingjing et al. **Comprehensive B-Cell Immune Repertoire Analysis of Anti-NMDAR Encephalitis and Anti-LGI1 Encephalitis.**. *Frontiers in immunology*. 2021. `PMID:34691026 <https://pubmed.ncbi.nlm.nih.gov/34691026/>`_
 
-- Ostrovsky-Berman Miri et al. Immune2vec: Embedding B/T Cell Receptor Sequences in ℝ N Using Natural Language Processing. *Frontiers in immunology*. 2021. `PMID:34367141 <https://pubmed.ncbi.nlm.nih.gov/34367141/>`_
+- Ostrovsky-Berman Miri et al. **Immune2vec: Embedding B/T Cell Receptor Sequences in ℝ N Using Natural Language Processing.**. *Frontiers in immunology*. 2021. `PMID:34367141 <https://pubmed.ncbi.nlm.nih.gov/34367141/>`_
 
-- Li Jiaqi et al. Insights Into the Role of DNA Methylation in Immune Cell Development and Autoimmune Disease. *Frontiers in cell and developmental biology*. 2021. `PMID:34790667 <https://pubmed.ncbi.nlm.nih.gov/34790667/>`_
+- Li Jiaqi et al. **Insights Into the Role of DNA Methylation in Immune Cell Development and Autoimmune Disease.**. *Frontiers in cell and developmental biology*. 2021. `PMID:34790667 <https://pubmed.ncbi.nlm.nih.gov/34790667/>`_
 
-- Zhang Yanfang et al. RAPID: A Rep-Seq Dataset Analysis Platform With an Integrated Antibody Database. *Frontiers in immunology*. 2021. `PMID:34484220 <https://pubmed.ncbi.nlm.nih.gov/34484220/>`_
+- Zhang Yanfang et al. **RAPID: A Rep-Seq Dataset Analysis Platform With an Integrated Antibody Database.**. *Frontiers in immunology*. 2021. `PMID:34484220 <https://pubmed.ncbi.nlm.nih.gov/34484220/>`_
 
-- Bullen Georgia et al. Cross-Reactive SARS-CoV-2 Neutralizing Antibodies From Deep Mining of Early Patient Responses. *Frontiers in immunology*. 2021. `PMID:34211469 <https://pubmed.ncbi.nlm.nih.gov/34211469/>`_
+- Bullen Georgia et al. **Cross-Reactive SARS-CoV-2 Neutralizing Antibodies From Deep Mining of Early Patient Responses.**. *Frontiers in immunology*. 2021. `PMID:34211469 <https://pubmed.ncbi.nlm.nih.gov/34211469/>`_
 
-- Yang Xiujia et al. Novel Allele Detection Tool Benchmark and Application With Antibody Repertoire Sequencing Dataset. *Frontiers in immunology*. 2021. `PMID:34764956 <https://pubmed.ncbi.nlm.nih.gov/34764956/>`_
+- Yang Xiujia et al. **Novel Allele Detection Tool Benchmark and Application With Antibody Repertoire Sequencing Dataset.**. *Frontiers in immunology*. 2021. `PMID:34764956 <https://pubmed.ncbi.nlm.nih.gov/34764956/>`_
 
-- Chernyshev Mark et al. VDJ Gene Usage in IgM Repertoires of Rhesus and Cynomolgus Macaques. *Frontiers in immunology*. 2021. `PMID:35087534 <https://pubmed.ncbi.nlm.nih.gov/35087534/>`_
+- Chernyshev Mark et al. **VDJ Gene Usage in IgM Repertoires of Rhesus and Cynomolgus Macaques.**. *Frontiers in immunology*. 2021. `PMID:35087534 <https://pubmed.ncbi.nlm.nih.gov/35087534/>`_
 
-- Nannini Francesco et al. Combining phage display with SMRTbell next-generation sequencing for the rapid discovery of functional scFv fragments. *mAbs*. 2021. `PMID:33382949 <https://pubmed.ncbi.nlm.nih.gov/33382949/>`_
+- Nannini Francesco et al. **Combining phage display with SMRTbell next-generation sequencing for the rapid discovery of functional scFv fragments.**. *mAbs*. 2021. `PMID:33382949 <https://pubmed.ncbi.nlm.nih.gov/33382949/>`_
 
-- Robertson Nathan et al. Development of a novel mammalian display system for selection of antibodies against membrane proteins. *The Journal of biological chemistry*. 2020. `PMID:33127646 <https://pubmed.ncbi.nlm.nih.gov/33127646/>`_
+- Robertson Nathan et al. **Development of a novel mammalian display system for selection of antibodies against membrane proteins.**. *The Journal of biological chemistry*. 2020. `PMID:33127646 <https://pubmed.ncbi.nlm.nih.gov/33127646/>`_
 
-- Zhou Julian Q et al. Position-Dependent Differential Targeting of Somatic Hypermutation. *Journal of immunology (Baltimore, Md. : 1950)*. 2020. `PMID:33188076 <https://pubmed.ncbi.nlm.nih.gov/33188076/>`_
+- Zhou Julian Q et al. **Position-Dependent Differential Targeting of Somatic Hypermutation.**. *Journal of immunology (Baltimore, Md. : 1950)*. 2020. `PMID:33188076 <https://pubmed.ncbi.nlm.nih.gov/33188076/>`_
 
-- Jiang Ruoyi et al. Thymus-derived B cell clones persist in the circulation after thymectomy in myasthenia gravis. *Proceedings of the National Academy of Sciences of the United States of America*. 2020. `PMID:33199596 <https://pubmed.ncbi.nlm.nih.gov/33199596/>`_
+- Jiang Ruoyi et al. **Thymus-derived B cell clones persist in the circulation after thymectomy in myasthenia gravis.**. *Proceedings of the National Academy of Sciences of the United States of America*. 2020. `PMID:33199596 <https://pubmed.ncbi.nlm.nih.gov/33199596/>`_
 
-- Schneikart Gerald et al. Dataset of antibody variable region sequence features inferred from a respiratory syncytial virus fusion protein-specific B cell receptor repertoire induced by natural infection of a healthy adult. *Data in brief*. 2020. `PMID:33225034 <https://pubmed.ncbi.nlm.nih.gov/33225034/>`_
+- Schneikart Gerald et al. **Dataset of antibody variable region sequence features inferred from a respiratory syncytial virus fusion protein-specific B cell receptor repertoire induced by natural infection of a healthy adult.**. *Data in brief*. 2020. `PMID:33225034 <https://pubmed.ncbi.nlm.nih.gov/33225034/>`_
 
-- Scott Jamie K et al. The adaptive immune receptor repertoire community as a model for FAIR stewardship of big immunology data. *Current opinion in systems biology*. 2020. `PMID:33073065 <https://pubmed.ncbi.nlm.nih.gov/33073065/>`_
+- Scott Jamie K et al. **The adaptive immune receptor repertoire community as a model for FAIR stewardship of big immunology data.**. *Current opinion in systems biology*. 2020. `PMID:33073065 <https://pubmed.ncbi.nlm.nih.gov/33073065/>`_
 
-- Collins Andrew M et al. Germline immunoglobulin genes: disease susceptibility genes hidden in plain sight?. *Current opinion in systems biology*. 2020. `PMID:37008538 <https://pubmed.ncbi.nlm.nih.gov/37008538/>`_
+- Collins Andrew M et al. **Germline immunoglobulin genes: disease susceptibility genes hidden in plain sight?**. *Current opinion in systems biology*. 2020. `PMID:37008538 <https://pubmed.ncbi.nlm.nih.gov/37008538/>`_
 
-- Scheepers Cathrine et al. Antibody Isotype Switching as a Mechanism to Counter HIV Neutralization Escape. *Cell reports*. 2020. `PMID:33238131 <https://pubmed.ncbi.nlm.nih.gov/33238131/>`_
+- Scheepers Cathrine et al. **Antibody Isotype Switching as a Mechanism to Counter HIV Neutralization Escape.**. *Cell reports*. 2020. `PMID:33238131 <https://pubmed.ncbi.nlm.nih.gov/33238131/>`_
 
-- Pröbstel Anne-Katrin et al. Gut microbiota-specific IgA+ B cells traffic to the CNS in active multiple sclerosis. *Science immunology*. 2020. `PMID:33219152 <https://pubmed.ncbi.nlm.nih.gov/33219152/>`_
+- Pröbstel Anne-Katrin et al. **Gut microbiota-specific IgA+ B cells traffic to the CNS in active multiple sclerosis.**. *Science immunology*. 2020. `PMID:33219152 <https://pubmed.ncbi.nlm.nih.gov/33219152/>`_
 
-- Spisak Natanael et al. Learning the heterogeneous hypermutation landscape of immunoglobulins from high-throughput repertoire data. *Nucleic acids research*. 2020. `PMID:33035336 <https://pubmed.ncbi.nlm.nih.gov/33035336/>`_
+- Spisak Natanael et al. **Learning the heterogeneous hypermutation landscape of immunoglobulins from high-throughput repertoire data.**. *Nucleic acids research*. 2020. `PMID:33035336 <https://pubmed.ncbi.nlm.nih.gov/33035336/>`_
 
-- Ralph Duncan K et al. Using B cell receptor lineage structures to predict affinity. *PLoS computational biology*. 2020. `PMID:33175831 <https://pubmed.ncbi.nlm.nih.gov/33175831/>`_
+- Ralph Duncan K et al. **Using B cell receptor lineage structures to predict affinity.**. *PLoS computational biology*. 2020. `PMID:33175831 <https://pubmed.ncbi.nlm.nih.gov/33175831/>`_
 
-- Fitzpatrick Zachary et al. Gut-educated IgA plasma cells defend the meningeal venous sinuses. *Nature*. 2020. `PMID:33149302 <https://pubmed.ncbi.nlm.nih.gov/33149302/>`_
+- Fitzpatrick Zachary et al. **Gut-educated IgA plasma cells defend the meningeal venous sinuses.**. *Nature*. 2020. `PMID:33149302 <https://pubmed.ncbi.nlm.nih.gov/33149302/>`_
 
-- Wang Zijun et al. A broadly neutralizing macaque monoclonal antibody against the HIV-1 V3-Glycan patch. *eLife*. 2020. `PMID:33084569 <https://pubmed.ncbi.nlm.nih.gov/33084569/>`_
+- Wang Zijun et al. **A broadly neutralizing macaque monoclonal antibody against the HIV-1 V3-Glycan patch.**. *eLife*. 2020. `PMID:33084569 <https://pubmed.ncbi.nlm.nih.gov/33084569/>`_
 
-- Atsumi Shinichiro et al. Focal adhesion ribonucleoprotein complex proteins are major humoral cancer antigens and targets in autoimmune diseases. *Communications biology*. 2020. `PMID:33067514 <https://pubmed.ncbi.nlm.nih.gov/33067514/>`_
+- Atsumi Shinichiro et al. **Focal adhesion ribonucleoprotein complex proteins are major humoral cancer antigens and targets in autoimmune diseases.**. *Communications biology*. 2020. `PMID:33067514 <https://pubmed.ncbi.nlm.nih.gov/33067514/>`_
 
-- Reincke S Momsen et al. Brain antibody sequence evaluation (BASE): an easy-to-use software for complete data analysis in single cell immunoglobulin cloning. *BMC bioinformatics*. 2020. `PMID:33032524 <https://pubmed.ncbi.nlm.nih.gov/33032524/>`_
+- Reincke S Momsen et al. **Brain antibody sequence evaluation (BASE): an easy-to-use software for complete data analysis in single cell immunoglobulin cloning.**. *BMC bioinformatics*. 2020. `PMID:33032524 <https://pubmed.ncbi.nlm.nih.gov/33032524/>`_
 
-- Mor Michael et al. Multi-Clonal Live SARS-CoV-2 In Vitro Neutralization by Antibodies Isolated from Severe COVID-19 Convalescent Donors. *bioRxiv : the preprint server for biology*. 2020. `PMID:33052341 <https://pubmed.ncbi.nlm.nih.gov/33052341/>`_
+- Mor Michael et al. **Multi-Clonal Live SARS-CoV-2 In Vitro Neutralization by Antibodies Isolated from Severe COVID-19 Convalescent Donors.**. *bioRxiv : the preprint server for biology*. 2020. `PMID:33052341 <https://pubmed.ncbi.nlm.nih.gov/33052341/>`_
 
-- Turner Jackson S et al. Human germinal centres engage memory and naive B cells after influenza vaccination. *Nature*. 2020. `PMID:32866963 <https://pubmed.ncbi.nlm.nih.gov/32866963/>`_
+- Turner Jackson S et al. **Human germinal centres engage memory and naive B cells after influenza vaccination.**. *Nature*. 2020. `PMID:32866963 <https://pubmed.ncbi.nlm.nih.gov/32866963/>`_
 
-- de Oliveira Thaís Crippa et al. Population genomics reveals the expansion of highly inbred Plasmodium vivax lineages in the main malaria hotspot of Brazil. *PLoS neglected tropical diseases*. 2020. `PMID:33112884 <https://pubmed.ncbi.nlm.nih.gov/33112884/>`_
+- de Oliveira Thaís Crippa et al. **Population genomics reveals the expansion of highly inbred Plasmodium vivax lineages in the main malaria hotspot of Brazil.**. *PLoS neglected tropical diseases*. 2020. `PMID:33112884 <https://pubmed.ncbi.nlm.nih.gov/33112884/>`_
 
-- Csepregi Lucia et al. Immune Literacy: Reading, Writing, and Editing Adaptive Immunity. *iScience*. 2020. `PMID:32905040 <https://pubmed.ncbi.nlm.nih.gov/32905040/>`_
+- Csepregi Lucia et al. **Immune Literacy: Reading, Writing, and Editing Adaptive Immunity.**. *iScience*. 2020. `PMID:32905040 <https://pubmed.ncbi.nlm.nih.gov/32905040/>`_
 
-- Norman Richard A et al. Computational approaches to therapeutic antibody design: established methods and emerging trends. *Briefings in bioinformatics*. 2020. `PMID:31626279 <https://pubmed.ncbi.nlm.nih.gov/31626279/>`_
+- Norman Richard A et al. **Computational approaches to therapeutic antibody design: established methods and emerging trends.**. *Briefings in bioinformatics*. 2020. `PMID:31626279 <https://pubmed.ncbi.nlm.nih.gov/31626279/>`_
 
-- Ramesh Akshaya et al. A pathogenic and clonally expanded B cell transcriptome in active multiple sclerosis. *Proceedings of the National Academy of Sciences of the United States of America*. 2020. `PMID:32859762 <https://pubmed.ncbi.nlm.nih.gov/32859762/>`_
+- Ramesh Akshaya et al. **A pathogenic and clonally expanded B cell transcriptome in active multiple sclerosis.**. *Proceedings of the National Academy of Sciences of the United States of America*. 2020. `PMID:32859762 <https://pubmed.ncbi.nlm.nih.gov/32859762/>`_
 
-- Wang Zijun et al. Enhanced SARS-CoV-2 Neutralization by Secretory IgA in vitro. *bioRxiv : the preprint server for biology*. 2020. `PMID:32935095 <https://pubmed.ncbi.nlm.nih.gov/32935095/>`_
+- Wang Zijun et al. **Enhanced SARS-CoV-2 Neutralization by Secretory IgA in vitro.**. *bioRxiv : the preprint server for biology*. 2020. `PMID:32935095 <https://pubmed.ncbi.nlm.nih.gov/32935095/>`_
 
-- Yang Xingyu et al. GLaMST: grow lineages along minimum spanning tree for b cell receptor sequencing data. *BMC genomics*. 2020. `PMID:32900378 <https://pubmed.ncbi.nlm.nih.gov/32900378/>`_
+- Yang Xingyu et al. **GLaMST: grow lineages along minimum spanning tree for b cell receptor sequencing data.**. *BMC genomics*. 2020. `PMID:32900378 <https://pubmed.ncbi.nlm.nih.gov/32900378/>`_
 
-- Tu Zhui et al. Landscape of variable domain of heavy-chain-only antibody repertoire from alpaca. *Immunology*. 2020. `PMID:32506493 <https://pubmed.ncbi.nlm.nih.gov/32506493/>`_
+- Tu Zhui et al. **Landscape of variable domain of heavy-chain-only antibody repertoire from alpaca.**. *Immunology*. 2020. `PMID:32506493 <https://pubmed.ncbi.nlm.nih.gov/32506493/>`_
 
-- Symonds Alistair Lj et al. Egr2 and 3 control inflammation, but maintain homeostasis, of PD-1high memory phenotype CD4 T cells. *Life science alliance*. 2020. `PMID:32709717 <https://pubmed.ncbi.nlm.nih.gov/32709717/>`_
+- Symonds Alistair Lj et al. **Egr2 and 3 control inflammation, but maintain homeostasis, of PD-1high memory phenotype CD4 T cells.**. *Life science alliance*. 2020. `PMID:32709717 <https://pubmed.ncbi.nlm.nih.gov/32709717/>`_
 
-- Huang Chenxi et al. Editing of the Proteolytic System of Lactococcus lactis Increases Its Bioactive Potential. *Applied and environmental microbiology*. 2020. `PMID:32680863 <https://pubmed.ncbi.nlm.nih.gov/32680863/>`_
+- Huang Chenxi et al. **Editing of the Proteolytic System of Lactococcus lactis Increases Its Bioactive Potential.**. *Applied and environmental microbiology*. 2020. `PMID:32680863 <https://pubmed.ncbi.nlm.nih.gov/32680863/>`_
 
-- Montagne Janelle M et al. Ultra-efficient sequencing of T Cell receptor repertoires reveals shared responses in muscle from patients with Myositis. *EBioMedicine*. 2020. `PMID:32891935 <https://pubmed.ncbi.nlm.nih.gov/32891935/>`_
+- Montagne Janelle M et al. **Ultra-efficient sequencing of T Cell receptor repertoires reveals shared responses in muscle from patients with Myositis.**. *EBioMedicine*. 2020. `PMID:32891935 <https://pubmed.ncbi.nlm.nih.gov/32891935/>`_
 
-- Shah Hemangi B et al. Human C. difficile toxin-specific memory B cell repertoires encode poorly neutralizing antibodies. *JCI insight*. 2020. `PMID:32663199 <https://pubmed.ncbi.nlm.nih.gov/32663199/>`_
+- Shah Hemangi B et al. **Human C. difficile toxin-specific memory B cell repertoires encode poorly neutralizing antibodies.**. *JCI insight*. 2020. `PMID:32663199 <https://pubmed.ncbi.nlm.nih.gov/32663199/>`_
 
-- Kreer Christoph et al. Longitudinal Isolation of Potent Near-Germline SARS-CoV-2-Neutralizing Antibodies from COVID-19 Patients. *Cell*. 2020. `PMID:32673567 <https://pubmed.ncbi.nlm.nih.gov/32673567/>`_
+- Kreer Christoph et al. **Longitudinal Isolation of Potent Near-Germline SARS-CoV-2-Neutralizing Antibodies from COVID-19 Patients.**. *Cell*. 2020. `PMID:32673567 <https://pubmed.ncbi.nlm.nih.gov/32673567/>`_
 
-- Alsoussi Wafaa B et al. A Potently Neutralizing Antibody Protects Mice against SARS-CoV-2 Infection. *Journal of immunology (Baltimore, Md. : 1950)*. 2020. `PMID:32591393 <https://pubmed.ncbi.nlm.nih.gov/32591393/>`_
+- Alsoussi Wafaa B et al. **A Potently Neutralizing Antibody Protects Mice against SARS-CoV-2 Infection.**. *Journal of immunology (Baltimore, Md. : 1950)*. 2020. `PMID:32591393 <https://pubmed.ncbi.nlm.nih.gov/32591393/>`_
 
-- Fukuyama Julia et al. Lack of Evidence for a Substantial Rate of Templated Mutagenesis in B Cell Diversification. *Journal of immunology (Baltimore, Md. : 1950)*. 2020. `PMID:32669310 <https://pubmed.ncbi.nlm.nih.gov/32669310/>`_
+- Fukuyama Julia et al. **Lack of Evidence for a Substantial Rate of Templated Mutagenesis in B Cell Diversification.**. *Journal of immunology (Baltimore, Md. : 1950)*. 2020. `PMID:32669310 <https://pubmed.ncbi.nlm.nih.gov/32669310/>`_
 
-- Zhang Fan et al. Adaptive immune responses to SARS-CoV-2 infection in severe versus mild individuals. *Signal transduction and targeted therapy*. 2020. `PMID:32796814 <https://pubmed.ncbi.nlm.nih.gov/32796814/>`_
+- Zhang Fan et al. **Adaptive immune responses to SARS-CoV-2 infection in severe versus mild individuals.**. *Signal transduction and targeted therapy*. 2020. `PMID:32796814 <https://pubmed.ncbi.nlm.nih.gov/32796814/>`_
 
-- Thakar Juilee et al. Unbiased analysis of peripheral blood mononuclear cells reveals CD4 T cell response to RSV matrix protein. *Vaccine: X*. 2020. `PMID:32529184 <https://pubmed.ncbi.nlm.nih.gov/32529184/>`_
+- Thakar Juilee et al. **Unbiased analysis of peripheral blood mononuclear cells reveals CD4 T cell response to RSV matrix protein.**. *Vaccine: X*. 2020. `PMID:32529184 <https://pubmed.ncbi.nlm.nih.gov/32529184/>`_
 
-- Chi Xiangyang et al. A neutralizing human antibody binds to the N-terminal domain of the Spike protein of SARS-CoV-2. *Science (New York, N.Y.)*. 2020. `PMID:32571838 <https://pubmed.ncbi.nlm.nih.gov/32571838/>`_
+- Chi Xiangyang et al. **A neutralizing human antibody binds to the N-terminal domain of the Spike protein of SARS-CoV-2.**. *Science (New York, N.Y.)*. 2020. `PMID:32571838 <https://pubmed.ncbi.nlm.nih.gov/32571838/>`_
 
-- Dhar Amrit et al. A Bayesian phylogenetic hidden Markov model for B cell receptor sequence analysis. *PLoS computational biology*. 2020. `PMID:32804924 <https://pubmed.ncbi.nlm.nih.gov/32804924/>`_
+- Dhar Amrit et al. **A Bayesian phylogenetic hidden Markov model for B cell receptor sequence analysis.**. *PLoS computational biology*. 2020. `PMID:32804924 <https://pubmed.ncbi.nlm.nih.gov/32804924/>`_
 
-- Zhang Lu et al. Comprehensive investigation of T and B cell receptor repertoires in an MC38 tumor model following murine anti‑PD‑1 administration. *Molecular medicine reports*. 2020. `PMID:32468004 <https://pubmed.ncbi.nlm.nih.gov/32468004/>`_
+- Zhang Lu et al. **Comprehensive investigation of T and B cell receptor repertoires in an MC38 tumor model following murine anti‑PD‑1 administration.**. *Molecular medicine reports*. 2020. `PMID:32468004 <https://pubmed.ncbi.nlm.nih.gov/32468004/>`_
 
-- De Mattos-Arruda L et al. Neoantigen prediction and computational perspectives towards clinical benefit: recommendations from the ESMO Precision Medicine Working Group. *Annals of oncology : official journal of the European Society for Medical Oncology*. 2020. `PMID:32610166 <https://pubmed.ncbi.nlm.nih.gov/32610166/>`_
+- De Mattos-Arruda L et al. **Neoantigen prediction and computational perspectives towards clinical benefit: recommendations from the ESMO Precision Medicine Working Group.**. *Annals of oncology : official journal of the European Society for Medical Oncology*. 2020. `PMID:32610166 <https://pubmed.ncbi.nlm.nih.gov/32610166/>`_
 
-- Gharibi Tohid et al. The role of B cells in the immunopathogenesis of multiple sclerosis. *Immunology*. 2020. `PMID:32249925 <https://pubmed.ncbi.nlm.nih.gov/32249925/>`_
+- Gharibi Tohid et al. **The role of B cells in the immunopathogenesis of multiple sclerosis.**. *Immunology*. 2020. `PMID:32249925 <https://pubmed.ncbi.nlm.nih.gov/32249925/>`_
 
-- Aye Racheal et al. Malaria exposure drives both cognate and bystander human B cells to adopt an atypical phenotype. *European journal of immunology*. 2020. `PMID:32222961 <https://pubmed.ncbi.nlm.nih.gov/32222961/>`_
+- Aye Racheal et al. **Malaria exposure drives both cognate and bystander human B cells to adopt an atypical phenotype.**. *European journal of immunology*. 2020. `PMID:32222961 <https://pubmed.ncbi.nlm.nih.gov/32222961/>`_
 
-- Wendel Ben S et al. Rapid HIV Progression Is Associated with Extensive Ongoing Somatic Hypermutation. *Journal of immunology (Baltimore, Md. : 1950)*. 2020. `PMID:32591400 <https://pubmed.ncbi.nlm.nih.gov/32591400/>`_
+- Wendel Ben S et al. **Rapid HIV Progression Is Associated with Extensive Ongoing Somatic Hypermutation.**. *Journal of immunology (Baltimore, Md. : 1950)*. 2020. `PMID:32591400 <https://pubmed.ncbi.nlm.nih.gov/32591400/>`_
 
-- Cottrell Christopher A et al. Mapping the immunogenic landscape of near-native HIV-1 envelope trimers in non-human primates. *PLoS pathogens*. 2020. `PMID:32866207 <https://pubmed.ncbi.nlm.nih.gov/32866207/>`_
+- Cottrell Christopher A et al. **Mapping the immunogenic landscape of near-native HIV-1 envelope trimers in non-human primates.**. *PLoS pathogens*. 2020. `PMID:32866207 <https://pubmed.ncbi.nlm.nih.gov/32866207/>`_
 
-- Graf Jonas et al. [Ocrelizumab for treatment of multiple sclerosis]. *Der Nervenarzt*. 2020. `PMID:32524163 <https://pubmed.ncbi.nlm.nih.gov/32524163/>`_
+- Graf Jonas et al. **[Ocrelizumab for treatment of multiple sclerosis].**. *Der Nervenarzt*. 2020. `PMID:32524163 <https://pubmed.ncbi.nlm.nih.gov/32524163/>`_
 
-- Jiang Ruoyi et al. Single-cell repertoire tracing identifies rituximab-resistant B cells during myasthenia gravis relapses. *JCI insight*. 2020. `PMID:32573488 <https://pubmed.ncbi.nlm.nih.gov/32573488/>`_
+- Jiang Ruoyi et al. **Single-cell repertoire tracing identifies rituximab-resistant B cells during myasthenia gravis relapses.**. *JCI insight*. 2020. `PMID:32573488 <https://pubmed.ncbi.nlm.nih.gov/32573488/>`_
 
-- Marks Claire et al. How repertoire data are changing antibody science. *The Journal of biological chemistry*. 2020. `PMID:32409582 <https://pubmed.ncbi.nlm.nih.gov/32409582/>`_
+- Marks Claire et al. **How repertoire data are changing antibody science.**. *The Journal of biological chemistry*. 2020. `PMID:32409582 <https://pubmed.ncbi.nlm.nih.gov/32409582/>`_
 
-- Soto Cinque et al. PyIR: a scalable wrapper for processing billions of immunoglobulin and T cell receptor sequences using IgBLAST. *BMC bioinformatics*. 2020. `PMID:32677886 <https://pubmed.ncbi.nlm.nih.gov/32677886/>`_
+- Soto Cinque et al. **PyIR: a scalable wrapper for processing billions of immunoglobulin and T cell receptor sequences using IgBLAST.**. *BMC bioinformatics*. 2020. `PMID:32677886 <https://pubmed.ncbi.nlm.nih.gov/32677886/>`_
 
-- Kuri-Cervantes Leticia et al. Comprehensive mapping of immune perturbations associated with severe COVID-19. *Science immunology*. 2020. `PMID:32669287 <https://pubmed.ncbi.nlm.nih.gov/32669287/>`_
+- Kuri-Cervantes Leticia et al. **Comprehensive mapping of immune perturbations associated with severe COVID-19.**. *Science immunology*. 2020. `PMID:32669287 <https://pubmed.ncbi.nlm.nih.gov/32669287/>`_
 
-- Greenshields-Watson Alexander et al. CD4+ T Cells Recognize Conserved Influenza A Epitopes through Shared Patterns of V-Gene Usage and Complementary Biochemical Features. *Cell reports*. 2020. `PMID:32668259 <https://pubmed.ncbi.nlm.nih.gov/32668259/>`_
+- Greenshields-Watson Alexander et al. **CD4+ T Cells Recognize Conserved Influenza A Epitopes through Shared Patterns of V-Gene Usage and Complementary Biochemical Features.**. *Cell reports*. 2020. `PMID:32668259 <https://pubmed.ncbi.nlm.nih.gov/32668259/>`_
 
-- Glass David R et al. An Integrated Multi-omic Single-Cell Atlas of Human B Cell Identity. *Immunity*. 2020. `PMID:32668225 <https://pubmed.ncbi.nlm.nih.gov/32668225/>`_
+- Glass David R et al. **An Integrated Multi-omic Single-Cell Atlas of Human B Cell Identity.**. *Immunity*. 2020. `PMID:32668225 <https://pubmed.ncbi.nlm.nih.gov/32668225/>`_
 
-- Granai Massimo et al. IGHV mutational status of nodal marginal zone lymphoma by NGS reveals distinct pathogenic pathways with different prognostic implications. *Virchows Archiv : an international journal of pathology*. 2020. `PMID:31802229 <https://pubmed.ncbi.nlm.nih.gov/31802229/>`_
+- Granai Massimo et al. **IGHV mutational status of nodal marginal zone lymphoma by NGS reveals distinct pathogenic pathways with different prognostic implications.**. *Virchows Archiv : an international journal of pathology*. 2020. `PMID:31802229 <https://pubmed.ncbi.nlm.nih.gov/31802229/>`_
 
-- Foglierini Mathilde et al. AncesTree: An interactive immunoglobulin lineage tree visualizer. *PLoS computational biology*. 2020. `PMID:32649725 <https://pubmed.ncbi.nlm.nih.gov/32649725/>`_
+- Foglierini Mathilde et al. **AncesTree: An interactive immunoglobulin lineage tree visualizer.**. *PLoS computational biology*. 2020. `PMID:32649725 <https://pubmed.ncbi.nlm.nih.gov/32649725/>`_
 
-- Hoof Ilka et al. Allergen-specific IgG+ memory B cells are temporally linked to IgE memory responses. *The Journal of allergy and clinical immunology*. 2020. `PMID:31883847 <https://pubmed.ncbi.nlm.nih.gov/31883847/>`_
+- Hoof Ilka et al. **Allergen-specific IgG+ memory B cells are temporally linked to IgE memory responses.**. *The Journal of allergy and clinical immunology*. 2020. `PMID:31883847 <https://pubmed.ncbi.nlm.nih.gov/31883847/>`_
 
-- Ahmed Ibrahim et al. Ultrasensitive amplicon barcoding for next-generation sequencing facilitating sequence error and amplification-bias correction. *Scientific reports*. 2020. `PMID:32601361 <https://pubmed.ncbi.nlm.nih.gov/32601361/>`_
+- Ahmed Ibrahim et al. **Ultrasensitive amplicon barcoding for next-generation sequencing facilitating sequence error and amplification-bias correction.**. *Scientific reports*. 2020. `PMID:32601361 <https://pubmed.ncbi.nlm.nih.gov/32601361/>`_
 
-- Brochu Hayden N et al. Systematic Profiling of Full-Length Ig and TCR Repertoire Diversity in Rhesus Macaque through Long Read Transcriptome Sequencing. *Journal of immunology (Baltimore, Md. : 1950)*. 2020. `PMID:32376650 <https://pubmed.ncbi.nlm.nih.gov/32376650/>`_
+- Brochu Hayden N et al. **Systematic Profiling of Full-Length Ig and TCR Repertoire Diversity in Rhesus Macaque through Long Read Transcriptome Sequencing.**. *Journal of immunology (Baltimore, Md. : 1950)*. 2020. `PMID:32376650 <https://pubmed.ncbi.nlm.nih.gov/32376650/>`_
 
-- Mikocziova Ivana et al. Polymorphisms in human immunoglobulin heavy chain variable genes and their upstream regions. *Nucleic acids research*. 2020. `PMID:32365177 <https://pubmed.ncbi.nlm.nih.gov/32365177/>`_
+- Mikocziova Ivana et al. **Polymorphisms in human immunoglobulin heavy chain variable genes and their upstream regions.**. *Nucleic acids research*. 2020. `PMID:32365177 <https://pubmed.ncbi.nlm.nih.gov/32365177/>`_
 
-- Domingo-Gonzalez Racquel et al. Diverse homeostatic and immunomodulatory roles of immune cells in the developing mouse lung at single cell resolution. *eLife*. 2020. `PMID:32484158 <https://pubmed.ncbi.nlm.nih.gov/32484158/>`_
+- Domingo-Gonzalez Racquel et al. **Diverse homeostatic and immunomodulatory roles of immune cells in the developing mouse lung at single cell resolution.**. *eLife*. 2020. `PMID:32484158 <https://pubmed.ncbi.nlm.nih.gov/32484158/>`_
 
-- Chen Huan et al. BCR selection and affinity maturation in Peyer's patch germinal centres. *Nature*. 2020. `PMID:32499646 <https://pubmed.ncbi.nlm.nih.gov/32499646/>`_
+- Chen Huan et al. **BCR selection and affinity maturation in Peyer's patch germinal centres.**. *Nature*. 2020. `PMID:32499646 <https://pubmed.ncbi.nlm.nih.gov/32499646/>`_
 
-- Nouri Nima et al. Somatic hypermutation analysis for improved identification of B cell clonal families from next-generation sequencing data. *PLoS computational biology*. 2020. `PMID:32574157 <https://pubmed.ncbi.nlm.nih.gov/32574157/>`_
+- Nouri Nima et al. **Somatic hypermutation analysis for improved identification of B cell clonal families from next-generation sequencing data.**. *PLoS computational biology*. 2020. `PMID:32574157 <https://pubmed.ncbi.nlm.nih.gov/32574157/>`_
 
-- Pikor Natalia B et al. Remodeling of light and dark zone follicular dendritic cells governs germinal center responses. *Nature immunology*. 2020. `PMID:32424359 <https://pubmed.ncbi.nlm.nih.gov/32424359/>`_
+- Pikor Natalia B et al. **Remodeling of light and dark zone follicular dendritic cells governs germinal center responses.**. *Nature immunology*. 2020. `PMID:32424359 <https://pubmed.ncbi.nlm.nih.gov/32424359/>`_
 
-- Rosikiewicz Wojciech et al. TET2 deficiency reprograms the germinal center B cell epigenome and silences genes linked to lymphomagenesis. *Science advances*. 2020. `PMID:32596441 <https://pubmed.ncbi.nlm.nih.gov/32596441/>`_
+- Rosikiewicz Wojciech et al. **TET2 deficiency reprograms the germinal center B cell epigenome and silences genes linked to lymphomagenesis.**. *Science advances*. 2020. `PMID:32596441 <https://pubmed.ncbi.nlm.nih.gov/32596441/>`_
 
-- Lipphardt Mark et al. Plasma Exchange or Immunoadsorption in Demyelinating Diseases: A Meta-Analysis. *Journal of clinical medicine*. 2020. `PMID:32466101 <https://pubmed.ncbi.nlm.nih.gov/32466101/>`_
+- Lipphardt Mark et al. **Plasma Exchange or Immunoadsorption in Demyelinating Diseases: A Meta-Analysis.**. *Journal of clinical medicine*. 2020. `PMID:32466101 <https://pubmed.ncbi.nlm.nih.gov/32466101/>`_
 
-- Robbiani Davide F et al. Convergent Antibody Responses to SARS-CoV-2 Infection in Convalescent Individuals. *bioRxiv : the preprint server for biology*. 2020. `PMID:32511384 <https://pubmed.ncbi.nlm.nih.gov/32511384/>`_
+- Robbiani Davide F et al. **Convergent Antibody Responses to SARS-CoV-2 Infection in Convalescent Individuals.**. *bioRxiv : the preprint server for biology*. 2020. `PMID:32511384 <https://pubmed.ncbi.nlm.nih.gov/32511384/>`_
 
-- Béguelin Wendy et al. Mutant EZH2 Induces a Pre-malignant Lymphoma Niche by Reprogramming the Immune Response. *Cancer cell*. 2020. `PMID:32396861 <https://pubmed.ncbi.nlm.nih.gov/32396861/>`_
+- Béguelin Wendy et al. **Mutant EZH2 Induces a Pre-malignant Lymphoma Niche by Reprogramming the Immune Response.**. *Cancer cell*. 2020. `PMID:32396861 <https://pubmed.ncbi.nlm.nih.gov/32396861/>`_
 
-- Sharonov George V et al. B cells, plasma cells and antibody repertoires in the tumour microenvironment. *Nature reviews. Immunology*. 2020. `PMID:31988391 <https://pubmed.ncbi.nlm.nih.gov/31988391/>`_
+- Sharonov George V et al. **B cells, plasma cells and antibody repertoires in the tumour microenvironment.**. *Nature reviews. Immunology*. 2020. `PMID:31988391 <https://pubmed.ncbi.nlm.nih.gov/31988391/>`_
 
-- Grosserichter-Wagener Christina et al. Defective formation of IgA memory B cells, Th1 and Th17 cells in symptomatic patients with selective IgA deficiency. *Clinical & translational immunology*. 2020. `PMID:32355559 <https://pubmed.ncbi.nlm.nih.gov/32355559/>`_
+- Grosserichter-Wagener Christina et al. **Defective formation of IgA memory B cells, Th1 and Th17 cells in symptomatic patients with selective IgA deficiency.**. *Clinical & translational immunology*. 2020. `PMID:32355559 <https://pubmed.ncbi.nlm.nih.gov/32355559/>`_
 
-- Vallino Amélie et al. Gut bacteria Akkermansia elicit a specific IgG response in CSF of patients with MS. *Neurology(R) neuroimmunology & neuroinflammation*. 2020. `PMID:32123045 <https://pubmed.ncbi.nlm.nih.gov/32123045/>`_
+- Vallino Amélie et al. **Gut bacteria Akkermansia elicit a specific IgG response in CSF of patients with MS.**. *Neurology(R) neuroimmunology & neuroinflammation*. 2020. `PMID:32123045 <https://pubmed.ncbi.nlm.nih.gov/32123045/>`_
 
-- Belhouachi Nabila et al. Primary vitreoretinal lymphomas display a remarkably restricted immunoglobulin gene repertoire. *Blood advances*. 2020. `PMID:32267931 <https://pubmed.ncbi.nlm.nih.gov/32267931/>`_
+- Belhouachi Nabila et al. **Primary vitreoretinal lymphomas display a remarkably restricted immunoglobulin gene repertoire.**. *Blood advances*. 2020. `PMID:32267931 <https://pubmed.ncbi.nlm.nih.gov/32267931/>`_
 
-- Bhardwaj Vinnu et al. Automated analysis of immunosequencing datasets reveals novel immunoglobulin D genes across diverse species. *PLoS computational biology*. 2020. `PMID:32339161 <https://pubmed.ncbi.nlm.nih.gov/32339161/>`_
+- Bhardwaj Vinnu et al. **Automated analysis of immunosequencing datasets reveals novel immunoglobulin D genes across diverse species.**. *PLoS computational biology*. 2020. `PMID:32339161 <https://pubmed.ncbi.nlm.nih.gov/32339161/>`_
 
-- Cole Charles et al. Complete characterization of the human immune cell transcriptome using accurate full-length cDNA sequencing. *Genome research*. 2020. `PMID:32312742 <https://pubmed.ncbi.nlm.nih.gov/32312742/>`_
+- Cole Charles et al. **Complete characterization of the human immune cell transcriptome using accurate full-length cDNA sequencing.**. *Genome research*. 2020. `PMID:32312742 <https://pubmed.ncbi.nlm.nih.gov/32312742/>`_
 
-- Ford Michael et al. Genotyping and Copy Number Analysis of Immunoglobin Heavy Chain Variable Genes Using Long Reads. *iScience*. 2020. `PMID:32109676 <https://pubmed.ncbi.nlm.nih.gov/32109676/>`_
+- Ford Michael et al. **Genotyping and Copy Number Analysis of Immunoglobin Heavy Chain Variable Genes Using Long Reads.**. *iScience*. 2020. `PMID:32109676 <https://pubmed.ncbi.nlm.nih.gov/32109676/>`_
 
-- Hashimoto Atsushi et al. Proteogenomic analysis of granulocyte macrophage colony- stimulating factor autoantibodies in the blood of a patient with autoimmune pulmonary alveolar proteinosis. *Scientific reports*. 2020. `PMID:32188922 <https://pubmed.ncbi.nlm.nih.gov/32188922/>`_
+- Hashimoto Atsushi et al. **Proteogenomic analysis of granulocyte macrophage colony- stimulating factor autoantibodies in the blood of a patient with autoimmune pulmonary alveolar proteinosis.**. *Scientific reports*. 2020. `PMID:32188922 <https://pubmed.ncbi.nlm.nih.gov/32188922/>`_
 
-- Fenton Thomas M et al. Immune Profiling of Human Gut-Associated Lymphoid Tissue Identifies a Role for Isolated Lymphoid Follicles in Priming of Region-Specific Immunity. *Immunity*. 2020. `PMID:32160523 <https://pubmed.ncbi.nlm.nih.gov/32160523/>`_
+- Fenton Thomas M et al. **Immune Profiling of Human Gut-Associated Lymphoid Tissue Identifies a Role for Isolated Lymphoid Follicles in Priming of Region-Specific Immunity.**. *Immunity*. 2020. `PMID:32160523 <https://pubmed.ncbi.nlm.nih.gov/32160523/>`_
 
-- Colombo Monica et al. Tracing CLL-biased stereotyped immunoglobulin gene rearrangements in normal B cell subsets using a high-throughput immunogenetic approach. *Molecular medicine (Cambridge, Mass.)*. 2020. `PMID:32156260 <https://pubmed.ncbi.nlm.nih.gov/32156260/>`_
+- Colombo Monica et al. **Tracing CLL-biased stereotyped immunoglobulin gene rearrangements in normal B cell subsets using a high-throughput immunogenetic approach.**. *Molecular medicine (Cambridge, Mass.)*. 2020. `PMID:32156260 <https://pubmed.ncbi.nlm.nih.gov/32156260/>`_
 
-- Sellebjerg Finn et al. Anti-CD20 Monoclonal Antibodies for Relapsing and Progressive Multiple Sclerosis. *CNS drugs*. 2020. `PMID:31994023 <https://pubmed.ncbi.nlm.nih.gov/31994023/>`_
+- Sellebjerg Finn et al. **Anti-CD20 Monoclonal Antibodies for Relapsing and Progressive Multiple Sclerosis.**. *CNS drugs*. 2020. `PMID:31994023 <https://pubmed.ncbi.nlm.nih.gov/31994023/>`_
 
-- Smakaj Erand et al. Benchmarking immunoinformatic tools for the analysis of antibody repertoire sequences. *Bioinformatics (Oxford, England)*. 2020. `PMID:31873728 <https://pubmed.ncbi.nlm.nih.gov/31873728/>`_
+- Smakaj Erand et al. **Benchmarking immunoinformatic tools for the analysis of antibody repertoire sequences.**. *Bioinformatics (Oxford, England)*. 2020. `PMID:31873728 <https://pubmed.ncbi.nlm.nih.gov/31873728/>`_
 
-- James Kylie R et al. Distinct microbial and immune niches of the human colon. *Nature immunology*. 2020. `PMID:32066951 <https://pubmed.ncbi.nlm.nih.gov/32066951/>`_
+- James Kylie R et al. **Distinct microbial and immune niches of the human colon.**. *Nature immunology*. 2020. `PMID:32066951 <https://pubmed.ncbi.nlm.nih.gov/32066951/>`_
 
-- Bar-Or Amit et al. Epstein-Barr Virus in Multiple Sclerosis: Theory and Emerging Immunotherapies. *Trends in molecular medicine*. 2020. `PMID:31862243 <https://pubmed.ncbi.nlm.nih.gov/31862243/>`_
+- Bar-Or Amit et al. **Epstein-Barr Virus in Multiple Sclerosis: Theory and Emerging Immunotherapies.**. *Trends in molecular medicine*. 2020. `PMID:31862243 <https://pubmed.ncbi.nlm.nih.gov/31862243/>`_
 
-- Korin Ben et al. Short-term sleep deprivation in mice induces B cell migration to the brain compartment. *Sleep*. 2020. `PMID:31553459 <https://pubmed.ncbi.nlm.nih.gov/31553459/>`_
+- Korin Ben et al. **Short-term sleep deprivation in mice induces B cell migration to the brain compartment.**. *Sleep*. 2020. `PMID:31553459 <https://pubmed.ncbi.nlm.nih.gov/31553459/>`_
 
-- Biram Adi et al. B Cell Diversification Is Uncoupled from SAP-Mediated Selection Forces in Chronic Germinal Centers within Peyer's Patches. *Cell reports*. 2020. `PMID:32049020 <https://pubmed.ncbi.nlm.nih.gov/32049020/>`_
+- Biram Adi et al. **B Cell Diversification Is Uncoupled from SAP-Mediated Selection Forces in Chronic Germinal Centers within Peyer's Patches.**. *Cell reports*. 2020. `PMID:32049020 <https://pubmed.ncbi.nlm.nih.gov/32049020/>`_
 
-- Kovaltsuk Aleksandr et al. Structural diversity of B-cell receptor repertoires along the B-cell differentiation axis in humans and mice. *PLoS computational biology*. 2020. `PMID:32069281 <https://pubmed.ncbi.nlm.nih.gov/32069281/>`_
+- Kovaltsuk Aleksandr et al. **Structural diversity of B-cell receptor repertoires along the B-cell differentiation axis in humans and mice.**. *PLoS computational biology*. 2020. `PMID:32069281 <https://pubmed.ncbi.nlm.nih.gov/32069281/>`_
 
-- Horns Felix et al. Memory B Cell Activation, Broad Anti-influenza Antibodies, and Bystander Activation Revealed by Single-Cell Transcriptomics. *Cell reports*. 2020. `PMID:31968262 <https://pubmed.ncbi.nlm.nih.gov/31968262/>`_
+- Horns Felix et al. **Memory B Cell Activation, Broad Anti-influenza Antibodies, and Bystander Activation Revealed by Single-Cell Transcriptomics.**. *Cell reports*. 2020. `PMID:31968262 <https://pubmed.ncbi.nlm.nih.gov/31968262/>`_
 
-- Schafflick David et al. Integrated single cell analysis of blood and cerebrospinal fluid leukocytes in multiple sclerosis. *Nature communications*. 2020. `PMID:31937773 <https://pubmed.ncbi.nlm.nih.gov/31937773/>`_
+- Schafflick David et al. **Integrated single cell analysis of blood and cerebrospinal fluid leukocytes in multiple sclerosis.**. *Nature communications*. 2020. `PMID:31937773 <https://pubmed.ncbi.nlm.nih.gov/31937773/>`_
 
-- Lees William et al. OGRDB: a reference database of inferred immune receptor genes. *Nucleic acids research*. 2020. `PMID:31566225 <https://pubmed.ncbi.nlm.nih.gov/31566225/>`_
+- Lees William et al. **OGRDB: a reference database of inferred immune receptor genes.**. *Nucleic acids research*. 2020. `PMID:31566225 <https://pubmed.ncbi.nlm.nih.gov/31566225/>`_
 
-- Omer Aviv et al. VDJbase: an adaptive immune receptor genotype and haplotype database. *Nucleic acids research*. 2020. `PMID:31602484 <https://pubmed.ncbi.nlm.nih.gov/31602484/>`_
+- Omer Aviv et al. **VDJbase: an adaptive immune receptor genotype and haplotype database.**. *Nucleic acids research*. 2020. `PMID:31602484 <https://pubmed.ncbi.nlm.nih.gov/31602484/>`_
 
-- Ruschil Christoph et al. Specific Induction of Double Negative B Cells During Protective and Pathogenic Immune Responses. *Frontiers in immunology*. 2020. `PMID:33391273 <https://pubmed.ncbi.nlm.nih.gov/33391273/>`_
+- Ruschil Christoph et al. **Specific Induction of Double Negative B Cells During Protective and Pathogenic Immune Responses.**. *Frontiers in immunology*. 2020. `PMID:33391273 <https://pubmed.ncbi.nlm.nih.gov/33391273/>`_
 
-- Galson Jacob D et al. Deep Sequencing of B Cell Receptor Repertoires From COVID-19 Patients Reveals Strong Convergent Immune Signatures. *Frontiers in immunology*. 2020. `PMID:33384691 <https://pubmed.ncbi.nlm.nih.gov/33384691/>`_
+- Galson Jacob D et al. **Deep Sequencing of B Cell Receptor Repertoires From COVID-19 Patients Reveals Strong Convergent Immune Signatures.**. *Frontiers in immunology*. 2020. `PMID:33384691 <https://pubmed.ncbi.nlm.nih.gov/33384691/>`_
 
-- Hou Jue et al. Successive Immunization With Epitope-Decreasing Dengue Antigens Induced Conservative Anti-Dengue Immune Responses. *Frontiers in immunology*. 2020. `PMID:33101316 <https://pubmed.ncbi.nlm.nih.gov/33101316/>`_
+- Hou Jue et al. **Successive Immunization With Epitope-Decreasing Dengue Antigens Induced Conservative Anti-Dengue Immune Responses.**. *Frontiers in immunology*. 2020. `PMID:33101316 <https://pubmed.ncbi.nlm.nih.gov/33101316/>`_
 
-- van Zelm Menno C et al. Editorial: Nomenclature - Avoiding Babylonian Speech Confusion in Present Day Immunology. *Frontiers in immunology*. 2020. `PMID:33381126 <https://pubmed.ncbi.nlm.nih.gov/33381126/>`_
+- van Zelm Menno C et al. **Editorial: Nomenclature - Avoiding Babylonian Speech Confusion in Present Day Immunology.**. *Frontiers in immunology*. 2020. `PMID:33381126 <https://pubmed.ncbi.nlm.nih.gov/33381126/>`_
 
-- Cowan Graeme J M et al. In Human Autoimmunity, a Substantial Component of the B Cell Repertoire Consists of Polyclonal, Barely Mutated IgG+ve B Cells. *Frontiers in immunology*. 2020. `PMID:32265907 <https://pubmed.ncbi.nlm.nih.gov/32265907/>`_
+- Cowan Graeme J M et al. **In Human Autoimmunity, a Substantial Component of the B Cell Repertoire Consists of Polyclonal, Barely Mutated IgG+ve B Cells.**. *Frontiers in immunology*. 2020. `PMID:32265907 <https://pubmed.ncbi.nlm.nih.gov/32265907/>`_
 
-- Tang Catherine et al. AID Overlapping and Polη Hotspots Are Key Features of Evolutionary Variation Within the Human Antibody Heavy Chain (IGHV) Genes. *Frontiers in immunology*. 2020. `PMID:32425948 <https://pubmed.ncbi.nlm.nih.gov/32425948/>`_
+- Tang Catherine et al. **AID Overlapping and Polη Hotspots Are Key Features of Evolutionary Variation Within the Human Antibody Heavy Chain (IGHV) Genes.**. *Frontiers in immunology*. 2020. `PMID:32425948 <https://pubmed.ncbi.nlm.nih.gov/32425948/>`_
 
-- Kreer Christoph et al. Exploiting B Cell Receptor Analyses to Inform on HIV-1 Vaccination Strategies. *Vaccines*. 2020. `PMID:31906351 <https://pubmed.ncbi.nlm.nih.gov/31906351/>`_
+- Kreer Christoph et al. **Exploiting B Cell Receptor Analyses to Inform on HIV-1 Vaccination Strategies.**. *Vaccines*. 2020. `PMID:31906351 <https://pubmed.ncbi.nlm.nih.gov/31906351/>`_
 
-- Krantsevich Artem et al. Correlations in Somatic Hypermutation Between Sites in IGHV Genes Can Be Explained by Interactions Between AID and/or Polη Hotspots. *Frontiers in immunology*. 2020. `PMID:33603748 <https://pubmed.ncbi.nlm.nih.gov/33603748/>`_
+- Krantsevich Artem et al. **Correlations in Somatic Hypermutation Between Sites in IGHV Genes Can Be Explained by Interactions Between AID and/or Polη Hotspots.**. *Frontiers in immunology*. 2020. `PMID:33603748 <https://pubmed.ncbi.nlm.nih.gov/33603748/>`_
 
-- Rodriguez Oscar L et al. A Novel Framework for Characterizing Genomic Haplotype Diversity in the Human Immunoglobulin Heavy Chain Locus. *Frontiers in immunology*. 2020. `PMID:33072076 <https://pubmed.ncbi.nlm.nih.gov/33072076/>`_
+- Rodriguez Oscar L et al. **A Novel Framework for Characterizing Genomic Haplotype Diversity in the Human Immunoglobulin Heavy Chain Locus.**. *Frontiers in immunology*. 2020. `PMID:33072076 <https://pubmed.ncbi.nlm.nih.gov/33072076/>`_
 
-- Teraguchi Shunsuke et al. Methods for sequence and structural analysis of B and T cell receptor repertoires. *Computational and structural biotechnology journal*. 2020. `PMID:32802272 <https://pubmed.ncbi.nlm.nih.gov/32802272/>`_
+- Teraguchi Shunsuke et al. **Methods for sequence and structural analysis of B and T cell receptor repertoires.**. *Computational and structural biotechnology journal*. 2020. `PMID:32802272 <https://pubmed.ncbi.nlm.nih.gov/32802272/>`_
 
-- Ghraichy Marie et al. Maturation of the Human Immunoglobulin Heavy Chain Repertoire With Age. *Frontiers in immunology*. 2020. `PMID:32849618 <https://pubmed.ncbi.nlm.nih.gov/32849618/>`_
+- Ghraichy Marie et al. **Maturation of the Human Immunoglobulin Heavy Chain Repertoire With Age.**. *Frontiers in immunology*. 2020. `PMID:32849618 <https://pubmed.ncbi.nlm.nih.gov/32849618/>`_
 
-- Hou Jue et al. Sequential immunization induces strong and broad immunity against all four dengue virus serotypes. *NPJ vaccines*. 2020. `PMID:32728482 <https://pubmed.ncbi.nlm.nih.gov/32728482/>`_
+- Hou Jue et al. **Sequential immunization induces strong and broad immunity against all four dengue virus serotypes.**. *NPJ vaccines*. 2020. `PMID:32728482 <https://pubmed.ncbi.nlm.nih.gov/32728482/>`_
 
-- Ohlin Mats et al. Poorly Expressed Alleles of Several Human Immunoglobulin Heavy Chain Variable Genes are Common in the Human Population. *Frontiers in immunology*. 2020. `PMID:33717051 <https://pubmed.ncbi.nlm.nih.gov/33717051/>`_
+- Ohlin Mats et al. **Poorly Expressed Alleles of Several Human Immunoglobulin Heavy Chain Variable Genes are Common in the Human Population.**. *Frontiers in immunology*. 2020. `PMID:33717051 <https://pubmed.ncbi.nlm.nih.gov/33717051/>`_
 
-- Burman Luke et al. Isolation of monoclonal antibodies from anti-synthetase syndrome patients and affinity maturation by recombination of independent somatic variants. *mAbs*. 2020. `PMID:33131414 <https://pubmed.ncbi.nlm.nih.gov/33131414/>`_
+- Burman Luke et al. **Isolation of monoclonal antibodies from anti-synthetase syndrome patients and affinity maturation by recombination of independent somatic variants.**. *mAbs*. 2020. `PMID:33131414 <https://pubmed.ncbi.nlm.nih.gov/33131414/>`_
 
-- Yu Xiaoli et al. The Role of Antibodies in the Pathogenesis of Multiple Sclerosis. *Frontiers in neurology*. 2020. `PMID:33192968 <https://pubmed.ncbi.nlm.nih.gov/33192968/>`_
+- Yu Xiaoli et al. **The Role of Antibodies in the Pathogenesis of Multiple Sclerosis.**. *Frontiers in neurology*. 2020. `PMID:33192968 <https://pubmed.ncbi.nlm.nih.gov/33192968/>`_
 
-- Roach Charles A et al. Anti-CD20 B Cell Treatment for Relapsing Multiple Sclerosis. *Frontiers in neurology*. 2020. `PMID:33551958 <https://pubmed.ncbi.nlm.nih.gov/33551958/>`_
+- Roach Charles A et al. **Anti-CD20 B Cell Treatment for Relapsing Multiple Sclerosis.**. *Frontiers in neurology*. 2020. `PMID:33551958 <https://pubmed.ncbi.nlm.nih.gov/33551958/>`_
 
-- Morgan B Paul et al. An "Outside-In" and "Inside-Out" Consideration of Complement in the Multiple Sclerosis Brain: Lessons From Development and Neurodegenerative Diseases. *Frontiers in cellular neuroscience*. 2020. `PMID:33488361 <https://pubmed.ncbi.nlm.nih.gov/33488361/>`_
+- Morgan B Paul et al. **An "Outside-In" and "Inside-Out" Consideration of Complement in the Multiple Sclerosis Brain: Lessons From Development and Neurodegenerative Diseases.**. *Frontiers in cellular neuroscience*. 2020. `PMID:33488361 <https://pubmed.ncbi.nlm.nih.gov/33488361/>`_
 
-- Christley Scott et al. The ADC API: A Web API for the Programmatic Query of the AIRR Data Commons. *Frontiers in big data*. 2020. `PMID:33693395 <https://pubmed.ncbi.nlm.nih.gov/33693395/>`_
+- Christley Scott et al. **The ADC API: A Web API for the Programmatic Query of the AIRR Data Commons.**. *Frontiers in big data*. 2020. `PMID:33693395 <https://pubmed.ncbi.nlm.nih.gov/33693395/>`_
 
-- Chunder Rittika et al. B Cells in Multiple Sclerosis and Virus-Induced Neuroinflammation. *Frontiers in neurology*. 2020. `PMID:33224101 <https://pubmed.ncbi.nlm.nih.gov/33224101/>`_
+- Chunder Rittika et al. **B Cells in Multiple Sclerosis and Virus-Induced Neuroinflammation.**. *Frontiers in neurology*. 2020. `PMID:33224101 <https://pubmed.ncbi.nlm.nih.gov/33224101/>`_
 
-- Feng Jingjing et al. Study of B Cell Repertoire in Patients With Anti-N-Methyl-D-Aspartate Receptor Encephalitis. *Frontiers in immunology*. 2020. `PMID:32849520 <https://pubmed.ncbi.nlm.nih.gov/32849520/>`_
+- Feng Jingjing et al. **Study of B Cell Repertoire in Patients With Anti-N-Methyl-D-Aspartate Receptor Encephalitis.**. *Frontiers in immunology*. 2020. `PMID:32849520 <https://pubmed.ncbi.nlm.nih.gov/32849520/>`_
 
-- Niu Xuefeng et al. Longitudinal analysis of the antibody repertoire of a Zika virus-infected patient revealed dynamic changes in antibody response. *Emerging microbes & infections*. 2020. `PMID:31906823 <https://pubmed.ncbi.nlm.nih.gov/31906823/>`_
+- Niu Xuefeng et al. **Longitudinal analysis of the antibody repertoire of a Zika virus-infected patient revealed dynamic changes in antibody response.**. *Emerging microbes & infections*. 2020. `PMID:31906823 <https://pubmed.ncbi.nlm.nih.gov/31906823/>`_
 
-- Cui Ye et al. Combined immunodeficiency caused by a loss-of-function mutation in DNA polymerase delta 1. *The Journal of allergy and clinical immunology*. 2020. `PMID:31629014 <https://pubmed.ncbi.nlm.nih.gov/31629014/>`_
+- Cui Ye et al. **Combined immunodeficiency caused by a loss-of-function mutation in DNA polymerase delta 1.**. *The Journal of allergy and clinical immunology*. 2020. `PMID:31629014 <https://pubmed.ncbi.nlm.nih.gov/31629014/>`_
 
-- van Langelaar Jamie et al. B and T Cells Driving Multiple Sclerosis: Identity, Mechanisms and Potential Triggers. *Frontiers in immunology*. 2020. `PMID:32457742 <https://pubmed.ncbi.nlm.nih.gov/32457742/>`_
+- van Langelaar Jamie et al. **B and T Cells Driving Multiple Sclerosis: Identity, Mechanisms and Potential Triggers.**. *Frontiers in immunology*. 2020. `PMID:32457742 <https://pubmed.ncbi.nlm.nih.gov/32457742/>`_
 
-- Kemmerer C L et al. Differential effects of disease modifying drugs on peripheral blood B cell subsets: A cross sectional study in multiple sclerosis patients treated with interferon-β, glatiramer acetate, dimethyl fumarate, fingolimod or natalizumab. *PloS one*. 2020. `PMID:32716916 <https://pubmed.ncbi.nlm.nih.gov/32716916/>`_
+- Kemmerer C L et al. **Differential effects of disease modifying drugs on peripheral blood B cell subsets: A cross sectional study in multiple sclerosis patients treated with interferon-β, glatiramer acetate, dimethyl fumarate, fingolimod or natalizumab.**. *PloS one*. 2020. `PMID:32716916 <https://pubmed.ncbi.nlm.nih.gov/32716916/>`_
 
-- Wollacott Andrew M et al. Quantifying the nativeness of antibody sequences using long short-term memory networks. *Protein engineering, design & selection : PEDS*. 2019. `PMID:31504835 <https://pubmed.ncbi.nlm.nih.gov/31504835/>`_
+- Wollacott Andrew M et al. **Quantifying the nativeness of antibody sequences using long short-term memory networks.**. *Protein engineering, design & selection : PEDS*. 2019. `PMID:31504835 <https://pubmed.ncbi.nlm.nih.gov/31504835/>`_
 
-- Wang Yan et al. Rheumatoid arthritis patients display B-cell dysregulation already in the naïve repertoire consistent with defects in B-cell tolerance. *Scientific reports*. 2019. `PMID:31882654 <https://pubmed.ncbi.nlm.nih.gov/31882654/>`_
+- Wang Yan et al. **Rheumatoid arthritis patients display B-cell dysregulation already in the naïve repertoire consistent with defects in B-cell tolerance.**. *Scientific reports*. 2019. `PMID:31882654 <https://pubmed.ncbi.nlm.nih.gov/31882654/>`_
 
-- Setliff Ian et al. High-Throughput Mapping of B Cell Receptor Sequences to Antigen Specificity. *Cell*. 2019. `PMID:31787378 <https://pubmed.ncbi.nlm.nih.gov/31787378/>`_
+- Setliff Ian et al. **High-Throughput Mapping of B Cell Receptor Sequences to Antigen Specificity.**. *Cell*. 2019. `PMID:31787378 <https://pubmed.ncbi.nlm.nih.gov/31787378/>`_
 
-- Elkjaer Maria L et al. Molecular signature of different lesion types in the brain white matter of patients with progressive multiple sclerosis. *Acta neuropathologica communications*. 2019. `PMID:31829262 <https://pubmed.ncbi.nlm.nih.gov/31829262/>`_
+- Elkjaer Maria L et al. **Molecular signature of different lesion types in the brain white matter of patients with progressive multiple sclerosis.**. *Acta neuropathologica communications*. 2019. `PMID:31829262 <https://pubmed.ncbi.nlm.nih.gov/31829262/>`_
 
-- Saunders Kevin O et al. Targeted selection of HIV-specific antibody mutations by engineering B cell maturation. *Science (New York, N.Y.)*. 2019. `PMID:31806786 <https://pubmed.ncbi.nlm.nih.gov/31806786/>`_
+- Saunders Kevin O et al. **Targeted selection of HIV-specific antibody mutations by engineering B cell maturation.**. *Science (New York, N.Y.)*. 2019. `PMID:31806786 <https://pubmed.ncbi.nlm.nih.gov/31806786/>`_
 
-- Papaneophytou Christos et al. The role of oligodendrocyte gap junctions in neuroinflammation. *Channels (Austin, Tex.)*. 2019. `PMID:31232168 <https://pubmed.ncbi.nlm.nih.gov/31232168/>`_
+- Papaneophytou Christos et al. **The role of oligodendrocyte gap junctions in neuroinflammation.**. *Channels (Austin, Tex.)*. 2019. `PMID:31232168 <https://pubmed.ncbi.nlm.nih.gov/31232168/>`_
 
-- Sabatino Joseph J et al. B cells in autoimmune and neurodegenerative central nervous system diseases. *Nature reviews. Neuroscience*. 2019. `PMID:31712781 <https://pubmed.ncbi.nlm.nih.gov/31712781/>`_
+- Sabatino Joseph J et al. **B cells in autoimmune and neurodegenerative central nervous system diseases.**. *Nature reviews. Neuroscience*. 2019. `PMID:31712781 <https://pubmed.ncbi.nlm.nih.gov/31712781/>`_
 
-- Austin James W et al. Overexpression of T-bet in HIV infection is associated with accumulation of B cells outside germinal centers and poor affinity maturation. *Science translational medicine*. 2019. `PMID:31776286 <https://pubmed.ncbi.nlm.nih.gov/31776286/>`_
+- Austin James W et al. **Overexpression of T-bet in HIV infection is associated with accumulation of B cells outside germinal centers and poor affinity maturation.**. *Science translational medicine*. 2019. `PMID:31776286 <https://pubmed.ncbi.nlm.nih.gov/31776286/>`_
 
-- Pillai Vinodh et al. CAR T-cell therapy is effective for CD19-dim B-lymphoblastic leukemia but is impacted by prior blinatumomab therapy. *Blood advances*. 2019. `PMID:31738832 <https://pubmed.ncbi.nlm.nih.gov/31738832/>`_
+- Pillai Vinodh et al. **CAR T-cell therapy is effective for CD19-dim B-lymphoblastic leukemia but is impacted by prior blinatumomab therapy.**. *Blood advances*. 2019. `PMID:31738832 <https://pubmed.ncbi.nlm.nih.gov/31738832/>`_
 
-- Hoehn Kenneth B et al. Repertoire-wide phylogenetic models of B cell molecular evolution reveal evolutionary signatures of aging and vaccination. *Proceedings of the National Academy of Sciences of the United States of America*. 2019. `PMID:31636219 <https://pubmed.ncbi.nlm.nih.gov/31636219/>`_
+- Hoehn Kenneth B et al. **Repertoire-wide phylogenetic models of B cell molecular evolution reveal evolutionary signatures of aging and vaccination.**. *Proceedings of the National Academy of Sciences of the United States of America*. 2019. `PMID:31636219 <https://pubmed.ncbi.nlm.nih.gov/31636219/>`_
 
-- Cashman Kevin S et al. Understanding and measuring human B-cell tolerance and its breakdown in autoimmune disease. *Immunological reviews*. 2019. `PMID:31755562 <https://pubmed.ncbi.nlm.nih.gov/31755562/>`_
+- Cashman Kevin S et al. **Understanding and measuring human B-cell tolerance and its breakdown in autoimmune disease.**. *Immunological reviews*. 2019. `PMID:31755562 <https://pubmed.ncbi.nlm.nih.gov/31755562/>`_
 
-- Beltrán Eduardo et al. Early adaptive immune activation detected in monozygotic twins with prodromal multiple sclerosis. *The Journal of clinical investigation*. 2019. `PMID:31566584 <https://pubmed.ncbi.nlm.nih.gov/31566584/>`_
+- Beltrán Eduardo et al. **Early adaptive immune activation detected in monozygotic twins with prodromal multiple sclerosis.**. *The Journal of clinical investigation*. 2019. `PMID:31566584 <https://pubmed.ncbi.nlm.nih.gov/31566584/>`_
 
-- Govek Kiya W et al. Clustering-independent analysis of genomic data using spectral simplicial theory. *PLoS computational biology*. 2019. `PMID:31756191 <https://pubmed.ncbi.nlm.nih.gov/31756191/>`_
+- Govek Kiya W et al. **Clustering-independent analysis of genomic data using spectral simplicial theory.**. *PLoS computational biology*. 2019. `PMID:31756191 <https://pubmed.ncbi.nlm.nih.gov/31756191/>`_
 
-- Dorst Johannes et al. Safety and efficacy of immunoadsorption versus plasma exchange in steroid-refractory relapse of multiple sclerosis and clinically isolated syndrome: A randomised, parallel-group, controlled trial. *EClinicalMedicine*. 2019. `PMID:31832624 <https://pubmed.ncbi.nlm.nih.gov/31832624/>`_
+- Dorst Johannes et al. **Safety and efficacy of immunoadsorption versus plasma exchange in steroid-refractory relapse of multiple sclerosis and clinically isolated syndrome: A randomised, parallel-group, controlled trial.**. *EClinicalMedicine*. 2019. `PMID:31832624 <https://pubmed.ncbi.nlm.nih.gov/31832624/>`_
 
-- Largey Fabienne et al. Effects of natalizumab therapy on intrathecal antiviral antibody responses in MS. *Neurology(R) neuroimmunology & neuroinflammation*. 2019. `PMID:31554671 <https://pubmed.ncbi.nlm.nih.gov/31554671/>`_
+- Largey Fabienne et al. **Effects of natalizumab therapy on intrathecal antiviral antibody responses in MS.**. *Neurology(R) neuroimmunology & neuroinflammation*. 2019. `PMID:31554671 <https://pubmed.ncbi.nlm.nih.gov/31554671/>`_
 
-- Wong Julius et al. Improving immunological insights into the ferret model of human viral infectious disease. *Influenza and other respiratory viruses*. 2019. `PMID:31583825 <https://pubmed.ncbi.nlm.nih.gov/31583825/>`_
+- Wong Julius et al. **Improving immunological insights into the ferret model of human viral infectious disease.**. *Influenza and other respiratory viruses*. 2019. `PMID:31583825 <https://pubmed.ncbi.nlm.nih.gov/31583825/>`_
 
-- Bartolomé-Casado Raquel et al. Resident memory CD8 T cells persist for years in human small intestine. *The Journal of experimental medicine*. 2019. `PMID:31337737 <https://pubmed.ncbi.nlm.nih.gov/31337737/>`_
+- Bartolomé-Casado Raquel et al. **Resident memory CD8 T cells persist for years in human small intestine.**. *The Journal of experimental medicine*. 2019. `PMID:31337737 <https://pubmed.ncbi.nlm.nih.gov/31337737/>`_
 
-- Nourmohammad Armita et al. Fierce Selection and Interference in B-Cell Repertoire Response to Chronic HIV-1. *Molecular biology and evolution*. 2019. `PMID:31209469 <https://pubmed.ncbi.nlm.nih.gov/31209469/>`_
+- Nourmohammad Armita et al. **Fierce Selection and Interference in B-Cell Repertoire Response to Chronic HIV-1.**. *Molecular biology and evolution*. 2019. `PMID:31209469 <https://pubmed.ncbi.nlm.nih.gov/31209469/>`_
 
-- Joshi Utsav et al. A permethrin metabolite is associated with adaptive immune responses in Gulf War Illness. *Brain, behavior, and immunity*. 2019. `PMID:31325531 <https://pubmed.ncbi.nlm.nih.gov/31325531/>`_
+- Joshi Utsav et al. **A permethrin metabolite is associated with adaptive immune responses in Gulf War Illness.**. *Brain, behavior, and immunity*. 2019. `PMID:31325531 <https://pubmed.ncbi.nlm.nih.gov/31325531/>`_
 
-- Zhou Julian Q et al. Cutting Edge: Ig H Chains Are Sufficient to Determine Most B Cell Clonal Relationships. *Journal of immunology (Baltimore, Md. : 1950)*. 2019. `PMID:31484734 <https://pubmed.ncbi.nlm.nih.gov/31484734/>`_
+- Zhou Julian Q et al. **Cutting Edge: Ig H Chains Are Sufficient to Determine Most B Cell Clonal Relationships.**. *Journal of immunology (Baltimore, Md. : 1950)*. 2019. `PMID:31484734 <https://pubmed.ncbi.nlm.nih.gov/31484734/>`_
 
-- Fraussen Judith et al. Phenotypic and Ig Repertoire Analyses Indicate a Common Origin of IgD-CD27- Double Negative B Cells in Healthy Individuals and Multiple Sclerosis Patients. *Journal of immunology (Baltimore, Md. : 1950)*. 2019. `PMID:31391234 <https://pubmed.ncbi.nlm.nih.gov/31391234/>`_
+- Fraussen Judith et al. **Phenotypic and Ig Repertoire Analyses Indicate a Common Origin of IgD-CD27- Double Negative B Cells in Healthy Individuals and Multiple Sclerosis Patients.**. *Journal of immunology (Baltimore, Md. : 1950)*. 2019. `PMID:31391234 <https://pubmed.ncbi.nlm.nih.gov/31391234/>`_
 
-- Davidsen Kristian et al. Deep generative models for T cell receptor protein sequences. *eLife*. 2019. `PMID:31487240 <https://pubmed.ncbi.nlm.nih.gov/31487240/>`_
+- Davidsen Kristian et al. **Deep generative models for T cell receptor protein sequences.**. *eLife*. 2019. `PMID:31487240 <https://pubmed.ncbi.nlm.nih.gov/31487240/>`_
 
-- Kim Daeun et al. Deep sequencing of B cell receptor repertoire. *BMB reports*. 2019. `PMID:31383253 <https://pubmed.ncbi.nlm.nih.gov/31383253/>`_
+- Kim Daeun et al. **Deep sequencing of B cell receptor repertoire.**. *BMB reports*. 2019. `PMID:31383253 <https://pubmed.ncbi.nlm.nih.gov/31383253/>`_
 
-- Sacks David et al. Somatic hypermutation to counter a globally rare viral immunotype drove off-track antibodies in the CAP256-VRC26 HIV-1 V2-directed bNAb lineage. *PLoS pathogens*. 2019. `PMID:31479499 <https://pubmed.ncbi.nlm.nih.gov/31479499/>`_
+- Sacks David et al. **Somatic hypermutation to counter a globally rare viral immunotype drove off-track antibodies in the CAP256-VRC26 HIV-1 V2-directed bNAb lineage.**. *PLoS pathogens*. 2019. `PMID:31479499 <https://pubmed.ncbi.nlm.nih.gov/31479499/>`_
 
-- Richters Megan M et al. Best practices for bioinformatic characterization of neoantigens for clinical utility. *Genome medicine*. 2019. `PMID:31462330 <https://pubmed.ncbi.nlm.nih.gov/31462330/>`_
+- Richters Megan M et al. **Best practices for bioinformatic characterization of neoantigens for clinical utility.**. *Genome medicine*. 2019. `PMID:31462330 <https://pubmed.ncbi.nlm.nih.gov/31462330/>`_
 
-- van Langelaar Jamie et al. Induction of brain-infiltrating T-bet-expressing B cells in multiple sclerosis. *Annals of neurology*. 2019. `PMID:31136008 <https://pubmed.ncbi.nlm.nih.gov/31136008/>`_
+- van Langelaar Jamie et al. **Induction of brain-infiltrating T-bet-expressing B cells in multiple sclerosis.**. *Annals of neurology*. 2019. `PMID:31136008 <https://pubmed.ncbi.nlm.nih.gov/31136008/>`_
 
-- Davis Mark M et al. Recent progress in the analysis of αβT cell and B cell receptor repertoires. *Current opinion in immunology*. 2019. `PMID:31326777 <https://pubmed.ncbi.nlm.nih.gov/31326777/>`_
+- Davis Mark M et al. **Recent progress in the analysis of αβT cell and B cell receptor repertoires.**. *Current opinion in immunology*. 2019. `PMID:31326777 <https://pubmed.ncbi.nlm.nih.gov/31326777/>`_
 
-- Ralph Duncan K et al. Per-sample immunoglobulin germline inference from B cell receptor deep sequencing data. *PLoS computational biology*. 2019. `PMID:31329576 <https://pubmed.ncbi.nlm.nih.gov/31329576/>`_
+- Ralph Duncan K et al. **Per-sample immunoglobulin germline inference from B cell receptor deep sequencing data.**. *PLoS computational biology*. 2019. `PMID:31329576 <https://pubmed.ncbi.nlm.nih.gov/31329576/>`_
 
-- Oh Ji Eun et al. Migrant memory B cells secrete luminal antibody in the vagina. *Nature*. 2019. `PMID:31189952 <https://pubmed.ncbi.nlm.nih.gov/31189952/>`_
+- Oh Ji Eun et al. **Migrant memory B cells secrete luminal antibody in the vagina.**. *Nature*. 2019. `PMID:31189952 <https://pubmed.ncbi.nlm.nih.gov/31189952/>`_
 
-- Arneth Borros M et al. Impact of B cells to the pathophysiology of multiple sclerosis. *Journal of neuroinflammation*. 2019. `PMID:31238945 <https://pubmed.ncbi.nlm.nih.gov/31238945/>`_
+- Arneth Borros M et al. **Impact of B cells to the pathophysiology of multiple sclerosis.**. *Journal of neuroinflammation*. 2019. `PMID:31238945 <https://pubmed.ncbi.nlm.nih.gov/31238945/>`_
 
-- Hirokawa Makoto et al. High-throughput sequencing of IgG B-cell receptors reveals frequent usage of the rearranged IGHV4-28/IGHJ4 gene in primary immune thrombocytopenia. *Scientific reports*. 2019. `PMID:31201346 <https://pubmed.ncbi.nlm.nih.gov/31201346/>`_
+- Hirokawa Makoto et al. **High-throughput sequencing of IgG B-cell receptors reveals frequent usage of the rearranged IGHV4-28/IGHJ4 gene in primary immune thrombocytopenia.**. *Scientific reports*. 2019. `PMID:31201346 <https://pubmed.ncbi.nlm.nih.gov/31201346/>`_
 
-- Cotzomi Elizabeth et al. Early B cell tolerance defects in neuromyelitis optica favour anti-AQP4 autoantibody production. *Brain : a journal of neurology*. 2019. `PMID:31056665 <https://pubmed.ncbi.nlm.nih.gov/31056665/>`_
+- Cotzomi Elizabeth et al. **Early B cell tolerance defects in neuromyelitis optica favour anti-AQP4 autoantibody production.**. *Brain : a journal of neurology*. 2019. `PMID:31056665 <https://pubmed.ncbi.nlm.nih.gov/31056665/>`_
 
-- Bell Luisa et al. Characterization of blood-brain barrier integrity in a B-cell-dependent mouse model of multiple sclerosis. *Histochemistry and cell biology*. 2019. `PMID:30666403 <https://pubmed.ncbi.nlm.nih.gov/30666403/>`_
+- Bell Luisa et al. **Characterization of blood-brain barrier integrity in a B-cell-dependent mouse model of multiple sclerosis.**. *Histochemistry and cell biology*. 2019. `PMID:30666403 <https://pubmed.ncbi.nlm.nih.gov/30666403/>`_
 
-- Feng Jean et al. Survival analysis of DNA mutation motifs with penalized proportional hazards. *The annals of applied statistics*. 2019. `PMID:33214798 <https://pubmed.ncbi.nlm.nih.gov/33214798/>`_
+- Feng Jean et al. **Survival analysis of DNA mutation motifs with penalized proportional hazards.**. *The annals of applied statistics*. 2019. `PMID:33214798 <https://pubmed.ncbi.nlm.nih.gov/33214798/>`_
 
-- Cirelli Kimberly M et al. Slow Delivery Immunization Enhances HIV Neutralizing Antibody and Germinal Center Responses via Modulation of Immunodominance. *Cell*. 2019. `PMID:31080066 <https://pubmed.ncbi.nlm.nih.gov/31080066/>`_
+- Cirelli Kimberly M et al. **Slow Delivery Immunization Enhances HIV Neutralizing Antibody and Germinal Center Responses via Modulation of Immunodominance.**. *Cell*. 2019. `PMID:31080066 <https://pubmed.ncbi.nlm.nih.gov/31080066/>`_
 
-- Negron Austin et al. The role of B cells in multiple sclerosis: Current and future therapies. *Cellular immunology*. 2019. `PMID:31130183 <https://pubmed.ncbi.nlm.nih.gov/31130183/>`_
+- Negron Austin et al. **The role of B cells in multiple sclerosis: Current and future therapies.**. *Cellular immunology*. 2019. `PMID:31130183 <https://pubmed.ncbi.nlm.nih.gov/31130183/>`_
 
-- Elkjaer Maria L et al. Unique RNA signature of different lesion types in the brain white matter in progressive multiple sclerosis. *Acta neuropathologica communications*. 2019. `PMID:31023379 <https://pubmed.ncbi.nlm.nih.gov/31023379/>`_
+- Elkjaer Maria L et al. **Unique RNA signature of different lesion types in the brain white matter in progressive multiple sclerosis.**. *Acta neuropathologica communications*. 2019. `PMID:31023379 <https://pubmed.ncbi.nlm.nih.gov/31023379/>`_
 
-- Pineda Silvia et al. Characterizing pre-transplant and post-transplant kidney rejection risk by B cell immune repertoire sequencing. *Nature communications*. 2019. `PMID:31015506 <https://pubmed.ncbi.nlm.nih.gov/31015506/>`_
+- Pineda Silvia et al. **Characterizing pre-transplant and post-transplant kidney rejection risk by B cell immune repertoire sequencing.**. *Nature communications*. 2019. `PMID:31015506 <https://pubmed.ncbi.nlm.nih.gov/31015506/>`_
 
-- Li Rui et al. The Multiple Roles of B Cells in Multiple Sclerosis and Their Implications in Multiple Sclerosis Therapies. *Cold Spring Harbor perspectives in medicine*. 2019. `PMID:29661809 <https://pubmed.ncbi.nlm.nih.gov/29661809/>`_
+- Li Rui et al. **The Multiple Roles of B Cells in Multiple Sclerosis and Their Implications in Multiple Sclerosis Therapies.**. *Cold Spring Harbor perspectives in medicine*. 2019. `PMID:29661809 <https://pubmed.ncbi.nlm.nih.gov/29661809/>`_
 
-- Kongpachith Sarah et al. Affinity Maturation of the Anti-Citrullinated Protein Antibody Paratope Drives Epitope Spreading and Polyreactivity in Rheumatoid Arthritis. *Arthritis & rheumatology (Hoboken, N.J.)*. 2019. `PMID:30811898 <https://pubmed.ncbi.nlm.nih.gov/30811898/>`_
+- Kongpachith Sarah et al. **Affinity Maturation of the Anti-Citrullinated Protein Antibody Paratope Drives Epitope Spreading and Polyreactivity in Rheumatoid Arthritis.**. *Arthritis & rheumatology (Hoboken, N.J.)*. 2019. `PMID:30811898 <https://pubmed.ncbi.nlm.nih.gov/30811898/>`_
 
-- Luo Shishi et al. Worldwide genetic variation of the IGHV and TRBV immune receptor gene families in humans. *Life science alliance*. 2019. `PMID:30808649 <https://pubmed.ncbi.nlm.nih.gov/30808649/>`_
+- Luo Shishi et al. **Worldwide genetic variation of the IGHV and TRBV immune receptor gene families in humans.**. *Life science alliance*. 2019. `PMID:30808649 <https://pubmed.ncbi.nlm.nih.gov/30808649/>`_
 
-- Meng Hailong et al. Gene set meta-analysis with Quantitative Set Analysis for Gene Expression (QuSAGE). *PLoS computational biology*. 2019. `PMID:30939133 <https://pubmed.ncbi.nlm.nih.gov/30939133/>`_
+- Meng Hailong et al. **Gene set meta-analysis with Quantitative Set Analysis for Gene Expression (QuSAGE).**. *PLoS computational biology*. 2019. `PMID:30939133 <https://pubmed.ncbi.nlm.nih.gov/30939133/>`_
 
-- Miho Enkelejda et al. Large-scale network analysis reveals the sequence space architecture of antibody repertoires. *Nature communications*. 2019. `PMID:30899025 <https://pubmed.ncbi.nlm.nih.gov/30899025/>`_
+- Miho Enkelejda et al. **Large-scale network analysis reveals the sequence space architecture of antibody repertoires.**. *Nature communications*. 2019. `PMID:30899025 <https://pubmed.ncbi.nlm.nih.gov/30899025/>`_
 
-- Greenfield Ariele L et al. Longitudinally persistent cerebrospinal fluid B cells can resist treatment in multiple sclerosis. *JCI insight*. 2019. `PMID:30747723 <https://pubmed.ncbi.nlm.nih.gov/30747723/>`_
+- Greenfield Ariele L et al. **Longitudinally persistent cerebrospinal fluid B cells can resist treatment in multiple sclerosis.**. *JCI insight*. 2019. `PMID:30747723 <https://pubmed.ncbi.nlm.nih.gov/30747723/>`_
 
-- Zhang Qingchen et al. DSab-origin: a novel IGHD sensitive VDJ mapping method and its application on antibody response after influenza vaccination. *BMC bioinformatics*. 2019. `PMID:30871465 <https://pubmed.ncbi.nlm.nih.gov/30871465/>`_
+- Zhang Qingchen et al. **DSab-origin: a novel IGHD sensitive VDJ mapping method and its application on antibody response after influenza vaccination.**. *BMC bioinformatics*. 2019. `PMID:30871465 <https://pubmed.ncbi.nlm.nih.gov/30871465/>`_
 
-- Christensen Stephen M et al. Host and parasite responses in human diffuse cutaneous leishmaniasis caused by L. amazonensis. *PLoS neglected tropical diseases*. 2019. `PMID:30845223 <https://pubmed.ncbi.nlm.nih.gov/30845223/>`_
+- Christensen Stephen M et al. **Host and parasite responses in human diffuse cutaneous leishmaniasis caused by L. amazonensis.**. *PLoS neglected tropical diseases*. 2019. `PMID:30845223 <https://pubmed.ncbi.nlm.nih.gov/30845223/>`_
 
-- Luo Zhenwu et al. Systemic translocation of Staphylococcus drives autoantibody production in HIV disease. *Microbiome*. 2019. `PMID:30764863 <https://pubmed.ncbi.nlm.nih.gov/30764863/>`_
+- Luo Zhenwu et al. **Systemic translocation of Staphylococcus drives autoantibody production in HIV disease.**. *Microbiome*. 2019. `PMID:30764863 <https://pubmed.ncbi.nlm.nih.gov/30764863/>`_
 
-- Gidoni Moriah et al. Mosaic deletion patterns of the human antibody heavy chain gene locus shown by Bayesian haplotyping. *Nature communications*. 2019. `PMID:30733445 <https://pubmed.ncbi.nlm.nih.gov/30733445/>`_
+- Gidoni Moriah et al. **Mosaic deletion patterns of the human antibody heavy chain gene locus shown by Bayesian haplotyping.**. *Nature communications*. 2019. `PMID:30733445 <https://pubmed.ncbi.nlm.nih.gov/30733445/>`_
 
-- Sabatino Joseph J et al. B-Cell Therapies in Multiple Sclerosis. *Cold Spring Harbor perspectives in medicine*. 2019. `PMID:29358322 <https://pubmed.ncbi.nlm.nih.gov/29358322/>`_
+- Sabatino Joseph J et al. **B-Cell Therapies in Multiple Sclerosis.**. *Cold Spring Harbor perspectives in medicine*. 2019. `PMID:29358322 <https://pubmed.ncbi.nlm.nih.gov/29358322/>`_
 
-- Rojas Olga L et al. Recirculating Intestinal IgA-Producing Cells Regulate Neuroinflammation via IL-10. *Cell*. 2019. `PMID:30612739 <https://pubmed.ncbi.nlm.nih.gov/30612739/>`_
+- Rojas Olga L et al. **Recirculating Intestinal IgA-Producing Cells Regulate Neuroinflammation via IL-10.**. *Cell*. 2019. `PMID:30612739 <https://pubmed.ncbi.nlm.nih.gov/30612739/>`_
 
-- Horns Felix et al. Signatures of selection in the human antibody repertoire: Selective sweeps, competing subclones, and neutral drift. *Proceedings of the National Academy of Sciences of the United States of America*. 2019. `PMID:30622180 <https://pubmed.ncbi.nlm.nih.gov/30622180/>`_
+- Horns Felix et al. **Signatures of selection in the human antibody repertoire: Selective sweeps, competing subclones, and neutral drift.**. *Proceedings of the National Academy of Sciences of the United States of America*. 2019. `PMID:30622180 <https://pubmed.ncbi.nlm.nih.gov/30622180/>`_
 
-- Safonova Yana et al. De novo Inference of Diversity Genes and Analysis of Non-canonical V(DD)J Recombination in Immunoglobulins. *Frontiers in immunology*. 2019. `PMID:31134072 <https://pubmed.ncbi.nlm.nih.gov/31134072/>`_
+- Safonova Yana et al. **De novo Inference of Diversity Genes and Analysis of Non-canonical V(DD)J Recombination in Immunoglobulins.**. *Frontiers in immunology*. 2019. `PMID:31134072 <https://pubmed.ncbi.nlm.nih.gov/31134072/>`_
 
-- Fink Katja et al. Can We Improve Vaccine Efficacy by Targeting T and B Cell Repertoire Convergence?. *Frontiers in immunology*. 2019. `PMID:30814993 <https://pubmed.ncbi.nlm.nih.gov/30814993/>`_
+- Fink Katja et al. **Can We Improve Vaccine Efficacy by Targeting T and B Cell Repertoire Convergence?**. *Frontiers in immunology*. 2019. `PMID:30814993 <https://pubmed.ncbi.nlm.nih.gov/30814993/>`_
 
-- Gadala-Maria Daniel et al. Identification of Subject-Specific Immunoglobulin Alleles From Expressed Repertoire Sequencing Data. *Frontiers in immunology*. 2019. `PMID:30814994 <https://pubmed.ncbi.nlm.nih.gov/30814994/>`_
+- Gadala-Maria Daniel et al. **Identification of Subject-Specific Immunoglobulin Alleles From Expressed Repertoire Sequencing Data.**. *Frontiers in immunology*. 2019. `PMID:30814994 <https://pubmed.ncbi.nlm.nih.gov/30814994/>`_
 
-- Vázquez Bernat Néstor et al. High-Quality Library Preparation for NGS-Based Immunoglobulin Germline Gene Inference and Repertoire Expression Analysis. *Frontiers in immunology*. 2019. `PMID:31024532 <https://pubmed.ncbi.nlm.nih.gov/31024532/>`_
+- Vázquez Bernat Néstor et al. **High-Quality Library Preparation for NGS-Based Immunoglobulin Germline Gene Inference and Repertoire Expression Analysis.**. *Frontiers in immunology*. 2019. `PMID:31024532 <https://pubmed.ncbi.nlm.nih.gov/31024532/>`_
 
-- López-Santibáñez-Jácome Laura et al. The Pipeline Repertoire for Ig-Seq Analysis. *Frontiers in immunology*. 2019. `PMID:31114573 <https://pubmed.ncbi.nlm.nih.gov/31114573/>`_
+- López-Santibáñez-Jácome Laura et al. **The Pipeline Repertoire for Ig-Seq Analysis.**. *Frontiers in immunology*. 2019. `PMID:31114573 <https://pubmed.ncbi.nlm.nih.gov/31114573/>`_
 
-- Waltari Eric et al. Functional Enrichment and Analysis of Antigen-Specific Memory B Cell Antibody Repertoires in PBMCs. *Frontiers in immunology*. 2019. `PMID:31293598 <https://pubmed.ncbi.nlm.nih.gov/31293598/>`_
+- Waltari Eric et al. **Functional Enrichment and Analysis of Antigen-Specific Memory B Cell Antibody Repertoires in PBMCs.**. *Frontiers in immunology*. 2019. `PMID:31293598 <https://pubmed.ncbi.nlm.nih.gov/31293598/>`_
 
-- Ohlin Mats et al. Inferred Allelic Variants of Immunoglobulin Receptor Genes: A System for Their Evaluation, Documentation, and Naming. *Frontiers in immunology*. 2019. `PMID:30936866 <https://pubmed.ncbi.nlm.nih.gov/30936866/>`_
+- Ohlin Mats et al. **Inferred Allelic Variants of Immunoglobulin Receptor Genes: A System for Their Evaluation, Documentation, and Naming.**. *Frontiers in immunology*. 2019. `PMID:30936866 <https://pubmed.ncbi.nlm.nih.gov/30936866/>`_
 
-- Proust Lucas et al. Insights Into the Complexity of Yeast Extract Peptides and Their Utilization by Streptococcus thermophilus. *Frontiers in microbiology*. 2019. `PMID:31133999 <https://pubmed.ncbi.nlm.nih.gov/31133999/>`_
+- Proust Lucas et al. **Insights Into the Complexity of Yeast Extract Peptides and Their Utilization by Streptococcus thermophilus.**. *Frontiers in microbiology*. 2019. `PMID:31133999 <https://pubmed.ncbi.nlm.nih.gov/31133999/>`_
 
-- IJspeert Hanna et al. Repertoire Sequencing of B Cells Elucidates the Role of UNG and Mismatch Repair Proteins in Somatic Hypermutation in Humans. *Frontiers in immunology*. 2019. `PMID:31507588 <https://pubmed.ncbi.nlm.nih.gov/31507588/>`_
+- IJspeert Hanna et al. **Repertoire Sequencing of B Cells Elucidates the Role of UNG and Mismatch Repair Proteins in Somatic Hypermutation in Humans.**. *Frontiers in immunology*. 2019. `PMID:31507588 <https://pubmed.ncbi.nlm.nih.gov/31507588/>`_
 
-- Olson Branden J et al. sumrep: A Summary Statistic Framework for Immune Receptor Repertoire Comparison and Model Validation. *Frontiers in immunology*. 2019. `PMID:31736960 <https://pubmed.ncbi.nlm.nih.gov/31736960/>`_
+- Olson Branden J et al. **sumrep: A Summary Statistic Framework for Immune Receptor Repertoire Comparison and Model Validation.**. *Frontiers in immunology*. 2019. `PMID:31736960 <https://pubmed.ncbi.nlm.nih.gov/31736960/>`_
 
-- Busse Christian E et al. A Proposed New Nomenclature for the Immunoglobulin Genes of Mus musculus. *Frontiers in immunology*. 2019. `PMID:31921202 <https://pubmed.ncbi.nlm.nih.gov/31921202/>`_
+- Busse Christian E et al. **A Proposed New Nomenclature for the Immunoglobulin Genes of Mus musculus.**. *Frontiers in immunology*. 2019. `PMID:31921202 <https://pubmed.ncbi.nlm.nih.gov/31921202/>`_
 
-- Lanz Tobias V et al. Single-Cell High-Throughput Technologies in Cerebrospinal Fluid Research and Diagnostics. *Frontiers in immunology*. 2019. `PMID:31244848 <https://pubmed.ncbi.nlm.nih.gov/31244848/>`_
+- Lanz Tobias V et al. **Single-Cell High-Throughput Technologies in Cerebrospinal Fluid Research and Diagnostics.**. *Frontiers in immunology*. 2019. `PMID:31244848 <https://pubmed.ncbi.nlm.nih.gov/31244848/>`_
 
-- DiSano Krista D et al. Central Nervous System Inflammatory Aggregates in the Theiler's Virus Model of Progressive Multiple Sclerosis. *Frontiers in immunology*. 2019. `PMID:31428102 <https://pubmed.ncbi.nlm.nih.gov/31428102/>`_
+- DiSano Krista D et al. **Central Nervous System Inflammatory Aggregates in the Theiler's Virus Model of Progressive Multiple Sclerosis.**. *Frontiers in immunology*. 2019. `PMID:31428102 <https://pubmed.ncbi.nlm.nih.gov/31428102/>`_
 
-- Häusser-Kinzel Silke et al. The Role of B Cells and Antibodies in Multiple Sclerosis, Neuromyelitis Optica, and Related Disorders. *Frontiers in immunology*. 2019. `PMID:30800132 <https://pubmed.ncbi.nlm.nih.gov/30800132/>`_
+- Häusser-Kinzel Silke et al. **The Role of B Cells and Antibodies in Multiple Sclerosis, Neuromyelitis Optica, and Related Disorders.**. *Frontiers in immunology*. 2019. `PMID:30800132 <https://pubmed.ncbi.nlm.nih.gov/30800132/>`_
 
-- Guo Yicheng et al. cAb-Rep: A Database of Curated Antibody Repertoires for Exploring Antibody Diversity and Predicting Antibody Prevalence. *Frontiers in immunology*. 2019. `PMID:31649674 <https://pubmed.ncbi.nlm.nih.gov/31649674/>`_
+- Guo Yicheng et al. **cAb-Rep: A Database of Curated Antibody Repertoires for Exploring Antibody Diversity and Predicting Antibody Prevalence.**. *Frontiers in immunology*. 2019. `PMID:31649674 <https://pubmed.ncbi.nlm.nih.gov/31649674/>`_
 
-- Migotto Mary-Anne et al. Efficient Distribution of a Novel Zirconium-89 Labeled Anti-cd20 Antibody Following Subcutaneous and Intravenous Administration in Control and Experimental Autoimmune Encephalomyelitis-Variant Mice. *Frontiers in immunology*. 2019. `PMID:31681317 <https://pubmed.ncbi.nlm.nih.gov/31681317/>`_
+- Migotto Mary-Anne et al. **Efficient Distribution of a Novel Zirconium-89 Labeled Anti-cd20 Antibody Following Subcutaneous and Intravenous Administration in Control and Experimental Autoimmune Encephalomyelitis-Variant Mice.**. *Frontiers in immunology*. 2019. `PMID:31681317 <https://pubmed.ncbi.nlm.nih.gov/31681317/>`_
 
-- Cortini Andrea et al. Identification of novel non-myelin biomarkers in multiple sclerosis using an improved phage-display approach. *PloS one*. 2019. `PMID:31805175 <https://pubmed.ncbi.nlm.nih.gov/31805175/>`_
+- Cortini Andrea et al. **Identification of novel non-myelin biomarkers in multiple sclerosis using an improved phage-display approach.**. *PloS one*. 2019. `PMID:31805175 <https://pubmed.ncbi.nlm.nih.gov/31805175/>`_
 
-- Kirpach Josiane et al. Detection of a Low Level and Heterogeneous B Cell Immune Response in Peripheral Blood of Acute Borreliosis Patients With High Throughput Sequencing. *Frontiers in immunology*. 2019. `PMID:31156648 <https://pubmed.ncbi.nlm.nih.gov/31156648/>`_
+- Kirpach Josiane et al. **Detection of a Low Level and Heterogeneous B Cell Immune Response in Peripheral Blood of Acute Borreliosis Patients With High Throughput Sequencing.**. *Frontiers in immunology*. 2019. `PMID:31156648 <https://pubmed.ncbi.nlm.nih.gov/31156648/>`_
 
-- Kovaltsuk Aleksandr et al. Filtering Next-Generation Sequencing of the Ig Gene Repertoire Data Using Antibody Structural Information. *Journal of immunology (Baltimore, Md. : 1950)*. 2018. `PMID:30397033 <https://pubmed.ncbi.nlm.nih.gov/30397033/>`_
+- Kovaltsuk Aleksandr et al. **Filtering Next-Generation Sequencing of the Ig Gene Repertoire Data Using Antibody Structural Information.**. *Journal of immunology (Baltimore, Md. : 1950)*. 2018. `PMID:30397033 <https://pubmed.ncbi.nlm.nih.gov/30397033/>`_
 
-- Elliott Serra E et al. Affinity Maturation Drives Epitope Spreading and Generation of Proinflammatory Anti-Citrullinated Protein Antibodies in Rheumatoid Arthritis. *Arthritis & rheumatology (Hoboken, N.J.)*. 2018. `PMID:29927104 <https://pubmed.ncbi.nlm.nih.gov/29927104/>`_
+- Elliott Serra E et al. **Affinity Maturation Drives Epitope Spreading and Generation of Proinflammatory Anti-Citrullinated Protein Antibodies in Rheumatoid Arthritis.**. *Arthritis & rheumatology (Hoboken, N.J.)*. 2018. `PMID:29927104 <https://pubmed.ncbi.nlm.nih.gov/29927104/>`_
 
-- Papaneophytou Christos P et al. Regulatory role of oligodendrocyte gap junctions in inflammatory demyelination. *Glia*. 2018. `PMID:30325069 <https://pubmed.ncbi.nlm.nih.gov/30325069/>`_
+- Papaneophytou Christos P et al. **Regulatory role of oligodendrocyte gap junctions in inflammatory demyelination.**. *Glia*. 2018. `PMID:30325069 <https://pubmed.ncbi.nlm.nih.gov/30325069/>`_
 
-- Bendorius Mykolas et al. From Systemic Inflammation to Neuroinflammation: The Case of Neurolupus. *International journal of molecular sciences*. 2018. `PMID:30428632 <https://pubmed.ncbi.nlm.nih.gov/30428632/>`_
+- Bendorius Mykolas et al. **From Systemic Inflammation to Neuroinflammation: The Case of Neurolupus.**. *International journal of molecular sciences*. 2018. `PMID:30428632 <https://pubmed.ncbi.nlm.nih.gov/30428632/>`_
 
-- Filippi Massimo et al. Multiple sclerosis. *Nature reviews. Disease primers*. 2018. `PMID:30410033 <https://pubmed.ncbi.nlm.nih.gov/30410033/>`_
+- Filippi Massimo et al. **Multiple sclerosis.**. *Nature reviews. Disease primers*. 2018. `PMID:30410033 <https://pubmed.ncbi.nlm.nih.gov/30410033/>`_
 
-- Kuerten Stefanie et al. Impact of Glatiramer Acetate on B Cell-Mediated Pathogenesis of Multiple Sclerosis. *CNS drugs*. 2018. `PMID:30315499 <https://pubmed.ncbi.nlm.nih.gov/30315499/>`_
+- Kuerten Stefanie et al. **Impact of Glatiramer Acetate on B Cell-Mediated Pathogenesis of Multiple Sclerosis.**. *CNS drugs*. 2018. `PMID:30315499 <https://pubmed.ncbi.nlm.nih.gov/30315499/>`_
 
-- Dhar Amrit et al. Predicting B cell receptor substitution profiles using public repertoire data. *PLoS computational biology*. 2018. `PMID:30332400 <https://pubmed.ncbi.nlm.nih.gov/30332400/>`_
+- Dhar Amrit et al. **Predicting B cell receptor substitution profiles using public repertoire data.**. *PLoS computational biology*. 2018. `PMID:30332400 <https://pubmed.ncbi.nlm.nih.gov/30332400/>`_
 
-- Rathbone Emma et al. Cerebrospinal fluid immunoglobulin light chain ratios predict disease progression in multiple sclerosis. *Journal of neurology, neurosurgery, and psychiatry*. 2018. `PMID:29743290 <https://pubmed.ncbi.nlm.nih.gov/29743290/>`_
+- Rathbone Emma et al. **Cerebrospinal fluid immunoglobulin light chain ratios predict disease progression in multiple sclerosis.**. *Journal of neurology, neurosurgery, and psychiatry*. 2018. `PMID:29743290 <https://pubmed.ncbi.nlm.nih.gov/29743290/>`_
 
-- Rydyznski Carolyn E et al. Affinity Maturation Is Impaired by Natural Killer Cell Suppression of Germinal Centers. *Cell reports*. 2018. `PMID:30257198 <https://pubmed.ncbi.nlm.nih.gov/30257198/>`_
+- Rydyznski Carolyn E et al. **Affinity Maturation Is Impaired by Natural Killer Cell Suppression of Germinal Centers.**. *Cell reports*. 2018. `PMID:30257198 <https://pubmed.ncbi.nlm.nih.gov/30257198/>`_
 
-- Zhao Yuan et al. Spatiotemporal segregation of human marginal zone and memory B cell populations in lymphoid tissue. *Nature communications*. 2018. `PMID:30242242 <https://pubmed.ncbi.nlm.nih.gov/30242242/>`_
+- Zhao Yuan et al. **Spatiotemporal segregation of human marginal zone and memory B cell populations in lymphoid tissue.**. *Nature communications*. 2018. `PMID:30242242 <https://pubmed.ncbi.nlm.nih.gov/30242242/>`_
 
-- Farhadian Shelli F et al. Single-cell RNA sequencing reveals microglia-like cells in cerebrospinal fluid during virologically suppressed HIV. *JCI insight*. 2018. `PMID:30232286 <https://pubmed.ncbi.nlm.nih.gov/30232286/>`_
+- Farhadian Shelli F et al. **Single-cell RNA sequencing reveals microglia-like cells in cerebrospinal fluid during virologically suppressed HIV.**. *JCI insight*. 2018. `PMID:30232286 <https://pubmed.ncbi.nlm.nih.gov/30232286/>`_
 
-- Jelcic Ivan et al. Memory B Cells Activate Brain-Homing, Autoreactive CD4+ T Cells in Multiple Sclerosis. *Cell*. 2018. `PMID:30173916 <https://pubmed.ncbi.nlm.nih.gov/30173916/>`_
+- Jelcic Ivan et al. **Memory B Cells Activate Brain-Homing, Autoreactive CD4+ T Cells in Multiple Sclerosis.**. *Cell*. 2018. `PMID:30173916 <https://pubmed.ncbi.nlm.nih.gov/30173916/>`_
 
-- Bashford-Rogers Rachael J M et al. Antibody repertoire analysis in polygenic autoimmune diseases. *Immunology*. 2018. `PMID:29574826 <https://pubmed.ncbi.nlm.nih.gov/29574826/>`_
+- Bashford-Rogers Rachael J M et al. **Antibody repertoire analysis in polygenic autoimmune diseases.**. *Immunology*. 2018. `PMID:29574826 <https://pubmed.ncbi.nlm.nih.gov/29574826/>`_
 
-- Zhou Jeffrey O et al. Structural Insights from HIV-Antibody Coevolution and Related Immunization Studies. *AIDS research and human retroviruses*. 2018. `PMID:29984587 <https://pubmed.ncbi.nlm.nih.gov/29984587/>`_
+- Zhou Jeffrey O et al. **Structural Insights from HIV-Antibody Coevolution and Related Immunization Studies.**. *AIDS research and human retroviruses*. 2018. `PMID:29984587 <https://pubmed.ncbi.nlm.nih.gov/29984587/>`_
 
-- Ellebrecht Christoph T et al. Autoreactive IgG and IgA B Cells Evolve through Distinct Subclass Switch Pathways in the Autoimmune Disease Pemphigus Vulgaris. *Cell reports*. 2018. `PMID:30157430 <https://pubmed.ncbi.nlm.nih.gov/30157430/>`_
+- Ellebrecht Christoph T et al. **Autoreactive IgG and IgA B Cells Evolve through Distinct Subclass Switch Pathways in the Autoimmune Disease Pemphigus Vulgaris.**. *Cell reports*. 2018. `PMID:30157430 <https://pubmed.ncbi.nlm.nih.gov/30157430/>`_
 
-- Wong Wing H et al. Rare Event Detection Using Error-corrected DNA and RNA Sequencing. *Journal of visualized experiments : JoVE*. 2018. `PMID:30124656 <https://pubmed.ncbi.nlm.nih.gov/30124656/>`_
+- Wong Wing H et al. **Rare Event Detection Using Error-corrected DNA and RNA Sequencing.**. *Journal of visualized experiments : JoVE*. 2018. `PMID:30124656 <https://pubmed.ncbi.nlm.nih.gov/30124656/>`_
 
-- Crawford Greg et al. Epithelial damage and tissue γδ T cells promote a unique tumor-protective IgE response. *Nature immunology*. 2018. `PMID:30013146 <https://pubmed.ncbi.nlm.nih.gov/30013146/>`_
+- Crawford Greg et al. **Epithelial damage and tissue γδ T cells promote a unique tumor-protective IgE response.**. *Nature immunology*. 2018. `PMID:30013146 <https://pubmed.ncbi.nlm.nih.gov/30013146/>`_
 
-- Thörnqvist Linnea et al. Data on the nucleotide composition of the first codons encoding the complementary determining region 3 (CDR3) in immunoglobulin heavy chains. *Data in brief*. 2018. `PMID:29892656 <https://pubmed.ncbi.nlm.nih.gov/29892656/>`_
+- Thörnqvist Linnea et al. **Data on the nucleotide composition of the first codons encoding the complementary determining region 3 (CDR3) in immunoglobulin heavy chains.**. *Data in brief*. 2018. `PMID:29892656 <https://pubmed.ncbi.nlm.nih.gov/29892656/>`_
 
-- Kenderes Kevin J et al. T-Bet+ IgM Memory Cells Generate Multi-lineage Effector B Cells. *Cell reports*. 2018. `PMID:30044980 <https://pubmed.ncbi.nlm.nih.gov/30044980/>`_
+- Kenderes Kevin J et al. **T-Bet+ IgM Memory Cells Generate Multi-lineage Effector B Cells.**. *Cell reports*. 2018. `PMID:30044980 <https://pubmed.ncbi.nlm.nih.gov/30044980/>`_
 
-- Margreitter Christian et al. BRepertoire: a user-friendly web server for analysing antibody repertoire data. *Nucleic acids research*. 2018. `PMID:29668996 <https://pubmed.ncbi.nlm.nih.gov/29668996/>`_
+- Margreitter Christian et al. **BRepertoire: a user-friendly web server for analysing antibody repertoire data.**. *Nucleic acids research*. 2018. `PMID:29668996 <https://pubmed.ncbi.nlm.nih.gov/29668996/>`_
 
-- Corrie Brian D et al. iReceptor: A platform for querying and analyzing antibody/B-cell and T-cell receptor repertoire data across federated repositories. *Immunological reviews*. 2018. `PMID:29944754 <https://pubmed.ncbi.nlm.nih.gov/29944754/>`_
+- Corrie Brian D et al. **iReceptor: A platform for querying and analyzing antibody/B-cell and T-cell receptor repertoire data across federated repositories.**. *Immunological reviews*. 2018. `PMID:29944754 <https://pubmed.ncbi.nlm.nih.gov/29944754/>`_
 
-- Clement Kendell et al. AmpUMI: design and analysis of unique molecular identifiers for deep amplicon sequencing. *Bioinformatics (Oxford, England)*. 2018. `PMID:29949956 <https://pubmed.ncbi.nlm.nih.gov/29949956/>`_
+- Clement Kendell et al. **AmpUMI: design and analysis of unique molecular identifiers for deep amplicon sequencing.**. *Bioinformatics (Oxford, England)*. 2018. `PMID:29949956 <https://pubmed.ncbi.nlm.nih.gov/29949956/>`_
 
-- Tipton Christopher M et al. Understanding B-cell activation and autoantibody repertoire selection in systemic lupus erythematosus: A B-cell immunomics approach. *Immunological reviews*. 2018. `PMID:29944759 <https://pubmed.ncbi.nlm.nih.gov/29944759/>`_
+- Tipton Christopher M et al. **Understanding B-cell activation and autoantibody repertoire selection in systemic lupus erythematosus: A B-cell immunomics approach.**. *Immunological reviews*. 2018. `PMID:29944759 <https://pubmed.ncbi.nlm.nih.gov/29944759/>`_
 
-- Dunn-Walters Deborah et al. Immunoglobulin gene analysis as a tool for investigating human immune responses. *Immunological reviews*. 2018. `PMID:29944755 <https://pubmed.ncbi.nlm.nih.gov/29944755/>`_
+- Dunn-Walters Deborah et al. **Immunoglobulin gene analysis as a tool for investigating human immune responses.**. *Immunological reviews*. 2018. `PMID:29944755 <https://pubmed.ncbi.nlm.nih.gov/29944755/>`_
 
-- Koelsch Kristi A et al. Evidence of Alternative Modes of B Cell Activation Involving Acquired Fab Regions of N-Glycosylation in Antibody-Secreting Cells Infiltrating the Labial Salivary Glands of Patients With Sjögren's Syndrome. *Arthritis & rheumatology (Hoboken, N.J.)*. 2018. `PMID:29457375 <https://pubmed.ncbi.nlm.nih.gov/29457375/>`_
+- Koelsch Kristi A et al. **Evidence of Alternative Modes of B Cell Activation Involving Acquired Fab Regions of N-Glycosylation in Antibody-Secreting Cells Infiltrating the Labial Salivary Glands of Patients With Sjögren's Syndrome.**. *Arthritis & rheumatology (Hoboken, N.J.)*. 2018. `PMID:29457375 <https://pubmed.ncbi.nlm.nih.gov/29457375/>`_
 
-- Olson Branden J et al. The Bayesian optimist's guide to adaptive immune receptor repertoire analysis. *Immunological reviews*. 2018. `PMID:29944760 <https://pubmed.ncbi.nlm.nih.gov/29944760/>`_
+- Olson Branden J et al. **The Bayesian optimist's guide to adaptive immune receptor repertoire analysis.**. *Immunological reviews*. 2018. `PMID:29944760 <https://pubmed.ncbi.nlm.nih.gov/29944760/>`_
 
-- Nouri Nima et al. A spectral clustering-based method for identifying clones from high-throughput B cell repertoire sequencing data. *Bioinformatics (Oxford, England)*. 2018. `PMID:29949968 <https://pubmed.ncbi.nlm.nih.gov/29949968/>`_
+- Nouri Nima et al. **A spectral clustering-based method for identifying clones from high-throughput B cell repertoire sequencing data.**. *Bioinformatics (Oxford, England)*. 2018. `PMID:29949968 <https://pubmed.ncbi.nlm.nih.gov/29949968/>`_
 
-- Imkeller Katharina et al. Antihomotypic affinity maturation improves human B cell responses against a repetitive epitope. *Science (New York, N.Y.)*. 2018. `PMID:29880723 <https://pubmed.ncbi.nlm.nih.gov/29880723/>`_
+- Imkeller Katharina et al. **Antihomotypic affinity maturation improves human B cell responses against a repetitive epitope.**. *Science (New York, N.Y.)*. 2018. `PMID:29880723 <https://pubmed.ncbi.nlm.nih.gov/29880723/>`_
 
-- Wiehe Kevin et al. Functional Relevance of Improbable Antibody Mutations for HIV Broadly Neutralizing Antibody Development. *Cell host & microbe*. 2018. `PMID:29861171 <https://pubmed.ncbi.nlm.nih.gov/29861171/>`_
+- Wiehe Kevin et al. **Functional Relevance of Improbable Antibody Mutations for HIV Broadly Neutralizing Antibody Development.**. *Cell host & microbe*. 2018. `PMID:29861171 <https://pubmed.ncbi.nlm.nih.gov/29861171/>`_
 
-- Setliff Ian et al. Multi-Donor Longitudinal Antibody Repertoire Sequencing Reveals the Existence of Public Antibody Clonotypes in HIV-1 Infection. *Cell host & microbe*. 2018. `PMID:29861170 <https://pubmed.ncbi.nlm.nih.gov/29861170/>`_
+- Setliff Ian et al. **Multi-Donor Longitudinal Antibody Repertoire Sequencing Reveals the Existence of Public Antibody Clonotypes in HIV-1 Infection.**. *Cell host & microbe*. 2018. `PMID:29861170 <https://pubmed.ncbi.nlm.nih.gov/29861170/>`_
 
-- Pröbstel Anne-Katrin et al. Multiple Sclerosis: B Cells Take Center Stage. *Journal of neuro-ophthalmology : the official journal of the North American Neuro-Ophthalmology Society*. 2018. `PMID:29561328 <https://pubmed.ncbi.nlm.nih.gov/29561328/>`_
+- Pröbstel Anne-Katrin et al. **Multiple Sclerosis: B Cells Take Center Stage.**. *Journal of neuro-ophthalmology : the official journal of the North American Neuro-Ophthalmology Society*. 2018. `PMID:29561328 <https://pubmed.ncbi.nlm.nih.gov/29561328/>`_
 
-- Risnes Louise F et al. Disease-driving CD4+ T cell clonotypes persist for decades in celiac disease. *The Journal of clinical investigation*. 2018. `PMID:29757191 <https://pubmed.ncbi.nlm.nih.gov/29757191/>`_
+- Risnes Louise F et al. **Disease-driving CD4+ T cell clonotypes persist for decades in celiac disease.**. *The Journal of clinical investigation*. 2018. `PMID:29757191 <https://pubmed.ncbi.nlm.nih.gov/29757191/>`_
 
-- Chovanec Peter et al. Unbiased quantification of immunoglobulin diversity at the DNA level with VDJ-seq. *Nature protocols*. 2018. `PMID:29725123 <https://pubmed.ncbi.nlm.nih.gov/29725123/>`_
+- Chovanec Peter et al. **Unbiased quantification of immunoglobulin diversity at the DNA level with VDJ-seq.**. *Nature protocols*. 2018. `PMID:29725123 <https://pubmed.ncbi.nlm.nih.gov/29725123/>`_
 
-- Tabansky Inna et al. Targeting DEC-205-DCIR2+ dendritic cells promotes immunological tolerance in proteolipid protein-induced experimental autoimmune encephalomyelitis. *Molecular medicine (Cambridge, Mass.)*. 2018. `PMID:30134798 <https://pubmed.ncbi.nlm.nih.gov/30134798/>`_
+- Tabansky Inna et al. **Targeting DEC-205-DCIR2+ dendritic cells promotes immunological tolerance in proteolipid protein-induced experimental autoimmune encephalomyelitis.**. *Molecular medicine (Cambridge, Mass.)*. 2018. `PMID:30134798 <https://pubmed.ncbi.nlm.nih.gov/30134798/>`_
 
-- DeWitt William S et al. Using Genotype Abundance to Improve Phylogenetic Inference. *Molecular biology and evolution*. 2018. `PMID:29474671 <https://pubmed.ncbi.nlm.nih.gov/29474671/>`_
+- DeWitt William S et al. **Using Genotype Abundance to Improve Phylogenetic Inference.**. *Molecular biology and evolution*. 2018. `PMID:29474671 <https://pubmed.ncbi.nlm.nih.gov/29474671/>`_
 
-- Vieira Marcos C et al. Selection and Neutral Mutations Drive Pervasive Mutability Losses in Long-Lived Anti-HIV B-Cell Lineages. *Molecular biology and evolution*. 2018. `PMID:29688540 <https://pubmed.ncbi.nlm.nih.gov/29688540/>`_
+- Vieira Marcos C et al. **Selection and Neutral Mutations Drive Pervasive Mutability Losses in Long-Lived Anti-HIV B-Cell Lineages.**. *Molecular biology and evolution*. 2018. `PMID:29688540 <https://pubmed.ncbi.nlm.nih.gov/29688540/>`_
 
-- Touil Hanane et al. Human central nervous system astrocytes support survival and activation of B cells: implications for MS pathogenesis. *Journal of neuroinflammation*. 2018. `PMID:29673365 <https://pubmed.ncbi.nlm.nih.gov/29673365/>`_
+- Touil Hanane et al. **Human central nervous system astrocytes support survival and activation of B cells: implications for MS pathogenesis.**. *Journal of neuroinflammation*. 2018. `PMID:29673365 <https://pubmed.ncbi.nlm.nih.gov/29673365/>`_
 
-- Fera Daniela et al. HIV envelope V3 region mimic embodies key features of a broadly neutralizing antibody lineage epitope. *Nature communications*. 2018. `PMID:29549260 <https://pubmed.ncbi.nlm.nih.gov/29549260/>`_
+- Fera Daniela et al. **HIV envelope V3 region mimic embodies key features of a broadly neutralizing antibody lineage epitope.**. *Nature communications*. 2018. `PMID:29549260 <https://pubmed.ncbi.nlm.nih.gov/29549260/>`_
 
-- Wang Wanxin et al. High fidelity hypothermic preservation of primary tissues in organ transplant preservative for single cell transcriptome analysis. *BMC genomics*. 2018. `PMID:29439658 <https://pubmed.ncbi.nlm.nih.gov/29439658/>`_
+- Wang Wanxin et al. **High fidelity hypothermic preservation of primary tissues in organ transplant preservative for single cell transcriptome analysis.**. *BMC genomics*. 2018. `PMID:29439658 <https://pubmed.ncbi.nlm.nih.gov/29439658/>`_
 
-- Marcou Quentin et al. High-throughput immune repertoire analysis with IGoR. *Nature communications*. 2018. `PMID:29422654 <https://pubmed.ncbi.nlm.nih.gov/29422654/>`_
+- Marcou Quentin et al. **High-throughput immune repertoire analysis with IGoR.**. *Nature communications*. 2018. `PMID:29422654 <https://pubmed.ncbi.nlm.nih.gov/29422654/>`_
 
-- Ghraichy Marie et al. B-cell receptor repertoire sequencing in patients with primary immunodeficiency: a review. *Immunology*. 2018. `PMID:29140551 <https://pubmed.ncbi.nlm.nih.gov/29140551/>`_
+- Ghraichy Marie et al. **B-cell receptor repertoire sequencing in patients with primary immunodeficiency: a review.**. *Immunology*. 2018. `PMID:29140551 <https://pubmed.ncbi.nlm.nih.gov/29140551/>`_
 
-- Korin Ben et al. Mass cytometry analysis of immune cells in the brain. *Nature protocols*. 2018. `PMID:29370157 <https://pubmed.ncbi.nlm.nih.gov/29370157/>`_
+- Korin Ben et al. **Mass cytometry analysis of immune cells in the brain.**. *Nature protocols*. 2018. `PMID:29370157 <https://pubmed.ncbi.nlm.nih.gov/29370157/>`_
 
-- Arruda Lucas C M et al. Immune rebound associates with a favorable clinical response to autologous HSCT in systemic sclerosis patients. *Blood advances*. 2018. `PMID:29365321 <https://pubmed.ncbi.nlm.nih.gov/29365321/>`_
+- Arruda Lucas C M et al. **Immune rebound associates with a favorable clinical response to autologous HSCT in systemic sclerosis patients.**. *Blood advances*. 2018. `PMID:29365321 <https://pubmed.ncbi.nlm.nih.gov/29365321/>`_
 
-- Blum Lisa K et al. Robust B Cell Responses Predict Rapid Resolution of Lyme Disease. *Frontiers in immunology*. 2018. `PMID:30072990 <https://pubmed.ncbi.nlm.nih.gov/30072990/>`_
+- Blum Lisa K et al. **Robust B Cell Responses Predict Rapid Resolution of Lyme Disease.**. *Frontiers in immunology*. 2018. `PMID:30072990 <https://pubmed.ncbi.nlm.nih.gov/30072990/>`_
 
-- Rosenfeld Aaron M et al. ImmuneDB, a Novel Tool for the Analysis, Storage, and Dissemination of Immune Repertoire Sequencing Data. *Frontiers in immunology*. 2018. `PMID:30298069 <https://pubmed.ncbi.nlm.nih.gov/30298069/>`_
+- Rosenfeld Aaron M et al. **ImmuneDB, a Novel Tool for the Analysis, Storage, and Dissemination of Immune Repertoire Sequencing Data.**. *Frontiers in immunology*. 2018. `PMID:30298069 <https://pubmed.ncbi.nlm.nih.gov/30298069/>`_
 
-- Vander Heiden Jason Anthony et al. AIRR Community Standardized Representations for Annotated Immune Repertoires. *Frontiers in immunology*. 2018. `PMID:30323809 <https://pubmed.ncbi.nlm.nih.gov/30323809/>`_
+- Vander Heiden Jason Anthony et al. **AIRR Community Standardized Representations for Annotated Immune Repertoires.**. *Frontiers in immunology*. 2018. `PMID:30323809 <https://pubmed.ncbi.nlm.nih.gov/30323809/>`_
 
-- Davidsen Kristian et al. Benchmarking Tree and Ancestral Sequence Inference for B Cell Receptor Sequences. *Frontiers in immunology*. 2018. `PMID:30429847 <https://pubmed.ncbi.nlm.nih.gov/30429847/>`_
+- Davidsen Kristian et al. **Benchmarking Tree and Ancestral Sequence Inference for B Cell Receptor Sequences.**. *Frontiers in immunology*. 2018. `PMID:30429847 <https://pubmed.ncbi.nlm.nih.gov/30429847/>`_
 
-- Eliyahu Sivan et al. Antibody Repertoire Analysis of Hepatitis C Virus Infections Identifies Immune Signatures Associated With Spontaneous Clearance. *Frontiers in immunology*. 2018. `PMID:30622532 <https://pubmed.ncbi.nlm.nih.gov/30622532/>`_
+- Eliyahu Sivan et al. **Antibody Repertoire Analysis of Hepatitis C Virus Infections Identifies Immune Signatures Associated With Spontaneous Clearance.**. *Frontiers in immunology*. 2018. `PMID:30622532 <https://pubmed.ncbi.nlm.nih.gov/30622532/>`_
 
-- Yermanos Alexander Dimitri et al. Tracing Antibody Repertoire Evolution by Systems Phylogeny. *Frontiers in immunology*. 2018. `PMID:30333820 <https://pubmed.ncbi.nlm.nih.gov/30333820/>`_
+- Yermanos Alexander Dimitri et al. **Tracing Antibody Repertoire Evolution by Systems Phylogeny.**. *Frontiers in immunology*. 2018. `PMID:30333820 <https://pubmed.ncbi.nlm.nih.gov/30333820/>`_
 
-- Miho Enkelejda et al. Computational Strategies for Dissecting the High-Dimensional Complexity of Adaptive Immune Repertoires. *Frontiers in immunology*. 2018. `PMID:29515569 <https://pubmed.ncbi.nlm.nih.gov/29515569/>`_
+- Miho Enkelejda et al. **Computational Strategies for Dissecting the High-Dimensional Complexity of Adaptive Immune Repertoires.**. *Frontiers in immunology*. 2018. `PMID:29515569 <https://pubmed.ncbi.nlm.nih.gov/29515569/>`_
 
-- Ponath Gerald et al. The Role of Astrocytes in Multiple Sclerosis. *Frontiers in immunology*. 2018. `PMID:29515568 <https://pubmed.ncbi.nlm.nih.gov/29515568/>`_
+- Ponath Gerald et al. **The Role of Astrocytes in Multiple Sclerosis.**. *Frontiers in immunology*. 2018. `PMID:29515568 <https://pubmed.ncbi.nlm.nih.gov/29515568/>`_
 
-- Petta Ioanna et al. Interrelation of Diet, Gut Microbiome, and Autoantibody Production. *Frontiers in immunology*. 2018. `PMID:29559977 <https://pubmed.ncbi.nlm.nih.gov/29559977/>`_
+- Petta Ioanna et al. **Interrelation of Diet, Gut Microbiome, and Autoantibody Production.**. *Frontiers in immunology*. 2018. `PMID:29559977 <https://pubmed.ncbi.nlm.nih.gov/29559977/>`_
 
-- Rosenfeld Aaron M et al. Computational Evaluation of B-Cell Clone Sizes in Bulk Populations. *Frontiers in immunology*. 2018. `PMID:30008715 <https://pubmed.ncbi.nlm.nih.gov/30008715/>`_
+- Rosenfeld Aaron M et al. **Computational Evaluation of B-Cell Clone Sizes in Bulk Populations.**. *Frontiers in immunology*. 2018. `PMID:30008715 <https://pubmed.ncbi.nlm.nih.gov/30008715/>`_
 
-- Schramm Chaim A et al. Beyond Hot Spots: Biases in Antibody Somatic Hypermutation and Implications for Vaccine Design. *Frontiers in immunology*. 2018. `PMID:30154794 <https://pubmed.ncbi.nlm.nih.gov/30154794/>`_
+- Schramm Chaim A et al. **Beyond Hot Spots: Biases in Antibody Somatic Hypermutation and Implications for Vaccine Design.**. *Frontiers in immunology*. 2018. `PMID:30154794 <https://pubmed.ncbi.nlm.nih.gov/30154794/>`_
 
-- Avram Oren et al. ASAP - A Webserver for Immunoglobulin-Sequencing Analysis Pipeline. *Frontiers in immunology*. 2018. `PMID:30105017 <https://pubmed.ncbi.nlm.nih.gov/30105017/>`_
+- Avram Oren et al. **ASAP - A Webserver for Immunoglobulin-Sequencing Analysis Pipeline.**. *Frontiers in immunology*. 2018. `PMID:30105017 <https://pubmed.ncbi.nlm.nih.gov/30105017/>`_
 
-- Visser Annie et al. Acquisition of N-Glycosylation Sites in Immunoglobulin Heavy Chain Genes During Local Expansion in Parotid Salivary Glands of Primary Sjögren Patients. *Frontiers in immunology*. 2018. `PMID:29662487 <https://pubmed.ncbi.nlm.nih.gov/29662487/>`_
+- Visser Annie et al. **Acquisition of N-Glycosylation Sites in Immunoglobulin Heavy Chain Genes During Local Expansion in Parotid Salivary Glands of Primary Sjögren Patients.**. *Frontiers in immunology*. 2018. `PMID:29662487 <https://pubmed.ncbi.nlm.nih.gov/29662487/>`_
 
-- Ma Ke-Yue et al. Immune Repertoire Sequencing Using Molecular Identifiers Enables Accurate Clonality Discovery and Clone Size Quantification. *Frontiers in immunology*. 2018. `PMID:29467754 <https://pubmed.ncbi.nlm.nih.gov/29467754/>`_
+- Ma Ke-Yue et al. **Immune Repertoire Sequencing Using Molecular Identifiers Enables Accurate Clonality Discovery and Clone Size Quantification.**. *Frontiers in immunology*. 2018. `PMID:29467754 <https://pubmed.ncbi.nlm.nih.gov/29467754/>`_
 
-- Davydov Alexey N et al. Comparative Analysis of B-Cell Receptor Repertoires Induced by Live Yellow Fever Vaccine in Young and Middle-Age Donors. *Frontiers in immunology*. 2018. `PMID:30356675 <https://pubmed.ncbi.nlm.nih.gov/30356675/>`_
+- Davydov Alexey N et al. **Comparative Analysis of B-Cell Receptor Repertoires Induced by Live Yellow Fever Vaccine in Young and Middle-Age Donors.**. *Frontiers in immunology*. 2018. `PMID:30356675 <https://pubmed.ncbi.nlm.nih.gov/30356675/>`_
 
-- van Schouwenburg Pauline A et al. Identification of CVID Patients With Defects in Immune Repertoire Formation or Specification. *Frontiers in immunology*. 2018. `PMID:30532750 <https://pubmed.ncbi.nlm.nih.gov/30532750/>`_
+- van Schouwenburg Pauline A et al. **Identification of CVID Patients With Defects in Immune Repertoire Formation or Specification.**. *Frontiers in immunology*. 2018. `PMID:30532750 <https://pubmed.ncbi.nlm.nih.gov/30532750/>`_
 
-- Waltari Eric et al. 5' Rapid Amplification of cDNA Ends and Illumina MiSeq Reveals B Cell Receptor Features in Healthy Adults, Adults With Chronic HIV-1 Infection, Cord Blood, and Humanized Mice. *Frontiers in immunology*. 2018. `PMID:29632541 <https://pubmed.ncbi.nlm.nih.gov/29632541/>`_
+- Waltari Eric et al. **5' Rapid Amplification of cDNA Ends and Illumina MiSeq Reveals B Cell Receptor Features in Healthy Adults, Adults With Chronic HIV-1 Infection, Cord Blood, and Humanized Mice.**. *Frontiers in immunology*. 2018. `PMID:29632541 <https://pubmed.ncbi.nlm.nih.gov/29632541/>`_
 
-- Greenfield Ariele L et al. B-cell Therapy for Multiple Sclerosis: Entering an era. *Annals of neurology*. 2018. `PMID:29244240 <https://pubmed.ncbi.nlm.nih.gov/29244240/>`_
+- Greenfield Ariele L et al. **B-cell Therapy for Multiple Sclerosis: Entering an era.**. *Annals of neurology*. 2018. `PMID:29244240 <https://pubmed.ncbi.nlm.nih.gov/29244240/>`_
 
-- Chaudhary Neha et al. Analyzing Immunoglobulin Repertoires. *Frontiers in immunology*. 2018. `PMID:29593723 <https://pubmed.ncbi.nlm.nih.gov/29593723/>`_
+- Chaudhary Neha et al. **Analyzing Immunoglobulin Repertoires.**. *Frontiers in immunology*. 2018. `PMID:29593723 <https://pubmed.ncbi.nlm.nih.gov/29593723/>`_
 
-- Christley Scott et al. VDJServer: A Cloud-Based Analysis Portal and Data Commons for Immune Repertoire Sequences and Rearrangements. *Frontiers in immunology*. 2018. `PMID:29867956 <https://pubmed.ncbi.nlm.nih.gov/29867956/>`_
+- Christley Scott et al. **VDJServer: A Cloud-Based Analysis Portal and Data Commons for Immune Repertoire Sequences and Rearrangements.**. *Frontiers in immunology*. 2018. `PMID:29867956 <https://pubmed.ncbi.nlm.nih.gov/29867956/>`_
 
-- Nouri Nima et al. Optimized Threshold Inference for Partitioning of Clones From High-Throughput B Cell Repertoire Sequencing Data. *Frontiers in immunology*. 2018. `PMID:30093903 <https://pubmed.ncbi.nlm.nih.gov/30093903/>`_
+- Nouri Nima et al. **Optimized Threshold Inference for Partitioning of Clones From High-Throughput B Cell Repertoire Sequencing Data.**. *Frontiers in immunology*. 2018. `PMID:30093903 <https://pubmed.ncbi.nlm.nih.gov/30093903/>`_
 
-- Ohm-Laursen Line et al. Local Clonal Diversification and Dissemination of B Lymphocytes in the Human Bronchial Mucosa. *Frontiers in immunology*. 2018. `PMID:30245687 <https://pubmed.ncbi.nlm.nih.gov/30245687/>`_
+- Ohm-Laursen Line et al. **Local Clonal Diversification and Dissemination of B Lymphocytes in the Human Bronchial Mucosa.**. *Frontiers in immunology*. 2018. `PMID:30245687 <https://pubmed.ncbi.nlm.nih.gov/30245687/>`_
 
-- Tesch Victoria K et al. No Overt Clinical Immunodeficiency Despite Immune Biological Abnormalities in Patients With Constitutional Mismatch Repair Deficiency. *Frontiers in immunology*. 2018. `PMID:30013564 <https://pubmed.ncbi.nlm.nih.gov/30013564/>`_
+- Tesch Victoria K et al. **No Overt Clinical Immunodeficiency Despite Immune Biological Abnormalities in Patients With Constitutional Mismatch Repair Deficiency.**. *Frontiers in immunology*. 2018. `PMID:30013564 <https://pubmed.ncbi.nlm.nih.gov/30013564/>`_
 
-- Parker Harp Chelsea R et al. B cells are capable of independently eliciting rapid reactivation of encephalitogenic CD4 T cells in a murine model of multiple sclerosis. *PloS one*. 2018. `PMID:29944721 <https://pubmed.ncbi.nlm.nih.gov/29944721/>`_
+- Parker Harp Chelsea R et al. **B cells are capable of independently eliciting rapid reactivation of encephalitogenic CD4 T cells in a murine model of multiple sclerosis.**. *PloS one*. 2018. `PMID:29944721 <https://pubmed.ncbi.nlm.nih.gov/29944721/>`_
 
-- Cha Seong Won et al. The Antibody Repertoire of Colorectal Cancer. *Molecular & cellular proteomics : MCP*. 2017. `PMID:29046389 <https://pubmed.ncbi.nlm.nih.gov/29046389/>`_
+- Cha Seong Won et al. **The Antibody Repertoire of Colorectal Cancer.**. *Molecular & cellular proteomics : MCP*. 2017. `PMID:29046389 <https://pubmed.ncbi.nlm.nih.gov/29046389/>`_
 
-- Atkinson Jeffrey R et al. Protective Humoral Immunity in the Central Nervous System Requires Peripheral CD19-Dependent Germinal Center Formation following Coronavirus Encephalomyelitis. *Journal of virology*. 2017. `PMID:28931676 <https://pubmed.ncbi.nlm.nih.gov/28931676/>`_
+- Atkinson Jeffrey R et al. **Protective Humoral Immunity in the Central Nervous System Requires Peripheral CD19-Dependent Germinal Center Formation following Coronavirus Encephalomyelitis.**. *Journal of virology*. 2017. `PMID:28931676 <https://pubmed.ncbi.nlm.nih.gov/28931676/>`_
 
-- Eggers Erica L et al. Clonal relationships of CSF B cells in treatment-naive multiple sclerosis patients. *JCI insight*. 2017. `PMID:29202449 <https://pubmed.ncbi.nlm.nih.gov/29202449/>`_
+- Eggers Erica L et al. **Clonal relationships of CSF B cells in treatment-naive multiple sclerosis patients.**. *JCI insight*. 2017. `PMID:29202449 <https://pubmed.ncbi.nlm.nih.gov/29202449/>`_
 
-- Rubelt Florian et al. Adaptive Immune Receptor Repertoire Community recommendations for sharing immune-repertoire sequencing data. *Nature immunology*. 2017. `PMID:29144493 <https://pubmed.ncbi.nlm.nih.gov/29144493/>`_
+- Rubelt Florian et al. **Adaptive Immune Receptor Repertoire Community recommendations for sharing immune-repertoire sequencing data.**. *Nature immunology*. 2017. `PMID:29144493 <https://pubmed.ncbi.nlm.nih.gov/29144493/>`_
 
-- Shlemov Alexander et al. Reconstructing Antibody Repertoires from Error-Prone Immunosequencing Reads. *Journal of immunology (Baltimore, Md. : 1950)*. 2017. `PMID:28978691 <https://pubmed.ncbi.nlm.nih.gov/28978691/>`_
+- Shlemov Alexander et al. **Reconstructing Antibody Repertoires from Error-Prone Immunosequencing Reads.**. *Journal of immunology (Baltimore, Md. : 1950)*. 2017. `PMID:28978691 <https://pubmed.ncbi.nlm.nih.gov/28978691/>`_
 
-- Gandoglia Ilaria et al. Teriflunomide treatment reduces B cells in patients with MS. *Neurology(R) neuroimmunology & neuroinflammation*. 2017. `PMID:29082295 <https://pubmed.ncbi.nlm.nih.gov/29082295/>`_
+- Gandoglia Ilaria et al. **Teriflunomide treatment reduces B cells in patients with MS.**. *Neurology(R) neuroimmunology & neuroinflammation*. 2017. `PMID:29082295 <https://pubmed.ncbi.nlm.nih.gov/29082295/>`_
 
-- Laidlaw Brian J et al. Interleukin-10 from CD4+ follicular regulatory T cells promotes the germinal center response. *Science immunology*. 2017. `PMID:29054998 <https://pubmed.ncbi.nlm.nih.gov/29054998/>`_
+- Laidlaw Brian J et al. **Interleukin-10 from CD4+ follicular regulatory T cells promotes the germinal center response.**. *Science immunology*. 2017. `PMID:29054998 <https://pubmed.ncbi.nlm.nih.gov/29054998/>`_
 
-- Christley Scott et al. VDJPipe: a pipelined tool for pre-processing immune repertoire sequencing data. *BMC bioinformatics*. 2017. `PMID:29020925 <https://pubmed.ncbi.nlm.nih.gov/29020925/>`_
+- Christley Scott et al. **VDJPipe: a pipelined tool for pre-processing immune repertoire sequencing data.**. *BMC bioinformatics*. 2017. `PMID:29020925 <https://pubmed.ncbi.nlm.nih.gov/29020925/>`_
 
-- Lossius Andreas et al. Selective intrathecal enrichment of G1m1-positive B cells in multiple sclerosis. *Annals of clinical and translational neurology*. 2017. `PMID:29046884 <https://pubmed.ncbi.nlm.nih.gov/29046884/>`_
+- Lossius Andreas et al. **Selective intrathecal enrichment of G1m1-positive B cells in multiple sclerosis.**. *Annals of clinical and translational neurology*. 2017. `PMID:29046884 <https://pubmed.ncbi.nlm.nih.gov/29046884/>`_
 
-- de Jong Britt G et al. Human IgG2- and IgG4-expressing memory B cells display enhanced molecular and phenotypic signs of maturity and accumulate with age. *Immunology and cell biology*. 2017. `PMID:28546550 <https://pubmed.ncbi.nlm.nih.gov/28546550/>`_
+- de Jong Britt G et al. **Human IgG2- and IgG4-expressing memory B cells display enhanced molecular and phenotypic signs of maturity and accumulate with age.**. *Immunology and cell biology*. 2017. `PMID:28546550 <https://pubmed.ncbi.nlm.nih.gov/28546550/>`_
 
-- de Bourcy Charles F A et al. Dynamics of the human antibody repertoire after B cell depletion in systemic sclerosis. *Science immunology*. 2017. `PMID:28963118 <https://pubmed.ncbi.nlm.nih.gov/28963118/>`_
+- de Bourcy Charles F A et al. **Dynamics of the human antibody repertoire after B cell depletion in systemic sclerosis.**. *Science immunology*. 2017. `PMID:28963118 <https://pubmed.ncbi.nlm.nih.gov/28963118/>`_
 
-- Lehmann-Horn Klaus et al. Deciphering the Role of B Cells in Multiple Sclerosis-Towards Specific Targeting of Pathogenic Function. *International journal of molecular sciences*. 2017. `PMID:28946620 <https://pubmed.ncbi.nlm.nih.gov/28946620/>`_
+- Lehmann-Horn Klaus et al. **Deciphering the Role of B Cells in Multiple Sclerosis-Towards Specific Targeting of Pathogenic Function.**. *International journal of molecular sciences*. 2017. `PMID:28946620 <https://pubmed.ncbi.nlm.nih.gov/28946620/>`_
 
-- Wendel Ben S et al. Accurate immune repertoire sequencing reveals malaria infection driven antibody lineage diversification in young children. *Nature communications*. 2017. `PMID:28912592 <https://pubmed.ncbi.nlm.nih.gov/28912592/>`_
+- Wendel Ben S et al. **Accurate immune repertoire sequencing reveals malaria infection driven antibody lineage diversification in young children.**. *Nature communications*. 2017. `PMID:28912592 <https://pubmed.ncbi.nlm.nih.gov/28912592/>`_
 
-- Ostmeyer Jared et al. Statistical classifiers for diagnosing disease from immune repertoires: a case study using multiple sclerosis. *BMC bioinformatics*. 2017. `PMID:28882107 <https://pubmed.ncbi.nlm.nih.gov/28882107/>`_
+- Ostmeyer Jared et al. **Statistical classifiers for diagnosing disease from immune repertoires: a case study using multiple sclerosis.**. *BMC bioinformatics*. 2017. `PMID:28882107 <https://pubmed.ncbi.nlm.nih.gov/28882107/>`_
 
-- Snir Omri et al. Stereotyped antibody responses target posttranslationally modified gluten in celiac disease. *JCI insight*. 2017. `PMID:28878138 <https://pubmed.ncbi.nlm.nih.gov/28878138/>`_
+- Snir Omri et al. **Stereotyped antibody responses target posttranslationally modified gluten in celiac disease.**. *JCI insight*. 2017. `PMID:28878138 <https://pubmed.ncbi.nlm.nih.gov/28878138/>`_
 
-- Meng Wenzhao et al. An atlas of B-cell clonal distribution in the human body. *Nature biotechnology*. 2017. `PMID:28829438 <https://pubmed.ncbi.nlm.nih.gov/28829438/>`_
+- Meng Wenzhao et al. **An atlas of B-cell clonal distribution in the human body.**. *Nature biotechnology*. 2017. `PMID:28829438 <https://pubmed.ncbi.nlm.nih.gov/28829438/>`_
 
-- Korin Ben et al. High-dimensional, single-cell characterization of the brain's immune compartment. *Nature neuroscience*. 2017. `PMID:28758994 <https://pubmed.ncbi.nlm.nih.gov/28758994/>`_
+- Korin Ben et al. **High-dimensional, single-cell characterization of the brain's immune compartment.**. *Nature neuroscience*. 2017. `PMID:28758994 <https://pubmed.ncbi.nlm.nih.gov/28758994/>`_
 
-- Kirik Ufuk et al. Data on haplotype-supported immunoglobulin germline gene inference. *Data in brief*. 2017. `PMID:28725665 <https://pubmed.ncbi.nlm.nih.gov/28725665/>`_
+- Kirik Ufuk et al. **Data on haplotype-supported immunoglobulin germline gene inference.**. *Data in brief*. 2017. `PMID:28725665 <https://pubmed.ncbi.nlm.nih.gov/28725665/>`_
 
-- Owens Gregory P et al. A Neuroprimer: Principles of Central Nervous System Immunity. *Seminars in pediatric neurology*. 2017. `PMID:29103421 <https://pubmed.ncbi.nlm.nih.gov/29103421/>`_
+- Owens Gregory P et al. **A Neuroprimer: Principles of Central Nervous System Immunity.**. *Seminars in pediatric neurology*. 2017. `PMID:29103421 <https://pubmed.ncbi.nlm.nih.gov/29103421/>`_
 
-- Magri Giuliana et al. Human Secretory IgM Emerges from Plasma Cells Clonally Related to Gut Memory B Cells and Targets Highly Diverse Commensals. *Immunity*. 2017. `PMID:28709802 <https://pubmed.ncbi.nlm.nih.gov/28709802/>`_
+- Magri Giuliana et al. **Human Secretory IgM Emerges from Plasma Cells Clonally Related to Gut Memory B Cells and Targets Highly Diverse Commensals.**. *Immunity*. 2017. `PMID:28709802 <https://pubmed.ncbi.nlm.nih.gov/28709802/>`_
 
-- Rosati Elisa et al. Overview of methodologies for T-cell receptor repertoire analysis. *BMC biotechnology*. 2017. `PMID:28693542 <https://pubmed.ncbi.nlm.nih.gov/28693542/>`_
+- Rosati Elisa et al. **Overview of methodologies for T-cell receptor repertoire analysis.**. *BMC biotechnology*. 2017. `PMID:28693542 <https://pubmed.ncbi.nlm.nih.gov/28693542/>`_
 
-- Mentis Alexios-Fotios A et al. Viruses and Multiple Sclerosis: From Mechanisms and Pathways to Translational Research Opportunities. *Molecular neurobiology*. 2017. `PMID:28455696 <https://pubmed.ncbi.nlm.nih.gov/28455696/>`_
+- Mentis Alexios-Fotios A et al. **Viruses and Multiple Sclerosis: From Mechanisms and Pathways to Translational Research Opportunities.**. *Molecular neurobiology*. 2017. `PMID:28455696 <https://pubmed.ncbi.nlm.nih.gov/28455696/>`_
 
-- Juskevicius Darius et al. Genetic background and evolution of relapses in aggressive B-cell lymphomas. *Haematologica*. 2017. `PMID:28554945 <https://pubmed.ncbi.nlm.nih.gov/28554945/>`_
+- Juskevicius Darius et al. **Genetic background and evolution of relapses in aggressive B-cell lymphomas.**. *Haematologica*. 2017. `PMID:28554945 <https://pubmed.ncbi.nlm.nih.gov/28554945/>`_
 
-- Watson Corey T et al. The Individual and Population Genetics of Antibody Immunity. *Trends in immunology*. 2017. `PMID:28539189 <https://pubmed.ncbi.nlm.nih.gov/28539189/>`_
+- Watson Corey T et al. **The Individual and Population Genetics of Antibody Immunity.**. *Trends in immunology*. 2017. `PMID:28539189 <https://pubmed.ncbi.nlm.nih.gov/28539189/>`_
 
-- Kowarik Markus C et al. CNS Aquaporin-4-specific B cells connect with multiple B-cell compartments in neuromyelitis optica spectrum disorder. *Annals of clinical and translational neurology*. 2017. `PMID:28589164 <https://pubmed.ncbi.nlm.nih.gov/28589164/>`_
+- Kowarik Markus C et al. **CNS Aquaporin-4-specific B cells connect with multiple B-cell compartments in neuromyelitis optica spectrum disorder.**. *Annals of clinical and translational neurology*. 2017. `PMID:28589164 <https://pubmed.ncbi.nlm.nih.gov/28589164/>`_
 
-- IJspeert Hanna et al. Antigen Receptor Galaxy: A User-Friendly, Web-Based Tool for Analysis and Visualization of T and B Cell Receptor Repertoire Data. *Journal of immunology (Baltimore, Md. : 1950)*. 2017. `PMID:28416602 <https://pubmed.ncbi.nlm.nih.gov/28416602/>`_
+- IJspeert Hanna et al. **Antigen Receptor Galaxy: A User-Friendly, Web-Based Tool for Analysis and Visualization of T and B Cell Receptor Repertoire Data.**. *Journal of immunology (Baltimore, Md. : 1950)*. 2017. `PMID:28416602 <https://pubmed.ncbi.nlm.nih.gov/28416602/>`_
 
-- Hoehn Kenneth B et al. A Phylogenetic Codon Substitution Model for Antibody Lineages. *Genetics*. 2017. `PMID:28315836 <https://pubmed.ncbi.nlm.nih.gov/28315836/>`_
+- Hoehn Kenneth B et al. **A Phylogenetic Codon Substitution Model for Antibody Lineages.**. *Genetics*. 2017. `PMID:28315836 <https://pubmed.ncbi.nlm.nih.gov/28315836/>`_
 
-- Eid Mohammed Mansour Abbas et al. Integrity of immunoglobulin variable regions is supported by GANP during AID-induced somatic hypermutation in germinal center B cells. *International immunology*. 2017. `PMID:28541550 <https://pubmed.ncbi.nlm.nih.gov/28541550/>`_
+- Eid Mohammed Mansour Abbas et al. **Integrity of immunoglobulin variable regions is supported by GANP during AID-induced somatic hypermutation in germinal center B cells.**. *International immunology*. 2017. `PMID:28541550 <https://pubmed.ncbi.nlm.nih.gov/28541550/>`_
 
-- Banerjee Saikat et al. Evaluation of a novel multi-immunogen vaccine strategy for targeting 4E10/10E8 neutralizing epitopes on HIV-1 gp41 membrane proximal external region. *Virology*. 2017. `PMID:28237764 <https://pubmed.ncbi.nlm.nih.gov/28237764/>`_
+- Banerjee Saikat et al. **Evaluation of a novel multi-immunogen vaccine strategy for targeting 4E10/10E8 neutralizing epitopes on HIV-1 gp41 membrane proximal external region.**. *Virology*. 2017. `PMID:28237764 <https://pubmed.ncbi.nlm.nih.gov/28237764/>`_
 
-- Banchereau Romain et al. Understanding Human Autoimmunity and Autoinflammation Through Transcriptomics. *Annual review of immunology*. 2017. `PMID:28142321 <https://pubmed.ncbi.nlm.nih.gov/28142321/>`_
+- Banchereau Romain et al. **Understanding Human Autoimmunity and Autoinflammation Through Transcriptomics.**. *Annual review of immunology*. 2017. `PMID:28142321 <https://pubmed.ncbi.nlm.nih.gov/28142321/>`_
 
-- Bonsignori Mattia et al. Staged induction of HIV-1 glycan-dependent broadly neutralizing antibodies. *Science translational medicine*. 2017. `PMID:28298420 <https://pubmed.ncbi.nlm.nih.gov/28298420/>`_
+- Bonsignori Mattia et al. **Staged induction of HIV-1 glycan-dependent broadly neutralizing antibodies.**. *Science translational medicine*. 2017. `PMID:28298420 <https://pubmed.ncbi.nlm.nih.gov/28298420/>`_
 
-- Gupta Namita T et al. Hierarchical Clustering Can Identify B Cell Clones with High Confidence in Ig Repertoire Sequencing Data. *Journal of immunology (Baltimore, Md. : 1950)*. 2017. `PMID:28179494 <https://pubmed.ncbi.nlm.nih.gov/28179494/>`_
+- Gupta Namita T et al. **Hierarchical Clustering Can Identify B Cell Clones with High Confidence in Ig Repertoire Sequencing Data.**. *Journal of immunology (Baltimore, Md. : 1950)*. 2017. `PMID:28179494 <https://pubmed.ncbi.nlm.nih.gov/28179494/>`_
 
-- Bolen Christopher R et al. The Repertoire Dissimilarity Index as a method to compare lymphocyte receptor repertoires. *BMC bioinformatics*. 2017. `PMID:28264647 <https://pubmed.ncbi.nlm.nih.gov/28264647/>`_
+- Bolen Christopher R et al. **The Repertoire Dissimilarity Index as a method to compare lymphocyte receptor repertoires.**. *BMC bioinformatics*. 2017. `PMID:28264647 <https://pubmed.ncbi.nlm.nih.gov/28264647/>`_
 
-- Chen Jeffrey et al. The preferred nucleotide contexts of the AID/APOBEC cytidine deaminases have differential effects when mutating retrotransposon and virus sequences compared to host genes. *PLoS computational biology*. 2017. `PMID:28362825 <https://pubmed.ncbi.nlm.nih.gov/28362825/>`_
+- Chen Jeffrey et al. **The preferred nucleotide contexts of the AID/APOBEC cytidine deaminases have differential effects when mutating retrotransposon and virus sequences compared to host genes.**. *PLoS computational biology*. 2017. `PMID:28362825 <https://pubmed.ncbi.nlm.nih.gov/28362825/>`_
 
-- Zhang Li et al. 3D: diversity, dynamics, differential testing - a proposed pipeline for analysis of next-generation sequencing T cell repertoire data. *BMC bioinformatics*. 2017. `PMID:28241742 <https://pubmed.ncbi.nlm.nih.gov/28241742/>`_
+- Zhang Li et al. **3D: diversity, dynamics, differential testing - a proposed pipeline for analysis of next-generation sequencing T cell repertoire data.**. *BMC bioinformatics*. 2017. `PMID:28241742 <https://pubmed.ncbi.nlm.nih.gov/28241742/>`_
 
-- Zarin Taraneh et al. Selection maintains signaling function of a highly diverged intrinsically disordered region. *Proceedings of the National Academy of Sciences of the United States of America*. 2017. `PMID:28167781 <https://pubmed.ncbi.nlm.nih.gov/28167781/>`_
+- Zarin Taraneh et al. **Selection maintains signaling function of a highly diverged intrinsically disordered region.**. *Proceedings of the National Academy of Sciences of the United States of America*. 2017. `PMID:28167781 <https://pubmed.ncbi.nlm.nih.gov/28167781/>`_
 
-- Vander Heiden Jason A et al. Dysregulation of B Cell Repertoire Formation in Myasthenia Gravis Patients Revealed through Deep Sequencing. *Journal of immunology (Baltimore, Md. : 1950)*. 2017. `PMID:28087666 <https://pubmed.ncbi.nlm.nih.gov/28087666/>`_
+- Vander Heiden Jason A et al. **Dysregulation of B Cell Repertoire Formation in Myasthenia Gravis Patients Revealed through Deep Sequencing.**. *Journal of immunology (Baltimore, Md. : 1950)*. 2017. `PMID:28087666 <https://pubmed.ncbi.nlm.nih.gov/28087666/>`_
 
-- Neave Matthew J et al. Transcriptomic analysis of common carp anterior kidney during Cyprinid herpesvirus 3 infection: Immunoglobulin repertoire and homologue functional divergence. *Scientific reports*. 2017. `PMID:28148967 <https://pubmed.ncbi.nlm.nih.gov/28148967/>`_
+- Neave Matthew J et al. **Transcriptomic analysis of common carp anterior kidney during Cyprinid herpesvirus 3 infection: Immunoglobulin repertoire and homologue functional divergence.**. *Scientific reports*. 2017. `PMID:28148967 <https://pubmed.ncbi.nlm.nih.gov/28148967/>`_
 
-- DiSano Krista D et al. Activated GL7+ B cells are maintained within the inflamed CNS in the absence of follicle formation during viral encephalomyelitis. *Brain, behavior, and immunity*. 2017. `PMID:27658544 <https://pubmed.ncbi.nlm.nih.gov/27658544/>`_
+- DiSano Krista D et al. **Activated GL7+ B cells are maintained within the inflamed CNS in the absence of follicle formation during viral encephalomyelitis.**. *Brain, behavior, and immunity*. 2017. `PMID:27658544 <https://pubmed.ncbi.nlm.nih.gov/27658544/>`_
 
-- Landsverk Ole J B et al. Antibody-secreting plasma cells persist for decades in human intestine. *The Journal of experimental medicine*. 2017. `PMID:28104812 <https://pubmed.ncbi.nlm.nih.gov/28104812/>`_
+- Landsverk Ole J B et al. **Antibody-secreting plasma cells persist for decades in human intestine.**. *The Journal of experimental medicine*. 2017. `PMID:28104812 <https://pubmed.ncbi.nlm.nih.gov/28104812/>`_
 
-- Prinz Marco et al. The role of peripheral immune cells in the CNS in steady state and disease. *Nature neuroscience*. 2017. `PMID:28092660 <https://pubmed.ncbi.nlm.nih.gov/28092660/>`_
+- Prinz Marco et al. **The role of peripheral immune cells in the CNS in steady state and disease.**. *Nature neuroscience*. 2017. `PMID:28092660 <https://pubmed.ncbi.nlm.nih.gov/28092660/>`_
 
-- de Bourcy Charles F A et al. Phylogenetic analysis of the human antibody repertoire reveals quantitative signatures of immune senescence and aging. *Proceedings of the National Academy of Sciences of the United States of America*. 2017. `PMID:28096374 <https://pubmed.ncbi.nlm.nih.gov/28096374/>`_
+- de Bourcy Charles F A et al. **Phylogenetic analysis of the human antibody repertoire reveals quantitative signatures of immune senescence and aging.**. *Proceedings of the National Academy of Sciences of the United States of America*. 2017. `PMID:28096374 <https://pubmed.ncbi.nlm.nih.gov/28096374/>`_
 
-- Molnarfi Nicolas et al. Activation of human B cells negatively regulates TGF-β1 production. *Journal of neuroinflammation*. 2017. `PMID:28103949 <https://pubmed.ncbi.nlm.nih.gov/28103949/>`_
+- Molnarfi Nicolas et al. **Activation of human B cells negatively regulates TGF-β1 production.**. *Journal of neuroinflammation*. 2017. `PMID:28103949 <https://pubmed.ncbi.nlm.nih.gov/28103949/>`_
 
-- Rosenfeld Aaron M et al. ImmuneDB: a system for the analysis and exploration of high-throughput adaptive immune receptor sequencing data. *Bioinformatics (Oxford, England)*. 2017. `PMID:27616708 <https://pubmed.ncbi.nlm.nih.gov/27616708/>`_
+- Rosenfeld Aaron M et al. **ImmuneDB: a system for the analysis and exploration of high-throughput adaptive immune receptor sequencing data.**. *Bioinformatics (Oxford, England)*. 2017. `PMID:27616708 <https://pubmed.ncbi.nlm.nih.gov/27616708/>`_
 
-- Ramesh Akshaya et al. Structure and Diversity of the Rhesus Macaque Immunoglobulin Loci through Multiple De Novo Genome Assemblies. *Frontiers in immunology*. 2017. `PMID:29163486 <https://pubmed.ncbi.nlm.nih.gov/29163486/>`_
+- Ramesh Akshaya et al. **Structure and Diversity of the Rhesus Macaque Immunoglobulin Loci through Multiple De Novo Genome Assemblies.**. *Frontiers in immunology*. 2017. `PMID:29163486 <https://pubmed.ncbi.nlm.nih.gov/29163486/>`_
 
-- Feng Jenny J et al. Treating primary-progressive multiple sclerosis: potential of ocrelizumab and review of B-cell therapies. *Degenerative neurological and neuromuscular disease*. 2017. `PMID:30050376 <https://pubmed.ncbi.nlm.nih.gov/30050376/>`_
+- Feng Jenny J et al. **Treating primary-progressive multiple sclerosis: potential of ocrelizumab and review of B-cell therapies.**. *Degenerative neurological and neuromuscular disease*. 2017. `PMID:30050376 <https://pubmed.ncbi.nlm.nih.gov/30050376/>`_
 
-- Yuan Chaohui et al. The Number of Overlapping AID Hotspots in Germline IGHV Genes Is Inversely Correlated with Mutation Frequency in Chronic Lymphocytic Leukemia. *PloS one*. 2017. `PMID:28125682 <https://pubmed.ncbi.nlm.nih.gov/28125682/>`_
+- Yuan Chaohui et al. **The Number of Overlapping AID Hotspots in Germline IGHV Genes Is Inversely Correlated with Mutation Frequency in Chronic Lymphocytic Leukemia.**. *PloS one*. 2017. `PMID:28125682 <https://pubmed.ncbi.nlm.nih.gov/28125682/>`_
 
-- Reshetova Polina et al. Computational Model Reveals Limited Correlation between Germinal Center B-Cell Subclone Abundancy and Affinity: Implications for Repertoire Sequencing. *Frontiers in immunology*. 2017. `PMID:28321219 <https://pubmed.ncbi.nlm.nih.gov/28321219/>`_
+- Reshetova Polina et al. **Computational Model Reveals Limited Correlation between Germinal Center B-Cell Subclone Abundancy and Affinity: Implications for Repertoire Sequencing.**. *Frontiers in immunology*. 2017. `PMID:28321219 <https://pubmed.ncbi.nlm.nih.gov/28321219/>`_
 
-- Bittner Stefan et al. Targeting B cells in relapsing-remitting multiple sclerosis: from pathophysiology to optimal clinical management. *Therapeutic advances in neurological disorders*. 2017. `PMID:28450895 <https://pubmed.ncbi.nlm.nih.gov/28450895/>`_
+- Bittner Stefan et al. **Targeting B cells in relapsing-remitting multiple sclerosis: from pathophysiology to optimal clinical management.**. *Therapeutic advances in neurological disorders*. 2017. `PMID:28450895 <https://pubmed.ncbi.nlm.nih.gov/28450895/>`_
 
-- van den Hoogen Ward J et al. Modulation of Multiple Sclerosis and Its Animal Model Experimental Autoimmune Encephalomyelitis by Food and Gut Microbiota. *Frontiers in immunology*. 2017. `PMID:28928747 <https://pubmed.ncbi.nlm.nih.gov/28928747/>`_
+- van den Hoogen Ward J et al. **Modulation of Multiple Sclerosis and Its Animal Model Experimental Autoimmune Encephalomyelitis by Food and Gut Microbiota.**. *Frontiers in immunology*. 2017. `PMID:28928747 <https://pubmed.ncbi.nlm.nih.gov/28928747/>`_
 
-- Mader Simone et al. The Role of Brain-Reactive Autoantibodies in Brain Pathology and Cognitive Impairment. *Frontiers in immunology*. 2017. `PMID:28955334 <https://pubmed.ncbi.nlm.nih.gov/28955334/>`_
+- Mader Simone et al. **The Role of Brain-Reactive Autoantibodies in Brain Pathology and Cognitive Impairment.**. *Frontiers in immunology*. 2017. `PMID:28955334 <https://pubmed.ncbi.nlm.nih.gov/28955334/>`_
 
-- Høglund Rune A et al. In Silico Prediction Analysis of Idiotope-Driven T-B Cell Collaboration in Multiple Sclerosis. *Frontiers in immunology*. 2017. `PMID:29038659 <https://pubmed.ncbi.nlm.nih.gov/29038659/>`_
+- Høglund Rune A et al. **In Silico Prediction Analysis of Idiotope-Driven T-B Cell Collaboration in Multiple Sclerosis.**. *Frontiers in immunology*. 2017. `PMID:29038659 <https://pubmed.ncbi.nlm.nih.gov/29038659/>`_
 
-- Kirik Ufuk et al. Antibody Heavy Chain Variable Domains of Different Germline Gene Origins Diversify through Different Paths. *Frontiers in immunology*. 2017. `PMID:29180996 <https://pubmed.ncbi.nlm.nih.gov/29180996/>`_
+- Kirik Ufuk et al. **Antibody Heavy Chain Variable Domains of Different Germline Gene Origins Diversify through Different Paths.**. *Frontiers in immunology*. 2017. `PMID:29180996 <https://pubmed.ncbi.nlm.nih.gov/29180996/>`_
 
-- Breden Felix et al. Reproducibility and Reuse of Adaptive Immune Receptor Repertoire Data. *Frontiers in immunology*. 2017. `PMID:29163494 <https://pubmed.ncbi.nlm.nih.gov/29163494/>`_
+- Breden Felix et al. **Reproducibility and Reuse of Adaptive Immune Receptor Repertoire Data.**. *Frontiers in immunology*. 2017. `PMID:29163494 <https://pubmed.ncbi.nlm.nih.gov/29163494/>`_
 
-- Vergani Stefano et al. Novel Method for High-Throughput Full-Length IGHV-D-J Sequencing of the Immune Repertoire from Bulk B-Cells with Single-Cell Resolution. *Frontiers in immunology*. 2017. `PMID:28959265 <https://pubmed.ncbi.nlm.nih.gov/28959265/>`_
+- Vergani Stefano et al. **Novel Method for High-Throughput Full-Length IGHV-D-J Sequencing of the Immune Repertoire from Bulk B-Cells with Single-Cell Resolution.**. *Frontiers in immunology*. 2017. `PMID:28959265 <https://pubmed.ncbi.nlm.nih.gov/28959265/>`_
 
-- Laustsen Andreas H et al. Exploration of immunoglobulin transcriptomes from mice immunized with three-finger toxins and phospholipases A2 from the Central American coral snake, Micrurus nigrocinctus. *PeerJ*. 2017. `PMID:28149694 <https://pubmed.ncbi.nlm.nih.gov/28149694/>`_
+- Laustsen Andreas H et al. **Exploration of immunoglobulin transcriptomes from mice immunized with three-finger toxins and phospholipases A2 from the Central American coral snake, Micrurus nigrocinctus.**. *PeerJ*. 2017. `PMID:28149694 <https://pubmed.ncbi.nlm.nih.gov/28149694/>`_
 
-- Karlsson Hedestam Gunilla B et al. Evolution of B cell analysis and Env trimer redesign. *Immunological reviews*. 2017. `PMID:28133805 <https://pubmed.ncbi.nlm.nih.gov/28133805/>`_
+- Karlsson Hedestam Gunilla B et al. **Evolution of B cell analysis and Env trimer redesign.**. *Immunological reviews*. 2017. `PMID:28133805 <https://pubmed.ncbi.nlm.nih.gov/28133805/>`_
 
-- Fu Longfei et al. A comprehensive profiling of T- and B-lymphocyte receptor repertoires from a Chinese-origin rhesus macaque by high-throughput sequencing. *PloS one*. 2017. `PMID:28813462 <https://pubmed.ncbi.nlm.nih.gov/28813462/>`_
+- Fu Longfei et al. **A comprehensive profiling of T- and B-lymphocyte receptor repertoires from a Chinese-origin rhesus macaque by high-throughput sequencing.**. *PloS one*. 2017. `PMID:28813462 <https://pubmed.ncbi.nlm.nih.gov/28813462/>`_
 
-- Soldemo Martina et al. Env-Specific Antibodies in Chronic Infection versus in Vaccination. *Frontiers in immunology*. 2017. `PMID:28928737 <https://pubmed.ncbi.nlm.nih.gov/28928737/>`_
+- Soldemo Martina et al. **Env-Specific Antibodies in Chronic Infection versus in Vaccination.**. *Frontiers in immunology*. 2017. `PMID:28928737 <https://pubmed.ncbi.nlm.nih.gov/28928737/>`_
 
-- Almagro Juan C et al. Progress and Challenges in the Design and Clinical Development of Antibodies for Cancer Therapy. *Frontiers in immunology*. 2017. `PMID:29379493 <https://pubmed.ncbi.nlm.nih.gov/29379493/>`_
+- Almagro Juan C et al. **Progress and Challenges in the Design and Clinical Development of Antibodies for Cancer Therapy.**. *Frontiers in immunology*. 2017. `PMID:29379493 <https://pubmed.ncbi.nlm.nih.gov/29379493/>`_
 
-- Bürckert Jean-Philippe et al. Functionally Convergent B Cell Receptor Sequences in Transgenic Rats Expressing a Human B Cell Repertoire in Response to Tetanus Toxoid and Measles Antigens. *Frontiers in immunology*. 2017. `PMID:29312330 <https://pubmed.ncbi.nlm.nih.gov/29312330/>`_
+- Bürckert Jean-Philippe et al. **Functionally Convergent B Cell Receptor Sequences in Transgenic Rats Expressing a Human B Cell Repertoire in Response to Tetanus Toxoid and Measles Antigens.**. *Frontiers in immunology*. 2017. `PMID:29312330 <https://pubmed.ncbi.nlm.nih.gov/29312330/>`_
 
-- Sheng Zizhang et al. Gene-Specific Substitution Profiles Describe the Types and Frequencies of Amino Acid Changes during Antibody Somatic Hypermutation. *Frontiers in immunology*. 2017. `PMID:28539926 <https://pubmed.ncbi.nlm.nih.gov/28539926/>`_
+- Sheng Zizhang et al. **Gene-Specific Substitution Profiles Describe the Types and Frequencies of Amino Acid Changes during Antibody Somatic Hypermutation.**. *Frontiers in immunology*. 2017. `PMID:28539926 <https://pubmed.ncbi.nlm.nih.gov/28539926/>`_
 
-- Wendel Ben S et al. A Streamlined Approach to Antibody Novel Germline Allele Prediction and Validation. *Frontiers in immunology*. 2017. `PMID:28928742 <https://pubmed.ncbi.nlm.nih.gov/28928742/>`_
+- Wendel Ben S et al. **A Streamlined Approach to Antibody Novel Germline Allele Prediction and Validation.**. *Frontiers in immunology*. 2017. `PMID:28928742 <https://pubmed.ncbi.nlm.nih.gov/28928742/>`_
 
-- Corcoran Martin M et al. Production of individualized V gene databases reveals high levels of immunoglobulin genetic diversity. *Nature communications*. 2016. `PMID:27995928 <https://pubmed.ncbi.nlm.nih.gov/27995928/>`_
+- Corcoran Martin M et al. **Production of individualized V gene databases reveals high levels of immunoglobulin genetic diversity.**. *Nature communications*. 2016. `PMID:27995928 <https://pubmed.ncbi.nlm.nih.gov/27995928/>`_
 
-- Lehmann-Horn Klaus et al. B cell repertoire expansion occurs in meningeal ectopic lymphoid tissue. *JCI insight*. 2016. `PMID:27942581 <https://pubmed.ncbi.nlm.nih.gov/27942581/>`_
+- Lehmann-Horn Klaus et al. **B cell repertoire expansion occurs in meningeal ectopic lymphoid tissue.**. *JCI insight*. 2016. `PMID:27942581 <https://pubmed.ncbi.nlm.nih.gov/27942581/>`_
 
-- Kinzel Silke et al. B Cell-Directed Therapeutics in Multiple Sclerosis: Rationale and Clinical Evidence. *CNS drugs*. 2016. `PMID:27844213 <https://pubmed.ncbi.nlm.nih.gov/27844213/>`_
+- Kinzel Silke et al. **B Cell-Directed Therapeutics in Multiple Sclerosis: Rationale and Clinical Evidence.**. *CNS drugs*. 2016. `PMID:27844213 <https://pubmed.ncbi.nlm.nih.gov/27844213/>`_
 
-- Dendrou Calliope A et al. Neuroinflammation - using big data to inform clinical practice. *Nature reviews. Neurology*. 2016. `PMID:27857124 <https://pubmed.ncbi.nlm.nih.gov/27857124/>`_
+- Dendrou Calliope A et al. **Neuroinflammation - using big data to inform clinical practice.**. *Nature reviews. Neurology*. 2016. `PMID:27857124 <https://pubmed.ncbi.nlm.nih.gov/27857124/>`_
 
-- Hart Geoffrey T et al. The Regulation of Inherently Autoreactive VH4-34-Expressing B Cells in Individuals Living in a Malaria-Endemic Area of West Africa. *Journal of immunology (Baltimore, Md. : 1950)*. 2016. `PMID:27798155 <https://pubmed.ncbi.nlm.nih.gov/27798155/>`_
+- Hart Geoffrey T et al. **The Regulation of Inherently Autoreactive VH4-34-Expressing B Cells in Individuals Living in a Malaria-Endemic Area of West Africa.**. *Journal of immunology (Baltimore, Md. : 1950)*. 2016. `PMID:27798155 <https://pubmed.ncbi.nlm.nih.gov/27798155/>`_
 
-- Cui Ang et al. A Model of Somatic Hypermutation Targeting in Mice Based on High-Throughput Ig Sequencing Data. *Journal of immunology (Baltimore, Md. : 1950)*. 2016. `PMID:27707999 <https://pubmed.ncbi.nlm.nih.gov/27707999/>`_
+- Cui Ang et al. **A Model of Somatic Hypermutation Targeting in Mice Based on High-Throughput Ig Sequencing Data.**. *Journal of immunology (Baltimore, Md. : 1950)*. 2016. `PMID:27707999 <https://pubmed.ncbi.nlm.nih.gov/27707999/>`_
 
-- Gerritsen Bram et al. RTCR: a pipeline for complete and accurate recovery of T cell repertoires from high throughput sequencing data. *Bioinformatics (Oxford, England)*. 2016. `PMID:27324198 <https://pubmed.ncbi.nlm.nih.gov/27324198/>`_
+- Gerritsen Bram et al. **RTCR: a pipeline for complete and accurate recovery of T cell repertoires from high throughput sequencing data.**. *Bioinformatics (Oxford, England)*. 2016. `PMID:27324198 <https://pubmed.ncbi.nlm.nih.gov/27324198/>`_
 
-- Bjarnadóttir Kristbjörg et al. B cell-derived transforming growth factor-β1 expression limits the induction phase of autoimmune neuroinflammation. *Scientific reports*. 2016. `PMID:27708418 <https://pubmed.ncbi.nlm.nih.gov/27708418/>`_
+- Bjarnadóttir Kristbjörg et al. **B cell-derived transforming growth factor-β1 expression limits the induction phase of autoimmune neuroinflammation.**. *Scientific reports*. 2016. `PMID:27708418 <https://pubmed.ncbi.nlm.nih.gov/27708418/>`_
 
-- Toby Inimary T et al. VDJML: a file format with tools for capturing the results of inferring immune receptor rearrangements. *BMC bioinformatics*. 2016. `PMID:27766961 <https://pubmed.ncbi.nlm.nih.gov/27766961/>`_
+- Toby Inimary T et al. **VDJML: a file format with tools for capturing the results of inferring immune receptor rearrangements.**. *BMC bioinformatics*. 2016. `PMID:27766961 <https://pubmed.ncbi.nlm.nih.gov/27766961/>`_
 
-- Donius Luke R et al. Generation of Long-Lived Bone Marrow Plasma Cells Secreting Antibodies Specific for the HIV-1 gp41 Membrane-Proximal External Region in the Absence of Polyreactivity. *Journal of virology*. 2016. `PMID:27466419 <https://pubmed.ncbi.nlm.nih.gov/27466419/>`_
+- Donius Luke R et al. **Generation of Long-Lived Bone Marrow Plasma Cells Secreting Antibodies Specific for the HIV-1 gp41 Membrane-Proximal External Region in the Absence of Polyreactivity.**. *Journal of virology*. 2016. `PMID:27466419 <https://pubmed.ncbi.nlm.nih.gov/27466419/>`_
 
-- Ralph Duncan K et al. Likelihood-Based Inference of B Cell Clonal Families. *PLoS computational biology*. 2016. `PMID:27749910 <https://pubmed.ncbi.nlm.nih.gov/27749910/>`_
+- Ralph Duncan K et al. **Likelihood-Based Inference of B Cell Clonal Families.**. *PLoS computational biology*. 2016. `PMID:27749910 <https://pubmed.ncbi.nlm.nih.gov/27749910/>`_
 
-- Louveau Antoine et al. Lymphatics in Neurological Disorders: A Neuro-Lympho-Vascular Component of Multiple Sclerosis and Alzheimer's Disease?. *Neuron*. 2016. `PMID:27608759 <https://pubmed.ncbi.nlm.nih.gov/27608759/>`_
+- Louveau Antoine et al. **Lymphatics in Neurological Disorders: A Neuro-Lympho-Vascular Component of Multiple Sclerosis and Alzheimer's Disease?**. *Neuron*. 2016. `PMID:27608759 <https://pubmed.ncbi.nlm.nih.gov/27608759/>`_
 
-- Engelhardt Britta et al. Vascular, glial, and lymphatic immune gateways of the central nervous system. *Acta neuropathologica*. 2016. `PMID:27522506 <https://pubmed.ncbi.nlm.nih.gov/27522506/>`_
+- Engelhardt Britta et al. **Vascular, glial, and lymphatic immune gateways of the central nervous system.**. *Acta neuropathologica*. 2016. `PMID:27522506 <https://pubmed.ncbi.nlm.nih.gov/27522506/>`_
 
-- Luo Shishi et al. Estimating Copy Number and Allelic Variation at the Immunoglobulin Heavy Chain Locus Using Short Reads. *PLoS computational biology*. 2016. `PMID:27632220 <https://pubmed.ncbi.nlm.nih.gov/27632220/>`_
+- Luo Shishi et al. **Estimating Copy Number and Allelic Variation at the Immunoglobulin Heavy Chain Locus Using Short Reads.**. *PLoS computational biology*. 2016. `PMID:27632220 <https://pubmed.ncbi.nlm.nih.gov/27632220/>`_
 
-- Sinmaz Nese et al. Mapping autoantigen epitopes: molecular insights into autoantibody-associated disorders of the nervous system. *Journal of neuroinflammation*. 2016. `PMID:27577085 <https://pubmed.ncbi.nlm.nih.gov/27577085/>`_
+- Sinmaz Nese et al. **Mapping autoantigen epitopes: molecular insights into autoantibody-associated disorders of the nervous system.**. *Journal of neuroinflammation*. 2016. `PMID:27577085 <https://pubmed.ncbi.nlm.nih.gov/27577085/>`_
 
-- Dooley James et al. Immunologic profiles of multiple sclerosis treatments reveal shared early B cell alterations. *Neurology(R) neuroimmunology & neuroinflammation*. 2016. `PMID:27231713 <https://pubmed.ncbi.nlm.nih.gov/27231713/>`_
+- Dooley James et al. **Immunologic profiles of multiple sclerosis treatments reveal shared early B cell alterations.**. *Neurology(R) neuroimmunology & neuroinflammation*. 2016. `PMID:27231713 <https://pubmed.ncbi.nlm.nih.gov/27231713/>`_
 
-- Saul Louise et al. IgG subclass switching and clonal expansion in cutaneous melanoma and normal skin. *Scientific reports*. 2016. `PMID:27411958 <https://pubmed.ncbi.nlm.nih.gov/27411958/>`_
+- Saul Louise et al. **IgG subclass switching and clonal expansion in cutaneous melanoma and normal skin.**. *Scientific reports*. 2016. `PMID:27411958 <https://pubmed.ncbi.nlm.nih.gov/27411958/>`_
 
-- Brändle Simone M et al. Distinct oligoclonal band antibodies in multiple sclerosis recognize ubiquitous self-proteins. *Proceedings of the National Academy of Sciences of the United States of America*. 2016. `PMID:27325759 <https://pubmed.ncbi.nlm.nih.gov/27325759/>`_
+- Brändle Simone M et al. **Distinct oligoclonal band antibodies in multiple sclerosis recognize ubiquitous self-proteins.**. *Proceedings of the National Academy of Sciences of the United States of America*. 2016. `PMID:27325759 <https://pubmed.ncbi.nlm.nih.gov/27325759/>`_
 
-- Ogishi Masato et al. Delineation of autoantibody repertoire through differential proteogenomics in hepatitis C virus-induced cryoglobulinemia. *Scientific reports*. 2016. `PMID:27403724 <https://pubmed.ncbi.nlm.nih.gov/27403724/>`_
+- Ogishi Masato et al. **Delineation of autoantibody repertoire through differential proteogenomics in hepatitis C virus-induced cryoglobulinemia.**. *Scientific reports*. 2016. `PMID:27403724 <https://pubmed.ncbi.nlm.nih.gov/27403724/>`_
 
-- Elhanati Yuval et al. repgenHMM: a dynamic programming tool to infer the rules of immune receptor generation from sequence data. *Bioinformatics (Oxford, England)*. 2016. `PMID:27153709 <https://pubmed.ncbi.nlm.nih.gov/27153709/>`_
+- Elhanati Yuval et al. **repgenHMM: a dynamic programming tool to infer the rules of immune receptor generation from sequence data.**. *Bioinformatics (Oxford, England)*. 2016. `PMID:27153709 <https://pubmed.ncbi.nlm.nih.gov/27153709/>`_
 
-- Vigdorovich Vladimir et al. Repertoire comparison of the B-cell receptor-encoding loci in humans and rhesus macaques by next-generation sequencing. *Clinical & translational immunology*. 2016. `PMID:27525066 <https://pubmed.ncbi.nlm.nih.gov/27525066/>`_
+- Vigdorovich Vladimir et al. **Repertoire comparison of the B-cell receptor-encoding loci in humans and rhesus macaques by next-generation sequencing.**. *Clinical & translational immunology*. 2016. `PMID:27525066 <https://pubmed.ncbi.nlm.nih.gov/27525066/>`_
 
-- Galson Jacob D et al. B-cell repertoire dynamics after sequential hepatitis B vaccination and evidence for cross-reactive B-cell activation. *Genome medicine*. 2016. `PMID:27312086 <https://pubmed.ncbi.nlm.nih.gov/27312086/>`_
+- Galson Jacob D et al. **B-cell repertoire dynamics after sequential hepatitis B vaccination and evidence for cross-reactive B-cell activation.**. *Genome medicine*. 2016. `PMID:27312086 <https://pubmed.ncbi.nlm.nih.gov/27312086/>`_
 
-- Bagaev Dmitriy V et al. VDJviz: a versatile browser for immunogenomics data. *BMC genomics*. 2016. `PMID:27297497 <https://pubmed.ncbi.nlm.nih.gov/27297497/>`_
+- Bagaev Dmitriy V et al. **VDJviz: a versatile browser for immunogenomics data.**. *BMC genomics*. 2016. `PMID:27297497 <https://pubmed.ncbi.nlm.nih.gov/27297497/>`_
 
-- Bohannon Caitlin et al. Long-lived antigen-induced IgM plasma cells demonstrate somatic mutations and contribute to long-term protection. *Nature communications*. 2016. `PMID:27270306 <https://pubmed.ncbi.nlm.nih.gov/27270306/>`_
+- Bohannon Caitlin et al. **Long-lived antigen-induced IgM plasma cells demonstrate somatic mutations and contribute to long-term protection.**. *Nature communications*. 2016. `PMID:27270306 <https://pubmed.ncbi.nlm.nih.gov/27270306/>`_
 
-- Kavakiotis Ioannis et al. Integrating multiple immunogenetic data sources for feature extraction and mining somatic hypermutation patterns: the case of "towards analysis" in chronic lymphocytic leukaemia. *BMC bioinformatics*. 2016. `PMID:27295298 <https://pubmed.ncbi.nlm.nih.gov/27295298/>`_
+- Kavakiotis Ioannis et al. **Integrating multiple immunogenetic data sources for feature extraction and mining somatic hypermutation patterns: the case of "towards analysis" in chronic lymphocytic leukaemia.**. *BMC bioinformatics*. 2016. `PMID:27295298 <https://pubmed.ncbi.nlm.nih.gov/27295298/>`_
 
-- Boyd Scott D et al. Deep sequencing and human antibody repertoire analysis. *Current opinion in immunology*. 2016. `PMID:27065089 <https://pubmed.ncbi.nlm.nih.gov/27065089/>`_
+- Boyd Scott D et al. **Deep sequencing and human antibody repertoire analysis.**. *Current opinion in immunology*. 2016. `PMID:27065089 <https://pubmed.ncbi.nlm.nih.gov/27065089/>`_
 
-- Sheng Zizhang et al. Effects of Darwinian Selection and Mutability on Rate of Broadly Neutralizing Antibody Evolution during HIV-1 Infection. *PLoS computational biology*. 2016. `PMID:27191167 <https://pubmed.ncbi.nlm.nih.gov/27191167/>`_
+- Sheng Zizhang et al. **Effects of Darwinian Selection and Mutability on Rate of Broadly Neutralizing Antibody Evolution during HIV-1 Infection.**. *PLoS computational biology*. 2016. `PMID:27191167 <https://pubmed.ncbi.nlm.nih.gov/27191167/>`_
 
-- Hoehn Kenneth B et al. The Diversity and Molecular Evolution of B-Cell Receptors during Infection. *Molecular biology and evolution*. 2016. `PMID:26802217 <https://pubmed.ncbi.nlm.nih.gov/26802217/>`_
+- Hoehn Kenneth B et al. **The Diversity and Molecular Evolution of B-Cell Receptors during Infection.**. *Molecular biology and evolution*. 2016. `PMID:26802217 <https://pubmed.ncbi.nlm.nih.gov/26802217/>`_
 
-- Lossius Andreas et al. High-throughput sequencing of immune repertoires in multiple sclerosis. *Annals of clinical and translational neurology*. 2016. `PMID:27081660 <https://pubmed.ncbi.nlm.nih.gov/27081660/>`_
+- Lossius Andreas et al. **High-throughput sequencing of immune repertoires in multiple sclerosis.**. *Annals of clinical and translational neurology*. 2016. `PMID:27081660 <https://pubmed.ncbi.nlm.nih.gov/27081660/>`_
 
-- Rubelt Florian et al. Individual heritable differences result in unique cell lymphocyte receptor repertoires of naïve and antigen-experienced cells. *Nature communications*. 2016. `PMID:27005435 <https://pubmed.ncbi.nlm.nih.gov/27005435/>`_
+- Rubelt Florian et al. **Individual heritable differences result in unique cell lymphocyte receptor repertoires of naïve and antigen-experienced cells.**. *Nature communications*. 2016. `PMID:27005435 <https://pubmed.ncbi.nlm.nih.gov/27005435/>`_
 
-- Rolf Linda et al. Illuminating vitamin D effects on B cells--the multiple sclerosis perspective. *Immunology*. 2016. `PMID:26714674 <https://pubmed.ncbi.nlm.nih.gov/26714674/>`_
+- Rolf Linda et al. **Illuminating vitamin D effects on B cells--the multiple sclerosis perspective.**. *Immunology*. 2016. `PMID:26714674 <https://pubmed.ncbi.nlm.nih.gov/26714674/>`_
 
-- Imkeller Katharina et al. sciReptor: analysis of single-cell level immunoglobulin repertoires. *BMC bioinformatics*. 2016. `PMID:26847109 <https://pubmed.ncbi.nlm.nih.gov/26847109/>`_
+- Imkeller Katharina et al. **sciReptor: analysis of single-cell level immunoglobulin repertoires.**. *BMC bioinformatics*. 2016. `PMID:26847109 <https://pubmed.ncbi.nlm.nih.gov/26847109/>`_
 
-- Timmermans Wilhelmina M C et al. B-Cell Dysregulation in Crohn's Disease Is Partially Restored with Infliximab Therapy. *PloS one*. 2016. `PMID:27468085 <https://pubmed.ncbi.nlm.nih.gov/27468085/>`_
+- Timmermans Wilhelmina M C et al. **B-Cell Dysregulation in Crohn's Disease Is Partially Restored with Infliximab Therapy.**. *PloS one*. 2016. `PMID:27468085 <https://pubmed.ncbi.nlm.nih.gov/27468085/>`_
 
-- Mitsdoerffer Meike et al. Tertiary Lymphoid Organs in Central Nervous System Autoimmunity. *Frontiers in immunology*. 2016. `PMID:27826298 <https://pubmed.ncbi.nlm.nih.gov/27826298/>`_
+- Mitsdoerffer Meike et al. **Tertiary Lymphoid Organs in Central Nervous System Autoimmunity.**. *Frontiers in immunology*. 2016. `PMID:27826298 <https://pubmed.ncbi.nlm.nih.gov/27826298/>`_
 
-- Duez Marc et al. Vidjil: A Web Platform for Analysis of High-Throughput Repertoire Sequencing. *PloS one*. 2016. `PMID:27835690 <https://pubmed.ncbi.nlm.nih.gov/27835690/>`_
+- Duez Marc et al. **Vidjil: A Web Platform for Analysis of High-Throughput Repertoire Sequencing.**. *PloS one*. 2016. `PMID:27835690 <https://pubmed.ncbi.nlm.nih.gov/27835690/>`_
 
-- Ralph Duncan K et al. Consistency of VDJ Rearrangement and Substitution Parameters Enables Accurate B Cell Receptor Sequence Annotation. *PLoS computational biology*. 2016. `PMID:26751373 <https://pubmed.ncbi.nlm.nih.gov/26751373/>`_
+- Ralph Duncan K et al. **Consistency of VDJ Rearrangement and Substitution Parameters Enables Accurate B Cell Receptor Sequence Annotation.**. *PLoS computational biology*. 2016. `PMID:26751373 <https://pubmed.ncbi.nlm.nih.gov/26751373/>`_
 
-- Di Niro R et al. Responsive population dynamics and wide seeding into the duodenal lamina propria of transglutaminase-2-specific plasma cells in celiac disease. *Mucosal immunology*. 2016. `PMID:26153762 <https://pubmed.ncbi.nlm.nih.gov/26153762/>`_
+- Di Niro R et al. **Responsive population dynamics and wide seeding into the duodenal lamina propria of transglutaminase-2-specific plasma cells in celiac disease.**. *Mucosal immunology*. 2016. `PMID:26153762 <https://pubmed.ncbi.nlm.nih.gov/26153762/>`_
 
-- Vincent Benjamin et al. iWAS--A novel approach to analyzing Next Generation Sequence data for immunology. *Cellular immunology*. 2016. `PMID:26547365 <https://pubmed.ncbi.nlm.nih.gov/26547365/>`_
+- Vincent Benjamin et al. **iWAS--A novel approach to analyzing Next Generation Sequence data for immunology.**. *Cellular immunology*. 2016. `PMID:26547365 <https://pubmed.ncbi.nlm.nih.gov/26547365/>`_
 
-- Steele Edward J et al. Commentary: Past, present, and future of epigenetics applied to livestock breeding - Hard versus Soft Lamarckian Inheritance Mechanisms. *Frontiers in genetics*. 2016. `PMID:26941780 <https://pubmed.ncbi.nlm.nih.gov/26941780/>`_
+- Steele Edward J et al. **Commentary: Past, present, and future of epigenetics applied to livestock breeding - Hard versus Soft Lamarckian Inheritance Mechanisms.**. *Frontiers in genetics*. 2016. `PMID:26941780 <https://pubmed.ncbi.nlm.nih.gov/26941780/>`_
 
-- Zhang Wei et al. IMPre: An Accurate and Efficient Software for Prediction of T- and B-Cell Receptor Germline Genes and Alleles from Rearranged Repertoire Data. *Frontiers in immunology*. 2016. `PMID:27867380 <https://pubmed.ncbi.nlm.nih.gov/27867380/>`_
+- Zhang Wei et al. **IMPre: An Accurate and Efficient Software for Prediction of T- and B-Cell Receptor Germline Genes and Alleles from Rearranged Repertoire Data.**. *Frontiers in immunology*. 2016. `PMID:27867380 <https://pubmed.ncbi.nlm.nih.gov/27867380/>`_
 
-- Bischof Julia et al. bcRep: R Package for Comprehensive Analysis of B Cell Receptor Repertoire Data. *PloS one*. 2016. `PMID:27551775 <https://pubmed.ncbi.nlm.nih.gov/27551775/>`_
+- Bischof Julia et al. **bcRep: R Package for Comprehensive Analysis of B Cell Receptor Repertoire Data.**. *PloS one*. 2016. `PMID:27551775 <https://pubmed.ncbi.nlm.nih.gov/27551775/>`_
 
-- Hou Dongni et al. High-Throughput Sequencing-Based Immune Repertoire Study during Infectious Disease. *Frontiers in immunology*. 2016. `PMID:27630639 <https://pubmed.ncbi.nlm.nih.gov/27630639/>`_
+- Hou Dongni et al. **High-Throughput Sequencing-Based Immune Repertoire Study during Infectious Disease.**. *Frontiers in immunology*. 2016. `PMID:27630639 <https://pubmed.ncbi.nlm.nih.gov/27630639/>`_
 
-- IJspeert Hanna et al. Evaluation of the Antigen-Experienced B-Cell Receptor Repertoire in Healthy Children and Adults. *Frontiers in immunology*. 2016. `PMID:27799928 <https://pubmed.ncbi.nlm.nih.gov/27799928/>`_
+- IJspeert Hanna et al. **Evaluation of the Antigen-Experienced B-Cell Receptor Repertoire in Healthy Children and Adults.**. *Frontiers in immunology*. 2016. `PMID:27799928 <https://pubmed.ncbi.nlm.nih.gov/27799928/>`_
 
-- Lee Donald W et al. BRILIA: Integrated Tool for High-Throughput Annotation and Lineage Tree Assembly of B-Cell Repertoires. *Frontiers in immunology*. 2016. `PMID:28144239 <https://pubmed.ncbi.nlm.nih.gov/28144239/>`_
+- Lee Donald W et al. **BRILIA: Integrated Tool for High-Throughput Annotation and Lineage Tree Assembly of B-Cell Repertoires.**. *Frontiers in immunology*. 2016. `PMID:28144239 <https://pubmed.ncbi.nlm.nih.gov/28144239/>`_
 
-- Tschochner Monika et al. Identifying Patient-Specific Epstein-Barr Nuclear Antigen-1 Genetic Variation and Potential Autoreactive Targets Relevant to Multiple Sclerosis Pathogenesis. *PloS one*. 2016. `PMID:26849221 <https://pubmed.ncbi.nlm.nih.gov/26849221/>`_
+- Tschochner Monika et al. **Identifying Patient-Specific Epstein-Barr Nuclear Antigen-1 Genetic Variation and Potential Autoreactive Targets Relevant to Multiple Sclerosis Pathogenesis.**. *PloS one*. 2016. `PMID:26849221 <https://pubmed.ncbi.nlm.nih.gov/26849221/>`_
 
-- Zhang Bochao et al. Discrimination of germline V genes at different sequencing lengths and mutational burdens: A new tool for identifying and evaluating the reliability of V gene assignment. *Journal of immunological methods*. 2015. `PMID:26529062 <https://pubmed.ncbi.nlm.nih.gov/26529062/>`_
+- Zhang Bochao et al. **Discrimination of germline V genes at different sequencing lengths and mutational burdens: A new tool for identifying and evaluating the reliability of V gene assignment.**. *Journal of immunological methods*. 2015. `PMID:26529062 <https://pubmed.ncbi.nlm.nih.gov/26529062/>`_
 
-- Kirsch Ilan et al. T-cell receptor profiling in cancer. *Molecular oncology*. 2015. `PMID:26404496 <https://pubmed.ncbi.nlm.nih.gov/26404496/>`_
+- Kirsch Ilan et al. **T-cell receptor profiling in cancer.**. *Molecular oncology*. 2015. `PMID:26404496 <https://pubmed.ncbi.nlm.nih.gov/26404496/>`_
 
-- Tsioris Konstantinos et al. Neutralizing antibodies against West Nile virus identified directly from human B cells by single-cell analysis and next generation sequencing. *Integrative biology : quantitative biosciences from nano to macro*. 2015. `PMID:26481611 <https://pubmed.ncbi.nlm.nih.gov/26481611/>`_
+- Tsioris Konstantinos et al. **Neutralizing antibodies against West Nile virus identified directly from human B cells by single-cell analysis and next generation sequencing.**. *Integrative biology : quantitative biosciences from nano to macro*. 2015. `PMID:26481611 <https://pubmed.ncbi.nlm.nih.gov/26481611/>`_
 
-- Dean Jared et al. Annotation of pseudogenic gene segments by massively parallel sequencing of rearranged lymphocyte receptor loci. *Genome medicine*. 2015. `PMID:26596423 <https://pubmed.ncbi.nlm.nih.gov/26596423/>`_
+- Dean Jared et al. **Annotation of pseudogenic gene segments by massively parallel sequencing of rearranged lymphocyte receptor loci.**. *Genome medicine*. 2015. `PMID:26596423 <https://pubmed.ncbi.nlm.nih.gov/26596423/>`_
 
-- Yaari Gur et al. Practical guidelines for B-cell receptor repertoire sequencing analysis. *Genome medicine*. 2015. `PMID:26589402 <https://pubmed.ncbi.nlm.nih.gov/26589402/>`_
+- Yaari Gur et al. **Practical guidelines for B-cell receptor repertoire sequencing analysis.**. *Genome medicine*. 2015. `PMID:26589402 <https://pubmed.ncbi.nlm.nih.gov/26589402/>`_
 
-- Dunn Gavin P et al. Principles of immunology and its nuances in the central nervous system. *Neuro-oncology*. 2015. `PMID:26516224 <https://pubmed.ncbi.nlm.nih.gov/26516224/>`_
+- Dunn Gavin P et al. **Principles of immunology and its nuances in the central nervous system.**. *Neuro-oncology*. 2015. `PMID:26516224 <https://pubmed.ncbi.nlm.nih.gov/26516224/>`_
 
-- Healy Luke M et al. Regulation of human glia by multiple sclerosis disease modifying therapies. *Seminars in immunopathology*. 2015. `PMID:26259734 <https://pubmed.ncbi.nlm.nih.gov/26259734/>`_
+- Healy Luke M et al. **Regulation of human glia by multiple sclerosis disease modifying therapies.**. *Seminars in immunopathology*. 2015. `PMID:26259734 <https://pubmed.ncbi.nlm.nih.gov/26259734/>`_
 
-- Preite Silvia et al. Somatic mutations and affinity maturation are impaired by excessive numbers of T follicular helper cells and restored by Treg cells or memory T cells. *European journal of immunology*. 2015. `PMID:26332258 <https://pubmed.ncbi.nlm.nih.gov/26332258/>`_
+- Preite Silvia et al. **Somatic mutations and affinity maturation are impaired by excessive numbers of T follicular helper cells and restored by Treg cells or memory T cells.**. *European journal of immunology*. 2015. `PMID:26332258 <https://pubmed.ncbi.nlm.nih.gov/26332258/>`_
 
-- Gupta Namita T et al. Change-O: a toolkit for analyzing large-scale B cell immunoglobulin repertoire sequencing data. *Bioinformatics (Oxford, England)*. 2015. `PMID:26069265 <https://pubmed.ncbi.nlm.nih.gov/26069265/>`_
+- Gupta Namita T et al. **Change-O: a toolkit for analyzing large-scale B cell immunoglobulin repertoire sequencing data.**. *Bioinformatics (Oxford, England)*. 2015. `PMID:26069265 <https://pubmed.ncbi.nlm.nih.gov/26069265/>`_
 
-- Ransohoff Richard M et al. Neuroinflammation: Ways in Which the Immune System Affects the Brain. *Neurotherapeutics : the journal of the American Society for Experimental NeuroTherapeutics*. 2015. `PMID:26306439 <https://pubmed.ncbi.nlm.nih.gov/26306439/>`_
+- Ransohoff Richard M et al. **Neuroinflammation: Ways in Which the Immune System Affects the Brain.**. *Neurotherapeutics : the journal of the American Society for Experimental NeuroTherapeutics*. 2015. `PMID:26306439 <https://pubmed.ncbi.nlm.nih.gov/26306439/>`_
 
-- Fessenden Marissa et al. The cell menagerie: human immune profiling. *Nature*. 2015. `PMID:26381986 <https://pubmed.ncbi.nlm.nih.gov/26381986/>`_
+- Fessenden Marissa et al. **The cell menagerie: human immune profiling.**. *Nature*. 2015. `PMID:26381986 <https://pubmed.ncbi.nlm.nih.gov/26381986/>`_
 
-- Dendrou Calliope A et al. Immunopathology of multiple sclerosis. *Nature reviews. Immunology*. 2015. `PMID:26250739 <https://pubmed.ncbi.nlm.nih.gov/26250739/>`_
+- Dendrou Calliope A et al. **Immunopathology of multiple sclerosis.**. *Nature reviews. Immunology*. 2015. `PMID:26250739 <https://pubmed.ncbi.nlm.nih.gov/26250739/>`_
 
-- Hoehn Kenneth B et al. Dynamics of immunoglobulin sequence diversity in HIV-1 infected individuals. *Philosophical transactions of the Royal Society of London. Series B, Biological sciences*. 2015. `PMID:26194755 <https://pubmed.ncbi.nlm.nih.gov/26194755/>`_
+- Hoehn Kenneth B et al. **Dynamics of immunoglobulin sequence diversity in HIV-1 infected individuals.**. *Philosophical transactions of the Royal Society of London. Series B, Biological sciences*. 2015. `PMID:26194755 <https://pubmed.ncbi.nlm.nih.gov/26194755/>`_
 
-- Yaari Gur et al. The mutation patterns in B-cell immunoglobulin receptors reflect the influence of selection acting at multiple time-scales. *Philosophical transactions of the Royal Society of London. Series B, Biological sciences*. 2015. `PMID:26194756 <https://pubmed.ncbi.nlm.nih.gov/26194756/>`_
+- Yaari Gur et al. **The mutation patterns in B-cell immunoglobulin receptors reflect the influence of selection acting at multiple time-scales.**. *Philosophical transactions of the Royal Society of London. Series B, Biological sciences*. 2015. `PMID:26194756 <https://pubmed.ncbi.nlm.nih.gov/26194756/>`_
 
-- Hershberg Uri et al. The analysis of clonal expansions in normal and autoimmune B cell repertoires. *Philosophical transactions of the Royal Society of London. Series B, Biological sciences*. 2015. `PMID:26194753 <https://pubmed.ncbi.nlm.nih.gov/26194753/>`_
+- Hershberg Uri et al. **The analysis of clonal expansions in normal and autoimmune B cell repertoires.**. *Philosophical transactions of the Royal Society of London. Series B, Biological sciences*. 2015. `PMID:26194753 <https://pubmed.ncbi.nlm.nih.gov/26194753/>`_
 
-- Frost Simon D W et al. Assigning and visualizing germline genes in antibody repertoires. *Philosophical transactions of the Royal Society of London. Series B, Biological sciences*. 2015. `PMID:26194754 <https://pubmed.ncbi.nlm.nih.gov/26194754/>`_
+- Frost Simon D W et al. **Assigning and visualizing germline genes in antibody repertoires.**. *Philosophical transactions of the Royal Society of London. Series B, Biological sciences*. 2015. `PMID:26194754 <https://pubmed.ncbi.nlm.nih.gov/26194754/>`_
 
-- Elhanati Yuval et al. Inferring processes underlying B-cell repertoire diversity. *Philosophical transactions of the Royal Society of London. Series B, Biological sciences*. 2015. `PMID:26194757 <https://pubmed.ncbi.nlm.nih.gov/26194757/>`_
+- Elhanati Yuval et al. **Inferring processes underlying B-cell repertoire diversity.**. *Philosophical transactions of the Royal Society of London. Series B, Biological sciences*. 2015. `PMID:26194757 <https://pubmed.ncbi.nlm.nih.gov/26194757/>`_
 
-- Collins Andrew M et al. The mouse antibody heavy chain repertoire is germline-focused and highly variable between inbred strains. *Philosophical transactions of the Royal Society of London. Series B, Biological sciences*. 2015. `PMID:26194750 <https://pubmed.ncbi.nlm.nih.gov/26194750/>`_
+- Collins Andrew M et al. **The mouse antibody heavy chain repertoire is germline-focused and highly variable between inbred strains.**. *Philosophical transactions of the Royal Society of London. Series B, Biological sciences*. 2015. `PMID:26194750 <https://pubmed.ncbi.nlm.nih.gov/26194750/>`_
 
-- Cobey Sarah et al. The evolution within us. *Philosophical transactions of the Royal Society of London. Series B, Biological sciences*. 2015. `PMID:26194749 <https://pubmed.ncbi.nlm.nih.gov/26194749/>`_
+- Cobey Sarah et al. **The evolution within us.**. *Philosophical transactions of the Royal Society of London. Series B, Biological sciences*. 2015. `PMID:26194749 <https://pubmed.ncbi.nlm.nih.gov/26194749/>`_
 
-- McCoy Connor O et al. Quantifying evolutionary constraints on B-cell affinity maturation. *Philosophical transactions of the Royal Society of London. Series B, Biological sciences*. 2015. `PMID:26194758 <https://pubmed.ncbi.nlm.nih.gov/26194758/>`_
+- McCoy Connor O et al. **Quantifying evolutionary constraints on B-cell affinity maturation.**. *Philosophical transactions of the Royal Society of London. Series B, Biological sciences*. 2015. `PMID:26194758 <https://pubmed.ncbi.nlm.nih.gov/26194758/>`_
 
-- Thakar Juilee et al. Comparative analysis of anti-viral transcriptomics reveals novel effects of influenza immune antagonism. *BMC immunology*. 2015. `PMID:26272204 <https://pubmed.ncbi.nlm.nih.gov/26272204/>`_
+- Thakar Juilee et al. **Comparative analysis of anti-viral transcriptomics reveals novel effects of influenza immune antagonism.**. *BMC immunology*. 2015. `PMID:26272204 <https://pubmed.ncbi.nlm.nih.gov/26272204/>`_
 
-- Pröbstel Anne-Katrin et al. B Cells and Autoantibodies in Multiple Sclerosis. *International journal of molecular sciences*. 2015. `PMID:26197319 <https://pubmed.ncbi.nlm.nih.gov/26197319/>`_
+- Pröbstel Anne-Katrin et al. **B Cells and Autoantibodies in Multiple Sclerosis.**. *International journal of molecular sciences*. 2015. `PMID:26197319 <https://pubmed.ncbi.nlm.nih.gov/26197319/>`_
 
-- Di Niro Roberto et al. Salmonella Infection Drives Promiscuous B Cell Activation Followed by Extrafollicular Affinity Maturation. *Immunity*. 2015. `PMID:26187411 <https://pubmed.ncbi.nlm.nih.gov/26187411/>`_
+- Di Niro Roberto et al. **Salmonella Infection Drives Promiscuous B Cell Activation Followed by Extrafollicular Affinity Maturation.**. *Immunity*. 2015. `PMID:26187411 <https://pubmed.ncbi.nlm.nih.gov/26187411/>`_
 
-- Tipton Christopher M et al. Diversity, cellular origin and autoreactivity of antibody-secreting cell population expansions in acute systemic lupus erythematosus. *Nature immunology*. 2015. `PMID:26006014 <https://pubmed.ncbi.nlm.nih.gov/26006014/>`_
+- Tipton Christopher M et al. **Diversity, cellular origin and autoreactivity of antibody-secreting cell population expansions in acute systemic lupus erythematosus.**. *Nature immunology*. 2015. `PMID:26006014 <https://pubmed.ncbi.nlm.nih.gov/26006014/>`_
 
-- Salou Marion et al. Expanded CD8 T-cell sharing between periphery and CNS in multiple sclerosis. *Annals of clinical and translational neurology*. 2015. `PMID:26125037 <https://pubmed.ncbi.nlm.nih.gov/26125037/>`_
+- Salou Marion et al. **Expanded CD8 T-cell sharing between periphery and CNS in multiple sclerosis.**. *Annals of clinical and translational neurology*. 2015. `PMID:26125037 <https://pubmed.ncbi.nlm.nih.gov/26125037/>`_
 
-- Saini Jasmine et al. B cell variable genes have evolved their codon usage to focus the targeted patterns of somatic mutation on the complementarity determining regions. *Molecular immunology*. 2015. `PMID:25660968 <https://pubmed.ncbi.nlm.nih.gov/25660968/>`_
+- Saini Jasmine et al. **B cell variable genes have evolved their codon usage to focus the targeted patterns of somatic mutation on the complementarity determining regions.**. *Molecular immunology*. 2015. `PMID:25660968 <https://pubmed.ncbi.nlm.nih.gov/25660968/>`_
 
-- Mallucci Giulia et al. The role of immune cells, glia and neurons in white and gray matter pathology in multiple sclerosis. *Progress in neurobiology*. 2015. `PMID:25802011 <https://pubmed.ncbi.nlm.nih.gov/25802011/>`_
+- Mallucci Giulia et al. **The role of immune cells, glia and neurons in white and gray matter pathology in multiple sclerosis.**. *Progress in neurobiology*. 2015. `PMID:25802011 <https://pubmed.ncbi.nlm.nih.gov/25802011/>`_
 
-- Mirsky Alexander et al. Antibody-specific model of amino acid substitution for immunological inferences from alignments of antibody sequences. *Molecular biology and evolution*. 2015. `PMID:25534034 <https://pubmed.ncbi.nlm.nih.gov/25534034/>`_
+- Mirsky Alexander et al. **Antibody-specific model of amino acid substitution for immunological inferences from alignments of antibody sequences.**. *Molecular biology and evolution*. 2015. `PMID:25534034 <https://pubmed.ncbi.nlm.nih.gov/25534034/>`_
 
-- Robinson William H et al. Sequencing the functional antibody repertoire--diagnostic and therapeutic discovery. *Nature reviews. Rheumatology*. 2015. `PMID:25536486 <https://pubmed.ncbi.nlm.nih.gov/25536486/>`_
+- Robinson William H et al. **Sequencing the functional antibody repertoire--diagnostic and therapeutic discovery.**. *Nature reviews. Rheumatology*. 2015. `PMID:25536486 <https://pubmed.ncbi.nlm.nih.gov/25536486/>`_
 
-- Ransohoff Richard M et al. Multiple sclerosis-a quiet revolution. *Nature reviews. Neurology*. 2015. `PMID:25686758 <https://pubmed.ncbi.nlm.nih.gov/25686758/>`_
+- Ransohoff Richard M et al. **Multiple sclerosis-a quiet revolution.**. *Nature reviews. Neurology*. 2015. `PMID:25686758 <https://pubmed.ncbi.nlm.nih.gov/25686758/>`_
 
-- Gadala-Maria Daniel et al. Automated analysis of high-throughput B-cell sequencing data reveals a high frequency of novel immunoglobulin V gene segment alleles. *Proceedings of the National Academy of Sciences of the United States of America*. 2015. `PMID:25675496 <https://pubmed.ncbi.nlm.nih.gov/25675496/>`_
+- Gadala-Maria Daniel et al. **Automated analysis of high-throughput B-cell sequencing data reveals a high frequency of novel immunoglobulin V gene segment alleles.**. *Proceedings of the National Academy of Sciences of the United States of America*. 2015. `PMID:25675496 <https://pubmed.ncbi.nlm.nih.gov/25675496/>`_
 
-- Zinöcker Severin et al. The V gene repertoires of classical and atypical memory B cells in malaria-susceptible West African children. *Journal of immunology (Baltimore, Md. : 1950)*. 2015. `PMID:25556245 <https://pubmed.ncbi.nlm.nih.gov/25556245/>`_
+- Zinöcker Severin et al. **The V gene repertoires of classical and atypical memory B cells in malaria-susceptible West African children.**. *Journal of immunology (Baltimore, Md. : 1950)*. 2015. `PMID:25556245 <https://pubmed.ncbi.nlm.nih.gov/25556245/>`_
 
-- Loeffler M et al. Genomic and epigenomic co-evolution in follicular lymphomas. *Leukemia*. 2015. `PMID:25027518 <https://pubmed.ncbi.nlm.nih.gov/25027518/>`_
+- Loeffler M et al. **Genomic and epigenomic co-evolution in follicular lymphomas.**. *Leukemia*. 2015. `PMID:25027518 <https://pubmed.ncbi.nlm.nih.gov/25027518/>`_
 
-- Pikor Natalia B et al. Meningeal Tertiary Lymphoid Tissues and Multiple Sclerosis: A Gathering Place for Diverse Types of Immune Cells during CNS Autoimmunity. *Frontiers in immunology*. 2015. `PMID:26793195 <https://pubmed.ncbi.nlm.nih.gov/26793195/>`_
+- Pikor Natalia B et al. **Meningeal Tertiary Lymphoid Tissues and Multiple Sclerosis: A Gathering Place for Diverse Types of Immune Cells during CNS Autoimmunity.**. *Frontiers in immunology*. 2015. `PMID:26793195 <https://pubmed.ncbi.nlm.nih.gov/26793195/>`_
 
-- Schnoor Michael et al. Crossing the Vascular Wall: Common and Unique Mechanisms Exploited by Different Leukocyte Subsets during Extravasation. *Mediators of inflammation*. 2015. `PMID:26568666 <https://pubmed.ncbi.nlm.nih.gov/26568666/>`_
+- Schnoor Michael et al. **Crossing the Vascular Wall: Common and Unique Mechanisms Exploited by Different Leukocyte Subsets during Extravasation.**. *Mediators of inflammation*. 2015. `PMID:26568666 <https://pubmed.ncbi.nlm.nih.gov/26568666/>`_
 
-- Dang Amy K et al. Meningeal Infiltration of the Spinal Cord by Non-Classically Activated B Cells is Associated with Chronic Disease Course in a Spontaneous B Cell-Dependent Model of CNS Autoimmune Disease. *Frontiers in immunology*. 2015. `PMID:26441975 <https://pubmed.ncbi.nlm.nih.gov/26441975/>`_
+- Dang Amy K et al. **Meningeal Infiltration of the Spinal Cord by Non-Classically Activated B Cells is Associated with Chronic Disease Course in a Spontaneous B Cell-Dependent Model of CNS Autoimmune Disease.**. *Frontiers in immunology*. 2015. `PMID:26441975 <https://pubmed.ncbi.nlm.nih.gov/26441975/>`_
 
-- von Büdingen H-Christian et al. Update on the autoimmune pathology of multiple sclerosis: B-cells as disease-drivers and therapeutic targets. *European neurology*. 2015. `PMID:25824054 <https://pubmed.ncbi.nlm.nih.gov/25824054/>`_
+- von Büdingen H-Christian et al. **Update on the autoimmune pathology of multiple sclerosis: B-cells as disease-drivers and therapeutic targets.**. *European neurology*. 2015. `PMID:25824054 <https://pubmed.ncbi.nlm.nih.gov/25824054/>`_
 
-- Galson Jacob D et al. In-Depth Assessment of Within-Individual and Inter-Individual Variation in the B Cell Receptor Repertoire. *Frontiers in immunology*. 2015. `PMID:26528292 <https://pubmed.ncbi.nlm.nih.gov/26528292/>`_
+- Galson Jacob D et al. **In-Depth Assessment of Within-Individual and Inter-Individual Variation in the B Cell Receptor Repertoire.**. *Frontiers in immunology*. 2015. `PMID:26528292 <https://pubmed.ncbi.nlm.nih.gov/26528292/>`_
 
-- Lees William D et al. Utilities for High-Throughput Analysis of B-Cell Clonal Lineages. *Journal of immunology research*. 2015. `PMID:26527585 <https://pubmed.ncbi.nlm.nih.gov/26527585/>`_
+- Lees William D et al. **Utilities for High-Throughput Analysis of B-Cell Clonal Lineages.**. *Journal of immunology research*. 2015. `PMID:26527585 <https://pubmed.ncbi.nlm.nih.gov/26527585/>`_
 
-- Sankowski Roman et al. Systemic inflammation and the brain: novel roles of genetic, molecular, and environmental cues as drivers of neurodegeneration. *Frontiers in cellular neuroscience*. 2015. `PMID:25698933 <https://pubmed.ncbi.nlm.nih.gov/25698933/>`_
+- Sankowski Roman et al. **Systemic inflammation and the brain: novel roles of genetic, molecular, and environmental cues as drivers of neurodegeneration.**. *Frontiers in cellular neuroscience*. 2015. `PMID:25698933 <https://pubmed.ncbi.nlm.nih.gov/25698933/>`_
 
-- Blauth Kevin et al. The Ins and Outs of B Cells in Multiple Sclerosis. *Frontiers in immunology*. 2015. `PMID:26594215 <https://pubmed.ncbi.nlm.nih.gov/26594215/>`_
+- Blauth Kevin et al. **The Ins and Outs of B Cells in Multiple Sclerosis.**. *Frontiers in immunology*. 2015. `PMID:26594215 <https://pubmed.ncbi.nlm.nih.gov/26594215/>`_
 
-- Li Rui et al. Cytokine-Defined B Cell Responses as Therapeutic Targets in Multiple Sclerosis. *Frontiers in immunology*. 2015. `PMID:26779181 <https://pubmed.ncbi.nlm.nih.gov/26779181/>`_
+- Li Rui et al. **Cytokine-Defined B Cell Responses as Therapeutic Targets in Multiple Sclerosis.**. *Frontiers in immunology*. 2015. `PMID:26779181 <https://pubmed.ncbi.nlm.nih.gov/26779181/>`_
 
-- Willis Simon N et al. Investigating the Antigen Specificity of Multiple Sclerosis Central Nervous System-Derived Immunoglobulins. *Frontiers in immunology*. 2015. `PMID:26648933 <https://pubmed.ncbi.nlm.nih.gov/26648933/>`_
+- Willis Simon N et al. **Investigating the Antigen Specificity of Multiple Sclerosis Central Nervous System-Derived Immunoglobulins.**. *Frontiers in immunology*. 2015. `PMID:26648933 <https://pubmed.ncbi.nlm.nih.gov/26648933/>`_
 
-- Michel Laure et al. B Cells in the Multiple Sclerosis Central Nervous System: Trafficking and Contribution to CNS-Compartmentalized Inflammation. *Frontiers in immunology*. 2015. `PMID:26732544 <https://pubmed.ncbi.nlm.nih.gov/26732544/>`_
+- Michel Laure et al. **B Cells in the Multiple Sclerosis Central Nervous System: Trafficking and Contribution to CNS-Compartmentalized Inflammation.**. *Frontiers in immunology*. 2015. `PMID:26732544 <https://pubmed.ncbi.nlm.nih.gov/26732544/>`_
 
-- Hauser Stephen L et al. The Charcot Lecture | beating MS: a story of B cells, with twists and turns. *Multiple sclerosis (Houndmills, Basingstoke, England)*. 2015. `PMID:25480864 <https://pubmed.ncbi.nlm.nih.gov/25480864/>`_
+- Hauser Stephen L et al. **The Charcot Lecture | beating MS: a story of B cells, with twists and turns.**. *Multiple sclerosis (Houndmills, Basingstoke, England)*. 2015. `PMID:25480864 <https://pubmed.ncbi.nlm.nih.gov/25480864/>`_
 
-- Claes Nele et al. B Cells Are Multifunctional Players in Multiple Sclerosis Pathogenesis: Insights from Therapeutic Interventions. *Frontiers in immunology*. 2015. `PMID:26734009 <https://pubmed.ncbi.nlm.nih.gov/26734009/>`_
+- Claes Nele et al. **B Cells Are Multifunctional Players in Multiple Sclerosis Pathogenesis: Insights from Therapeutic Interventions.**. *Frontiers in immunology*. 2015. `PMID:26734009 <https://pubmed.ncbi.nlm.nih.gov/26734009/>`_
 
-- Keener Amanda B et al. A sense of immunity: scientists are detailing the immune system as never before. *Nature medicine*. 2015. `PMID:25569540 <https://pubmed.ncbi.nlm.nih.gov/25569540/>`_
+- Keener Amanda B et al. **A sense of immunity: scientists are detailing the immune system as never before.**. *Nature medicine*. 2015. `PMID:25569540 <https://pubmed.ncbi.nlm.nih.gov/25569540/>`_
 
-- Calis Jorg J A et al. Characterizing immune repertoires by high throughput sequencing: strategies and applications. *Trends in immunology*. 2014. `PMID:25306219 <https://pubmed.ncbi.nlm.nih.gov/25306219/>`_
+- Calis Jorg J A et al. **Characterizing immune repertoires by high throughput sequencing: strategies and applications.**. *Trends in immunology*. 2014. `PMID:25306219 <https://pubmed.ncbi.nlm.nih.gov/25306219/>`_
 
-- Wu Yu-Chang B et al. Influence of seasonal exposure to grass pollen on local and peripheral blood IgE repertoires in patients with allergic rhinitis. *The Journal of allergy and clinical immunology*. 2014. `PMID:25171866 <https://pubmed.ncbi.nlm.nih.gov/25171866/>`_
+- Wu Yu-Chang B et al. **Influence of seasonal exposure to grass pollen on local and peripheral blood IgE repertoires in patients with allergic rhinitis.**. *The Journal of allergy and clinical immunology*. 2014. `PMID:25171866 <https://pubmed.ncbi.nlm.nih.gov/25171866/>`_
 
-- Stern Joel N H et al. B cells populating the multiple sclerosis brain mature in the draining cervical lymph nodes. *Science translational medicine*. 2014. `PMID:25100741 <https://pubmed.ncbi.nlm.nih.gov/25100741/>`_
+- Stern Joel N H et al. **B cells populating the multiple sclerosis brain mature in the draining cervical lymph nodes.**. *Science translational medicine*. 2014. `PMID:25100741 <https://pubmed.ncbi.nlm.nih.gov/25100741/>`_
 
-- Vander Heiden Jason A et al. pRESTO: a toolkit for processing high-throughput sequencing raw reads of lymphocyte receptor repertoires. *Bioinformatics (Oxford, England)*. 2014. `PMID:24618469 <https://pubmed.ncbi.nlm.nih.gov/24618469/>`_
+- Vander Heiden Jason A et al. **pRESTO: a toolkit for processing high-throughput sequencing raw reads of lymphocyte receptor repertoires.**. *Bioinformatics (Oxford, England)*. 2014. `PMID:24618469 <https://pubmed.ncbi.nlm.nih.gov/24618469/>`_
 
-- Cho Michael Jeffrey et al. Shared VH1-46 gene usage by pemphigus vulgaris autoantibodies indicates common humoral immune responses among patients. *Nature communications*. 2014. `PMID:24942562 <https://pubmed.ncbi.nlm.nih.gov/24942562/>`_
+- Cho Michael Jeffrey et al. **Shared VH1-46 gene usage by pemphigus vulgaris autoantibodies indicates common humoral immune responses among patients.**. *Nature communications*. 2014. `PMID:24942562 <https://pubmed.ncbi.nlm.nih.gov/24942562/>`_
 
-- Laserson Uri et al. High-resolution antibody dynamics of vaccine-induced immune responses. *Proceedings of the National Academy of Sciences of the United States of America*. 2014. `PMID:24639495 <https://pubmed.ncbi.nlm.nih.gov/24639495/>`_
+- Laserson Uri et al. **High-resolution antibody dynamics of vaccine-induced immune responses.**. *Proceedings of the National Academy of Sciences of the United States of America*. 2014. `PMID:24639495 <https://pubmed.ncbi.nlm.nih.gov/24639495/>`_
 
-- Hershberg Uri et al. Persistence and selection of an expanded B-cell clone in the setting of rituximab therapy for Sjögren's syndrome. *Arthritis research & therapy*. 2014. `PMID:24517398 <https://pubmed.ncbi.nlm.nih.gov/24517398/>`_
+- Hershberg Uri et al. **Persistence and selection of an expanded B-cell clone in the setting of rituximab therapy for Sjögren's syndrome.**. *Arthritis research & therapy*. 2014. `PMID:24517398 <https://pubmed.ncbi.nlm.nih.gov/24517398/>`_
 
-- Georgiou George et al. The promise and challenge of high-throughput sequencing of the antibody repertoire. *Nature biotechnology*. 2014. `PMID:24441474 <https://pubmed.ncbi.nlm.nih.gov/24441474/>`_
+- Georgiou George et al. **The promise and challenge of high-throughput sequencing of the antibody repertoire.**. *Nature biotechnology*. 2014. `PMID:24441474 <https://pubmed.ncbi.nlm.nih.gov/24441474/>`_
 
-- Uduman Mohamed et al. Integrating B cell lineage information into statistical tests for detecting selection in Ig sequences. *Journal of immunology (Baltimore, Md. : 1950)*. 2014. `PMID:24376267 <https://pubmed.ncbi.nlm.nih.gov/24376267/>`_
+- Uduman Mohamed et al. **Integrating B cell lineage information into statistical tests for detecting selection in Ig sequences.**. *Journal of immunology (Baltimore, Md. : 1950)*. 2014. `PMID:24376267 <https://pubmed.ncbi.nlm.nih.gov/24376267/>`_
 
-- Goenka Radhika et al. Local BLyS production by T follicular cells mediates retention of high affinity B cells during affinity maturation. *The Journal of experimental medicine*. 2014. `PMID:24367004 <https://pubmed.ncbi.nlm.nih.gov/24367004/>`_
+- Goenka Radhika et al. **Local BLyS production by T follicular cells mediates retention of high affinity B cells during affinity maturation.**. *The Journal of experimental medicine*. 2014. `PMID:24367004 <https://pubmed.ncbi.nlm.nih.gov/24367004/>`_
 
-- Mehr Ramit et al. Immune system modeling and analysis. *Frontiers in immunology*. 2014. `PMID:25566257 <https://pubmed.ncbi.nlm.nih.gov/25566257/>`_
+- Mehr Ramit et al. **Immune system modeling and analysis.**. *Frontiers in immunology*. 2014. `PMID:25566257 <https://pubmed.ncbi.nlm.nih.gov/25566257/>`_
 
-- Six Adrien et al. The past, present, and future of immune repertoire biology - the rise of next-generation repertoire analysis. *Frontiers in immunology*. 2013. `PMID:24348479 <https://pubmed.ncbi.nlm.nih.gov/24348479/>`_
+- Six Adrien et al. **The past, present, and future of immune repertoire biology - the rise of next-generation repertoire analysis.**. *Frontiers in immunology*. 2013. `PMID:24348479 <https://pubmed.ncbi.nlm.nih.gov/24348479/>`_
 
-- Fang Liangjuan et al. The immune cell infiltrate populating meningiomas is composed of mature, antigen-experienced T and B cells. *Neuro-oncology*. 2013. `PMID:23978377 <https://pubmed.ncbi.nlm.nih.gov/23978377/>`_
+- Fang Liangjuan et al. **The immune cell infiltrate populating meningiomas is composed of mature, antigen-experienced T and B cells.**. *Neuro-oncology*. 2013. `PMID:23978377 <https://pubmed.ncbi.nlm.nih.gov/23978377/>`_
 
-- Yaari Gur et al. Quantitative set analysis for gene expression: a method to quantify gene set differential expression including gene-gene correlations. *Nucleic acids research*. 2013. `PMID:23921631 <https://pubmed.ncbi.nlm.nih.gov/23921631/>`_
+- Yaari Gur et al. **Quantitative set analysis for gene expression: a method to quantify gene set differential expression including gene-gene correlations.**. *Nucleic acids research*. 2013. `PMID:23921631 <https://pubmed.ncbi.nlm.nih.gov/23921631/>`_
 
-- Zhu Daxing et al. Biased immunoglobulin light chain use in the Chlamydophila psittaci negative ocular adnexal marginal zone lymphomas. *American journal of hematology*. 2013. `PMID:23418012 <https://pubmed.ncbi.nlm.nih.gov/23418012/>`_
+- Zhu Daxing et al. **Biased immunoglobulin light chain use in the Chlamydophila psittaci negative ocular adnexal marginal zone lymphomas.**. *American journal of hematology*. 2013. `PMID:23418012 <https://pubmed.ncbi.nlm.nih.gov/23418012/>`_
 
-- Yaari Gur et al. Models of somatic hypermutation targeting and substitution based on synonymous mutations from high-throughput immunoglobulin sequencing data. *Frontiers in immunology*. 2013. `PMID:24298272 <https://pubmed.ncbi.nlm.nih.gov/24298272/>`_
+- Yaari Gur et al. **Models of somatic hypermutation targeting and substitution based on synonymous mutations from high-throughput immunoglobulin sequencing data.**. *Frontiers in immunology*. 2013. `PMID:24298272 <https://pubmed.ncbi.nlm.nih.gov/24298272/>`_
 
 
 
@@ -2123,39 +2123,39 @@ multiple Immcantation core publications.
 
 The following Immcantation core publications were used to identify citing papers:
 
-- Gabernet G et al. nf-core/airrflow: An adaptive immune receptor repertoire analysis workflow employing the Immcantation framework. *PLoS Comput Biol*. 2024. `PMID:39058741 <https://pubmed.ncbi.nlm.nih.gov/39058741/>`_
+- Gabernet G et al. **nf-core/airrflow: An adaptive immune receptor repertoire analysis workflow employing the Immcantation framework**. *PLoS Comput Biol*. 2024. `PMID:39058741 <https://pubmed.ncbi.nlm.nih.gov/39058741/>`_
 
-- Jensen CG et al. Inferring B Cell Phylogenies from Paired H and L Chain BCR Sequences with Dowser. *J Immunol*. 2024. `PMID:38557795 <https://pubmed.ncbi.nlm.nih.gov/38557795/>`_
+- Jensen CG et al. **Inferring B Cell Phylogenies from Paired H and L Chain BCR Sequences with Dowser**. *J Immunol*. 2024. `PMID:38557795 <https://pubmed.ncbi.nlm.nih.gov/38557795/>`_
 
-- Hoehn KB et al. Phylogenetic analysis of migration, differentiation, and class switching in B cells. *PLoS Comput Biol*. 2022. `PMID:35468128 <https://pubmed.ncbi.nlm.nih.gov/35468128/>`_
+- Hoehn KB et al. **Phylogenetic analysis of migration, differentiation, and class switching in B cells**. *PLoS Comput Biol*. 2022. `PMID:35468128 <https://pubmed.ncbi.nlm.nih.gov/35468128/>`_
 
-- Hoehn KB et al. Human B cell lineages associated with germinal centers following influenza vaccination are measurably evolving. *Elife*. 2021. `PMID:34787567 <https://pubmed.ncbi.nlm.nih.gov/34787567/>`_
+- Hoehn KB et al. **Human B cell lineages associated with germinal centers following influenza vaccination are measurably evolving**. *Elife*. 2021. `PMID:34787567 <https://pubmed.ncbi.nlm.nih.gov/34787567/>`_
 
-- Nouri N et al. Somatic hypermutation analysis for improved identification of B cell clonal families from next-generation sequencing data. *PLoS Comput Biol*. 2020. `PMID:32574157 <https://pubmed.ncbi.nlm.nih.gov/32574157/>`_
+- Nouri N et al. **Somatic hypermutation analysis for improved identification of B cell clonal families from next-generation sequencing data**. *PLoS Comput Biol*. 2020. `PMID:32574157 <https://pubmed.ncbi.nlm.nih.gov/32574157/>`_
 
-- Hoehn KB et al. Repertoire-wide phylogenetic models of B cell molecular evolution reveal evolutionary signatures of aging and vaccination. *Proc Natl Acad Sci U S A*. 2019. `PMID:31636219 <https://pubmed.ncbi.nlm.nih.gov/31636219/>`_
+- Hoehn KB et al. **Repertoire-wide phylogenetic models of B cell molecular evolution reveal evolutionary signatures of aging and vaccination**. *Proc Natl Acad Sci U S A*. 2019. `PMID:31636219 <https://pubmed.ncbi.nlm.nih.gov/31636219/>`_
 
-- Gadala-Maria D et al. Identification of Subject-Specific Immunoglobulin Alleles From Expressed Repertoire Sequencing Data. *Front Immunol*. 2019. `PMID:30814994 <https://pubmed.ncbi.nlm.nih.gov/30814994/>`_
+- Gadala-Maria D et al. **Identification of Subject-Specific Immunoglobulin Alleles From Expressed Repertoire Sequencing Data**. *Front Immunol*. 2019. `PMID:30814994 <https://pubmed.ncbi.nlm.nih.gov/30814994/>`_
 
-- Nouri N et al. Optimized Threshold Inference for Partitioning of Clones From High-Throughput B Cell Repertoire Sequencing Data. *Front Immunol*. 2018. `PMID:30093903 <https://pubmed.ncbi.nlm.nih.gov/30093903/>`_
+- Nouri N et al. **Optimized Threshold Inference for Partitioning of Clones From High-Throughput B Cell Repertoire Sequencing Data**. *Front Immunol*. 2018. `PMID:30093903 <https://pubmed.ncbi.nlm.nih.gov/30093903/>`_
 
-- Nouri N et al. A spectral clustering-based method for identifying clones from high-throughput B cell repertoire sequencing data. *Bioinformatics*. 2018. `PMID:29949968 <https://pubmed.ncbi.nlm.nih.gov/29949968/>`_
+- Nouri N et al. **A spectral clustering-based method for identifying clones from high-throughput B cell repertoire sequencing data**. *Bioinformatics*. 2018. `PMID:29949968 <https://pubmed.ncbi.nlm.nih.gov/29949968/>`_
 
-- Hoehn KB et al. A Phylogenetic Codon Substitution Model for Antibody Lineages. *Genetics*. 2017. `PMID:28315836 <https://pubmed.ncbi.nlm.nih.gov/28315836/>`_
+- Hoehn KB et al. **A Phylogenetic Codon Substitution Model for Antibody Lineages**. *Genetics*. 2017. `PMID:28315836 <https://pubmed.ncbi.nlm.nih.gov/28315836/>`_
 
-- Gupta NT et al. Hierarchical clustering can identify B cell clones with high confidence in Ig repertoire sequencing data. *J Immunol*. 2017. `PMID:28179494 <https://pubmed.ncbi.nlm.nih.gov/28179494/>`_
+- Gupta NT et al. **Hierarchical clustering can identify B cell clones with high confidence in Ig repertoire sequencing data**. *J Immunol*. 2017. `PMID:28179494 <https://pubmed.ncbi.nlm.nih.gov/28179494/>`_
 
-- Cui A et al. A Model of Somatic Hypermutation Targeting in Mice Based on High-Throughput Ig Sequencing Data. *J Immunol*. 2016. `PMID:27707999 <https://pubmed.ncbi.nlm.nih.gov/27707999/>`_
+- Cui A et al. **A Model of Somatic Hypermutation Targeting in Mice Based on High-Throughput Ig Sequencing Data**. *J Immunol*. 2016. `PMID:27707999 <https://pubmed.ncbi.nlm.nih.gov/27707999/>`_
 
-- Gupta NT et al. Change-O: a toolkit for analyzing large-scale B cell immunoglobulin repertoire sequencing data. *Bioinformatics*. 2015. `PMID:26069265 <https://pubmed.ncbi.nlm.nih.gov/26069265/>`_
+- Gupta NT et al. **Change-O: a toolkit for analyzing large-scale B cell immunoglobulin repertoire sequencing data**. *Bioinformatics*. 2015. `PMID:26069265 <https://pubmed.ncbi.nlm.nih.gov/26069265/>`_
 
-- Gadala-Maria D et al. Automated analysis of high-throughput B-cell sequencing data reveals a high frequency of novel immunoglobulin V gene segment alleles. *Proc Natl Acad Sci U S A*. 2015. `PMID:25675496 <https://pubmed.ncbi.nlm.nih.gov/25675496/>`_
+- Gadala-Maria D et al. **Automated analysis of high-throughput B-cell sequencing data reveals a high frequency of novel immunoglobulin V gene segment alleles**. *Proc Natl Acad Sci U S A*. 2015. `PMID:25675496 <https://pubmed.ncbi.nlm.nih.gov/25675496/>`_
 
-- Stern JN et al. B cells populating the multiple sclerosis brain mature in the draining cervical lymph nodes. *Sci Transl Med*. 2014. `PMID:25100741 <https://pubmed.ncbi.nlm.nih.gov/25100741/>`_
+- Stern JN et al. **B cells populating the multiple sclerosis brain mature in the draining cervical lymph nodes**. *Sci Transl Med*. 2014. `PMID:25100741 <https://pubmed.ncbi.nlm.nih.gov/25100741/>`_
 
-- Vander Heiden JA et al. pRESTO: a toolkit for processing high-throughput sequencing raw reads of lymphocyte receptor repertoires. *Bioinformatics*. 2014. `PMID:24618469 <https://pubmed.ncbi.nlm.nih.gov/24618469/>`_
+- Vander Heiden JA et al. **pRESTO: a toolkit for processing high-throughput sequencing raw reads of lymphocyte receptor repertoires**. *Bioinformatics*. 2014. `PMID:24618469 <https://pubmed.ncbi.nlm.nih.gov/24618469/>`_
 
-- Yaari G et al. Models of somatic hypermutation targeting and substitution based on synonymous mutations from high-throughput immunoglobulin sequencing data. *Front Immunol*. 2013. `PMID:24298272 <https://pubmed.ncbi.nlm.nih.gov/24298272/>`_
+- Yaari G et al. **Models of somatic hypermutation targeting and substitution based on synonymous mutations from high-throughput immunoglobulin sequencing data**. *Front Immunol*. 2013. `PMID:24298272 <https://pubmed.ncbi.nlm.nih.gov/24298272/>`_
 
-- Yaari G et al. Quantifying selection in high-throughput Immunoglobulin sequencing data sets. *Nucleic Acids Res*. 2012. `PMID:22641856 <https://pubmed.ncbi.nlm.nih.gov/22641856/>`_
+- Yaari G et al. **Quantifying selection in high-throughput Immunoglobulin sequencing data sets**. *Nucleic Acids Res*. 2012. `PMID:22641856 <https://pubmed.ncbi.nlm.nih.gov/22641856/>`_
 

@@ -81,8 +81,8 @@ def create_rst_output(df, output_file, download_date, core_publications_file, in
                 first_author = authors.split(',')[0].strip()
                 parts.append(f"{first_author} et al.")
             
-            # Title (no link)
-            parts.append(title)
+            # Title (bold, no link)
+            parts.append(f"**{title}**")
             
             # Journal and year
             journal_year = []
@@ -137,8 +137,8 @@ def create_rst_output(df, output_file, download_date, core_publications_file, in
                     first_author = authors.split(',')[0].strip()
                     parts.append(f"{first_author} et al.")
                 
-                # Title (no link)
-                parts.append(title)
+                # Title (bold, no link)
+                parts.append(f"**{title}**")
                 
                 # Journal and year
                 journal_year = []
