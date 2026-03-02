@@ -13,7 +13,7 @@ import argparse
 from pathlib import Path
 from datetime import datetime
 
-def create_rst_output(df, output_file, download_date, core_publications_file, include_doi=False):
+def create_rst_output(df, output_file, download_date, core_publications_file, include_doi=False, total_count=None):
     """Create an RST file with formatted citations and clickable PubMed ID links.
     
     Args:
@@ -22,8 +22,10 @@ def create_rst_output(df, output_file, download_date, core_publications_file, in
         download_date: Date string for last update
         core_publications_file: Path to core publications TSV
         include_doi: Whether to include DOI links (default: False)
+        total_count: Total citation count before deduplication (sum across all input PMIDs)
     """
-    total_citations = len(df)
+    unique_citations = len(df)
+    total_citations = total_count if total_count is not None else unique_citations
     
     # Read core publications
     core_pubs = []
@@ -54,15 +56,17 @@ def create_rst_output(df, output_file, download_date, core_publications_file, in
         f.write("Cited by\n")
         f.write("========\n\n")
         
-        # Citation count badge
-        f.write(f".. image:: https://img.shields.io/badge/Cited%20by-{total_citations}-blue\n")
-        f.write("   :alt: Total Citing Papers\n\n")
+        # Citation count badges
+        f.write(f".. image:: https://img.shields.io/badge/Total%20citations-{total_citations}-blue\n")
+        f.write("   :alt: Total Citations\n\n")
+        f.write(f".. image:: https://img.shields.io/badge/Unique%20citing%20papers-{unique_citations}-blue\n")
+        f.write("   :alt: Unique Citing Papers\n\n")
         
         f.write("This page lists scientific publications that have cited `core publications`_ of the \n")
         f.write("Immcantation framework in their research. Citations are collected from PubMed \n")
         f.write("and updated regularly. Citing papers are counted only once, even if they cite \n")
         f.write("multiple Immcantation core publications.\n\n")
-        f.write(f"**Total papers:** {total_citations} | **Last updated:** {download_date}\n\n")
+        f.write(f"**Total citations:** {total_citations} | **Unique citing papers:** {unique_citations} | **Last updated:** {download_date}\n\n")
         
         for idx, row in df.iterrows():
             # Extract fields
@@ -365,10 +369,11 @@ def main():
         
         # Create RST output
         print(f"Creating RST file: {output_file_rst}")
+        print(f"Total citations (before deduplication): {original_count}")
         print(f"Total unique citations (after deduplication): {len(df_sorted)}")
         print(f"Download date: {download_date}")
         print(f"Include DOI links: {args.doi}")
-        create_rst_output(df_sorted, output_file_rst, download_date, core_publications_file, include_doi=args.doi)
+        create_rst_output(df_sorted, output_file_rst, download_date, core_publications_file, include_doi=args.doi, total_count=original_count)
         print(f"RST output saved to: {output_file_rst}")
         print("Successfully created citations.rst file!")
         

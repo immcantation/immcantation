@@ -11,10 +11,10 @@ The scripts makes these calls:
 
 Usage Examples:
   # Query citations for a specific PMID
-  sleep 15 && python query_citations.py 24618469 --output-file citations_24618469.tsv --email your.email@example.com
+  python query_citations.py 24618469 --output-file citations_24618469.tsv --email your.email@example.com
   
   # Query citations from a file with PMIDs
-  sleep 15 && query_citations.py --input-file immcantation-publications.tsv --output-file immcantation_citations.tsv --email your.email@example.com
+  query_citations.py --input-file immcantation-publications.tsv --output-file immcantation_citations.tsv --email your.email@example.com
 
 """
 
@@ -374,13 +374,14 @@ class PubMedCitationQuery:
             
         return papers
     
-    def process_pmid_list(self, pmids, output_file=None):
+    def process_pmid_list(self, pmids, output_file=None, titles=None):
         """
         Process a list of PMIDs and get their citations.
         
         Args:
             pmids (list): List of PubMed IDs to process
             output_file (str): Optional output file path
+            titles (dict): Optional dict mapping PMID to title for display
             
         Returns:
             dict: Dictionary mapping input PMIDs to citing papers
@@ -388,7 +389,11 @@ class PubMedCitationQuery:
         results = {}
         
         for i, pmid in enumerate(pmids):
-            print(f"Processing PMID {pmid} ({i+1}/{len(pmids)})...")
+            title_preview = ""
+            if titles and pmid in titles:
+                t = titles[pmid]
+                title_preview = f" - {t[:60]}..." if len(t) > 60 else f" - {t}"
+            print(f"Processing PMID {pmid} ({i+1}/{len(pmids)}){title_preview}...")
             
             # Get citing PMIDs
             citing_pmids = self.search_citations(pmid)
@@ -397,6 +402,8 @@ class PubMedCitationQuery:
             if citing_pmids:
                 # Get details for citing papers
                 citing_papers = self.get_paper_details(citing_pmids)
+                if len(citing_papers) < len(citing_pmids):
+                    print(f"  WARNING: Retrieved details for only {len(citing_papers)}/{len(citing_pmids)} citing papers (possible fetch failure)")
                 results[pmid] = citing_papers
             else:
                 results[pmid] = []
@@ -477,6 +484,7 @@ def main():
     
     # Collect PMIDs from command line arguments and/or input file
     pmids = []
+    titles = {}  # optional mapping of pmid -> title
     
     if args.pmids:
         pmids.extend(args.pmids)
@@ -506,11 +514,20 @@ def main():
                                 break
                     
                     if pmid_column:
-                        # Read PMIDs from the structured file
+                        # Look for a title column (case insensitive)
+                        title_column = None
+                        if headers:
+                            for header in headers:
+                                if header.lower() == 'title':
+                                    title_column = header
+                                    break
+                        # Read PMIDs (and titles if available) from the structured file
                         for row in reader:
                             pmid = row.get(pmid_column, '').strip()
                             if pmid and pmid.isdigit():
                                 pmids.append(pmid)
+                                if title_column:
+                                    titles[pmid] = row.get(title_column, '').strip()
                         print(f"Loaded {len([p for p in pmids if p])} PMIDs from column '{pmid_column}' in {args.input_file}")
                     else:
                         # Fallback: treat as plain text file with one PMID per line
@@ -556,20 +573,25 @@ def main():
     query_tool = PubMedCitationQuery(email=args.email)
     
     # Process the PMIDs
-    results = query_tool.process_pmid_list(pmids, args.output_file)
+    results = query_tool.process_pmid_list(pmids, args.output_file, titles=titles)
     
     # Print summary
     total_citations = sum(len(citing_papers) for citing_papers in results.values())
+    unique_citations = len({p['pmid'] for papers in results.values() for p in papers})
     print("\nSummary:")
     print(f"  Processed {len(pmids)} PMIDs")
-    print(f"  Found {total_citations} total citing papers")
-    
+    print(f"  Total citations: {total_citations} ({unique_citations} unique citing papers)")
+    print("")
+    print(f"  {'PMID':<12} {'Citing papers':<15} Title")
+    print(f"  {'-'*12} {'-'*15} {'-'*40}")
+    for original_pmid, citing_papers in results.items():
+        title_str = titles.get(original_pmid, "")
+        if len(title_str) > 60:
+            title_str = title_str[:60] + "..."
+        print(f"  {original_pmid:<12} {len(citing_papers):<15} {title_str}")
+
     if args.output_file:
-        print(f"  Results saved to {args.output_file}")
-    else:
-        print("\nResults:")
-        for original_pmid, citing_papers in results.items():
-            print(f"  PMID {original_pmid}: {len(citing_papers)} citing papers")
+        print(f"\n  Results saved to {args.output_file}")
 
 if __name__ == '__main__':
     main()
