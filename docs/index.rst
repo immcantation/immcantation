@@ -1,7 +1,7 @@
 .. meta::
    :description: Immcantation: An Integrated Framework for Adaptive Immune Receptor Repertoire Analysis
-   :keywords: airr-seq, rep-seq, immuno-seq, vdj-seq, repertoire sequencing, BCR, TCR, Ig, AIRR,
-    adaptive immunity, somatic hypermutation, SHM, AbSeq, AbPair, VDJ, immunoglobulin, bulk, single cell
+   :keywords: AIRR-seq, rep-seq, immuno-seq, vdj-seq, repertoire sequencing, BCR, TCR, Ig, AIRR,
+    adaptive immunity, somatic hypermutation, SHM, AbSeq, AbPair, VDJ, immunoglobulin, bulk, single cell, scRNA-seq
 
 .. meta::
     :twitter\:card:  summary_large_image
