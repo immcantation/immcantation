@@ -59,14 +59,14 @@ def create_rst_output(df, output_file, download_date, core_publications_file, in
         # Citation count badges
         f.write(f".. image:: https://img.shields.io/badge/Total%20citations-{total_citations}-blue\n")
         f.write("   :alt: Total Citations\n\n")
-        f.write(f".. image:: https://img.shields.io/badge/Unique%20citing%20papers-{unique_citations}-blue\n")
-        f.write("   :alt: Unique Citing Papers\n\n")
+        f.write(f".. image:: https://img.shields.io/badge/Unique%20citations-{unique_citations}-blue\n")
+        f.write("   :alt: Unique Citations\n\n")
         
         f.write("This page lists scientific publications that have cited `core publications`_ of the \n")
         f.write("Immcantation framework in their research. Citations are collected from PubMed \n")
         f.write("and updated regularly. Citing papers are counted only once, even if they cite \n")
         f.write("multiple Immcantation core publications.\n\n")
-        f.write(f"**Total citations:** {total_citations} | **Unique citing papers:** {unique_citations} | **Last updated:** {download_date}\n\n")
+        f.write(f"**Total citations:** {total_citations} | **Unique citations:** {unique_citations} | **Last updated:** {download_date}\n\n")
         
         for idx, row in df.iterrows():
             # Extract fields

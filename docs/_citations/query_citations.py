@@ -580,7 +580,7 @@ def main():
     unique_citations = len({p['pmid'] for papers in results.values() for p in papers})
     print("\nSummary:")
     print(f"  Processed {len(pmids)} PMIDs")
-    print(f"  Total citations: {total_citations} ({unique_citations} unique citing papers)")
+    print(f"  Total citations: {total_citations} ({unique_citations} unique citations)")
     print("")
     print(f"  {'PMID':<12} {'Citing papers':<15} Title")
     print(f"  {'-'*12} {'-'*15} {'-'*40}")
