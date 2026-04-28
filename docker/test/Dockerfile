@@ -115,7 +115,11 @@ RUN AIRR_PY=$(versions get -n airr-py) \
     # && pip3 install airr==${AIRR_PY} \
     && pip3 install -e "git+https://github.com/airr-community/airr-standards.git@v${AIRR_PY}#egg=airr&subdirectory=lang/python" \
     # && Rscript -e "devtools::install_version('airr', '${AIRR_R}', quiet=FALSE, clean=TRUE)" \
-    && Rscript -e "devtools::install_github('airr-community/airr-standards', ref='v${AIRR_R}', subdir='lang/R', upgrade='never')" \
+    # && Rscript -e "devtools::install_github('airr-community/airr-standards', ref='v${AIRR_R}', subdir='lang/R', upgrade='never', build_vignettes=TRUE)" \
+    && git clone --depth 1 --branch v${AIRR_R} https://github.com/airr-community/airr-standards.git /tmp/airr-standards \
+    && Rscript -e "roxygen2::roxygenize('/tmp/airr-standards/lang/R')" \
+    && Rscript -e "devtools::install_local('/tmp/airr-standards/lang/R', upgrade='never', build_vignettes=TRUE)" \
+    && rm -rf /tmp/airr-standards \
     && Rscript -e "library('airr', character.only = TRUE)"
         
 
