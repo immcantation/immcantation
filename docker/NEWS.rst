@@ -6,7 +6,11 @@ Version 4.7.1.dev: Unreleased
 
 Version Updates:
 
-+ presto 0.7.8
++ alakazam 1.4.3
++ shazam 1.3.2
++ scoper 1.5.0
++ presto 0.7.9
++ tigger 1.1.3
 
 Version 4.7.0:  January 21, 2026
 ------------------------------------------------------------------------
