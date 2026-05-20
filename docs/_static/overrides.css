@@ -1,3 +1,39 @@
+/* mermaid diagram: strip RTD's code-block padding/background and remove gaps */
+pre.mermaid {
+   padding: 0 !important;
+   background: none !important;
+   border: none !important;
+   margin-top: 0 !important;
+   margin-bottom: 0.5em !important;
+   overflow-x: auto !important;
+}
+
+.mermaid-container {
+   margin-top: 0 !important;
+}
+
+/* override the 500px fixed height injected by sphinxcontrib-mermaid JS */
+pre.mermaid > svg,
+.mermaid-container > pre > svg {
+   height: auto !important;
+   max-height: none !important;
+   max-width: 100% !important;
+   width: 100% !important;
+}
+
+/* subgraph titles are SVG text elements — inherit from svg root above */
+pre.mermaid > svg text,
+pre.mermaid > svg tspan {
+   font-size: inherit !important;
+}
+
+/* allow subgraph title foreignObject elements to overflow their
+   Mermaid-calculated width so long titles are not clipped */
+pre.mermaid > svg foreignObject,
+.mermaid-container > pre > svg foreignObject {
+   overflow: visible !important;
+}
+
 /* override table width restrictions */
 @media screen and (min-width: 767px) {
 
