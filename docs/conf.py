@@ -40,6 +40,7 @@ needs_sphinx = '1.8'
 extensions = ['sphinx.ext.intersphinx',
               'sphinx.ext.todo',
               'sphinxcontrib.googleanalytics',
+              'sphinxcontrib.mermaid',
               'nbsphinx',
               'nbsphinx_link',              
               'sphinx_rtd_theme',

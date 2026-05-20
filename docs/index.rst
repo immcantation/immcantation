@@ -85,9 +85,12 @@ germline and somatic diversity of the adaptive immune receptor repertoire (AIRR)
 challenges for biologically meaningful analysis - requiring the development of specialized
 computational methods.
 
-The Immcantation framework provides a start-to-finish analytical ecosystem for
-high-throughput AIRR-seq datasets. Beginning from raw reads, Python and R packages are
+The Immcantation framework provides a **start-to-finish analytical ecosystem for
+high-throughput AIRR-seq** datasets. Beginning from raw reads, Python and R packages are
 provided for pre-processing, population structure determination, and repertoire analysis.
+
+.. include:: _include/workflow_diagram.rst
+
 
 .. image:: https://img.shields.io/static/v1?label=AIRR-C%20sw-tools%20v1&message=compliant&color=008AFF&labelColor=000000&style=plastic
      :target: https://docs.airr-community.org/en/stable/swtools/airr_swtools_standard.html
@@ -103,6 +106,9 @@ Receptor Repertoire (AIRR) standard developed by the
 
 The different tools are available from PyPi, CRAN and GitHub. Versioned containers with
 all tools installed are hosted on `Docker Hub <https://hub.docker.com/r/immcantation/suite>`_.
+A best practices workflow using the Immcantation packages is available as 
+a `nf-core/airrflow <https://nf-co.re/airrflow>`_ Nextflow workflow.
+
 
 Start-to-finish Workflow
 ------------------------------------------------------------------------------------------
