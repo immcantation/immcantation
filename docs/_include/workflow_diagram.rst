@@ -17,6 +17,11 @@
    }}%%
    flowchart LR
 
+       %% --- Entry point nodes (parallelogram = data/I-O symbol) ---
+       raw[/"<i class='fa fa-file-text-o'></i>&nbsp;Raw Bulk FASTQ/FASTA"/]
+       assembled[/"<i class='fa fa-file-text-o'></i>&nbsp;Assembled FASTA (Bulk, Single cell)"/]
+       airr[/"<i class='fa fa-table'></i>&nbsp;AIRR-C TSV (10x)"/]
+
        subgraph pre["Pre-processing"]
            presto["<b>pRESTO</b>"]
        end
@@ -30,15 +35,17 @@
            scoper["<b>SCOPer</b>"]
        end
 
+       subgraph tree["Lineage Tree Inference"]
+           dowser["<b>Dowser</b>"]
+       end       
+
        subgraph repertoire["Repertoire Analysis"]
            direction LR
            alakazam["<b>Alakazam</b>"]
            shazam["<b>SHazaM</b>"]
-           dowser["<b>Dowser</b>"]
            %% invisible links keep Alakazam, SHazaM and Dowser side-by-side
            %% without drawing arrows between them
            alakazam ~~~ shazam
-           alakazam ~~~ dowser
        end
 
        subgraph genot["Novel Allele, Genotyping&nbsp;"]
@@ -50,11 +57,27 @@
             amulety["<b>Amulety</b>"]
        end
 
-       classDef stage fill:#dce9f5,stroke:#2980b9,stroke-width:1.5px,color:#2c3e50,rx:6,ry:6
-       class presto,changeo,tigger,scoper,alakazam,shazam,dowser,amulety stage
+       subgraph leg["Legend"]
+           direction LR
+           leg_data[/"Input data"/]
+           leg_tool["Immcantation package"]
+       end
 
-       pre --> annot --> clonal --> repertoire
-       annot <--> genot
+       classDef stage fill:#dce9f5,stroke:#2980b9,stroke-width:1.5px,color:#2c3e50,rx:6,ry:6
+       %% dashed border marks nodes as data files rather than tools
+       classDef input fill:#ffffff,stroke:#888888,stroke-width:1.5px,color:#2c3e50,stroke-dasharray:4 2
+       class presto,changeo,tigger,scoper,alakazam,shazam,dowser,amulety,leg_tool stage
+       class raw,assembled,airr,leg_data input
+
+       %% entry point connections
+       raw --> pre  --> assembled
+       assembled --> annot
+       airr --> annot
+       airr --> clonal
+
+       annot --> clonal --> tree
+       tree --> repertoire
+       annot <--> genot --> clonal
        annot --> embed
        %% invisible link prevents Mermaid from routing an arrow between
        %% clonal and genot, which are not directly connected
