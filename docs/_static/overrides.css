@@ -34,6 +34,15 @@ pre.mermaid > svg foreignObject,
    overflow: visible !important;
 }
 
+/* legend subgraph: transparent background with a subtle gray border;
+   Mermaid renders the subgraph id directly as the SVG element id ("leg") */
+pre.mermaid > svg g#leg.cluster > rect {
+   fill: transparent !important;
+   stroke: #cccccc !important;
+   stroke-width: 1px !important;
+   stroke-dasharray: none !important;
+}
+
 /* override table width restrictions */
 @media screen and (min-width: 767px) {
 

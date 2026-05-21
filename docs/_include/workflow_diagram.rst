@@ -20,7 +20,8 @@
        %% --- Entry point nodes (parallelogram = data/I-O symbol) ---
        raw[/"<i class='fa fa-file-text-o'></i>&nbsp;Raw Bulk FASTQ/FASTA"/]
        assembled[/"<i class='fa fa-file-text-o'></i>&nbsp;Assembled FASTA (Bulk, Single cell)"/]
-       airr[/"<i class='fa fa-table'></i>&nbsp;AIRR-C TSV (10x)"/]
+       airr[/"<i class='fa fa-table'></i>&nbsp;AIRR-C TSV (Bulk, Single cell [10x])"/]
+       ref[/"<i class='fa fa-file-text-o'></i>&nbsp;Reference Germlines FASTA"/]
 
        subgraph pre["Pre-processing"]
            presto["<b>pRESTO</b>"]
@@ -67,13 +68,13 @@
        %% dashed border marks nodes as data files rather than tools
        classDef input fill:#ffffff,stroke:#888888,stroke-width:1.5px,color:#2c3e50,stroke-dasharray:4 2
        class presto,changeo,tigger,scoper,alakazam,shazam,dowser,amulety,leg_tool stage
-       class raw,assembled,airr,leg_data input
+       class raw,assembled,airr,leg_data,ref input
 
        %% entry point connections
        raw --> pre  --> assembled
        assembled --> annot
        airr --> annot
-       airr --> clonal
+       ref --> annot
 
        annot --> clonal --> tree
        tree --> repertoire
