@@ -31,6 +31,7 @@
     :hidden:
     :caption: Getting started
 
+    Workflow overview <_include/workflow_overview>
     getting_started/getting-started
     getting_started/resources
 
@@ -89,12 +90,9 @@ The Immcantation framework provides a **start-to-finish analytical ecosystem for
 high-throughput AIRR-seq** datasets. Beginning from raw reads, Python and R packages are
 provided for pre-processing, population structure determination, and repertoire analysis.
 
-.. include:: _include/workflow_diagram.rst
-
-
 .. image:: https://img.shields.io/static/v1?label=AIRR-C%20sw-tools%20v1&message=compliant&color=008AFF&labelColor=000000&style=plastic
-     :target: https://docs.airr-community.org/en/stable/swtools/airr_swtools_standard.html
-     :align: left
+    :target: https://docs.airr-community.org/en/stable/swtools/airr_swtools_standard.html
+    :align: left
 
 Immcantation supports both the original Change-O standard and the new Adaptive Immune
 Receptor Repertoire (AIRR) standard developed by the
