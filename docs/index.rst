@@ -31,7 +31,6 @@
     :hidden:
     :caption: Getting started
 
-    Workflow overview <_include/workflow_overview>
     getting_started/getting-started
     getting_started/resources
 
