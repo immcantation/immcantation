@@ -16,7 +16,7 @@ Immcantation framework in their research. Citations are collected from PubMed
 and updated regularly. Citing papers are counted only once, even if they cite 
 multiple Immcantation core publications.
 
-**Total citations:** 2031 | **Unique citations:** 1080 | **Last updated:** June 01, 2026
+**Total citations:** 2031 | **Unique citations:** 1080 | **Last updated:** June 05, 2026
 
 - Zeglinski Kathleen et al. **Alpseq: an open-source workflow to turbocharge nanobody discovery with high-throughput sequencing.**. *mAbs*. 2026. `PMID:41631412 <https://pubmed.ncbi.nlm.nih.gov/41631412/>`_
 
