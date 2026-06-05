@@ -16,8 +16,12 @@ Usage Examples:
   # Query citations from a file with PMIDs
   query_citations.py --input-file immcantation-publications.tsv --output-file immcantation_citations.tsv --email your.email@example.com
 
+  # Save corresponding author emails in the output (disabled by default)
+  query_citations.py --input-file immcantation-publications.tsv --output-file immcantation_citations.tsv --email your.email@example.com --save-emails
+
 """
 
+import re
 import requests
 import xml.etree.ElementTree as ET
 import time
@@ -28,16 +32,18 @@ import os
 from datetime import datetime
 
 class PubMedCitationQuery:
-    def __init__(self, email="your.email@example.com", tool="pubmed_citation_query"):
+    def __init__(self, email="your.email@example.com", tool="pubmed_citation_query", save_emails=False):
         """
         Initialize the PubMed citation query tool.
         
         Args:
             email (str): Your email address (required by NCBI)
             tool (str): Name of your tool/script
+            save_emails (bool): Whether to save corresponding author emails in output (default: False)
         """
         self.email = email
         self.tool = tool
+        self.save_emails = save_emails
         self.base_url = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/"
         self.delay = 0.34  # NCBI recommends max 3 requests per second
         
@@ -240,7 +246,6 @@ class PubMedCitationQuery:
                         for affiliation_info in author.findall('.//AffiliationInfo'):
                             affiliation_text = affiliation_info.find('Affiliation')
                             if affiliation_text is not None and affiliation_text.text:
-                                import re
                                 email_pattern = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
                                 email_matches = re.findall(email_pattern, affiliation_text.text)
                                 author_info['emails'].extend(email_matches)
@@ -276,7 +281,6 @@ class PubMedCitationQuery:
                     # Check for email in other parts of the article
                     for elem in article.findall('.//*'):
                         if elem.text and '@' in elem.text:
-                            import re
                             email_pattern = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
                             emails_in_text = re.findall(email_pattern, elem.text)
                             contact_info.extend(emails_in_text)
@@ -426,6 +430,10 @@ class PubMedCitationQuery:
         """
         fieldnames = ['original_pmid', 'citing_pmid', 'title', 'authors', 'corresponding_authors', 
                      'corresponding_emails', 'journal', 'year', 'publication_date', 'abstract', 'doi', 'pmcid']
+
+        def _strip_emails(text):
+            """Remove <email> portions from a corresponding-author string."""
+            return re.sub(r'\s*<[^>]+>', '', text).strip()
         
         # Get current date for the download timestamp
         download_date = datetime.now().strftime("%Y-%m-%d")
@@ -456,13 +464,18 @@ class PubMedCitationQuery:
                     })
                 else:
                     for paper in citing_papers:
+                        corresponding_authors = paper['corresponding_authors']
+                        corresponding_emails = paper['corresponding_emails']
+                        if not self.save_emails:
+                            corresponding_authors = _strip_emails(corresponding_authors)
+                            corresponding_emails = ''
                         writer.writerow({
                             'original_pmid': original_pmid,
                             'citing_pmid': paper['pmid'],
                             'title': paper['title'],
                             'authors': paper['authors'],
-                            'corresponding_authors': paper['corresponding_authors'],
-                            'corresponding_emails': paper['corresponding_emails'],
+                            'corresponding_authors': corresponding_authors,
+                            'corresponding_emails': corresponding_emails,
                             'journal': paper['journal'],
                             'year': paper['year'],
                             'publication_date': paper['publication_date'],
@@ -479,6 +492,8 @@ def main():
     parser.add_argument('--output-file', '-o', help='Output TSV file')
     parser.add_argument('--email', '-e', default='your.email@example.com', 
                        help='Your email address (required by NCBI)')
+    parser.add_argument('--save-emails', action='store_true', default=False,
+                       help='Save corresponding author emails in the output TSV (default: False)')
     
     args = parser.parse_args()
     
@@ -570,7 +585,7 @@ def main():
     print(f"Processing {len(pmids)} PMIDs...")
     
     # Initialize the query tool
-    query_tool = PubMedCitationQuery(email=args.email)
+    query_tool = PubMedCitationQuery(email=args.email, save_emails=args.save_emails)
     
     # Process the PMIDs
     results = query_tool.process_pmid_list(pmids, args.output_file, titles=titles)
