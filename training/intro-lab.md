@@ -33,33 +33,33 @@ Use this command to list the software versions:
 
     versions report
 
-    ## immcantation: 4.7.0
-    ## date: 2026.01.20
+    ## immcantation: devel
+    ## date: 2026.06.06
     ## 
-    ## presto: 0.7.7
-    ## changeo: 1.3.4
-    ## alakazam: 1.4.2
-    ## shazam: 1.3.1
-    ## tigger: 1.1.0
-    ## scoper: 1.4.0
-    ## dowser: 2.4.0.999
-    ## enchantr: 0.1.24
+    ## presto: 0.7.10dev
+    ## changeo: 1.3.5dev
+    ## alakazam: 1.4.3.999
+    ## shazam: 1.3.2.999
+    ## tigger: 1.1.3
+    ## scoper: 1.5.0.999
+    ## dowser: 2.4.1.999
+    ## enchantr: 0.1.25
     ## prestor: 0.0.7
     ## piglet: 1.0.1
     ## rabhit: 0.2.5
     ## rdi: 1.0.0
     ## igphyml: 2.0.0
-    ## seurat: 5.4.0
+    ## seurat: 5.5.0
     ## 
-    ## airr-py: 1.6.0
-    ## airr-r: 1.6.0
+    ## airr-py: 1.6.1
+    ## airr-r: 1.6.1
     ## blast: 2.17.0
     ## cd-hit: 4.8.1
     ## igblast: 1.22.0
     ## muscle: 3.8.425
     ## phylip: 3.697
-    ## raxml-ng: 1.2.2
-    ## receptor-utils: 0.0.63
+    ## raxml-ng: 2.0.2
+    ## receptor-utils: 0.0.66
     ## vsearch: 2.30.0
 
 ### Build versions
@@ -69,17 +69,17 @@ build:
 
     builds report
 
-    ## date: 2026-01-20 12:56:31 UTC
-    ## immcantation: 4.4.0-496-g378a6760df47+
-    ## presto: 0.7.2-89-g0cf93717bf46
-    ## changeo: 1.3.0-102-g89bf6a6b8b76
-    ## alakazam: 1.2.0-298-g2e9b09433307
-    ## shazam: 1.1.2-164-ga47fc690f8c0
-    ## tigger: b0ad8b4f4fb9+
-    ## rdi: fe12005bd3c4+
-    ## scoper: 1.2.0-174-g3b523e19505d
-    ## dowser: 2.4.0-11-g23ecb65b0dc2
-    ## prestor: 0.0.8+
+    ## date: 2026-06-06 17:38:06 UTC
+    ## immcantation: 4.4.0-575-gf74457779445+
+    ## presto: 0.7.2-100-gc32a8f16a89c
+    ## changeo: 1.3.0-120-g53038a0bf297
+    ## alakazam: 1.2.0-334-ge85cde1e7f4d+
+    ## shazam: 1.1.2-199-gcdf9f1c6712c+
+    ## tigger: 157027c0b100+
+    ## rdi: d27b9067cab6+
+    ## scoper: 1.2.0-246-g810ad5a174a0+
+    ## dowser: 2.4.1-86-g0323b17a372f+
+    ## prestor: 0.0.8-4-gb9d9b80ff752+
 
 ### Example data used in the tutorial
 
@@ -169,9 +169,9 @@ the V(D)J genes with `AssignGenes.py`.
     ##      FIELD> None
     ##     VALUES> None
     ## 
-    ## PROGRESS> 14:10:12 |Reading files            | 0.0 minPROGRESS> 14:10:12 |Done                     | 0.0 min
+    ## PROGRESS> 22:27:07 |Reading files            | 0.0 minPROGRESS> 22:27:07 |Done                     | 0.0 min
     ## 
-    ## PROGRESS> 14:10:12 |Sampling n=200           | 0.0 minPROGRESS> 14:10:12 |Done                     | 0.0 min
+    ## PROGRESS> 22:27:07 |Sampling n=200           | 0.0 minPROGRESS> 22:27:07 |Done                     | 0.0 min
     ## 
     ## MAX_COUNT> 200
     ##   SAMPLED> 200
@@ -205,7 +205,7 @@ the V(D)J genes with `AssignGenes.py`.
     ##     LOCI> ig
     ##    NPROC> 8
     ## 
-    ## PROGRESS> 14:10:13 |Running IgBLAST          | 0.0 minPROGRESS> 14:10:16 |Done                     | 0.0 min
+    ## PROGRESS> 22:27:09 |Running IgBLAST          | 0.0 minPROGRESS> 22:27:12 |Done                     | 0.1 min
     ## 
     ##   PASS> 200
     ## OUTPUT> input_sample1-n200_igblast.fmt7
@@ -229,7 +229,7 @@ time to finish running.*
     ##     LOCI> ig
     ##    NPROC> 8
     ## 
-    ## PROGRESS> 14:10:17 |Running IgBLAST          | 0.0 minPROGRESS> 14:25:20 |Done                     | 15.0 min
+    ## PROGRESS> 22:27:13 |Running IgBLAST          | 0.0 minPROGRESS> 22:42:33 |Done                     | 15.3 min
     ## 
     ##   PASS> 91010
     ## OUTPUT> input_igblast.fmt7
@@ -278,9 +278,9 @@ AIRR format. The path to the reference germlines is provided by `-r`.
     ##       EXTENDED> False
     ## INFER_JUNCTION> False
     ## 
-    ## PROGRESS> 14:25:20 |Loading files       | 0.0 minPROGRESS> 14:25:21 |Done                | 0.0 min
+    ## PROGRESS> 22:42:33 |Loading files       | 0.0 minPROGRESS> 22:42:34 |Done                | 0.0 min
     ## 
-    ## PROGRESS> 14:25:21 |                    |   0% (     0) 0.0 minPROGRESS> 14:25:24 |#                   |   5% ( 4,551) 0.1 minPROGRESS> 14:25:28 |##                  |  10% ( 9,102) 0.1 minPROGRESS> 14:25:31 |###                 |  15% (13,653) 0.2 minPROGRESS> 14:25:34 |####                |  20% (18,204) 0.2 minPROGRESS> 14:25:37 |#####               |  25% (22,755) 0.3 minPROGRESS> 14:25:39 |######              |  30% (27,306) 0.3 minPROGRESS> 14:25:42 |#######             |  35% (31,857) 0.3 minPROGRESS> 14:25:44 |########            |  40% (36,408) 0.4 minPROGRESS> 14:25:46 |#########           |  45% (40,959) 0.4 minPROGRESS> 14:25:49 |##########          |  50% (45,510) 0.5 minPROGRESS> 14:25:52 |###########         |  55% (50,061) 0.5 minPROGRESS> 14:25:55 |############        |  60% (54,612) 0.6 minPROGRESS> 14:25:57 |#############       |  65% (59,163) 0.6 minPROGRESS> 14:25:59 |##############      |  70% (63,714) 0.6 minPROGRESS> 14:26:01 |###############     |  75% (68,265) 0.7 minPROGRESS> 14:26:02 |################    |  80% (72,816) 0.7 minPROGRESS> 14:26:04 |#################   |  85% (77,367) 0.7 minPROGRESS> 14:26:06 |##################  |  90% (81,918) 0.8 minPROGRESS> 14:26:07 |################### |  95% (86,469) 0.8 minPROGRESS> 14:26:09 |####################| 100% (91,010) 0.8 min
+    ## PROGRESS> 22:42:34 |                    |   0% (     0) 0.0 minPROGRESS> 22:42:36 |#                   |   5% ( 4,551) 0.0 minPROGRESS> 22:42:38 |##                  |  10% ( 9,102) 0.1 minPROGRESS> 22:42:39 |###                 |  15% (13,653) 0.1 minPROGRESS> 22:42:41 |####                |  20% (18,204) 0.1 minPROGRESS> 22:42:43 |#####               |  25% (22,755) 0.2 minPROGRESS> 22:42:45 |######              |  30% (27,306) 0.2 minPROGRESS> 22:42:47 |#######             |  35% (31,857) 0.2 minPROGRESS> 22:42:49 |########            |  40% (36,408) 0.3 minPROGRESS> 22:42:51 |#########           |  45% (40,959) 0.3 minPROGRESS> 22:42:53 |##########          |  50% (45,510) 0.3 minPROGRESS> 22:42:54 |###########         |  55% (50,061) 0.3 minPROGRESS> 22:42:56 |############        |  60% (54,612) 0.4 minPROGRESS> 22:42:58 |#############       |  65% (59,163) 0.4 minPROGRESS> 22:43:00 |##############      |  70% (63,714) 0.4 minPROGRESS> 22:43:02 |###############     |  75% (68,265) 0.5 minPROGRESS> 22:43:04 |################    |  80% (72,816) 0.5 minPROGRESS> 22:43:06 |#################   |  85% (77,367) 0.5 minPROGRESS> 22:43:08 |##################  |  90% (81,918) 0.6 minPROGRESS> 22:43:10 |################### |  95% (86,469) 0.6 minPROGRESS> 22:43:11 |####################| 100% (91,010) 0.6 min
     ## 
     ## OUTPUT> data_db-pass.tsv
     ##   PASS> 87640
@@ -309,7 +309,7 @@ output file (specified by `--outname`).
     ##  VALUES> T
     ##   REGEX> False
     ## 
-    ## PROGRESS> 14:26:10 |                    |   0% (     0) 0.0 minPROGRESS> 14:26:10 |#                   |   5% ( 4,382) 0.0 minPROGRESS> 14:26:10 |##                  |  10% ( 8,764) 0.0 minPROGRESS> 14:26:10 |###                 |  15% (13,146) 0.0 minPROGRESS> 14:26:10 |####                |  20% (17,528) 0.0 minPROGRESS> 14:26:10 |#####               |  25% (21,910) 0.0 minPROGRESS> 14:26:10 |######              |  30% (26,292) 0.0 minPROGRESS> 14:26:11 |#######             |  35% (30,674) 0.0 minPROGRESS> 14:26:11 |########            |  40% (35,056) 0.0 minPROGRESS> 14:26:11 |#########           |  45% (39,438) 0.0 minPROGRESS> 14:26:11 |##########          |  50% (43,820) 0.0 minPROGRESS> 14:26:11 |###########         |  55% (48,202) 0.0 minPROGRESS> 14:26:11 |############        |  60% (52,584) 0.0 minPROGRESS> 14:26:11 |#############       |  65% (56,966) 0.0 minPROGRESS> 14:26:11 |##############      |  70% (61,348) 0.0 minPROGRESS> 14:26:11 |###############     |  75% (65,730) 0.0 minPROGRESS> 14:26:11 |################    |  80% (70,112) 0.0 minPROGRESS> 14:26:12 |#################   |  85% (74,494) 0.0 minPROGRESS> 14:26:12 |##################  |  90% (78,876) 0.0 minPROGRESS> 14:26:12 |################### |  95% (83,258) 0.0 minPROGRESS> 14:26:12 |####################| 100% (87,640) 0.0 min
+    ## PROGRESS> 22:43:12 |                    |   0% (     0) 0.0 minPROGRESS> 22:43:13 |#                   |   5% ( 4,382) 0.0 minPROGRESS> 22:43:13 |##                  |  10% ( 8,764) 0.0 minPROGRESS> 22:43:13 |###                 |  15% (13,146) 0.0 minPROGRESS> 22:43:13 |####                |  20% (17,528) 0.0 minPROGRESS> 22:43:13 |#####               |  25% (21,910) 0.0 minPROGRESS> 22:43:13 |######              |  30% (26,292) 0.0 minPROGRESS> 22:43:13 |#######             |  35% (30,674) 0.0 minPROGRESS> 22:43:13 |########            |  40% (35,056) 0.0 minPROGRESS> 22:43:13 |#########           |  45% (39,438) 0.0 minPROGRESS> 22:43:14 |##########          |  50% (43,820) 0.0 minPROGRESS> 22:43:14 |###########         |  55% (48,202) 0.0 minPROGRESS> 22:43:14 |############        |  60% (52,584) 0.0 minPROGRESS> 22:43:14 |#############       |  65% (56,966) 0.0 minPROGRESS> 22:43:14 |##############      |  70% (61,348) 0.0 minPROGRESS> 22:43:14 |###############     |  75% (65,730) 0.0 minPROGRESS> 22:43:14 |################    |  80% (70,112) 0.0 minPROGRESS> 22:43:14 |#################   |  85% (74,494) 0.0 minPROGRESS> 22:43:14 |##################  |  90% (78,876) 0.0 minPROGRESS> 22:43:14 |################### |  95% (83,258) 0.0 minPROGRESS> 22:43:15 |####################| 100% (87,640) 0.0 min
     ## 
     ##    OUTPUT> data_p_parse-select.tsv
     ##   RECORDS> 87640
@@ -337,7 +337,7 @@ data.
     ##  VALUES> IGHV
     ##   REGEX> True
     ## 
-    ## PROGRESS> 14:26:12 |                    |   0% (     0) 0.0 minPROGRESS> 14:26:13 |#                   |   5% ( 3,243) 0.0 minPROGRESS> 14:26:13 |##                  |  10% ( 6,486) 0.0 minPROGRESS> 14:26:13 |###                 |  15% ( 9,729) 0.0 minPROGRESS> 14:26:13 |####                |  20% (12,972) 0.0 minPROGRESS> 14:26:13 |#####               |  25% (16,215) 0.0 minPROGRESS> 14:26:13 |######              |  30% (19,458) 0.0 minPROGRESS> 14:26:13 |#######             |  35% (22,701) 0.0 minPROGRESS> 14:26:13 |########            |  40% (25,944) 0.0 minPROGRESS> 14:26:13 |#########           |  45% (29,187) 0.0 minPROGRESS> 14:26:13 |##########          |  50% (32,430) 0.0 minPROGRESS> 14:26:13 |###########         |  55% (35,673) 0.0 minPROGRESS> 14:26:14 |############        |  60% (38,916) 0.0 minPROGRESS> 14:26:14 |#############       |  65% (42,159) 0.0 minPROGRESS> 14:26:14 |##############      |  70% (45,402) 0.0 minPROGRESS> 14:26:14 |###############     |  75% (48,645) 0.0 minPROGRESS> 14:26:14 |################    |  80% (51,888) 0.0 minPROGRESS> 14:26:14 |#################   |  85% (55,131) 0.0 minPROGRESS> 14:26:14 |##################  |  90% (58,374) 0.0 minPROGRESS> 14:26:14 |################### |  95% (61,617) 0.0 minPROGRESS> 14:26:14 |####################| 100% (64,855) 0.0 min
+    ## PROGRESS> 22:43:15 |                    |   0% (     0) 0.0 minPROGRESS> 22:43:15 |#                   |   5% ( 3,243) 0.0 minPROGRESS> 22:43:16 |##                  |  10% ( 6,486) 0.0 minPROGRESS> 22:43:16 |###                 |  15% ( 9,729) 0.0 minPROGRESS> 22:43:16 |####                |  20% (12,972) 0.0 minPROGRESS> 22:43:16 |#####               |  25% (16,215) 0.0 minPROGRESS> 22:43:16 |######              |  30% (19,458) 0.0 minPROGRESS> 22:43:16 |#######             |  35% (22,701) 0.0 minPROGRESS> 22:43:16 |########            |  40% (25,944) 0.0 minPROGRESS> 22:43:16 |#########           |  45% (29,187) 0.0 minPROGRESS> 22:43:16 |##########          |  50% (32,430) 0.0 minPROGRESS> 22:43:16 |###########         |  55% (35,673) 0.0 minPROGRESS> 22:43:17 |############        |  60% (38,916) 0.0 minPROGRESS> 22:43:17 |#############       |  65% (42,159) 0.0 minPROGRESS> 22:43:17 |##############      |  70% (45,402) 0.0 minPROGRESS> 22:43:17 |###############     |  75% (48,645) 0.0 minPROGRESS> 22:43:17 |################    |  80% (51,888) 0.0 minPROGRESS> 22:43:17 |#################   |  85% (55,131) 0.0 minPROGRESS> 22:43:17 |##################  |  90% (58,374) 0.0 minPROGRESS> 22:43:17 |################### |  95% (61,617) 0.0 minPROGRESS> 22:43:17 |####################| 100% (64,855) 0.0 min
     ## 
     ##    OUTPUT> data_ph_parse-select.tsv
     ##   RECORDS> 64855
@@ -358,6 +358,9 @@ previous step.
     suppressPackageStartupMessages(library(tigger))
 
     dir.create(file.path("results", "tigger"))
+
+    ## Warning in dir.create(file.path("results", "tigger")): 'results/tigger' already
+    ## exists
 
     db <- read_rearrangement(file.path("results", "changeo",
                                        "data_ph_parse-select.tsv"))
@@ -546,11 +549,11 @@ for use in the following steps.
       select(v_call, v_call_genotyped)
 
     ## # A tibble: 3 x 2
-    ##   v_call                      v_call_genotyped
-    ##   <chr>                       <chr>           
-    ## 1 IGHV4-30-2*07,IGHV4-30-4*01 IGHV4-30-2*07   
-    ## 2 IGHV3-30*18,IGHV3-30-5*01   IGHV3-30*18     
-    ## 3 IGHV3-30*18,IGHV3-30-5*01   IGHV3-30*18
+    ##   v_call                               v_call_genotyped        
+    ##   <chr>                                <chr>                   
+    ## 1 IGHV3-20*01,IGHV3-20*03,IGHV3-20*05  IGHV3-20*01_C307T       
+    ## 2 IGHV3-23*01,IGHV3-23*04,IGHV3-23D*01 IGHV3-23*01,IGHV3-23D*01
+    ## 3 IGHV3-9*04                           IGHV3-9*01
 
     write_rearrangement(db, file.path("results", "tigger", "data_ph_genotyped.tsv"))
 
@@ -673,7 +676,7 @@ the dataset used to carry out the clonal assignments.*
     results <- hierarchicalClones(db, threshold=thr, v_call="v_call_genotyped", summarize_clones=TRUE)
 
     ## Warning in prepare_db(db = db, junction = junction, v_call = v_call, j_call =
-    ## j_call, : Removed 52 sequences with non ATCG charachters.
+    ## j_call, : Removed 52 sequences with non ATCG characters.
 
     # Plot a histogram of inter and intra clonal distances
     plot(results, binwidth=0.02)
@@ -724,7 +727,7 @@ And passing `"human/vdj/"` to the `readIMGT` function.
     # read in IMGT files in the Docker container
     references <- dowser::readIMGT(dir = "/usr/local/share/germlines/imgt/human/vdj")
 
-    ## [1] "Read in 1243 from 17 fasta files"
+    ## [1] "Read in 1305 from 17 fasta files"
 
     # reconstruct germlines
     results@db <- dowser::createGermlines(results@db, references, nproc = 1)

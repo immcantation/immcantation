@@ -289,11 +289,11 @@ You may wish to subset your data to only productive sequences:
     ## # A tibble: 5 x 66
     ##   sequence_id                 sequence  rev_comp productive v_call d_call j_call
     ##   <chr>                       <chr>     <lgl>    <lgl>      <chr>  <chr>  <chr> 
-    ## 1 ACGCCGAGTATAATGG-1_contig_1 GAAATACT~ FALSE    TRUE       IGHV4~ IGHD2~ IGHJ3~
-    ## 2 ACCAGTAAGCTCCTTC-1_contig_1 TGGGGGAG~ FALSE    TRUE       IGKV1~ <NA>   IGKJ2~
-    ## 3 GCGGGTTGTGCGGTAA-1_contig_2 GAGCTACA~ FALSE    TRUE       IGKV4~ <NA>   IGKJ4~
-    ## 4 CCTATTAGTGTGGCTC-1_contig_2 AGGAGTCA~ FALSE    TRUE       IGKV1~ <NA>   IGKJ1~
-    ## 5 TCTGAGACACAGAGGT-1_contig_2 GATGCTTT~ FALSE    TRUE       IGHV4~ IGHD3~ IGHJ3~
+    ## 1 ACACTGATCTGTTGAG-1_contig_2 TGGGGAGG~ FALSE    TRUE       IGKV1~ <NA>   IGKJ4~
+    ## 2 AGTAGTCAGGAATGGA-1_contig_1 AGCTCTCA~ FALSE    TRUE       IGHV3~ IGHD7~ IGHJ2~
+    ## 3 CGGAGTCTCACTCCTG-1_contig_1 AGAGATCT~ FALSE    TRUE       IGLV1~ <NA>   IGLJ3~
+    ## 4 TTAGGACAGAGTACAT-1_contig_2 GGAGAAGA~ FALSE    TRUE       IGKV3~ <NA>   IGKJ2~
+    ## 5 TGAGGGAAGCCACCTG-1_contig_1 AGAGCTCT~ FALSE    TRUE       IGLV4~ <NA>   IGLJ3~
     ## # i 59 more variables: sequence_alignment <chr>, germline_alignment <chr>,
     ## #   junction <chr>, junction_aa <chr>, v_cigar <chr>, d_cigar <chr>,
     ## #   j_cigar <chr>, vj_in_frame <lgl>, stop_codon <lgl>, v_sequence_start <int>,
@@ -719,7 +719,7 @@ And passing `"human/vdj/"` to the `readIMGT` function.
     # read in IMGT files in the Docker container
     references <- readIMGT(dir = "/usr/local/share/germlines/imgt/human/vdj")
 
-    ## [1] "Read in 1243 from 17 fasta files"
+    ## [1] "Read in 1305 from 17 fasta files"
 
     # reconstruct germlines
     results <- createGermlines(results, references, fields = "subject_id",
@@ -1065,16 +1065,16 @@ timepoints are more diverged from the germline:
     ## # A tibble: 35 x 4
     ##    clone_id  slope correlation      p
     ##    <chr>     <dbl>       <dbl>  <dbl>
-    ##  1 570      0.0453       0.711 0.0749
-    ##  2 699      0.120        0.877 0.165 
-    ##  3 209      0.0630       0.468 0.204 
-    ##  4 513      0.277        0.827 0.214 
-    ##  5 1118     0.488        0.444 0.222 
-    ##  6 573      0.0830       0.329 0.239 
-    ##  7 196      0.307        0.770 0.244 
-    ##  8 1122     0.708        0.578 0.247 
-    ##  9 183      0.169        0.300 0.281 
-    ## 10 198      0.198        0.489 0.324 
+    ##  1 570      0.0452       0.711 0.0969
+    ##  2 699      0.120        0.876 0.164 
+    ##  3 513      0.277        0.827 0.192 
+    ##  4 209      0.0630       0.468 0.228 
+    ##  5 1122     0.708        0.578 0.232 
+    ##  6 1118     0.489        0.444 0.249 
+    ##  7 196      0.307        0.770 0.255 
+    ##  8 573      0.0830       0.329 0.261 
+    ##  9 183      0.169        0.300 0.269 
+    ## 10 363      2.57         0.833 0.332 
     ## # i 25 more rows
 
     print(plots_time[[1]])
