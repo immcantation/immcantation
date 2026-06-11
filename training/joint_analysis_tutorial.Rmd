@@ -175,6 +175,7 @@ obj$has_airr <- rownames(obj@meta.data) %in% rownames(airr_meta)
 
 table(obj$has_airr)
 ```
+scirpy - accepts heavy and light chain
 
 # Visualization
 
