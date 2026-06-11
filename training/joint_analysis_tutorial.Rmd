@@ -1,0 +1,384 @@
+---
+title: "AIRR Community Meeting Tutorial: Joint Analysis of AIRR and scRNA-seq data in R"
+author: "Burhan Sabuwala, Jian Xing"
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 1
+    toc_float: true
+    number_sections: true
+    theme: cosmo
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+```
+
+# Overview
+
+This tutorial walks through integrating single-cell RNA-seq (scRNA-seq) gene expression data with B cell receptor (BCR) V(D)J repertoire data stored in [AIRR format](https://docs.airr-community.org/en/stable/). By the end of this tutorial, you will be able to:
+
+-   Load and align AIRR-format BCR repertoire data with a Seurat single-cell object
+-   Calculate somatic hypermutation (SHM) frequency and CDR3 properties for each B cell
+-   Visualize BCR features on Gene expression based UMAP embeddings
+-   Jointly analyze transcriptional and repertoire features to identify B cell subsets and their maturation states
+
+**Key concepts:**
+
+-   **AIRR format**: A standardized TSV format for adaptive immune receptor rearrangement data. The `airr` R package reads these files directly.
+-   **SHM (Somatic Hypermutation)**: Mutations introduced into BCR variable regions during affinity maturation in germinal centers. Higher `mu_freq` = more mature/antigen-experienced B cell.
+-   **Isotype**: The constant region of the BCR heavy chain (IgM, IgD, IgG, IgA, IgE). Class-switching from IgM to IgG/IgA reflects B cell activation.
+-   **CDR3**: The complementarity-determining region 3 is the most variable part of the BCR and critical for antigen binding. CDR3 length and amino acid properties can indicate functional differences between B cell subsets.
+
+## Prerequisites
+
+The following R packages are required:
+
+| Package | Purpose |
+|------------------------------------|------------------------------------|
+| `Seurat` | Single-cell RNA-seq analysis and object management |
+| `zellkonverter` | Reading and converting `.h5ad` (AnnData) files into Seurat-compatible objects |
+| `dplyr` | Data manipulation |
+| `ggplot2` | Data visualization |
+| `ggpubr` | Statistical annotations for ggplot2 figures |
+| `shazam` | Somatic hypermutation frequency analysis from the Immcantation suite |
+| `alakazam` | BCR lineage and repertoire analysis from the Immcantation suite |
+| `airr` | Reading AIRR-format rearrangement files |
+
+The subject for this tutorial is Y3, a young donor given seasonal influenza vaccination. Samples are collected at Day 0 (pre-vaccination) and Day 7 (post-vaccination). The Seurat object is loaded from an .h5ad file and contains UMAP embeddings, cluster assignments, and cell type annotations from CellTypist. The AIRR rearrangement file contains BCR sequences with V(D)J gene calls, isotype information, and mutation frequencies.
+
+# Set up
+
+## Load Libraries
+
+```{r libraries}
+#Install pak if required 
+if (!requireNamespace("pak", quietly = TRUE))
+  install.packages("pak")
+
+packages <- c("Seurat", "dplyr", "ggplot2", "tibble", "ggpubr", "shazam", "alakazam", "airr", "zellkonverter")
+new_pkg  <- packages[!(packages %in% installed.packages()[, "Package"])]
+if (length(new_pkg)) pak::pak(new_pkg, repos = "https://cloud.r-project.org")
+
+for (pkg in packages) suppressPackageStartupMessages(library(pkg, character.only = TRUE))
+
+knitr::opts_chunk$set(echo = TRUE, message = TRUE, warning = FALSE)
+cat("Setup complete.\n")
+```
+
+## Load data and annotate samples
+
+The single-cell object is read from an .h5ad file using zellkonverter and converted to a Seurat object. Subject and sample name metadata are then added directly, with timepoint extracted from the sample name.
+
+```{r load-gex-object} 
+sce <- readH5AD(file.path("scintegrator_results", "results", "scanpy_cluster", "concat.h5ad"))
+obj <- as.Seurat(sce, counts = "X", data = "X")
+```
+
+If zellkonverter fails, you could use [scCustomize](https://samuel-marsh.github.io/scCustomize/articles/Read_and_Write_Functions.html).
+
+
+```{r}
+obj$subject <- "Y3"
+obj$sample_name <- NA
+obj$sample_name[obj$sample == "F15_0_filtered_feature_bc_matrix"] <- "Y3_0"
+obj$sample_name[obj$sample == "F15_7_filtered_feature_bc_matrix"] <- "Y3_7"
+obj$timepoint <- sub("Y3_", "", obj$sample_name)
+```
+
+## Load AIRR Data
+
+The AIRR rearrangement file is loaded using `airr::read_rearrangement()`. This file contains BCR V(D)J sequences for all cells in the dataset.
+
+```{r load-airr-object}
+airr_data <- airr::read_rearrangement(file.path("~", "Downloads", "joint_analysis_singlecell_vdj.tsv"))
+```
+
+### Calculate Somatic Hypermutation (SHM) Frequency
+
+`observedMutations()` from the **shazam** package computes per-sequence mutation frequency (`mu_freq`) by comparing each BCR sequence to its inferred germline. This is a core metric for B cell maturation state — naïve B cells have low SHM while germinal center and memory B cells accumulate more mutations.
+
+```{r mutation-freq}
+# Shazam function
+airr_data <- observedMutations(airr_data,
+                                sequenceColumn = "sequence_alignment", 
+                                germlineColumn = "germline_alignment_d_mask",
+                                regionDefinition = NULL, frequency = TRUE,
+                                combine = TRUE, nproc = 4)
+```
+
+### Calculate CDR3 Amino Acid Properties
+
+```{r amino-acid-properties}
+# alakazam function
+airr_data <- aminoAcidProperties(airr_data, seq = "junction", trim = TRUE, label = "cdr3")
+```
+
+```{r}
+# 
+airr_data$v_gene_family <- getFamily(airr_data$v_call)
+airr_data$j_gene_family <- getFamily(airr_data$j_call)
+```
+
+### Merge AIRR Metadata into the Seurat Object
+
+Only **heavy chain (IGH)** productive rearrangements are retained for merging, as seurat objects can only take information per cell and every BCR has one heavy chain but might not have a light chain. Cell barcodes are reconstructed by concatenating `cell_id` with the sample name to match the gene expression object barcode format. The following AIRR fields are extracted per cell and added to the Seurat object's metadata via `AddMetaData()`:
+
+| Field                        | Description                      |
+|------------------------------|----------------------------------|
+| `v_call`, `d_call`, `j_call` | V, D, J gene assignments         |
+| `mu_freq`                    | Somatic hypermutation frequency  |
+| `c_call`                     | Isotype (e.g., IGHM, IGHA, IGHG) |
+| `clone_id`                   | Clonal cluster assignment        |
+| `cdr3_aa_length`             | CDR3 length                      |
+
+A boolean column `has_airr` is added to flag cells that have a matched BCR sequence. Not all cells in a scRNA-seq experiment will have BCR data (due to dropout or low-quality reads), so always check coverage before interpreting repertoire results.
+
+```{r combine-airr-data}
+# For tutorial we are only consider the heavy chain and productive rearrangements for merging with the Seurat metadata.
+airr_heavy <- airr_data %>%
+  filter(productive == TRUE) %>%
+  filter(locus == "IGH")
+
+# Concatenating cell_id with sample_name to create a unique identifier for merging with Seurat metadata
+airr_heavy <- airr_heavy %>%
+  mutate(
+    cell_barcode = paste0(cell_id, "-F15_", day, "_filtered_feature_bc_matrix")
+  ) 
+
+airr_meta <- airr_heavy %>%
+  select(
+    cell_id,
+    cell_barcode,
+    productive,
+    v_call,
+    v_gene_family,
+    j_gene_family,
+    d_call,
+    j_call,
+    c_call, # Isotype
+    mu_freq,
+    cdr3_aa_length,
+    clone_id,
+    indels,
+    sequence_vdj,
+    cdr1, 
+    cdr2,
+    consensus_count
+         ) %>%
+  distinct(cell_barcode, .keep_all = TRUE) %>%
+  tibble::column_to_rownames("cell_barcode")
+
+obj <- AddMetaData(obj, metadata = airr_meta)
+
+obj$has_airr <- rownames(obj@meta.data) %in% rownames(airr_meta)
+
+table(obj$has_airr)
+```
+
+# Visualization
+
+## Cell Type Annotations
+
+The plot below shows the UMAP embedding colored by cell type annotations from CellTypist (`cell_type_majority_vote`). Four B cell populations are of primary interest: Naïve B cells, Memory B cells, Age-associated B cells, and Plasma cells.
+
+```{r}
+DimPlot(obj, group.by = "cell_type_majority_vote", label = TRUE) + NoLegend()
+```
+
+## BCR Coverage
+
+This plot shows which cells on the UMAP have a matched BCR V(D)J sequence (`has_airr` = `TRUE`). Systematic gaps in coverage may indicate technical dropout or that certain cell types (e.g., plasma cells) produce fewer recoverable sequences.
+
+```{r}
+DimPlot(obj, group.by = "has_airr", pt.size = 0.3) + labs(title = "Has AIRR data?") + theme_classic()
+```
+
+## SHM Frequency on UMAP
+
+Projecting mutation frequency onto the UMAP spatially relates mutational burden with transcriptional state. Clusters with high `mu_freq` correspond to more antigen-experienced B cells (e.g., memory B cells, plasmablasts).
+
+```{r}
+FeaturePlot(obj, features = "mu_freq", pt.size = 0.3, order = TRUE)
+```
+
+## Isotype Distribution on UMAP
+
+Coloring the UMAP by isotype (`c_call`) reveals whether particular transcriptional clusters are dominated by specific isotypes, which can indicate functional B cell states (e.g., a plasma cell cluster enriched for IgA or IgG).
+
+```{r}
+DimPlot(obj, group.by = "c_call", pt.size = 0.3) + labs(title = "Isotype") + theme_classic() 
+```
+
+
+```{r}
+DimPlot(obj, group.by = "v_gene_family", pt.size = 0.3) + labs(title = "V gene family") + theme_classic() 
+```
+
+```{r}
+DimPlot(obj, group.by = "j_gene_family", pt.size = 0.3) + labs(title = "J gene family") + theme_classic() 
+```
+
+
+
+## SHM frequency and isotype distribution by cell type
+
+Mean SHM frequency and isotype composition are compared across the four B cell populations. Expected biology: Naïve B cells should show low SHM and be predominantly IgM/IgD, while Memory B cells and Plasma cells should show higher SHM and enrichment for class-switched isotypes (IgG, IgA).
+
+```{r}
+# Define B cell types and isotypes of interest
+b_cell_types <- c("Plasma cells", "Naive B cells", "Age-associated B cells", "Memory B cells")
+isotypes_of_interest <- c("IGHM", "IGHD", "IGHA", "IGHG", "IGHE")
+
+# Subset metadata to B cells with AIRR data
+b_meta <- obj@meta.data %>%
+  filter(cell_type_majority_vote %in% b_cell_types, has_airr == TRUE) %>%
+  mutate(
+    celltype = cell_type_majority_vote,
+    isotype  = substr(c_call, 1, 4)
+  )
+
+# --- Plot 1: Mean SHM Frequency per Cell Type ---
+b_meta %>%
+  filter(!is.na(mu_freq)) %>%
+  group_by(celltype) %>%
+  summarise(mean_mu = mean(mu_freq), se_mu = sd(mu_freq) / sqrt(n())) %>%
+  ggplot(aes(x = celltype, y = mean_mu, fill = celltype)) +
+  geom_col(width = 0.6) +
+  geom_errorbar(aes(ymin = mean_mu - se_mu, ymax = mean_mu + se_mu), width = 0.2) +
+  labs(title = "Mean SHM Frequency by B Cell Type",
+       x = NULL, y = "Mean Mutation Frequency") +
+  theme_bw() +
+  theme(legend.position = "none",
+        axis.text.x = element_text(angle = 30, hjust = 1))
+
+# --- Plot 2: Isotype Distribution per Cell Type ---
+b_meta %>%
+  filter(isotype %in% isotypes_of_interest) %>%
+  group_by(celltype, isotype) %>%
+  summarise(n = n(), .groups = "drop") %>%
+  group_by(celltype) %>%
+  mutate(pct = n / sum(n) * 100) %>%
+  ggplot(aes(x = celltype, y = pct, fill = isotype)) +
+  geom_col(width = 0.6) +
+  labs(title = "Isotype Distribution by B Cell Type",
+       x = NULL, y = "Percentage of Cells (%)") +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 30, hjust = 1))
+```
+
+## Cell type composition, SHM frequency, and isotype distribution by timepoint
+
+Here we compare transcriptional and repertoire features between Day 0 and Day 7 across the four B cell populations. Expected post-vaccination biology includes: an increase in Plasma cells at Day 7, higher SHM frequency in class-switched populations, and a shift from IgM-dominated to IgG/IgA-dominated isotype profiles in Memory B cells and Plasma cells.
+
+```{r}
+
+# --- Setup ---
+cluster_meta <- obj@meta.data %>%
+  filter(has_airr == TRUE) %>%
+  mutate(
+    timepoint_label = ifelse(timepoint == "0", "Day 0", "Day 7"),
+    isotype = substr(c_call, 1, 4),
+    cluster = cell_type_majority_vote
+  ) %>%
+  filter(cluster %in% b_cell_types)
+
+# --- Plot 1: Mutation Frequency per cluster, split by timepoint ---
+cluster_meta %>%
+  filter(!is.na(mu_freq)) %>%
+  ggplot(aes(x = timepoint_label, y = mu_freq, fill = timepoint_label)) +
+  geom_violin(alpha = 0.7, trim = FALSE) +
+  geom_boxplot(width = 0.12, outlier.shape = NA, fill = "white") +
+  scale_fill_manual(values = c("Day 0" = "steelblue", "Day 7" = "firebrick")) +
+  facet_wrap(~cluster, nrow = 1) +
+  ggpubr::stat_compare_means(method = "wilcox.test", label = "p.signif",
+                     label.x = 1.5) +
+  labs(title = "SHM Frequency by Cell Type: Day 0 vs Day 7",
+       x = NULL, y = "Mutation Frequency") +
+  theme_bw() +
+  theme(legend.position = "none",
+        strip.text = element_text(size = 8))
+```
+
+Characterizing the shift in cell type composition between Day 0 and Day 7.
+
+```{r}
+# --- Plot 2: Cell type composition shift per timepoint ---
+cluster_meta %>%
+  count(timepoint_label, cluster) %>%
+  group_by(timepoint_label) %>%
+  mutate(pct = n / sum(n) * 100) %>%
+  ggplot(aes(x = timepoint_label, y = pct, fill = cluster)) +
+  geom_col(width = 0.6) +
+  geom_text(aes(label = sprintf("%.1f%%", pct)),
+            position = position_stack(vjust = 0.5), size = 3) +
+  labs(title = "Cell Type Composition: Day 0 vs Day 7",
+       x = NULL, y = "Percentage (%)", fill = "Cell Type") +
+  theme_bw()
+```
+
+```{r}
+# --- Plot 3: Cell type absolute counts per timepoint ---
+cluster_meta %>%
+  count(timepoint_label, cluster) %>%
+  group_by(timepoint_label) %>%
+  mutate(pct = n / sum(n) * 100) %>%
+  ggplot(aes(x = cluster, y = pct, fill = timepoint_label)) +
+  geom_col(position = "dodge", width = 0.6) +
+  geom_text(aes(label = sprintf("%.1f%%", pct)),
+            position = position_dodge(width = 0.6),
+            vjust = -0.4, size = 3) +
+  scale_fill_manual(values = c("Day 0" = "steelblue", "Day 7" = "firebrick")) +
+  labs(title = "Cell Type Composition: Day 0 vs Day 7",
+       x = NULL, y = "% of Cells", fill = "Timepoint") +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 30, hjust = 1))
+```
+
+Isotype distribution shift between Day 0 and Day 7 across the four B cell populations.
+
+```{r}
+cluster_meta %>%
+  filter(isotype %in% c("IGHM", "IGHD", "IGHA", "IGHG", "IGHE"),
+         !is.na(isotype)) %>%
+  count(timepoint_label, cluster, isotype) %>%
+  group_by(timepoint_label, cluster) %>%
+  mutate(pct = n / sum(n) * 100) %>%
+  ggplot(aes(x = timepoint_label, y = pct, fill = isotype)) +
+  geom_col(width = 0.6) +
+  facet_wrap(~cluster, nrow = 1) +
+  labs(title = "Isotype Distribution per Cell Type: Day 0 vs Day 7",
+       x = NULL, y = "Percentage (%)", fill = "Isotype") +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 30, hjust = 1),
+        strip.text = element_text(size = 8))
+```
+
+```{r}
+cluster_meta %>%
+  filter(isotype %in% c("IGHM", "IGHD", "IGHA", "IGHG", "IGHE"),
+         !is.na(isotype)) %>%
+  count(timepoint_label, cluster, isotype) %>%
+  group_by(timepoint_label, cluster) %>%
+  mutate(pct = n / sum(n) * 100) %>%
+  ggplot(aes(x = timepoint_label, y = pct, fill = isotype)) +
+  geom_col(width = 0.6) +
+  facet_wrap(~cluster, nrow = 1) +
+  labs(title = "Isotype Distribution per Cell Type: Day 0 vs Day 7",
+       x = NULL, y = "Percentage (%)", fill = "Isotype") +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 30, hjust = 1),
+        strip.text = element_text(size = 8))
+```
+
+
+
+
+Have Questions? 
+ 
+ - Reach out to us: [Contact us](https://immcantation.readthedocs.io/en/stable/about.html)
+ 
+ - Immcantation Youtube Channel: [@immcantation](https://www.youtube.com/@immcantation)
+ 
+ - Antibody Society Website: [Antibody society](https://www.antibodysociety.org/)
