@@ -1,7 +1,6 @@
 ---
 title: "AIRR Community Meeting Tutorial: Joint Analysis of AIRR and scRNA-seq data in R"
 author: "Burhan Sabuwala, Jian Xing"
-date: "`r Sys.Date()`"
 output: 
   html_document:
     toc: true
