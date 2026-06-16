@@ -67,6 +67,10 @@ RUN SCOPER_VER=$(versions get -n scoper) \
 RUN DOWSER_VER=$(versions get -n dowser) \
     && Rscript -e "devtools::install_version('dowser', '${DOWSER_VER}', quiet=FALSE, clean=TRUE)"
 
+# Install TIgGER
+RUN DOWSER_VER=$(versions get -n tigger) \
+    && Rscript -e "devtools::install_version('tigger', '${DOWSER_VER}', quiet=FALSE, clean=TRUE)"
+
 # Install IgPhyML
 RUN IGPHYML=$(versions get -n igphyml) \
     && wget2 -q --force-progress --no-check-certificate \
@@ -91,3 +95,4 @@ CMD echo -e " Version information:\n"\
             "  builds report\n"\
             "Description of available pipelines:\n"\
             "  pipelines report"
+            
