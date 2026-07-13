@@ -122,7 +122,7 @@ repertoire sequencing data.
 
     * - |airrflow-img|
       
-      - **nf-core/airrflow**
+      - `nf-core/airrflow <airrflow_>`_
 
         + Nextflow workflow using Immcantation
         + Bulk and single-cell BCR and TCR analysis
@@ -153,7 +153,7 @@ AIRR-seq data.
             :align: right
             :alt: downloads
 
-        **Alakazam**
+        `Alakazam`_
 
         + Repertoire diversity
         + V(D)J gene usage
@@ -169,7 +169,7 @@ AIRR-seq data.
             :align: right
             :alt: downloads
 
-        **Amulety**
+        `Amulety`_
 
         + BCR and TCR embeddings
         + Multiple embedding models supported
@@ -184,7 +184,7 @@ AIRR-seq data.
             :align: right
             :alt: downloads
 
-        **Change-O**
+        `Change-O`_
 
         + V(D)J alignment with IgBLAST and IMGT
 
@@ -198,7 +198,7 @@ AIRR-seq data.
             :align: right
             :alt: downloads
 
-        **Dowser**
+        `Dowser`_
 
         + B cell lineage trees
         + Migration and differentiation analysis
@@ -214,7 +214,7 @@ AIRR-seq data.
             :align: right
             :alt: downloads
 
-        **pRESTO**
+        `pRESTO`_
 
         + Bulk BCR sequence data pre-processing
         + Read assembly and QC
@@ -230,7 +230,7 @@ AIRR-seq data.
             :align: right
             :alt: downloads
 
-        **SCOPer**
+        `SCOPer`_
 
         + Identify clonal relationships
 
@@ -244,7 +244,7 @@ AIRR-seq data.
             :align: right
             :alt: downloads
 
-        **SHazaM**
+        `SHazaM`_
 
         + Clonal clustering threshold tuning
         + Mutation profiling
@@ -261,7 +261,7 @@ AIRR-seq data.
             :align: right
             :alt: downloads
 
-        **TIgGER**
+        `TIgGER`_
 
         + Novel polymorphism detection
         + Genotyping
@@ -285,7 +285,7 @@ and complement Immcantation by providing specialized functionality for AIRR anal
     :align: left
 
     * - |igphyml-img|
-      - **IgPhyML**
+      - `IgPhyML`_
 
         + Method to build lineage trees
         + Mutation/selection hypothesis testing
@@ -296,7 +296,7 @@ and complement Immcantation by providing specialized functionality for AIRR anal
            <div style="text-align: right;"><a href="https://sites.dartmouth.edu/hoehn/">Hoehn Lab</a></div>
 
     * - |rabhit-img|
-      - **RAbHIT**
+      - `RAbHIT`_
 
         + Determination of V-D-J haplotypes
 
@@ -305,7 +305,7 @@ and complement Immcantation by providing specialized functionality for AIRR anal
            <div style="text-align: right;"><a href="https://medicine.yale.edu/profile/gur-yaari/">Yaari Lab</a></div>
 
     * - |piglet-img|
-      - **PIgLET**
+      - `PIgLET`_
 
         + Tools to improve genotype inference      
 
@@ -314,7 +314,7 @@ and complement Immcantation by providing specialized functionality for AIRR anal
            <div style="text-align: right;"><a href="https://medicine.yale.edu/profile/gur-yaari/">Yaari Lab</a></div>
 
     * - |rdi-img|
-      - **RDI**
+      - `RDI`_
 
         + Repertoire Dissimilarity Index
 
@@ -323,7 +323,7 @@ and complement Immcantation by providing specialized functionality for AIRR anal
            <div style="text-align: right;"><a href="https://medicine.yale.edu/lab/kleinstein/">Kleinstein Lab</a></div>
 
     * - |sumrep-img|
-      - **sumrep**
+      - `sumrep`_
 
         + Generate repertoire summary statistics.
         + Visualize and comparing repertoire summaries.
