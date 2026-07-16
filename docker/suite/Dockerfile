@@ -268,6 +268,13 @@ RUN fetch_imgtdb.sh -o /usr/local/share/germlines/imgt \
     && imgt2igblast.sh -i /usr/local/share/germlines/imgt -o /usr/local/share/igblast \
     && fetch_phix.sh -o /usr/local/share/phix
 
+# Download and build AIRR-C (OGRDB) references (issues #129, #148).
+# AIRR-C IG sets from OGRDB, with IMGT filling TR and missing constant regions;
+# mouse is organised per strain under germlines/airrc/mouse/<strain>/.
+RUN fetch_references.sh -d airrc-imgt -o /usr/local/share/germlines/airrc \
+    && fetch_igblastdb.sh -x -o /usr/local/share/igblast_airrc \
+    && ref2igblast.sh -d airrc-imgt -i /usr/local/share/germlines/airrc -o /usr/local/share/igblast_airrc
+
 # Patch IgBLAST database
 ARG IGBLAST_PATCH_URL="https://ftp.ncbi.nih.gov/blast/executables/igblast/release/patch"
 RUN mkdir -p /tmp/igblast_patch && \
