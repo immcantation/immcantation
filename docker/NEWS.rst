@@ -1,6 +1,16 @@
 Release Notes
 ========================================================================
 
+Version 4.9.0.dev: Unreleased
+------------------------------------------------------------------------
+
+Image Changes:
+
++ Updated base image to Fedora 44.
++ Removed the ggplot2/xfun/ggiraph version pins and Bioconductor 3.21 pin
+  added in 4.7.0 as a temporary enchantr compatibility fix; these packages
+  now install at their current versions.
+
 Version 4.8.0: June 7, 2026
 ------------------------------------------------------------------------
 

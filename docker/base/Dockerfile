@@ -1,4 +1,4 @@
-FROM fedora:42
+FROM fedora:44
 LABEL maintainer="Jason Anthony Vander Heiden [jason.vanderheiden@yale.edu], \
                   Susanna Marquez [susanna.marquez@yale.edu]" \
       description="Standard environment and dependencies for the Immcantation framework."
@@ -34,7 +34,6 @@ RUN dnf -y update && dnf install -y \
     libcurl-devel \
     libgit2-devel \
     libidn \
-    libidn1.34 \
     libnsl \
     libsodium-devel \
     libssh2 \
@@ -60,8 +59,7 @@ RUN dnf -y update && dnf install -y \
     python3-scipy \
     R-core \
     R-core-devel \
-    R-devtools \
-    redland-devel \    
+    redland-devel \
     sudo \
     tar \
     texlive-pdfcrop \
@@ -78,19 +76,9 @@ RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 20
 
 # R build setup
 ARG R_REPO="https://cloud.r-project.org/"
-ARG R_DEPS_REINSTALL="c('callr', \
-                        'crayon', \
-                        'desc', \
-                        'lifecycle', \
-                        'pkgbuild', \
-                        'prettyunits', \
-                        'R6', \
-                        'rcmdcheck', \
-                        'rprojroot', \
-                        'sessioninfo', \
-                        'withr', \
-                        'xopen')"
 ARG R_DEPS="c('BiocManager', \
+              'ggiraph', \
+              'ggplot2', \
               'httpuv', \
               'httr', \
               'knitr', \
@@ -103,8 +91,7 @@ ARG R_DEPS="c('BiocManager', \
               'roxygen2', \
               'stringr', \
               'testthat', \
-              'V8', \
-              'withr')"
+              'V8')"
 ARG R_BIOC_DEPS="c('Biostrings', \
               'ComplexHeatmap', \
               'DECIPHER', \
@@ -114,27 +101,12 @@ ARG R_BIOC_DEPS="c('Biostrings', \
               'IRanges')"
 # Install R packages
 # - Force install of Rcpp from CRAN first to avoid dependency issues
-# - Temporary fix due to compatibility issues with enchantr:
-#   - Lock ggplot2 version 3.5.2. Set dependency to only 'Depends', 'Imports', and 'LinkingTo' to avoid upgrading ggplot2 itself (?!)
-#     It seems that some dependencies of ggplot2 suggest to upgrade ggplot2.
-#   - Need ggiraph version to 0.9.0 to be compatible with ggplot2 3.5.2
-#   - Using Bioconductor 3.21 (3.22 upgrades ggplot2)
 RUN echo "options(repos='${R_REPO}')" >> /usr/lib64/R/library/base/R/Rprofile \
     && mkdir -p /usr/share/doc/R/html
-RUN Rscript -e "for (lib in .libPaths()) { \
-                    installed_in_lib <- rownames(installed.packages(lib.loc=lib));\
-                    to_remove <- intersect(${R_DEPS_REINSTALL}, installed_in_lib);\
-                    if (length(to_remove) > 0) { remove.packages(to_remove, lib=lib) }\
-                }"
-RUN Rscript -e "install.packages(${R_DEPS_REINSTALL}, clean=TRUE)"
+RUN Rscript -e "install.packages(c('devtools', 'remotes'), clean=TRUE)"
 RUN Rscript -e "devtools::install_cran('Rcpp', upgrade='never', dependencies=T, force=T)"
-RUN Rscript -e "devtools::install_version('xfun', version='0.55', upgrade='never');library('xfun')"
-RUN Rscript -e "devtools::install_cran(c('rmarkdown'), upgrade='never', dependencies=T, force=T)"
-RUN Rscript -e "devtools::install_version('ggplot2', upgrade='never', dependencies=c('Depends', 'Imports', 'LinkingTo'), version='3.5.2');library('ggplot2')"
-RUN Rscript -e "devtools::install_version('ggiraph', version='0.9.0', upgrade='never');library('ggiraph')"
 RUN Rscript -e "devtools::install_cran(${R_DEPS}, upgrade='never', dependencies=c('Depends', 'Imports', 'LinkingTo'))"
 RUN Rscript -e " \
-    BiocManager::install(version='3.21', ask=FALSE, update=FALSE); \
     BiocManager::install(${R_BIOC_DEPS}, update=FALSE, ask=FALSE, force=FALSE); \
     for (p in c(${R_DEPS}, ${R_BIOC_DEPS})) {library(p,character.only=T)}; \
     "
