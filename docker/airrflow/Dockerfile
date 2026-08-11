@@ -68,8 +68,8 @@ RUN DOWSER_VER=$(versions get -n dowser) \
     && Rscript -e "devtools::install_version('dowser', '${DOWSER_VER}', quiet=FALSE, clean=TRUE)"
 
 # Install TIgGER
-RUN DOWSER_VER=$(versions get -n tigger) \
-    && Rscript -e "devtools::install_version('tigger', '${DOWSER_VER}', quiet=FALSE, clean=TRUE)"
+RUN TIGGER_VER=$(versions get -n tigger) \
+    && Rscript -e "devtools::install_version('tigger', '${TIGGER_VER}', quiet=FALSE, clean=TRUE)"
 
 # Install IgPhyML
 RUN IGPHYML=$(versions get -n igphyml) \
