@@ -32,4 +32,12 @@ setwd(opt$PKG_DIR)
 install_deps(dependencies=TRUE, upgrade=opt$UPGRADE)
 compile_dll()
 document()
-install(build_vignettes=TRUE, upgrade=opt$UPGRADE)
+# Since devtools 2.5.0, install() (unlike install_deps()) requires upgrade to
+# be a single TRUE/FALSE/NA, not a "never"/"always" string.
+upgrade_flag <- switch(opt$UPGRADE,
+                       "always"=TRUE,
+                       "never"=FALSE,
+                       "TRUE"=TRUE,
+                       "FALSE"=FALSE,
+                       FALSE)
+install(build_vignettes=TRUE, upgrade=upgrade_flag)
