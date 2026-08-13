@@ -99,7 +99,7 @@ RUN CDHIT=$(versions get -n cd-hit) \
 RUN PHYLIP=$(versions get -n phylip) \
     && wget2 -q --force-progress --no-check-certificate \
        https://phylipweb.github.io/phylip/download/phylip-${PHYLIP}.tar.gz \
-    && tar -zxf phylip-${PHYLIP}.tar.gz \
+    && bsdtar -zxf phylip-${PHYLIP}.tar.gz \
     && (cd phylip-${PHYLIP}/src && sed -i '/double computeAngle/a void makebox(char *, double *, double *, double *, long);' draw.h && make -f Makefile.unx install CFLAGS='-fcommon') \
     && mv phylip-${PHYLIP}/exe/* /usr/local/bin \
     && rm -r phylip-${PHYLIP}.tar.gz phylip-${PHYLIP}
