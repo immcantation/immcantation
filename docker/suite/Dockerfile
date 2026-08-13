@@ -49,7 +49,8 @@ RUN VSEARCH=$(versions get -n vsearch) \
 RUN CDHIT=$(versions get -n cd-hit) \
     && wget2 -q --force-progress --no-check-certificate \
        https://github.com/weizhongli/cdhit/archive/V${CDHIT}.tar.gz \
-    && tar -zxf V${CDHIT}.tar.gz \
+    && mkdir -p cdhit-${CDHIT} \
+    && tar -zxf V${CDHIT}.tar.gz -C cdhit-${CDHIT} --strip-components 1 \
     && (cd cdhit-${CDHIT} && make && make install) \
     && rm -r V${CDHIT}.tar.gz cdhit-${CDHIT}
 
