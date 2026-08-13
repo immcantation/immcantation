@@ -81,11 +81,15 @@ RUN IGBLAST=$(versions get -n igblast) \
     && rm -r ncbi-igblast-${IGBLAST}-x64-linux.tar.gz ncbi-igblast-${IGBLAST}
 
 # Install CD-HIT
+# Uses bsdtar instead of tar: GNU tar's CVE-2025-45582 hardening extracts
+# via openat2(), which the Docker Hub build sandbox's seccomp profile
+# rejects with ENOSYS ("Function not implemented"). bsdtar (libarchive)
+# predates openat2 and isn't affected. Same fix as BLAST+/IgBLAST below.
 RUN CDHIT=$(versions get -n cd-hit) \
     && wget2 -q --force-progress --no-check-certificate \
        https://github.com/weizhongli/cdhit/archive/V${CDHIT}.tar.gz \
     && mkdir -p cdhit-${CDHIT} \
-    && tar -zxf V${CDHIT}.tar.gz -C cdhit-${CDHIT} --strip-components 1 \
+    && bsdtar -zxf V${CDHIT}.tar.gz -C cdhit-${CDHIT} --strip-components 1 \
     && (cd cdhit-${CDHIT} && make && make install) \
     && rm -r V${CDHIT}.tar.gz cdhit-${CDHIT}
 
