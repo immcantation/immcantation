@@ -23,6 +23,7 @@ RUN dnf -y update && dnf install -y \
     automake \
     atlas-devel \
     biber \
+    bsdtar \
     findutils \
     fontconfig-devel \
     fribidi-devel \
