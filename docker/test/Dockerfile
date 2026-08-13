@@ -65,7 +65,7 @@ RUN VSEARCH=$(versions get -n vsearch) \
 RUN BLAST=$(versions get -n blast) \
     && wget2 -q --force-progress --no-check-certificate \
        https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/${BLAST}/ncbi-blast-${BLAST}+-x64-linux.tar.gz \
-    && tar -zxf ncbi-blast-${BLAST}+-x64-linux.tar.gz \
+    && bsdtar -zxf ncbi-blast-${BLAST}+-x64-linux.tar.gz \
     && mv ncbi-blast-${BLAST}+/bin/* /usr/local/bin \
     && rm -r ncbi-blast-${BLAST}+-x64-linux.tar.gz ncbi-blast-${BLAST}+
 
@@ -73,7 +73,7 @@ RUN BLAST=$(versions get -n blast) \
 RUN IGBLAST=$(versions get -n igblast) \
     && wget2 -q --force-progress --no-check-certificate \
        https://ftp.ncbi.nlm.nih.gov/blast/executables/igblast/release/${IGBLAST}/ncbi-igblast-${IGBLAST}-x64-linux.tar.gz \
-    && tar -zxf ncbi-igblast-${IGBLAST}-x64-linux.tar.gz \
+    && bsdtar -zxf ncbi-igblast-${IGBLAST}-x64-linux.tar.gz \
     && mv ncbi-igblast-${IGBLAST}/bin/* /usr/local/bin \
     && mkdir -p /usr/local/share/igblast \
     && fetch_igblastdb.sh -o /usr/local/share/igblast \
