@@ -73,6 +73,13 @@ RUN dnf -y update && dnf install -y \
 # System environment variables
 ENV LD_LIBRARY_PATH="/usr/lib64/R/lib:/usr/lib64/atlas"
 #ENV R_LIBS_SITE="/usr/lib64/R/library:/usr/share/R/library"
+# R's utils::untar() defaults to the "tar" env var (or the system tar found
+# on PATH) to extract downloaded source packages (devtools/remotes install_*
+# functions, install_deps, etc). GNU tar's CVE-2025-45582 hardening extracts
+# via openat2(), which the Docker Hub build sandbox's seccomp profile rejects
+# with ENOSYS ("Function not implemented"). Forcing R's built-in (pure R/C,
+# no openat2) untar implementation.
+ENV TAR=internal
 RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 20
 
 # R build setup
