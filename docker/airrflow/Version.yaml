@@ -2,16 +2,17 @@ immcantation:
   version:  devel
   date:     2025.03.31
 package:
-  alakazam: 1.3.0
-  shazam:   1.2.0
-  scoper:   1.3.0
-  dowser:   2.3
-  enchantr: 0.1.21
+  alakazam: 1.4.3
+  shazam:   1.3.2
+  scoper:   1.5.0
+  dowser:   2.4.1
+  tigger:   1.1.3
+  enchantr: 0.1.25
   igphyml:  2.0.0
 dependency:
-  airr-py:  1.5.1
-  airr-r:   1.5.0
+  airr-py:  1.6.1
+  airr-r:   1.6.1
   cd-hit:   4.8.1
   muscle:   3.8.425
   raxml-ng: 1.2.2
-  vsearch:  2.30.0
+  vsearch:  2.30.4
