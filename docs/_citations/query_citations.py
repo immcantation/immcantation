@@ -161,8 +161,21 @@ class PubMedCitationQuery:
                     sys.exit(1)
                 
                 response.raise_for_status()
-                
+
                 batch_papers = self._parse_pubmed_xml(response.content)
+
+                # PubMed's own XML has no structured "corresponding author" field,
+                # so when a paper's PubMed record gave us no author emails at all,
+                # fall back to PMC's full-text markup (which does mark corresponding
+                # authors explicitly) whenever a PMCID is available. Only worth doing
+                # when emails are actually going to be kept in the output.
+                for paper in batch_papers:
+                    if self.save_emails and not paper['corresponding_emails'] and paper['pmcid']:
+                        pmc_corresponding = self._get_pmc_corresponding_authors(paper['pmcid'])
+                        if pmc_corresponding:
+                            paper['corresponding_authors'] = pmc_corresponding['corresponding_authors']
+                            paper['corresponding_emails'] = pmc_corresponding['corresponding_emails']
+
                 all_papers.extend(batch_papers)
                 
                 if len(pmids) > batch_size:
@@ -176,9 +189,250 @@ class PubMedCitationQuery:
                     sys.exit(1)
                 print(f"Error fetching details for batch {i//batch_size + 1}: {e}")
                 continue
-        
+
         return all_papers
-    
+
+    def _get_pmc_corresponding_authors(self, pmcid):
+        """
+        Fetch the PMC full-text JATS XML for a PMCID and extract corresponding
+        authors from its structured markup: <contrib corresp="yes"> identifies
+        the corresponding author(s), and <author-notes>/<corresp> holds their
+        emails. Used only as a fallback for papers whose PubMed record had no
+        author emails at all, since PubMed/MEDLINE XML has no corresponding-
+        author field of its own.
+
+        Args:
+            pmcid (str): PMC ID, e.g. "PMC12807691"
+
+        Returns:
+            dict or None: {'corresponding_authors': str, 'corresponding_emails': str},
+                           or None if the lookup failed or found nothing usable.
+        """
+        efetch_url = f"{self.base_url}efetch.fcgi"
+        efetch_params = {
+            'db': 'pmc',
+            'id': pmcid,
+            'rettype': 'xml',
+            'email': self.email,
+            'tool': self.tool
+        }
+
+        # This is a best-effort fallback layered on top of already-successful
+        # PubMed data, so a transient NCBI hiccup here shouldn't cost the row
+        # its corresponding-author info permanently the way it would for the
+        # primary fetch -- retry a couple of times before giving up.
+        root = None
+        for attempt in range(3):
+            try:
+                time.sleep(self.delay)
+                response = requests.get(efetch_url, params=efetch_params)
+
+                if response.status_code == 500:
+                    time.sleep(self.delay * (attempt + 1))
+                    continue
+
+                response.raise_for_status()
+                root = ET.fromstring(response.content)
+                break
+            except (requests.RequestException, ET.ParseError):
+                time.sleep(self.delay * (attempt + 1))
+                continue
+
+        if root is None:
+            return None
+
+        article_meta = root.find('.//article-meta')
+        if article_meta is None:
+            return None
+
+        # Map author-notes <corresp id="..."> elements to the email address(es)
+        # and raw text they contain, plus two forms of per-email attribution
+        # hint publishers use when one note lists several corresponding
+        # authors: a name/initials immediately before an email ("Name, ...
+        # <email>"), or a "(INITIALS)" marker immediately after one
+        # ("<email> (MCV)").
+        email_pattern = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b'
+        corresp_by_id = {}
+        for note_index, corresp in enumerate(article_meta.findall('.//author-notes/corresp')):
+            # Some publishers omit the id attribute entirely; such a note can
+            # never be xref-linked, but it's still a real corresponding-author
+            # note that the unlinked-note fallback below needs to see, so give
+            # it a synthetic key rather than dropping it.
+            corresp_id = corresp.get('id') or f'__unlinked_{note_index}'
+            full_text = ''.join(corresp.itertext())
+            emails = list(dict.fromkeys(re.findall(email_pattern, full_text)))
+            if not emails:
+                continue
+
+            segments = []  # (text immediately before this email, email)
+            trailing_initials = {}  # email -> "(INITIALS)" marker right after it, if any
+            prev_end = 0
+            for m in re.finditer(email_pattern, full_text):
+                segments.append((full_text[prev_end:m.start()], m.group()))
+                prev_end = m.end()
+                tail_match = re.match(r'\s*\(([A-Za-z.]{2,6})\)', full_text[m.end():m.end() + 12])
+                if tail_match:
+                    trailing_initials[m.group()] = tail_match.group(1).replace('.', '')
+
+            initials_tokens = {tok.replace('.', '') for tok in re.findall(r'\b(?:[A-Z]\.){1,4}', full_text)}
+            initials_tokens.update(trailing_initials.values())
+
+            corresp_by_id[corresp_id] = {
+                'emails': emails, 'text': full_text, 'segments': segments,
+                'trailing_initials': trailing_initials, 'initials_tokens': initials_tokens
+            }
+
+        contribs = article_meta.findall(".//contrib-group/contrib[@contrib-type='author']")
+
+        def author_name_of(contrib):
+            name_elem = contrib.find('name')
+            if name_elem is None:
+                return None
+            surname = name_elem.find('surname')
+            given_names = name_elem.find('given-names')
+            if surname is None or not surname.text:
+                return None
+            name = surname.text
+            if given_names is not None and given_names.text:
+                name = f"{surname.text} {given_names.text}"
+            return name
+
+        def initials_of(contrib):
+            name_elem = contrib.find('name')
+            if name_elem is None:
+                return None
+            surname = name_elem.find('surname')
+            given_names = name_elem.find('given-names')
+            given_initials = given_names.get('initials') if given_names is not None else None
+            if given_initials and surname is not None and surname.text:
+                return f"{given_initials}{surname.text[0]}"
+            return None
+
+        def emails_for_author_in_note(contrib, info):
+            """Which email(s) in this one corresp note belong to this author,
+            or [] if the note doesn't appear to name/mark them at all."""
+            surname_elem = contrib.find('name/surname')
+            surname = surname_elem.text if surname_elem is not None else None
+            contrib_initials = initials_of(contrib)
+
+            name_hit = surname is not None and surname in info['text']
+            initials_hit = contrib_initials is not None and contrib_initials in info['initials_tokens']
+            if not name_hit and not initials_hit:
+                return []
+
+            # Prefer a precise per-email match over handing over every email
+            # in a multi-author note: a name immediately preceding this
+            # email, or a "(INITIALS)" marker immediately following it.
+            precise = []
+            if surname:
+                precise.extend(email for segment, email in info['segments'] if surname in segment)
+            if contrib_initials:
+                precise.extend(email for email, token in info['trailing_initials'].items() if token == contrib_initials)
+            if precise:
+                return list(dict.fromkeys(precise))
+
+            return info['emails']
+
+        # Publishers vary in how they link a <contrib> to its corresp note: the
+        # xref's ref-type is "corresp" for some, "author-notes" for others. Some
+        # publishers also reuse the same note id across unrelated footnotes (e.g.
+        # an "equal contribution" xref pointing at the same id as the corresp
+        # note), so a rid match alone isn't always reliable -- resolve those via
+        # emails_for_author_in_note() instead of trusting the link blindly.
+        links_per_corresp_id = {}
+        for contrib in contribs:
+            for xref in contrib.findall('.//xref'):
+                rid = xref.get('rid')
+                if xref.get('ref-type') in ('corresp', 'author-notes') and rid in corresp_by_id:
+                    links_per_corresp_id[rid] = links_per_corresp_id.get(rid, 0) + 1
+
+        corresponding_authors = []
+        corresponding_emails = []
+
+        for contrib in contribs:
+            linked_emails = []
+            for xref in contrib.findall('.//xref'):
+                rid = xref.get('rid')
+                if xref.get('ref-type') not in ('corresp', 'author-notes') or rid not in corresp_by_id:
+                    continue
+                info = corresp_by_id[rid]
+                if links_per_corresp_id[rid] == 1:
+                    linked_emails.extend(info['emails'])
+                else:
+                    linked_emails.extend(emails_for_author_in_note(contrib, info))
+
+            # Publishers vary in how they flag the corresponding author in JATS:
+            # some set corresp="yes" on <contrib>, others only link a <xref>
+            # to an <author-notes> entry. Accept either as proof of corresponding
+            # status -- but NOT the mere presence of an <email> inside <contrib>,
+            # since some publishers (e.g. JCI) embed every author's email there,
+            # corresponding or not. An embedded email is only pulled in as an
+            # extra source once corresp="yes" or a linked note already qualifies
+            # this contrib, for publishers that skip the author-notes indirection
+            # (email lives directly in <contrib><address><email>).
+            is_corresponding = contrib.get('corresp') == 'yes' or bool(linked_emails)
+            if not is_corresponding:
+                continue
+
+            author_emails = list(linked_emails)
+            if contrib.get('corresp') == 'yes':
+                author_emails.extend(e.text.strip() for e in contrib.findall('.//email') if e.text and e.text.strip())
+            author_emails = list(dict.fromkeys(author_emails))
+
+            author_name = author_name_of(contrib)
+            if author_name is None:
+                continue
+
+            if author_emails:
+                corresponding_authors.append(f"{author_name} <{', '.join(author_emails)}>")
+                corresponding_emails.extend(author_emails)
+            else:
+                corresponding_authors.append(author_name)
+
+        # Some publishers put a real corresponding-author note in <author-notes>
+        # but never link it to any <contrib> at all -- no id, or an id nothing
+        # references (this can coexist with a <contrib corresp="yes"> that has
+        # no email of its own, which is why this triggers on "no email found
+        # yet" rather than "no corresponding author found yet": the main loop
+        # above may already have added a name with no email attached). The
+        # xref-based matching above can't find these notes. Fall back to the
+        # same conventions PubMed-XML parsing uses: try to match the note's
+        # own text to an author (by surname or initials), and if that fails,
+        # assume the last-listed author is corresponding (common academic
+        # convention). Discard any name-only entries from the main loop first,
+        # since this sweep is more thorough and will reconstruct them anyway.
+        if not corresponding_emails and corresp_by_id:
+            corresponding_authors = []
+            unclaimed_emails = []
+            for info in corresp_by_id.values():
+                unclaimed_emails.extend(info['emails'])
+            unclaimed_emails = list(dict.fromkeys(unclaimed_emails))
+
+            for contrib in contribs:
+                matched = []
+                for info in corresp_by_id.values():
+                    matched.extend(emails_for_author_in_note(contrib, info))
+                matched = list(dict.fromkeys(matched))
+                if matched:
+                    author_name = author_name_of(contrib)
+                    if author_name:
+                        corresponding_authors.append(f"{author_name} <{', '.join(matched)}>")
+                        corresponding_emails.extend(matched)
+
+            if not corresponding_authors and contribs:
+                last_author_name = author_name_of(contribs[-1])
+                if last_author_name:
+                    corresponding_authors.append(f"{last_author_name} <{', '.join(unclaimed_emails)}>")
+                    corresponding_emails.extend(unclaimed_emails)
+
+        if not corresponding_authors:
+            return None
+
+        return {
+            'corresponding_authors': '; '.join(corresponding_authors),
+            'corresponding_emails': '; '.join(list(dict.fromkeys(corresponding_emails)))
+        }
+
     def _parse_pubmed_xml(self, xml_content):
         """
         Parse PubMed XML response to extract paper details.
@@ -464,11 +718,10 @@ class PubMedCitationQuery:
                     })
                 else:
                     for paper in citing_papers:
-                        corresponding_authors = paper['corresponding_authors']
-                        corresponding_emails = paper['corresponding_emails']
-                        if not self.save_emails:
-                            corresponding_authors = _strip_emails(corresponding_authors)
-                            corresponding_emails = ''
+                        # corresponding_authors is always name-only; emails live
+                        # solely in corresponding_emails (populated only with --save-emails)
+                        corresponding_authors = _strip_emails(paper['corresponding_authors'])
+                        corresponding_emails = paper['corresponding_emails'] if self.save_emails else ''
                         writer.writerow({
                             'original_pmid': original_pmid,
                             'citing_pmid': paper['pmid'],
