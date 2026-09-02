@@ -11,6 +11,10 @@ Image Changes:
   added in 4.7.0 as a temporary enchantr compatibility fix; these packages
   now install at their current versions.
 
+Version Updates:
+
++ changeo 1.3.5
+
 Version 4.8.0: June 7, 2026
 ------------------------------------------------------------------------
 
