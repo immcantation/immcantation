@@ -63,7 +63,11 @@ RUN dnf -y update && dnf install -y \
     redland-devel \
     sudo \
     tar \
+    texlive-courier \
+    texlive-helvetic \
+    texlive-inconsolata \
     texlive-pdfcrop \
+    texlive-times \
     texlive-titling \
     v8-devel \
     wget \
