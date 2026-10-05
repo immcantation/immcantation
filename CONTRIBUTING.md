@@ -232,7 +232,7 @@ src/*.dll
 +   The `master` branch contains the last stable release.
 +   Development happens in forked repositories and is incorporated into Immcantation repositories through pull requests to the `dev` branch.
 +   When changes in `dev` are ready for release, they are merged into `master`.
-+   If necessary, open a maintenance branch to update an old, backwards incompatible major version. For example, `v0.3_maintenance` to update code in v0.3 when default has moved on to v0.4.
++   If necessary, open a maintenance branch to update an old, backwards incompatible major version. For example, `v0.3_maintenance` to update code in v0.3 when `master` has moved on to v0.4.
 
 **How to Contribute Code to Immcantation Repositories**
 
