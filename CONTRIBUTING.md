@@ -368,7 +368,7 @@ git push origin dev
 
 ### Annotating Versions
 
-* Use tags in git to denote official versions in the form `Version 0.1.1 - Description`.
+* Use tags in git to denote official versions, named with the bare version number (eg, `0.1.1`).
 * Do not tag development builds. Just leave `x.y.z.999` in the source code.
 * Before tagging an official release:
     1. Check that all easily forgotten files are up to date, including README, INSTALL, NEWS,
