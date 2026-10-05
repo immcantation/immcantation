@@ -317,12 +317,41 @@ mkdir -p ${LOGDIR}
 echo '' > $PIPELINE_LOG
 echo '' > $ERROR_LOG
 
+# Get localized R error word
+get_r_error_word() {
+    # Use R to get the localized "Error" word - it's the first word in stop() output
+    Rscript --vanilla -e "stop()" 2>&1 | head -1 | cut -d':' -f1
+}
+
 # Check for errors
+# Usage: check_error [strict|lenient]
+# strict: any content in error log is treated as error (default, original behavior)
+# lenient: only content containing localized R error patterns is treated as error
 check_error() {
+    local mode=${1:-strict}  # Default to strict for backward compatibility
+    
     if [ -s $ERROR_LOG ]; then
-        echo -e "ERROR:"
-        cat $ERROR_LOG | sed 's/^/    /'
-        exit 1
+        if [ "$mode" == "lenient" ]; then
+            # Get the localized R error word dynamically
+            local r_error_word=$(get_r_error_word)
+            
+            # Check if the error log contains actual error messages using localized word
+            # Also check for "Execution halted" which appears in all languages
+            if grep -qi "$r_error_word" $ERROR_LOG || grep -qi "execution halted" $ERROR_LOG; then
+                echo -e "ERROR:"
+                cat $ERROR_LOG | sed 's/^/    /'
+                exit 1
+            else
+                # Log contains warnings/messages but no errors - continue
+                echo -e "      WARNINGS/MESSAGES (non-fatal):"
+                cat $ERROR_LOG | sed 's/^/        /'
+            fi
+        else
+            # Strict mode: any content in error log is treated as error (original behavior)
+            echo -e "ERROR:"
+            cat $ERROR_LOG | sed 's/^/    /'
+            exit 1
+        fi
     fi
 }
 
@@ -405,14 +434,14 @@ if $CLONE; then
         --model ${THRESHOLD_MODEL} --cutoff ${CUTOFF} --spc ${SPC} -o . \
         -f ${FORMAT} -p ${NPROC} \
         > /dev/null 2> $ERROR_LOG
-        check_error
+        check_error lenient
         DIST=$(tail -n1 "${OUTNAME}_threshold-values.tab" | cut -f2)
     else
         printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "Calculating distances"
         shazam-threshold -d ${HEAVY_PROD} -m none -n "${OUTNAME}" -o . \
         -f ${FORMAT} -p ${NPROC} \
         > /dev/null 2> $ERROR_LOG
-        check_error
+        check_error lenient
     fi
 
     printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "Define clones (scoper)"
@@ -423,7 +452,7 @@ if $CLONE; then
         >> $PIPELINE_LOG 2> $ERROR_LOG
 
     CLONE_FILE="${OUTNAME}_heavy_clone-pass.${EXT}"
-    check_error
+    check_error lenient
 
     printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 30 "CreateGermlines"
     CreateGermlines.py -d ${CLONE_FILE} --cloned -r ${REFDIR} -g ${CG_GERM} \

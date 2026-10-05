@@ -67,12 +67,17 @@ RUN SCOPER_VER=$(versions get -n scoper) \
 RUN DOWSER_VER=$(versions get -n dowser) \
     && Rscript -e "devtools::install_version('dowser', '${DOWSER_VER}', quiet=FALSE, clean=TRUE)"
 
+# Install TIgGER
+RUN TIGGER_VER=$(versions get -n tigger) \
+    && Rscript -e "devtools::install_version('tigger', '${TIGGER_VER}', quiet=FALSE, clean=TRUE)"
+
 # Install IgPhyML
 RUN IGPHYML=$(versions get -n igphyml) \
     && wget2 -q --force-progress --no-check-certificate \
        https://github.com/immcantation/igphyml/archive/refs/tags/${IGPHYML}.tar.gz -O igphyml-${IGPHYML}.tar.gz \
     && mkdir -p /usr/local/share/igphyml \
-    && tar -zxf igphyml-${IGPHYML}.tar.gz -C /usr/local/share/igphyml --strip-components 1 \
+    && bsdtar -zxf igphyml-${IGPHYML}.tar.gz -C /usr/local/share/igphyml --strip-components 1 \
+    && sed -i 's/t_tree \*Make_Tree();/t_tree *Make_Tree(int n_otu);/' /usr/local/share/igphyml/src/utilities.h \
     && (cd /usr/local/share/igphyml && ./make_phyml_blas_omp) \
     && rm -r igphyml-${IGPHYML}.tar.gz
 
@@ -81,7 +86,6 @@ ENV PATH="${PATH}:/usr/local/share/igphyml/src"
 
 # Install enchantr
 RUN ENCHANTR_VER=$(versions get -n enchantr) \
-    && Rscript -e "install.packages('lifecycle')" \
     && Rscript -e "devtools::install_github('immcantation/enchantr', ref='${ENCHANTR_VER}', quiet=FALSE, clean=TRUE)"
 
 # Set commands
@@ -91,3 +95,4 @@ CMD echo -e " Version information:\n"\
             "  builds report\n"\
             "Description of available pipelines:\n"\
             "  pipelines report"
+            

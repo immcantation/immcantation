@@ -1,6 +1,6 @@
 [![Docker Pulls](https://img.shields.io/docker/pulls/immcantation/suite)](https://hub.docker.com/u/immcantation)
 [![](https://img.shields.io/static/v1?label=AIRR-C%20sw-tools%20v1&message=compliant&color=008AFF&labelColor=000000&style=plastic)](https://docs.airr-community.org/en/stable/swtools/airr_swtools_standard.html)
-[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md)
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](https://github.com/immcantation/immcantation/?tab=readme-ov-file#coc-ov-file)
 
 # Immcantation
 
@@ -11,7 +11,7 @@ the adaptive immune receptor repertoire (AIRR) presents challenges
 for biologically meaningful analysis - requiring the development of
 specialized computational methods.
 
-The Immcantation framework provide a start-to-finish analytical
+The Immcantation framework provides a start-to-finish analytical
 ecosystem for high-throughput AIRR-seq datasets. Although Immcantation
 is focused on BCRs, methods are applicable to TCRs. Beginning from raw
 reads, Python and R packages are provided for pre-processing,

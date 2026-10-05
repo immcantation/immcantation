@@ -15,12 +15,12 @@ package:
   rdi: null
   igphyml: 2.0.0
 dependency:
-  airr-py:  1.5.1
-  airr-r:   1.5.0
-  blast:    2.16.0
+  airr-py:  1.6.1
+  airr-r:   1.6.1
+  blast:    2.17.0
   cd-hit:   4.8.1
   igblast:  1.22.0
   muscle:   3.8.425
   phylip:   3.697
-  raxml-ng: 1.2.2
+  raxml-ng: 2.0.2
   vsearch:  2.30.0

@@ -1,4 +1,4 @@
-FROM fedora:41
+FROM fedora:44
 LABEL maintainer="Jason Anthony Vander Heiden [jason.vanderheiden@yale.edu], \
                   Susanna Marquez [susanna.marquez@yale.edu]" \
       description="Standard environment and dependencies for the Immcantation framework."
@@ -23,7 +23,10 @@ RUN dnf -y update && dnf install -y \
     automake \
     atlas-devel \
     biber \
+    bsdtar \
     findutils \
+    fontconfig-devel \
+    fribidi-devel \
     git \
     glpk-devel \
     gmp-devel \
@@ -32,7 +35,6 @@ RUN dnf -y update && dnf install -y \
     libcurl-devel \
     libgit2-devel \
     libidn \
-    libidn1.34 \
     libnsl \
     libsodium-devel \
     libssh2 \
@@ -58,47 +60,68 @@ RUN dnf -y update && dnf install -y \
     python3-scipy \
     R-core \
     R-core-devel \
-    R-png \    
-    R-ragg \
-    R-textshaping \
-    redland-devel \    
+    redland-devel \
     sudo \
     tar \
+    texlive-courier \
+    texlive-helvetic \
+    texlive-inconsolata \
+    texlive-pdfcrop \
+    texlive-times \
     texlive-titling \
+    v8-devel \
     wget \
     wget2 \
     && dnf clean all
 
-# Docker Scout upgrades
-RUN pip install pyarrow --upgrade
-
 # System environment variables
 ENV LD_LIBRARY_PATH="/usr/lib64/R/lib:/usr/lib64/atlas"
+#ENV R_LIBS_SITE="/usr/lib64/R/library:/usr/share/R/library"
+# R's utils::untar() defaults to the "tar" env var (or the system tar found
+# on PATH) to extract downloaded source packages (devtools/remotes install_*
+# functions, install_deps, etc). GNU tar's CVE-2025-45582 hardening extracts
+# via openat2(), which the Docker Hub build sandbox's seccomp profile rejects
+# with ENOSYS ("Function not implemented"). Forcing R's built-in (pure R/C,
+# no openat2) untar implementation.
+ENV TAR=internal
 RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 20
 
 # R build setup
 ARG R_REPO="https://cloud.r-project.org/"
 ARG R_DEPS="c('BiocManager', \
-              'devtools', \
+              'ggiraph', \
+              'ggplot2', \
+              'httpuv', \
+              'httr', \
               'knitr', \
               'Matrix', \
+              'memoise', \
               'optparse', \
-              'pkgbuild', \
-              'Rcpp', \
+              'png', \
+              'ragg', \
               'rmarkdown', \
               'roxygen2', \
-              'testthat')"
+              'stringr', \
+              'testthat', \
+              'V8')"
 ARG R_BIOC_DEPS="c('Biostrings', \
               'ComplexHeatmap', \
               'DECIPHER', \
               'GenomicAlignments', \
               'ggmsa', \
               'ggtree', \
-              'IRanges')"           
+              'IRanges')"
+# Install R packages
+# - Force install of Rcpp from CRAN first to avoid dependency issues
 RUN echo "options(repos='${R_REPO}')" >> /usr/lib64/R/library/base/R/Rprofile \
-    && mkdir -p /usr/share/doc/R/html \
-    && Rscript -e "install.packages(${R_DEPS}, clean=TRUE)" \
-    && Rscript -e "BiocManager::install(${R_BIOC_DEPS},update=F,ask=F)"
+    && mkdir -p /usr/share/doc/R/html
+RUN Rscript -e "install.packages(c('devtools', 'remotes'), clean=TRUE)"
+RUN Rscript -e "devtools::install_cran('Rcpp', upgrade='never', dependencies=T, force=T)"
+RUN Rscript -e "devtools::install_cran(${R_DEPS}, upgrade='never', dependencies=c('Depends', 'Imports', 'LinkingTo'))"
+RUN Rscript -e " \
+    BiocManager::install(${R_BIOC_DEPS}, update=FALSE, ask=FALSE, force=FALSE); \
+    for (p in c(${R_DEPS}, ${R_BIOC_DEPS})) {library(p,character.only=T)}; \
+    "
 RUN touch /.Rprofile \
-    && touch /.Renviron
-
+    && touch /.Renviron \
+    && Rscript -e "cat(paste0('R_LIBS_SITE=\'',paste(.libPaths(),collapse=':'),'\''), sep='\n')" >> /.Renviron

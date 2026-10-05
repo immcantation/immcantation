@@ -1,12 +1,12 @@
 .. meta::
    :description: Immcantation: An Integrated Framework for Adaptive Immune Receptor Repertoire Analysis
-   :keywords: rep-seq, immuno-seq, vdj-seq, repertoire sequencing, BCR, TCR, Ig, AIRR,
-    adaptive immunity, somatic hypermutation, AbSeq, AbPair, VDJ, immunoglobulin
+   :keywords: AIRR-seq, rep-seq, immuno-seq, vdj-seq, repertoire sequencing, BCR, TCR, Ig, AIRR,
+    adaptive immunity, somatic hypermutation, SHM, AbSeq, AbPair, VDJ, immunoglobulin, bulk, single cell, scRNA-seq
 
 .. meta::
     :twitter\:card:  summary_large_image
     :og\:title: Immcantation: An Integrated Framework for Adaptive Immune Receptor Repertoire Analysis
-    :og\:image: _static/immcantation-card.png'
+    :og\:image: _static/immcantation-card.png
 
 .. toctree::
     :maxdepth: 1
@@ -60,6 +60,13 @@
 
 .. toctree::
     :maxdepth: 1
+    :caption: Workflows
+    :hidden:
+
+    nf-core/airrflow <https://nf-co.re/airrflow>
+
+.. toctree::
+    :maxdepth: 1
     :caption: In Development
     :hidden:
 
@@ -78,13 +85,13 @@ germline and somatic diversity of the adaptive immune receptor repertoire (AIRR)
 challenges for biologically meaningful analysis - requiring the development of specialized
 computational methods.
 
-The Immcantation framework provide a start-to-finish analytical ecosystem for
-high-throughput AIRR-seq datasets. Beginning from raw reads, Python and R packages are
+The Immcantation framework provides a **start-to-finish analytical ecosystem for
+high-throughput AIRR-seq** datasets. Beginning from raw reads, Python and R packages are
 provided for pre-processing, population structure determination, and repertoire analysis.
 
 .. image:: https://img.shields.io/static/v1?label=AIRR-C%20sw-tools%20v1&message=compliant&color=008AFF&labelColor=000000&style=plastic
-     :target: https://docs.airr-community.org/en/stable/swtools/airr_swtools_standard.html
-     :align: left
+    :target: https://docs.airr-community.org/en/stable/swtools/airr_swtools_standard.html
+    :align: left
 
 Immcantation supports both the original Change-O standard and the new Adaptive Immune
 Receptor Repertoire (AIRR) standard developed by the
@@ -96,10 +103,41 @@ Receptor Repertoire (AIRR) standard developed by the
 
 The different tools are available from PyPi, CRAN and GitHub. Versioned containers with
 all tools installed are hosted on `Docker Hub <https://hub.docker.com/r/immcantation/suite>`_.
+A best practices workflow using the Immcantation packages is available as 
+a `nf-core/airrflow <https://nf-co.re/airrflow>`_ Nextflow workflow.
 
+
+Start-to-finish Workflow
+------------------------------------------------------------------------------------------
+Run the Immcantation packages in a single workflow to analyze your
+repertoire sequencing data.
+
+**Click on the image below for more details.**
+
+.. list-table::
+    :widths: 40 60
+    :align: left
+
+
+
+    * - |airrflow-img|
+      
+      - `nf-core/airrflow <airrflow_>`_
+
+        + Nextflow workflow using Immcantation
+        + Bulk and single-cell BCR and TCR analysis
+        + Part of the `nf-core <https://nf-co.re/>`_ project
+
+.. raw:: html
+
+   <div style="clear: left;"></div>
 
 Core Packages
 -----------------------------------------------------------------------------------------
+
+Core packages are the software tools maintained by the Immcantation team. 
+These packages provide essential functionality for processing, analyzing, and visualizing 
+AIRR-seq data.
 
 **Click on the images below for more details.**
 
@@ -115,11 +153,30 @@ Core Packages
             :align: right
             :alt: downloads
 
-        **Alakazam**
+        `Alakazam`_
 
         + Repertoire diversity
         + V(D)J gene usage
         + Physicochemical property analysis
+
+        .. raw:: html
+
+           <div style="text-align: right;"><a href="https://medicine.yale.edu/lab/kleinstein/">Kleinstein Lab</a></div>
+
+    * - |amulety-img|
+      - .. image:: https://img.shields.io/pypi/dm/amulety
+            :target: https://pypi.org/project/amulety
+            :align: right
+            :alt: downloads
+
+        `Amulety`_
+
+        + BCR and TCR embeddings
+        + Multiple embedding models supported
+
+        .. raw:: html
+
+           <div style="text-align: right;"><a href="https://medicine.yale.edu/lab/kleinstein/">Kleinstein Lab</a></div>
 
     * - |changeo-img|
       - .. image:: https://img.shields.io/pypi/dm/changeo
@@ -127,9 +184,13 @@ Core Packages
             :align: right
             :alt: downloads
 
-        **Change-O**
+        `Change-O`_
 
         + V(D)J alignment with IgBLAST and IMGT
+
+        .. raw:: html
+
+           <div style="text-align: right;"><a href="https://medicine.yale.edu/lab/kleinstein/">Kleinstein Lab</a></div>
 
     * - |dowser-img|
       - .. image:: https://cranlogs.r-pkg.org/badges/dowser
@@ -137,12 +198,15 @@ Core Packages
             :align: right
             :alt: downloads
 
-        **Dowser**
+        `Dowser`_
 
         + B cell lineage trees
         + Migration and differentiation analysis
         + Detect ongoing evolution over time
 
+        .. raw:: html
+
+           <div style="text-align: right;"><a href="https://sites.dartmouth.edu/hoehn/">Hoehn lab</a></div>
 
     * - |presto-img|
       - .. image:: https://img.shields.io/pypi/dm/presto
@@ -150,11 +214,15 @@ Core Packages
             :align: right
             :alt: downloads
 
-        **pRESTO**
+        `pRESTO`_
 
         + Bulk BCR sequence data pre-processing
         + Read assembly and QC
         + UMI processing
+
+        .. raw:: html
+
+           <div style="text-align: right;"><a href="https://medicine.yale.edu/lab/kleinstein/">Kleinstein Lab</a></div>
 
     * - |scoper-img|
       - .. image:: https://cranlogs.r-pkg.org/badges/scoper
@@ -162,9 +230,13 @@ Core Packages
             :align: right
             :alt: downloads
 
-        **SCOPer**
+        `SCOPer`_
 
         + Identify clonal relationships
+
+        .. raw:: html
+
+           <div style="text-align: right;"><a href="https://medicine.yale.edu/lab/kleinstein/">Kleinstein Lab</a></div>
 
     * - |shazam-img|
       - .. image:: https://cranlogs.r-pkg.org/badges/shazam
@@ -172,12 +244,16 @@ Core Packages
             :align: right
             :alt: downloads
 
-        **SHazaM**
+        `SHazaM`_
 
         + Clonal clustering threshold tuning
         + Mutation profiling
         + Selection pressure quantification
         + Empirical SHM models
+
+        .. raw:: html
+
+           <div style="text-align: right;"><a href="https://medicine.yale.edu/lab/kleinstein/">Kleinstein Lab</a></div>
 
     * - |tigger-img|
       - .. image:: https://cranlogs.r-pkg.org/badges/tigger
@@ -185,14 +261,22 @@ Core Packages
             :align: right
             :alt: downloads
 
-        **TIgGER**
+        `TIgGER`_
 
         + Novel polymorphism detection
         + Genotyping
 
+        .. raw:: html
+
+           <div style="text-align: right;"><a href="https://medicine.yale.edu/lab/kleinstein/">Kleinstein Lab</a></div>
 
 Contributed Packages
 -----------------------------------------------------------------------------------------
+
+Contributed packages in the Immcantation ecosystem are immunoinformatics software packages 
+developed, shared, and maintained by the community. These packages interoperate with the 
+Immcantation framework through the `AIRR Community Standard <https://docs.airr-community.org/en/stable/datarep/rearrangements.html>`__ 
+and complement Immcantation by providing specialized functionality for AIRR analysis.
 
 **Click on the images below for more details.**
 
@@ -201,34 +285,60 @@ Contributed Packages
     :align: left
 
     * - |igphyml-img|
-      - **IgPhyML**
+      - `IgPhyML`_
 
         + Method to build lineage trees
         + Mutation/selection hypothesis testing
         + Best used via `Dowser`_ package
 
+        .. raw:: html
+
+           <div style="text-align: right;"><a href="https://sites.dartmouth.edu/hoehn/">Hoehn Lab</a></div>
+
     * - |rabhit-img|
-      - **RAbHIT**
+      - `RAbHIT`_
 
         + Determination of V-D-J haplotypes
 
+        .. raw:: html
+
+           <div style="text-align: right;"><a href="https://medicine.yale.edu/profile/gur-yaari/">Yaari Lab</a></div>
+
     * - |piglet-img|
-      - **PIgLET**
+      - `PIgLET`_
 
         + Tools to improve genotype inference      
 
+        .. raw:: html
+
+           <div style="text-align: right;"><a href="https://medicine.yale.edu/profile/gur-yaari/">Yaari Lab</a></div>
+
     * - |rdi-img|
-      - **RDI**
+      - `RDI`_
 
         + Repertoire Dissimilarity Index
 
+        .. raw:: html
+
+           <div style="text-align: right;"><a href="https://medicine.yale.edu/lab/kleinstein/">Kleinstein Lab</a></div>
+
     * - |sumrep-img|
-      - **sumrep**
+      - `sumrep`_
 
         + Generate repertoire summary statistics.
         + Visualize and comparing repertoire summaries.
 
+        .. raw:: html
+
+           <div style="text-align: right;"><a href="https://matsen.fhcrc.org/">Matsen Group</a></div>
+
 .. Image substitutions
+
+.. |airrflow-img| image:: _static/airrflow_logo.png
+    :align: middle
+    :width: 200
+    :target: airrflow_
+    :alt: nf-core/airrflow
 
 .. |presto-img| image:: _static/presto.png
     :align: middle
@@ -247,6 +357,12 @@ Contributed Packages
     :width: 200
     :target: Alakazam_
     :alt: alakazam
+
+.. |amulety-img| image:: _static/amulety.png
+    :align: middle
+    :width: 200
+    :target: Amulety_
+    :alt: amulety
 
 .. |shazam-img| image:: _static/shazam.png
     :align: middle
@@ -310,7 +426,9 @@ Contributed Packages
 
 .. Doc links
 
+.. _airrflow: https://nf-co.re/airrflow
 .. _Alakazam: https://alakazam.readthedocs.io
+.. _Amulety: https://amulety.readthedocs.io
 .. _Change-O: https://changeo.readthedocs.io
 .. _Dowser: https://dowser.readthedocs.io
 .. _IgPhyML: https://igphyml.readthedocs.io

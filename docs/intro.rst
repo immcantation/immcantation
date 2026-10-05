@@ -6,7 +6,7 @@ Download & Installation
 
 Installation for both the Python and R packages is performed in the usual manner.
 
-To install pRESTO and Change-O from PyPI::
+To install pRESTO, Change-O and Amulety from PyPI::
 
     > pip3 install presto changeo --user
 

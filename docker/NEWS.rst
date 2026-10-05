@@ -1,8 +1,57 @@
 Release Notes
 ========================================================================
 
-Version devel:  April 9, 2025
+Version 4.9.0.dev: Unreleased
 ------------------------------------------------------------------------
+
+Image Changes:
+
++ Updated base image to Fedora 44.
++ Removed the ggplot2/xfun/ggiraph version pins and Bioconductor 3.21 pin
+  added in 4.7.0 as a temporary enchantr compatibility fix; these packages
+  now install at their current versions.
+
+Version Updates:
+
++ changeo 1.3.5
+
+Version 4.8.0: June 7, 2026
+------------------------------------------------------------------------
+
+Version Updates:
+
++ alakazam 1.4.3
++ shazam 1.3.2
++ scoper 1.5.0
++ presto 0.7.9
++ tigger 1.1.3
++ raxml-ng 2.0.2
++ receptor-utils 0.0.66
++ seurat 5.5.0
+
+Version 4.7.0:  January 21, 2026
+------------------------------------------------------------------------
+
+Image Changes:
+
++ Updated base image to Fedora 42
++ Pinned ggplot2 version to 3.4.2 and xfun version to 0.55 to meet r
+  requirements from enchantR.
++ Installed the python package receptor-utils 0.0.63
+
+Version Updates:
+
++ airr 1.6.0
++ alakazam 1.4.2
++ blast 2.17.0
++ changeo 1.3.4
++ dowser 2.4.1
++ enchantr 0.1.24
++ presto 0.7.7
++ seurat 5.4.0
++ shazam 1.3.1
++ scoper 1.4.0
+
 
 Version 4.6.0:  April 7, 2025
 ------------------------------------------------------------------------

@@ -154,7 +154,7 @@ RUN_DIR=$(realpath ${RUN_DIR})
         shazam-threshold -d $DB --subsample 100 --repeats 2 \
         -n "${SAMPLE}-3" -o $OUT_DIR -p $NPROC
 
-      run docker run -v $DATA_DIR:/data:z -v $RUN_DIR:/scratch:z $IMAGE \
+    run docker run -v $DATA_DIR:/data:z -v $RUN_DIR:/scratch:z $IMAGE \
           shazam-threshold -d $DB -m none \
           -n "${SAMPLE}-4" -o $OUT_DIR -p $NPROC
 

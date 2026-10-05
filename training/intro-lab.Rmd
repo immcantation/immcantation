@@ -248,7 +248,7 @@ gt <- inferGenotype(db, germline_db = ighv, novel = nv)
 gtseq <- genotypeFasta(gt, ighv, nv)
 writeFasta(gtseq, file.path("results", "tigger", "v_genotype.fasta"))
 
-gt %>% arrange(total) %>% slice(1:3) # show the first 3 rows
+gt %>% arrange(total) %>% dplyr::slice(1:3) # show the first 3 rows
 ```
 
 The individual's genotype can be visualized with `plotGenotype`. Each row is a gene, with colored cells indicating each of the alleles for that gene that are included in the inferred genotype.
@@ -341,7 +341,7 @@ At the end of this step, the output file will have an additional column (`clone_
 ```{r intra-inter-clonal-d, message = FALSE}
 suppressPackageStartupMessages(library(scoper))
 # Clonal assignment using hierarchical clustering
-results <- hierarchicalClones(db, threshold=thr, v_call="v_call_genotyped")
+results <- hierarchicalClones(db, threshold=thr, v_call="v_call_genotyped", summarize_clones=TRUE)
 
 # Plot a histogram of inter and intra clonal distances
 plot(results, binwidth=0.02)
@@ -519,3 +519,10 @@ Sequence Region Definitions
 * NULL: Full sequence
 * IMGT_V: V segment broken into combined CDRs and FWRs
 * IMGT_V_BY_REGIONS: V segment broken into individual CDRs and FWRs
+
+## Run a start-to-finish Immcantation workflow
+
+The most common BCR and TCR repertoire analysis steps are implemented in the nf-core/airrflow workflow.
+This workflow is particularly useful for analyzing a large amount of samples in parallel.
+To know more about the workflow, check out the [nf-core/airrflow documentation](https://nf-co.re/airrflow).
+The documentation includes a [bulk tutorial](https://nf-co.re/airrflow/usage/bulk_tutorial) that guides you through the steps of running the workflow for bulk datasets.

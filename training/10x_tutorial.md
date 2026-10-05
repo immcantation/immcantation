@@ -247,6 +247,31 @@ has already been performed and the resulting table can be found under
                                                        "d_germline_length" = "i",
                                                        "j_germline_length" = "i",
                                                        "day" = "i"))
+    cat(paste("There are", nrow(bcr_data), 
+              "rows in `bcr_data`.\n"))
+
+    ## There are 6196 rows in `bcr_data`.
+
+### Check V/D/J gene call consistency
+
+10x Genomics data can sometimes contain inconsistent gene calls where V,
+J, and C genes are assigned from different immunoglobulin loci (IGH,
+IGK, or IGL). This can occur particularly in cells with
+`chain == "Multi"`, but also in other cases. Usually the number of
+sequences with these inconsistencies is very small. However, it is
+important to remove these inconsistencies before downstream analysis.
+
+    # Filter out inconsistent sequences
+    bcr_data <- bcr_data %>%
+      dplyr::filter(
+        (grepl("^IGHV", v_call) & grepl("^IGHJ", j_call) & grepl("^IGH[MGADE]", c_gene)) |
+        (grepl("^IGKV", v_call) & grepl("^IGKJ", j_call) & grepl("^IGKC", c_gene)) |
+        (grepl("^IGLV", v_call) & grepl("^IGLJ", j_call) & grepl("^IGLC", c_gene))
+      )
+    cat(paste("There are", nrow(bcr_data), 
+              "rows in the data after filtering V/J/C calls inconsistent with the respective locus.\n"))
+
+    ## There are 6176 rows in the data after filtering V/J/C calls inconsistent with the respective locus.
 
 ### Remove non-productive sequences
 
@@ -257,18 +282,18 @@ You may wish to subset your data to only productive sequences:
 
     cat(paste("There are", nrow(bcr_data), "rows in the data.\n"))
 
-    ## There are 6196 rows in the data.
+    ## There are 6176 rows in the data.
 
     bcr_data %>% slice_sample(n = 5) # random examples
 
     ## # A tibble: 5 x 66
     ##   sequence_id                 sequence  rev_comp productive v_call d_call j_call
     ##   <chr>                       <chr>     <lgl>    <lgl>      <chr>  <chr>  <chr> 
-    ## 1 GATCAGTCACTAGTAC-1_contig_2 GAGCTACA~ FALSE    TRUE       IGKV4~ <NA>   IGKJ1~
-    ## 2 CGCTGGATCAGGCCCA-1_contig_2 TAGATGGG~ FALSE    TRUE       IGLV2~ <NA>   IGLJ1~
-    ## 3 TTGAACGGTCAACATC-1_contig_1 AGAGCTCT~ FALSE    TRUE       IGKV3~ <NA>   IGKJ4~
-    ## 4 CCACCTACACATGACT-1_contig_1 GCTCTGCT~ FALSE    TRUE       IGLV1~ <NA>   IGLJ2~
-    ## 5 CGGAGTCTCACTCCTG-1_contig_2 TGAGCGCA~ FALSE    TRUE       IGLV1~ <NA>   IGLJ2~
+    ## 1 ACACTGATCTGTTGAG-1_contig_2 TGGGGAGG~ FALSE    TRUE       IGKV1~ <NA>   IGKJ4~
+    ## 2 AGTAGTCAGGAATGGA-1_contig_1 AGCTCTCA~ FALSE    TRUE       IGHV3~ IGHD7~ IGHJ2~
+    ## 3 CGGAGTCTCACTCCTG-1_contig_1 AGAGATCT~ FALSE    TRUE       IGLV1~ <NA>   IGLJ3~
+    ## 4 TTAGGACAGAGTACAT-1_contig_2 GGAGAAGA~ FALSE    TRUE       IGKV3~ <NA>   IGKJ2~
+    ## 5 TGAGGGAAGCCACCTG-1_contig_1 AGAGCTCT~ FALSE    TRUE       IGLV4~ <NA>   IGLJ3~
     ## # i 59 more variables: sequence_alignment <chr>, germline_alignment <chr>,
     ## #   junction <chr>, junction_aa <chr>, v_cigar <chr>, d_cigar <chr>,
     ## #   j_cigar <chr>, vj_in_frame <lgl>, stop_codon <lgl>, v_sequence_start <int>,
@@ -294,7 +319,7 @@ from the single cell data:
     cat(paste("There are", nrow(bcr_data),
               "rows in the data after filtering out cells with multiple heavy chains.\n"))
 
-    ## There are 6180 rows in the data after filtering out cells with multiple heavy chains.
+    ## There are 6160 rows in the data after filtering out cells with multiple heavy chains.
 
 ### Remove cells without heavy chains
 
@@ -310,7 +335,7 @@ remove cells with only light chains:
     cat(paste("There are", nrow(bcr_data), "rows in the data after filtering out
               cells without heavy chains."))
 
-    ## There are 6180 rows in the data after filtering out
+    ## There are 6160 rows in the data after filtering out
     ##           cells without heavy chains.
 
 ## Add cell type annotations
@@ -394,7 +419,7 @@ information is:
     # what proportion of BCRs don’t have GEX information?
     mean(is.na(match.index))
 
-    ## [1] 0.08171521
+    ## [1] 0.08198052
 
 #### Transfer cell type annotations into the BCR data
 
@@ -465,6 +490,8 @@ defined within one subject:
                                                 subject_id == "subject1"),
                                   cellIdColumn="cell_id")
 
+    ## Running in single-cell mode.
+
     # generate Hamming distance histogram
     p1 <- ggplot(subset(dist_nearest, !is.na(dist_nearest)),
                  aes(x = dist_nearest)) +
@@ -476,7 +503,7 @@ defined within one subject:
 
     plot(p1)
 
-![](10x_tutorial_files/10x_tutorial_unnamed-chunk-20-1.png)
+![](10x_tutorial_files/10x_tutorial_unnamed-chunk-21-1.png)
 
 The resulting distribution is often bimodal, with the first mode
 representing sequences with clonal relatives in the dataset and the
@@ -528,7 +555,7 @@ based on the specificity of this background distribution.
     plot(threshold_output, binwidth = 0.02, silent = TRUE) +
       theme(axis.title = element_text(size = 18))
 
-![](10x_tutorial_files/10x_tutorial_unnamed-chunk-22-1.png)
+![](10x_tutorial_files/10x_tutorial_unnamed-chunk-23-1.png)
 
 The nearest-neighbor distance distribution is not always bimodal. In
 this case, if the data have multiple subjects, we can calculate the
@@ -551,6 +578,8 @@ calculate this do the following:
                                     nproc = 1, cross = "subject_id",
                                     cellIdColumn="cell_id")
 
+    ## Running in single-cell mode.
+
     # find threshold for cloning automatically and initialize the Gaussian fit
     # parameters of the nearest-neighbor
 
@@ -569,7 +598,7 @@ calculate this do the following:
          cross = dist_crossSubj$cross_dist_nearest, silent = TRUE) +
       theme(axis.title = element_text(size = 18))
 
-![](10x_tutorial_files/10x_tutorial_unnamed-chunk-24-1.png)
+![](10x_tutorial_files/10x_tutorial_unnamed-chunk-25-1.png)
 
 In the plot above, the top plot is the nearest-neighbor distance
 distribution within Subj1, and the bottom plot is the nearest neighbor
@@ -616,15 +645,17 @@ To estimate the clonal abundance, we will select only the heavy chains:
     abund <- estimateAbundance(dplyr::filter(results, locus == "IGH"),
                                group = "sample_id", nboot = 100)
 
+    ## Adding missing grouping variables: `subject_id`
+
     abund_plot <- plot(abund, silent=T)
     abund_plot
 
-![](10x_tutorial_files/10x_tutorial_unnamed-chunk-26-1.png)
+![](10x_tutorial_files/10x_tutorial_unnamed-chunk-27-1.png)
 
     # plot by sample_id
     abund_plot + facet_wrap("sample_id", ncol = 3)
 
-![](10x_tutorial_files/10x_tutorial_unnamed-chunk-27-1.png) Most real
+![](10x_tutorial_files/10x_tutorial_unnamed-chunk-28-1.png) Most real
 datasets, will have most clones of size 1 (one sequence). In this
 tutorial, we processed data to remove most of singleton clone and we
 don’t see the much higher peak at 1 that we would normally expect.
@@ -633,6 +664,8 @@ don’t see the much higher peak at 1 that we would normally expect.
     clone_sizes <- countClones(dplyr::filter(results, locus == "IGH"),
                                groups = "sample_id")
 
+    ## Adding missing grouping variables: `subject_id`
+
     # plot cells per clone
     ggplot(clone_sizes, aes(x = seq_count)) +
       geom_bar() +
@@ -640,7 +673,7 @@ don’t see the much higher peak at 1 that we would normally expect.
       labs(x = "Sequences per clone") +
       theme_bw()
 
-![](10x_tutorial_files/10x_tutorial_unnamed-chunk-28-1.png)
+![](10x_tutorial_files/10x_tutorial_unnamed-chunk-29-1.png)
 
 ### Visualize clonal diversity
 
@@ -651,9 +684,11 @@ diversity, we will also select only the heavy chains:
     div <- alphaDiversity(dplyr::filter(results, locus == "IGH"),
                           group = "sample_id", nboot = 100)
 
+    ## Adding missing grouping variables: `subject_id`
+
     plot(div, silent = TRUE) + facet_wrap("sample_id", ncol = 3)
 
-![](10x_tutorial_files/10x_tutorial_unnamed-chunk-29-1.png)
+![](10x_tutorial_files/10x_tutorial_unnamed-chunk-30-1.png)
 
 ## Create germlines
 
@@ -684,7 +719,7 @@ And passing `"human/vdj/"` to the `readIMGT` function.
     # read in IMGT files in the Docker container
     references <- readIMGT(dir = "/usr/local/share/germlines/imgt/human/vdj")
 
-    ## [1] "Read in 1197 from 17 fasta files"
+    ## [1] "Read in 1305 from 17 fasta files"
 
     # reconstruct germlines
     results <- createGermlines(results, references, fields = "subject_id",
@@ -721,7 +756,7 @@ clones:
       geom_histogram(binwidth = 0.005) +
       theme_bw() + theme(axis.title = element_text(size = 18))
 
-![](10x_tutorial_files/10x_tutorial_unnamed-chunk-33-1.png)
+![](10x_tutorial_files/10x_tutorial_unnamed-chunk-34-1.png)
 
 The plots below show the distribution of mutation frequency of cells by
 subject, isotype and cell type respectively:
@@ -733,7 +768,7 @@ subject, isotype and cell type respectively:
       labs(x = "", y = "Mutation frequency", fill = "subject_id") +
       theme(axis.text.x = element_blank())
 
-![](10x_tutorial_files/10x_tutorial_unnamed-chunk-34-1.png)
+![](10x_tutorial_files/10x_tutorial_unnamed-chunk-35-1.png)
 
     # plotting mu_freq by isotype
     ggplot(data_mut, aes(y = mu_freq, x = c_gene, fill = c_gene)) +
@@ -742,7 +777,7 @@ subject, isotype and cell type respectively:
       labs(x = "", y = "Mutation frequency", fill = "Isotype") +
       theme(axis.text.x = element_blank())
 
-![](10x_tutorial_files/10x_tutorial_unnamed-chunk-35-1.png)
+![](10x_tutorial_files/10x_tutorial_unnamed-chunk-36-1.png)
 
     # plotting mu_freq by cell type
     ggplot(data_mut, aes(y = mu_freq, x = gex_annotation, fill = gex_annotation)) +
@@ -751,7 +786,7 @@ subject, isotype and cell type respectively:
       labs(x = "", y = "Mutation frequency", fill = "Cell type") +
       theme(axis.text.x = element_blank())
 
-![](10x_tutorial_files/10x_tutorial_unnamed-chunk-36-1.png)
+![](10x_tutorial_files/10x_tutorial_unnamed-chunk-37-1.png)
 
 ## Build and visualize trees
 
@@ -803,6 +838,10 @@ light chain information, we will need to assign `clone_subgroups` using
 dowser’s function `resolveLightChains`. This group cells within a clone
 based on the light chain V and J gene and assign a subgroup to each
 sequence. Then, in the `formatClones` step, specify `chain="HL"`.
+
+    ## Warning in formatClones(comb, chain = "HL", traits = c("day",
+    ## "gex_annotation"), : 2 sequence(s) with an inframe stop codon were removed. If
+    ## you want to keep these sequences use the option filterstop=FALSE.
 
     ## # A tibble: 6 x 4
     ##   clone_id data       locus    seqs
@@ -938,10 +977,13 @@ Plot the largest tree:
 
     plots_all[[1]]
 
-![](10x_tutorial_files/10x_tutorial_unnamed-chunk-47-1.png)
+![](10x_tutorial_files/10x_tutorial_unnamed-chunk-48-1.png)
 
     # save a pdf of all trees
     dir.create("results/dowser_tutorial/", recursive = TRUE)
+
+    ## Warning in dir.create("results/dowser_tutorial/", recursive = TRUE):
+    ## 'results/dowser_tutorial' already exists
 
     treesToPDF(plots_all,
                file = file.path("results", "dowser_tutorial","final_data_trees.pdf"),
@@ -966,7 +1008,7 @@ and labelled by isotype:
 
     print(plots_all)
 
-![](10x_tutorial_files/10x_tutorial_unnamed-chunk-49-1.png)
+![](10x_tutorial_files/10x_tutorial_unnamed-chunk-50-1.png)
 
 ### Reconstruct intermediate sequences
 
@@ -988,7 +1030,7 @@ second largest tree (dots represent IMGT gaps):
 
     print(plots_all)
 
-![](10x_tutorial_files/10x_tutorial_unnamed-chunk-50-1.png)
+![](10x_tutorial_files/10x_tutorial_unnamed-chunk-51-1.png)
 
     # get sequence at node 5 for the second clone_id in trees
     getNodeSeq(trees, clone = trees$clone_id[2], node = 5)
@@ -1023,21 +1065,21 @@ timepoints are more diverged from the germline:
     ## # A tibble: 35 x 4
     ##    clone_id  slope correlation      p
     ##    <chr>     <dbl>       <dbl>  <dbl>
-    ##  1 570      0.0453       0.711 0.0729
-    ##  2 699      0.120        0.877 0.160 
-    ##  3 513      0.277        0.827 0.221 
-    ##  4 209      0.0630       0.468 0.230 
-    ##  5 573      0.0830       0.329 0.241 
-    ##  6 1122     0.708        0.578 0.242 
-    ##  7 1118     0.488        0.444 0.245 
-    ##  8 196      0.307        0.770 0.258 
-    ##  9 183      0.169        0.300 0.286 
-    ## 10 363      2.57         0.833 0.334 
+    ##  1 570      0.0452       0.711 0.0969
+    ##  2 699      0.120        0.876 0.164 
+    ##  3 513      0.277        0.827 0.192 
+    ##  4 209      0.0630       0.468 0.228 
+    ##  5 1122     0.708        0.578 0.232 
+    ##  6 1118     0.489        0.444 0.249 
+    ##  7 196      0.307        0.770 0.255 
+    ##  8 573      0.0830       0.329 0.261 
+    ##  9 183      0.169        0.300 0.269 
+    ## 10 363      2.57         0.833 0.332 
     ## # i 25 more rows
 
     print(plots_time[[1]])
 
-![](10x_tutorial_files/10x_tutorial_unnamed-chunk-53-1.png)
+![](10x_tutorial_files/10x_tutorial_unnamed-chunk-54-1.png)
 
     # save all trees to a pdf file
     treesToPDF(plots_time, 
@@ -1066,3 +1108,15 @@ vignette](https://dowser.readthedocs.io/en/latest/vignettes/Measurable-Evolution
 
 For more advanced tree **visualization**, check out the [plotting trees
 vignette](https://dowser.readthedocs.io/en/latest/vignettes/Plotting-Trees-Vignette/).
+
+## Run a start-to-finish Immcantation workflow
+
+The most common BCR and TCR repertoire analysis steps are implemented in
+the nf-core/airrflow workflow. This workflow is particularly useful for
+analyzing a large amount of samples in parallel. To know more about the
+workflow, check out the [nf-core/airrflow
+documentation](https://nf-co.re/airrflow). The documentation includes a
+[single-cell
+tutorial](https://nf-co.re/airrflow/usage/single_cell_tutorial) that
+guides you through the steps of running the workflow for single-cell
+datasets.

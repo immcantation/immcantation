@@ -265,6 +265,7 @@ else
 fi
 
 # Run IgBLAST
+printf "  %2d: %-*s $(date +'%H:%M %D')\n" $((++STEP)) 24 "AssignGenes igblast"
 AssignGenes.py igblast -s ${IG_FILE} --organism ${SPECIES} --loci ${RECEPTOR} \
       -b ${IGDATA} --format blast --nproc ${NPROC} \
       --outdir . --outname "${OUTNAME}" \

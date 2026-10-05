@@ -24,9 +24,9 @@ RUN PACKAGE="immcantation" \
 RUN MUSCLE=$(versions get -n muscle) \
     && wget2 -q --force-progress --no-check-certificate \
        http://www.drive5.com/muscle/muscle${MUSCLE}_binaries.tar.gz \
-	&& tar -zxf muscle${MUSCLE}_binaries.tar.gz muscle${MUSCLE}_i86linux64 \
-	&& mv muscle${MUSCLE}_i86linux64 /usr/local/bin/muscle \
-	&& rm muscle${MUSCLE}_binaries.tar.gz
+    && tar -zxf muscle${MUSCLE}_binaries.tar.gz muscle${MUSCLE}_i86linux64 \
+    && mv muscle${MUSCLE}_i86linux64 /usr/local/bin/muscle \
+    && rm muscle${MUSCLE}_binaries.tar.gz
 
 # Install muscle5
 #RUN MUSCLE='5.1.0' \
@@ -39,17 +39,22 @@ RUN MUSCLE=$(versions get -n muscle) \
 # Install vsearch
 RUN VSEARCH=$(versions get -n vsearch) \
     && wget2 -q --force-progress --no-check-certificate \
-       http://github.com/torognes/vsearch/releases/download/v${VSEARCH}/vsearch-${VSEARCH}-linux-x86_64.tar.gz \
-    && tar -zxf vsearch-${VSEARCH}-linux-x86_64.tar.gz \
-    && mv vsearch-${VSEARCH}-linux-x86_64/bin/vsearch /usr/local/bin/vsearch \
+       https://github.com/torognes/vsearch/releases/download/v${VSEARCH}/vsearch-${VSEARCH}-linux-x86_64.tar.gz \
+    && tar -zxOf vsearch-${VSEARCH}-linux-x86_64.tar.gz vsearch-${VSEARCH}-linux-x86_64/bin/vsearch > /usr/local/bin/vsearch \
+    && chmod 755 /usr/local/bin/vsearch \
     && ln -s /usr/local/bin/vsearch /usr/local/bin/usearch \
-    && rm -r vsearch-${VSEARCH}-linux-x86_64.tar.gz vsearch-${VSEARCH}-linux-x86_64
+    && rm vsearch-${VSEARCH}-linux-x86_64.tar.gz
 
 # Install CD-HIT
+# Uses bsdtar instead of tar: GNU tar's CVE-2025-45582 hardening extracts
+# via openat2(), which the Docker Hub build sandbox's seccomp profile
+# rejects with ENOSYS ("Function not implemented"). bsdtar (libarchive)
+# predates openat2 and isn't affected. Same fix as BLAST+/IgBLAST below.
 RUN CDHIT=$(versions get -n cd-hit) \
     && wget2 -q --force-progress --no-check-certificate \
        https://github.com/weizhongli/cdhit/archive/V${CDHIT}.tar.gz \
-    && tar -zxf V${CDHIT}.tar.gz \
+    && mkdir -p cdhit-${CDHIT} \
+    && bsdtar -zxf V${CDHIT}.tar.gz -C cdhit-${CDHIT} --strip-components 1 \
     && (cd cdhit-${CDHIT} && make && make install) \
     && rm -r V${CDHIT}.tar.gz cdhit-${CDHIT}
 
@@ -57,7 +62,7 @@ RUN CDHIT=$(versions get -n cd-hit) \
 RUN BLAST=$(versions get -n blast) \
     && wget2 -q --force-progress --no-check-certificate \
        https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/${BLAST}/ncbi-blast-${BLAST}+-x64-linux.tar.gz \
-    && tar -zxf ncbi-blast-${BLAST}+-x64-linux.tar.gz \
+    && bsdtar -zxf ncbi-blast-${BLAST}+-x64-linux.tar.gz \
     && mv ncbi-blast-${BLAST}+/bin/* /usr/local/bin \
     && rm -r ncbi-blast-${BLAST}+-x64-linux.tar.gz ncbi-blast-${BLAST}+
 
@@ -65,7 +70,7 @@ RUN BLAST=$(versions get -n blast) \
 RUN IGBLAST=$(versions get -n igblast) \
     && wget2 -q --force-progress --no-check-certificate \
        https://ftp.ncbi.nlm.nih.gov/blast/executables/igblast/release/${IGBLAST}/ncbi-igblast-${IGBLAST}-x64-linux.tar.gz \
-    && tar -zxf ncbi-igblast-${IGBLAST}-x64-linux.tar.gz \
+    && bsdtar -zxf ncbi-igblast-${IGBLAST}-x64-linux.tar.gz \
     && mv ncbi-igblast-${IGBLAST}/bin/* /usr/local/bin \
     && mkdir -p /usr/local/share/igblast \
     && fetch_igblastdb.sh -o /usr/local/share/igblast \
@@ -96,7 +101,7 @@ RUN IGBLAST=$(versions get -n igblast) \
 RUN PHYLIP=$(versions get -n phylip) \
     && wget2 -q --force-progress --no-check-certificate \
        https://phylipweb.github.io/phylip/download/phylip-${PHYLIP}.tar.gz \
-    && tar -zxf phylip-${PHYLIP}.tar.gz \
+    && bsdtar -zxf phylip-${PHYLIP}.tar.gz \
     && (cd phylip-${PHYLIP}/src && sed -i '/double computeAngle/a void makebox(char *, double *, double *, double *, long);' draw.h && make -f Makefile.unx install CFLAGS='-fcommon') \
     && mv phylip-${PHYLIP}/exe/* /usr/local/bin \
     && rm -r phylip-${PHYLIP}.tar.gz phylip-${PHYLIP}
@@ -127,8 +132,10 @@ RUN wget2 -q --force-progress --no-check-certificate \
 # Install AIRR reference libraries
 RUN AIRR_PY=$(versions get -n airr-py) \
     && AIRR_R=$(versions get -n airr-r) \
-    && pip3 install airr==${AIRR_PY} \
-    && Rscript -e "devtools::install_version('airr', '${AIRR_R}', quiet=FALSE, clean=TRUE)" \
+    # && pip3 install airr==${AIRR_PY} \
+    && pip3 install -e "git+https://github.com/airr-community/airr-standards.git@v${AIRR_PY}#egg=airr&subdirectory=lang/python" \
+    # && Rscript -e "devtools::install_version('airr', '${AIRR_R}', quiet=FALSE, clean=TRUE)" \
+    && Rscript -e "devtools::install_github('airr-community/airr-standards', ref='v${AIRR_R}', subdir='lang/R', upgrade='never')" \
     && Rscript -e "library('airr', character.only = TRUE)"
 
 # Install presto
@@ -154,7 +161,7 @@ RUN PACKAGE="alakazam" \
     && rm -rf /tmp/${PACKAGE} \
     && git clone https://github.com/immcantation/${PACKAGE} /tmp/${PACKAGE} \
     && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} -d immcantation \
-    && rinstall -p /tmp/${PACKAGE} \
+    && rinstall -p /tmp/${PACKAGE} -u never \
     && Rscript -e "library('${PACKAGE}', character.only = TRUE)" \
     && (cd /tmp/${PACKAGE} && builds write -n ${PACKAGE} -v $(git describe --abbrev=12 --always --dirty=+)) \
     && rm -r /tmp/${PACKAGE}
@@ -164,7 +171,7 @@ RUN PACKAGE="shazam" \
     && rm -rf /tmp/${PACKAGE} \
     && git clone https://github.com/immcantation/${PACKAGE} /tmp/${PACKAGE} \
     && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} -d immcantation \
-    && rinstall -p /tmp/${PACKAGE} \
+    && rinstall -p /tmp/${PACKAGE} -u never \
     && Rscript -e "library('${PACKAGE}', character.only = TRUE)" \
     && (cd /tmp/${PACKAGE} && builds write -n ${PACKAGE} -v $(git describe --abbrev=12 --always --dirty=+)) \
     && rm -r /tmp/${PACKAGE}
@@ -174,7 +181,7 @@ RUN PACKAGE="tigger" \
     && rm -rf /tmp/${PACKAGE} \
     && git clone https://github.com/immcantation/${PACKAGE} /tmp/${PACKAGE} \
     && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} -d immcantation \
-    && rinstall -p /tmp/${PACKAGE} \
+    && rinstall -p /tmp/${PACKAGE} -u never \
     && Rscript -e "library('${PACKAGE}', character.only = TRUE)" \
     && (cd /tmp/${PACKAGE} && builds write -n ${PACKAGE} -v $(git describe --abbrev=12 --always --dirty=+)) \
     && rm -r /tmp/${PACKAGE}
@@ -184,7 +191,7 @@ RUN PACKAGE="scoper" \
     && rm -rf /tmp/${PACKAGE} \
     && git clone https://github.com/immcantation/${PACKAGE} /tmp/${PACKAGE} \
     && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} -d immcantation \
-    && rinstall -p /tmp/${PACKAGE} \
+    && rinstall -p /tmp/${PACKAGE} -u never \
     && Rscript -e "library('${PACKAGE}', character.only = TRUE)" \
     && (cd /tmp/${PACKAGE} && builds write -n ${PACKAGE} -v $(git describe --abbrev=12 --always --dirty=+)) \
     && rm -r /tmp/${PACKAGE}
@@ -204,7 +211,7 @@ RUN PACKAGE="enchantr" \
     && rm -rf /tmp/${PACKAGE} \
     && git clone https://github.com/immcantation/${PACKAGE} /tmp/${PACKAGE} \
     && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} -d immcantation \
-    && rinstall -p /tmp/${PACKAGE} \
+    && rinstall -p /tmp/${PACKAGE} -u never \
     && Rscript -e "library('${PACKAGE}', character.only = TRUE)" \
     && (cd /tmp/${PACKAGE} && builds write -n ${PACKAGE} -v $(git describe --abbrev=12 --always --dirty=+)) \
     && rm -r /tmp/${PACKAGE}
@@ -217,7 +224,7 @@ RUN PACKAGE="prestor" \
     && git clone https://github.com/immcantation/prestor /tmp/${PACKAGE} \
     && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} -d immcantation \
     && Rscript -e "devtools::install_github('adletaw/captioner')" \
-    && rinstall -p /tmp/${PACKAGE} \
+    && rinstall -p /tmp/${PACKAGE} -u never \
     && Rscript -e "library('${PACKAGE}', character.only = TRUE)" \
     && (cd /tmp/${PACKAGE} && builds write -n ${PACKAGE} -v $(git describe --abbrev=12 --always --dirty=+)) \
     && rm -r /tmp/${PACKAGE}
@@ -227,7 +234,8 @@ RUN IGPHYML=$(versions get -n igphyml) \
     && wget2 -q --force-progress --no-check-certificate \
        https://github.com/immcantation/igphyml/archive/refs/tags/${IGPHYML}.tar.gz -O igphyml-${IGPHYML}.tar.gz \
     && mkdir -p /usr/local/share/igphyml \
-    && tar -zxf igphyml-${IGPHYML}.tar.gz -C /usr/local/share/igphyml --strip-components 1 \
+    && bsdtar -zxf igphyml-${IGPHYML}.tar.gz -C /usr/local/share/igphyml --strip-components 1 \
+    && sed -i 's/t_tree \*Make_Tree();/t_tree *Make_Tree(int n_otu);/' /usr/local/share/igphyml/src/utilities.h \
     && (cd /usr/local/share/igphyml && ./make_phyml_blas_omp) \
     && rm -r igphyml-${IGPHYML}.tar.gz
 
@@ -236,19 +244,19 @@ RUN PACKAGE="rdi" \
     && rm -rf /tmp/${PACKAGE} \
     && git clone https://bitbucket.org/cbolen1/rdicore /tmp/${PACKAGE} \
     && versions update -n ${PACKAGE} -r /tmp/${PACKAGE} -d immcantation \
-    && rinstall -p /tmp/${PACKAGE} \
+    && rinstall -p /tmp/${PACKAGE} -u never \
     && Rscript -e "library('${PACKAGE}', character.only = TRUE)" \
     && (cd /tmp/${PACKAGE} && builds write -n ${PACKAGE} -v $(git describe --abbrev=12 --always --dirty=+)) \
     && rm -r /tmp/${PACKAGE}
 
 # Install RAbHIT
 RUN RABHIT=$(versions get -n rabhit) \
-    && Rscript -e "devtools::install_version('rabhit', '${RABHIT}', quiet=FALSE, clean=TRUE)" \
+    && Rscript -e "devtools::install_version('rabhit', '${RABHIT}', quiet=FALSE, clean=TRUE, upgrade = 'never')" \
     && Rscript -e "library('rabhit', character.only = TRUE)" 
 
 # Install piglet
 RUN PIGLET=$(versions get -n piglet) \
-    && Rscript -e "devtools::install_version('piglet', '${PIGLET}', quiet=FALSE, clean=TRUE)" \
+    && Rscript -e "devtools::install_version('piglet', '${PIGLET}', quiet=FALSE, clean=TRUE, upgrade='never')" \
     && Rscript -e "library('piglet', character.only = TRUE)"
 
 # Install Seurat
@@ -256,15 +264,25 @@ RUN SEURAT=$(versions get -n seurat) \
     && Rscript -e "devtools::install_version('Seurat', '${SEURAT}', quiet=FALSE, clean=TRUE, upgrade='never')" \
     && Rscript -e "library('Seurat', character.only = TRUE)"
 
+# Install receptor-utils
+RUN RECEPTOR_UTILS=$(versions get -n receptor-utils) \
+    && pip3 install receptor-utils==${RECEPTOR_UTILS}
+
 # Download and build references databases
 RUN fetch_imgtdb.sh -o /usr/local/share/germlines/imgt \
     && imgt2igblast.sh -i /usr/local/share/germlines/imgt -o /usr/local/share/igblast \
     && fetch_phix.sh -o /usr/local/share/phix
 
 # Patch IgBLAST database
-#RUN wget2 -q --force-progress --no-check-certificate \
-#    ftp://ftp.ncbi.nih.gov/blast/executables/igblast/release/patch/optional_file/mouse_gl.aux \
-#    && mv -f mouse_gl.aux /usr/local/share/igblast/optional_file
+ARG IGBLAST_PATCH_URL="https://ftp.ncbi.nih.gov/blast/executables/igblast/release/patch"
+RUN mkdir -p /tmp/igblast_patch && \
+    wget2 -q --force-progress --no-check-certificate --no-robots --cut-dirs=5 -np -nH -r -l 2 --reject "index.html" ${IGBLAST_PATCH_URL} -P /tmp/igblast_patch/ && \
+    if [ -d /tmp/igblast_patch/internal_data ]; then \
+      cp -r /tmp/igblast_patch/internal_data/* /usr/local/share/igblast/internal_data/; \
+    fi; \
+    if [ -d /tmp/igblast_patch/optional_file ]; then \
+      cp -r /tmp/igblast_patch/optional_file/* /usr/local/share/igblast/optional_file/; \
+    fi
 
 # Setup environment
 ENV PATH="${PATH}:/usr/local/share/igphyml/src"
@@ -278,9 +296,11 @@ RUN useradd magus -u 1000 -g users \
 # USER magus
 
 # Set commands
-CMD echo -e " Version information:\n"\
-            "  versions report\n"\
-            "Build stamps:\n"\
-            "  builds report\n"\
-            "Description of available pipelines:\n"\
-            "  pipelines report"
+CMD ["echo", \
+    "-e", \
+    " Version information:\n" \
+    "  versions report\n" \
+    "Build stamps:\n" \
+    "  builds report\n" \
+    "Description of available pipelines:\n" \
+    "  pipelines report"]

@@ -9,48 +9,30 @@ RUN builds write -n date -v "$(date +'%Y-%m-%d %T %Z')"
 
 # Define R package installation parameters
 # ARG R_RCPP="0.12.16"
-ARG R_DEPS="c('ape', \
-              'bibtex', \
+ARG R_DEPS="c('bibtex', \
               'captioner', \
-              'data.table', \
               'diagram', \
               'diptest', \
-              'doParallel', \
-              'dplyr', \
+              'fastcluster', \
               'foreach', \
-              'ggplot2', \
               'gridExtra', \
               'gtools', \
               'hexbin', \
-              'igraph', \
-              'iterators', \
-              'KernSmooth', \
-              'knitr', \
-              'lazyeval', \
-              'lifecycle', \
-              'markdown', \
-              'MASS', \
               'openxlsx', \
               'phangorn', \
               'phylotate', \
-              'progress', \
-              'readr', \
-              'rlang', \
-              'rmarkdown', \
-              'rversions', \
-              'scales', \
               'SDMTools', \
               'seqinr', \
-              'stringi', \
-              'tidyr', \
-              'versions', \
-              'yaml')"
+              'versions')"
 
 # Setup R environment
 #RUN Rscript -e "install.packages('devtools', clean=TRUE)" \
 #    && Rscript -e "devtools::install_version('Rcpp', '${R_RCPP}', quiet=FALSE, clean=TRUE)" \
 #    && Rscript -e "install.packages(${R_DEPS}, clean=TRUE)"
-RUN Rscript -e "install.packages(${R_DEPS}, clean=TRUE); devtools::install_github('javh/markr')"
+#RUN Rscript -e "for (lib in .libPaths()) { installed_in_lib <- rownames(installed.packages(lib.loc=lib)); to_remove <- intersect('rcmdcheck', installed_in_lib); if (length(to_remove) > 0) { remove.packages(to_remove, lib=lib) } }"
+RUN Rscript -e "\
+    devtools::install_cran(${R_DEPS}, upgrade='never', dependencies= T);\
+    devtools::install_github('javh/markr', upgrade='never')"
 
 # Install procotol data, utility scripts and pipelines
 RUN PACKAGE="immcantation" \
@@ -73,17 +55,17 @@ RUN MUSCLE=$(versions get -n muscle) \
 # Install vsearch
 RUN VSEARCH=$(versions get -n vsearch) \
     && wget2 -q --force-progress --no-check-certificate \
-       http://github.com/torognes/vsearch/releases/download/v${VSEARCH}/vsearch-${VSEARCH}-linux-x86_64.tar.gz \
-	&& tar -zxf vsearch-${VSEARCH}-linux-x86_64.tar.gz \
-	&& mv vsearch-${VSEARCH}-linux-x86_64/bin/vsearch /usr/local/bin/vsearch \
-	&& ln -s /usr/local/bin/vsearch /usr/local/bin/usearch \
-	&& rm -r vsearch-${VSEARCH}-linux-x86_64.tar.gz vsearch-${VSEARCH}-linux-x86_64
+       https://github.com/torognes/vsearch/releases/download/v${VSEARCH}/vsearch-${VSEARCH}-linux-x86_64.tar.gz \
+    && tar -zxOf vsearch-${VSEARCH}-linux-x86_64.tar.gz vsearch-${VSEARCH}-linux-x86_64/bin/vsearch > /usr/local/bin/vsearch \
+    && chmod 755 /usr/local/bin/vsearch \
+    && ln -s /usr/local/bin/vsearch /usr/local/bin/usearch \
+    && rm vsearch-${VSEARCH}-linux-x86_64.tar.gz
 
 # Install BLAST+ executables
 RUN BLAST=$(versions get -n blast) \
     && wget2 -q --force-progress --no-check-certificate \
        https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/${BLAST}/ncbi-blast-${BLAST}+-x64-linux.tar.gz \
-    && tar -zxf ncbi-blast-${BLAST}+-x64-linux.tar.gz \
+    && bsdtar -zxf ncbi-blast-${BLAST}+-x64-linux.tar.gz \
     && mv ncbi-blast-${BLAST}+/bin/* /usr/local/bin \
     && rm -r ncbi-blast-${BLAST}+-x64-linux.tar.gz ncbi-blast-${BLAST}+
 
@@ -91,7 +73,7 @@ RUN BLAST=$(versions get -n blast) \
 RUN IGBLAST=$(versions get -n igblast) \
     && wget2 -q --force-progress --no-check-certificate \
        https://ftp.ncbi.nlm.nih.gov/blast/executables/igblast/release/${IGBLAST}/ncbi-igblast-${IGBLAST}-x64-linux.tar.gz \
-    && tar -zxf ncbi-igblast-${IGBLAST}-x64-linux.tar.gz \
+    && bsdtar -zxf ncbi-igblast-${IGBLAST}-x64-linux.tar.gz \
     && mv ncbi-igblast-${IGBLAST}/bin/* /usr/local/bin \
     && mkdir -p /usr/local/share/igblast \
     && fetch_igblastdb.sh -o /usr/local/share/igblast \
@@ -99,10 +81,15 @@ RUN IGBLAST=$(versions get -n igblast) \
     && rm -r ncbi-igblast-${IGBLAST}-x64-linux.tar.gz ncbi-igblast-${IGBLAST}
 
 # Install CD-HIT
+# Uses bsdtar instead of tar: GNU tar's CVE-2025-45582 hardening extracts
+# via openat2(), which the Docker Hub build sandbox's seccomp profile
+# rejects with ENOSYS ("Function not implemented"). bsdtar (libarchive)
+# predates openat2 and isn't affected. Same fix as BLAST+/IgBLAST below.
 RUN CDHIT=$(versions get -n cd-hit) \
     && wget2 -q --force-progress --no-check-certificate \
        https://github.com/weizhongli/cdhit/archive/V${CDHIT}.tar.gz \
-    && tar -zxf V${CDHIT}.tar.gz \
+    && mkdir -p cdhit-${CDHIT} \
+    && bsdtar -zxf V${CDHIT}.tar.gz -C cdhit-${CDHIT} --strip-components 1 \
     && (cd cdhit-${CDHIT} && make && make install) \
     && rm -r V${CDHIT}.tar.gz cdhit-${CDHIT}
 
@@ -112,7 +99,7 @@ RUN CDHIT=$(versions get -n cd-hit) \
 RUN PHYLIP=$(versions get -n phylip) \
     && wget2 -q --force-progress --no-check-certificate \
        https://phylipweb.github.io/phylip/download/phylip-${PHYLIP}.tar.gz \
-    && tar -zxf phylip-${PHYLIP}.tar.gz \
+    && bsdtar -zxf phylip-${PHYLIP}.tar.gz \
     && (cd phylip-${PHYLIP}/src && sed -i '/double computeAngle/a void makebox(char *, double *, double *, double *, long);' draw.h && make -f Makefile.unx install CFLAGS='-fcommon') \
     && mv phylip-${PHYLIP}/exe/* /usr/local/bin \
     && rm -r phylip-${PHYLIP}.tar.gz phylip-${PHYLIP}
@@ -122,20 +109,30 @@ RUN IGPHYML=$(versions get -n igphyml) \
     && wget2 -q --force-progress --no-check-certificate \
        https://github.com/immcantation/igphyml/archive/refs/tags/${IGPHYML}.tar.gz -O igphyml-${IGPHYML}.tar.gz \       
     && mkdir -p /usr/local/share/igphyml \
-    && tar -zxf igphyml-${IGPHYML}.tar.gz -C /usr/local/share/igphyml --strip-components 1 \
+    && bsdtar -zxf igphyml-${IGPHYML}.tar.gz -C /usr/local/share/igphyml --strip-components 1 \
+    && sed -i 's/t_tree \*Make_Tree();/t_tree *Make_Tree(int n_otu);/' /usr/local/share/igphyml/src/utilities.h \
     && (cd /usr/local/share/igphyml && ./make_phyml_blas_omp) \
     && rm -r igphyml-${IGPHYML}.tar.gz
 
 # Install AIRR reference libraries
 RUN AIRR_PY=$(versions get -n airr-py) \
     && AIRR_R=$(versions get -n airr-r) \
-    && pip3 install airr==${AIRR_PY} \
-    && Rscript -e "devtools::install_version('airr', '${AIRR_R}', quiet=FALSE, clean=TRUE)"
+    # && pip3 install airr==${AIRR_PY} \
+    && pip3 install -e "git+https://github.com/airr-community/airr-standards.git@v${AIRR_PY}#egg=airr&subdirectory=lang/python" \
+    # && Rscript -e "devtools::install_version('airr', '${AIRR_R}', quiet=FALSE, clean=TRUE)" \
+    # && Rscript -e "devtools::install_github('airr-community/airr-standards', ref='v${AIRR_R}', subdir='lang/R', upgrade='never')" \
+    && git clone --depth 1 --branch v${AIRR_R} https://github.com/airr-community/airr-standards.git /tmp/airr-standards \
+    && Rscript -e "devtools::install_cran('readr', upgrade='never')" \
+    && Rscript -e "devtools::document('/tmp/airr-standards/lang/R')" \
+    && Rscript -e "devtools::install_local('/tmp/airr-standards/lang/R', upgrade='never')" \
+    && rm -rf /tmp/airr-standards \
+    && Rscript -e "library('airr', character.only = TRUE)"
+        
 
 # Download and build references databases
 RUN fetch_imgtdb.sh -o /usr/local/share/germlines/imgt \
-    && imgt2igblast.sh -i /usr/local/share/germlines/imgt -o /usr/local/share/igblast \
-    && fetch_phix.sh -o /usr/local/share/phix
+   && imgt2igblast.sh -i /usr/local/share/germlines/imgt -o /usr/local/share/igblast \
+   && fetch_phix.sh -o /usr/local/share/phix
 
 # Patch IgBLAST database
 #RUN wget2 -q --force-progress --no-check-certificate \
