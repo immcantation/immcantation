@@ -284,12 +284,10 @@ Fetch the latest changes and create your feature branch based on `dev`:
 
 ``` bash
 git fetch upstream
-git checkout dev
-git pull upstream dev
-git checkout -b my-feature-branch
+git checkout -b my-feature-branch --no-track upstream/dev
 ```
 
-Replace `my-feature-branch` with a descriptive name for your work (e.g., `ìssue-123-add-cool-feature`).
+Replace `my-feature-branch` with a descriptive name for your work (e.g., `issue-123-add-cool-feature`).
 
 6.  Make Your Changes
 
@@ -335,23 +333,24 @@ git merge upstream/dev
 git push origin my-feature-branch
 ```
 
-11. Clean Up After Merging
+11. Update Your Fork
 
-Once your PR is merged, you can delete your feature branch both locally and on GitHub:
+To keep your fork up-to-date with the main repository, periodically reset your `dev` branch to match the upstream `dev` branch:
+
+``` bash
+git fetch upstream
+git checkout -B dev upstream/dev
+git push origin dev
+```
+
+12. Clean Up After Merging
+
+Once your PR is merged and your local `dev` is up-to-date (step 11), you can delete your feature branch both locally and on GitHub:
 
 ``` bash
 git checkout dev
 git branch -d my-feature-branch
 git push origin --delete my-feature-branch
-```
-
-12. Update Your Fork
-To keep your fork up-to-date with the main repository, periodically fetch and merge changes from the upstream `dev` branch:
-
-``` bash
-git checkout dev
-git pull upstream dev
-git push origin dev
 ```
 
 ### Version Numbers
