@@ -200,7 +200,6 @@ standard `.gitignore` files locally:
 Standard `.gitignore` file for the Python packages:
 
 ```
-syntax: glob
 .*
 *~
 *.pyc
@@ -216,7 +215,6 @@ docs/_build
 Standard `.gitignore` file for the R packages:
 
 ```
-syntax: glob
 .*
 *.Rproj
 man/*.Rd
