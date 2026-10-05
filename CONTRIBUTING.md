@@ -1,3 +1,5 @@
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+
 We welcome contributions to all components of the Immcantation framework through
 pull request to the relevant GitHub repository:
 
@@ -77,8 +79,10 @@ packages are subject to their licenses.
 ### R Unit Tests
 
 + Use the [testthat](https://github.com/hadley/testthat) framework.
-+ Place tests in `tests/testthat` within the R file corresponding
-  to the file in `/R` that contains the function being tested.
++ Place tests in separate test files under `tests/testthat`, not alongside
+  the source code in `/R`. Use one test file per source file, named after
+  the file in `/R` that contains the function being tested. For example,
+  tests for functions in `R/Core.R` go in `tests/testthat/testCore.R`.
 + If data is required for a unit test, place it in `tests/data-tests`
   and access it via the recipe:
   ```
@@ -192,10 +196,18 @@ or [Python](https://www.python.org/dev/peps/pep-0008) guides.
 
 ### Hidden Files ###
 
-As a general rule, do not commit hidden (`.*`) files such as project build files
-(eg, `*.Rproj`, `.idea`) or other local environment settings (eg, `.gitignore`),
-with the noted exception of `.Rbuildignore`. We use the following
-standard `.gitignore` files locally:
+As a general rule, do not commit files that are specific to your machine or
+editor, such as project build files (eg, `*.Rproj`, `.idea`, `.vscode`) or other
+local environment settings (eg, `.Rhistory`, `.DS_Store`). Most of these are
+hidden (`.*`) files.
+
+The exception is hidden files that configure the repository itself and are shared
+by all contributors, such as `.gitignore`, `.Rbuildignore` and `.readthedocs.yaml`.
+These are expected to be committed.
+
+Each repository includes a `.gitignore` file based on the following standard
+templates. The `.*` pattern ignores all hidden files by default, so a new
+shared hidden file has to be added explicitly with `git add -f`.
 
 Standard `.gitignore` file for the Python packages:
 
@@ -231,7 +243,7 @@ src/*.dll
 
 > **Note:** We are transitioning all repositories to this branching model. If the
 > repository you are contributing to does not have a `dev` branch yet, use `master`
-> in place of `dev` in the steps below.
+> as the base branch instead.
 
 +   The `master` branch contains the last stable release.
 +   Development happens in forked repositories and is incorporated into Immcantation repositories through pull requests to the `dev` branch.
@@ -289,9 +301,16 @@ git checkout -b my-feature-branch --no-track upstream/dev
 
 Replace `my-feature-branch` with a descriptive name for your work (e.g., `issue-123-add-cool-feature`).
 
+If the second command fails because `upstream/dev` does not exist, the repository has not
+moved to the `dev` branching model yet. Use `upstream/master` here, and `master` wherever
+`dev` appears in the remaining steps.
+
+Always commit your work to a feature branch, never directly to `dev`. This keeps your
+`dev` branch an exact copy of the upstream one, which makes it easy to update (step 11).
+
 6.  Make Your Changes
 
-Edit, add, or delete code as needed. Use conventional commit messages, e.g.:
+Edit, add, or delete code as needed. Write short commit messages that describe what changed, e.g.:
 
 ``` bash
 git add path/to/changed_file
@@ -310,7 +329,7 @@ git push origin my-feature-branch
 
 -   Go to your fork on GitHub.
 -   Click the "Compare & pull request" button.
--   Set the base branch to `dev` on `immcantation/<repo-name>`.
+-   Set the base branch to `dev` on `immcantation/<repo-name>` (or `master`, if the repository has no `dev` branch).
 -   Set the compare branch to your feature branch.
 -   Add a clear title and description, referencing any related issues if applicable.
 -   Submit the pull request.
