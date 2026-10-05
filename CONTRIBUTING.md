@@ -323,17 +323,16 @@ Visit the GitHub documentation for details on linking a pull request to an issue
 
 Project maintainers may review your PR and request changes. Make further commits to your feature branch as needed. Push updates, and they’ll be added to your PR automatically.
 
-10. Syncing with Upstream (Optional but Recommended)
+10. Syncing with Upstream (If Needed)
 
-To keep your branch up-to-date if the `dev` branch changes before your PR is merged:
+You need to do this if the `dev` branch changes before your PR is merged. To bring the latest `dev` into your branch:
 
 ``` bash
 git fetch upstream
-git checkout dev
-git pull upstream dev
 git checkout my-feature-branch
-# Resolve any conflicts, if needed
-git push -f origin my-feature-branch
+git merge upstream/dev
+# Resolve any conflicts, if needed, then commit the merge
+git push origin my-feature-branch
 ```
 
 11. Clean Up After Merging
