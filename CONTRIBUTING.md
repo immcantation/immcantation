@@ -229,6 +229,10 @@ src/*.dll
 
 ### Branches ###
 
+> **Note:** We are transitioning all repositories to this branching model. If the
+> repository you are contributing to does not have a `dev` branch yet, use `master`
+> in place of `dev` in the steps below.
+
 +   The `master` branch contains the last stable release.
 +   Development happens in forked repositories and is incorporated into Immcantation repositories through pull requests to the `dev` branch.
 +   When changes in `dev` are ready for release, they are merged into `master`.
