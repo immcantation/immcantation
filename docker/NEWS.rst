@@ -15,6 +15,7 @@ Version Updates:
 
 + alakazam 1.5.0
 + changeo 1.3.5
++ dowser 2.5.2
 + shazam 1.4.0
 + scoper 1.6.0
 + tigger 1.2.0
