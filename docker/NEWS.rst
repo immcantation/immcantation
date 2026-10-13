@@ -10,12 +10,14 @@ Image Changes:
 + Removed the ggplot2/xfun/ggiraph version pins and Bioconductor 3.21 pin
   added in 4.7.0 as a temporary enchantr compatibility fix; these packages
   now install at their current versions.
++ Added immvoke to the suite image.
 
 Version Updates:
 
 + alakazam 1.5.0
 + changeo 1.3.5
 + dowser 2.5.2
++ immvoke 0.1.0
 + shazam 1.4.0
 + scoper 1.6.0
 + tigger 1.2.0
