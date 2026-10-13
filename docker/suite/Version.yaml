@@ -1,9 +1,10 @@
 immcantation:
   version:  devel
-  date:     2026.10.07
+  date:     2026.10.13
 package:
   presto:   0.7.9
   changeo:  1.3.5
+  immvoke:  0.1.0
   alakazam: 1.5.0
   shazam:   1.4.0
   tigger:   1.2.0

@@ -156,6 +156,10 @@ RUN PACKAGE="changeo" \
     && (cd /tmp/${PACKAGE} && builds write -n ${PACKAGE} -v $(git describe --abbrev=12 --always --dirty=+)) \
     && rm -r /tmp/${PACKAGE}
 
+# Install immvoke
+RUN IMMVOKE=$(versions get -n immvoke) \
+    && pip3 install --no-cache-dir immvoke==${IMMVOKE}
+
 # Install alakazam
 RUN PACKAGE="alakazam" \
     && rm -rf /tmp/${PACKAGE} \

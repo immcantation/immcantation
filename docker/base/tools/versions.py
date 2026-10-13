@@ -82,6 +82,12 @@ def inspectVersions(version_file=default_version_file):
     except ImportError:
         versions.packages['changeo'] = None
 
+    # immvoke
+    try:
+        versions.packages['immvoke'] = importlib.metadata.version('immvoke')
+    except ImportError:
+        versions.packages['immvoke'] = None
+
     # Alakazam
     try:
         alakazam = check_output('Rscript -e \"cat(packageDescription(\'alakazam\', fields=\'Version\'))\"',
