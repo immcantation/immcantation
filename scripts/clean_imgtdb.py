@@ -17,7 +17,7 @@ name_set = set()
 seq_list = list()
 seq_list_desc = list()
 for rec in SeqIO.parse(in_file, 'fasta'):
-    name = rec.description.split('|')[1]
+    name = rec.description.split('|')[1] if '|' in rec.description else rec.description
     if name not in name_set:
         name_set.add(name)
         seq = SeqRecord(rec.seq.replace('.', '').upper(), id=name, name=name, description=name)
