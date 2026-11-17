@@ -99,16 +99,19 @@ RUN PACKAGE="immcantation" \
     && rm -rf /tmp/${PACKAGE}
 
 # Download Zenodo data
+# Files are fetched individually: Zenodo's /files-archive endpoint
+# no longer works for these records (returns 403/404).
 # Intro
 RUN cd ${HOME}/data && \
-    wget2 -v -O zenodo.zip https://zenodo.org/api/records/10046916/files-archive && \
-    unzip -o zenodo.zip && \
-    rm -rf zenodo.zip
+    for f in input.fasta; do \
+        wget2 -v -O "${f}" "https://zenodo.org/api/records/10046916/files/${f}/content" || exit 1; \
+    done
 # 10x
 RUN cd ${HOME}/data && \
-    wget2 -v -O zenodo.zip https://zenodo.org/api/records/10028129/files-archive && \
-    unzip -o zenodo.zip && \
-    rm -rf zenodo.zip
+    for f in BCR_data.tsv filtered_contig.fasta filtered_contig_annotations.csv \
+             BCR.data_08112023.rds GEX.data_08112023.rds BCR_data_sample1.tsv; do \
+        wget2 -v -O "${f}" "https://zenodo.org/api/records/10028129/files/${f}/content" || exit 1; \
+    done
 
 
 RUN chown -R ${RS_USER}:${GID} ${HOME}/notebooks \
