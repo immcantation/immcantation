@@ -610,10 +610,11 @@ Additionally, if there is paired heavy and light chain data, you can format the 
 There is an additional step that occurs before the `formatClones` step in this situation. In order for the trees to best use the addition of light chain information, we will need to assign `clone_subgroups` using dowser's function `resolveLightChains`. This group cells within a clone based on the light chain V and J gene and assign a subgroup to each sequence. Then, in the `formatClones` step, specify `chain="HL"`.
 
 ```{r, echo=FALSE}
-comb <- resolveLightChains(results, nproc = 1)
+comb <- resolveLightChains(results, cell = "cell_id_unique", nproc = 1)
 
 clones <- formatClones(comb,
-                       chain = "HL", traits = c("day", "gex_annotation"),
+                       chain = "HL", cell = "cell_id_unique",
+                       traits = c("day", "gex_annotation"),
                        num_fields = c("duplicate_count"), minseq = 5, nproc = 1)
 
 head(clones)
