@@ -204,10 +204,11 @@ bcr_data %>% slice_sample(n = 5) # random examples
 
 ### Create unique cell IDs
 
-Because cell IDs can overlap across different samples, we need to generate unique cell IDs to correctly distinguish cells from different sources.
+Because cell IDs can overlap across different samples, we need to generate unique cell IDs to correctly distinguish cells from different sources. Sequence IDs are derived from the cell barcodes, so they can overlap too, and we make them unique the same way.
 
 ```{r}
 bcr_data$cell_id_unique <- paste0(bcr_data$sample_id, "_", bcr_data$cell_id)
+bcr_data$sequence_id <- paste0(bcr_data$sample_id, "_", bcr_data$sequence_id)
 bcr_data$cell_id_unique[1]
 ```
 
