@@ -202,6 +202,15 @@ cat(paste("There are", nrow(bcr_data), "rows in the data.\n"))
 bcr_data %>% slice_sample(n = 5) # random examples
 ```
 
+### Create unique cell IDs
+
+Because cell IDs can overlap across different samples, we need to generate unique cell IDs to correctly distinguish cells from different sources.
+
+```{r}
+bcr_data$cell_id_unique <- paste0(bcr_data$sample_id, "_", bcr_data$cell_id)
+bcr_data$cell_id_unique[1]
+```
+
 ### Remove cells with multiple heavy chains
 
 If your single cell data contains cells with multiple heavy chains, you need to handle it before calling clones (B cells that descend from a common naive B cell ancestor).
@@ -210,10 +219,10 @@ A simple solution is just to remove cells with multiple heavy chains from the si
 
 ```{r}
 # remove cells with multiple heavy chain
-multi_heavy <- table(dplyr::filter(bcr_data, locus == "IGH")$cell_id)
+multi_heavy <- table(dplyr::filter(bcr_data, locus == "IGH")$cell_id_unique)
 multi_heavy_cells <- names(multi_heavy)[multi_heavy > 1]
 
-bcr_data <- dplyr::filter(bcr_data, !cell_id %in% multi_heavy_cells)
+bcr_data <- dplyr::filter(bcr_data, !cell_id_unique %in% multi_heavy_cells)
 cat(paste("There are", nrow(bcr_data),
           "rows in the data after filtering out cells with multiple heavy chains.\n"))
 ```
@@ -224,11 +233,11 @@ Since most of the following analyses are based on heavy chains, we remove cells 
 
 ```{r}
 # split cells by heavy and light chains
-heavy_cells <- dplyr::filter(bcr_data, locus == "IGH")$cell_id
-light_cells <- dplyr::filter(bcr_data, locus == "IGK" | locus == "IGL")$cell_id
+heavy_cells <- dplyr::filter(bcr_data, locus == "IGH")$cell_id_unique
+light_cells <- dplyr::filter(bcr_data, locus == "IGK" | locus == "IGL")$cell_id_unique
 no_heavy_cells <- light_cells[which(!light_cells %in% heavy_cells)]
 
-bcr_data <- dplyr::filter(bcr_data, !cell_id %in% no_heavy_cells)
+bcr_data <- dplyr::filter(bcr_data, !cell_id_unique %in% no_heavy_cells)
 cat(paste("There are", nrow(bcr_data), "rows in the data after filtering out
           cells without heavy chains."))
 ```
@@ -262,25 +271,20 @@ head(Idents(gex_db), 1)
 
 ### Standardize cell IDs
 
-Both of the example datasets have been processed separately and use slightly different cell identifiers. To consolidate the data into one object, we need to standardize the cell identifiers. This step could be different or even not necessary with other datasets.
+It is possible both of the BCR and GEX datasets have been processed separately and use slightly different cell identifiers. To consolidate the data into one object, we need to check the consistency of the cell ids in BCR and GEX datasets, and standardize the cell identifiers if necessary. 
 
 ```{r}
-# make cell IDs in BCR match those in Seurat object
+# make sure cell IDs in BCR match those in Seurat object
 bcr_data$cell_id_unique <- paste0(bcr_data$sample_id, "_", bcr_data$cell_id)
+
+# check the cell id in the BCR data
 bcr_data$cell_id_unique[1]
-```
 
-In addition, the cells in both datasets are not presented in the same order.
-
-```{r}
-# first id in the BCR data
-bcr_data$cell_id_unique[1]
-```
-
-```{r}
-# first id in the GEX data
+# check the cell id in the GEX data
 Cells(gex_db)[1]
 ```
+
+In addition, please note the cells in both datasets are not presented in the same order.
 
 Having common cell identifiers, we can bring BCR data into the Seurat object, or the GEX and annotation data from the Seurat object into the BCR table, by matching `cell_id_unique`.
 
