@@ -353,7 +353,7 @@ We define a clonal threshold only using the heavy chain locus, so we need to fil
 dist_nearest <- distToNearest(dplyr::filter(bcr_data,
                                             locus == "IGH",
                                             subject_id == "subject1"),
-                              cellIdColumn="cell_id")
+                              cellIdColumn="cell_id_unique")
 
 # generate Hamming distance histogram
 p1 <- ggplot(subset(dist_nearest, !is.na(dist_nearest)),
@@ -405,7 +405,7 @@ In the above data, there are two subjects. We will want to make make sure that t
 # calculate cross subjects distribution of distance to nearest
 dist_crossSubj <- distToNearest(dplyr::filter(bcr_data, locus == "IGH"),
                                 nproc = 1, cross = "subject_id",
-                                cellIdColumn="cell_id")
+                                cellIdColumn="cell_id_unique")
 
 # find threshold for cloning automatically and initialize the Gaussian fit
 # parameters of the nearest-neighbor
