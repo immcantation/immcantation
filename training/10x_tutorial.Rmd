@@ -202,6 +202,16 @@ cat(paste("There are", nrow(bcr_data), "rows in the data.\n"))
 bcr_data %>% slice_sample(n = 5) # random examples
 ```
 
+### Create unique cell IDs
+
+Because cell IDs can overlap across different samples, we need to generate unique cell IDs to correctly distinguish cells from different sources. Sequence IDs are derived from the cell barcodes, so they can overlap too, and we make them unique the same way.
+
+```{r}
+bcr_data$cell_id_unique <- paste0(bcr_data$sample_id, "_", bcr_data$cell_id)
+bcr_data$sequence_id <- paste0(bcr_data$sample_id, "_", bcr_data$sequence_id)
+bcr_data$cell_id_unique[1]
+```
+
 ### Remove cells with multiple heavy chains
 
 If your single cell data contains cells with multiple heavy chains, you need to handle it before calling clones (B cells that descend from a common naive B cell ancestor).
@@ -210,10 +220,10 @@ A simple solution is just to remove cells with multiple heavy chains from the si
 
 ```{r}
 # remove cells with multiple heavy chain
-multi_heavy <- table(dplyr::filter(bcr_data, locus == "IGH")$cell_id)
+multi_heavy <- table(dplyr::filter(bcr_data, locus == "IGH")$cell_id_unique)
 multi_heavy_cells <- names(multi_heavy)[multi_heavy > 1]
 
-bcr_data <- dplyr::filter(bcr_data, !cell_id %in% multi_heavy_cells)
+bcr_data <- dplyr::filter(bcr_data, !cell_id_unique %in% multi_heavy_cells)
 cat(paste("There are", nrow(bcr_data),
           "rows in the data after filtering out cells with multiple heavy chains.\n"))
 ```
@@ -224,11 +234,11 @@ Since most of the following analyses are based on heavy chains, we remove cells 
 
 ```{r}
 # split cells by heavy and light chains
-heavy_cells <- dplyr::filter(bcr_data, locus == "IGH")$cell_id
-light_cells <- dplyr::filter(bcr_data, locus == "IGK" | locus == "IGL")$cell_id
+heavy_cells <- dplyr::filter(bcr_data, locus == "IGH")$cell_id_unique
+light_cells <- dplyr::filter(bcr_data, locus == "IGK" | locus == "IGL")$cell_id_unique
 no_heavy_cells <- light_cells[which(!light_cells %in% heavy_cells)]
 
-bcr_data <- dplyr::filter(bcr_data, !cell_id %in% no_heavy_cells)
+bcr_data <- dplyr::filter(bcr_data, !cell_id_unique %in% no_heavy_cells)
 cat(paste("There are", nrow(bcr_data), "rows in the data after filtering out
           cells without heavy chains."))
 ```
@@ -262,25 +272,20 @@ head(Idents(gex_db), 1)
 
 ### Standardize cell IDs
 
-Both of the example datasets have been processed separately and use slightly different cell identifiers. To consolidate the data into one object, we need to standardize the cell identifiers. This step could be different or even not necessary with other datasets.
+It is possible both of the BCR and GEX datasets have been processed separately and use slightly different cell identifiers. To consolidate the data into one object, we need to check the consistency of the cell ids in BCR and GEX datasets, and standardize the cell identifiers if necessary. 
 
 ```{r}
-# make cell IDs in BCR match those in Seurat object
+# make sure cell IDs in BCR match those in Seurat object
 bcr_data$cell_id_unique <- paste0(bcr_data$sample_id, "_", bcr_data$cell_id)
+
+# check the cell id in the BCR data
 bcr_data$cell_id_unique[1]
-```
 
-In addition, the cells in both datasets are not presented in the same order.
-
-```{r}
-# first id in the BCR data
-bcr_data$cell_id_unique[1]
-```
-
-```{r}
-# first id in the GEX data
+# check the cell id in the GEX data
 Cells(gex_db)[1]
 ```
+
+In addition, please note the cells in both datasets are not presented in the same order.
 
 Having common cell identifiers, we can bring BCR data into the Seurat object, or the GEX and annotation data from the Seurat object into the BCR table, by matching `cell_id_unique`.
 
@@ -349,7 +354,7 @@ We define a clonal threshold only using the heavy chain locus, so we need to fil
 dist_nearest <- distToNearest(dplyr::filter(bcr_data,
                                             locus == "IGH",
                                             subject_id == "subject1"),
-                              cellIdColumn="cell_id")
+                              cellIdColumn="cell_id_unique")
 
 # generate Hamming distance histogram
 p1 <- ggplot(subset(dist_nearest, !is.na(dist_nearest)),
@@ -401,7 +406,7 @@ In the above data, there are two subjects. We will want to make make sure that t
 # calculate cross subjects distribution of distance to nearest
 dist_crossSubj <- distToNearest(dplyr::filter(bcr_data, locus == "IGH"),
                                 nproc = 1, cross = "subject_id",
-                                cellIdColumn="cell_id")
+                                cellIdColumn="cell_id_unique")
 
 # find threshold for cloning automatically and initialize the Gaussian fit
 # parameters of the nearest-neighbor
@@ -605,10 +610,11 @@ Additionally, if there is paired heavy and light chain data, you can format the 
 There is an additional step that occurs before the `formatClones` step in this situation. In order for the trees to best use the addition of light chain information, we will need to assign `clone_subgroups` using dowser's function `resolveLightChains`. This group cells within a clone based on the light chain V and J gene and assign a subgroup to each sequence. Then, in the `formatClones` step, specify `chain="HL"`.
 
 ```{r, echo=FALSE}
-comb <- resolveLightChains(results, nproc = 1)
+comb <- resolveLightChains(results, cell = "cell_id_unique", nproc = 1)
 
 clones <- formatClones(comb,
-                       chain = "HL", traits = c("day", "gex_annotation"),
+                       chain = "HL", cell = "cell_id_unique",
+                       traits = c("day", "gex_annotation"),
                        num_fields = c("duplicate_count"), minseq = 5, nproc = 1)
 
 head(clones)

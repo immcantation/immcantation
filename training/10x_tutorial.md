@@ -2,21 +2,21 @@
 
 Tutorial outline:
 
--   [Overview](#overview)
--   [Getting started](#getting-started)
--   [Assign V, D, and J genes using
-    IgBLAST](#assign-v-d-and-j-genes-using-igblast)
--   [Load libraries](#load-libraries)
--   [Load in and reformat the data](#load-in-and-reformat-the-data)
--   [Cloning thresholds](#identify-clonal-threshold) (automatically or
-    manually)
--   [Define clonal groups](#define-clonal-groups)
--   [Create germlines](#create-germlines)
--   [Calculate V gene SHM frequency](#calculate-v-gene-shm-frequency)
-    (in the heavy chain)
--   [Build and visualize trees](#build-and-visualize-trees)
--   [Analyze B cell migration, differentiation, and evolution over
-    time](#analyze-b-cell-migration-differentiation-and-evolution-over-time)
+- [Overview](#overview)
+- [Getting started](#getting-started)
+- [Assign V, D, and J genes using
+  IgBLAST](#assign-v-d-and-j-genes-using-igblast)
+- [Load libraries](#load-libraries)
+- [Load in and reformat the data](#load-in-and-reformat-the-data)
+- [Cloning thresholds](#identify-clonal-threshold) (automatically or
+  manually)
+- [Define clonal groups](#define-clonal-groups)
+- [Create germlines](#create-germlines)
+- [Calculate V gene SHM frequency](#calculate-v-gene-shm-frequency) (in
+  the heavy chain)
+- [Build and visualize trees](#build-and-visualize-trees)
+- [Analyze B cell migration, differentiation, and evolution over
+  time](#analyze-b-cell-migration-differentiation-and-evolution-over-time)
 
 ## Overview
 
@@ -29,23 +29,23 @@ Knowledge of basic command line usage is assumed. Please check out the
 individual documentation sites for the functions detailed in this
 tutorial before using them on your own data.
 
--   For simplicity, this tutorial will use the [Immcantation Lab Docker
-    image](https://hub.docker.com/repository/Docker/immcantation/lab)
-    which contains R Markdown notebooks and all necessary software to
-    run this code.
-    -   You can download the current Docker image with
-        `docker pull immcantation/lab:devel`
-    -   For some operating systems, it may be necessary to use
-        super-user privileges (sudo), and/or to have [Docker
-        Desktop](https://hub.docker.com/editions/community/docker-ce-desktop-windows)
-        running before entering the previous command.
-    -   You can read more details about how to get and use the Docker
-        container
-        [here](https://immcantation.readthedocs.io/en/latest/docker/intro.html),
-        including how to run tutorials such as this one.
--   It is also possible to install the packages being used separately.
-    Instructions are available in each package’s documentation site. See
-    Resources.
+- For simplicity, this tutorial will use the [Immcantation Lab Docker
+  image](https://hub.docker.com/repository/Docker/immcantation/lab)
+  which contains R Markdown notebooks and all necessary software to run
+  this code.
+  - You can download the current Docker image with
+    `docker pull immcantation/lab:devel`
+  - For some operating systems, it may be necessary to use super-user
+    privileges (sudo), and/or to have [Docker
+    Desktop](https://hub.docker.com/editions/community/docker-ce-desktop-windows)
+    running before entering the previous command.
+  - You can read more details about how to get and use the Docker
+    container
+    [here](https://immcantation.readthedocs.io/en/latest/docker/intro.html),
+    including how to run tutorials such as this one.
+- It is also possible to install the packages being used separately.
+  Instructions are available in each package’s documentation site. See
+  Resources.
 
 You may also reference [this
 page](https://immcantation.readthedocs.io/en/stable/docker/pipelines.html)
@@ -55,22 +55,22 @@ example script.
 
 Resources:
 
--   You can email <immcantation@googlegroups.com> with any questions or
-    issues.
--   Documentation: <http://immcantation.org>
--   Package specific documentation:
-    [pRESTO](https://presto.readthedocs.io/en/stable/),
-    [Change-O](https://changeo.readthedocs.io/en/stable/),
-    [Alakazam](https://alakazam.readthedocs.io/en/stable/),
-    [SHazaM](https://shazam.readthedocs.io/en/stable/),
-    [SCOPer](https://scoper.readthedocs.io/en/stable/), and
-    [dowser](https://dowser.readthedocs.io/en/stable/).
--   Source code and bug reports:
-    <https://github.com/immcantation/immcantation>
--   Docker image for this tutorial:
-    <https://hub.docker.com/r/immcantation/lab>
--   Source code for Immcantation tutorials:
-    <https://github.com/immcantation/immcantation/tree/master/training/>
+- You can email <immcantation@googlegroups.com> with any questions or
+  issues.
+- Documentation: <http://immcantation.org>
+- Package specific documentation:
+  [pRESTO](https://presto.readthedocs.io/en/stable/),
+  [Change-O](https://changeo.readthedocs.io/en/stable/),
+  [Alakazam](https://alakazam.readthedocs.io/en/stable/),
+  [SHazaM](https://shazam.readthedocs.io/en/stable/),
+  [SCOPer](https://scoper.readthedocs.io/en/stable/), and
+  [dowser](https://dowser.readthedocs.io/en/stable/).
+- Source code and bug reports:
+  <https://github.com/immcantation/immcantation>
+- Docker image for this tutorial:
+  <https://hub.docker.com/r/immcantation/lab>
+- Source code for Immcantation tutorials:
+  <https://github.com/immcantation/immcantation/tree/master/training/>
 
 ## Getting started
 
@@ -97,19 +97,18 @@ download it from Zenodo
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10028129.svg)](https://doi.org/10.5281/zenodo.10028129).
 We will use these files:
 
--   **filtered\_contig.fasta** and
-    **filtered\_contig\_annotations.csv**. They are the direct Cell
-    Ranger output files for one of the pseudo-subjects. We are going to
-    use the Ig V(D)J sequences from this sample to show how to process
-    V(D)J data using Immcantation.
--   **BCR\_data.tsv**: B-Cell Receptor Data. Adaptive Immune Receptor
-    Repertoire (AIRR) tsv BCRs from two pseudo-subjects, already aligned
-    to IMGT V, D, and J genes.
--   **GEX.data\_08112023.rds**: Gene Expression Data. This file contains
-    a Seurat object with RNA-seq data already processed and annotated.
-    Processing and annotation are not covered in this tutorial. You can
-    learn more on these topics in Seurat’s documentation and tutorials:
-    <https://satijalab.org/seurat/articles/pbmc3k_tutorial.html>
+- **filtered\_contig.fasta** and **filtered\_contig\_annotations.csv**.
+  They are the direct Cell Ranger output files for one of the
+  pseudo-subjects. We are going to use the Ig V(D)J sequences from this
+  sample to show how to process V(D)J data using Immcantation.
+- **BCR\_data.tsv**: B-Cell Receptor Data. Adaptive Immune Receptor
+  Repertoire (AIRR) tsv BCRs from two pseudo-subjects, already aligned
+  to IMGT V, D, and J genes.
+- **GEX.data\_08112023.rds**: Gene Expression Data. This file contains a
+  Seurat object with RNA-seq data already processed and annotated.
+  Processing and annotation are not covered in this tutorial. You can
+  learn more on these topics in Seurat’s documentation and tutorials:
+  <https://satijalab.org/seurat/articles/pbmc3k_tutorial.html>
 
 The R Markdown notebook with the code is also available in the container
 (`/home/magus/notebooks/10x_tutorial.Rmd`).
@@ -157,33 +156,33 @@ After running these commands, you should now have
 **BCR\_data\_sequences\_igblast\_db-pass.tsv** and
 **BCR\_data\_sequences\_igblast.fmt7** in your `results` directory.
 
--   For a full listing of what the flags mean, see the command line
-    usage for [AssignGenes.py
-    igblast](https://changeo.readthedocs.io/en/stable/tools/AssignGenes.html#assigngenes-py-igblast)
-    and [MakeDb.py
-    igblast](https://changeo.readthedocs.io/en/stable/tools/MakeDb.html#makedb-py-igblast).
-    You can also read our [“Using
-    IgBLAST”](https://changeo.readthedocs.io/en/stable/examples/igblast.html)
-    which contains both commands.
--   The `--10x filtered_contig_annotations.csv` specifies the path of
-    the contig annotations file generated by `cellranger vdj`, which can
-    be found in the *outs* directory.
+- For a full listing of what the flags mean, see the command line usage
+  for [AssignGenes.py
+  igblast](https://changeo.readthedocs.io/en/stable/tools/AssignGenes.html#assigngenes-py-igblast)
+  and [MakeDb.py
+  igblast](https://changeo.readthedocs.io/en/stable/tools/MakeDb.html#makedb-py-igblast).
+  You can also read our [“Using
+  IgBLAST”](https://changeo.readthedocs.io/en/stable/examples/igblast.html)
+  which contains both commands.
+- The `--10x filtered_contig_annotations.csv` specifies the path of the
+  contig annotations file generated by `cellranger vdj`, which can be
+  found in the *outs* directory.
 
 Please note that:
 
--   **all\_contig.fasta** can be exchanged for
-    **filtered\_contig.fasta**, and **all\_contig\_annotations.csv** can
-    be exchanged for **filtered\_contig\_annotations.csv** to use the
-    unfiltered cellranger data outputs.
--   The resulting tab-delimited table overwrites the V, D and J gene
-    assignments generated by Cell Ranger and uses those generated by
-    [IgBLAST](https://ncbi.github.io/igblast/) or
-    [IMGT/HighV-QUEST](https://www.imgt.org/IMGTindex/IMGTHighV-QUEST.php)
-    instead.
--   To process mouse data and/or TCR data, alter the `--organism` and
-    `--loci` arguments to `AssignGenes.py` accordingly (e.g.,
-    `--organism mouse`, `--loci tcr`) and use the appropriate V(D)J IMGT
-    reference database (e.g., \*\*imgt\_mouse\_TR\*.fasta\*\*)
+- **all\_contig.fasta** can be exchanged for **filtered\_contig.fasta**,
+  and **all\_contig\_annotations.csv** can be exchanged for
+  **filtered\_contig\_annotations.csv** to use the unfiltered cellranger
+  data outputs.
+- The resulting tab-delimited table overwrites the V, D and J gene
+  assignments generated by Cell Ranger and uses those generated by
+  [IgBLAST](https://ncbi.github.io/igblast/) or
+  [IMGT/HighV-QUEST](https://www.imgt.org/IMGTindex/IMGTHighV-QUEST.php)
+  instead.
+- To process mouse data and/or TCR data, alter the `--organism` and
+  `--loci` arguments to `AssignGenes.py` accordingly (e.g.,
+  `--organism mouse`, `--loci tcr`) and use the appropriate V(D)J IMGT
+  reference database (e.g., \*\*imgt\_mouse\_TR\*.fasta\*\*)
 
 ## Install and load libraries
 
@@ -289,11 +288,11 @@ You may wish to subset your data to only productive sequences:
     ## # A tibble: 5 x 66
     ##   sequence_id                 sequence  rev_comp productive v_call d_call j_call
     ##   <chr>                       <chr>     <lgl>    <lgl>      <chr>  <chr>  <chr> 
-    ## 1 ACACTGATCTGTTGAG-1_contig_2 TGGGGAGG~ FALSE    TRUE       IGKV1~ <NA>   IGKJ4~
-    ## 2 AGTAGTCAGGAATGGA-1_contig_1 AGCTCTCA~ FALSE    TRUE       IGHV3~ IGHD7~ IGHJ2~
-    ## 3 CGGAGTCTCACTCCTG-1_contig_1 AGAGATCT~ FALSE    TRUE       IGLV1~ <NA>   IGLJ3~
-    ## 4 TTAGGACAGAGTACAT-1_contig_2 GGAGAAGA~ FALSE    TRUE       IGKV3~ <NA>   IGKJ2~
-    ## 5 TGAGGGAAGCCACCTG-1_contig_1 AGAGCTCT~ FALSE    TRUE       IGLV4~ <NA>   IGLJ3~
+    ## 1 ACATCAGTCGACCAGC-1_contig_2 GGGAGAGG~ FALSE    TRUE       IGHV3~ IGHD6~ IGHJ2~
+    ## 2 TGAGAGGGTGTGAATA-1_contig_2 ACATGGGA~ FALSE    TRUE       IGHV4~ IGHD1~ IGHJ4~
+    ## 3 CCTACCAGTGGCTCCA-1_contig_1 GAGGAAAA~ FALSE    TRUE       IGLV8~ <NA>   IGLJ3~
+    ## 4 TGTGGTATCCCTTGCA-1_contig_2 AGCTCTGA~ FALSE    TRUE       IGHV3~ IGHD7~ IGHJ3~
+    ## 5 CCACCTAGTCTAGAGG-1_contig_2 GGGGGCTT~ FALSE    TRUE       IGHV4~ IGHD4~ IGHJ5~
     ## # i 59 more variables: sequence_alignment <chr>, germline_alignment <chr>,
     ## #   junction <chr>, junction_aa <chr>, v_cigar <chr>, d_cigar <chr>,
     ## #   j_cigar <chr>, vj_in_frame <lgl>, stop_codon <lgl>, v_sequence_start <int>,
@@ -301,6 +300,19 @@ You may wish to subset your data to only productive sequences:
     ## #   np1_length <int>, d_sequence_start <int>, d_sequence_end <int>,
     ## #   d_germline_start <int>, d_germline_end <int>, np2_length <int>,
     ## #   j_sequence_start <int>, j_sequence_end <int>, j_germline_start <int>, ...
+
+### Create unique cell IDs
+
+Because cell IDs can overlap across different samples, we need to
+generate unique cell IDs to correctly distinguish cells from different
+sources. Sequence IDs are derived from the cell barcodes, so they can
+overlap too, and we make them unique the same way.
+
+    bcr_data$cell_id_unique <- paste0(bcr_data$sample_id, "_", bcr_data$cell_id)
+    bcr_data$sequence_id <- paste0(bcr_data$sample_id, "_", bcr_data$sequence_id)
+    bcr_data$cell_id_unique[1]
+
+    ## [1] "subject2_FNA_d60_1_Y1_GCGACCAGTTGGAGGT-1"
 
 ### Remove cells with multiple heavy chains
 
@@ -312,14 +324,14 @@ A simple solution is just to remove cells with multiple heavy chains
 from the single cell data:
 
     # remove cells with multiple heavy chain
-    multi_heavy <- table(dplyr::filter(bcr_data, locus == "IGH")$cell_id)
+    multi_heavy <- table(dplyr::filter(bcr_data, locus == "IGH")$cell_id_unique)
     multi_heavy_cells <- names(multi_heavy)[multi_heavy > 1]
 
-    bcr_data <- dplyr::filter(bcr_data, !cell_id %in% multi_heavy_cells)
+    bcr_data <- dplyr::filter(bcr_data, !cell_id_unique %in% multi_heavy_cells)
     cat(paste("There are", nrow(bcr_data),
               "rows in the data after filtering out cells with multiple heavy chains.\n"))
 
-    ## There are 6160 rows in the data after filtering out cells with multiple heavy chains.
+    ## There are 6176 rows in the data after filtering out cells with multiple heavy chains.
 
 ### Remove cells without heavy chains
 
@@ -327,15 +339,15 @@ Since most of the following analyses are based on heavy chains, we
 remove cells with only light chains:
 
     # split cells by heavy and light chains
-    heavy_cells <- dplyr::filter(bcr_data, locus == "IGH")$cell_id
-    light_cells <- dplyr::filter(bcr_data, locus == "IGK" | locus == "IGL")$cell_id
+    heavy_cells <- dplyr::filter(bcr_data, locus == "IGH")$cell_id_unique
+    light_cells <- dplyr::filter(bcr_data, locus == "IGK" | locus == "IGL")$cell_id_unique
     no_heavy_cells <- light_cells[which(!light_cells %in% heavy_cells)]
 
-    bcr_data <- dplyr::filter(bcr_data, !cell_id %in% no_heavy_cells)
+    bcr_data <- dplyr::filter(bcr_data, !cell_id_unique %in% no_heavy_cells)
     cat(paste("There are", nrow(bcr_data), "rows in the data after filtering out
               cells without heavy chains."))
 
-    ## There are 6160 rows in the data after filtering out
+    ## There are 6176 rows in the data after filtering out
     ##           cells without heavy chains.
 
 ## Add cell type annotations
@@ -373,29 +385,27 @@ Inspect the data:
 
 ### Standardize cell IDs
 
-Both of the example datasets have been processed separately and use
-slightly different cell identifiers. To consolidate the data into one
-object, we need to standardize the cell identifiers. This step could be
-different or even not necessary with other datasets.
+It is possible both of the BCR and GEX datasets have been processed
+separately and use slightly different cell identifiers. To consolidate
+the data into one object, we need to check the consistency of the cell
+ids in BCR and GEX datasets, and standardize the cell identifiers if
+necessary.
 
-    # make cell IDs in BCR match those in Seurat object
+    # make sure cell IDs in BCR match those in Seurat object
     bcr_data$cell_id_unique <- paste0(bcr_data$sample_id, "_", bcr_data$cell_id)
+
+    # check the cell id in the BCR data
     bcr_data$cell_id_unique[1]
 
     ## [1] "subject2_FNA_d60_1_Y1_GCGACCAGTTGGAGGT-1"
 
-In addition, the cells in both datasets are not presented in the same
-order.
-
-    # first id in the BCR data
-    bcr_data$cell_id_unique[1]
-
-    ## [1] "subject2_FNA_d60_1_Y1_GCGACCAGTTGGAGGT-1"
-
-    # first id in the GEX data
+    # check the cell id in the GEX data
     Cells(gex_db)[1]
 
     ## [1] "subject2_FNA_d60_1_Y1_GCGACCAGTTGGAGGT-1"
+
+In addition, please note the cells in both datasets are not presented in
+the same order.
 
 Having common cell identifiers, we can bring BCR data into the Seurat
 object, or the GEX and annotation data from the Seurat object into the
@@ -419,7 +429,7 @@ information is:
     # what proportion of BCRs don’t have GEX information?
     mean(is.na(match.index))
 
-    ## [1] 0.08198052
+    ## [1] 0.08176813
 
 #### Transfer cell type annotations into the BCR data
 
@@ -454,14 +464,14 @@ naive cell.
 
 Summary of the key steps:
 
--   *Determine clonal clustering threshold:* sequences which are under
-    this cut-off are clonally related.
--   *Assign clonal groups:* add an annotation (`clone_id`) that can be
-    used to identify a group of sequences that came from the same
-    original naive cell.
--   *Reconstruct germline sequences:* figure out the germline sequence
-    of the common ancestor, before mutations are introduced during
-    clonal expansion and SMH.
+- *Determine clonal clustering threshold:* sequences which are under
+  this cut-off are clonally related.
+- *Assign clonal groups:* add an annotation (`clone_id`) that can be
+  used to identify a group of sequences that came from the same original
+  naive cell.
+- *Reconstruct germline sequences:* figure out the germline sequence of
+  the common ancestor, before mutations are introduced during clonal
+  expansion and SMH.
 
 ### Identify clonal threshold
 
@@ -488,7 +498,7 @@ defined within one subject:
     dist_nearest <- distToNearest(dplyr::filter(bcr_data,
                                                 locus == "IGH",
                                                 subject_id == "subject1"),
-                                  cellIdColumn="cell_id")
+                                  cellIdColumn="cell_id_unique")
 
     ## Running in single-cell mode.
 
@@ -503,7 +513,7 @@ defined within one subject:
 
     plot(p1)
 
-![](10x_tutorial_files/10x_tutorial_unnamed-chunk-21-1.png)
+![](10x_tutorial_files/10x_tutorial_unnamed-chunk-20-1.png)
 
 The resulting distribution is often bimodal, with the first mode
 representing sequences with clonal relatives in the dataset and the
@@ -550,12 +560,12 @@ based on the specificity of this background distribution.
     threshold <- threshold_output@threshold
     threshold
 
-    ## [1] 0.2037778
+    ## [1] 0.2051742
 
     plot(threshold_output, binwidth = 0.02, silent = TRUE) +
       theme(axis.title = element_text(size = 18))
 
-![](10x_tutorial_files/10x_tutorial_unnamed-chunk-23-1.png)
+![](10x_tutorial_files/10x_tutorial_unnamed-chunk-22-1.png)
 
 The nearest-neighbor distance distribution is not always bimodal. In
 this case, if the data have multiple subjects, we can calculate the
@@ -576,7 +586,7 @@ calculate this do the following:
     # calculate cross subjects distribution of distance to nearest
     dist_crossSubj <- distToNearest(dplyr::filter(bcr_data, locus == "IGH"),
                                     nproc = 1, cross = "subject_id",
-                                    cellIdColumn="cell_id")
+                                    cellIdColumn="cell_id_unique")
 
     ## Running in single-cell mode.
 
@@ -591,14 +601,14 @@ calculate this do the following:
     threshold_withcross <- threshold_output@threshold
     threshold_withcross
 
-    ## [1] 0.2037778
+    ## [1] 0.2051742
 
     # plot the threshold along the density plot
     plot(threshold_output, binwidth = 0.02,
          cross = dist_crossSubj$cross_dist_nearest, silent = TRUE) +
       theme(axis.title = element_text(size = 18))
 
-![](10x_tutorial_files/10x_tutorial_unnamed-chunk-25-1.png)
+![](10x_tutorial_files/10x_tutorial_unnamed-chunk-24-1.png)
 
 In the plot above, the top plot is the nearest-neighbor distance
 distribution within Subj1, and the bottom plot is the nearest neighbor
@@ -650,12 +660,12 @@ To estimate the clonal abundance, we will select only the heavy chains:
     abund_plot <- plot(abund, silent=T)
     abund_plot
 
-![](10x_tutorial_files/10x_tutorial_unnamed-chunk-27-1.png)
+![](10x_tutorial_files/10x_tutorial_unnamed-chunk-26-1.png)
 
     # plot by sample_id
     abund_plot + facet_wrap("sample_id", ncol = 3)
 
-![](10x_tutorial_files/10x_tutorial_unnamed-chunk-28-1.png) Most real
+![](10x_tutorial_files/10x_tutorial_unnamed-chunk-27-1.png) Most real
 datasets, will have most clones of size 1 (one sequence). In this
 tutorial, we processed data to remove most of singleton clone and we
 don’t see the much higher peak at 1 that we would normally expect.
@@ -673,7 +683,7 @@ don’t see the much higher peak at 1 that we would normally expect.
       labs(x = "Sequences per clone") +
       theme_bw()
 
-![](10x_tutorial_files/10x_tutorial_unnamed-chunk-29-1.png)
+![](10x_tutorial_files/10x_tutorial_unnamed-chunk-28-1.png)
 
 ### Visualize clonal diversity
 
@@ -688,7 +698,7 @@ diversity, we will also select only the heavy chains:
 
     plot(div, silent = TRUE) + facet_wrap("sample_id", ncol = 3)
 
-![](10x_tutorial_files/10x_tutorial_unnamed-chunk-30-1.png)
+![](10x_tutorial_files/10x_tutorial_unnamed-chunk-29-1.png)
 
 ## Create germlines
 
@@ -719,7 +729,7 @@ And passing `"human/vdj/"` to the `readIMGT` function.
     # read in IMGT files in the Docker container
     references <- readIMGT(dir = "/usr/local/share/germlines/imgt/human/vdj")
 
-    ## [1] "Read in 1305 from 17 fasta files"
+    ## [1] "Read in 1352 from 17 fasta files"
 
     # reconstruct germlines
     results <- createGermlines(results, references, fields = "subject_id",
@@ -756,7 +766,7 @@ clones:
       geom_histogram(binwidth = 0.005) +
       theme_bw() + theme(axis.title = element_text(size = 18))
 
-![](10x_tutorial_files/10x_tutorial_unnamed-chunk-34-1.png)
+![](10x_tutorial_files/10x_tutorial_unnamed-chunk-33-1.png)
 
 The plots below show the distribution of mutation frequency of cells by
 subject, isotype and cell type respectively:
@@ -768,7 +778,7 @@ subject, isotype and cell type respectively:
       labs(x = "", y = "Mutation frequency", fill = "subject_id") +
       theme(axis.text.x = element_blank())
 
-![](10x_tutorial_files/10x_tutorial_unnamed-chunk-35-1.png)
+![](10x_tutorial_files/10x_tutorial_unnamed-chunk-34-1.png)
 
     # plotting mu_freq by isotype
     ggplot(data_mut, aes(y = mu_freq, x = c_gene, fill = c_gene)) +
@@ -777,7 +787,7 @@ subject, isotype and cell type respectively:
       labs(x = "", y = "Mutation frequency", fill = "Isotype") +
       theme(axis.text.x = element_blank())
 
-![](10x_tutorial_files/10x_tutorial_unnamed-chunk-36-1.png)
+![](10x_tutorial_files/10x_tutorial_unnamed-chunk-35-1.png)
 
     # plotting mu_freq by cell type
     ggplot(data_mut, aes(y = mu_freq, x = gex_annotation, fill = gex_annotation)) +
@@ -786,7 +796,7 @@ subject, isotype and cell type respectively:
       labs(x = "", y = "Mutation frequency", fill = "Cell type") +
       theme(axis.text.x = element_blank())
 
-![](10x_tutorial_files/10x_tutorial_unnamed-chunk-37-1.png)
+![](10x_tutorial_files/10x_tutorial_unnamed-chunk-36-1.png)
 
 ## Build and visualize trees
 
@@ -823,12 +833,12 @@ uniqueness of the sequences, so they are not collapsed.
     ## # A tibble: 6 x 4
     ##   clone_id data       locus  seqs
     ##   <chr>    <list>     <chr> <int>
-    ## 1 196      <airrClon> IGH      14
-    ## 2 506      <airrClon> IGH      14
-    ## 3 656      <airrClon> IGH      14
-    ## 4 244      <airrClon> IGH      12
-    ## 5 515      <airrClon> IGH      12
-    ## 6 568      <airrClon> IGH      12
+    ## 1 1175     <airrClon> IGH      14
+    ## 2 339      <airrClon> IGH      14
+    ## 3 474      <airrClon> IGH      14
+    ## 4 1218     <airrClon> IGH      12
+    ## 5 345      <airrClon> IGH      12
+    ## 6 395      <airrClon> IGH      12
 
 Additionally, if there is paired heavy and light chain data, you can
 format the clones such that the paired data is used in building trees.
@@ -839,19 +849,19 @@ dowser’s function `resolveLightChains`. This group cells within a clone
 based on the light chain V and J gene and assign a subgroup to each
 sequence. Then, in the `formatClones` step, specify `chain="HL"`.
 
-    ## Warning in formatClones(comb, chain = "HL", traits = c("day",
-    ## "gex_annotation"), : 2 sequence(s) with an inframe stop codon were removed. If
-    ## you want to keep these sequences use the option filterstop=FALSE.
+    ## Warning in formatClones(comb, chain = "HL", cell = "cell_id_unique", traits =
+    ## c("day", : 2 sequence(s) with an inframe stop codon were removed. If you want
+    ## to keep these sequences use the option filterstop=FALSE.
 
     ## # A tibble: 6 x 4
     ##   clone_id data       locus    seqs
     ##   <chr>    <list>     <chr>   <int>
-    ## 1 196      <airrClon> IGH,IGL    15
-    ## 2 506      <airrClon> IGH,IGK    14
-    ## 3 656      <airrClon> IGH,IGL    14
-    ## 4 244      <airrClon> IGH,IGK    12
-    ## 5 515      <airrClon> IGH,IGK    12
-    ## 6 568      <airrClon> IGH,IGK    12
+    ## 1 1175     <airrClon> IGH,IGL    15
+    ## 2 339      <airrClon> IGH,IGK    14
+    ## 3 474      <airrClon> IGH,IGL    14
+    ## 4 1218     <airrClon> IGH,IGK    12
+    ## 5 345      <airrClon> IGH,IGK    12
+    ## 6 395      <airrClon> IGH,IGK    12
 
 ### Build trees with dowser
 
@@ -876,12 +886,12 @@ phangorn:
     ## # A tibble: 6 x 5
     ##   clone_id data       locus    seqs trees  
     ##   <chr>    <list>     <chr>   <int> <list> 
-    ## 1 196      <airrClon> IGH,IGL    15 <phylo>
-    ## 2 506      <airrClon> IGH,IGK    14 <phylo>
-    ## 3 656      <airrClon> IGH,IGL    14 <phylo>
-    ## 4 244      <airrClon> IGH,IGK    12 <phylo>
-    ## 5 515      <airrClon> IGH,IGK    12 <phylo>
-    ## 6 568      <airrClon> IGH,IGK    12 <phylo>
+    ## 1 1175     <airrClon> IGH,IGL    15 <phylo>
+    ## 2 339      <airrClon> IGH,IGK    14 <phylo>
+    ## 3 474      <airrClon> IGH,IGL    14 <phylo>
+    ## 4 1218     <airrClon> IGH,IGK    12 <phylo>
+    ## 5 345      <airrClon> IGH,IGK    12 <phylo>
+    ## 6 395      <airrClon> IGH,IGK    12 <phylo>
 
 And the second uses dnapars (PHYLIP):
 
@@ -894,12 +904,12 @@ And the second uses dnapars (PHYLIP):
     ## # A tibble: 6 x 5
     ##   clone_id data       locus    seqs trees  
     ##   <chr>    <list>     <chr>   <int> <list> 
-    ## 1 196      <airrClon> IGH,IGL    15 <phylo>
-    ## 2 506      <airrClon> IGH,IGK    14 <phylo>
-    ## 3 656      <airrClon> IGH,IGL    14 <phylo>
-    ## 4 244      <airrClon> IGH,IGK    12 <phylo>
-    ## 5 515      <airrClon> IGH,IGK    12 <phylo>
-    ## 6 568      <airrClon> IGH,IGK    12 <phylo>
+    ## 1 1175     <airrClon> IGH,IGL    15 <phylo>
+    ## 2 339      <airrClon> IGH,IGK    14 <phylo>
+    ## 3 474      <airrClon> IGH,IGL    14 <phylo>
+    ## 4 1218     <airrClon> IGH,IGK    12 <phylo>
+    ## 5 345      <airrClon> IGH,IGK    12 <phylo>
+    ## 6 395      <airrClon> IGH,IGK    12 <phylo>
 
 #### Standard maximum likelihood trees
 
@@ -916,12 +926,12 @@ first uses pml (phangorn):
     ## # A tibble: 6 x 5
     ##   clone_id data       locus    seqs trees  
     ##   <chr>    <list>     <chr>   <int> <list> 
-    ## 1 196      <airrClon> IGH,IGL    15 <phylo>
-    ## 2 506      <airrClon> IGH,IGK    14 <phylo>
-    ## 3 656      <airrClon> IGH,IGL    14 <phylo>
-    ## 4 244      <airrClon> IGH,IGK    12 <phylo>
-    ## 5 515      <airrClon> IGH,IGK    12 <phylo>
-    ## 6 568      <airrClon> IGH,IGK    12 <phylo>
+    ## 1 1175     <airrClon> IGH,IGL    15 <phylo>
+    ## 2 339      <airrClon> IGH,IGK    14 <phylo>
+    ## 3 474      <airrClon> IGH,IGL    14 <phylo>
+    ## 4 1218     <airrClon> IGH,IGK    12 <phylo>
+    ## 5 345      <airrClon> IGH,IGK    12 <phylo>
+    ## 6 395      <airrClon> IGH,IGK    12 <phylo>
 
 The second uses dnaml (PHYLIP):
 
@@ -977,7 +987,7 @@ Plot the largest tree:
 
     plots_all[[1]]
 
-![](10x_tutorial_files/10x_tutorial_unnamed-chunk-48-1.png)
+![](10x_tutorial_files/10x_tutorial_unnamed-chunk-47-1.png)
 
     # save a pdf of all trees
     dir.create("results/dowser_tutorial/", recursive = TRUE)
@@ -1008,7 +1018,7 @@ and labelled by isotype:
 
     print(plots_all)
 
-![](10x_tutorial_files/10x_tutorial_unnamed-chunk-50-1.png)
+![](10x_tutorial_files/10x_tutorial_unnamed-chunk-49-1.png)
 
 ### Reconstruct intermediate sequences
 
@@ -1030,10 +1040,14 @@ second largest tree (dots represent IMGT gaps):
 
     print(plots_all)
 
-![](10x_tutorial_files/10x_tutorial_unnamed-chunk-51-1.png)
+![](10x_tutorial_files/10x_tutorial_unnamed-chunk-50-1.png)
 
     # get sequence at node 5 for the second clone_id in trees
     getNodeSeq(trees, clone = trees$clone_id[2], node = 5)
+
+    ## Warning in getNodeSeq(trees, clone = trees$clone_id[2], node = 5): Node
+    ## divergences inconsistent, tree 339 may have been corrupted (or it was made by
+    ## Dowser <= 2.5.0)
 
     ##                                                                                                                                                                                                                                                                                                                                                                                                            IGH 
     ## "CAGGTTCAACTGGTGCAGTCTGGACCT...GAGGTGAAGATGCCTGGGGCCTCAGTGGAGGTCTCCTGCGAGGCTTCTGGTTACACCTTT............TCCACCTCTGGTATCAGCTGGGTGCGACAGGCCCCTGGACAAGGGCTTGAGTGGATGGGATGGATCAGCGATGAC......AATGGTTACACAACGTATGCAGAGAATTTCCAG...GGCAGAGTCACCATGACCACAGACACATCCACAAAAACAGCCTATATGGAGCTGAGGAGGCTGAGATCTGACGACACGGCCGTGTATTATTGTGCGAGAGATGGCCAATGGGGGAGCCTCACTGGGGCGAGTTTTGACTACTGGGGCCAGGGAACCCTGGTCACCGTCTCCTCAGNN" 
@@ -1065,21 +1079,21 @@ timepoints are more diverged from the germline:
     ## # A tibble: 35 x 4
     ##    clone_id  slope correlation      p
     ##    <chr>     <dbl>       <dbl>  <dbl>
-    ##  1 570      0.0452       0.711 0.0969
-    ##  2 699      0.120        0.876 0.164 
-    ##  3 513      0.277        0.827 0.192 
-    ##  4 209      0.0630       0.468 0.228 
-    ##  5 1122     0.708        0.578 0.232 
-    ##  6 1118     0.489        0.444 0.249 
-    ##  7 196      0.307        0.770 0.255 
-    ##  8 573      0.0830       0.329 0.261 
-    ##  9 183      0.169        0.300 0.269 
-    ## 10 363      2.57         0.833 0.332 
+    ##  1 397      0.0453       0.711 0.0769
+    ##  2 512      0.133        0.864 0.170 
+    ##  3 347      0.277        0.827 0.196 
+    ##  4 89       0.664        0.610 0.206 
+    ##  5 1187     0.0630       0.468 0.221 
+    ##  6 400      0.0826       0.328 0.245 
+    ##  7 894      0.707        0.578 0.256 
+    ##  8 1175     0.307        0.770 0.267 
+    ##  9 1163     0.169        0.300 0.271 
+    ## 10 1177     0.247        0.670 0.314 
     ## # i 25 more rows
 
     print(plots_time[[1]])
 
-![](10x_tutorial_files/10x_tutorial_unnamed-chunk-54-1.png)
+![](10x_tutorial_files/10x_tutorial_unnamed-chunk-53-1.png)
 
     # save all trees to a pdf file
     treesToPDF(plots_time, 
