@@ -11,6 +11,8 @@ Image Changes:
   added in 4.7.0 as a temporary enchantr compatibility fix; these packages
   now install at their current versions.
 + Added immvoke to the suite image.
++ Set a UTF-8 locale (``LANG=C.UTF-8``, ``LC_ALL=C.UTF-8``) in the base
+  image, so R handles non-ASCII text correctly (#189)
 
 Version Updates:
 
