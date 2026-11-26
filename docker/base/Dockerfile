@@ -84,6 +84,11 @@ ENV LD_LIBRARY_PATH="/usr/lib64/R/lib:/usr/lib64/atlas"
 # with ENOSYS ("Function not implemented"). Forcing R's built-in (pure R/C,
 # no openat2) untar implementation.
 ENV TAR=internal
+# Use a UTF-8 locale. Without it R runs in the C/POSIX locale and mishandles
+# non-ASCII text, e.g. remotes::install_github() truncates DESCRIPTION files
+# containing accented author names (issue #189).
+ENV LANG=C.UTF-8 \
+    LC_ALL=C.UTF-8
 RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 20
 
 # R build setup
